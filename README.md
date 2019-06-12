@@ -9,3 +9,38 @@ Performing a systematic literature review is a labor-intensive task that require
 ## License
 
 The source code is released under the [MIT License](https://github.com/vitorfs/parsifal/blob/master/LICENSE).
+
+## Install
+
+# Dev local
+#criar ambientes virtuais para instalar python antigo e novo na mesma máquina
+https://help.dreamhost.com/hc/en-us/articles/215489338-Installing-and-using-virtualenv-with-Python-2
+
+#criar env
+virtualenv --python='/usr/bin/python2.7' parsifal
+
+#Entrar no ambiente
+source parsifal/bin/activate
+
+#Sair do ambiente 
+deactivate
+
+#passo a passo instalação
+https://github.com/vitorfs/parsifal/issues/29
+
+sudo apt-get install python-psycopg2
+sudo apt-get install libpq-dev
+
+#configurar arquivo .env
+
+#experiments.txt - alterar
+alter psycopg2==2.6 -> 2.7 - requiement.txt
+
+pip install psycopg2-binary
+
+#colocar para rodar
+python manage.py runserver
+
+#igorar owned dos arquivos
+git config core.fileMode false
+
