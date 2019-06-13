@@ -44,3 +44,21 @@ python manage.py runserver
 #igorar owned dos arquivos
 git config core.fileMode false
 
+##Configuração com docker
+
+# Prerequisitos:
+
+Instalar docker e docker compose
+
+* https://docs.docker.com/install/
+
+* https://docs.docker.com/compose/install/
+
+Adicionar usuário atual ao grupo docker e relogar
+
+#Construir projeto
+
+docker-compose up --build
+
+Acessar http://localhost:8000
+
