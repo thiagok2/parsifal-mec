@@ -56,7 +56,7 @@ Instalar docker e docker compose
 
 Adicionar usuário atual ao grupo docker e relogar
 
-##Construir projeto
+## Construir projeto
 
 docker-compose up --build
 
