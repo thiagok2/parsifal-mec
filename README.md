@@ -44,7 +44,7 @@ python manage.py runserver
 #igorar owned dos arquivos
 git config core.fileMode false
 
-##Configuração com docker
+## Configuração com docker
 
 # Prerequisitos:
 
