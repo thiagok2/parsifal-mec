@@ -29,7 +29,10 @@ deactivate
 https://github.com/vitorfs/parsifal/issues/29
 
 sudo apt-get install python-psycopg2
+
 sudo apt-get install libpq-dev
+
+
 
 ## configurar arquivo .env
 
@@ -37,6 +40,8 @@ sudo apt-get install libpq-dev
 alter psycopg2==2.6 -> 2.7 - requiement.txt
 
 pip install psycopg2-binary
+
+pip install psycopg2 --upgrade
 
 ## colocar para rodar
 python manage.py runserver
