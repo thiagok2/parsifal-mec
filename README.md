@@ -16,32 +16,32 @@ The source code is released under the [MIT License](https://github.com/vitorfs/p
 #criar ambientes virtuais para instalar python antigo e novo na mesma máquina
 https://help.dreamhost.com/hc/en-us/articles/215489338-Installing-and-using-virtualenv-with-Python-2
 
-#criar env
+# criar env
 virtualenv --python='/usr/bin/python2.7' parsifal
 
-#Entrar no ambiente
+# Entrar no ambiente
 source parsifal/bin/activate
 
-#Sair do ambiente 
+# Sair do ambiente 
 deactivate
 
-#passo a passo instalação
+# passo a passo instalação
 https://github.com/vitorfs/parsifal/issues/29
 
 sudo apt-get install python-psycopg2
 sudo apt-get install libpq-dev
 
-#configurar arquivo .env
+# configurar arquivo .env
 
-#experiments.txt - alterar
+# experiments.txt - alterar
 alter psycopg2==2.6 -> 2.7 - requiement.txt
 
 pip install psycopg2-binary
 
-#colocar para rodar
+# colocar para rodar
 python manage.py runserver
 
-#igorar owned dos arquivos
+# ignorar owned dos arquivos
 git config core.fileMode false
 
 # Configuração com docker
