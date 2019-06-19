@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-18 23:51+0000\n"
+"POT-Creation-Date: 2019-06-19 00:31+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,6 +18,30 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
+#: parsifal/core/models.py:6
+msgid "image"
+msgstr ""
+
+#: parsifal/core/models.py:7
+msgid "video"
+msgstr ""
+
+#: parsifal/core/models.py:9
+msgid "Image"
+msgstr ""
+
+#: parsifal/core/models.py:10
+msgid "Video"
+msgstr ""
+
+#: parsifal/core/models.py:24
+msgid "Media"
+msgstr ""
+
+#: parsifal/core/models.py:25
+msgid "Medias"
+msgstr ""
+
 #: parsifal/core/templates/core/home.html:9
 msgid "New review"
 msgstr "Nova revisão"
@@ -25,6 +49,48 @@ msgstr "Nova revisão"
 #: parsifal/core/templates/core/home.html:10
 msgid "Last updates on your network"
 msgstr "Últimas atualizações na sua rede"
+
+#: parsifal/core/templates/core/home.html:18
+#, fuzzy
+#| msgid "Last updates on your network"
+msgid "There are no recent updates to your network."
+msgstr "Últimas atualizações na sua rede"
+
+#: parsifal/core/templates/core/home.html:25
+msgid "Latest news"
+msgstr ""
+
+#: parsifal/core/templates/core/home.html:28
+msgid "Read more"
+msgstr ""
+
+#: parsifal/core/templates/core/home.html:34
+#, fuzzy
+#| msgid "New review"
+msgid "Your reviews"
+msgstr "Nova revisão"
+
+#: parsifal/core/templates/core/home.html:40
+msgid "You don't have any systematic literature review yet."
+msgstr ""
+
+#: parsifal/core/views.py:30
+#, fuzzy
+#| msgid "you"
+msgid "You"
+msgstr "você"
+
+#: parsifal/core/views.py:30
+msgid "are now following"
+msgstr ""
+
+#: parsifal/core/views.py:38
+msgid "you"
+msgstr "você"
+
+#: parsifal/core/views.py:39
+msgid "is now following"
+msgstr ""
 
 #: parsifal/settings.py:32
 msgid "Português"
