@@ -3,6 +3,7 @@
 from django.core.urlresolvers import reverse as r
 from django.shortcuts import render
 from django.utils.html import escape
+from django.utils.translation import ugettext as _
 
 from parsifal.activities.models import Activity
 from parsifal.blog.models import Entry
@@ -10,7 +11,7 @@ from parsifal.reviews.models import Review
 
 
 def get_following_feeds(user):
-    feeds = []    
+    feeds = []
     try:
         activities = []
         followers = Activity.objects.filter(to_user=user, activity_type=Activity.FOLLOW)
@@ -26,7 +27,7 @@ def get_following_feeds(user):
         activities.sort(key=lambda a: a.date, reverse=True)
         for activity in activities:
             if activity.from_user == user:
-                activity.message = u'<a href="{0}">You</a> are now following <a href="{1}">{2}</a>'.format(
+                activity.message = u'<a href="{0}">' + _('You') + '</a>' + _('are now following') + '<a href="{1}">{2}</a>'.format(
                     r('reviews', args=(user.username,)),
                     r('reviews', args=(activity.to_user.username,)),
                     escape(activity.to_user.profile.get_screen_name())
@@ -34,8 +35,8 @@ def get_following_feeds(user):
             else:
                 is_following = activity.to_user.profile.get_screen_name()
                 if activity.to_user == user:
-                    is_following = u'you'
-                activity.message = u'<a href="{0}">{1}</a> is now following <a href="{2}">{3}</a>'.format(
+                    is_following = _(u'you')
+                activity.message = u'<a href="{0}">{1}</a> ' + _('is now following') + '<a href="{2}">{3}</a>'.format(
                     r('reviews', args=(activity.from_user.username,)),
                     escape(activity.from_user.profile.get_screen_name()),
                     r('reviews', args=(activity.to_user.username,)),
@@ -54,10 +55,10 @@ def home(request):
             latest_news = Entry.objects.filter(status=Entry.PUBLISHED).order_by('-start_publication',)[0]
         except:
             latest_news = None
-        return render(request, 'core/home.html', { 
-                'user_reviews': user_reviews, 
-                'feeds': feeds, 
-                'latest_news': latest_news 
+        return render(request, 'core/home.html', {
+                'user_reviews': user_reviews,
+                'feeds': feeds,
+                'latest_news': latest_news
             })
     else:
         return render(request, 'core/cover.html')

@@ -1,14 +1,15 @@
 from django.db import models
+from django.utils.translation import ugettext as _
 
 
 class Media(models.Model):
-    IMAGE = u'image'
-    VIDEO = u'video'
+    IMAGE = _(u'image')
+    VIDEO = _(u'video')
     MEDIA_TYPES = (
-        (IMAGE, u'Image'),
-        (VIDEO, u'Video'),
+        (IMAGE, _(u'Image')),
+        (VIDEO, _(u'Video')),
         )
-    
+
     OG_METATAG = u'<meta property="og:{0}" content="{1}" />'
 
     name = models.CharField(max_length=255)
@@ -20,8 +21,8 @@ class Media(models.Model):
     height = models.IntegerField(default=0)
 
     class Meta:
-        verbose_name = u'Media'
-        verbose_name_plural = u'Medias'
+        verbose_name = _(u'Media')
+        verbose_name_plural = _(u'Medias')
 
     def __unicode__(self):
         return self.name
