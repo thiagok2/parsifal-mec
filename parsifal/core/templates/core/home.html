@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% load humanize %}
 
 {% block content %}
   <div class="row">
     <div class="col-md-12">
-      <a href="/reviews/new/" class="btn btn-primary pull-right">New review</a>
-      <h2 class="page-header">Last updates on your network</h2>
+      <a href="/reviews/new/" class="btn btn-primary pull-right">{% trans 'New review' %}</a>
+      <h2 class="page-header">{% trans 'Last updates on your network' %}</h2>
     </div>
   </div>
   <div class="row">

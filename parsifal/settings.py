@@ -1,8 +1,10 @@
+# -*- coding: utf-8 -*-
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
 from unipath import Path
 import dj_database_url
 from decouple import config, Csv
 from mendeley import Mendeley
+from django.utils.translation import ugettext_lazy as _
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 CSRF_COOKIE_SECURE = config('CSRF_COOKIE_SECURE', default=True, cast=bool)
@@ -10,7 +12,7 @@ SESSION_COOKIE_SECURE = config('SESSION_COOKIE_SECURE', default=True, cast=bool)
 
 PROJECT_DIR = Path(__file__).parent
 
-DEBUG = config('DEBUG', default=False, cast=bool) 
+DEBUG = config('DEBUG', default=False, cast=bool)
 TEMPLATE_DEBUG = DEBUG
 
 DATABASES = {
@@ -26,8 +28,13 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+LANGUAGES = (
+    ('pt_BR', _('Português')),
+    ('en_US', _('English')),
+)
+
 TIME_ZONE = 'UTC'
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-br'
 
 USE_I18N = True
 USE_L10N = True
@@ -49,6 +56,7 @@ SECRET_KEY = config('SECRET_KEY')
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -122,3 +130,7 @@ ELSEVIER_API_KEY = config('ELSEVIER_API_KEY')
 ABSOLUTE_URL_OVERRIDES = {
     'auth.user': lambda u: '/%s/' % u.username,
 }
+
+LOCALE_PATHS = (
+    PROJECT_DIR.child('locale'),
+)
