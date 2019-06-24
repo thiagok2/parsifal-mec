@@ -8,16 +8,16 @@
 </h3>
 <ul class="review-menu">
   <li{% if active_menu == "review"%} class="active"{% endif %}>
-    <a href="{{ review.get_absolute_url }}">Review</a>
+    <a href="{{ review.get_absolute_url }}">{% trans 'Review' %}</a>
   </li>
   <li{% if active_menu == "planning"%} class="active"{% endif %}>
-    <a href="{% url 'planning' review.author.username review.name %}">Planning</a>
+    <a href="{% url 'planning' review.author.username review.name %}">{% trans 'Planning' %}</a>
   </li>
   <li{% if active_menu == "conducting"%} class="active"{% endif %}>
-    <a href="{% url 'conducting' review.author.username review.name %}">Conducting</a>
+    <a href="{% url 'conducting' review.author.username review.name %}">{% trans 'Conducting' %}</a>
   </li>
   <li{% if active_menu == "reporting"%} class="active"{% endif %}>
-    <a href="{% url 'reporting' review.author.username review.name %}">Reporting</a>
+    <a href="{% url 'reporting' review.author.username review.name %}">{% trans 'Reporting' %}</a>
   </li>
 </ul>
 <input type="hidden" id="review-id" value="{{ review.id }}">
