@@ -1,3 +1,6 @@
+{% load i18n %}
+
+{% load humanize %}
 <h3 class="review-title">
   {% if user == review.author %}
     <a href="{% url 'settings' review.author.username review.name %}" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-cog"></span> Review settings</a>

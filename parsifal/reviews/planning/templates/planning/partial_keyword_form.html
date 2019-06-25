@@ -1,3 +1,7 @@
+{% load i18n %}
+
+{% load humanize %}
+
 {% csrf_token %}
 <input type="hidden" name="review-id" value="{{ review.pk }}">
 <input type="hidden" name="keyword-id" value="{{ form.instance.pk }}">
@@ -6,9 +10,9 @@
     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     <h4 class="modal-title">
       {% if form.instance.pk %}
-        Edit Keyword
+        {% trans 'Edit Keyword' %}
       {% else %}
-        New Keyword
+        {% trans 'New Keyword' %}
       {% endif %}
     </h4>
   </div>
@@ -18,8 +22,8 @@
     <table id="table-synonyms" class="table table-bordered table-striped" style="margin-bottom: 0;">
       <thead>
         <tr>
-          <th>Synonyms</th>
-          <th style="width: 45px;">Remove</th>
+          <th>{% trans 'Synonyms' %}</th>
+          <th style="width: 45px;">{% trans 'Remove' %}</th>
         </tr>
       </thead>
       <tbody>
@@ -51,7 +55,7 @@
           <td colspan="2">
             <button type="button" class="btn btn-primary btn-sm js-add-synonym">
               <span class="glyphicon glyphicon-plus"></span>
-              Add synonym
+              {% trans 'Add synonym' %}
             </button>
           </td>
         </tr>
@@ -59,10 +63,10 @@
     </table>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+    <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Cancel' %}</button>
     <button type="submit" class="btn btn-success">
       <span class="glyphicon glyphicon-ok"></span>
-      Save
+      {% trans 'Save' %}
     </button>
   </div>
 </div>
