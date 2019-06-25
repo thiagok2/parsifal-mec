@@ -1,11 +1,15 @@
+{% load i18n %}
+
+{% load humanize %}
+
 <ul class="nav nav-tabs" id="planning-tab">
   <li role="presentation"{% if active_tab == 'protocol' %} class="active"{% endif %}>
-    <a href="{% url 'protocol' review.author.username review.name %}">Protocol</a>
+    <a href="{% url 'protocol' review.author.username review.name %}">{% trans 'Protocol' %}</a>
   </li>
   <li role="presentation"{% if active_tab == 'quality' %} class="active"{% endif %}>
-    <a href="{% url 'quality_assessment_checklist' review.author.username review.name %}">Quality Assessment Checklist</a>
+    <a href="{% url 'quality_assessment_checklist' review.author.username review.name %}">{% trans 'Quality Assessment Checklist' %}</a>
   </li>
   <li role="presentation"{% if active_tab == 'extraction' %} class="active"{% endif %}>
-    <a href="{% url 'data_extraction_form' review.author.username review.name %}">Data Extraction Form</a>
+    <a href="{% url 'data_extraction_form' review.author.username review.name %}">{% trans 'Data Extraction Form' %}</a>
   </li>
 </ul>
