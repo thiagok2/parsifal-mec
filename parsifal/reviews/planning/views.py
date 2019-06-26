@@ -22,6 +22,9 @@ from parsifal.reviews.planning.forms import KeywordForm, SynonymForm
 from parsifal.reviews.decorators import main_author_required, author_required
 
 
+from django.utils.translation import ugettext as _
+
+
 @author_required
 @login_required
 def planning(request, username, review_name):
@@ -59,11 +62,11 @@ def save_objective(request):
         objective = request.POST['objective']
         review = Review.objects.get(pk=review_id)
         if len(objective) > 1000:
-            return HttpResponseBadRequest('The review objectives should not exceed 1000 characters. The given objectives have %s characters.' % len(objective))
+            return HttpResponseBadRequest(_('The review objectives should not exceed 1000 characters. The given objectives have %s characters.') % len(objective))
         else:
             review.objective = objective
             review.save()
-            return HttpResponse('Your review have been saved successfully!')
+            return HttpResponse(_('Your review have been saved successfully!'))
     except:
         return HttpResponseBadRequest()
 
@@ -708,7 +711,7 @@ def save_cutoff_score(request):
         review = Review.objects.get(pk=review_id)
         review.quality_assessment_cutoff_score = float(cutoff_score)
         review.save()
-        return HttpResponse('Cutoff score saved successfully!')
+        return HttpResponse(_('Cutoff score saved successfully!'))
     except:
         return HttpResponseBadRequest('Invalid value.')
 
@@ -745,7 +748,7 @@ def save_data_extraction_field(request):
         field_id = request.POST['field-id']
 
         if not field_type and not description:
-            return HttpResponseBadRequest('Description and Type are required fields.')
+            return HttpResponseBadRequest(_('Description and Type are required fields.'))
 
         lookup_values = lookup_values.split('\n')
         lookup_values = list(set(lookup_values))

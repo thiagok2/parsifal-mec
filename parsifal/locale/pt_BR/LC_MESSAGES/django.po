@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-26 17:21+0000\n"
+"POT-Creation-Date: 2019-06-26 20:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,252 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: parsifal/account_settings/templates/settings/connections.html:7
+#: parsifal/account_settings/templates/settings/password.html:7
+#: parsifal/account_settings/templates/settings/picture.html:6
+#: parsifal/account_settings/templates/settings/profile.html:5
+#, fuzzy
+#| msgid "Blog · Parsifal"
+msgid "Account Settings · Parsifal"
+msgstr "Configurações da Conta · Parsifal"
+
+#: parsifal/account_settings/templates/settings/connections.html:47
+msgid "Connected Services"
+msgstr "Serviços Conectados"
+
+#: parsifal/account_settings/templates/settings/connections.html:51
+#: parsifal/account_settings/templates/settings/includes/mendeley_connection.html:18
+msgid "Connect to Mendeley"
+msgstr ""
+
+#: parsifal/account_settings/templates/settings/connections.html:54
+msgid ""
+"Import your references from Mendeley. Associate your Mendeley library to "
+"your reviews. Friends you have on Mendeley who are also on Parsifal will "
+"become part of your Parsifal network."
+msgstr ""
+
+#: parsifal/account_settings/templates/settings/connections.html:62
+#: parsifal/account_settings/templates/settings/includes/dropbox_connection.html:9
+msgid "Connect to Dropbox"
+msgstr ""
+
+#: parsifal/account_settings/templates/settings/connections.html:65
+msgid ""
+"Use your Dropbox account as your personal library and store papers related "
+"to your literature reviews."
+msgstr ""
+
+#: parsifal/account_settings/templates/settings/emails.html:19
+msgid "Account email"
+msgstr ""
+
+#: parsifal/account_settings/templates/settings/emails.html:25
+msgid "Save email"
+msgstr ""
+
+#: parsifal/account_settings/templates/settings/includes/dropbox_connection.html:5
+#: parsifal/account_settings/templates/settings/includes/mendeley_connection.html:9
+msgid "(Disconnect)"
+msgstr ""
+
+#: parsifal/account_settings/templates/settings/password.html:19
+#: parsifal/account_settings/templates/settings/password.html:25
+#, fuzzy
+#| msgid "Password"
+msgid "Change password"
+msgstr "Senha"
+
+#: parsifal/account_settings/templates/settings/picture.html:43
+msgid "Profile picture"
+msgstr "Foto do perfil"
+
+#: parsifal/account_settings/templates/settings/picture.html:49
+msgid "Upload new picture"
+msgstr "Atualizar foto"
+
+#: parsifal/account_settings/templates/settings/picture.html:58
+msgid "Crop Profile Picture"
+msgstr "Cortar Foto do Perfil"
+
+#: parsifal/account_settings/templates/settings/picture.html:63
+msgid ""
+"Crop the profile picture and then click on the <strong>Save Picture</strong> "
+"button"
+msgstr ""
+"Cortar a foto do perfil e depois clicar em <strong> Salvar imagem </strong> "
+
+#: parsifal/account_settings/templates/settings/picture.html:73
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:75
+#: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:75
+#: parsifal/reviews/planning/templates/planning/protocol.html:506
+msgid "Close"
+msgstr "Fechar"
+
+#: parsifal/account_settings/templates/settings/picture.html:74
+msgid "Save picture"
+msgstr "Salvar foto"
+
+#: parsifal/account_settings/templates/settings/profile.html:17
+#, fuzzy
+#| msgid "Edit profile"
+msgid "Edit Profile"
+msgstr "Editar perfil"
+
+#: parsifal/account_settings/templates/settings/profile.html:23
+#, fuzzy
+#| msgid "Edit profile"
+msgid "Save profile"
+msgstr "Editar perfil"
+
+#: parsifal/account_settings/templates/settings/settings_menu.html:7
+msgid "Account settings"
+msgstr "Configurações da Conta"
+
+#: parsifal/account_settings/templates/settings/settings_menu.html:10
+#, fuzzy
+#| msgid "Edit profile"
+msgid "Profile"
+msgstr "Editar perfil"
+
+#: parsifal/account_settings/templates/settings/settings_menu.html:11
+#, fuzzy
+#| msgid "Details"
+msgid "Emails"
+msgstr "Detalhes"
+
+#: parsifal/account_settings/templates/settings/settings_menu.html:12
+msgid "Picture"
+msgstr "Foto"
+
+#: parsifal/account_settings/templates/settings/settings_menu.html:13
+#: parsifal/authentication/templates/auth/signin.html:32
+#: parsifal/core/templates/core/cover.html:33
+msgid "Password"
+msgstr "Senha"
+
+#: parsifal/authentication/templates/auth/reset.html:14
+#, fuzzy
+#| msgid "Password"
+msgid "Password reset"
+msgstr "Senha"
+
+#: parsifal/authentication/templates/auth/reset.html:26
+#: parsifal/authentication/templates/auth/reset_confirm.html:34
+msgid "Submit"
+msgstr ""
+
+#: parsifal/authentication/templates/auth/reset_confirm.html:7
+msgid "Parsifal - Password Reset"
+msgstr ""
+
+#: parsifal/authentication/templates/auth/reset_confirm.html:15
+msgid "Confirm Password Reset"
+msgstr ""
+
+#: parsifal/authentication/templates/auth/reset_confirm.html:41
+msgid "Invalid password reset link."
+msgstr ""
+
+#: parsifal/authentication/templates/auth/reset_email.html:9
+#, fuzzy
+#| msgid "Username"
+msgid "Your username:"
+msgstr "Usuário"
+
+#: parsifal/authentication/templates/auth/signin.html:7
+#, fuzzy
+#| msgid "Sign up for Parsifal"
+msgid "Sign in · Parsifal"
+msgstr "Inscrever-se"
+
+#: parsifal/authentication/templates/auth/signin.html:22
+#: parsifal/authentication/templates/auth/signin.html:35
+msgid "Sign in"
+msgstr ""
+
+#: parsifal/authentication/templates/auth/signin.html:28
+#: parsifal/core/templates/core/cover.html:30
+msgid "Username"
+msgstr "Usuário"
+
+#: parsifal/authentication/templates/auth/signin.html:36
+msgid "Forgot your password?"
+msgstr ""
+
+#: parsifal/authentication/templates/auth/signup.html:7
+#, fuzzy
+#| msgid "Sign up for Parsifal"
+msgid "Sign up · Parsifal "
+msgstr "Inscrever-se"
+
+#: parsifal/authentication/templates/auth/signup.html:22
+#: parsifal/core/templates/core/cover.html:26
+msgid "Sign up for Parsifal"
+msgstr "Inscrever-se"
+
+#: parsifal/authentication/templates/auth/signup.html:30
+msgid ""
+"(Usernames may contain <strong>alphanumeric</strong>, <strong>_</strong> and "
+"<strong>.</strong> characters)"
+msgstr ""
+
+#: parsifal/authentication/templates/auth/signup.html:56
+#, fuzzy
+#| msgid "Create a new account"
+msgid "Create an account"
+msgstr "Crie uma nova conta"
+
+#: parsifal/authentication/templates/auth/success.html:7
+#, fuzzy
+#| msgid "About Parsifal"
+msgid "Parsifal"
+msgstr "Sobre o Parsifal"
+
+#: parsifal/authentication/templates/auth/success.html:10
+msgid "Password reset initiated"
+msgstr ""
+
+#: parsifal/authentication/templates/auth/success.html:11
+msgid ""
+"An email has been sent to the given address. To continue the password reset "
+"process please follow the instructions in this email."
+msgstr ""
+
+#: parsifal/authentication/templates/auth/success.html:12
+#, fuzzy
+#| msgid ""
+#| "If you have any questions, please send us an email to <a href=\"mailto:"
+#| "support@parsif.al\">support@parsif.al</a>"
+msgid ""
+"If you have any problem with the password reset, please contact us at <a "
+"href=\"mailto:support@parsif.al\">support@parsif.al</a>."
+msgstr ""
+"Se tem alguma dúvida, por favor envie um para <a href=\"mailto:"
+"support@parsif.al\">support@parsif.al</a>"
+
+#: parsifal/blog/templates/blog/entries.html:7
+msgid "Blog · Parsifal"
+msgstr "Sobre o Parsifal"
+
+#: parsifal/blog/templates/blog/entries.html:11
+#: parsifal/blog/templates/blog/entry.html:11
+msgid "The Parsifal Blog"
+msgstr "Parsifal Blog"
+
+#: parsifal/blog/templates/blog/entries.html:12
+msgid "Find out the latest news on Parsifal"
+msgstr "Descubra as últimas notícias sobre o Parsifal"
+
+#: parsifal/blog/templates/blog/entries.html:23
+#: parsifal/blog/templates/blog/entry.html:17
+msgid "Posted by"
+msgstr "Postado por"
+
+#: parsifal/blog/templates/blog/entry.html:17
+msgid "at"
+msgstr "em"
 
 #: parsifal/core/models.py:6
 msgid "image"
@@ -43,19 +289,23 @@ msgstr ""
 msgid "Medias"
 msgstr ""
 
-#: parsifal/core/templates/core/about.html:7
+#: parsifal/core/templates/core/about.html:5
+msgid "About"
+msgstr "Sobre"
+
+#: parsifal/core/templates/core/about.html:9
 msgid "About Parsifal"
 msgstr "Sobre o Parsifal"
 
-#: parsifal/core/templates/core/about.html:8
+#: parsifal/core/templates/core/about.html:10
 msgid "Learn more about the project and our goals"
 msgstr "Conheça mais sobre o nosso projeto e seus objetivos"
 
-#: parsifal/core/templates/core/about.html:16
+#: parsifal/core/templates/core/about.html:18
 msgid "What is Parsifal?"
-msgstr ""
+msgstr "O que é Parsifal"
 
-#: parsifal/core/templates/core/about.html:17
+#: parsifal/core/templates/core/about.html:19
 msgid ""
 "<strong>Parsifal</strong> is an online tool designed to support researchers "
 "to perform systematic literature reviews within the context of "
@@ -69,7 +319,7 @@ msgstr ""
 "geograficamente distribuídos podem trabalhar juntos em um ambiente "
 "compartilhado, projetando o protocolo e conduzindo a pesquisa"
 
-#: parsifal/core/templates/core/about.html:18
+#: parsifal/core/templates/core/about.html:20
 msgid ""
 "As well as providing a way to document the whole process, the tool will help "
 "you remind what is important during a systematic literature review. During "
@@ -81,13 +331,13 @@ msgid ""
 msgstr ""
 "Além de fornecer uma maneira de documentar todo o processo, a ferramenta "
 "ajudará você a lembrar o que é importante durante uma revisão sistemática da "
-"literatura. Durante a fase de planejamento, <strong> Parsifal </ strong> irá "
+"literatura. Durante a fase de planejamento, <strong> Parsifal </strong> irá "
 "ajudá-lo com o objetivos, PICOC, questões de pesquisa, string de busca, "
 "palavras-chave e sinônimos selecionando as fontes, os critérios de inclusão "
 "e exclusão. Irá também fornecer mecanismos para construir uma lista de "
 "verificação de avaliação de qualidade e formas de extração de dados."
 
-#: parsifal/core/templates/core/about.html:19
+#: parsifal/core/templates/core/about.html:21
 msgid ""
 "During the conducting phase, you will be able to import <em>bibtex</em> "
 "files and select the studies, find duplicates among all the different "
@@ -97,11 +347,11 @@ msgstr ""
 "e selecione os estudos, encontrar duplicatas entre todos as diferentes "
 "fontes, executar a avaliação de qualidade e extrair dados dos documentos."
 
-#: parsifal/core/templates/core/about.html:21
+#: parsifal/core/templates/core/about.html:23
 msgid "What is a Systematic Literature Review?"
 msgstr "O que é uma Revisão Sistemática da Literatura?"
 
-#: parsifal/core/templates/core/about.html:22
+#: parsifal/core/templates/core/about.html:24
 msgid ""
 "A systematic literature review is a secondary study with the objective to "
 "identify, analyze and interpret all available evidences from primary studies "
@@ -117,7 +367,7 @@ msgstr ""
 "sistemática da literatura envolvem planejando, condução e reporte da revisão "
 "<sup> <a href ='\"#kitchenham-2007\">[1]</a></sup>."
 
-#: parsifal/core/templates/core/about.html:23
+#: parsifal/core/templates/core/about.html:25
 msgid ""
 "Performing a systematic literature review is a labor-intensive task that "
 "requires a huge amount of work from the researcher, designing the protocol, "
@@ -135,13 +385,13 @@ msgstr ""
 "Depois disso, o pesquisador pode começar a analisar o resultado relevante um "
 "porum."
 
-#: parsifal/core/templates/core/about.html:24
+#: parsifal/core/templates/core/about.html:26
 msgid ""
 "<strong>Parsifal</strong> was designed to help you through all those steps."
 msgstr ""
 "<strong>Parsifal</strong> foi projetado para ajudá-lo em todos esses passos."
 
-#: parsifal/core/templates/core/about.html:26
+#: parsifal/core/templates/core/about.html:28
 msgid "References"
 msgstr "Referências"
 
@@ -159,18 +409,6 @@ msgstr ""
 "intensivo que requer uma enorme quantidade de trabalho do pesquisador."
 "<strong> Parsifal </strong> irá ajudá-lo a planejar, conduzir e reportar a "
 "revisão."
-
-#: parsifal/core/templates/core/cover.html:26
-msgid "Sign up for Parsifal"
-msgstr "Inscrever-se"
-
-#: parsifal/core/templates/core/cover.html:30
-msgid "Username"
-msgstr "Usuário"
-
-#: parsifal/core/templates/core/cover.html:33
-msgid "Password"
-msgstr "Senha"
 
 #: parsifal/core/templates/core/cover.html:40
 msgid "Create a new account"
@@ -1590,12 +1828,6 @@ msgstr "Planejamento</a>"
 msgid "New source"
 msgstr "Nova Fonte"
 
-#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:75
-#: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:75
-#: parsifal/reviews/planning/templates/planning/protocol.html:506
-msgid "Close"
-msgstr "Fechar"
-
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:76
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:137
 #: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:51
@@ -2082,6 +2314,20 @@ msgstr ""
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_quality_assessment_summary.html:12
 msgid "Quality Score"
 msgstr "Pontuações de Avaliação"
+
+#: parsifal/reviews/forms.py:10
+msgid "Systematic literature review's title"
+msgstr "Título da Revisão Sistemática da Literatura"
+
+#: parsifal/reviews/forms.py:13
+#, fuzzy
+#| msgid "haven't published any systematic literature review yet."
+msgid "Give a brief description of your systematic literature review"
+msgstr "Não há nenhuma revisão sistemática da literatura ainda."
+
+#: parsifal/reviews/forms.py:15
+msgid "Try to keep it short, max 500 characters :)"
+msgstr "Tenta manter curto, no máximo 500 caracteres :)"
 
 #: parsifal/reviews/planning/templates/planning/data_extraction_form.html:8
 #: parsifal/reviews/planning/templates/planning/protocol.html:8
@@ -2696,6 +2942,25 @@ msgstr "Calculado com base no número de perguntas e na resposta de maior peso"
 #: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:127
 msgid "Cutoff Score"
 msgstr "Pontuação de Corte"
+
+#: parsifal/reviews/planning/views.py:65
+#, python-format
+msgid ""
+"The review objectives should not exceed 1000 characters. The given "
+"objectives have %s characters."
+msgstr ""
+
+#: parsifal/reviews/planning/views.py:69
+msgid "Your review have been saved successfully!"
+msgstr ""
+
+#: parsifal/reviews/planning/views.py:714
+msgid "Cutoff score saved successfully!"
+msgstr ""
+
+#: parsifal/reviews/planning/views.py:751
+msgid "Description and Type are required fields."
+msgstr ""
 
 #: parsifal/reviews/reporting/templates/reporting/export.html:37
 msgid "Download a Report"

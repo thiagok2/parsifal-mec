@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 
-{% block title %}Sign in · Parsifal{% endblock %}
+{% load i18n %}
+
+{% load humanize
+
+{% block title %}{% trans 'Sign in · Parsifal' %}{% endblock %}
 
 {% block javascript %}
   <script>
@@ -15,21 +19,21 @@
     <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 class="panel-title">Sign in</h3>
+          <h3 class="panel-title">{% trans 'Sign in' %}</h3>
         </div>
         <div class="panel-body">
           <form method="post" action=".">
             {% csrf_token %}
             <div class="form-group">
-              <label class="control-label" for="id_username">Username:</label>
+              <label class="control-label" for="id_username">{% trans 'Username' %}:</label>
               <input class="form-control" type="text" id="id_username" name="username">
             </div>
             <div class="form-group">
-              <label class="control-label" for="id_password">Password:</label>
+              <label class="control-label" for="id_password">{% trans 'Password' %}:</label>
               <input class="form-control" type="password" id="id_password" name="password">
             </div>
-            <button type="submit" class="btn btn-primary">Sign in</button>
-            <a href="{% url 'reset' %}" class="btn btn-link">Forgot your password?</a>
+            <button type="submit" class="btn btn-primary">{% trans 'Sign in' %}</button>
+            <a href="{% url 'reset' %}" class="btn btn-link">{% trans 'Forgot your password?' %}</a>
           </form>    
         </div>
       </div>

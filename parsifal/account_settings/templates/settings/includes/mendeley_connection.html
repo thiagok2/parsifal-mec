@@ -1,8 +1,12 @@
+{% load i18n %}
+
+{% load humanize %}
+
 {% if mendeley_profile %}
   <div class="media">
     <div class="media-body">
       <strong>{{ mendeley_profile.display_name }}</strong>
-      <form method="post" action="{% url 'settings:disconnect_mendeley' %}">{% csrf_token %}<button type="submit" class="btn btn-link btn-sm" style="padding-top: 0; padding-right: 0;">(Disconnect)</button></form>
+      <form method="post" action="{% url 'settings:disconnect_mendeley' %}">{% csrf_token %}<button type="submit" class="btn btn-link btn-sm" style="padding-top: 0; padding-right: 0;">{% trans '(Disconnect)' %}</button></form>
     </div>
     <div class="media-right">
       <a href="{{ mendeley_profile.link }}" target="_blank">
@@ -11,5 +15,5 @@
     </div>
   </div>
 {% else %}
-  <a href="{{ mendeley_auth_url }}" class="btn btn-primary">Connect to Mendeley</a>
+  <a href="{{ mendeley_auth_url }}" class="btn btn-primary">{% trans 'Connect to Mendeley' %}</a>
 {% endif %}

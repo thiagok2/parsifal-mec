@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% load i18n %}
+
+{% load humanize %}
+
 {% block title %}Account Settings · Parsifal{% endblock %}
 
 {% block content %}  
@@ -12,13 +16,13 @@
         {% csrf_token %}
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title">Account email</h3>
+            <h3 class="panel-title">{% trans 'Account email' %}</h3>
           </div>
           <div class="panel-body">
             {% include 'form_vertical.html' with form=form %}
           </div>
           <div class="panel-footer">
-            <button type="submit" class="btn btn-success btn-large">Save email</button>
+            <button type="submit" class="btn btn-success btn-large">{% trans 'Save email' %}</button>
           </div>
         </div>
       </form>
