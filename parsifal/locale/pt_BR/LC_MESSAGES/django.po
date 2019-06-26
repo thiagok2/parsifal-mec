@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-26 02:54+0000\n"
+"POT-Creation-Date: 2019-06-26 13:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1503,9 +1503,21 @@ msgstr ""
 "Existem alguns passos que você precisa concluir antes de importar os estudos:"
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:63
-#, python-format
-msgid "Use the <a href=\"{%% url "
-msgstr "Use o <a href=\"{%% url "
+msgid "Use the"
+msgstr ""
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:63
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:25
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:44
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:110
+#, fuzzy
+#| msgid "Planning"
+msgid "planning tab"
+msgstr "Planejamento"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:63
+msgid "to add sources to your review."
+msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:80
 msgid "Parse BibTeX Content"
@@ -1547,20 +1559,29 @@ msgid "About the Search Strings"
 msgstr "Sobre a String de Busca"
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:23
+#, fuzzy
+#| msgid ""
+#| "The base search string is the search string designed during the planning "
+#| "phase. It should be database agnostic, enhance the reader"
 msgid ""
 "The base search string is the search string designed during the planning "
-"phase. It should be database agnostic, enhance the reader"
+"phase. It should be database agnostic, enhance the reader's readability and "
+"represent the essence of the search string used in the digital libraries."
 msgstr ""
 "A base da string busca é uma string de pesquisa projetada durante a fase de "
 "planejamento.Ela Deve ser independente banco de dados, melhor para o leitor"
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:24
-msgid "Most of the digital libraries have it"
-msgstr "A maioria das bibliotecas digitais tem"
+msgid ""
+"Most of the digital libraries have it's particularities and different "
+"advanced search resources. Here you can store the specific search string "
+"used in each database."
+msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:25
-#, python-format
-msgid "You can edit the base search string in the <a href=\"{%% url "
+#, fuzzy
+#| msgid "You can edit the base search string in the <a href=\"{%% url "
+msgid "You can edit the base search string in the"
 msgstr "Você pode editar a string de pesquisa na <a href=\"{%% url"
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:39
@@ -1570,10 +1591,11 @@ msgid "Select Sources"
 msgstr "Selecionar Fontes"
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:44
-#, python-format
-msgid ""
-"Showing the available sources from you Protocol, defined in the <a href="
-"\"{%% url "
+#, fuzzy
+#| msgid ""
+#| "Showing the available sources from you Protocol, defined in the <a href="
+#| "\"{%% url "
+msgid "Showing the available sources from you Protocol, defined in the "
 msgstr ""
 "Mostrando as fontes disponíveis de você Protocolo, definido no <a href=\"{%% "
 "url "
@@ -1585,9 +1607,16 @@ msgid "Name"
 msgstr "Nome"
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:69
-#, python-format
-msgid "No source available. Add sources in the <a href=\"{%% url "
+#, fuzzy
+#| msgid "No source available. Add sources in the <a href=\"{%% url "
+msgid "No source available. Add sources in the "
 msgstr "Nenhuma fonte disponível. Adicione fontes na <a href=\"{%% url"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:69
+#, fuzzy
+#| msgid "Planning"
+msgid "planning tab</a>."
+msgstr "Planejamento"
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:70
 #, fuzzy
@@ -1645,13 +1674,7 @@ msgstr "String de Busca"
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:110
 msgid "No provided search string. Please visit the"
-msgstr ""
-
-#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:110
-#, fuzzy
-#| msgid "Planning"
-msgid "planning tab"
-msgstr "Planejamento"
+msgstr "Nenhuma string de pesquisa fornecida. Por favor visite o"
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:110
 msgid "and create one."
@@ -1710,18 +1733,19 @@ msgid "Add source-specific search string"
 msgstr "Add fonte específica da string de busca"
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:174
-#, fuzzy
-#| msgid ""
-#| "<strong>Parsifal</strong> was designed to help you through all those "
-#| "steps."
-msgid "<strong>Parsifal</strong> is integrated with <strong>Scopus"
+msgid ""
+"<strong>Parsifal</strong> is integrated with <strong>Scopus's</strong> and "
+"<strong>Science@Direct's</strong> databases. To enable the automatic search "
+"pick them as sources in the"
 msgstr ""
-"<strong>Parsifal</strong> foi projetado para ajudá-lo em todos esses passos."
+"<strong> Parsifal </strong> está integrado com <strong> Scopus's </strong> e "
+"Bancos de dados <strong>Science @Direct</strong>. Para ativar a pesquisa "
+"automática escolha-os como fontes no "
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:200
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:300
 msgid "Query"
-msgstr "Query"
+msgstr "Consulta(Query)"
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:209
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:309
@@ -1739,15 +1763,15 @@ msgstr "Concluído!"
 #, fuzzy
 #| msgid "Suggested Search String"
 msgid "Save to Scopus Search String"
-msgstr "Strings de Busca Sugeridas"
+msgstr "Salvar a String de Busca em Scopus"
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:229
 msgid "Add a search string for Scopus to perform automatic searches"
-msgstr ""
+msgstr "Adicione uma string de pesquisa para o Scopus para realizar pesquisas automáticas"
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:231
 msgid "Add Scopus to your sources to perform automatic searches"
-msgstr ""
+msgstr "Adicione o Scopus às suas fontes para realizar pesquisas automáticas"
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:237
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:337
@@ -2045,11 +2069,11 @@ msgstr "Rejeitado"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:46
 msgid "Unclassified"
-msgstr ""
+msgstr "Não classificado"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:49
 msgid "Duplicated"
-msgstr ""
+msgstr "Duplicado"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:60
 msgid "Bibtex Key"
@@ -2057,45 +2081,47 @@ msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:65
 msgid "Added by"
-msgstr ""
+msgstr "Adicionado por"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:66
 msgid "Added at"
-msgstr ""
+msgstr "Adicionado em"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:85
 msgid "No articles."
-msgstr ""
+msgstr "Sem artigos"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_find_duplicates.html:4
 msgid "Resolve Duplicates"
-msgstr ""
+msgstr "Resolver Duplicatas"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_find_duplicates.html:6
 msgid ""
 "<p>Click on <strong>Resolve Button</strong> to change the article status to "
 "<span class=\"label label-warning\">Duplicated</span></p>"
 msgstr ""
+"<p>Clique em <strong> Resolver botão </strong> para alterar o status do "
+"artigo para <span class=\"label label-warning \"> Duplicado </span> </p>"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_find_duplicates.html:17
 msgid "Action"
-msgstr ""
+msgstr "Ação"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_find_duplicates.html:30
 msgid "Resolve"
-msgstr ""
+msgstr "Resolver"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_find_duplicates.html:36
 msgid "No duplicate found."
-msgstr ""
+msgstr "Duplicatas não encontradas."
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_quality_assessment_detailed.html:6
 msgid "Order by"
-msgstr ""
+msgstr "Ordenar por"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_quality_assessment_detailed.html:17
 msgid "Pending"
-msgstr ""
+msgstr "Pendente"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_quality_assessment_detailed.html:19
 msgid "Score higher than"
@@ -2103,13 +2129,15 @@ msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_quality_assessment_detailed.html:20
 msgid "Score lower or equal to"
-msgstr ""
+msgstr "Score menor ou igual a"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_quality_assessment_detailed.html:24
 msgid ""
 "To answer the form you may click on the desired answer on the following "
 "tables."
 msgstr ""
+"Para responder o formulário, você pode clicar na resposta desejada seguindo "
+"as tabelas"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_quality_assessment_summary.html:6
 msgid ""
@@ -2117,6 +2145,9 @@ msgid ""
 "cutoff score. <span class=\"lower-than-cutoff-label\">Red</span> means lower "
 "or equal to the cutoff score."
 msgstr ""
+"<span class=\"higher-than-cutoff-label\"> Verde </ span> significa maior que "
+"a pontuação de corte. <span class = \"lower-than-cutoff-label\">Vermelho </"
+"span> significa menor ou igual à pontuação de corte."
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_quality_assessment_summary.html:12
 #, fuzzy
@@ -2300,17 +2331,6 @@ msgid "About the Objectives"
 msgstr "Sobre os objetivos"
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:72
-#, fuzzy
-#| msgid ""
-#| "Identification of the need for a review.</strong> The need for a "
-#| "systematic review originates from a researcher aiming to understand the "
-#| "state-of-the-art in an area, or from practitioners wanting to use "
-#| "empirical evidence in their strategic decision-making or improvement "
-#| "activities. If there are more or less systematic literature reviews "
-#| "available in the field, they should be appraised regarding scope and "
-#| "quality, to evaluate if they are sufficient to meet the current needs for "
-#| "a review. A systematic literature review may be viewed as a research "
-#| "method for making a literature review."
 msgid ""
 "<strong>Identification of the need for a review.</strong> The need for a "
 "systematic review originates from a researcher aiming to understand the "
@@ -2419,6 +2439,8 @@ msgid ""
 "If any of the sections of PICOC does not apply to your research, please "
 "leave it blank."
 msgstr ""
+"Se qualquer uma das seções do PICOC não se aplicar à sua pesquisa, por favor "
+"deixe em branco."
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:161
 msgid "Population"
@@ -2773,6 +2795,8 @@ msgid ""
 "You may add someone that doesn't have a Parsifal Account. Just type his "
 "email adress and we will send an invitation. :)"
 msgstr ""
+"Você pode adicionar alguém que não tenha uma conta Parsifal. Basta digitar "
+"endereço de e-mail e nós enviaremos um convite. :)"
 
 #: parsifal/reviews/templates/reviews/review.html:98
 msgid "Contacts"
@@ -2858,3 +2882,18 @@ msgstr "Suas revisões"
 #| msgid "You don't have any systematic literature review yet."
 msgid "haven't published any systematic literature review yet."
 msgstr "Você não tem nenhum revisão sistemática da literatura ainda"
+
+#~ msgid "Use the <a href=\"{%% url "
+#~ msgstr "Use o <a href=\"{%% url "
+
+#~ msgid "Most of the digital libraries have it"
+#~ msgstr "A maioria das bibliotecas digitais tem"
+
+#, fuzzy
+#~| msgid ""
+#~| "<strong>Parsifal</strong> was designed to help you through all those "
+#~| "steps."
+#~ msgid "<strong>Parsifal</strong> is integrated with <strong>Scopus"
+#~ msgstr ""
+#~ "<strong>Parsifal</strong> foi projetado para ajudá-lo em todos esses "
+#~ "passos."

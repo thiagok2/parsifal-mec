@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-26 02:54+0000\n"
+"POT-Creation-Date: 2019-06-26 13:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1435,8 +1435,18 @@ msgid "There are a few steps you have to finish before you import the studies:"
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:63
-#, python-format
-msgid "Use the <a href=\"{%% url "
+msgid "Use the"
+msgstr ""
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:63
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:25
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:44
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:110
+msgid "planning tab"
+msgstr ""
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:63
+msgid "to add sources to your review."
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:80
@@ -1477,16 +1487,19 @@ msgstr ""
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:23
 msgid ""
 "The base search string is the search string designed during the planning "
-"phase. It should be database agnostic, enhance the reader"
+"phase. It should be database agnostic, enhance the reader's readability and "
+"represent the essence of the search string used in the digital libraries."
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:24
-msgid "Most of the digital libraries have it"
+msgid ""
+"Most of the digital libraries have it's particularities and different "
+"advanced search resources. Here you can store the specific search string "
+"used in each database."
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:25
-#, python-format
-msgid "You can edit the base search string in the <a href=\"{%% url "
+msgid "You can edit the base search string in the"
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:39
@@ -1494,10 +1507,7 @@ msgid "Select Sources"
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:44
-#, python-format
-msgid ""
-"Showing the available sources from you Protocol, defined in the <a href="
-"\"{%% url "
+msgid "Showing the available sources from you Protocol, defined in the "
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:52
@@ -1507,8 +1517,11 @@ msgid "Name"
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:69
-#, python-format
-msgid "No source available. Add sources in the <a href=\"{%% url "
+msgid "No source available. Add sources in the "
+msgstr ""
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:69
+msgid "planning tab</a>."
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:70
@@ -1564,10 +1577,6 @@ msgid "No provided search string. Please visit the"
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:110
-msgid "planning tab"
-msgstr ""
-
-#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:110
 msgid "and create one."
 msgstr ""
 
@@ -1618,7 +1627,10 @@ msgid "Add source-specific search string"
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:174
-msgid "<strong>Parsifal</strong> is integrated with <strong>Scopus"
+msgid ""
+"<strong>Parsifal</strong> is integrated with <strong>Scopus's</strong> and "
+"<strong>Science@Direct's</strong> databases. To enable the automatic search "
+"pick them as sources in the"
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:200
