@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-26 14:20+0000\n"
+"POT-Creation-Date: 2019-06-26 17:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -720,6 +720,7 @@ msgid "Order"
 msgstr ""
 
 #: parsifal/lib/python2.7/site-packages/django/forms/formsets.py:372
+#: parsifal/reviews/settings/templates/settings/review_settings.html:62
 msgid "Delete"
 msgstr ""
 
@@ -1327,6 +1328,7 @@ msgid "English"
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/conducting.html:5
+#: parsifal/reviews/reporting/templates/reporting/export.html:94
 #: parsifal/reviews/templates/reviews/review_header.html:20
 msgid "Conducting"
 msgstr ""
@@ -2594,6 +2596,65 @@ msgstr ""
 #: parsifal/reviews/reporting/templates/reporting/reporting.html:5
 #: parsifal/reviews/templates/reviews/review_header.html:23
 msgid "Reporting"
+msgstr ""
+
+#: parsifal/reviews/settings/templates/settings/review_settings.html:7
+msgid "Review Settings"
+msgstr ""
+
+#: parsifal/reviews/settings/templates/settings/review_settings.html:40
+msgid "Review settings"
+msgstr ""
+
+#: parsifal/reviews/settings/templates/settings/review_settings.html:46
+msgid "Save changes"
+msgstr ""
+
+#: parsifal/reviews/settings/templates/settings/review_settings.html:53
+msgid "Danger zone"
+msgstr ""
+
+#: parsifal/reviews/settings/templates/settings/review_settings.html:57
+msgid "Transfer"
+msgstr ""
+
+#: parsifal/reviews/settings/templates/settings/review_settings.html:58
+#: parsifal/reviews/settings/templates/settings/review_settings.html:77
+#: parsifal/reviews/settings/templates/settings/review_settings.html:84
+msgid "Transfer ownership"
+msgstr ""
+
+#: parsifal/reviews/settings/templates/settings/review_settings.html:59
+msgid "Transfer this review to another user."
+msgstr ""
+
+#: parsifal/reviews/settings/templates/settings/review_settings.html:63
+#: parsifal/reviews/settings/templates/settings/review_settings.html:110
+#, fuzzy
+#| msgid "New review"
+msgid "Delete this review"
+msgstr "Nova ??"
+
+#: parsifal/reviews/settings/templates/settings/review_settings.html:64
+msgid "Once you delete a review, there is no going back. Please be certain."
+msgstr ""
+
+#: parsifal/reviews/settings/templates/settings/review_settings.html:80
+msgid "New owner's Parsifal username:"
+msgstr ""
+
+#: parsifal/reviews/settings/templates/settings/review_settings.html:102
+msgid ""
+"This action <strong>CANNOT</strong> be undone. This will permanently delete "
+"the"
+msgstr ""
+
+#: parsifal/reviews/settings/templates/settings/review_settings.html:102
+msgid "review and all associated data."
+msgstr ""
+
+#: parsifal/reviews/settings/templates/settings/review_settings.html:105
+msgid "I understand the consequences."
 msgstr ""
 
 #: parsifal/reviews/templates/reviews/new.html:16

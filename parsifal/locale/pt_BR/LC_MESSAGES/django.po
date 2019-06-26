@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-26 14:20+0000\n"
+"POT-Creation-Date: 2019-06-26 17:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -98,10 +98,8 @@ msgstr ""
 "fontes, executar a avaliação de qualidade e extrair dados dos documentos."
 
 #: parsifal/core/templates/core/about.html:21
-#, fuzzy
-#| msgid "Perform Systematic Literature Reviews"
 msgid "What is a Systematic Literature Review?"
-msgstr "Realize aqui suas revisões sistemática da literatura"
+msgstr "O que é uma Revisão Sistemática da Literatura?"
 
 #: parsifal/core/templates/core/about.html:22
 msgid ""
@@ -771,6 +769,7 @@ msgid "Order"
 msgstr ""
 
 #: parsifal/lib/python2.7/site-packages/django/forms/formsets.py:372
+#: parsifal/reviews/settings/templates/settings/review_settings.html:62
 msgid "Delete"
 msgstr ""
 
@@ -1378,6 +1377,7 @@ msgid "English"
 msgstr "Inglês"
 
 #: parsifal/reviews/conducting/templates/conducting/conducting.html:5
+#: parsifal/reviews/reporting/templates/reporting/export.html:94
 #: parsifal/reviews/templates/reviews/review_header.html:20
 msgid "Conducting"
 msgstr "Condução"
@@ -1427,8 +1427,6 @@ msgid "No study above the quality cutoff score."
 msgstr "Nenhum estudo acima da nota de corte de qualidade."
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_data_extraction.html:39
-#, fuzzy
-#| msgid "Data Extraction Form"
 msgid "No data extraction form."
 msgstr "Nenhum formulário de extração de dados"
 
@@ -1467,10 +1465,8 @@ msgstr "6. Análise de Dados"
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:26
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_find_duplicates.html:15
-#, fuzzy
-#| msgid "Sources"
 msgid "Source"
-msgstr "Fontes"
+msgstr "Fonte"
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:27
 msgid "Imported Studies"
@@ -1478,8 +1474,6 @@ msgstr "Estudos Importados"
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:46
 #: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:90
-#, fuzzy
-#| msgid "Support"
 msgid "Import"
 msgstr "Importar"
 
@@ -1504,8 +1498,6 @@ msgstr ""
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:25
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:44
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:110
-#, fuzzy
-#| msgid "Planning"
 msgid "planning tab"
 msgstr "Planejamento"
 
@@ -1557,8 +1549,8 @@ msgid ""
 "represent the essence of the search string used in the digital libraries."
 msgstr ""
 "A base da string busca é uma string de pesquisa projetada durante a fase de "
-"planejamento. Ela Deve ser independente banco de dados, melhor para o leitor e "
-"representar a essência da string de busca usada nas bibliotecas digitais."
+"planejamento. Ela Deve ser independente banco de dados, melhor para o leitor "
+"e representar a essência da string de busca usada nas bibliotecas digitais."
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:24
 msgid ""
@@ -1577,8 +1569,7 @@ msgstr "Selecionar Fontes"
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:44
 msgid "Showing the available sources from you Protocol, defined in the "
-msgstr ""
-"Mostrando as fontes disponíveis no seu Protocolo, definido na "
+msgstr "Mostrando as fontes disponíveis do seu Protocolo, definido na "
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:52
 #: parsifal/reviews/planning/templates/planning/protocol.html:497
@@ -1866,8 +1857,6 @@ msgid "Library"
 msgstr "Biblioteca"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_article_files.html:17
-#, fuzzy
-#| msgid "Select..."
 msgid "Select files..."
 msgstr "Selecione arquivos…"
 
@@ -1916,8 +1905,6 @@ msgid "Author"
 msgstr "Autores"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:89
-#, fuzzy
-#| msgid "Keyword"
 msgid "Keywords"
 msgstr "Palavras-chave"
 
@@ -2542,14 +2529,12 @@ msgid "Relative Error"
 msgstr "Erro relativo"
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:352
-#, fuzzy
-#| msgid "To edit or remove a certain keyword or synonym you may click on it"
 msgid ""
 "To edit or remove a certain keyword or synonym you may click on it's "
 "description to enable the field."
 msgstr ""
 "Para editar ou remover uma determinada palavra-chave ou sinônimo, você pode "
-"clicar nela"
+"clicar na edição dela para habilitar o campo."
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:357
 msgid "Keyword"
@@ -2748,6 +2733,69 @@ msgstr "Exportar"
 msgid "Reporting"
 msgstr "Relatórios"
 
+#: parsifal/reviews/settings/templates/settings/review_settings.html:7
+msgid "Review Settings"
+msgstr "Configurações da Revisão"
+
+#: parsifal/reviews/settings/templates/settings/review_settings.html:40
+msgid "Review settings"
+msgstr "Configurações da revisão"
+
+#: parsifal/reviews/settings/templates/settings/review_settings.html:46
+msgid "Save changes"
+msgstr "Salvar Mudanças"
+
+#: parsifal/reviews/settings/templates/settings/review_settings.html:53
+msgid "Danger zone"
+msgstr "Área Perigosa"
+
+#: parsifal/reviews/settings/templates/settings/review_settings.html:57
+#, fuzzy
+#| msgid "Transfer ownership"
+msgid "Transfer"
+msgstr "Transferir propriedade"
+
+#: parsifal/reviews/settings/templates/settings/review_settings.html:58
+#: parsifal/reviews/settings/templates/settings/review_settings.html:77
+#: parsifal/reviews/settings/templates/settings/review_settings.html:84
+msgid "Transfer ownership"
+msgstr "Transferir propriedade"
+
+#: parsifal/reviews/settings/templates/settings/review_settings.html:59
+msgid "Transfer this review to another user."
+msgstr "Transferir essa revisão para outro usuário."
+
+#: parsifal/reviews/settings/templates/settings/review_settings.html:63
+#: parsifal/reviews/settings/templates/settings/review_settings.html:110
+msgid "Delete this review"
+msgstr "Excluir essa revisão"
+
+#: parsifal/reviews/settings/templates/settings/review_settings.html:64
+msgid "Once you delete a review, there is no going back. Please be certain."
+msgstr ""
+"Uma vez que você exclua a revisão, não há como voltar atrás. Por favor, "
+"tenha certeza do que está fazendo."
+
+#: parsifal/reviews/settings/templates/settings/review_settings.html:80
+msgid "New owner's Parsifal username:"
+msgstr "Nome de usuário do novo proprietário:"
+
+#: parsifal/reviews/settings/templates/settings/review_settings.html:102
+msgid ""
+"This action <strong>CANNOT</strong> be undone. This will permanently delete "
+"the"
+msgstr ""
+"Esta ação <strong>NÃO PODE</strong> ser desfeita. Ela excluirá "
+"permanentemente a "
+
+#: parsifal/reviews/settings/templates/settings/review_settings.html:102
+msgid "review and all associated data."
+msgstr "revisão e todos os dados associados."
+
+#: parsifal/reviews/settings/templates/settings/review_settings.html:105
+msgid "I understand the consequences."
+msgstr "Eu entendo as consequências."
+
 #: parsifal/reviews/templates/reviews/new.html:16
 msgid "Create a new review"
 msgstr "Criar uma nova revisão"
@@ -2851,4 +2899,3 @@ msgstr "Não há nenhuma revisão sistemática da literatura ainda."
 
 #~ msgid "Most of the digital libraries have it"
 #~ msgstr "A maioria das bibliotecas digitais tem"
-

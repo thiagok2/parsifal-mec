@@ -9,7 +9,7 @@ class ReviewSettingsForm(forms.ModelForm):
     name = forms.SlugField(
             widget=forms.TextInput(attrs={ 'class': 'form-control' }), 
             label='URL',
-            help_text='Only letters, numbers, underscores or hyphens are allowed.',
+            help_text='Apenas letras, números, _ou - são permitidos.',
             max_length=255)
 
     class Meta:
