@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-26 13:29+0000\n"
+"POT-Creation-Date: 2019-06-26 13:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1400,10 +1400,8 @@ msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_data_extraction.html:14
 #: parsifal/reviews/conducting/templates/conducting/conducting_header.html:18
-#, fuzzy
-#| msgid "Data Extraction Form"
 msgid "Data Extraction"
-msgstr "Formulário de extração de dados"
+msgstr "Extração de dados"
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_data_extraction.html:20
 msgid "Export Data"
@@ -1462,8 +1460,6 @@ msgstr "Seleção de Estudos"
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_header.html:15
 #: parsifal/reviews/conducting/templates/conducting/conducting_quality_assessment.html:13
-#, fuzzy
-#| msgid "Quality Assessment Scores"
 msgid "Quality Assessment"
 msgstr "Avaliação de Qualidade"
 
@@ -1760,14 +1756,14 @@ msgid "Done!"
 msgstr "Concluído!"
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:218
-#, fuzzy
-#| msgid "Suggested Search String"
 msgid "Save to Scopus Search String"
 msgstr "Salvar a String de Busca em Scopus"
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:229
 msgid "Add a search string for Scopus to perform automatic searches"
-msgstr "Adicione uma string de pesquisa para o Scopus para realizar pesquisas automáticas"
+msgstr ""
+"Adicione uma string de pesquisa para o Scopus para realizar pesquisas "
+"automáticas"
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:231
 msgid "Add Scopus to your sources to perform automatic searches"
@@ -1854,10 +1850,8 @@ msgid "Last"
 msgstr "Último"
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:318
-#, fuzzy
-#| msgid "Suggested Search String"
 msgid "Save to Science@Direct Search String"
-msgstr "Strings de Busca Sugeridas"
+msgstr "Salvar String de Busca na Science@Direct"
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:329
 msgid "Add a search string for Science@Direct to perform automatic searches"
