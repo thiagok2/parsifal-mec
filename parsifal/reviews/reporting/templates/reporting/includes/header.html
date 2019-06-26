@@ -1,5 +1,9 @@
+{% load i18n %}
+
+{% load humanize %}
+
 <ul class="nav nav-tabs" id="conducting-tab">
   <li role="presentation"{% if active_tab == 'export' %} class="active"{% endif %}>
-    <a href="{% url 'export' review.author.username review.name %}">Export</a>
+    <a href="{% url 'export' review.author.username review.name %}">{% trans 'Export' %}</a>
   </li>
 </ul>

@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Conducting · {{ review.title }}{% endblock %}
+{% load humanize %}
+{% block title %}{% trans 'Conducting' %} · {{ review.title }}{% endblock %}
 
 {% block content %}
 

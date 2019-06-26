@@ -4,6 +4,7 @@
 {% load humanize %}
 
 {% block content %}
+	<h1>{% trans 'Welcome' %}</h1>
   <div class="row">
     <div class="col-md-12">
       <a href="/reviews/new/" class="btn btn-primary pull-right">{% trans 'New review' %}</a>
@@ -15,7 +16,7 @@
       {% for feed in feeds %}
         <p>{{ feed.message|safe }} <small>{{ feed.date|naturaltime }}</small></p>
       {% empty %}
-        <p>{% trans 'There are no recent updates to your network.' %}</p>
+        <p>{% trans 'There are no recent updates' %}</p>
       {% endfor %}
     </div>
     <div class="col-md-4">

@@ -1,3 +1,7 @@
+{% load i18n %}
+
+{% load humanize %}
+
 <tr oid="{{ quality_answer.id|default:'None' }}" csrf-token="{{ csrf_token }}">
   <td>
     <input type="text" maxlength="255" class="form-control quality-answer-description" value="{{ quality_answer.description }}">
@@ -8,8 +12,8 @@
   <td style="width: 200px; text-align: right; vertical-align: middle;">
     <button type="button" class="btn btn-sm btn-success btn-save-quality-answer">
       <span class="glyphicon glyphicon-ok"></span>
-      save
+      {% trans 'save' %}
     </button>
-    <button type="button" class="btn btn-sm btn-default btn-cancel-quality-answer">cancel</button>
+    <button type="button" class="btn btn-sm btn-default btn-cancel-quality-answer">{% trans 'cancel' %}</button>
   </td>
 </tr>

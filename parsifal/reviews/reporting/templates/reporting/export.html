@@ -1,5 +1,9 @@
 {% extends 'reporting/reporting.html' %}
 
+{% load i18n %}
+
+{% load humanize %}
+
 {% block javascript %}
   <script>
     $(function () {
@@ -30,21 +34,21 @@
     <input type="hidden" name="review-id" value="{{ review.pk }}">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Download a Report</h3>
+        <h3 class="panel-title">{% trans 'Download a Report' %}</h3>
       </div>
       <div class="panel-body">
         <div class="row review-group">
           <div class="col-sm-12">
-            <h4>Review <button type="button" class="btn btn-default btn-sm js-toggle-all" data-checked="true">Toggle all</button></h4>
+            <h4>{% trans 'Review' %} <button type="button" class="btn btn-default btn-sm js-toggle-all" data-checked="true">{% trans 'Toggle all' %}</button></h4>
           </div>
           <div class="col-sm-4 col-md-3">
-            <div class="checkbox"><label><input type="checkbox" checked name="export" value="name"> Name</label></div>
+            <div class="checkbox"><label><input type="checkbox" checked name="export" value="name"> {% trans 'Name' %}</label></div>
           </div>
           <div class="col-sm-4 col-md-3">
-            <div class="checkbox"><label><input type="checkbox" checked name="export" value="authors"> Authors</label></div>
+            <div class="checkbox"><label><input type="checkbox" checked name="export" value="authors"> {% trans 'Authors' %}</label></div>
           </div>
           <div class="col-sm-4 col-md-3">
-            <div class="checkbox"><label><input type="checkbox" checked name="export" value="description"> Description</label></div>
+            <div class="checkbox"><label><input type="checkbox" checked name="export" value="description"> {% trans 'Description' %}</label></div>
           </div>
         </div>
 
@@ -52,34 +56,34 @@
 
         <div class="row planning-group">
           <div class="col-sm-12">
-            <h4>Planning <button type="button" class="btn btn-default btn-sm js-toggle-all" data-checked="true">Toggle all</button></h4>
+            <h4>{% trans 'Planning' %} <button type="button" class="btn btn-default btn-sm js-toggle-all" data-checked="true">{% trans 'Toggle all' %}</button></h4>
           </div>
           <div class="col-sm-4 col-md-3">
-            <div class="checkbox"><label><input type="checkbox" checked name="export" value="objectives"> Objectives</label></div>
+            <div class="checkbox"><label><input type="checkbox" checked name="export" value="objectives"> {% trans 'Objectives' %}</label></div>
           </div>
           <div class="col-sm-4 col-md-3">
-            <div class="checkbox"><label><input type="checkbox" checked name="export" value="picoc"> PICOC</label></div>
+            <div class="checkbox"><label><input type="checkbox" checked name="export" value="picoc"> {% trans 'PICOC' %}</label></div>
           </div>
           <div class="col-sm-4 col-md-3">
-            <div class="checkbox"><label><input type="checkbox" checked name="export" value="research_questions"> Research Questions</label></div>
+            <div class="checkbox"><label><input type="checkbox" checked name="export" value="research_questions"> {% trans 'Research Questions' %}</label></div>
           </div>
           <div class="col-sm-4 col-md-3">
-            <div class="checkbox"><label><input type="checkbox" checked name="export" value="keywords_synonyms"> Keywords and Synonyms</label></div>
+            <div class="checkbox"><label><input type="checkbox" checked name="export" value="keywords_synonyms"> {% trans 'Keywords and Synonyms' %}</label></div>
           </div>
           <div class="col-sm-4 col-md-3">
-            <div class="checkbox"><label><input type="checkbox" checked name="export" value="search_string"> Search String</label></div>
+            <div class="checkbox"><label><input type="checkbox" checked name="export" value="search_string"> {% trans 'Search String' %}</label></div>
           </div>
           <div class="col-sm-4 col-md-3">
-            <div class="checkbox"><label><input type="checkbox" checked name="export" value="sources"> Sources</label></div>
+            <div class="checkbox"><label><input type="checkbox" checked name="export" value="sources"> {% trans 'Sources' %}</label></div>
           </div>
           <div class="col-sm-4 col-md-3">
-            <div class="checkbox"><label><input type="checkbox" checked name="export" value="selection_criteria"> Selection Criteria</label></div>
+            <div class="checkbox"><label><input type="checkbox" checked name="export" value="selection_criteria"> {% trans 'Selection Criteria' %}</label></div>
           </div>
           <div class="col-sm-4 col-md-3">
-            <div class="checkbox"><label><input type="checkbox" checked name="export" value="quality_assessment_checklist"> Quality Assessment Checklist</label></div>
+            <div class="checkbox"><label><input type="checkbox" checked name="export" value="quality_assessment_checklist"> {% trans 'Quality Assessment Checklist' %}</label></div>
           </div>
           <div class="col-sm-4 col-md-3">
-            <div class="checkbox"><label><input type="checkbox" checked name="export" value="data_extraction_form"> Data Extraction Form</label></div>
+            <div class="checkbox"><label><input type="checkbox" checked name="export" value="data_extraction_form"> {% trans 'Data Extraction Form' %}</label></div>
           </div>
         </div>
 
@@ -87,23 +91,23 @@
 
         <div class="row conducting-group">
           <div class="col-sm-12">
-            <h4>Conducting <button type="button" class="btn btn-default btn-sm js-toggle-all" data-checked="true">Toggle all</button></h4>
+            <h4>{% trans 'Conducting' %} <button type="button" class="btn btn-default btn-sm js-toggle-all" data-checked="true">{% trans 'Toggle all' %}</button></h4>
           </div>
           <div class="col-sm-4 col-md-3">
-            <div class="checkbox"><label><input type="checkbox" checked name="export" value="source_search_strings"> Source Search Strings</label></div>
+            <div class="checkbox"><label><input type="checkbox" checked name="export" value="source_search_strings">{% trans 'Source Search Strings' %}</label></div>
           </div>
           <div class="col-sm-4 col-md-3">
-            <div class="checkbox"><label><input type="checkbox" checked name="export" value="number_imported_studies"> Number of Imported Studies</label></div>
+            <div class="checkbox"><label><input type="checkbox" checked name="export" value="number_imported_studies"> {% trans 'Number of Imported Studies' %}</label></div>
           </div>
           {% comment %}
           <div class="col-sm-4 col-md-3">
-            <div class="checkbox"><label><input type="checkbox" checked name="export" value="quality_assessment"> Quality Assessment</label></div>
+            <div class="checkbox"><label><input type="checkbox" checked name="export" value="quality_assessment"> {% trans 'Quality Assessment' %}</label></div>
           </div>
           <div class="col-sm-4 col-md-3">
-            <div class="checkbox"><label><input type="checkbox" checked name="export" value="data_extraction"> Data Extraction</label></div>
+            <div class="checkbox"><label><input type="checkbox" checked name="export" value="data_extraction"> {% trans 'Data Extraction' %}</label></div>
           </div>
           <div class="col-sm-4 col-md-3">
-            <div class="checkbox"><label><input type="checkbox" checked name="export" value="data_analysis"> Data Analysis</label></div>
+            <div class="checkbox"><label><input type="checkbox" checked name="export" value="data_analysis"> {% trans 'Data Analysis' %}</label></div>
           </div>
           {% endcomment %}
         </div>
@@ -111,7 +115,7 @@
       <div class="panel-footer">
         <div class="btn-group">
           <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span class="glyphicon glyphicon-cloud-download"></span> Download <span class="caret"></span>
+            <span class="glyphicon glyphicon-cloud-download"></span> {% trans 'Download' %} <span class="caret"></span>
           </button>
           <ul class="dropdown-menu">
             <li><a href="javascript:void(0);" class="js-export-docx"><em>.docx</em></a></li>

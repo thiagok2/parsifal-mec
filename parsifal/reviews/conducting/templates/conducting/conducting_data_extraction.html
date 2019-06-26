@@ -1,5 +1,7 @@
 {% extends 'conducting/conducting.html' %}
+{% load i18n %}
 
+{% load humanize %}
 {% load staticfiles %}
 
 {% block javascript %}
@@ -9,13 +11,13 @@
 {% block tab_content %}
   {% include "conducting/conducting_header.html" with active_tab="extraction" %}
   <h3>
-    Data Extraction
+    {% trans 'Data Extraction' %}
     <form method="post" action="{% url 'reviews:conducting:export_data_extraction' %}" class="pull-right" style="display: inline-block;">
       {% csrf_token %}
       <input type="hidden" name="review-id" value="{{ review.id }}">
       <button type="submit" class="btn btn-sm btn-default">
         <span class="glyphicon glyphicon-download-alt"></span>
-        Export Data
+        {% trans 'Export Data' %}
       </button>
     </form>
   </h3>
@@ -23,22 +25,22 @@
   {% if finished_all_steps %}
     {% csrf_token %}
     <ul class="nav nav-pills" id="data-extraction-menu" style="margin-bottom: 20px;">
-      <li{% if tab == 'todo' %} class="active"{% endif %}><a href="?tab=todo">To-do</a></li>
-      <li{% if tab == 'done' %} class="active"{% endif %}><a href="?tab=done">Done</a></li>
-      <li{% if tab == 'all' %} class="active"{% endif %}><a href="?tab=all">All</a></li>
+      <li{% if tab == 'todo' %} class="active"{% endif %}><a href="?tab=todo">{% trans 'To-do' %}</a></li>
+      <li{% if tab == 'done' %} class="active"{% endif %}><a href="?tab=done">{% trans 'Done' %}</a></li>
+      <li{% if tab == 'all' %} class="active"{% endif %}><a href="?tab=all">{% trans 'All' %}</a></li>
     </ul>
     <input type="hidden" id="data-extraction-tab" value="{{ tab }}">
     {% if data_extraction_table %}
       {{ data_extraction_table|safe }}
     {% else %}
       {% if tab == 'all' %}
-        <h4>No study above the quality cutoff score.</h4>
+        <h4>{% trans 'No study above the quality cutoff score.' %}</h4>
       {% else %}
-        <h4>No data extraction form.</h4>
+        <h4>{% trans 'No data extraction form.' %}</h4>
       {% endif %}
     {% endif %}
   {% else %}
-    <p>There are a few steps you have to finish before extract data of the studies:</p>
+    <p>{% trans 'There are a few steps you have to finish before extract data of the studies:' %}</p>
     <ul>
       {% for message in steps_messages %}
         <li>{{ message|safe }}</li>

@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
+{% load i18n %}
+
+{% load humanize %}
 
 {% load staticfiles %}
 
-{% block title %}Planning · {{ review.title }}{% endblock %}
+{% block title %} {% trans 'Planning'  %} · {{ review.title }}{% endblock %}
 
 {% block javascript %}
   <script src="{% static 'js/planning_data_extraction.js' %}?_=2"></script>
@@ -18,15 +21,15 @@
   <section id="data-extraction-section" style="margin-bottom: 20px;">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Data Extraction Form</h3>
+        <h3 class="panel-title">{% trans 'Data Extraction Form' %}</h3>
       </div>
       <table class="table" id="tbl-data-extraction">
         <thead>
           <tr>
             <th></th>
-            <th>Description</th>
-            <th>Type</th>
-            <th>Values</th>
+            <th>{% trans 'Description' %}</th>
+            <th>{% trans 'Type' %}</th>
+            <th>{% trans 'Values' %}</th>
             <th></th>
           </tr>
         </thead>
@@ -41,7 +44,7 @@
       <div class="panel-footer">
         <button type="button" class="btn btn-primary" id="btn-add-field">
           <span class="glyphicon glyphicon-plus"></span>
-          Add Field
+          {% trans 'Add Field' %}
         </button>
       </div>
     </div>

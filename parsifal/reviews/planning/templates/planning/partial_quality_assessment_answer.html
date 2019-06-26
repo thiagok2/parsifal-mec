@@ -1,14 +1,18 @@
+{% load i18n %}
+
+{% load humanize %}
+
 <tr oid="{{ quality_answer.id }}">
   <td style="vertical-align: middle;">{{ quality_answer.description }}</td>
   <td style="vertical-align: middle;">{{ quality_answer.weight }}</td>
   <td style="width: 200px; text-align: right; vertical-align: middle;">
     <button type="button" class="btn btn-warning btn-sm btn-edit-quality-answer">
       <span class="glyphicon glyphicon-pencil"></span>
-      edit
+      {% trans 'edit' %}
     </button>
     <button type="button" class="btn btn-danger btn-sm btn-remove-quality-answer">
       <span class="glyphicon glyphicon-trash"></span>
-      remove
+      {% trans 'remove' %}
     </button>
   </td>
 </tr>

@@ -77,7 +77,7 @@ $(function () {
                   name  : $.trim(match[1])
               };
           }
-          alert('Invalid email address.');
+          alert('Email inválido.');
           return false;
       }
   });

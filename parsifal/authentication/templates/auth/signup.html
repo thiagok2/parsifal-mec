@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 
-{% block title %}Sign up · Parsifal{% endblock %}
+{% load i18n %}
+
+{% load humanize
+
+{% block title %}{% trans 'Sign up · Parsifal ' %}{% endblock %}
 
 {% block javascript %}
   <script>
@@ -15,7 +19,7 @@
     <div class="col-md-6 col-md-offset-3">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 class="panel-title">Sign up for Parsifal</h3>
+          <h3 class="panel-title">{% trans 'Sign up for Parsifal' %}</h3>
         </div>
         <div class="panel-body">
           <form action="/signup/" method="post">
@@ -23,7 +27,7 @@
             <div class="panel-group{% if form.username.errors %} has-error{% endif %}">
               <label class="control-label" for="{{ form.username.id_for_label }}">{{ form.username.label }}</label>
               <input type="text" class="form-control" value="{{ form.username.value|default_if_none:'' }}" id="{{ form.username.id_for_label }}" name="{{ form.username.html_name }}" maxlength="{{ form.username.field.max_length }}">
-              <span class="help-block">(Usernames may contain <strong>alphanumeric</strong>, <strong>_</strong> and <strong>.</strong> characters)</span>
+              <span class="help-block">{% trans '(Usernames may contain <strong>alphanumeric</strong>, <strong>_</strong> and <strong>.</strong> characters)' %}</span>
               {% for error in form.username.errors %}
                 <span class="help-block">{{ error }}</span>
               {% endfor %}
@@ -49,7 +53,7 @@
                 <span class="help-block">{{ error }}</span>
               {% endfor %}
             </div>
-            <button type="submit" class="btn btn-success">Create an account</button>
+            <button type="submit" class="btn btn-success">{% trans 'Create an account' %}</button>
           </form>
         </div>
       </div>

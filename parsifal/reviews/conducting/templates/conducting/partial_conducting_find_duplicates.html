@@ -1,17 +1,20 @@
-<h3>Resolve Duplicates</h3>
+{% load i18n %}
+
+{% load humanize %}
+<h3>{% trans 'Resolve Duplicates' %}</h3>
 {% if duplicates %}
-  <p>Click on <strong>Resolve Button</strong> to change the article status to <span class="label label-warning">Duplicated</span></p>
+  {% trans '<p>Click on <strong>Resolve Button</strong> to change the article status to <span class="label label-warning">Duplicated</span></p>' %}
 {% endif %}
 {% csrf_token %}
 <table class="table">
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Authors</th>
-      <th>Year</th>
-      <th>Source</th>
-      <th>Status</th>
-      <th>Action</th>
+      <th>{% trans 'Title' %}</th>
+      <th>{% trans 'Authors' %}</th>
+      <th>{% trans 'Year' %}</th>
+      <th>{% trans 'Source' %}</th>
+      <th>{% trans 'Status' %}</th>
+      <th>{% trans 'Action' %}</th>
     </tr>
   </thead>
   <tbody>
@@ -24,13 +27,13 @@
             <td>{{ article.year }}</td>
             <td>{{ article.source }}</td>
             <td>{{ article.get_status_html|safe }}</td>
-            <td width="120px"><button class="btn btn-sm btn-danger btn-resolve">Resolve</button></td>
+            <td width="120px"><button class="btn btn-sm btn-danger btn-resolve">{% trans 'Resolve' %}</button></td>
           </tr>
         {% endfor %}
       {% endwith %}
     {% empty %}
       <tr>
-        <td colspan="6" style="text-align: center">No duplicate found.</td>
+        <td colspan="6" style="text-align: center">{% trans 'No duplicate found.' %}</td>
       </tr>
     {% endfor %}
   </tbody>
