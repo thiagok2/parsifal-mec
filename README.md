@@ -44,6 +44,13 @@ python manage.py runserver
 #igorar owned dos arquivos
 git config core.fileMode false
 
+#tradução
+python manage.py makemessages -l 'sv' -i venv
+
+python manage.py compilemessages
+
+
+
 # Configuração com docker
 
 ## Prerequisitos:
