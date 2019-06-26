@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-26 01:16+0000\n"
+"POT-Creation-Date: 2019-06-26 02:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1377,6 +1377,753 @@ msgstr "Português"
 msgid "English"
 msgstr "Inglês"
 
+#: parsifal/reviews/conducting/templates/conducting/conducting.html:5
+#: parsifal/reviews/templates/reviews/review_header.html:20
+msgid "Conducting"
+msgstr "Condução"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_data_analysis.html:18
+msgid "Articles Per Source"
+msgstr "Artigo por Fonte"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_data_analysis.html:27
+msgid "Accepted Articles Per Source"
+msgstr "Artigos Aceitos por Fonte"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_data_analysis.html:36
+msgid ""
+"Final Articles Per Year <small>(After study selection and quality "
+"assessment)</small>"
+msgstr ""
+"Artigos Concluídos por Ano <small> (Depois da seleção de estudo e avaliação "
+"de qualidade) </ small>"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_data_extraction.html:14
+#: parsifal/reviews/conducting/templates/conducting/conducting_header.html:18
+#, fuzzy
+#| msgid "Data Extraction Form"
+msgid "Data Extraction"
+msgstr "Formulário de extração de dados"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_data_extraction.html:20
+msgid "Export Data"
+msgstr "Exportar Dados"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_data_extraction.html:28
+msgid "To-do"
+msgstr "A-Fazer"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_data_extraction.html:29
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_quality_assessment_detailed.html:16
+msgid "Done"
+msgstr "Concluído"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_data_extraction.html:30
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:37
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_quality_assessment_detailed.html:15
+msgid "All"
+msgstr "Todos"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_data_extraction.html:37
+msgid "No study above the quality cutoff score."
+msgstr "Nenhum estudo acima da nota de corte de qualidade."
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_data_extraction.html:39
+#, fuzzy
+#| msgid "Data Extraction Form"
+msgid "No data extraction form."
+msgstr "Nenhum formulário de extração de dados"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_data_extraction.html:43
+msgid ""
+"There are a few steps you have to finish before extract data of the studies:"
+msgstr ""
+"Existem alguns passos que você deve concluir antes de extrair os dados dos "
+"estudos:"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_header.html:6
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:170
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:206
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:306
+#, fuzzy
+#| msgid "Search String"
+msgid "Search"
+msgstr "String de Busca"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_header.html:9
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:20
+msgid "Import Studies"
+msgstr "Importar Estudos"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_header.html:12
+#: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:22
+msgid "Study Selection"
+msgstr "Seleção de Estudos"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_header.html:15
+#: parsifal/reviews/conducting/templates/conducting/conducting_quality_assessment.html:13
+#, fuzzy
+#| msgid "Quality Assessment Scores"
+msgid "Quality Assessment"
+msgstr "Avaliação de Qualidade"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_header.html:21
+msgid "6. Data Analysis"
+msgstr "6. Análise de Dados"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:26
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_find_duplicates.html:15
+#, fuzzy
+#| msgid "Sources"
+msgid "Source"
+msgstr "Fontes"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:27
+msgid "Imported Studies"
+msgstr "Estudos Importados"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:46
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:90
+#, fuzzy
+#| msgid "Support"
+msgid "Import"
+msgstr "Importar"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:50
+msgid "BibTeX file"
+msgstr "Arquivo BibTeX"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:51
+msgid "Paste BibTeX content"
+msgstr "Colar Conteúdo BibTeX"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:61
+msgid "There are a few steps you have to finish before you import the studies:"
+msgstr ""
+"Existem alguns passos que você precisa concluir antes de importar os estudos:"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:63
+#, python-format
+msgid "Use the <a href=\"{%% url "
+msgstr "Use o <a href=\"{%% url "
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:80
+msgid "Parse BibTeX Content"
+msgstr "Análisar o conteúdo BibTeX"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:84
+msgid "Paste the raw BibTeX file contents"
+msgstr "Cole o conteúdo do arquivo BibTeX"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:89
+#: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:35
+#: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:50
+#: parsifal/reviews/planning/templates/planning/partial_keyword_form.html:66
+#: parsifal/reviews/templates/reviews/new.html:22
+#: parsifal/reviews/templates/reviews/review.html:103
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_quality_assessment.html:17
+msgid "Detailed"
+msgstr "Detalhado"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_quality_assessment.html:18
+msgid "Summary"
+msgstr "Sumário"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_quality_assessment.html:25
+msgid ""
+"There are a few steps you have to finish before assess the quality of the "
+"studies:"
+msgstr ""
+"Existem alguns passos que você deve concluir antes de avaliar a qualidade "
+"dos estudos:"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:20
+#, fuzzy
+#| msgid "About the Search String"
+msgid "About the Search Strings"
+msgstr "Sobre a String de Busca"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:23
+msgid ""
+"The base search string is the search string designed during the planning "
+"phase. It should be database agnostic, enhance the reader"
+msgstr ""
+"A base da string busca é uma string de pesquisa projetada durante a fase de "
+"planejamento.Ela Deve ser independente banco de dados, melhor para o leitor"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:24
+msgid "Most of the digital libraries have it"
+msgstr "A maioria das bibliotecas digitais tem"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:25
+#, python-format
+msgid "You can edit the base search string in the <a href=\"{%% url "
+msgstr "Você pode editar a string de pesquisa na <a href=\"{%% url"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:39
+#, fuzzy
+#| msgid "Sources"
+msgid "Select Sources"
+msgstr "Selecionar Fontes"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:44
+#, python-format
+msgid ""
+"Showing the available sources from you Protocol, defined in the <a href="
+"\"{%% url "
+msgstr ""
+"Mostrando as fontes disponíveis de você Protocolo, definido no <a href=\"{%% "
+"url "
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:52
+#: parsifal/reviews/planning/templates/planning/protocol.html:497
+#: parsifal/reviews/planning/templates/planning/protocol.html:537
+msgid "Name"
+msgstr "Nome"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:69
+#, python-format
+msgid "No source available. Add sources in the <a href=\"{%% url "
+msgstr "Nenhuma fonte disponível. Adicione fontes na <a href=\"{%% url"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:70
+#, fuzzy
+#| msgid "Add Source"
+msgid "New source"
+msgstr "Add Fonte"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:75
+#: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:75
+#: parsifal/reviews/planning/templates/planning/protocol.html:506
+msgid "Close"
+msgstr "Fechar"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:76
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:137
+#: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:51
+#: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:76
+#: parsifal/reviews/planning/templates/planning/partial_keyword_form.html:69
+#: parsifal/reviews/planning/templates/planning/protocol.html:101
+#: parsifal/reviews/planning/templates/planning/protocol.html:194
+#: parsifal/reviews/planning/templates/planning/protocol.html:460
+#: parsifal/reviews/planning/templates/planning/protocol.html:507
+#: parsifal/reviews/templates/reviews/review.html:42
+msgid "Save"
+msgstr "Salvar"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:86
+#, fuzzy
+#| msgid "Search String"
+msgid "Search Strings"
+msgstr "String de Busca"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:87
+#: parsifal/reviews/planning/templates/planning/protocol.html:88
+#: parsifal/reviews/planning/templates/planning/protocol.html:152
+#: parsifal/reviews/planning/templates/planning/protocol.html:235
+#: parsifal/reviews/planning/templates/planning/protocol.html:346
+#: parsifal/reviews/planning/templates/planning/protocol.html:446
+msgid "What is this? Click to get help."
+msgstr "O que é isso? Clique para obter ajuda."
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:95
+msgid ""
+"Add digital source-specific search strings. Use this space to save all "
+"search string formats used during the research."
+msgstr ""
+"Adicionar string de pesquisa específicas. Use este espaço para salvar todos "
+"osformatos de string de busca usados durante a pesquisa."
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:99
+#, fuzzy
+#| msgid "Search String"
+msgid "Base String"
+msgstr "String de Busca"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:110
+msgid "No provided search string. Please visit the"
+msgstr ""
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:110
+#, fuzzy
+#| msgid "Planning"
+msgid "planning tab"
+msgstr "Planejamento"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:110
+msgid "and create one."
+msgstr ""
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:126
+#: parsifal/reviews/planning/templates/planning/partial_keyword_form.html:26
+msgid "Remove"
+msgstr "Remover"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:129
+#, fuzzy
+#| msgid "removing…"
+msgid "Removing…"
+msgstr "removendo…"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:132
+#, fuzzy
+#| msgid "Remove"
+msgid "Removed!"
+msgstr "Remover"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:140
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:221
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:321
+#: parsifal/reviews/planning/templates/planning/protocol.html:104
+#: parsifal/reviews/planning/templates/planning/protocol.html:463
+msgid "Saving…"
+msgstr "Salvando…"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:143
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:224
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:324
+#: parsifal/reviews/planning/templates/planning/protocol.html:110
+#: parsifal/reviews/planning/templates/planning/protocol.html:203
+#: parsifal/reviews/planning/templates/planning/protocol.html:469
+msgid "Saved!"
+msgstr "Salvo!"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:148
+msgid "Import Base String"
+msgstr "Importar String Base"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:151
+#, fuzzy
+#| msgid "removing…"
+msgid "Importing…"
+msgstr "removendo…"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:154
+msgid "Imported!"
+msgstr "Importada!"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:164
+msgid "Add source-specific search string"
+msgstr "Add fonte específica da string de busca"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:174
+#, fuzzy
+#| msgid ""
+#| "<strong>Parsifal</strong> was designed to help you through all those "
+#| "steps."
+msgid "<strong>Parsifal</strong> is integrated with <strong>Scopus"
+msgstr ""
+"<strong>Parsifal</strong> foi projetado para ajudá-lo em todos esses passos."
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:200
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:300
+msgid "Query"
+msgstr "Query"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:209
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:309
+#, fuzzy
+#| msgid "Saving…"
+msgid "Searching…"
+msgstr "Salvando…"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:212
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:312
+msgid "Done!"
+msgstr "Concluído!"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:218
+#, fuzzy
+#| msgid "Suggested Search String"
+msgid "Save to Scopus Search String"
+msgstr "Strings de Busca Sugeridas"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:229
+msgid "Add a search string for Scopus to perform automatic searches"
+msgstr ""
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:231
+msgid "Add Scopus to your sources to perform automatic searches"
+msgstr ""
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:237
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:337
+msgid "Document results:"
+msgstr "Documentos nos resultados"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:240
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:340
+msgid "Items per page:"
+msgstr "Itens por página"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:252
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:352
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:73
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:61
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_find_duplicates.html:12
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_quality_assessment_summary.html:11
+#: parsifal/reviews/templates/reviews/reviews.html:89
+msgid "Title"
+msgstr "Título"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:253
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:353
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_find_duplicates.html:13
+#: parsifal/reviews/templates/reviews/review.html:51
+#: parsifal/reviews/templates/reviews/reviews.html:90
+msgid "Authors"
+msgstr "Autores"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:254
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:354
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:81
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:64
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_find_duplicates.html:14
+msgid "Year"
+msgstr "Ano"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:255
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:355
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:101
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:63
+msgid "Journal"
+msgstr "Journal"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:256
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:356
+msgid "Citations"
+msgstr "Citações"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:261
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:361
+msgid "No data"
+msgstr "Sem dados"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:267
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:367
+msgid "First"
+msgstr "Primeiro"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:268
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:368
+#: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:73
+msgid "Previous"
+msgstr "Anterior"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:269
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:369
+msgid "Current"
+msgstr "Corrente"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:270
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:370
+#: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:74
+msgid "Next"
+msgstr "Próximo"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:271
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:371
+msgid "Last"
+msgstr "Último"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:318
+#, fuzzy
+#| msgid "Suggested Search String"
+msgid "Save to Science@Direct Search String"
+msgstr "Strings de Busca Sugeridas"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:329
+msgid "Add a search string for Science@Direct to perform automatic searches"
+msgstr ""
+"Adicione uma string de pesquisa para o Science@Direct para realizar "
+"pesquisas automáticas"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:331
+msgid "Add Science@Direct to your sources to perform automatic searches"
+msgstr ""
+"Adicione Science@Direct às suas fontes para realizar pesquisas automáticas"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:29
+msgid "Duplicates"
+msgstr "Duplicados"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:36
+msgid "Resolve All"
+msgstr "Resolver Todos"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:45
+#, fuzzy
+#| msgid "New review"
+msgid "New Article"
+msgstr "Nova revisão"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:60
+#, fuzzy
+#| msgid "Review details"
+msgid "Article Details"
+msgstr "Detalhes da revisão"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:69
+msgid "Automatically save the status on change and move next"
+msgstr "Salvar automaticamente o status na mudança e seguir em frente"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:85
+#, fuzzy
+#| msgid "Sources"
+msgid "All Sources"
+msgstr "Fontes"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:95
+msgid "There are a few steps you have to finish before you select the studies:"
+msgstr ""
+"Existem alguns passos que você deve concluir antes de selecionar os estudos:"
+
+#: parsifal/reviews/conducting/templates/conducting/partial_article_files.html:6
+msgid "Library"
+msgstr "Biblioteca"
+
+#: parsifal/reviews/conducting/templates/conducting/partial_article_files.html:17
+#, fuzzy
+#| msgid "Select..."
+msgid "Select files..."
+msgstr "Selecione…"
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:20
+msgid "Details"
+msgstr "Detalhes"
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:23
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:148
+msgid "Comments"
+msgstr "Comentários"
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:31
+msgid "Change the URL via Article URL"
+msgstr "Alterar a URL via URL do artigo"
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:34
+msgid "External Link"
+msgstr "Link Externo"
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:45
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_find_duplicates.html:16
+msgid "Status"
+msgstr ""
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:55
+#: parsifal/reviews/planning/templates/planning/protocol.html:56
+#: parsifal/reviews/planning/templates/planning/protocol.html:589
+msgid "Selection Criteria"
+msgstr "Critérios de Seleção"
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:57
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:25
+#: parsifal/reviews/planning/templates/planning/partial_data_extraction_field_form.html:10
+msgid "Select..."
+msgstr "Selecione…"
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:77
+msgid "Abstract"
+msgstr ""
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:85
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:62
+#, fuzzy
+#| msgid "Authors"
+msgid "Author"
+msgstr "Autores"
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:89
+#, fuzzy
+#| msgid "Keyword"
+msgid "Keywords"
+msgstr "Palavra-chave"
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:93
+#, fuzzy
+#| msgid "Add Keyword"
+msgid "Author Keywords"
+msgstr "Add Palavra-chave"
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:97
+msgid "BibTex Key"
+msgstr ""
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:105
+msgid "Document Type"
+msgstr "Tipo de Documento"
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:109
+msgid "Pages"
+msgstr "Páginas"
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:113
+msgid "Volume"
+msgstr ""
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:125
+#, fuzzy
+#| msgid "application:"
+msgid "Affiliation"
+msgstr "aplicação"
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:129
+#, fuzzy
+#| msgid "Your reviews"
+msgid "Publisher"
+msgstr "Suas revisões"
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:137
+msgid "Language"
+msgstr "Linguagem"
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:141
+msgid "Note"
+msgstr "Notas"
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:10
+msgid "Find Duplicates"
+msgstr "Procurar Duplicatas"
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:17
+msgid "Export Articles"
+msgstr "Exportar Artigos"
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:23
+#, fuzzy
+#| msgid "application:"
+msgid "Action:"
+msgstr "aplicação"
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:26
+#, fuzzy
+#| msgid "remove selected"
+msgid "Remove selected"
+msgstr "remover selecionado"
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:27
+msgid "Mark as accepted"
+msgstr "Marcar como aceito"
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:28
+msgid "Mark as rejected"
+msgstr "Marcar como rejeitado"
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:29
+msgid "Mark as duplicated"
+msgstr "Marcar como duplicado"
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:31
+msgid "Go"
+msgstr "Ir"
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:32
+msgid "of"
+msgstr "de"
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:32
+#, fuzzy
+#| msgid "remove selected"
+msgid "selected"
+msgstr "selecionado"
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:35
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_quality_assessment_detailed.html:14
+msgid "Show"
+msgstr "Mostrar"
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:40
+msgid "Accepted"
+msgstr "Aceito"
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:43
+msgid "Rejected"
+msgstr "Rejeitado"
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:46
+msgid "Unclassified"
+msgstr ""
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:49
+msgid "Duplicated"
+msgstr ""
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:60
+msgid "Bibtex Key"
+msgstr ""
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:65
+msgid "Added by"
+msgstr ""
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:66
+msgid "Added at"
+msgstr ""
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:85
+msgid "No articles."
+msgstr ""
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_find_duplicates.html:4
+msgid "Resolve Duplicates"
+msgstr ""
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_find_duplicates.html:6
+msgid ""
+"<p>Click on <strong>Resolve Button</strong> to change the article status to "
+"<span class=\"label label-warning\">Duplicated</span></p>"
+msgstr ""
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_find_duplicates.html:17
+msgid "Action"
+msgstr ""
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_find_duplicates.html:30
+msgid "Resolve"
+msgstr ""
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_find_duplicates.html:36
+msgid "No duplicate found."
+msgstr ""
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_quality_assessment_detailed.html:6
+msgid "Order by"
+msgstr ""
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_quality_assessment_detailed.html:17
+msgid "Pending"
+msgstr ""
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_quality_assessment_detailed.html:19
+msgid "Score higher than"
+msgstr ""
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_quality_assessment_detailed.html:20
+msgid "Score lower or equal to"
+msgstr ""
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_quality_assessment_detailed.html:24
+msgid ""
+"To answer the form you may click on the desired answer on the following "
+"tables."
+msgstr ""
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_quality_assessment_summary.html:6
+msgid ""
+"<span class=\"higher-than-cutoff-label\">Green</span> means higher than "
+"cutoff score. <span class=\"lower-than-cutoff-label\">Red</span> means lower "
+"or equal to the cutoff score."
+msgstr ""
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_quality_assessment_summary.html:12
+#, fuzzy
+#| msgid "Quality Assessment Scores"
+msgid "Quality Score"
+msgstr "Pontuações de Avaliação de Qualidade"
+
 #: parsifal/reviews/planning/templates/planning/data_extraction_form.html:8
 #: parsifal/reviews/planning/templates/planning/protocol.html:8
 #: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:8
@@ -1435,10 +2182,6 @@ msgstr "remover"
 msgid "removing…"
 msgstr "removendo…"
 
-#: parsifal/reviews/planning/templates/planning/partial_data_extraction_field_form.html:10
-msgid "Select..."
-msgstr "Selecione…"
-
 #: parsifal/reviews/planning/templates/planning/partial_data_extraction_field_form.html:19
 msgid "Add one value per line."
 msgstr "Adicionar um valor por linha"
@@ -1495,28 +2238,9 @@ msgstr "Nova Palavra-chave"
 msgid "Synonyms"
 msgstr "Sinônimos"
 
-#: parsifal/reviews/planning/templates/planning/partial_keyword_form.html:26
-msgid "Remove"
-msgstr "Remover"
-
 #: parsifal/reviews/planning/templates/planning/partial_keyword_form.html:58
 msgid "Add synonym"
 msgstr "Add sinônimo"
-
-#: parsifal/reviews/planning/templates/planning/partial_keyword_form.html:66
-#: parsifal/reviews/templates/reviews/new.html:22
-#: parsifal/reviews/templates/reviews/review.html:103
-msgid "Cancel"
-msgstr "Cancelar"
-
-#: parsifal/reviews/planning/templates/planning/partial_keyword_form.html:69
-#: parsifal/reviews/planning/templates/planning/protocol.html:101
-#: parsifal/reviews/planning/templates/planning/protocol.html:194
-#: parsifal/reviews/planning/templates/planning/protocol.html:460
-#: parsifal/reviews/planning/templates/planning/protocol.html:507
-#: parsifal/reviews/templates/reviews/review.html:42
-msgid "Save"
-msgstr "Salvar"
 
 #: parsifal/reviews/planning/templates/planning/partial_planning_question.html:24
 msgid "loading..."
@@ -1571,11 +2295,6 @@ msgstr "String de Busca"
 msgid "Sources"
 msgstr "Fontes"
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:56
-#: parsifal/reviews/planning/templates/planning/protocol.html:589
-msgid "Selection Criteria"
-msgstr "Critérios de Seleção"
-
 #: parsifal/reviews/planning/templates/planning/protocol.html:69
 msgid "About the Objectives"
 msgstr "Sobre os objetivos"
@@ -1613,30 +2332,11 @@ msgstr ""
 "revisão sistemática da literatura pode ser vista como um método de pesquisa "
 "para fazer uma revisão da literatura."
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:88
-#: parsifal/reviews/planning/templates/planning/protocol.html:152
-#: parsifal/reviews/planning/templates/planning/protocol.html:235
-#: parsifal/reviews/planning/templates/planning/protocol.html:346
-#: parsifal/reviews/planning/templates/planning/protocol.html:446
-msgid "What is this? Click to get help."
-msgstr "O que é isso? Clique para obter ajuda."
-
-#: parsifal/reviews/planning/templates/planning/protocol.html:104
-#: parsifal/reviews/planning/templates/planning/protocol.html:463
-msgid "Saving…"
-msgstr "Salvando…"
-
 #: parsifal/reviews/planning/templates/planning/protocol.html:107
 #: parsifal/reviews/planning/templates/planning/protocol.html:200
 #: parsifal/reviews/planning/templates/planning/protocol.html:466
 msgid "Error!"
 msgstr "Erro!"
-
-#: parsifal/reviews/planning/templates/planning/protocol.html:110
-#: parsifal/reviews/planning/templates/planning/protocol.html:203
-#: parsifal/reviews/planning/templates/planning/protocol.html:469
-msgid "Saved!"
-msgstr "Salvo!"
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:125
 msgid "About the PICOC"
@@ -1952,15 +2652,6 @@ msgstr "Strings de Busca Sugeridas"
 msgid "Digital Libraries"
 msgstr "Bibliotecas Digitais"
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:497
-#: parsifal/reviews/planning/templates/planning/protocol.html:537
-msgid "Name"
-msgstr "Nome"
-
-#: parsifal/reviews/planning/templates/planning/protocol.html:506
-msgid "Close"
-msgstr "Fechar"
-
 #: parsifal/reviews/planning/templates/planning/protocol.html:521
 msgid ""
 "This action <strong>cannot</strong> be undone. This will remove the <strong "
@@ -2064,11 +2755,6 @@ msgstr "Nova revisão"
 msgid "Review details"
 msgstr "Detalhes da revisão"
 
-#: parsifal/reviews/templates/reviews/review.html:51
-#: parsifal/reviews/templates/reviews/reviews.html:90
-msgid "Authors"
-msgstr "Autores"
-
 #: parsifal/reviews/templates/reviews/review.html:58
 msgid "main author"
 msgstr "Autor principal"
@@ -2105,10 +2791,6 @@ msgstr "Enviar convite"
 #| msgid "New review"
 msgid "Review"
 msgstr "Nova revisão"
-
-#: parsifal/reviews/templates/reviews/review_header.html:20
-msgid "Conducting"
-msgstr "Condução"
 
 #: parsifal/reviews/templates/reviews/review_header.html:23
 msgid "Reporting"
@@ -2147,10 +2829,6 @@ msgstr "Entrou em"
 #: parsifal/reviews/templates/reviews/reviews.html:84
 msgid "Work in progress"
 msgstr "Trabalho em progresso"
-
-#: parsifal/reviews/templates/reviews/reviews.html:89
-msgid "Title"
-msgstr "Título"
 
 #: parsifal/reviews/templates/reviews/reviews.html:91
 msgid "Last update"

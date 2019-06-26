@@ -17,20 +17,20 @@
   <div role="tabpanel">
     <ul class="nav nav-tabs" role="tablist">
       <li role="presentation" class="active">
-        <a href="#tab-details" aria-controls="tab-details" role="tab" data-toggle="tab">Details</a>
+        <a href="#tab-details" aria-controls="tab-details" role="tab" data-toggle="tab">{% trans 'Details' %}</a>
       </li>
       <li role="presentation">
-        <a href="#tab-comments" aria-controls="tab-comments" role="tab" data-toggle="tab">Comments</a>
+        <a href="#tab-comments" aria-controls="tab-comments" role="tab" data-toggle="tab">{% trans 'Comments' %}</a>
       </li>
       {% comment %}<li role="presentation">
-        <a href="#tab-files" aria-controls="tab-files" role="tab" data-toggle="tab">Files</a>
+        <a href="#tab-files" aria-controls="tab-files" role="tab" data-toggle="tab">{% trans 'Files' %}</a>
       </li>{% endcomment %}
       {% if article.url %}
         <li class="pull-right">
-          <a href="{{ article.url|default_if_none:'' }}" target="_blank" role="tab" title="Change the URL via Article URL">
+          <a href="{{ article.url|default_if_none:'' }}" target="_blank" role="tab" title="{% trans 'Change the URL via Article URL' %}">
             <small>
               <span class="glyphicon glyphicon-new-window"></span>
-              External Link
+              {% trans 'External Link' %}
             </small>
           </a>
         </li>
@@ -41,7 +41,7 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
-                <label class="control-label">Status</label>
+                <label class="control-label">{% trans 'Status' %}</label>
                 <select name="status" id="status" class="form-control">
                   {% for status in article.ARTICLE_STATUS %}
                     <option value="{{ status.0 }}"{% if article.status == status.0 %} selected{% endif %}>{{ status.1 }}</option>
@@ -51,9 +51,9 @@
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                <label class="control-label">Selection Criteria</label>
+                <label class="control-label">{% trans 'Selection Criteria' %}</label>
                 <select name="selection_criteria" class="form-control">
-                  <option value="">Select...</option>
+                  <option value="">{% trans 'Select...' %}</option>
                   <optgroup label="Inclusion Criterias">
                     {% for criteria in review.get_inclusion_criterias %}
                       <option value="{{ criteria.id }}"{% if article.selection_criteria == criteria %} selected{% endif %}>{{ criteria.description }}</option>
@@ -69,47 +69,47 @@
             </div>
           </div>
         <div class="form-group">
-          <label class="control-label">Title</label>
+          <label class="control-label">{% trans 'Title' %}</label>
           <input type="text" class="form-control" name="title" id="title" value="{{ article.title }}">
         </div>
         <div class="form-group">
-          <label class="control-label">Abstract</label>
+          <label class="control-label">{% trans 'Abstract' %}</label>
           <textarea name="abstract" id="abstract" rows="5" class="form-control">{{ article.abstract }}</textarea>
         </div>
         <div class="form-group">
-          <label class="control-label">Year</label>
+          <label class="control-label">{% trans 'Year' %}</label>
           <input type="text" class="form-control" name="year" id="year" value="{{ article.year|default_if_none:'' }}">
         </div>
         <div class="form-group">
-          <label class="control-label">Author</label>
+          <label class="control-label">{% trans 'Author' %}</label>
           <input type="text" class="form-control" name="author" id="author" value="{{ article.author|default_if_none:'' }}">
         </div>
         <div class="form-group">
-          <label class="control-label">Keywords</label>
+          <label class="control-label">{% trans 'Keywords' %}</label>
           <input type="text" class="form-control" name="keywords" id="keywords" value="{{ article.keywords|default_if_none:'' }}">
         </div>
         <div class="form-group">
-          <label class="control-label">Author Keywords</label>
+          <label class="control-label">{% trans 'Author Keywords' %}</label>
           <input type="text" class="form-control" name="author_keywords" id="author_keywords" value="{{ article.author_keywords|default_if_none:'' }}">
         </div>
         <div class="form-group">
-          <label class="control-label">BibTex Key</label>
+          <label class="control-label">{% trans 'BibTex Key' %}</label>
           <input type="text" class="form-control" name="bibtex-key" id="bibtex-key" value="{{ article.bibtex_key }}">
         </div>
         <div class="form-group">
-          <label class="control-label">Journal</label>
+          <label class="control-label">{% trans 'Journal' %}</label>
           <input type="text" class="form-control" name="journal" id="journal" value="{{ article.journal|default_if_none:'' }}">
         </div>
         <div class="form-group">
-          <label class="control-label">Document Type</label>
+          <label class="control-label">{% trans 'Document Type' %}</label>
           <input type="text" class="form-control" name="document-type" id="document-type" value="{{ article.document_type|default_if_none:'' }}">
         </div>
         <div class="form-group">
-          <label class="control-label">Pages</label>
+          <label class="control-label">{% trans 'Pages' %}</label>
           <input type="text" class="form-control" name="pages" id="pages" value="{{ article.pages|default_if_none:'' }}">
         </div>
         <div class="form-group">
-          <label class="control-label">Volume</label>
+          <label class="control-label">{% trans 'Volume' %}</label>
           <input type="text" class="form-control" name="volume" id="volume" value="{{ article.volume|default_if_none:'' }}">
         </div>
         <div class="form-group">
@@ -121,11 +121,11 @@
           <input type="text" class="form-control" name="url" id="url" value="{{ article.url|default_if_none:'' }}">
         </div>
         <div class="form-group">
-          <label class="control-label">Affiliation</label>
+          <label class="control-label">{% trans 'Affiliation' %}</label>
           <input type="text" class="form-control" name="affiliation" id="affiliation" value="{{ article.affiliation|default_if_none:'' }}">
         </div>
         <div class="form-group">
-          <label class="control-label">Publisher</label>
+          <label class="control-label">{% trans 'Publisher' %}</label>
           <input type="text" class="form-control" name="publisher" id="publisher" value="{{ article.publisher|default_if_none:'' }}">
         </div>
         <div class="form-group">
@@ -133,18 +133,18 @@
           <input type="text" class="form-control" name="issn" id="issn" value="{{ article.issn|default_if_none:'' }}">
         </div>
         <div class="form-group">
-          <label class="control-label">Language</label>
+          <label class="control-label">{% trans 'Language' %}</label>
           <input type="text" class="form-control" name="language" id="language" value="{{ article.language|default_if_none:'' }}">
         </div>
         <div class="form-group">
-          <label class="control-label">Note</label>
+          <label class="control-label">{% trans 'Note' %}</label>
           <input type="text" class="form-control" name="note" id="note" value="{{ article.note|default_if_none:'' }}">
         </div>
 
       </div>
       <div role="tabpanel" class="tab-pane" id="tab-comments">
         <div class="form-group">
-          <label class="control-label">Comments</label>
+          <label class="control-label">{% trans 'Comments' %}</label>
           <textarea name="comments" class="form-control" id="comments" rows="5">{{ article.comments|default_if_none:'' }}</textarea>
         </div>
       </div>

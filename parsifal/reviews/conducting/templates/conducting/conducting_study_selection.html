@@ -19,21 +19,21 @@
 
   {% include "conducting/conducting_header.html" with active_tab="studies" %}
 
-  <h3>Study Selection</h3>
+  <h3>{% trans 'Study Selection' %}</h3>
 
   <div class="modal fade" id="modal-duplicates">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Duplicates</h4>
+          <h4 class="modal-title">{% trans 'Duplicates' %}</h4>
         </div>
         <div class="modal-body" style="overflow-y: scroll;">
 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-success" id="btn-resolve-all">Resolve All</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Cancel' %}</button>
+          <button type="button" class="btn btn-success" id="btn-resolve-all">{% trans 'Resolve All' %}</button>
         </div>
       </div>
     </div>
@@ -42,13 +42,13 @@
   <div class="modal" id="modal-add-article">
     <div class="modal-header">
       <a href="#" class="close close-modal">×</a>
-      <h2>New Article</h2>
+      <h2>{% trans 'New Article' %}</h2>
     </div>
     <div class="modal-body">
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-warning close-modal">Cancel</button>
-      <button type="button" class="btn btn-success btn-save-article">Save</button>
+      <button type="button" class="btn btn-warning close-modal">{% trans 'Cancel' %}</button>
+      <button type="button" class="btn btn-success btn-save-article">{% trans 'Save' %}</button>
     </div>
   </div>
 
@@ -57,7 +57,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Article Details <small>(<span class="current-article"></span>/<span class="total-articles"></span>)</small></h4>
+          <h4 class="modal-title">{% trans 'Article Details' %} <small>(<span class="current-article"></span>/<span class="total-articles"></span>)</small></h4>
         </div>
         <div class="modal-body" style="overflow-y: scroll;">
 
@@ -66,14 +66,14 @@
           <div class="pull-left">
             <div class="checkbox">
               <label>
-                <input type="checkbox" id="save-and-move-next"> Automatically save the status on change and move next
+                <input type="checkbox" id="save-and-move-next"> {% trans 'Automatically save the status on change and move next' %}
               </label>
             </div>
           </div>
-          <button type="button" class="btn btn-primary" id="btn-previous">Previous</button>
-          <button type="button" class="btn btn-primary" id="btn-next">Next</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-success btn-save-article">Save</button>
+          <button type="button" class="btn btn-primary" id="btn-previous">{% trans 'Previous' %}</button>
+          <button type="button" class="btn btn-primary" id="btn-next">{% trans 'Next' %}</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
+          <button type="button" class="btn btn-success btn-save-article">{% trans 'Save' %}</button>
         </div>
       </div>
     </div>
@@ -82,7 +82,7 @@
   {% if finished_all_steps %}
     <ul class="nav nav-tabs" id="source-tab">
       <li>
-        <a href="#" source-id="None">All Sources</a>
+        <a href="#" source-id="None">{% trans 'All Sources' %}</a>
       </li>
       {% for source in review.sources.all %}
         <li{% if source.id == active_tab %} class="active"{% endif %}>
@@ -92,7 +92,7 @@
     </ul>
     <div class="source-tab-content" style="min-height: 200px;"></div>
   {% else %}
-    <p>There are a few steps you have to finish before you select the studies:</p>
+    <p>{% trans 'There are a few steps you have to finish before you select the studies:' %}</p>
     <ul>
       {% for message in steps_messages %}
         <li>{{ message|safe }}</li>
