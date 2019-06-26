@@ -1,11 +1,15 @@
+{% load i18n %}
+
+{% load humanize %}
+
 {% if review.quality_assessment_cutoff_score > 0.0 %}
-  <p><span class="higher-than-cutoff-label">Green</span> means higher than cutoff score. <span class="lower-than-cutoff-label">Red</span> means lower or equal to the cutoff score.</p>
+  <p>{% trans '<span class="higher-than-cutoff-label">Green</span> means higher than cutoff score. <span class="lower-than-cutoff-label">Red</span> means lower or equal to the cutoff score.' %}</p>
 {% endif %}
 <table class="table">
   <thead>
     <tr>
-      <th>Title</th>
-      <th style="white-space: nowrap;">Quality Score</th>
+      <th>{% trans 'Title' %}</th>
+      <th style="white-space: nowrap;">{% trans 'Quality Score' %}</th>
     </tr>
   </thead>
   <tbody>

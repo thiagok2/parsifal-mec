@@ -1,5 +1,9 @@
+{% load i18n %}
+
+{% load humanize
+
 Here is your password reset link:
 
 https://parsif.al{% url 'password_reset_confirm' uidb64=uid token=token %}
 
-Your username: {{ user.username }}
+{% trans 'Your username:' %} {{ user.username }}

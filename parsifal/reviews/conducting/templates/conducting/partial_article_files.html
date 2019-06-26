@@ -1,6 +1,9 @@
+{% load i18n %}
+
+{% load humanize %}
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Library</h3>
+    <h3 class="panel-title">{% trans 'Library' %}</h3>
   </div>
   <ul class="list-group" id="files">
 
@@ -11,7 +14,7 @@
   <div class="panel-footer">
     <span class="btn btn-primary fileinput-button">
         <i class="glyphicon glyphicon-plus"></i>
-        <span>Select files...</span>
+        <span>{% trans 'Select files...' %}</span>
         <input id="fileupload" type="file" name="article_file" multiple>
     </span>
   </div>

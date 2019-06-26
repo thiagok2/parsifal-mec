@@ -1,4 +1,7 @@
 {% extends 'conducting/conducting.html' %}
+{% load i18n %}
+
+{% load humanize %}
 
 {% load staticfiles %}
 
@@ -14,14 +17,14 @@
     <div class="col-sm-6">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 class="panel-title">Import Studies</h3>
+          <h3 class="panel-title">{% trans 'Import Studies' %}</h3>
         </div>
         {% if review.sources.all %}
           <table class="table table-v-align-middle" id="tbl-import-studies">
             <thead>
               <tr>
-                <th>Source</th>
-                <th>Imported Studies</th>
+                <th>{% trans 'Source' %}</th>
+                <th>{% trans 'Imported Studies' %}</th>
                 <th></th>
               </tr>
             </thead>
@@ -40,12 +43,12 @@
                     <div class="btn-group">
                       <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="glyphicon glyphicon-cloud-upload"></span>
-                        Import
+                        {% trans 'Import' %}
                         <span class="caret"></span>
                       </button>
                       <ul class="dropdown-menu">
-                        <li><a href="javascript:void(0);" class="btn-import-bibtex">BibTeX file <small>(.bib, .bibtex)</small></a></li>
-                        <li><a href="javascript:void(0);" class="js-import-bibtex-raw-content" data-source-id="{{ source.source.id }}" data-toggle="modal" data-target="#parse-bibtex">Paste BibTeX content</a></li>
+                        <li><a href="javascript:void(0);" class="btn-import-bibtex">{% trans 'BibTeX file' %} <small>(.bib, .bibtex)</small></a></li>
+                        <li><a href="javascript:void(0);" class="js-import-bibtex-raw-content" data-source-id="{{ source.source.id }}" data-toggle="modal" data-target="#parse-bibtex">{% trans 'Paste BibTeX content' %}</a></li>
                       </ul>
                     </div>
                   </td>
@@ -55,9 +58,9 @@
           </table>
         {% else %}
           <div class="panel-body">
-            <p>There are a few steps you have to finish before you import the studies:</p>
+            <p>{% trans 'There are a few steps you have to finish before you import the studies:' %}</p>
             <ul>
-              <li>Use the <a href="{% url 'planning' review.author.username review.name %}#sources-section">planning tab</a> to add sources to your review.</li>
+              <li>{% trans 'Use the' %} <a href="{% url 'planning' review.author.username review.name %}#sources-section">{% trans 'planning tab' %}</a> {% trans 'to add sources to your review.' %}</li>
             </ul>
           </div>
         {% endif %}
@@ -74,17 +77,17 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Parse BibTeX Content</h4>
+            <h4 class="modal-title">{% trans 'Parse BibTeX Content' %}</h4>
           </div>
           <div class="modal-body">
             <div class="form-group">
-              <label for="bibtex_raw_content" class="control-label">Paste the raw BibTeX file contents</label>
+              <label for="bibtex_raw_content" class="control-label">{% trans 'Paste the raw BibTeX file contents' %}</label>
               <textarea id="bibtex_raw_content" name="bibtex_file" class="form-control" rows="10"></textarea>
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-            <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Import</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Cancel' %}</button>
+            <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> {% trans 'Import' %}</button>
           </div>
         </div>
       </div>

@@ -1,49 +1,52 @@
+{% load i18n %}
+
+{% load humanize %}
 <div class="articles clearfix">
   <div class="source-buttons">
     {% if not source.id %}
       <div style="margin-bottom: 20px">
         <button type="button" class="btn btn-sm btn-default btn-find-duplicates">
           <span class="glyphicon glyphicon-duplicate"></span>
-          Find Duplicates
+          {% trans 'Find Duplicates' %}
         </button>
         <form method="post" action="{% url 'reviews:conducting:export_results' %}" style="display: inline-block;">
           {% csrf_token %}
           <input type="hidden" name="review-id" value="{{ review.id }}">
           <button type="submit" class="btn btn-sm btn-default">
             <span class="glyphicon glyphicon-download-alt"></span>
-            Export Articles
+            {% trans 'Export Articles' %}
           </button>
         </form>
       </div>
     {% endif %}
     <div class="studies-action" style="margin: 10px 0;">
-      <strong>Action:</strong>
+      <strong>{% trans 'Action:' %}</strong>
       <select class="select-action form-control" style="width: 200px; display: inline-block;">
-        <option value="">Select...</option>
-        <option value="remove">Remove selected</option>
-        <option value="accept">Mark as accepted</option>
-        <option value="reject">Mark as rejected</option>
-        <option value="duplicated">Mark as duplicated</option>
+        <option value="">{% trans 'Select...' %}</option>
+        <option value="remove">{% trans 'Remove selected' %}</option>
+        <option value="accept">{% trans 'Mark as accepted' %}</option>
+        <option value="reject">{% trans 'Mark as rejected' %}</option>
+        <option value="duplicated">{% trans 'Mark as duplicated' %}</option>
       </select>
-      <button type="button" class="btn btn-default go-button">Go</button>
-      <span class="text-muted"><span class="articles-selected">0</span> of <span class="articles-total">{{ articles.count }}</span> selected</span>
+      <button type="button" class="btn btn-default go-button">{% trans 'Go' %}</button>
+      <span class="text-muted"><span class="articles-selected">0</span> {% trans 'of' %} <span class="articles-total">{{ articles.count }}</span> {% trans 'selected' %}</span>
     </div>
     <p>
-      <strong>Show:</strong>
+      <strong>{% trans 'Show' %}:</strong>
       <label class="radio-inline">
-        <input type="radio" name="filter" value="ALL" checked> All
+        <input type="radio" name="filter" value="ALL" checked> {% trans 'All' %}
       </label>
       <label class="radio-inline">
-        <input type="radio" name="filter" value="A"> Accepted
+        <input type="radio" name="filter" value="A"> {% trans 'Accepted' %}
       </label>
       <label class="radio-inline">
-        <input type="radio" name="filter" value="R"> Rejected
+        <input type="radio" name="filter" value="R"> {% trans 'Rejected' %}
       </label>
       <label class="radio-inline">
-        <input type="radio" name="filter" value="U"> Unclassified
+        <input type="radio" name="filter" value="U"> {% trans 'Unclassified' %}
       </label>
       <label class="radio-inline">
-        <input type="radio" name="filter" value="D"> Duplicated
+        <input type="radio" name="filter" value="D"> {% trans 'Duplicated' %}
       </label>
     </p>
   </div>
@@ -53,13 +56,13 @@
         <tr>
           <th style="width: 35px; text-align: center;"><input type="checkbox" id="ck-all-articles"></th>
           {% comment %}<th style="width: 35px; text-align: center;"><span class="glyphicon glyphicon-file"></span></th>{% endcomment %}
-          <th>Bibtex Key</th>
-          <th>Title</th>
-          <th>Author</th>
-          <th>Journal</th>
-          <th style="min-width: 80px;">Year</th>
-          <th style="min-width: 100px;">Added by</th>
-          <th style="min-width: 100px;">Added at</th>
+          <th>{% trans 'Bibtex Key' %}</th>
+          <th>{% trans 'Title' %}</th>
+          <th>{% trans 'Author' %}</th>
+          <th>{% trans 'Journal' %}</th>
+          <th style="min-width: 80px;">{% trans 'Year' %}</th>
+          <th style="min-width: 100px;">{% trans 'Added by' %}</th>
+          <th style="min-width: 100px;">{% trans 'Added at' %}</th>
           <th>Status</th>
         </tr>
       </thead>
@@ -78,7 +81,7 @@
           </tr>
         {% empty %}
           <tr class="no-data">
-            <td colspan="9">No articles.</td>
+            <td colspan="9">{% trans 'No articles.' %}</td>
           </tr>
         {% endfor %}
       </tbody>

@@ -25,6 +25,7 @@ from parsifal.reviews.decorators import main_author_required, author_required
 from parsifal.utils.elsevier.client import ElsevierClient
 from parsifal.utils.elsevier.exceptions import *
 
+from django.utils.translation import ugettext as _
 
 @author_required
 @login_required

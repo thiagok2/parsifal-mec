@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
+{% load humanize %}
 {% load staticfiles %}
 
 {% block title %}{{ review.title }}{% endblock %}
@@ -29,7 +31,7 @@
         {% csrf_token %}
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title">Review details</h3>
+            <h3 class="panel-title">{% trans 'Review details' %}</h3>
           </div>
           <div class="panel-body">
             {% include 'form_vertical.html' with form=form %}
@@ -37,7 +39,7 @@
           <div class="panel-footer">
             <button type="submit" class="btn btn-success">
               <span class="glyphicon glyphicon-ok"></span>
-              Save
+              {% trans 'Save' %}
             </button>
           </div>
         </div>
@@ -46,14 +48,14 @@
     <div class="col-sm-5 col-md-4 col-lg-3">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 class="panel-title">Authors</h3>
+          <h3 class="panel-title">{% trans 'Authors' %}</h3>
         </div>
         <ul class="list-group authors" data-remove-url="{% url 'reviews:remove_author_from_review' %}">
           <li class="list-group-item" author-id="{{ review.author.id }}">
             <a href="/{{ review.author.username }}/">
               {{ review.author.profile.get_screen_name }}
             </a>
-            <span class="badge">main author</span>
+            <span class="badge">{% trans 'main author' %}</span>
           </li>
           {% for author in review.co_authors.all %}
             <li  class="list-group-item" data-user-id="{{ author.id }}">
@@ -66,7 +68,7 @@
                 <form method="post" action="{% url 'reviews:leave' %}" style="display: inline">
                   {% csrf_token %}
                   <input type="hidden" name="review-id" value="{{ review.id }}">
-                  <a href="javascript:void(0);" class="js-leave text-danger pull-right">(leave)</a>
+                  <a href="javascript:void(0);" class="js-leave text-danger pull-right">{% trans '(leave)' %}</a>
                 </form>
               {% endif %}
             </li>
@@ -76,7 +78,7 @@
           <div class="panel-footer">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-author-modal">
               <span class="glyphicon glyphicon-plus"></span>
-              Add author
+              {% trans 'Add author' %}
             </button>
             <form method="post" action="{% url 'reviews:add_author_to_review' %}">
               {% csrf_token %}
@@ -86,20 +88,20 @@
                   <div class="modal-content">
                     <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                      <h4 class="modal-title">Add author</h4>
+                      <h4 class="modal-title">{% trans 'Add author' %}</h4>
                     </div>
                     <div class="modal-body">
                       <div class="alert alert-info">
-                        You may add someone that doesn't have a Parsifal Account. Just type his email adress and we will send an invitation. :)
+                        {% trans "You may add someone that doesn't have a Parsifal Account. Just type his email adress and we will send an invitation. :)" %}
                       </div>
                       <div class="form-group">
-                        <label for="users" class="control-label">Contacts</label>
-                        <select id="users" name="users" class="contacts" placeholder="Pick an author or invite someone..."></select>
+                        <label for="users" class="control-label">{% trans 'Contacts' %}</label>
+                        <select id="users" name="users" class="contacts" placeholder="{% trans 'Pick an author or invite someone...' %}"></select>
                       </div>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                      <button type="submit" class="btn btn-success">Send invitation</button>
+                      <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Cancel' %}</button>
+                      <button type="submit" class="btn btn-success">{% trans 'Send invitation' %}</button>
                     </div>
                   </div>
                 </div>

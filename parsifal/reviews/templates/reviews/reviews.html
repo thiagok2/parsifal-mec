@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
+{% load humanize %}
 {% load staticfiles %}
 
 {% block title %}{{ page_user.profile.get_screen_name }} · Parsifal{% endblock %}
@@ -24,16 +26,16 @@
                   {% if user.id == page_user.id %}
                     <a href="{% url 'settings:settings' %}" class="btn btn-default btn-xs">
                       <span class="glyphicon glyphicon-pencil"></span>
-                      Edit profile
+                      {% trans 'Edit profile' %}
                     </a>
                   {% else %}
                     {% if is_following %}
                       <span class="user-actions following update-count" data-user-id="{{ page_user.id }}">
-                        <button class="btn btn-danger btn-xs" type="button"><span class="glyphicon glyphicon-remove"></span> Unfollow</button>
+                        <button class="btn btn-danger btn-xs" type="button"><span class="glyphicon glyphicon-remove"></span>{% trans 'Unfollow' %}</button>
                       </span>
                     {% else %}
                       <span class="user-actions not-following update-count" data-user-id="{{ page_user.id }}">
-                        <button class="btn btn-success btn-xs" type="button"><span class="glyphicon glyphicon-ok"></span> Follow</button>
+                        <button class="btn btn-success btn-xs" type="button"><span class="glyphicon glyphicon-ok"></span>{% trans 'Follow' %}</button>
                       </span>
                     {% endif %}
                   {% endif %}
@@ -44,14 +46,14 @@
         <div class="row">
           <div class="col-sm-12">
             <h5 style="margin-top: 5px;">
-            {% if page_user.is_staff %}<span class="label label-primary" style="margin-right: 10px;">STAFF</span>{% endif %}
+            {% if page_user.is_staff %}<span class="label label-primary" style="margin-right: 10px;">{% trans 'STAFF' %}</span>{% endif %}
             <a href="{% url 'followers' page_user.username %}">
-              Followers
+              {% trans 'Followers' %}
               <span class="followers-count">{{ followers_count }}</span>
             </a>
             <span style="margin-left: 5px; margin-right: 5px; color: #aaa;">•</span>
             <a href="{% url 'following' page_user.username %}">
-              Following
+              {% trans 'Following' %}
               <span class="following-count">{{ following_count }}</span>
             </a>
             </h5>
@@ -66,7 +68,7 @@
           <div class="col-sm-6 text-right">
             {% if page_user.profile.institution %}<span class="glyphicon glyphicon-education"></span> {{ page_user.profile.institution }}{% endif %}
             {% if page_user.profile.location %}<span class="glyphicon glyphicon-map-marker" style="margin-left: 10px;"></span> {{ page_user.profile.location }}{% endif %}
-            <span class="glyphicon glyphicon-time" style="margin-left: 10px;"></span> Joined on {{ page_user.date_joined|date:"d M Y" }}
+            <span class="glyphicon glyphicon-time" style="margin-left: 10px;"></span> {% trans 'Joined on' %} {{ page_user.date_joined|date:"d M Y" }}
           </div>
         </div>
       </div>
@@ -74,19 +76,19 @@
 
     {% if user.id == page_user.id %}
       <div style="margin-bottom: 20px;">
-        <a href="{% url 'reviews:new' %}" class="btn btn-primary">New review</a>
+        <a href="{% url 'reviews:new' %}" class="btn btn-primary">{% trans 'New review' %}</a>
       </div>
       {% if user_reviews %}
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title">Work in progress</h3>
+            <h3 class="panel-title">{% trans 'Work in progress' %}</h3>
           </div>
           <table class="table table-hover">
             <thead>
               <tr>
-                <th>Title</th>
-                <th>Authors</th>
-                <th>Last update</th>
+                <th>{% trans 'Title' %}</th>
+                <th>{% trans 'Authors' %}</th>
+                <th>{% trans 'Last update' %}</th>
               </tr>
             </thead>
             <tbody>
@@ -104,23 +106,23 @@
         </div>
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title">Published reviews</h3>
+            <h3 class="panel-title">{% trans 'Published reviews' %}</h3>
           </div>
-          <div class="panel-body">You haven't published any systematic literature review yet.</div>
+          <div class="panel-body">{% trans "You haven't published any systematic literature review yet." %}</div>
         </div>
       {% else %}
         <div class="well text-center" style="padding: 5em;">
           <span class="glyphicon glyphicon-book" style="font-size: 2.6em; color: #aaa;"></span>
-          <h3 style="margin-top: 25px; margin-bottom: 25px;">You don't have any systematic literature review yet.</h3>
-          <a href="{% url 'reviews:new' %}" class="btn btn-primary">Start a review</a>
+          <h3 style="margin-top: 25px; margin-bottom: 25px;">{% trans "You don't have any systematic literature review yet." %}</h3>
+          <a href="{% url 'reviews:new' %}" class="btn btn-primary">{% trans 'Start a review' %}</a>
         </div>
       {% endif %}
     {% else %}
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 class="panel-title">Published reviews</h3>
+          <h3 class="panel-title">{% trans 'Published reviews' %}</h3>
         </div>
-        <div class="panel-body">{{ page_user.profile.get_screen_name }} haven't published any systematic literature review yet.</div>
+        <div class="panel-body">{{ page_user.profile.get_screen_name }} {% trans "haven't published any systematic literature review yet." %}</div>
       </div>
     {% endif %}
 

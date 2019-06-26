@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
+{% load i18n %}
+
+{% load humanize %}
 
 {% load staticfiles %}
 
-{% block title %}Planning · {{ review.title }}{% endblock %}
+{% block title %} {% trans 'Planning' %} · {{ review.title }}{% endblock %}
 
 {% block stylesheet %}
   <style>
@@ -37,12 +40,12 @@
     <div class="hidden-sm col-md-4 col-lg-3" style="padding-top: 20px;">
       <div id="protocol" class="panel panel-default">
         <div class="panel-heading">
-          <h3 class="panel-title">Quality Assessment Checklist</h3>
+          <h3 class="panel-title">{% trans 'Quality Assessment Checklist' %}</h3>
         </div>
         <div class="list-group">
-          <a href="#questions" class="list-group-item">Questions</a>
-          <a href="#answers" class="list-group-item">Answers</a>
-          <a href="#score" class="list-group-item">Score</a>
+          <a href="#questions" class="list-group-item">{% trans 'Questions' %}</a>
+          <a href="#answers" class="list-group-item">{% trans 'Answers' %}</a>
+          <a href="#score" class="list-group-item">{% trans 'Score' %}</a>
         </div>
       </div>
     </div>
@@ -51,7 +54,7 @@
       <section id="questions">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title">Questions</h3>
+            <h3 class="panel-title">{% trans 'Questions' %}</h3>
           </div>
           <table class="table" id="tbl-quality-questions">
             <tbody>
@@ -65,7 +68,7 @@
           <div class="panel-footer">
             <button type="button" class="btn btn-primary" id="btn-add-quality-question">
               <span class="glyphicon glyphicon-plus"></span>
-              Add Question
+              {% trans 'Add Question' %}
             </button>
           </div>
         </div>
@@ -74,13 +77,13 @@
       <section id="answers">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title">Answers</h3>
+            <h3 class="panel-title">{% trans 'Answers' %}</h3>
           </div>
           <table class="table" id="tbl-quality-answers">
             <thead>
               <tr>
-                <th>Description</th>
-                <th>Weight</th>
+                <th>{% trans 'Description' %}</th>
+                <th>{% trans 'Weight' %}</th>
                 <th style="width: 150px;"></th>
               </tr>
             </thead>
@@ -95,10 +98,12 @@
           <div class="panel-footer">
             <button type="button" class="btn btn-primary" id="btn-add-quality-answer">
               <span class="glyphicon glyphicon-plus"></span>
-              Add Answer
+              {% trans 'Add Answer' %}
             </button>
             {% if not review.get_quality_assessment_answers %}
-              <button type="button" class="btn btn-link" id="add-suggested-answers">(Add Suggested Answers)</button>
+              <button type="button" class="btn btn-link" id="add-suggested-answers">
+              {% trans '(Add Suggested Answers)' %}
+              </button>
             {% endif %}                
           </div>
         </div>
@@ -107,30 +112,30 @@
       <section id="score" style="margin-bottom: 20px;">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title">Quality Assessment Scores</h3>
+            <h3 class="panel-title">{% trans 'Quality Assessment Scores' %}</h3>
           </div>
           <table class="table" id="tbl-cutoff-score">
             <tbody>
               <tr>
-                <td style="white-space: nowrap; vertical-align: middle;"><strong>Max Score</strong></td>
+                <td style="white-space: nowrap; vertical-align: middle;"><strong>{% trans 'Max Score' %}</strong></td>
                 <td><input type="text" class="form-control" id="max-score" readonly value="{{ review.calculate_quality_assessment_max_score }}" style="width: 70px; text-align: right;"></td>
                 <td>
-                  <span class="help-block">Calculated based on the number of questions and on the answer of greater weight</span>
+                  <span class="help-block">{% trans 'Calculated based on the number of questions and on the answer of greater weight' %}</span>
                 </td>
               </tr>
               <tr>
-                <td style="white-space: nowrap; vertical-align: middle;"><strong>Cutoff Score</strong></td>
+                <td style="white-space: nowrap; vertical-align: middle;"><strong>{% trans 'Cutoff Score' %}</strong></td>
                 <td><input type="text" class="form-control" id="cutoff-score" value="{{ review.quality_assessment_cutoff_score }}" style="width: 70px; text-align: right;"></td>
                 <td>
                   <button type="button" class="btn btn-sm btn-success" id="save-cutoff-score">
                     <span class="btn-ajax-normal">
-                      <span class="glyphicon glyphicon-ok"></span> save
+                      <span class="glyphicon glyphicon-ok"></span> {% trans 'save' %}
                     </span>
                     <span class="btn-ajax-loading">
-                      <span class="glyphicon glyphicon-refresh spin"></span> saving…
+                      <span class="glyphicon glyphicon-refresh spin"></span> {% trans 'saving…' %}
                     </span>
                     <span class="btn-ajax-complete">
-                      <span class="glyphicon glyphicon-ok"></span> saved!
+                      <span class="glyphicon glyphicon-ok"></span> {% trans 'saved!' %}
                     </span>
                   </button>
                 </td>
