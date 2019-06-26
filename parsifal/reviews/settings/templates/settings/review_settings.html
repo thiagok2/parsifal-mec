@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
+{% load humanize %}
 {% load staticfiles %}
 
-{% block title %}Review Settings · {{ review.title }}{% endblock %}
+{% block title %} {% trans 'Review Settings' %} · {{ review.title }}{% endblock %}
 
 {% block javascript %}
   <script>
@@ -35,31 +37,31 @@
     {% csrf_token %}
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Review settings</h3>
+        <h3 class="panel-title">{% trans 'Review settings' %}</h3>
       </div>
       <div class="panel-body">
         {% include 'form_vertical.html' with form=form %}
       </div>
       <div class="panel-footer">
-        <button type="submit" class="btn btn-success">Save changes</button>
+        <button type="submit" class="btn btn-success">{% trans 'Save changes' %}</button>
       </div>
     </div>
   </form>
 
   <div class="panel panel-danger">
     <div class="panel-heading">
-      <h3 class="panel-title">Danger zone</h3>
+      <h3 class="panel-title">{% trans 'Danger zone' %}</h3>
     </div>
     <ul class="list-group">
       <li class="list-group-item">
-        <button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target="#transfer-review">Transfer</button>
-        <p><strong>Transfer ownership</strong></p>
-        <p style="margin-bottom: 0;">Transfer this review to another user.</p>
+        <button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target="#transfer-review">{% trans 'Transfer' %}</button>
+        <p><strong>{% trans 'Transfer ownership' %}</strong></p>
+        <p style="margin-bottom: 0;">{% trans 'Transfer this review to another user.' %}</p>
       </li>
       <li class="list-group-item">
-        <button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target="#delete-review">Delete</button>
-        <p><strong>Delete this review</strong></p>
-        <p style="margin-bottom: 0;">Once you delete a review, there is no going back. Please be certain.</p>
+        <button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target="#delete-review">{% trans 'Delete' %}</button>
+        <p><strong>{% trans 'Delete this review' %}</strong></p>
+        <p style="margin-bottom: 0;">{% trans 'Once you delete a review, there is no going back. Please be certain.' %}</p>
       </li>
     </ul>
   </div>
@@ -72,14 +74,14 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="transfer-review-title">Transfer ownership</h4>
+            <h4 class="modal-title" id="transfer-review-title">{% trans 'Transfer ownership' %}</h4>
           </div>
           <div class="modal-body">
-            <label for="id_user" class="control-label">New owner's Parsifal username:</label>
+            <label for="id_user" class="control-label">{% trans "New owner's Parsifal username:" %}</label>
             <input type="text" id="id_user" name="transfer-user" class="form-control">
           </div>
           <div class="modal-footer">
-            <button type="submit" id="confirm-transfer" class="btn btn-danger btn-block">Transfer ownership</button>
+            <button type="submit" id="confirm-transfer" class="btn btn-danger btn-block">{% trans "Transfer ownership" %}</button>
           </div>
         </div>
       </div>
@@ -97,15 +99,15 @@
             <h4 class="modal-title" id="delete-review-title">Are you sure?</h4>
           </div>
           <div class="modal-body">
-            <p>This action <strong>CANNOT</strong> be undone. This will permanently delete the <strong>{{ review.title }}</strong> review and all associated data.</p>
+            <p>{% trans 'This action <strong>CANNOT</strong> be undone. This will permanently delete the' %} <strong>{{ review.title }}</strong> {% trans 'review and all associated data.' %}</p>
             <div class="checkbox">
               <label>
-                <input type="checkbox" id="enable-confirm-deletion"> I understand the consequences.
+                <input type="checkbox" id="enable-confirm-deletion"> {% trans 'I understand the consequences.' %}
               </label>
             </div>
           </div>
           <div class="modal-footer">
-            <button type="submit" id="confirm-deletion" class="btn btn-danger btn-block" disabled>Delete this review</button>
+            <button type="submit" id="confirm-deletion" class="btn btn-danger btn-block" disabled>{% trans 'Delete this review' %}</button>
           </div>
         </div>
       </div>
