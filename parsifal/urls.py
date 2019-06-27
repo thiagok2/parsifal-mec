@@ -35,12 +35,13 @@ urlpatterns = patterns('parsifal',
     # Review URLs
     url(r'^(?P<username>[^/]+)/(?P<review_name>[^/]+)/$', 'reviews.views.review', name='review'),
     url(r'^(?P<username>[^/]+)/(?P<review_name>[^/]+)/settings/$', 'reviews.settings.views.settings', name='settings'),
-    
+
     # Planning Phase
     url(r'^(?P<username>[^/]+)/(?P<review_name>[^/]+)/planning/$', 'reviews.planning.views.planning', name='planning'),
     url(r'^(?P<username>[^/]+)/(?P<review_name>[^/]+)/planning/protocol/$', 'reviews.planning.views.protocol', name='protocol'),
     url(r'^(?P<username>[^/]+)/(?P<review_name>[^/]+)/planning/quality/$', 'reviews.planning.views.quality_assessment_checklist', name='quality_assessment_checklist'),
     url(r'^(?P<username>[^/]+)/(?P<review_name>[^/]+)/planning/extraction/$', 'reviews.planning.views.data_extraction_form', name='data_extraction_form'),
+    url(r'^(?P<username>[^/]+)/(?P<review_name>[^/]+)/planning/risks/$', 'reviews.planning.views.risks_to_review_validity', name='risks_to_review_validity'),
 
     # Conducting Phase
     url(r'^(?P<username>[^/]+)/(?P<review_name>[^/]+)/conducting/$', 'reviews.conducting.views.conducting', name='conducting'),

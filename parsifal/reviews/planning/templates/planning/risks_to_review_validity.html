@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% load humanize %}
+
+{% load staticfiles %}
+
+{% block title %} {% trans 'Planning' %} · {{ review.title }}{% endblock %}
+
+{% block stylesheet %}
+  <style>
+    body,html,.wrapper{height:auto;}
+    section {padding-top:20px;}
+    #planning-tab,section>.panel,section form>.panel{margin-bottom:0;}
+  </style>
+{% endblock stylesheet %}
+
+{% block javascript %}
+  <script src="{% static 'js/planning_risk.js' %}?_=2"></script>
+  <script>
+    $(function () {
+      $("#protocol").affix({
+        offset: {
+          top: $("#protocol").offset().top - 20,
+          bottom: 70
+        }
+      });
+    });
+  </script>
+{% endblock javascript %}
+
+{% block content %}
+
+  {% include 'reviews/review_header.html' with active_menu='planning' %}
+  {% include 'planning/planning_header.html' with active_tab='risks' %}
+
+
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+
+      <section id="risks" style="margin-bottom: 20px;">
+        <form method="post" id="risk-form">
+          {% csrf_token %}
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">{% trans 'Risks' %}</h3>
+            </div>
+            <table class="table" id="tbl-risks">
+              <tbody>
+                {% for risk in review.get_risks %}
+                  {% include "planning/partial_planning_risk.html" with risk=risk %}
+                {% empty %}
+                  {% include "planning/partial_planning_risk_form.html" %}
+                {% endfor %}
+              </tbody>
+            </table>
+            <div class="panel-footer">
+              <button type="button" class="btn btn-primary" id="btn-add-risk">
+                <span class="glyphicon glyphicon-plus"></span>
+                {% trans 'Add Risk' %}
+              </button>
+            </div>
+          </div>
+        </form>
+      </section>
+
+    </div>
+  </div>
+
+{% endblock content %}

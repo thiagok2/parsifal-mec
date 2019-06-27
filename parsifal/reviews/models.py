@@ -82,6 +82,10 @@ class Review(models.Model):
     def get_keywords(self):
         return Keyword.objects.filter(review__id=self.id, synonym_of=None)
 
+    def get_risks(self):
+        risks = Risk.objects.filter(review__id=self.id)
+        return risks
+
     def is_author_or_coauthor(self, user):
         if user.id == self.author.id:
             return True
@@ -209,6 +213,22 @@ class SelectionCriteria(models.Model):
         self.description = self.description[:200]
         super(SelectionCriteria, self).save(*args, **kwargs)
 
+class Risk(models.Model):
+    review = models.ForeignKey(Review, related_name='risks_to_review_validity')
+    risk = models.CharField(max_length=500)
+    parent_risk = models.ForeignKey('self', null=True, related_name='+')
+    order = models.IntegerField(default=0)
+
+    class Meta:
+        verbose_name = u'Risk'
+        verbose_name_plural = u'Risks'
+        ordering = ('order',)
+
+    def __unicode__(self):
+        return self.risk
+
+    def get_child_risks(self):
+        return Risk.objects.filter(parent_risk=self)
 
 class SearchSession(models.Model):
     review = models.ForeignKey(Review)
@@ -406,7 +426,6 @@ class QualityAssessment(models.Model):
 
     def __unicode__(self):
         return str(self.article.id) + ' ' + str(self.question.id)
-
 
 class DataExtractionField(models.Model):
     BOOLEAN_FIELD = 'B'
