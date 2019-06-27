@@ -45,3 +45,5 @@ reminder.md
 *.bib
 maildumps
 .idea
+
+.vscode/*
