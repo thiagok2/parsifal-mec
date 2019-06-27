@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-26 20:20+0000\n"
+"POT-Creation-Date: 2019-06-27 02:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -107,6 +107,7 @@ msgid "Save profile"
 msgstr ""
 
 #: parsifal/account_settings/templates/settings/settings_menu.html:7
+#: parsifal/templates/includes/header.html:43
 msgid "Account settings"
 msgstr ""
 
@@ -159,6 +160,7 @@ msgstr ""
 
 #: parsifal/authentication/templates/auth/signin.html:22
 #: parsifal/authentication/templates/auth/signin.html:35
+#: parsifal/templates/includes/header.html:57
 msgid "Sign in"
 msgstr ""
 
@@ -191,6 +193,7 @@ msgid "Create an account"
 msgstr ""
 
 #: parsifal/authentication/templates/auth/success.html:7
+#: parsifal/templates/includes/header.html:15
 msgid "Parsifal"
 msgstr ""
 
@@ -258,6 +261,7 @@ msgid "Medias"
 msgstr ""
 
 #: parsifal/core/templates/core/about.html:5
+#: parsifal/templates/includes/header.html:20
 msgid "About"
 msgstr ""
 
@@ -443,6 +447,42 @@ msgstr ""
 
 #: parsifal/core/views.py:39
 msgid "is now following"
+msgstr ""
+
+#: parsifal/help/templates/help/article.html:23
+#: parsifal/help/templates/help/articles.html:9
+#: parsifal/templates/includes/header.html:21
+msgid "Help"
+msgstr ""
+
+#: parsifal/help/templates/help/article.html:32
+msgid "If you didn't find what you were looking for, contact us "
+msgstr ""
+
+#: parsifal/help/templates/help/articles.html:5
+#: parsifal/help/templates/help/search.html:5
+msgid "Help · Parsifal"
+msgstr ""
+
+#: parsifal/help/templates/help/articles.html:15
+#: parsifal/help/templates/help/search.html:13
+#: parsifal/reviews/conducting/templates/conducting/conducting_header.html:6
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:170
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:206
+#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:306
+msgid "Search"
+msgstr ""
+
+#: parsifal/help/templates/help/articles.html:46
+msgid "If you didn't find what you were looking for, contact us"
+msgstr ""
+
+#: parsifal/help/templates/help/search.html:21
+msgid "Search Result"
+msgstr ""
+
+#: parsifal/help/templates/help/search.html:30
+msgid "If you didn"
 msgstr ""
 
 #: parsifal/lib/python2.7/site-packages/django/contrib/messages/apps.py:7
@@ -1589,13 +1629,6 @@ msgstr ""
 #: parsifal/reviews/conducting/templates/conducting/conducting_data_extraction.html:43
 msgid ""
 "There are a few steps you have to finish before extract data of the studies:"
-msgstr ""
-
-#: parsifal/reviews/conducting/templates/conducting/conducting_header.html:6
-#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:170
-#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:206
-#: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:306
-msgid "Search"
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_header.html:9
@@ -2987,4 +3020,24 @@ msgstr ""
 
 #: parsifal/reviews/templates/reviews/reviews.html:125
 msgid "haven't published any systematic literature review yet."
+msgstr ""
+
+#: parsifal/templates/includes/header.html:10
+msgid "Toggle navigation"
+msgstr ""
+
+#: parsifal/templates/includes/header.html:19
+msgid "Blog"
+msgstr ""
+
+#: parsifal/templates/includes/header.html:27
+msgid "My profile"
+msgstr ""
+
+#: parsifal/templates/includes/header.html:50
+msgid "Sign out"
+msgstr ""
+
+#: parsifal/templates/includes/header.html:58
+msgid "Sign up"
 msgstr ""
