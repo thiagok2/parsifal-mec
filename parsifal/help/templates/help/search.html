@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Help · Parsifal{% endblock %}
+{% load humanize %}
+{% block title %}{% trans 'Help · Parsifal' %} {% endblock %}
 
 {% block content %}
   <div class="row">
@@ -8,7 +10,7 @@
       <h2 class="page-header">
         <form action="{% url 'help:search' %}" method="get">
           <div class="input-group pull-right" style="width: 300px; font-weight: normal;">
-            <input type="text" name="q" class="form-control" placeholder="Search" value="{{ querystring }}">
+            <input type="text" name="q" class="form-control" placeholder="{% trans 'Search' %}" value="{{ querystring }}">
             <span class="input-group-btn">
               <button class="btn btn-default" type="submit">
                 <span class="glyphicon glyphicon-search"></span>
@@ -16,7 +18,7 @@
             </span>
           </div>
         </form>
-        Search Result
+        {% trans 'Search Result' %}
       </h2>
       <article>
         {% for article in articles %}
@@ -25,7 +27,7 @@
           <hr>
         {% endfor %}
       </article>
-      <p>If you didn't find what you were looking for, contact us <a href="mailto:support@parsif.al">support@parsif.al</a>.</p>
+      <p>{% trans 'If you didn't find what you were looking for, contact us' %} <a href="mailto:support@parsif.al">support@parsif.al</a>.</p>
     </div>
   </div>
 {% endblock content %}
