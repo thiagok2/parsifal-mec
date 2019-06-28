@@ -12,7 +12,7 @@ services:
       - webnet
   web:
     build: .
-    command: ["./wait-for-postgres.sh", "db", "./parsifal-entrypoint.sh"]
+    command: ["./wait-for-postgres.sh", "db", "./app-entrypoint.sh"]
     ports:
       - 8000:8000
     depends_on:
