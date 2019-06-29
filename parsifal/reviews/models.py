@@ -70,8 +70,7 @@ class Review(models.Model):
         return reverse('review', args=(str(self.author.username), str(self.name)))
 
     def get_questions(self):
-        questions = Question.objects.filter(review__id=self.id)
-        return questions
+        return Question.objects.filter(review__id=self.id)
 
     def get_inclusion_criterias(self):
         return SelectionCriteria.objects.filter(review__id=self.id, criteria_type='I')
@@ -81,6 +80,12 @@ class Review(models.Model):
 
     def get_keywords(self):
         return Keyword.objects.filter(review__id=self.id, synonym_of=None)
+
+    def get_tags(self):
+        return Tag.objects.filter(review__id=self.id)
+
+    def get_risks(self):
+        return Risk.objects.filter(review__id=self.id)
 
     def is_author_or_coauthor(self, user):
         if user.id == self.author.id:
@@ -166,6 +171,17 @@ class Review(models.Model):
         except:
             return 0.0
 
+class Tag(models.Model):
+    review = models.ForeignKey(Review, related_name='review_tags')
+    tag = models.CharField(max_length=300)
+
+    class Meta:
+        verbose_name = u'Tag'
+        verbose_name_plural = u'Tags'
+        ordering = ('tag',)
+
+    def __unicode__(self):
+        return self.tag
 
 class Question(models.Model):
     review = models.ForeignKey(Review, related_name='research_questions')
@@ -209,6 +225,22 @@ class SelectionCriteria(models.Model):
         self.description = self.description[:200]
         super(SelectionCriteria, self).save(*args, **kwargs)
 
+class Risk(models.Model):
+    review = models.ForeignKey(Review, related_name='risks_to_review_validity')
+    risk = models.CharField(max_length=500)
+    parent_risk = models.ForeignKey('self', null=True, related_name='+')
+    order = models.IntegerField(default=0)
+
+    class Meta:
+        verbose_name = u'Risk'
+        verbose_name_plural = u'Risks'
+        ordering = ('order',)
+
+    def __unicode__(self):
+        return self.risk
+
+    def get_child_risks(self):
+        return Risk.objects.filter(parent_risk=self)
 
 class SearchSession(models.Model):
     review = models.ForeignKey(Review)
@@ -406,7 +438,6 @@ class QualityAssessment(models.Model):
 
     def __unicode__(self):
         return str(self.article.id) + ' ' + str(self.question.id)
-
 
 class DataExtractionField(models.Model):
     BOOLEAN_FIELD = 'B'

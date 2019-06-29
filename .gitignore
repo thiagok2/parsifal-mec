@@ -46,6 +46,10 @@ reminder.md
 maildumps
 .idea
 
+<<<<<<< HEAD
 local
 share
 .settings
+
+.vscode/*
+
