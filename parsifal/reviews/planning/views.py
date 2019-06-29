@@ -44,6 +44,12 @@ def quality_assessment_checklist(request, username, review_name):
 
 @author_required
 @login_required
+def risks_to_review_validity(request, username, review_name):
+    review = get_object_or_404(Review, name=review_name, author__username__iexact=username)
+    return render(request, 'planning/risks_to_review_validity.html', { 'review': review })
+
+@author_required
+@login_required
 def data_extraction_form(request, username, review_name):
     review = get_object_or_404(Review, name=review_name, author__username__iexact=username)
     empty_field = DataExtractionField()
@@ -516,6 +522,90 @@ def remove_criteria(request):
     except:
         return HttpResponseBadRequest()
 
+
+'''
+    RISK FUNCTIONS
+'''
+
+@author_required
+@login_required
+def save_risk(request):
+    '''
+        Function used via Ajax request only.
+        This function takes a review risk form and save on the database
+    '''
+    try:
+        review_id = request.POST['review-id']
+        risk_id = request.POST['risk-id']
+        description = request.POST['description']
+        review = Review.objects.get(pk=review_id)
+        try:
+            risk = Risk.objects.get(pk=risk_id)
+        except:
+            risk = Risk(review=review)
+        risk.risk = description[:500]
+        risk.save()
+        context = RequestContext(request, {'risk':risk})
+        return render_to_response('planning/partial_planning_risk.html', context)
+    except:
+        return HttpResponseBadRequest()
+
+@author_required
+@login_required
+def save_risk_order(request):
+    try:
+        orders = request.POST.get('orders')
+        risk_orders = orders.split(',')
+        for risk_order in risk_orders:
+            if risk_order:
+                risk_id, order = risk_order.split(':')
+                risk = Risk.objects.get(pk=risk_id)
+                risk.order = order
+                risk.save()
+        return HttpResponse()
+    except:
+        return HttpResponseBadRequest()
+
+@author_required
+@login_required
+def add_or_edit_risk(request):
+    '''
+        Function used via Ajax request only.
+        This functions adds a new secondary risk to the review.
+    '''
+    try:
+        review_id = request.POST['review-id']
+        risk_id = request.POST['risk-id']
+        review = Review.objects.get(pk=review_id)
+        try:
+            risk = Risk.objects.get(pk=risk_id)
+        except:
+            risk = Risk(review=review)
+        context = RequestContext(request, {'risk':risk})
+        return render_to_response('planning/partial_planning_risk_form.html', context)
+    except:
+        return HttpResponseBadRequest()
+
+
+@author_required
+@login_required
+def remove_risk(request):
+    '''
+        Function used via Ajax request only.
+        This function removes a secondary risk from the review.
+    '''
+    try:
+        review_id = request.POST['review-id']
+        risk_id = request.POST['risk-id']
+        if risk_id != 'None':
+            try:
+                risk = Risk.objects.get(pk=risk_id)
+                risk.delete()
+            except Risk.DoesNotExist:
+                return HttpResponseBadRequest()
+        return HttpResponse()
+    except:
+        return HttpResponseBadRequest()
 
 '''
     QUALITY ASSESSMENT FUNCTIONS

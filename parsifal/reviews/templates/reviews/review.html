@@ -10,15 +10,16 @@
   <script>
   var contacts = [
     {% for contact in user.profile.get_following %}
-      { 
-        pk: '{{ contact.pk }}', 
-        email: '{{ contact.email }}', 
-        name: '{{ contact.profile.get_screen_name }}' 
+      {
+        pk: '{{ contact.pk }}',
+        email: '{{ contact.email }}',
+        name: '{{ contact.profile.get_screen_name }}'
       }{% if not forloop.last %}, {% endif %}
     {% endfor %}
   ];
   </script>
   <script src="{% static 'js/review.js' %}?_=1"></script>
+  <script src="{% static 'js/review_tag.js' %}?v=1"></script>
 {% endblock %}
 
 {% block content %}
@@ -27,24 +28,29 @@
 
   <div class="row">
     <div class="col-sm-7 col-md-8 col-lg-9">
-      <form method="post">
-        {% csrf_token %}
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">{% trans 'Review details' %}</h3>
-          </div>
-          <div class="panel-body">
-            {% include 'form_vertical.html' with form=form %}
-          </div>
-          <div class="panel-footer">
-            <button type="submit" class="btn btn-success">
-              <span class="glyphicon glyphicon-ok"></span>
-              {% trans 'Save' %}
-            </button>
-          </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">{% trans 'Review details' %}</h3>
         </div>
-      </form>
+        <div class="panel-body">
+          <form method="post">
+            {% csrf_token %}
+            {% include 'form_vertical.html' with form=form %}
+          </form>
+          <form method="post" id="tag-form">
+            {% csrf_token %}
+            {% include 'reviews/review_tag.html' %}
+          </form>
+        </div>
+        <div class="panel-footer">
+          <button type="submit" class="btn btn-success">
+            <span class="glyphicon glyphicon-ok"></span>
+            {% trans 'Save' %}
+          </button>
+        </div>
+      </div>
     </div>
+
     <div class="col-sm-5 col-md-4 col-lg-3">
       <div class="panel panel-default">
         <div class="panel-heading">
@@ -112,5 +118,5 @@
       </div>
     </div>
   </div>
-  
+
 {% endblock content %}

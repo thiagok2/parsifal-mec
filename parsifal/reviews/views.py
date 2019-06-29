@@ -3,7 +3,7 @@
 from django.core.urlresolvers import reverse as r
 from django.template.defaultfilters import slugify
 from django.db.models import Q
-from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseForbidden
+from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseForbidden, JsonResponse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -13,7 +13,7 @@ from django.utils.html import escape
 from django.views.decorators.http import require_POST
 from django.core.mail import EmailMultiAlternatives
 
-from parsifal.reviews.models import Review
+from parsifal.reviews.models import Review, Tag
 from parsifal.reviews.decorators import main_author_required, author_required
 from parsifal.reviews.forms import CreateReviewForm, ReviewForm
 
@@ -31,8 +31,8 @@ def reviews(request, username):
     user_reviews = user.profile.get_reviews()
 
     context = RequestContext(request, {
-        'user_reviews': user_reviews, 
-        'page_user': user, 
+        'user_reviews': user_reviews,
+        'page_user': user,
         'is_following': is_following,
         'following_count': following_count,
         'followers_count': followers_count
@@ -73,7 +73,7 @@ def review(request, username, review_name):
             return redirect(r('review', args=(review.author.username, review.name)))
     else:
         form = ReviewForm(instance=review)
-    return render(request, 'reviews/review.html', { 
+    return render(request, 'reviews/review.html', {
             'review': review,
             'form': form
             })
@@ -102,9 +102,9 @@ def add_author_to_review(request):
 
             subject = u'{0} wants to add you as co-author on the systematic literature review {1}'.format(inviter_name, review.title)
             from_email = u'{0} via Parsifal <noreply@parsif.al>'.format(inviter_name)
-            
-            text_content = u'''Hi {0}, 
-            {1} invited you to a Parsifal Systematic Literature Review called "{2}". 
+
+            text_content = u'''Hi {0},
+            {1} invited you to a Parsifal Systematic Literature Review called "{2}".
             View the review at https://parsif.al/{3}/{4}/'''.format(email, inviter_name, review.title, request.user.username, review.name)
 
             html_content = u'''<p>Hi {0},</p>
@@ -121,7 +121,7 @@ def add_author_to_review(request):
 
     if not authors_added and not authors_invited:
         messages.info(request, u'No author invited or added to the review. Nothing really changed.')
-    
+
     if authors_added:
         messages.success(request, u'The authors {0} were added successfully.'.format(u', '.join(authors_added)))
 
@@ -172,3 +172,70 @@ def leave(request):
     review.save()
     messages.add_message(request, messages.SUCCESS, u'You successfully left the review {0}.'.format(review.title))
     return redirect('/' + request.user.username + '/')
+
+'''
+    REVIEW TAG FUNCTIONS
+'''
+
+@author_required
+@login_required
+def save_tag(request):
+    '''
+        Function used via Ajax request only.
+        This function takes a review tag form and save on the database
+    '''
+    try:
+        review_id = request.POST['review-id']
+        tag_id = request.POST['tag-id']
+        description = request.POST['description']
+        review = Review.objects.get(pk=review_id)
+        try:
+            tag = Tag.objects.get(pk=tag_id)
+        except:
+            tag = Tag(review=review)
+        tag.tag = description[:300]
+        tag.save()
+        tag_json = { 'id': tag.id, 'tag': tag.tag }
+        return JsonResponse(tag_json, safe=False)
+    except:
+        return HttpResponseBadRequest()
+
+@author_required
+@login_required
+def load_tags(request):
+    '''
+        Function used via Ajax request only.
+        This functions load tags to the review.
+    '''
+    try:
+        review_id = request.GET['review-id']
+        tags_list = []
+        tags = Tag.objects.filter(review__id=review_id)
+        for tag in tags:
+            tags_list.append({
+                'id': tag.id,
+                'tag': tag.tag
+            })
+        return JsonResponse(tags_list, safe=False)
+    except:
+        return HttpResponseBadRequest()
+
+@author_required
+@login_required
+def remove_tag(request):
+    '''
+        Function used via Ajax request only.
+        This function removes a secondary tag from the review.
+    '''
+    try:
+        review_id = request.POST['review-id']
+        tag_id = request.POST['tag-id']
+        if tag_id != 'None':
+            try:
+                tag = Tag.objects.get(pk=tag_id)
+                tag.delete()
+            except Tag.DoesNotExist:
+                return HttpResponseBadRequest()
+        return HttpResponse()
+    except:
+        return HttpResponseBadRequest()

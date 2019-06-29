@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "======>>>python /app/python manage.py makemigrations"
+python /app/manage.py makemigrations
+
 echo "======>>>python /app/manage.py migrate auth"
 python /app/manage.py migrate auth
 

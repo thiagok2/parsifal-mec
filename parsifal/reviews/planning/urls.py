@@ -17,6 +17,11 @@ urlpatterns = patterns('parsifal.reviews.planning.views',
     url(r'^add_criteria/$', 'add_criteria', name='add_criteria'),
     url(r'^remove_criteria/$', 'remove_criteria', name='remove_criteria'),
 
+    url(r'^save_risk/$', 'save_risk', name='save_risk'),
+    url(r'^save_risk_order/$', 'save_risk_order', name='save_risk_order'),
+    url(r'^remove_risk/$', 'remove_risk', name='remove_risk'),
+    url(r'^add_or_edit_risk/$', 'add_or_edit_risk', name='add_or_edit_risk'),
+
     url(r'^import_pico_keywords/$', 'import_pico_keywords', name='import_pico_keywords'),
     url(r'^add_keyword/$', 'add_keyword', name='add_keyword'),
     url(r'^edit_keyword/$', 'edit_keyword', name='edit_keyword'),

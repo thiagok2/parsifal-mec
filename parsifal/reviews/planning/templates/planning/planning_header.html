@@ -9,6 +9,9 @@
   <li role="presentation"{% if active_tab == 'quality' %} class="active"{% endif %}>
     <a href="{% url 'quality_assessment_checklist' review.author.username review.name %}">{% trans 'Quality Assessment Checklist' %}</a>
   </li>
+  <li role="presentation"{% if active_tab == 'risks' %} class="active"{% endif %}>
+    <a href="{% url 'risks_to_review_validity' review.author.username review.name %}">{% trans 'Risks To Review Validity' %}</a>
+  </li>
   <li role="presentation"{% if active_tab == 'extraction' %} class="active"{% endif %}>
     <a href="{% url 'data_extraction_form' review.author.username review.name %}">{% trans 'Data Extraction Form' %}</a>
   </li>
