@@ -33,7 +33,7 @@
           <h3 class="panel-title">{% trans 'Review details' %}</h3>
         </div>
         <div class="panel-body">
-          <form method="post">
+          <form method="post" id="review-form">
             {% csrf_token %}
             {% include 'form_vertical.html' with form=form %}
           </form>
@@ -43,7 +43,7 @@
           </form>
         </div>
         <div class="panel-footer">
-          <button type="submit" class="btn btn-success">
+          <button type="submit" class="btn btn-success" form="review-form">
             <span class="glyphicon glyphicon-ok"></span>
             {% trans 'Save' %}
           </button>
