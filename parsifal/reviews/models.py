@@ -231,6 +231,7 @@ class SelectionCriteria(models.Model):
 class Risk(models.Model):
     review = models.ForeignKey(Review, related_name='risks_to_review_validity')
     risk = models.CharField(max_length=500)
+    public = models.BooleanField(default=False)
     parent_risk = models.ForeignKey('self', null=True, related_name='+')
     order = models.IntegerField(default=0)
 
