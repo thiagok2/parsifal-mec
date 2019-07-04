@@ -56,6 +56,9 @@ class Review(models.Model):
     comparison = models.CharField(max_length=200, blank=True)
     outcome = models.CharField(max_length=200, blank=True)
     context = models.CharField(max_length=200, blank=True)
+    export_dataextraction = models.BooleanField(default=False)
+    export_risks = models.BooleanField(default=False)
+    export_qualityassessment = models.BooleanField(default=False)
 
     class Meta:
         verbose_name = u'Review'
