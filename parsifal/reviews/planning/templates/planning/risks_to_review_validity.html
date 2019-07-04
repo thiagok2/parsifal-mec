@@ -41,6 +41,7 @@
       <section id="risks" style="margin-bottom: 20px;">
         <form method="post" id="risk-form">
           {% csrf_token %}
+          <input type="hidden" name="review-id" value="{{ review.id }}">
           <div class="panel panel-default">
             <div class="panel-heading">
               <h3 class="panel-title">{% trans 'Risks' %}</h3>
@@ -55,9 +56,17 @@
               </tbody>
             </table>
             <div class="panel-footer">
-              <button type="button" class="btn btn-primary" id="btn-add-risk">
+              <button type="button" style="margin:5px" class="btn btn-primary" id="btn-add-risk">
                 <span class="glyphicon glyphicon-plus"></span>
                 {% trans 'Add Risk' %}
+              </button>
+              <button type="button" style="margin:5px" class="btn btn-primary pull-right" id="btn-import-risk" data-toggle="modal" data-target="#modal-suggested-risks">
+                <span class="glyphicon glyphicon-import"></span>
+                {% trans 'Import Risks' %}
+              </button>
+              <button type="button" style="margin:5px" class="btn btn-primary pull-right" id="btn-share-risk" data-toggle="modal" data-target="#modal-share-risks">
+                <span class="glyphicon glyphicon-share"></span>
+                {% trans 'Share your Risks' %}
               </button>
             </div>
           </div>
@@ -66,5 +75,71 @@
 
     </div>
   </div>
+
+  <section id="sources-section">
+    <div class="modal fade" id="modal-suggested-risks">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">{% trans 'Shared Risks' %}</h4>
+          </div>
+          <div class="modal-body">
+            <form action="." method="post" id="form-suggested-risks">
+              {% csrf_token %}
+              <input type="hidden" name="review-id" value="{{ review.id }}">
+              <table class="table" id="tbl-suggested-risks">
+                <thead>
+                  <tr>
+                    <th>
+                      ?
+                      <input type="checkbox" id="checkbox-all-risks">
+                    </th>
+                    <th>{% trans 'Review' %}</th>
+                    <th>{% trans 'Risks' %}</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
+            <button type="button" class="btn btn-success" id="btn-save-import-risks">{% trans 'Save' %}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="modal-share-risks">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">{% trans 'Share your Risks' %}</h4>
+          </div>
+          <form action="." method="post" id="form-suggested-risks">
+            <div class="modal-body">
+            
+                {% csrf_token %}
+                <input type="hidden" name="review-id" value="{{ review.id }}">
+
+                {% trans 'Do you want to share your risk definitions with other researchers?' %}
+                <br/>
+                <br/>
+                <div class="text-muted">{% trans 'Share only if your risks might be valid for other reviews and are not domain specific to your review.'%}</div>
+            
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
+                <button type="button" class="btn btn-success" id="btn-share-risks">{% trans 'Share' %}</button>
+            </div>
+          </form>
+        </div>
+        
+      </div>
+    </div>
+
+  </section>
 
 {% endblock content %}
