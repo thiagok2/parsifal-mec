@@ -191,4 +191,61 @@ $(function () {
       return false;
     });
 
+
+  $("#btn-import-risk").click(function () {
+    $.ajax({
+      url: '/reviews/planning/suggested_risks/',
+      data: { 'review-id': $('#review-id').val() },
+      cache: false,
+      type: 'get',
+      success: function (data) {
+        
+        $("#modal-suggested-risks table tbody").html(data);
+        $("#modal-suggested-risks").before("<div class='shade'></div>");
+        $("#modal-suggested-risks").slideDown(400, function () {
+          $("body").addClass("modal-open");
+        });
+      }
+    });
+  });
+
+  /**Save importeds risks */
+  $("#btn-save-import-risks").click(function () {
+    $.ajax({
+      url: '/reviews/planning/save_import_risks/',
+     
+      data: $('#form-suggested-risks').serialize(),
+      cache: false,
+      type: 'post',
+      success: function (data) {
+        $("#tbl-risks tbody").append(data);
+        $("#modal-suggested-risks").modal("hide");
+        $("#tbl-suggested-risks input").prop("checked", false);
+        
+      }
+    });
+  });
+
+  /**Save share risks */
+  $("#btn-share-risks").click(function () {
+
+    
+    var csrf_token = $("#risk-form input[name='csrfmiddlewaretoken']").val();
+    $.ajax({
+      url: '/reviews/planning/share_risks/',
+      data: { 
+        'review-id': $('#review-id').val(), 
+        'csrfmiddlewaretoken': csrf_token
+      
+      },
+      cache: false,
+      type: 'post',
+      success: function (data) {
+      
+        $("#modal-share-risks").modal("hide");
+        
+      }
+    });
+  });
+
   });
