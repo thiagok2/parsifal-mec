@@ -607,6 +607,118 @@ def remove_risk(request):
     except:
         return HttpResponseBadRequest()
 
+@author_required
+@login_required
+def suggested_risks(request):
+    try:
+        
+        review_id = request.GET['review-id']
+        review = Review.objects.get(pk=review_id)
+        risks = Risk.objects.filter(public=True)
+       
+        return_html = ''
+
+        for risk in risks:
+            return_html += '''
+            <tr>
+              <td>
+                <input type="checkbox" value="''' + str(risk.id) + '''" name="risk-id">
+              </td>
+              <td>''' + risk.review.name.encode('utf-8') + '''</td>
+              <td>''' + str(risk.risk.encode('utf-8'))+ '''</td>
+            </tr>'''
+        return HttpResponse(return_html)
+    except Exception as e:
+        print(str(e))
+        return HttpResponseBadRequest()
+
+@author_required
+@login_required
+def share_risks(request):
+    try:
+        
+        review_id = request.POST['review-id']
+        review = Review.objects.get(pk=review_id)
+        risks = review.get_risks()
+        
+        for risk in risks:
+            
+            risk.public = True
+            risk.save()
+
+        return HttpResponse()
+    except Exception as e:
+        print str(e) 
+        return HttpResponseBadRequest()
+
+@author_required
+@login_required
+def save_import_risks(request):
+    try:
+        print('call save_import_risks')
+        risks_ids = request.POST.getlist('risk-id')
+
+        print('?:'+str(request.POST.getlist('risk-id')))
+
+
+        review_id = request.POST['review-id']
+
+        
+        review = Review.objects.get(pk=review_id)
+        html_result =   ''
+        for risk_id in risks_ids:
+            riskRef = Risk.objects.get(pk=risk_id)
+            
+            riskNew = Risk(review=review)
+            riskNew.risk = riskRef.risk[:500]
+            riskNew.parent_risk = riskRef
+            riskNew.save()
+            html_result += html_risks(riskNew)
+
+        return HttpResponse(html_result)
+    except Exception as e:
+        print str(e) 
+        return HttpResponseBadRequest()
+
+def html_risks(risk):
+    html = '<tr data-risk-id="' + str(risk.id) + '"><td style="width: 50px; text-align: center; vertical-align: middle;">'
+    
+    html+= '<input type="hidden" name="risk-order" value="{{' + str(risk.order) +'}}"/>'
+    html+= '''
+            <a href="javascript:void(0);" style="display: block;" class="js-order-research-risk-up">
+                <span class="glyphicon glyphicon-chevron-up"></span>
+            </a>
+            <a href="javascript:void(0);" style="display: block;" class="js-order-research-risk-down">
+                <span class="glyphicon glyphicon-chevron-down"></span>
+            </a>
+        </td>'''
+    html+= '<td style="vertical-align: middle;">'+escape(risk.risk)+'</td>'
+
+
+    html+= '''
+        <td style="width: 200px; text-align: right; vertical-align: middle;">
+        <button type="button" class="btn btn-sm btn-warning btn-edit-risk">
+        <span class="btn-ajax-normal">
+            <span class="glyphicon glyphicon-pencil"></span> {% trans 'edit' %}
+        </span>
+        <span class="btn-ajax-loading">
+            <span class="glyphicon glyphicon-refresh spin"></span> {% trans 'loading...' %}
+        </span>
+        </button>
+        <button type="button" class="btn btn-sm btn-danger btn-remove-risk">
+        <span class="btn-ajax-normal">
+            <span class="glyphicon glyphicon-trash"></span> {% trans 'remove' %}
+        </span>
+        <span class="btn-ajax-loading">
+            <span class="glyphicon glyphicon-refresh spin"></span> {% trans 'removing...' %}
+        </span>
+        </button>
+    </td>
+    </tr>
+    '''
+    return html
+
+
 '''
     QUALITY ASSESSMENT FUNCTIONS
 '''
