@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-02 23:56+0000\n"
+"POT-Creation-Date: 2019-07-04 21:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -98,6 +98,8 @@ msgstr ""
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:75
 #: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:75
 #: parsifal/reviews/planning/templates/planning/protocol.html:506
+#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:107
+#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:134
 msgid "Close"
 msgstr "Fechar"
 
@@ -1875,6 +1877,7 @@ msgstr "Nova Fonte"
 #: parsifal/reviews/planning/templates/planning/protocol.html:194
 #: parsifal/reviews/planning/templates/planning/protocol.html:460
 #: parsifal/reviews/planning/templates/planning/protocol.html:507
+#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:108
 #: parsifal/reviews/templates/reviews/review.html:48
 msgid "Save"
 msgstr "Salvar"
@@ -2401,7 +2404,6 @@ msgstr "Adicionar campo"
 #: parsifal/reviews/planning/templates/planning/partial_data_extraction_field.html:30
 #: parsifal/reviews/planning/templates/planning/partial_keyword.html:22
 #: parsifal/reviews/planning/templates/planning/partial_planning_question.html:21
-#: parsifal/reviews/planning/templates/planning/partial_planning_risk.html:21
 #: parsifal/reviews/planning/templates/planning/partial_quality_assessment_answer.html:11
 #: parsifal/reviews/planning/templates/planning/partial_quality_assessment_question.html:21
 #: parsifal/reviews/planning/templates/planning/protocol.html:558
@@ -2417,7 +2419,6 @@ msgstr "carregando…"
 #: parsifal/reviews/planning/templates/planning/partial_data_extraction_field.html:38
 #: parsifal/reviews/planning/templates/planning/partial_keyword.html:26
 #: parsifal/reviews/planning/templates/planning/partial_planning_question.html:29
-#: parsifal/reviews/planning/templates/planning/partial_planning_risk.html:29
 #: parsifal/reviews/planning/templates/planning/partial_quality_assessment_answer.html:15
 #: parsifal/reviews/planning/templates/planning/partial_quality_assessment_question.html:29
 #: parsifal/reviews/planning/templates/planning/protocol.html:569
@@ -2493,12 +2494,10 @@ msgid "Add synonym"
 msgstr "Add sinônimo"
 
 #: parsifal/reviews/planning/templates/planning/partial_planning_question.html:24
-#: parsifal/reviews/planning/templates/planning/partial_planning_risk.html:24
 msgid "loading..."
 msgstr "carregando…"
 
 #: parsifal/reviews/planning/templates/planning/partial_planning_question.html:32
-#: parsifal/reviews/planning/templates/planning/partial_planning_risk.html:32
 msgid "removing..."
 msgstr "removendo…"
 
@@ -2992,13 +2991,52 @@ msgstr "Calculado com base no número de perguntas e na resposta de maior peso"
 msgid "Cutoff Score"
 msgstr "Pontuação de Corte"
 
-#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:46
+#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:47
+#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:99
 msgid "Risks"
 msgstr "Riscos"
 
-#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:60
+#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:61
 msgid "Add Risk"
 msgstr "Adicionar Risco"
+
+#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:65
+msgid "Import Risks"
+msgstr "Importar Riscos"
+
+#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:69
+#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:119
+msgid "Share your Risks"
+msgstr "Compartilhe seus riscos"
+
+#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:85
+#, fuzzy
+#| msgid "Add Risk"
+msgid "Shared Risks"
+msgstr "Riscos compartilhados"
+
+#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:98
+#: parsifal/reviews/reporting/templates/reporting/export.html:42
+#: parsifal/reviews/templates/reviews/review_header.html:14
+msgid "Review"
+msgstr "Revisão"
+
+#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:127
+msgid "Do you want to share your risk definitions with other researchers?"
+msgstr ""
+"Você quer compartilhar suas definições de risco com outros pesquisadores?"
+
+#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:130
+msgid ""
+"Share only if your risks might be valid for other reviews and are not domain "
+"specific to your review."
+msgstr ""
+"Compartilhe somente se seus riscos puderem ser válidos para outras "
+"avaliações e não forem específico do domínio da o sua revisão."
+
+#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:135
+msgid "Share"
+msgstr "Compartilhar"
 
 #: parsifal/reviews/planning/views.py:71
 #, python-format
@@ -3013,22 +3051,17 @@ msgstr ""
 msgid "Your review have been saved successfully!"
 msgstr "Sua revisão foi salva com sucesso!"
 
-#: parsifal/reviews/planning/views.py:804
+#: parsifal/reviews/planning/views.py:916
 msgid "Cutoff score saved successfully!"
 msgstr "Pontuação de cote salva com sucesso!"
 
-#: parsifal/reviews/planning/views.py:841
+#: parsifal/reviews/planning/views.py:953
 msgid "Description and Type are required fields."
 msgstr "Descrição e Tipos são campos obrigatórios."
 
 #: parsifal/reviews/reporting/templates/reporting/export.html:37
 msgid "Download a Report"
 msgstr "Baixar Relatório"
-
-#: parsifal/reviews/reporting/templates/reporting/export.html:42
-#: parsifal/reviews/templates/reviews/review_header.html:14
-msgid "Review"
-msgstr "Revisão"
 
 #: parsifal/reviews/reporting/templates/reporting/export.html:42
 #: parsifal/reviews/reporting/templates/reporting/export.html:59
