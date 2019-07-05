@@ -1,0 +1,48 @@
+{% load i18n %}
+
+{% for review in suggested_reviews %}
+<tr id="exported-review" style="cursor: pointer;">
+    <td>{{review.id}}</td>
+    <td>{{review.title}}</td>
+    <td>{{review.author}}</td>
+    <td id="import-dataextraction-fields">
+        <button type="button" class="btn btn-primary btn-sm" id="btn-import-dataextraction-fields">
+            {% trans 'Import' %}
+        </button>
+    </td>
+</tr>
+<tr class="hidden">
+    <td colspan="4">
+      <form method="post" id="form-suggested-dataextraction-fields-{{review.id}}">
+        <table class="table" id="tbl-exported-fields-{{review.id}}">
+          {% csrf_token %}
+          <input type="hidden" name="review_id" value="{{ review.id }}" />
+          <th>{% trans 'Field Description' %}</th>
+          <th>{% trans 'Field Type' %}</th>
+          <th>{% trans 'Values' %}</th>
+          {% for field in review.get_data_extraction_fields %}
+            <tr>
+              <input type="hidden" value="{{field.id}}" name="id" id="id" />
+              <input type="hidden" value="{{field.description}}" name="description-{{field.id}}" id="description" />
+              <input type="hidden" value="{{field.field_type}}" name="field_type-{{field.id}}" id="field_type" />
+              <td>{{field.description}}</td>
+              <td>{{field.get_field_type_display}}</td>
+              <td>
+                {% if field.is_select_field %}
+                  <ul>
+                    {% for value in field.get_select_values %}
+                      <input type="hidden" value="{{value.value}}" name="lookup_values-{{field.id}}" id="lookup_values" />
+                      <li>{{ value.value }}</li>
+                    {% endfor %}
+                  </ul>
+                {% else %}
+                  n/a
+                {% endif %}
+              </td>
+            </tr>
+          {% endfor %}
+        </table>
+      </form>
+    </td>
+</tr>
+{% endfor %}
