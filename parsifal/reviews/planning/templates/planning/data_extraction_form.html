@@ -19,49 +19,6 @@
   {% csrf_token %}
 
   <section id="data-extraction-section" style="margin-bottom: 20px;">
-    <div class="modal fade" id="import-dataextraction">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">{% trans 'Import Data Extraction Fields' %}</h4>
-          </div>
-          <div class="modal-body">
-            <p style="margin-bottom: 20px;">{% trans 'Below you see the reviews that exported your data extraction fields, choose one to import the fields for your review' %}</p>
-            <table class="table" id="tbl-import-data-extraction">
-              <thead>
-                <tr>
-                  <th>{% trans 'ID' %}</th>
-                  <th>{% trans 'Review' %}</th>
-                  <th>{% trans 'Author' %}</th>
-                  <th>{% trans 'Fields' %}</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="export-dataextraction">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">{% trans 'Export Data Extraction Fields' %}</h4>
-          </div>
-          <div class="modal-body">
-            <p>{% trans 'If you agree, your data extraction fields will be made known to other users to use them' %}</p>
-          </div>
-          <div class="modal-footer" style="text-align: left;">
-            <button type="button" id="confirm-dataextraction-export" class="btn btn-success btn-block" data-keyword-id="">{% trans 'Export Data Extraction Fields' %}</button>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <div class="panel panel-default">
       <div class="panel-heading">
@@ -90,14 +47,70 @@
           <span class="glyphicon glyphicon-plus"></span>
           {% trans 'Add Field' %}
         </button>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#import-dataextraction">
+        <button type="button" class="btn btn-primary" id="btn-import-dataextraction" data-toggle="modal" data-target="#modal-suggested-dataextraction">
           <span class="glyphicon glyphicon-import"></span>
           {% trans 'Import Fields' %}
         </button>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#export-dataextraction">
+        <button type="button" class="btn btn-primary" id="btn-share-dataextraction" data-toggle="modal" data-target="#modal-share-dataextraction">
           <span class="glyphicon glyphicon-export"></span>
-          {% trans 'Export Fields' %}
+          {% trans 'Share your Fields' %}
         </button>
+      </div>
+    </div>
+
+    <div class="modal fade" id="modal-suggested-dataextraction">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">{% trans 'Import Data Extraction Fields' %}</h4>
+          </div>
+          <div class="modal-body">
+            <p style="margin-bottom: 20px;">{% trans 'Below you see the reviews that exported your data extraction fields, choose one to import the fields for your review' %}</p>
+            <table class="table" id="tbl-import-data-extraction">
+              <thead>
+                <tr>
+                  <th>{% trans 'ID' %}</th>
+                  <th>{% trans 'Review' %}</th>
+                  <th>{% trans 'Author' %}</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="modal-share-dataextraction">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">{% trans 'Export Data Extraction Fields' %}</h4>
+          </div>
+          <div class="modal-body">
+            {% if review.export_dataextraction %}
+              <p>{% trans 'Your Data Extraction Fields are already shared. Do you wanna make it private again?' %}</p>
+            {% elif not review.export_dataextraction %}
+              <p>{% trans 'If you agree, your Data Extraction Fields will be made known to other researchers to use them' %}</p>
+            {% endif %}
+          </div>
+          <div class="modal-footer" style="text-align: left;">
+            <form id="share-dataextration-form">
+              {% csrf_token %}
+              <button type="button" id="btn-confirm-dataextraction-share" class="btn btn-success btn-block" data-keyword-id="">
+                  {% if review.export_dataextraction %}
+                    {% trans 'Hide Data Extraction Fields' %}
+                  {% elif not review.export_dataextraction %}
+                    {% trans 'Export Data Extraction Fields' %}
+                  {% endif %}
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   </section>

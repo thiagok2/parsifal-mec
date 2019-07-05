@@ -611,11 +611,11 @@ def remove_risk(request):
 @login_required
 def suggested_risks(request):
     try:
-        
+
         review_id = request.GET['review-id']
         review = Review.objects.get(pk=review_id)
         risks = Risk.objects.filter(public=True)
-       
+
         return_html = ''
 
         for risk in risks:
@@ -636,19 +636,19 @@ def suggested_risks(request):
 @login_required
 def share_risks(request):
     try:
-        
+
         review_id = request.POST['review-id']
         review = Review.objects.get(pk=review_id)
         risks = review.get_risks()
-        
+
         for risk in risks:
-            
+
             risk.public = True
             risk.save()
 
         return HttpResponse()
     except Exception as e:
-        print str(e) 
+        print str(e)
         return HttpResponseBadRequest()
 
 @author_required
@@ -663,12 +663,12 @@ def save_import_risks(request):
 
         review_id = request.POST['review-id']
 
-        
+
         review = Review.objects.get(pk=review_id)
         html_result =   ''
         for risk_id in risks_ids:
             riskRef = Risk.objects.get(pk=risk_id)
-            
+
             riskNew = Risk(review=review)
             riskNew.risk = riskRef.risk[:500]
             riskNew.parent_risk = riskRef
@@ -677,12 +677,12 @@ def save_import_risks(request):
 
         return HttpResponse(html_result)
     except Exception as e:
-        print str(e) 
+        print str(e)
         return HttpResponseBadRequest()
 
 def html_risks(risk):
     html = '<tr data-risk-id="' + str(risk.id) + '"><td style="width: 50px; text-align: center; vertical-align: middle;">'
-    
+
     html+= '<input type="hidden" name="risk-order" value="{{' + str(risk.order) +'}}"/>'
     html+= '''
             <a href="javascript:void(0);" style="display: block;" class="js-order-research-risk-up">
@@ -992,7 +992,8 @@ def save_data_extraction_field(request):
 
         context = RequestContext(request, {'field': field})
         return render_to_response('planning/partial_data_extraction_field.html', context)
-    except:
+    except Exception as e:
+        print e
         return HttpResponseBadRequest()
 
 
@@ -1023,6 +1024,32 @@ def remove_data_extraction_field(request):
         for select_value in select_values:
             select_value.delete()
         field.delete()
+        return HttpResponse()
+    except:
+        return HttpResponseBadRequest()
+
+@author_required
+@login_required
+def suggested_data_extraction_fields(request):
+    try:
+        review_id = request.GET['review-id']
+        suggested_reviews = Review.objects.filter(export_dataextraction=True).exclude(id=review_id)
+
+        context = RequestContext(request, {'suggested_reviews': suggested_reviews})
+        return render_to_response('planning/partial_data_extraction_suggested.html', context)
+    except Exception as e:
+        print e
+        return HttpResponseBadRequest()
+
+@author_required
+@login_required
+def share_data_extraction_fields(request):
+    try:
+        review_id = request.POST['review-id']
+        review = Review.objects.get(pk=review_id)
+        review.export_dataextraction = True if not review.export_dataextraction else False
+        review.save()
+
         return HttpResponse()
     except:
         return HttpResponseBadRequest()

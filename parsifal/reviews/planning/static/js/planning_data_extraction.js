@@ -52,9 +52,9 @@ $(function () {
 
     $.ajax({
       url: '/reviews/planning/save_data_extraction_field/',
-      data: {'review-id': review_id, 
-        'description': description, 
-        'field-type': field_type, 
+      data: {'review-id': review_id,
+        'description': description,
+        'field-type': field_type,
         'lookup-values': lookup_values,
         'field-id': field_id,
         'csrfmiddlewaretoken': csrf_token
@@ -82,18 +82,18 @@ $(function () {
         $(btn).ajaxEnableError();
       },
       complete: function () {
-        
+
       }
     });
   });
 
   // Remove a data extraction field
-  $("table#tbl-data-extraction").on("click", ".btn-remove-data-extraction-field", function () { 
+  $("table#tbl-data-extraction").on("click", ".btn-remove-data-extraction-field", function () {
     var field_id = $(this).closest("tr").attr("oid");
     var review_id = $("#review-id").val();
     var btn = $(this);
     var row = $(this).closest("tr");
-    
+
     $.ajax({
       url: '/reviews/planning/remove_data_extraction_field/',
       data: {'review-id': review_id, 'field-id': field_id},
@@ -193,5 +193,89 @@ $(function () {
     }
     return false;
   });
+
+  $("#btn-import-dataextraction").click(function () {
+    $.ajax({
+      url: '/reviews/planning/suggested_data_extraction_fields/',
+      data: { 'review-id': $('#review-id').val() },
+      cache: false,
+      type: 'get',
+      success: function (data) {
+
+        $("#modal-suggested-dataextraction table tbody").html(data);
+        $("#modal-suggested-dataextraction").before("<div class='shade'></div>");
+        $("#modal-suggested-dataextraction").slideDown(400, function () {
+          $("body").addClass("modal-open");
+        });
+      }
+    });
+  });
+
+  $("#btn-confirm-dataextraction-share").click(function () {
+    var csrf_token = $("#share-dataextration-form input[name='csrfmiddlewaretoken']").val();
+    $.ajax({
+      url: '/reviews/planning/share_data_extraction_fields/',
+      data: {
+        'review-id': $('#review-id').val(),
+        'csrfmiddlewaretoken': csrf_token
+      },
+      cache: false,
+      type: 'post',
+      success: function (data) {
+        $("#modal-share-dataextraction").modal("hide");
+      }
+    });
+  });
+
+  $("table#tbl-import-data-extraction").on("click", "tbody tr", function () {
+    var hiddenClass = $(this)[0].nextElementSibling
+    hiddenClass.className == "hidden"
+    ? hiddenClass.className = ""
+    : hiddenClass.className = "hidden"
+  });
+
+  $("table#tbl-import-data-extraction").on("click", "td#import-dataextraction-fields", function () {
+    var exported_review_id = $(this)[0].parentElement.children[0].innerHTML;
+    var fields = $("#form-suggested-dataextraction-fields-"+exported_review_id).serializeArray();
+    var review_id = $("#review-id").val();
+
+    fields_ids = []
+    $.each(fields, function(i, field) {
+        field.name == 'id' ? fields_ids.push(field.value) : null
+    });
+
+    for (f of fields_ids) {
+        var step_fields = { id: f, lookup_values: '' }
+        $.each(fields, function(i, field) {
+            if (field.name == 'description-'+f) step_fields.description = field.value
+            if (field.name == 'field_type-'+f) step_fields.field_type = field.value
+            if (field.name == 'csrfmiddlewaretoken') step_fields.csrf_token = field.value
+            if (field.name == 'lookup_values-'+f) step_fields.lookup_values += field.value + '\n'
+        });
+
+        $.ajax({
+            url: '/reviews/planning/save_data_extraction_field/',
+            data: {'review-id': review_id,
+                'description': step_fields.description,
+                'field-type': step_fields.field_type,
+                'lookup-values': step_fields.lookup_values,
+                'field-id': 'None',
+                'csrfmiddlewaretoken': step_fields.csrf_token
+            },
+            type: 'post',
+            cache: false,
+            success: function (data) {
+                $("#tbl-data-extraction tbody").append(data);
+                $("#modal-suggested-dataextraction").modal("hide");
+                manageFieldOrder();
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(errorThrown);
+            }
+        });
+    }
+
+
+   });
 
 });
