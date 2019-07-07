@@ -4,21 +4,30 @@ version: '3'
 services:
   db:
     image: postgres:10.1-alpine
-    environment:
-      POSTGRES_DB: parsifal
-      POSTGRES_USER: parsifal
-      POSTGRES_PASSWORD: parsifal
     networks:
       - webnet
+    volumes:
+      - /docker-volumes/parsifal/db-data:/var/lib/postgresql/data
+    restart: always
+    ports:
+      - 7001:5432
   web:
     build: .
-    command: ["./wait-for-postgres.sh", "db", "./app-entrypoint.sh"]
+    command:
+      - ./wait-for-postgres.sh
+      - db
+      - parsifal
+      - ${POSTGRES_PASSWORD}
+      - ./app-entrypoint.sh
+        #command: ["./wait-for-postgres.sh", "db", "parsifal", $POSTGRES_PASSWORD,"./app-entrypoint.sh"]
     ports:
-      - 8000:8000
+      - 7000:8000
     depends_on:
       - db
     networks:
-      - webnet       
+      - webnet    
+    volumes:
+      - /docker-volumes/parsifal/web/static:/static 
+    restart: always  
 networks:
   webnet:
-

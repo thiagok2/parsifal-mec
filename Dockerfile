@@ -1,7 +1,7 @@
 # our base image
 FROM python:2.7
 
-RUN apt-get update && apt-get install -y postgresql-client
+RUN apt-get update && apt-get install -y postgresql-client gettext
 
 RUN pip install psycopg2 --user
 RUN pip install psycopg2-binary --user
