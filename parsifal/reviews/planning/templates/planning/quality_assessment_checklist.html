@@ -20,7 +20,7 @@
   <script>
     $(function () {
       $("#protocol").affix({
-        offset: {     
+        offset: {
           top: $("#protocol").offset().top - 20,
           bottom: 70
         }
@@ -48,6 +48,10 @@
           <a href="#score" class="list-group-item">{% trans 'Score' %}</a>
         </div>
       </div>
+      <button type="button" class="btn btn-primary btn-block" id="btn-share-quality-questions" data-toggle="modal" data-target="#modal-share-quality-questions">
+        <span class="glyphicon glyphicon-export"></span>
+        {% trans 'Share your Quality Assessment' %}
+      </button>
     </div>
     <div class="col-sm-12 col-md-8 col-lg-9">
 
@@ -69,6 +73,10 @@
             <button type="button" class="btn btn-primary" id="btn-add-quality-question">
               <span class="glyphicon glyphicon-plus"></span>
               {% trans 'Add Question' %}
+            </button>
+            <button type="button" class="btn btn-primary" id="btn-import-quality-questions" data-toggle="modal" data-target="#modal-suggested-quality-questions">
+              <span class="glyphicon glyphicon-import"></span>
+              {% trans 'Import Questions' %}
             </button>
           </div>
         </div>
@@ -104,7 +112,7 @@
               <button type="button" class="btn btn-link" id="add-suggested-answers">
               {% trans '(Add Suggested Answers)' %}
               </button>
-            {% endif %}                
+            {% endif %}
           </div>
         </div>
       </section>
@@ -144,6 +152,63 @@
           </table>
         </div>
       </section>
+
+      <div class="modal fade" id="modal-suggested-quality-questions">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">{% trans 'Import Quality Assessment Questions' %}</h4>
+            </div>
+            <div class="modal-body">
+              <p style="margin-bottom: 20px;">{% trans 'Below you see the reviews that exported your quality assessment questions, choose one to import the questions for your review' %}</p>
+              <table class="table" id="tbl-import-quality-questions">
+                <thead>
+                  <tr>
+                    <th>{% trans 'ID' %}</th>
+                    <th>{% trans 'Review' %}</th>
+                    <th>{% trans 'Author' %}</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="modal-share-quality-questions">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">{% trans 'Export Quality Assesment' %}</h4>
+            </div>
+            <div class="modal-body">
+              {% if review.export_qualityassessment %}
+                <p>{% trans 'Your Quality Assessment are already shared. Do you wanna make it private again?' %}</p>
+              {% elif not review.export_qualityassessment %}
+                <p>{% trans 'If you agree, your Quality Assessment will be made known to other researchers to use them' %}</p>
+              {% endif %}
+            </div>
+            <div class="modal-footer" style="text-align: left;">
+              <form id="share-quality-questions-form">
+                {% csrf_token %}
+                <button type="button" id="btn-confirm-quality-questions-share" class="btn btn-success btn-block" data-keyword-id="">
+                    {% if review.export_qualityassessment %}
+                      {% trans 'Hide Quality Assessment' %}
+                    {% elif not review.export_qualityassessment %}
+                      {% trans 'Export Quality Assessment' %}
+                    {% endif %}
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 

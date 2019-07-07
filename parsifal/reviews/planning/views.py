@@ -699,18 +699,18 @@ def html_risks(risk):
         <td style="width: 200px; text-align: right; vertical-align: middle;">
         <button type="button" class="btn btn-sm btn-warning btn-edit-risk">
         <span class="btn-ajax-normal">
-            <span class="glyphicon glyphicon-pencil"></span> 
+            <span class="glyphicon glyphicon-pencil"></span>
         </span>
         <span class="btn-ajax-loading">
-            <span class="glyphicon glyphicon-refresh spin"></span> 
+            <span class="glyphicon glyphicon-refresh spin"></span>
         </span>
         </button>
         <button type="button" class="btn btn-sm btn-danger btn-remove-risk">
         <span class="btn-ajax-normal">
-            <span class="glyphicon glyphicon-trash"></span> 
+            <span class="glyphicon glyphicon-trash"></span>
         </span>
         <span class="btn-ajax-loading">
-            <span class="glyphicon glyphicon-refresh spin"></span> 
+            <span class="glyphicon glyphicon-refresh spin"></span>
         </span>
         </button>
     </td>
@@ -798,6 +798,31 @@ def remove_quality_assessment_question(request):
     except:
         return HttpResponseBadRequest()
 
+@author_required
+@login_required
+def suggested_quality_assessment_questions(request):
+    try:
+        review_id = request.GET['review-id']
+        suggested_reviews = Review.objects.filter(export_qualityassessment=True).exclude(id=review_id)
+
+        context = RequestContext(request, {'suggested_reviews': suggested_reviews})
+        return render_to_response('planning/partial_quality_assessment_question_suggested.html', context)
+    except Exception as e:
+        print e
+        return HttpResponseBadRequest()
+
+@author_required
+@login_required
+def share_quality_assessment_questions(request):
+    try:
+        review_id = request.POST['review-id']
+        review = Review.objects.get(pk=review_id)
+        review.export_qualityassessment = True if not review.export_qualityassessment else False
+        review.save()
+
+        return HttpResponse()
+    except:
+        return HttpResponseBadRequest()
 
 @author_required
 @login_required
