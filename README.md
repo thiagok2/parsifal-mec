@@ -49,12 +49,14 @@ python manage.py runserver
 ## ignorar owned dos arquivos
 git config core.fileMode false
 
-HEAD
 # tradução - make/compilação
 python manage.py makemessages -l 'sv' -i venv
 
 python manage.py compilemessages
 
+
+#run migrate
+python manage.py migrate
 
 
 # Configuração com docker
