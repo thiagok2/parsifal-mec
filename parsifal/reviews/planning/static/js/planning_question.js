@@ -93,7 +93,7 @@ $(function () {
         manageQuestionsOrder();
       },
       error: function (jqXHR, textStatus, errorThrown) {
-        
+
       },
       complete: function () {
         $(btn).ajaxEnable();
@@ -123,7 +123,7 @@ $(function () {
         $(tr).remove();
       },
       error: function () {
-        
+
       },
       complete: function () {
         $(btn).ajaxEnable();
