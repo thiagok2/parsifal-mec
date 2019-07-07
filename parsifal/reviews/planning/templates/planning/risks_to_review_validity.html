@@ -82,30 +82,24 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">{% trans 'Shared Risks' %}</h4>
+            <h4 class="modal-title">{% trans 'Import Shared Risks' %}</h4>
           </div>
           <div class="modal-body">
-            <form action="." method="post" id="form-suggested-risks">
-              {% csrf_token %}
-              <input type="hidden" name="review-id" value="{{ review.id }}">
-              <table class="table" id="tbl-suggested-risks">
-                <thead>
-                  <tr>
-                    <th>
-                      ?
-                      <input type="checkbox" id="checkbox-all-risks">
-                    </th>
-                    <th>{% trans 'Review' %}</th>
-                    <th>{% trans 'Risks' %}</th>
-                  </tr>
-                </thead>
-                <tbody></tbody>
-              </table>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
-            <button type="button" class="btn btn-success" id="btn-save-import-risks">{% trans 'Save' %}</button>
+          	 <p style="margin-bottom: 20px;">{% trans 'Below you see the reviews that exported your Risks, choose one to import the risks for your review' %}</p>
+             {% csrf_token %}
+             <input type="hidden" name="review-id" value="{{ review.id }}">
+             <table class="table" id="tbl-import-risks">
+               <thead>
+               	<tr>
+               		<th>{% trans 'ID' %}</th>
+               		<th>{% trans 'Review' %}</th>
+               		<th>{% trans 'Author' %}</th>
+               		<th></th>
+               		<th></th>
+               	</tr>
+             	</thead>
+               <tbody></tbody>
+             </table>
           </div>
         </div>
       </div>
@@ -118,23 +112,29 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title">{% trans 'Share your Risks' %}</h4>
           </div>
-          <form action="." method="post" id="form-suggested-risks">
+        
             <div class="modal-body">
             
-                {% csrf_token %}
-                <input type="hidden" name="review-id" value="{{ review.id }}">
-
-                {% trans 'Do you want to share your risk definitions with other researchers?' %}
-                <br/>
-                <br/>
-                <div class="text-muted">{% trans 'Share only if your risks might be valid for other reviews and are not domain specific to your review.'%}</div>
+            {% if review.export_risks %}
+              <p>{% trans 'Your Risks are already shared. Do you wanna make it private again?' %}</p>
+            {% else %}
+              <p>{% trans 'If you agree, your Risks will be made known to other researchers to use them' %}</p>
+            {% endif %}
             
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
-                <button type="button" class="btn btn-success" id="btn-share-risks">{% trans 'Share' %}</button>
+                <form id="share-risks-form">
+	              {% csrf_token %}
+	              <button type="button" id="btn-confirm-risks-share" class="btn btn-success btn-block" data-keyword-id="">
+	                  {% if review.export_risks %}
+	                    {% trans 'Hide Risks Fields' %}
+	                  {% else %}
+	                    {% trans 'Export Risks' %}
+	                  {% endif %}
+	              </button>
+	            </form>
             </div>
-          </form>
+          
         </div>
         
       </div>

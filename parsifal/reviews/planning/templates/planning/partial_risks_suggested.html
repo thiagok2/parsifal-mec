@@ -1,0 +1,45 @@
+{% load i18n %}
+
+{% for review in suggested_reviews %}
+<tr id="exported-review" style="cursor: pointer;">
+    <td>{{review.id}}</td>
+    <td>{{review.title}}</td>
+    <td>{{review.author}}</td>
+    <td id="import-risk-fields">
+       <button type="button" class="btn btn-primary btn-sm" id="btn-import-risk" data-review-ref-id="{{review.id}}">
+            {% trans 'Import' %}
+        </button>
+    </td>
+    <td id="details-risk-fields">
+    	<button type="button" class="btn btn-primary btn-sm" id="btn-details-risk">
+       		<span class="glyphicon glyphicon-zoom-in"></span>
+            
+        </button> 
+    </td>
+</tr>
+<tr class="hidden">
+    <td colspan="5">
+      <form method="post" id="form-suggested-risks-{{review.id}}">
+      	{% csrf_token %}
+      	<input type="hidden" name="review_id" value="{{ review.id }}" />
+      	<input type="hidden" name="review_ref_id" id="review_ref_id" value="{{risk.id}}"  />
+        <table class="table" id="tbl-exported-riks-{{review.id}}">
+        	<tr>
+          		<th>	
+          			{% trans 'Risk' %}
+          		</th>
+          	</tr>
+          	{% for risk in review.get_risks %}
+            <tr>
+              <input type="hidden" value="{{risk.id}}" name="id" id="id" />
+              <input type="hidden" value="{{risk.risk}}" name="risk-description-{{risk.id}}" id="description" />
+           
+              <td>{{risk.risk}}</td>
+              
+            </tr>
+          	{% endfor %}
+        </table>
+      </form>
+    </td>
+</tr>
+{% endfor %}

@@ -190,62 +190,94 @@ $(function () {
       }
       return false;
     });
-
-
-  $("#btn-import-risk").click(function () {
-    $.ajax({
-      url: '/reviews/planning/suggested_risks/',
-      data: { 'review-id': $('#review-id').val() },
-      cache: false,
-      type: 'get',
-      success: function (data) {
-        
-        $("#modal-suggested-risks table tbody").html(data);
-        $("#modal-suggested-risks").before("<div class='shade'></div>");
-        $("#modal-suggested-risks").slideDown(400, function () {
-          $("body").addClass("modal-open");
-        });
-      }
-    });
-  });
-
-  /**Save importeds risks */
-  $("#btn-save-import-risks").click(function () {
-    $.ajax({
-      url: '/reviews/planning/save_import_risks/',
-     
-      data: $('#form-suggested-risks').serialize(),
-      cache: false,
-      type: 'post',
-      success: function (data) {
-        $("#tbl-risks tbody").append(data);
-        $("#modal-suggested-risks").modal("hide");
-        $("#tbl-suggested-risks input").prop("checked", false);
-        
-      }
-    });
-  });
-
-  /**Save share risks */
-  $("#btn-share-risks").click(function () {
-
     
-    var csrf_token = $("#risk-form input[name='csrfmiddlewaretoken']").val();
-    $.ajax({
-      url: '/reviews/planning/share_risks/',
-      data: { 
-        'review-id': $('#review-id').val(), 
-        'csrfmiddlewaretoken': csrf_token
-      
-      },
-      cache: false,
-      type: 'post',
-      success: function (data) {
-      
-        $("#modal-share-risks").modal("hide");
-        
-      }
+    $("table#tbl-import-risks").on("click", "tbody tr", function () {
+    	
+        var hiddenClass = $(this)[0].nextElementSibling;
+        hiddenClass.className == "hidden"
+        ? hiddenClass.className = ""
+        : hiddenClass.className = "hidden"
     });
-  });
+    
+    
+    $("table#tbl-import-risks").on("click", "#btn-import-risk", function () {
 
-  });
+        var exported_review_id = $(this).data("review-ref-id")
+        var fields = $("#form-suggested-risks-"+exported_review_id).serializeArray();
+        var review_id = $("#review-id").val();
+
+        risks_ids = []
+        $.each(fields, function(i, field) {
+        	field.name == 'id' ? risks_ids.push(field.value) : null
+        });
+ 
+        for (f of risks_ids) {
+        	
+            var step_risks = { id: f }
+            $.each(fields, function(i, field) {
+                if (field.name == 'risk-description-'+f) step_risks.description = field.value
+                if (field.name == 'csrfmiddlewaretoken') step_risks.csrf_token = field.value
+                
+            });
+            
+            $.ajax({
+                url: '/reviews/planning/save_risk/',
+                data: {
+                	'review-id': review_id,
+                    'description': step_risks.description,
+                    'risk-id': 'None',
+                    'csrfmiddlewaretoken': step_risks.csrf_token
+                },
+                type: 'post',
+                cache: false,
+                success: function (data) {
+                    $("#tbl-risks tbody").append(data);
+                    $("#modal-suggested-risks").modal("hide");
+                    manageRisksOrder();
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(errorThrown);
+                }
+            });
+        }
+
+
+    });
+
+
+    $("#btn-import-risk").click(function () {
+    	$.ajax({
+    		url: '/reviews/planning/suggested_risks/',
+    		data: { 'review-id': $('#review-id').val() },
+    		cache: false,
+    		type: 'get',
+    		success: function (data) {
+	        
+    			$("#modal-suggested-risks table tbody").html(data);
+    			$("#modal-suggested-risks").before("<div class='shade'></div>");
+    			$("#modal-suggested-risks").slideDown(400, function () {
+    				$("body").addClass("modal-open");
+    			});
+    		}
+	   });
+	});
+
+  
+    $("#btn-confirm-risks-share").click(function () {
+	    var csrf_token = $("#share-risks-form input[name='csrfmiddlewaretoken']").val();
+	    
+	    $.ajax({
+	      url: '/reviews/planning/share_risks/',
+	      data: {
+	        'review-id': $('#review-id').val(),
+	        'csrfmiddlewaretoken': csrf_token
+	      },
+	      cache: false,
+	      type: 'post',
+	      success: function (data) {
+	    	  $("#modal-share-risks").modal("hide");
+	      }
+	    });
+    });
+ 
+});

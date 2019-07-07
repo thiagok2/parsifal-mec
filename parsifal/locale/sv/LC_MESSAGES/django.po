@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-04 21:15+0000\n"
+"POT-Creation-Date: 2019-07-07 23:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -92,8 +92,6 @@ msgstr ""
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:75
 #: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:75
 #: parsifal/reviews/planning/templates/planning/protocol.html:506
-#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:107
-#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:134
 msgid "Close"
 msgstr ""
 
@@ -1664,6 +1662,9 @@ msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:46
 #: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:90
+#: parsifal/reviews/planning/templates/planning/partial_data_extraction_suggested.html:10
+#: parsifal/reviews/planning/templates/planning/partial_quality_assessment_question_suggested.html:10
+#: parsifal/reviews/planning/templates/planning/partial_risks_suggested.html:10
 msgid "Import"
 msgstr ""
 
@@ -1783,7 +1784,6 @@ msgstr ""
 #: parsifal/reviews/planning/templates/planning/protocol.html:194
 #: parsifal/reviews/planning/templates/planning/protocol.html:460
 #: parsifal/reviews/planning/templates/planning/protocol.html:507
-#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:108
 #: parsifal/reviews/templates/reviews/review.html:48
 msgid "Save"
 msgstr ""
@@ -2069,6 +2069,9 @@ msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:85
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:62
+#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:75
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:172
+#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:96
 msgid "Author"
 msgstr ""
 
@@ -2265,33 +2268,88 @@ msgstr ""
 msgid "Planning"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:24
+#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:25
 #: parsifal/reviews/planning/templates/planning/planning_header.html:16
 #: parsifal/reviews/reporting/templates/reporting/export.html:86
 msgid "Data Extraction Form"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:30
-#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:85
+#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:31
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:95
 #: parsifal/reviews/reporting/templates/reporting/export.html:51
 msgid "Description"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:31
+#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:32
 msgid "Type"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:32
+#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:33
+#: parsifal/reviews/planning/templates/planning/partial_data_extraction_suggested.html:22
 msgid "Values"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:47
+#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:48
 msgid "Add Field"
+msgstr ""
+
+#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:52
+msgid "Import Fields"
+msgstr ""
+
+#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:56
+msgid "Share your Fields"
+msgstr ""
+
+#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:66
+msgid "Import Data Extraction Fields"
+msgstr ""
+
+#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:69
+msgid ""
+"Below you see the reviews that exported your data extraction fields, choose "
+"one to import the fields for your review"
+msgstr ""
+
+#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:73
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:170
+#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:94
+msgid "ID"
+msgstr ""
+
+#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:74
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:171
+#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:95
+#: parsifal/reviews/reporting/templates/reporting/export.html:42
+#: parsifal/reviews/templates/reviews/review_header.html:14
+msgid "Review"
+msgstr ""
+
+#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:92
+#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:108
+msgid "Export Data Extraction Fields"
+msgstr ""
+
+#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:96
+msgid ""
+"Your Data Extraction Fields are already shared. Do you wanna make it private "
+"again?"
+msgstr ""
+
+#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:98
+msgid ""
+"If you agree, your Data Extraction Fields will be made known to other "
+"researchers to use them"
+msgstr ""
+
+#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:106
+msgid "Hide Data Extraction Fields"
 msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/partial_data_extraction_field.html:30
 #: parsifal/reviews/planning/templates/planning/partial_keyword.html:22
 #: parsifal/reviews/planning/templates/planning/partial_planning_question.html:21
+#: parsifal/reviews/planning/templates/planning/partial_planning_risk.html:21
 #: parsifal/reviews/planning/templates/planning/partial_quality_assessment_answer.html:11
 #: parsifal/reviews/planning/templates/planning/partial_quality_assessment_question.html:21
 #: parsifal/reviews/planning/templates/planning/protocol.html:558
@@ -2300,6 +2358,7 @@ msgid "edit"
 msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/partial_data_extraction_field.html:33
+#: parsifal/reviews/planning/templates/planning/partial_planning_risk.html:24
 #: parsifal/reviews/planning/templates/planning/partial_quality_assessment_question.html:24
 msgid "loading…"
 msgstr ""
@@ -2307,6 +2366,7 @@ msgstr ""
 #: parsifal/reviews/planning/templates/planning/partial_data_extraction_field.html:38
 #: parsifal/reviews/planning/templates/planning/partial_keyword.html:26
 #: parsifal/reviews/planning/templates/planning/partial_planning_question.html:29
+#: parsifal/reviews/planning/templates/planning/partial_planning_risk.html:29
 #: parsifal/reviews/planning/templates/planning/partial_quality_assessment_answer.html:15
 #: parsifal/reviews/planning/templates/planning/partial_quality_assessment_question.html:29
 #: parsifal/reviews/planning/templates/planning/protocol.html:569
@@ -2314,6 +2374,7 @@ msgid "remove"
 msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/partial_data_extraction_field.html:41
+#: parsifal/reviews/planning/templates/planning/partial_planning_risk.html:32
 #: parsifal/reviews/planning/templates/planning/partial_quality_assessment_question.html:32
 msgid "removing…"
 msgstr ""
@@ -2333,12 +2394,12 @@ msgstr ""
 #: parsifal/reviews/planning/templates/planning/partial_planning_risk_form.html:12
 #: parsifal/reviews/planning/templates/planning/partial_quality_assessment_answer_form.html:15
 #: parsifal/reviews/planning/templates/planning/partial_quality_assessment_question_form.html:12
-#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:132
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:142
 msgid "save"
 msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/partial_data_extraction_field_form.html:31
-#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:135
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:145
 msgid "saving…"
 msgstr ""
 
@@ -2350,7 +2411,7 @@ msgstr ""
 #: parsifal/reviews/planning/templates/planning/partial_planning_question_form.html:18
 #: parsifal/reviews/planning/templates/planning/partial_planning_risk_form.html:18
 #: parsifal/reviews/planning/templates/planning/partial_quality_assessment_question_form.html:18
-#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:138
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:148
 msgid "saved!"
 msgstr ""
 
@@ -2360,6 +2421,14 @@ msgstr ""
 #: parsifal/reviews/planning/templates/planning/partial_quality_assessment_answer_form.html:17
 #: parsifal/reviews/planning/templates/planning/partial_quality_assessment_question_form.html:21
 msgid "cancel"
+msgstr ""
+
+#: parsifal/reviews/planning/templates/planning/partial_data_extraction_suggested.html:20
+msgid "Field Description"
+msgstr ""
+
+#: parsifal/reviews/planning/templates/planning/partial_data_extraction_suggested.html:21
+msgid "Field Type"
 msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/partial_keyword_form.html:13
@@ -2391,6 +2460,14 @@ msgstr ""
 #: parsifal/reviews/planning/templates/planning/partial_planning_risk_form.html:15
 #: parsifal/reviews/planning/templates/planning/partial_quality_assessment_question_form.html:15
 msgid "saving..."
+msgstr ""
+
+#: parsifal/reviews/planning/templates/planning/partial_quality_assessment_question_suggested.html:20
+msgid "Question"
+msgstr ""
+
+#: parsifal/reviews/planning/templates/planning/partial_risks_suggested.html:29
+msgid "Risk"
 msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/planning_header.html:7
@@ -2566,7 +2643,7 @@ msgid ""
 msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:251
-#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:71
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:77
 msgid "Add Question"
 msgstr ""
 
@@ -2772,12 +2849,12 @@ msgid "Exclusion Criteria"
 msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:46
-#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:57
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:63
 msgid "Questions"
 msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:47
-#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:80
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:90
 msgid "Answers"
 msgstr ""
 
@@ -2785,38 +2862,79 @@ msgstr ""
 msgid "Score"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:86
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:53
+msgid "Share Quality Assessment"
+msgstr ""
+
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:81
+msgid "Import Questions"
+msgstr ""
+
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:96
 msgid "Weight"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:101
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:111
 msgid "Add Answer"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:105
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:115
 msgid "(Add Suggested Answers)"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:115
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:125
 msgid "Quality Assessment Scores"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:120
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:130
 msgid "Max Score"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:123
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:133
 msgid ""
 "Calculated based on the number of questions and on the answer of greater "
 "weight"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:127
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:137
 msgid "Cutoff Score"
 msgstr ""
 
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:163
+msgid "Import Quality Assessment Questions"
+msgstr ""
+
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:166
+msgid ""
+"Below you see the reviews that exported your quality assessment questions, "
+"choose one to import the questions for your review"
+msgstr ""
+
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:189
+msgid "Export Quality Assesment"
+msgstr ""
+
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:193
+msgid ""
+"Your Quality Assessment are already shared. Do you wanna make it private "
+"again?"
+msgstr ""
+
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:195
+msgid ""
+"If you agree, your Quality Assessment will be made known to other "
+"researchers to use them"
+msgstr ""
+
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:203
+msgid "Hide Quality Assessment"
+msgstr ""
+
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:205
+msgid "Export Quality Assessment"
+msgstr ""
+
 #: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:47
-#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:99
 msgid "Risks"
 msgstr ""
 
@@ -2829,32 +2947,35 @@ msgid "Import Risks"
 msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:69
-#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:119
+#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:113
 msgid "Share your Risks"
 msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:85
-msgid "Shared Risks"
+msgid "Import Shared Risks"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:98
-#: parsifal/reviews/reporting/templates/reporting/export.html:42
-#: parsifal/reviews/templates/reviews/review_header.html:14
-msgid "Review"
+#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:88
+msgid ""
+"Below you see the reviews that exported your Risks, choose one to import the "
+"risks for your review"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:127
-msgid "Do you want to share your risk definitions with other researchers?"
+#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:119
+msgid "Your Risks are already shared. Do you wanna make it private again?"
+msgstr ""
+
+#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:121
+msgid ""
+"If you agree, your Risks will be made known to other researchers to use them"
 msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:130
-msgid ""
-"Share only if your risks might be valid for other reviews and are not domain "
-"specific to your review."
+msgid "Hide Risks Fields"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:135
-msgid "Share"
+#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:132
+msgid "Export Risks"
 msgstr ""
 
 #: parsifal/reviews/planning/views.py:71
@@ -2868,11 +2989,11 @@ msgstr ""
 msgid "Your review have been saved successfully!"
 msgstr ""
 
-#: parsifal/reviews/planning/views.py:916
+#: parsifal/reviews/planning/views.py:858
 msgid "Cutoff score saved successfully!"
 msgstr ""
 
-#: parsifal/reviews/planning/views.py:953
+#: parsifal/reviews/planning/views.py:895
 msgid "Description and Type are required fields."
 msgstr ""
 
