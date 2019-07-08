@@ -14,7 +14,7 @@ from django.views.decorators.http import require_POST
 from django.core.mail import EmailMultiAlternatives
 
 from parsifal.reviews.models import Review, Tag
-from parsifal.reviews.decorators import main_author_required, author_required
+from parsifal.reviews.decorators import main_author_required, author_required, author_or_visitor_required
 from parsifal.reviews.forms import CreateReviewForm, ReviewForm
 
 
@@ -60,9 +60,8 @@ def new(request):
         form = CreateReviewForm()
     return render(request, 'reviews/new.html', { 'form': form })
 
-
-@author_required
 @login_required
+@author_or_visitor_required
 def review(request, username, review_name):
     review = Review.objects.get(name=review_name, author__username__iexact=username)
     if request.method == 'POST':
@@ -134,12 +133,12 @@ def add_author_to_review(request):
 @login_required
 @require_POST
 def add_visitor_to_review(request):
-    emails = request.POST.getlist('users')
+    emails = request.POST.getlist('visitors')
     review_id = request.POST.get('review-id')
     review = get_object_or_404(Review, pk=review_id)
-   
+
     visitors_added = []
-    
+
     visitors_invited = []
 
     inviter_name = request.user.profile.get_screen_name()
@@ -149,7 +148,7 @@ def add_visitor_to_review(request):
             user = User.objects.get(email__iexact=email)
             if user.id != review.author.id:
                 visitors_added.append(user.profile.get_screen_name())
-                review.co_authors.add(user)
+                review.visitors.add(user)
         except User.DoesNotExist:
             visitors_invited.append(email)
 
@@ -253,7 +252,7 @@ def save_tag(request):
     except:
         return HttpResponseBadRequest()
 
-@author_required
+@author_or_visitor_required
 @login_required
 def load_tags(request):
     '''

@@ -21,18 +21,18 @@ from django.db.models import Count
 from django.utils.html import escape
 
 from parsifal.reviews.models import *
-from parsifal.reviews.decorators import main_author_required, author_required
+from parsifal.reviews.decorators import main_author_required, author_required, author_or_visitor_required
 from parsifal.utils.elsevier.client import ElsevierClient
 from parsifal.utils.elsevier.exceptions import *
 
 from django.utils.translation import ugettext as _
 
-@author_required
+@author_or_visitor_required
 @login_required
 def conducting(request, username, review_name):
     return redirect(r('search_studies', args=(username, review_name)))
 
-@author_required
+@author_or_visitor_required
 @login_required
 def search_studies(request, username, review_name):
     review = get_object_or_404(Review, name=review_name, author__username__iexact=username)
@@ -149,7 +149,7 @@ def search_scopus(request):
 def search_science_direct(request):
     return elsevier_search(request, 'science_direct')
 
-@author_required
+@author_or_visitor_required
 @login_required
 def import_studies(request, username, review_name):
     review = Review.objects.get(name=review_name, author__username__iexact=username)
@@ -164,7 +164,7 @@ def import_studies(request, username, review_name):
             'sources': sources
         })
 
-@author_required
+@author_or_visitor_required
 @login_required
 def study_selection(request, username, review_name):
     review = Review.objects.get(name=review_name, author__username__iexact=username)
@@ -230,7 +230,7 @@ def build_quality_assessment_table(request, review, order):
     else:
         return ''
 
-@author_required
+@author_or_visitor_required
 @login_required
 def quality_assessment(request, username, review_name):
     review = Review.objects.get(name=review_name, author__username__iexact=username)
@@ -373,7 +373,7 @@ def build_data_extraction_table(review, is_finished):
     else:
         return u''
 
-@author_required
+@author_or_visitor_required
 @login_required
 def data_extraction(request, username, review_name):
     review = Review.objects.get(name=review_name, author__username__iexact=username)
@@ -516,7 +516,7 @@ def import_bibtex_raw_content(request):
 
     return redirect(r('import_studies', args=(review.author.username, review.name)))
 
-@author_required
+@author_or_visitor_required
 @login_required
 def source_articles(request):
     review_id = request.GET['review-id']
@@ -533,7 +533,7 @@ def source_articles(request):
     return render(request, 'conducting/partial_conducting_articles.html', {'review': review, 'source': source, 'articles': articles})
 
 
-@author_required
+@author_or_visitor_required
 @login_required
 def article_details(request):
     review_id = request.GET['review-id']
@@ -687,7 +687,7 @@ def save_quality_assessment(request):
         return HttpResponseBadRequest()
 
 
-@author_required
+@author_or_visitor_required
 @login_required
 def quality_assessment_detailed(request):
     try:
@@ -701,7 +701,7 @@ def quality_assessment_detailed(request):
         return HttpResponseBadRequest()
 
 
-@author_required
+@author_or_visitor_required
 @login_required
 def quality_assessment_summary(request):
     try:
@@ -858,7 +858,7 @@ def new_article(request):
     context = RequestContext(request, {'article': article})
     return render_to_response('conducting/partial_conducting_article_details.html', context)
 
-@author_required
+@author_or_visitor_required
 @login_required
 def data_analysis(request, username, review_name):
     review = get_object_or_404(Review, name=review_name, author__username__iexact=username)

@@ -19,36 +19,36 @@ from django.utils.html import escape
 
 from parsifal.reviews.models import *
 from parsifal.reviews.planning.forms import KeywordForm, SynonymForm
-from parsifal.reviews.decorators import main_author_required, author_required
+from parsifal.reviews.decorators import main_author_required, author_required, author_or_visitor_required
 
 
 from django.utils.translation import ugettext as _
 
 
-@author_required
+@author_or_visitor_required
 @login_required
 def planning(request, username, review_name):
     return redirect(r('protocol', args=(username, review_name)))
 
-@author_required
+@author_or_visitor_required
 @login_required
 def protocol(request, username, review_name):
     review = get_object_or_404(Review, name=review_name, author__username__iexact=username)
     return render(request, 'planning/protocol.html', { 'review': review })
 
-@author_required
+@author_or_visitor_required
 @login_required
 def quality_assessment_checklist(request, username, review_name):
     review = get_object_or_404(Review, name=review_name, author__username__iexact=username)
     return render(request, 'planning/quality_assessment_checklist.html', { 'review': review })
 
-@author_required
+@author_or_visitor_required
 @login_required
 def risks_to_review_validity(request, username, review_name):
     review = get_object_or_404(Review, name=review_name, author__username__iexact=username)
     return render(request, 'planning/risks_to_review_validity.html', { 'review': review })
 
-@author_required
+@author_or_visitor_required
 @login_required
 def data_extraction_form(request, username, review_name):
     review = get_object_or_404(Review, name=review_name, author__username__iexact=username)

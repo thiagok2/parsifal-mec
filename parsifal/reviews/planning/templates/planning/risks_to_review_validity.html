@@ -1,7 +1,5 @@
 {% extends 'base.html' %}
-{% load i18n %}
-
-{% load humanize %}
+{% load i18n humanize is_visitor %}
 
 {% load staticfiles %}
 
@@ -17,6 +15,9 @@
 
 {% block javascript %}
   <script src="{% static 'js/planning_risk.js' %}?_=2"></script>
+  {% if user|is_visitor:review %}
+    <script src="{% static 'js/user_is_visitor.js' %}?v=1"></script>
+  {% endif %}
   <script>
     $(function () {
       $("#protocol").affix({
@@ -112,15 +113,15 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title">{% trans 'Share your Risks' %}</h4>
           </div>
-        
+
             <div class="modal-body">
-            
+
             {% if review.export_risks %}
               <p>{% trans 'Your Risks are already shared. Do you wanna make it private again?' %}</p>
             {% else %}
               <p>{% trans 'If you agree, your Risks will be made known to other researchers to use them' %}</p>
             {% endif %}
-            
+
             </div>
             <div class="modal-footer">
                 <form id="share-risks-form">
@@ -134,9 +135,9 @@
 	              </button>
 	            </form>
             </div>
-          
+
         </div>
-        
+
       </div>
     </div>
 

@@ -81,7 +81,7 @@ class Profile(models.Model):
         url = self.url
         if "http://" not in self.url and "https://" not in self.url and len(self.url) > 0:
             url = "http://" + str(self.url)
-        return url 
+        return url
 
     def get_picture(self):
         no_picture = django_settings.STATIC_URL + 'img/user.png'
@@ -134,6 +134,15 @@ class Profile(models.Model):
         for r in co_author_reviews: user_reviews.append(r)
         user_reviews.sort(key=lambda r: r.last_update, reverse=True)
         return user_reviews
+
+    def get_invited_reviews(self):
+        invited_reviews = []
+        reviews = Review.objects.filter(visitors=self.user)
+        return reviews
+
+    def is_visitor(self, review):
+        Review.is_visitors(review, self.user)
+
 
 def create_user_profile(sender, instance, created, **kwargs):
     if created:

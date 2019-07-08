@@ -1,7 +1,5 @@
 {% extends 'base.html' %}
-{% load i18n %}
-
-{% load humanize %}
+{% load i18n humanize is_visitor %}
 
 {% load staticfiles %}
 
@@ -23,6 +21,9 @@
   <script src="{% static 'js/planning_source.js' %}?v=2"></script>
   <script src="{% static 'js/planning_search_string.js' %}?v=1"></script>
   <script src="{% static 'js/planning_criteria.js' %}?v=1"></script>
+  {% if user|is_visitor:review %}
+    <script src="{% static 'js/user_is_visitor.js' %}?v=1"></script>
+  {% endif %}
   <script>
     $(function () {
       $("#protocol").affix({
@@ -47,6 +48,7 @@
           <h3 class="panel-title">{% trans 'Protocol' %}</h3>
         </div>
         <div class="list-group">
+
           <a href="#objective-section" class="list-group-item">{% trans 'Objectives' %}</a>
           <a href="#picoc-section" class="list-group-item">{% trans 'PICOC' %}</a>
           <a href="#question-section" class="list-group-item">{% trans 'Research Questions' %}</a>
@@ -349,7 +351,7 @@
             </h3>
           </div>
           <div class="panel-body">
-            {% trans "To edit or remove a certain keyword or synonym you may click on it's description to enable the field." %} 
+            {% trans "To edit or remove a certain keyword or synonym you may click on it's description to enable the field." %}
           </div>
           <table class="table" id="table-keywords">
             <thead>
