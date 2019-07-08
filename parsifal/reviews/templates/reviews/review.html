@@ -114,7 +114,56 @@
               </div>
             </form>
           </div>
+         
         {% endif %}
+      </div>
+      
+      <div class="panel panel-default">
+      	<div class="panel-heading">
+      		<h3 class="panel-title">{% trans 'Visitors' %}</h3>
+      	</div>
+      	
+      	 <ul class="list-group authors">
+      	 	{% for author in review.co_authors.all %}
+            <li  class="list-group-item" data-user-id="{{ author.id }}">
+              <a href="{% url 'reviews' author.username %}">{{ author.profile.get_screen_name }}</a>
+            </li>
+          	{% endfor %}
+      	 </ul>
+          
+        <div class="panel-footer">
+           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-visitor-modal">
+             <span class="glyphicon glyphicon-plus"></span>
+             {% trans 'Add visitor' %}
+           </button>
+           <form method="post" action="{% url 'reviews:add_visitor_to_review' %}">
+             {% csrf_token %}
+             <input type="hidden" name="review-id" value="{{ review.pk }}">
+             <div class="modal fade" id="add-visitor-modal">
+               <div class="modal-dialog">
+                 <div class="modal-content">
+                   <div class="modal-header">
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                     <h4 class="modal-title">{% trans 'Add visitor' %}</h4>
+                   </div>
+                   <div class="modal-body">
+                     <div class="alert alert-info">
+                       {% trans "You may add someone that doesn't have a Parsifal Account. Just type his email adress and we will send an invitation." %}
+                     </div>
+                     <div class="form-group">
+                       <label for="visitors" class="control-label">{% trans 'Contacts' %}</label>
+                       <select id="visitors" name="visitors" class="contacts" placeholder="{% trans 'Invite someone...' %}"></select>
+                     </div>
+                   </div>
+                   <div class="modal-footer">
+                     <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Cancel' %}</button>
+                     <button type="submit" class="btn btn-success">{% trans 'Send invitation' %}</button>
+                   </div>
+                 </div>
+               </div>
+             </div>
+        	</form>
+        </div>
       </div>
     </div>
   </div>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-08 00:02+0000\n"
+"POT-Creation-Date: 2019-07-08 00:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1709,6 +1709,7 @@ msgstr ""
 #: parsifal/reviews/planning/templates/planning/partial_keyword_form.html:66
 #: parsifal/reviews/templates/reviews/new.html:22
 #: parsifal/reviews/templates/reviews/review.html:109
+#: parsifal/reviews/templates/reviews/review.html:159
 msgid "Cancel"
 msgstr ""
 
@@ -3069,7 +3070,7 @@ msgid "Once you delete a review, there is no going back. Please be certain."
 msgstr ""
 
 #: parsifal/reviews/settings/templates/settings/review_settings.html:67
-msgid "Publish Protocol"
+msgid "Publish"
 msgstr ""
 
 #: parsifal/reviews/settings/templates/settings/review_settings.html:68
@@ -3147,6 +3148,7 @@ msgid ""
 msgstr ""
 
 #: parsifal/reviews/templates/reviews/review.html:104
+#: parsifal/reviews/templates/reviews/review.html:154
 msgid "Contacts"
 msgstr ""
 
@@ -3155,7 +3157,27 @@ msgid "Pick an author or invite someone..."
 msgstr ""
 
 #: parsifal/reviews/templates/reviews/review.html:110
+#: parsifal/reviews/templates/reviews/review.html:160
 msgid "Send invitation"
+msgstr ""
+
+#: parsifal/reviews/templates/reviews/review.html:123
+msgid "Visitors"
+msgstr ""
+
+#: parsifal/reviews/templates/reviews/review.html:137
+#: parsifal/reviews/templates/reviews/review.html:147
+msgid "Add visitor"
+msgstr ""
+
+#: parsifal/reviews/templates/reviews/review.html:151
+msgid ""
+"You may add someone that doesn't have a Parsifal Account. Just type his "
+"email adress and we will send an invitation."
+msgstr ""
+
+#: parsifal/reviews/templates/reviews/review.html:155
+msgid "Invite someone..."
 msgstr ""
 
 #: parsifal/reviews/templates/reviews/review_tag.html:6

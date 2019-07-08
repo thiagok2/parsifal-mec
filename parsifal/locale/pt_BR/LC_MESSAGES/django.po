@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-08 00:02+0000\n"
+"POT-Creation-Date: 2019-07-08 00:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1778,6 +1778,7 @@ msgstr "Cole o conteúdo do arquivo BibTeX"
 #: parsifal/reviews/planning/templates/planning/partial_keyword_form.html:66
 #: parsifal/reviews/templates/reviews/new.html:22
 #: parsifal/reviews/templates/reviews/review.html:109
+#: parsifal/reviews/templates/reviews/review.html:159
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -3321,7 +3322,7 @@ msgstr "(sair)"
 #: parsifal/reviews/templates/reviews/review.html:87
 #: parsifal/reviews/templates/reviews/review.html:97
 msgid "Add author"
-msgstr "Add autor"
+msgstr "Adicionar autor"
 
 #: parsifal/reviews/templates/reviews/review.html:101
 msgid ""
@@ -3332,6 +3333,7 @@ msgstr ""
 "endereço de e-mail e nós enviaremos um convite. :)"
 
 #: parsifal/reviews/templates/reviews/review.html:104
+#: parsifal/reviews/templates/reviews/review.html:154
 msgid "Contacts"
 msgstr "Contatos"
 
@@ -3340,8 +3342,38 @@ msgid "Pick an author or invite someone..."
 msgstr "Escolha um autor ou convide alguém..."
 
 #: parsifal/reviews/templates/reviews/review.html:110
+#: parsifal/reviews/templates/reviews/review.html:160
 msgid "Send invitation"
 msgstr "Enviar convite"
+
+#: parsifal/reviews/templates/reviews/review.html:123
+msgid "Visitors"
+msgstr ""
+
+#: parsifal/reviews/templates/reviews/review.html:137
+#: parsifal/reviews/templates/reviews/review.html:147
+#, fuzzy
+#| msgid "Add author"
+msgid "Add visitor"
+msgstr "Adicionar autor"
+
+#: parsifal/reviews/templates/reviews/review.html:151
+#, fuzzy
+#| msgid ""
+#| "You may add someone that doesn't have a Parsifal Account. Just type his "
+#| "email adress and we will send an invitation. :)"
+msgid ""
+"You may add someone that doesn't have a Parsifal Account. Just type his "
+"email adress and we will send an invitation."
+msgstr ""
+"Você pode adicionar alguém que não tenha uma conta Parsifal. Basta digitar "
+"endereço de e-mail e nós enviaremos um convite. :)"
+
+#: parsifal/reviews/templates/reviews/review.html:155
+#, fuzzy
+#| msgid "Pick an author or invite someone..."
+msgid "Invite someone..."
+msgstr "Escolha um autor ou convide alguém..."
 
 #: parsifal/reviews/templates/reviews/review_tag.html:6
 msgid "Review tags"

@@ -50,6 +50,7 @@ class Review(models.Model):
     sources = models.ManyToManyField(Source)
     status = models.CharField(max_length=1, choices=REVIEW_STATUS, default=UNPUBLISHED)
     co_authors = models.ManyToManyField(User, related_name='co_authors')
+    visitors = models.ManyToManyField(User, related_name='visitors')
     quality_assessment_cutoff_score = models.FloatField(default=0.0)
     population = models.CharField(max_length=200, blank=True)
     intervention = models.CharField(max_length=200, blank=True)
@@ -95,6 +96,14 @@ class Review(models.Model):
             return True
         for co_author in self.co_authors.all():
             if user.id == co_author.id:
+                return True
+        return False
+    
+    def is_visitors(self, user):
+        if user.id == self.author.id:
+            return True
+        for visitor in self.visitors.all():
+            if user.id == visitor.id:
                 return True
         return False
 
