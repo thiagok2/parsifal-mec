@@ -56,6 +56,9 @@ python manage.py compilemessages
 
 
 #run migrate
+
+python manage.py makemigrations
+
 python manage.py migrate
 
 

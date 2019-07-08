@@ -130,6 +130,59 @@ def add_author_to_review(request):
 
     return redirect(r('review', args=(review.author.username, review.name)))
 
+@main_author_required
+@login_required
+@require_POST
+def add_visitor_to_review(request):
+    emails = request.POST.getlist('users')
+    review_id = request.POST.get('review-id')
+    review = get_object_or_404(Review, pk=review_id)
+   
+    visitors_added = []
+    
+    visitors_invited = []
+
+    inviter_name = request.user.profile.get_screen_name()
+
+    for email in emails:
+        try:
+            user = User.objects.get(email__iexact=email)
+            if user.id != review.author.id:
+                visitors_added.append(user.profile.get_screen_name())
+                review.co_authors.add(user)
+        except User.DoesNotExist:
+            visitors_invited.append(email)
+
+            subject = u'{0} wants to add you as visitor on the systematic literature review {1}'.format(inviter_name, review.title)
+            from_email = u'{0} via Parsifal <noreply@parsif.al>'.format(inviter_name)
+
+            text_content = u'''Hi {0},
+            {1} invited you to a Parsifal Systematic Literature Review called "{2}".
+            View the review at https://parsif.al/{3}/{4}/'''.format(email, inviter_name, review.title, request.user.username, review.name)
+
+            html_content = u'''<p>Hi {0},</p>
+            <p>{1} invited you to a Parsifal Systematic Literature Review called "{2}".</p>
+            <p>View the review at https://parsif.al/{3}/{4}/</p>
+            <p>Sincerely,</p>
+            <p>The Parsifal Team</p>'''.format(email, inviter_name, review.title, request.user.username, review.name)
+
+            msg = EmailMultiAlternatives(subject, text_content, from_email, [email])
+            msg.attach_alternative(html_content, 'text/html')
+            msg.send()
+
+    review.save()
+
+    if not visitors_added and not visitors_invited:
+        messages.info(request, u'No visitor invited or added to the review. Nothing really changed.')
+
+    if visitors_added:
+        messages.success(request, u'The visitor {0} were added successfully.'.format(u', '.join(visitors_added)))
+
+    if visitors_invited:
+        messages.success(request, u'{0} were invited successfully.'.format(u', '.join(visitors_invited)))
+
+    return redirect(r('review', args=(review.author.username, review.name)))
+
 
 @main_author_required
 @login_required

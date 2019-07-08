@@ -28,7 +28,7 @@ $(function () {
   var REGEX_EMAIL = '([a-z0-9!#$%&\'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&\'*+/=?^_`{|}~-]+)*@' +
                     '(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)';
 
-  $("#users").selectize({
+  $(".contacts").selectize({
       persist: false,
       maxItems: null,
       valueField: 'email',
