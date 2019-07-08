@@ -69,9 +69,12 @@ def transfer(request):
     except Exception, e:
         return HttpResponseBadRequest('Something went wrong.')
 
-def public_protocol(request):
+def publish_protocol(request):
     review_id = request.POST['review-id']
     review = Review.objects.get(pk=review_id)
+    review.export_protocol = True if not review.export_protocol else False
+    review.save()
+    
     return redirect('settings', review.author.username, review.name)
 
 @main_author_required
