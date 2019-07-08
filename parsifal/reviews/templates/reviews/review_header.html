@@ -3,7 +3,7 @@
 {% load humanize %}
 <h3 class="review-title">
   {% if user == review.author %}
-    <a href="{% url 'settings' review.author.username review.name %}" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-cog"></span>{% trans 'Review settings' %}</a>
+    <a href="{% url 'settings' review.author.username review.name %}" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-cog"></span> {% trans 'Review settings' %}</a>
   {% endif %}
   <a href="{{ review.author.get_absolute_url }}" class="review-title-user">{{ review.author.profile.get_screen_name }}</a> 
   <span class="text-muted">/</span>

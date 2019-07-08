@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-07 23:12+0000\n"
+"POT-Creation-Date: 2019-07-08 00:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3055,8 +3055,8 @@ msgid "Transfer"
 msgstr ""
 
 #: parsifal/reviews/settings/templates/settings/review_settings.html:58
-#: parsifal/reviews/settings/templates/settings/review_settings.html:77
-#: parsifal/reviews/settings/templates/settings/review_settings.html:84
+#: parsifal/reviews/settings/templates/settings/review_settings.html:82
+#: parsifal/reviews/settings/templates/settings/review_settings.html:89
 msgid "Transfer ownership"
 msgstr ""
 
@@ -3065,7 +3065,7 @@ msgid "Transfer this review to another user."
 msgstr ""
 
 #: parsifal/reviews/settings/templates/settings/review_settings.html:63
-#: parsifal/reviews/settings/templates/settings/review_settings.html:110
+#: parsifal/reviews/settings/templates/settings/review_settings.html:115
 #, fuzzy
 #| msgid "New review"
 msgid "Delete this review"
@@ -3075,23 +3075,54 @@ msgstr "Nova ??"
 msgid "Once you delete a review, there is no going back. Please be certain."
 msgstr ""
 
-#: parsifal/reviews/settings/templates/settings/review_settings.html:80
+#: parsifal/reviews/settings/templates/settings/review_settings.html:67
+msgid "Publish Protocol"
+msgstr ""
+
+#: parsifal/reviews/settings/templates/settings/review_settings.html:68
+msgid "Publish protocol of review"
+msgstr ""
+
+#: parsifal/reviews/settings/templates/settings/review_settings.html:69
+msgid ""
+"Once you publish the protocol of review, other researchers might create "
+"other reviews based on it."
+msgstr ""
+
+#: parsifal/reviews/settings/templates/settings/review_settings.html:85
 msgid "New owner's Parsifal username:"
 msgstr ""
 
-#: parsifal/reviews/settings/templates/settings/review_settings.html:102
+#: parsifal/reviews/settings/templates/settings/review_settings.html:107
 msgid ""
 "This action <strong>CANNOT</strong> be undone. This will permanently delete "
 "the"
 msgstr ""
 
-#: parsifal/reviews/settings/templates/settings/review_settings.html:102
+#: parsifal/reviews/settings/templates/settings/review_settings.html:107
 msgid "review and all associated data."
 msgstr ""
 
-#: parsifal/reviews/settings/templates/settings/review_settings.html:105
+#: parsifal/reviews/settings/templates/settings/review_settings.html:110
+#: parsifal/reviews/settings/templates/settings/review_settings.html:136
 msgid "I understand the consequences."
 msgstr ""
+
+#: parsifal/reviews/settings/templates/settings/review_settings.html:133
+msgid ""
+"This action <strong>CANNOT</strong> be undone. This will permanently open "
+"the protocol of "
+msgstr ""
+
+#: parsifal/reviews/settings/templates/settings/review_settings.html:133
+msgid " and all planning data for other researchers."
+msgstr ""
+
+#: parsifal/reviews/settings/templates/settings/review_settings.html:141
+#, fuzzy
+#| msgid "New review"
+msgid "Publish protocol this review"
+msgstr "Nova ??"
 
 #: parsifal/reviews/templates/reviews/new.html:16
 #, fuzzy
