@@ -25,6 +25,14 @@
           $("#confirm-deletion").prop("disabled", true);
         }
       });
+      $("#enable-confirm-publish").click(function () {
+          if ($(this).is(":checked")) {
+            $("#confirm-publish").prop("disabled", false);
+          }
+          else {
+            $("#confirm-publish").prop("disabled", true);
+          }
+        });
     });
   </script>
 {% endblock javascript %}
@@ -133,12 +141,12 @@
             <p>{% trans 'This action <strong>CANNOT</strong> be undone. This will permanently open the protocol of ' %} <strong>{{ review.title }}</strong> {% trans ' and all planning data for other researchers.' %}</p>
             <div class="checkbox">
               <label>
-                <input type="checkbox" id="enable-confirm-deletion"> {% trans 'I understand the consequences.' %}
+                <input type="checkbox" id="enable-confirm-publish"> {% trans 'I understand the consequences.' %}
               </label>
             </div>
           </div>
           <div class="modal-footer">
-            <button type="submit" id="confirm-deletion" class="btn btn-danger btn-block" disabled>{% trans 'Publish protocol this review' %}</button>
+            <button type="submit" id="confirm-publish" class="btn btn-danger btn-block" disabled>{% trans 'Publish protocol this review' %}</button>
           </div>
         </div>
       </div>
