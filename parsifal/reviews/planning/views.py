@@ -545,7 +545,7 @@ def save_risk(request):
             risk = Risk(review=review)
         risk.risk = description[:500]
         risk.save()
-        
+
         context = RequestContext(request, {'risk':risk})
         return render_to_response('planning/partial_planning_risk.html', context)
     except:
@@ -773,6 +773,9 @@ def save_quality_assessment_answer(request):
         review_id = request.POST['review-id']
         quality_answer_id = request.POST['quality-answer-id']
 
+        print 'desc', description
+        print 'wei', weight
+
         weight = weight.replace(',', '.')
         try:
             weight = float(weight)
@@ -805,6 +808,19 @@ def remove_quality_assessment_answer(request):
         quality_answer.delete()
         return HttpResponse()
     except:
+        return HttpResponseBadRequest()
+
+@author_required
+@login_required
+def suggested_quality_assessment_answers(request):
+    try:
+        review_id = request.GET['review-id']
+        suggested_reviews = Review.objects.filter(export_qualityassessment=True).exclude(id=review_id)
+
+        context = RequestContext(request, {'suggested_reviews': suggested_reviews})
+        return render_to_response('planning/partial_quality_assessment_answer_suggested.html', context)
+    except Exception as e:
+        print e
         return HttpResponseBadRequest()
 
 

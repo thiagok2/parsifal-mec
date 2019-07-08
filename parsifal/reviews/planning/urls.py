@@ -24,7 +24,7 @@ urlpatterns = patterns('parsifal.reviews.planning.views',
     url(r'^suggested_risks/$', 'suggested_risks', name='suggested_risks'),
     url(r'^share_risks/$', 'share_risks', name='share_risks'),
 
-    
+
     url(r'^import_pico_keywords/$', 'import_pico_keywords', name='import_pico_keywords'),
     url(r'^add_keyword/$', 'add_keyword', name='add_keyword'),
     url(r'^edit_keyword/$', 'edit_keyword', name='edit_keyword'),
@@ -41,6 +41,7 @@ urlpatterns = patterns('parsifal.reviews.planning.views',
     url(r'^edit_quality_assessment_answer/$', 'edit_quality_assessment_answer', name='edit_quality_assessment_answer'),
     url(r'^save_quality_assessment_answer/$', 'save_quality_assessment_answer', name='save_quality_assessment_answer'),
     url(r'^remove_quality_assessment_answer/$', 'remove_quality_assessment_answer', name='remove_quality_assessment_answer'),
+    url(r'^suggested_quality_assessment_answers/$', 'suggested_quality_assessment_answers', name='suggested_quality_assessment_answers'),
     url(r'^add_suggested_answer/$', 'add_suggested_answer', name='add_suggested_answer'),
     url(r'^add_new_data_extraction_field/$', 'add_new_data_extraction_field', name='add_new_data_extraction_field'),
     url(r'^edit_data_extraction_field/$', 'edit_data_extraction_field', name='edit_data_extraction_field'),
