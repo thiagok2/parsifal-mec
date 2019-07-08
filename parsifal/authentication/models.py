@@ -140,10 +140,6 @@ class Profile(models.Model):
         reviews = Review.objects.filter(visitors=self.user)
         return reviews
 
-    def is_visitor(self, review):
-        Review.is_visitors(review, self.user)
-
-
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance)
