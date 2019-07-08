@@ -1,8 +1,5 @@
 {% extends 'base.html' %}
-{% load i18n %}
-
-{% load humanize %}
-{% load staticfiles %}
+{% load i18n staticfiles humanize is_visitor %}
 
 {% block title %}{{ review.title }}{% endblock %}
 
@@ -20,6 +17,9 @@
   </script>
   <script src="{% static 'js/review.js' %}?_=1"></script>
   <script src="{% static 'js/review_tag.js' %}?v=1"></script>
+  {% if user|is_visitor:review %}
+    <script src="{% static 'js/user_is_visitor.js' %}?v=1"></script>
+  {% endif %}
 {% endblock %}
 
 {% block content %}
@@ -47,7 +47,7 @@
             	<span class="glyphicon glyphicon-ok"></span>
             	{% trans 'Save' %}
           	</button>
-          
+
          	<button type="button" class="btn btn-secondary pull-right" id="btn-import-protocol" data-toggle="modal" data-target="#modal-suggested-protocols">
             	<span class="glyphicon glyphicon-import"></span>
                	{% trans 'Import Protocol' %}
@@ -119,23 +119,23 @@
               </div>
             </form>
           </div>
-         
+
         {% endif %}
       </div>
-      
+
       <div class="panel panel-default">
       	<div class="panel-heading">
       		<h3 class="panel-title">{% trans 'Visitors' %}</h3>
       	</div>
-      	
-      	 <ul class="list-group authors">
-      	 	{% for author in review.co_authors.all %}
-            <li  class="list-group-item" data-user-id="{{ author.id }}">
-              <a href="{% url 'reviews' author.username %}">{{ author.profile.get_screen_name }}</a>
+
+      	 <ul class="list-group visitors">
+      	 	{% for visitor in review.visitors.all %}
+            <li  class="list-group-item" data-user-id="{{ visitor.id }}">
+              <a href="{% url 'reviews' visitor.username %}">{{ visitor.profile.get_screen_name }}</a>
             </li>
           	{% endfor %}
       	 </ul>
-          
+
         <div class="panel-footer">
            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-visitor-modal">
              <span class="glyphicon glyphicon-plus"></span>
@@ -172,7 +172,7 @@
       </div>
     </div>
   </div>
-  
+
   <section id="sources-section">
     <div class="modal fade" id="modal-suggested-protocols">
       <div class="modal-dialog">

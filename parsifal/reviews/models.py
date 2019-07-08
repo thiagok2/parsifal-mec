@@ -99,10 +99,8 @@ class Review(models.Model):
             if user.id == co_author.id:
                 return True
         return False
-    
+
     def is_visitors(self, user):
-        if user.id == self.author.id:
-            return True
         for visitor in self.visitors.all():
             if user.id == visitor.id:
                 return True

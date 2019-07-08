@@ -50,6 +50,7 @@ def get_following_feeds(user):
 def home(request):
     if request.user.is_authenticated():
         user_reviews = request.user.profile.get_reviews()
+        invited_reviews = request.user.profile.get_invited_reviews()
         feeds = get_following_feeds(request.user)
         try:
             latest_news = Entry.objects.filter(status=Entry.PUBLISHED).order_by('-start_publication',)[0]
@@ -57,6 +58,7 @@ def home(request):
             latest_news = None
         return render(request, 'core/home.html', {
                 'user_reviews': user_reviews,
+                'invited_reviews': invited_reviews,
                 'feeds': feeds,
                 'latest_news': latest_news
             })

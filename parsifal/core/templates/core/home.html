@@ -42,6 +42,19 @@
           {% endfor %}
         </div>
       </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">{% trans 'Reviews you are invited' %}</h3>
+        </div>
+        <div class="list-group">
+          {% for review in invited_reviews %}
+            <a href="/{{ review.author.username }}/{{ review.name }}/" class="list-group-item">{{ review.title }}</a>
+          {% empty %}
+            <p class="list-group-item">{% trans "You don't have any systematic literature review yet." %}</p>
+          {% endfor %}
+        </div>
+      </div>
     </div>
   </div>
 {% endblock content %}
