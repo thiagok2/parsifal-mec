@@ -72,9 +72,20 @@
         <p style="margin-bottom: 0;">{% trans 'Once you delete a review, there is no going back. Please be certain.' %}</p>
       </li>
       <li class="list-group-item">
-        <button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target="#public-protocol">{% trans 'Publish' %}</button>
+        <button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target="#public-protocol">
+        	{% if review.export_protocol %}
+              {% trans 'Unpublish' %}
+            {% else %}
+              {% trans 'Publish' %}
+            {% endif %}
+        </button>
         <p><strong>{% trans 'Publish protocol of review' %}</strong></p>
-        <p style="margin-bottom: 0;">{% trans 'Once you publish the protocol of review, other researchers might create other reviews based on it.' %}</p>
+        <p style="margin-bottom: 0;">
+        	{% if review.export_protocol %}
+              {% trans 'Once you <b>unpublish</b> the protocol of review, news reviews may not be based on your protocol..' %}</p>
+            {% else %}
+              {% trans 'Once you <b>publish</b> the protocol of review, other researchers might create other reviews based on it.' %}</p>
+            {% endif %}
       </li>
     </ul>
   </div>
@@ -127,7 +138,7 @@
     </div>
   </form>
   
-  <form method="post" action="{% url 'public_protocol' %}">
+  <form method="post" action="{% url 'publish_protocol' %}">
     {% csrf_token %}
     <input type="hidden" name="review-id" value="{{ review.pk }}">
     <div class="modal fade" id="public-protocol" tabindex="-1" role="dialog" aria-labelledby="public-protocol-title" aria-hidden="true">
@@ -138,7 +149,13 @@
             <h4 class="modal-title" id="delete-review-title">Are you sure?</h4>
           </div>
           <div class="modal-body">
-            <p>{% trans 'This action <strong>CANNOT</strong> be undone. This will permanently open the protocol of ' %} <strong>{{ review.title }}</strong> {% trans ' and all planning data for other researchers.' %}</p>
+          	{% if review.export_protocol %}
+              	<p>{% trans 'This will <b>close</b> the protocol of ' %} <strong>{{ review.title }}</strong> {% trans ' and all planning data for other researchers.' %}</p>
+            {% else %}
+                <p>{% trans 'This will <b>open</b> the protocol of ' %} <strong>{{ review.title }}</strong> {% trans ' and all planning data for other researchers.' %}</p>
+            {% endif %}
+          
+            
             <div class="checkbox">
               <label>
                 <input type="checkbox" id="enable-confirm-publish"> {% trans 'I understand the consequences.' %}
