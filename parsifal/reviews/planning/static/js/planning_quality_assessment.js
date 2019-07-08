@@ -339,6 +339,72 @@ $(function () {
     });
   });
 
+  $("table#tbl-import-quality-answers").on("click", "td#import-quality-answers", function () {
+    var exported_review_id = $(this)[0].parentElement.children[0].innerHTML;
+    var answers = $("#form-suggested-quality-answers-"+exported_review_id).serializeArray();
+    var review_id = $("#review-id").val();
+
+    console.log('rid', answers)
+
+    answers_ids = []
+    $.each(answers, function(i, answer) {
+        answer.name == 'id' ? answers_ids.push(answer.value) : null
+    });
+
+    for (f of answers_ids) {
+        var step_answers = { id: f }
+        $.each(answers, function(i, answer) {
+            if (answer.name == 'description-'+f) step_answers.description = answer.value
+            if (answer.name == 'weight-'+f) step_answers.weight = answer.value
+            if (answer.name == 'csrfmiddlewaretoken') step_answers.csrf_token = answer.value
+        });
+
+        console.log('ans', step_answers.weight)
+        console.log('desc2', step_answers.description)
+
+        $.ajax({
+            url: '/reviews/planning/save_quality_assessment_answer/',
+            data: {'review-id': review_id,
+              'description': step_answers.description,
+              'weight': step_answers.weight,
+              'quality-answer-id': 'None',
+              'csrfmiddlewaretoken': step_answers.csrf_token
+            },
+            type: 'post',
+            cache: false,
+            success: function (data) {
+                $("#tbl-quality-answers tbody").append(data);
+                $("#modal-suggested-quality-answers").modal("hide");
+                update_max_score();
+            }
+          });
+    }
+   });
+
+   $("#btn-import-quality-answers").click(function () {
+    $.ajax({
+      url: '/reviews/planning/suggested_quality_assessment_answers/',
+      data: { 'review-id': $('#review-id').val() },
+      cache: false,
+      type: 'get',
+      success: function (data) {
+
+        $("#modal-suggested-quality-answers table tbody").html(data);
+        $("#modal-suggested-quality-answers").before("<div class='shade'></div>");
+        $("#modal-suggested-quality-answers").slideDown(400, function () {
+          $("body").addClass("modal-open");
+        });
+      }
+    });
+  });
+
+  $("table#tbl-import-quality-answers").on("click", "tbody tr", function () {
+    var hiddenClass = $(this)[0].nextElementSibling
+    hiddenClass.className == "hidden"
+    ? hiddenClass.className = ""
+    : hiddenClass.className = "hidden"
+  });
+
   $("#add-suggested-answers").click(function () {
     $.ajax({
       url: '/reviews/planning/add_suggested_answer/',
