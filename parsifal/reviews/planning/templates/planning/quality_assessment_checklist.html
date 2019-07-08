@@ -110,6 +110,10 @@
               <span class="glyphicon glyphicon-plus"></span>
               {% trans 'Add Answer' %}
             </button>
+            <button type="button" class="btn btn-primary" id="btn-import-quality-answers" data-toggle="modal" data-target="#modal-suggested-quality-answers">
+              <span class="glyphicon glyphicon-import"></span>
+              {% trans 'Import Answers' %}
+            </button>
             {% if not review.get_quality_assessment_answers %}
               <button type="button" class="btn btn-link" id="add-suggested-answers">
               {% trans '(Add Suggested Answers)' %}
@@ -165,6 +169,32 @@
             <div class="modal-body">
               <p style="margin-bottom: 20px;">{% trans 'Below you see the reviews that exported your quality assessment questions, choose one to import the questions for your review' %}</p>
               <table class="table" id="tbl-import-quality-questions">
+                <thead>
+                  <tr>
+                    <th>{% trans 'ID' %}</th>
+                    <th>{% trans 'Review' %}</th>
+                    <th>{% trans 'Author' %}</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="modal-suggested-quality-answers">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">{% trans 'Import Quality Assessment Answers' %}</h4>
+            </div>
+            <div class="modal-body">
+              <p style="margin-bottom: 20px;">{% trans 'Below you see the reviews that exported your quality assessment answers, choose one to import the answers for your review' %}</p>
+              <table class="table" id="tbl-import-quality-answers">
                 <thead>
                   <tr>
                     <th>{% trans 'ID' %}</th>

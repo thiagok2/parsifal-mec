@@ -1,0 +1,35 @@
+{% load i18n %}
+
+{% for review in suggested_reviews %}
+<tr id="exported-review" style="cursor: pointer;">
+    <td>{{review.id}}</td>
+    <td>{{review.title}}</td>
+    <td>{{review.author}}</td>
+    <td id="import-quality-answers">
+        <button type="button" class="btn btn-primary btn-sm" id="btn-import-quality-answers">
+            {% trans 'Import' %}
+        </button>
+    </td>
+</tr>
+<tr class="hidden">
+    <td colspan="4">
+      <form method="post" id="form-suggested-quality-answers-{{review.id}}">
+        <table class="table" id="tbl-exported-answers-{{review.id}}">
+          {% csrf_token %}
+          <input type="hidden" name="review_id" value="{{ review.id }}" />
+          <th>{% trans 'Answer' %}</th>
+          <th>{% trans 'Weight' %}</th>
+          {% for quality_answer in review.get_quality_assessment_answers %}
+            <tr>
+              <input type="hidden" value="{{quality_answer.id}}" name="id" id="id" />
+              <input type="hidden" value="{{quality_answer.description}}" name="description-{{quality_answer.id}}" id="description" />
+              <input type="hidden" value="{{quality_answer.weight}}" name="weight-{{quality_answer.id}}" id="weight" />
+              <td>{{quality_answer.description}}</td>
+              <td>{{quality_answer.weight}}</td>
+            </tr>
+          {% endfor %}
+        </table>
+      </form>
+    </td>
+</tr>
+{% endfor %}
