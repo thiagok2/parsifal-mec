@@ -194,6 +194,19 @@ class Tag(models.Model):
     def __unicode__(self):
         return self.tag
 
+class Invite(models.Model):
+    review = models.ForeignKey(Review, related_name='review_invites')
+    email = models.CharField(max_length=500)
+    invite_type = models.CharField(max_length=100)
+
+    class Meta:
+        verbose_name = u'Invite'
+        verbose_name_plural = u'Invites'
+        ordering = ('email',)
+
+    def __unicode__(self):
+        return self.email
+
 class Question(models.Model):
     review = models.ForeignKey(Review, related_name='research_questions')
     question = models.CharField(max_length=500)

@@ -10,7 +10,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.views import password_reset, password_reset_confirm
 
 from parsifal.authentication.forms import SignUpForm
-from parsifal.reviews.models import Review
+from parsifal.reviews.models import Review, Invite
 
 
 def signup(request):
@@ -25,6 +25,18 @@ def signup(request):
             password = form.cleaned_data.get('password')
             User.objects.create_user(username=username, password=password, email=email)
             user = authenticate(username=username, password=password)
+            invites = Invite.objects.filter(email=user.email)
+            if invites:
+                for invite in invites:
+                    review = Review.objects.get(pk=invite.review_id)
+                    if invite.invite_type == 'visitor':
+                        review.visitors.add(user)
+                    if invite.invite_type == 'co_author':
+                        review.co_authors.add(user)
+
+                    invite.delete()
+
+
             login(request, user)
             messages.add_message(request, messages.SUCCESS, 'Your account were successfully created.')
             return HttpResponseRedirect('/' + username + '/')

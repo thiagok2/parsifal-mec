@@ -13,7 +13,7 @@ from django.utils.html import escape
 from django.views.decorators.http import require_POST
 from django.core.mail import EmailMultiAlternatives
 
-from parsifal.reviews.models import Review, Tag
+from parsifal.reviews.models import Review, Tag, Invite
 from parsifal.reviews.decorators import main_author_required, author_required, author_or_visitor_required
 from parsifal.reviews.forms import CreateReviewForm, ReviewForm
 
@@ -99,6 +99,9 @@ def add_author_to_review(request):
         except User.DoesNotExist:
             authors_invited.append(email)
 
+            for author in authors_invited:
+                save_user_invited_to_review(review_id, author, 'co_author')
+
             subject = u'{0} wants to add you as co-author on the systematic literature review {1}'.format(inviter_name, review.title)
             from_email = u'{0} via Parsifal <noreply@parsif.al>'.format(inviter_name)
 
@@ -152,6 +155,9 @@ def add_visitor_to_review(request):
         except User.DoesNotExist:
             visitors_invited.append(email)
 
+            for visitor in visitors_invited:
+                save_user_invited_to_review(review_id, visitor, 'visitor')
+
             subject = u'{0} wants to add you as visitor on the systematic literature review {1}'.format(inviter_name, review.title)
             from_email = u'{0} via Parsifal <noreply@parsif.al>'.format(inviter_name)
 
@@ -198,6 +204,22 @@ def remove_author_from_review(request):
     except:
         return HttpResponseBadRequest()
 
+def save_user_invited_to_review(review_id, email, invite_type):
+    review = Review.objects.get(pk=review_id)
+    invite = Invite(review=review)
+    invite.email = email
+    invite.invite_type = invite_type
+    invite.save()
+
+@author_required
+@login_required
+def leave(request):
+    review_id = request.POST.get('review-id')
+    review = get_object_or_404(Review, pk=review_id)
+    review.co_authors.remove(request.user)
+    review.save()
+    messages.add_message(request, messages.SUCCESS, u'You successfully left the review {0}.'.format(review.title))
+    return redirect('/' + request.user.username + '/')
 
 @author_required
 @login_required
@@ -214,16 +236,6 @@ def save_description(request):
             return HttpResponse('Your review has been saved successfully!')
     except:
         return HttpResponseBadRequest()
-
-@author_required
-@login_required
-def leave(request):
-    review_id = request.POST.get('review-id')
-    review = get_object_or_404(Review, pk=review_id)
-    review.co_authors.remove(request.user)
-    review.save()
-    messages.add_message(request, messages.SUCCESS, u'You successfully left the review {0}.'.format(review.title))
-    return redirect('/' + request.user.username + '/')
 
 '''
     REVIEW TAG FUNCTIONS
