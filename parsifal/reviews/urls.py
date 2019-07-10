@@ -16,4 +16,6 @@ urlpatterns = patterns('parsifal.reviews.views',
     url(r'^planning/', include('parsifal.reviews.planning.urls', namespace='planning')),
     url(r'^conducting/', include('parsifal.reviews.conducting.urls', namespace='conducting')),
     url(r'^reporting/', include('parsifal.reviews.reporting.urls', namespace='reporting')),
+    
+    url(r'^published_protocols/$', 'published_protocols', name='published_protocols'),
 )

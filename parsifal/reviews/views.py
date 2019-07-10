@@ -303,3 +303,25 @@ def remove_tag(request):
         return HttpResponse()
     except:
         return HttpResponseBadRequest()
+
+@login_required
+def published_protocols(request):
+    '''
+        Function used via Ajax request only.
+        This function get published protocols from the others review.
+    '''
+    try:
+        review_id = request.GET['review-id']
+        
+        print('review_id::'+ review_id)
+        published_protocols = Review.objects.filter(export_protocol=True).exclude(id=review_id)
+
+        print('published_protocols::'+ str(published_protocols))
+        
+        context = RequestContext(request, {'published_protocols': published_protocols})
+        return render_to_response('reviews/partial_published_protocols.html', context)
+    except Exception as e:
+        print e
+        return HttpResponseBadRequest()
+        
+    
