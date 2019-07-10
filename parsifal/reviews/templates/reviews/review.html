@@ -128,10 +128,15 @@
       		<h3 class="panel-title">{% trans 'Visitors' %}</h3>
       	</div>
 
-      	 <ul class="list-group visitors">
+      	 <ul class="list-group visitors" data-remove-url="{% url 'reviews:remove_visitor_from_review' %}">
       	 	{% for visitor in review.visitors.all %}
-            <li  class="list-group-item" data-user-id="{{ visitor.id }}">
+            <li class="list-group-item" data-user-id="{{ visitor.id }}">
               <a href="{% url 'reviews' visitor.username %}">{{ visitor.profile.get_screen_name }}</a>
+              {% if user.id == review.author.id %}
+                <a href="javascript:void(0);" class="js-remove-visitor text-danger pull-right">
+                  <span class="glyphicon glyphicon-remove"></span>
+                </a>
+              {% endif %}
             </li>
           	{% endfor %}
       	 </ul>
