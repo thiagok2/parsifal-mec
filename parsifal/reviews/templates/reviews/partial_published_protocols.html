@@ -1,0 +1,73 @@
+{% load i18n %}
+
+{% for review_protocol in published_protocols %}
+<tr id="exported-review" style="cursor: pointer;">
+    <td>{{review_protocol.title}}</td>
+    <td>{{review_protocol.author}}</td>
+    <td id="td-import-protocol">
+       <button type="button" class="btn btn-primary btn-sm" id="btn-import-protocol" data-review-ref-id="{{review_protocol.id}}">
+            {% trans 'Import' %}
+        </button>
+    </td>
+    <td id="td-detail-protocol">
+    	<button type="button" class="btn btn-primary btn-sm" id="btn-details-protocol">
+       		<span class="glyphicon glyphicon-zoom-in"></span>    
+        </button> 
+    </td>
+</tr>
+<tr class="hidden">
+    <td colspan="4">
+      <form method="post" id="form-published-protocol-{{review_protocol.id}}">
+      	{% csrf_token %}
+      	<input type="hidden" name="review_protocol_id" value="{{ review_protocol.id }}" />
+        <ul class="nav nav-tabs" role="tablist">
+			<li class="active"><a href="#protocol_detail" role="tab" data-toggle="tab">Details</a></li>
+		  	<li><a href="#protocol_checklist" role="tab" data-toggle="tab">Protocol</a></li>
+		  	<li><a href="#protocol_risks" role="tab" data-toggle="tab">Checklist</a></li>
+		  	<li><a href="#protocol_data_extraction" role="tab" data-toggle="tab">Risks</a></li>
+		</ul>
+		<div class="tab-content clearfix">
+			<div class="tab-pane active" id="protocol_detail">
+          		<div class="form-group">
+    				<label for="id_title" class="control-label">Title</label>
+    				{{ review_protocol.title }}
+  				</div>
+  				<div class="form-group">
+    				<label for="description" class="control-label">Description</label>
+    				{{ review_protocol.description }}
+  				</div>
+  				<div class="form-group">
+    				<label for="tags" class="control-label">Tags</label>
+    				{% for tag in review_protocol.get_tags %}
+    					<span class="badge">{{ tag }}</span>
+    				{% endfor %}
+  				</div>
+  				
+  				<div class="form-group text-muted small">
+    				<label for="create_date" class="control-label">Created</label>
+    				{{ review_protocol.create_date }}
+  				</div>
+  				<div class="form-group text-muted small">
+    				<label for="last_update" class="control-label">Last Update</label>
+    				{{ review_protocol.last_update }}
+  				</div>
+  				<div class="form-group text-muted small">
+    				<label for="author" class="control-label">Author</label>
+    				{{ review_protocol.author.profile.get_screen_name }}
+  				</div>
+  				
+			</div>
+			<div class="tab-pane fade" id="protocol_checklist">
+          		<h3>Checklist</h3>
+			</div>
+			<div class="tab-pane fade" id="protocol_risks">
+          		<h3>Risks</h3>
+			</div>
+			<div class="tab-pane fade" id="protocol_data_extraction">
+          		<h3>Form Data Extraction</h3>
+			</div>
+		</div>
+      </form>
+    </td>
+</tr>
+{% endfor %}

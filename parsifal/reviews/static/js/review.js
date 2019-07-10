@@ -81,5 +81,34 @@ $(function () {
           return false;
       }
   });
+  
+  $("#btn-open-import-protocol").click(function () {
+	  
+	
+	
+	$.ajax({
+  		url: '/reviews/published_protocols/',
+  		data: { 'review-id': $('#review-id').val() },
+  		cache: false,
+  		type: 'get',
+  		success: function (data) {
+  			
+  			$("#modal-published-protocols table tbody").html(data);
+  			$("#modal-published-protocols").before("<div class='shade'></div>");
+  			$("#modal-published-protocols").slideDown(400, function () {
+  				$("body").addClass("modal-open");
+  			});
+  		}
+	   });
+	
+  });
+  
+  $("table#tbl-import-protocols").on("click", "tbody tr", function () {
+  	
+      var hiddenClass = $(this)[0].nextElementSibling;
+      hiddenClass.className == "hidden"
+      ? hiddenClass.className = ""
+      : hiddenClass.className = "hidden"
+  });
 
 });
