@@ -95,6 +95,7 @@ def add_author_to_review(request):
             user = User.objects.get(email__iexact=email)
             if user.id != review.author.id:
                 authors_added.append(user.profile.get_screen_name())
+                review.visitors.remove(user)
                 review.co_authors.add(user)
         except User.DoesNotExist:
             authors_invited.append(email)
@@ -205,11 +206,32 @@ def remove_author_from_review(request):
         return HttpResponseBadRequest()
 
 def save_user_invited_to_review(review_id, email, invite_type):
-    review = Review.objects.get(pk=review_id)
-    invite = Invite(review=review)
-    invite.email = email
-    invite.invite_type = invite_type
-    invite.save()
+    try:
+        review = Review.objects.get(pk=review_id)
+        invite = Invite(review=review)
+        invite.email = email
+        invite.invite_type = invite_type
+        invite.save()
+        return HttpResponse()
+    except:
+        return HttpResponseBadRequest()
+
+@main_author_required
+@login_required
+@require_POST
+def remove_visitor_from_review(request):
+    try:
+        visitor_id = request.POST.get('user-id')
+        review_id = request.POST.get('review-id')
+        print 'visitor ', visitor_id
+        print 'reid ', review_id
+        visitor = User.objects.get(pk=visitor_id)
+        review = Review.objects.get(pk=review_id)
+        review.visitors.remove(visitor)
+        review.save()
+        return HttpResponse()
+    except:
+        return HttpResponseBadRequest()
 
 @author_required
 @login_required
