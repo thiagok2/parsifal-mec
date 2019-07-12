@@ -1,70 +1,323 @@
 {% load i18n %}
 
 {% for review_protocol in published_protocols %}
-<tr id="exported-review" style="cursor: pointer;">
-    <td>{{review_protocol.title}}</td>
-    <td>{{review_protocol.author}}</td>
-    <td id="td-import-protocol">
-       <button type="button" class="btn btn-primary btn-sm" id="btn-import-protocol" data-review-ref-id="{{review_protocol.id}}">
+<tr class="exported-review" style="cursor: pointer;" id="tr-protocol-{{review_protocol.id}}">
+    <td id="td-protocol-name-{{ review_protocol.id }}">{{review_protocol.title}}</td>
+    <td >{{review_protocol.author}}</td>
+    <td class="td-import-protocol">
+       <button class="btn btn-primary btn-sm btn-import-protocol"  data-protocol-id="{{review_protocol.id}}" data-toggle="modal" data-target="#modal-confirm-import">
             {% trans 'Import' %}
         </button>
     </td>
-    <td id="td-detail-protocol">
-    	<button type="button" class="btn btn-primary btn-sm" id="btn-details-protocol">
+    <td class="td-detail-protocol" id="tr-protocol-detail-{{review_protocol.id}}">
+    	<button type="button" class="btn btn-primary btn-sm" class="btn-details-protocol">
        		<span class="glyphicon glyphicon-zoom-in"></span>    
         </button> 
     </td>
 </tr>
-<tr class="hidden">
+<tr class="detail-review-import hidden">
     <td colspan="4">
       <form method="post" id="form-published-protocol-{{review_protocol.id}}">
       	{% csrf_token %}
       	<input type="hidden" name="review_protocol_id" value="{{ review_protocol.id }}" />
         <ul class="nav nav-tabs" role="tablist">
-			<li class="active"><a href="#protocol_detail" role="tab" data-toggle="tab">Details</a></li>
-		  	<li><a href="#protocol_checklist" role="tab" data-toggle="tab">Protocol</a></li>
-		  	<li><a href="#protocol_risks" role="tab" data-toggle="tab">Checklist</a></li>
-		  	<li><a href="#protocol_data_extraction" role="tab" data-toggle="tab">Risks</a></li>
+			<li class="active"><a href="#protocol_detail-{{ review_protocol.id }}" role="tab" data-toggle="tab">{% trans 'Details' %}</a></li>
+			<li><a href="#protocol_protocol-{{ review_protocol.id }}" role="tab" data-toggle="tab">{% trans 'Protocol' %}</a></li>
+		  	<li><a href="#protocol_checklist-{{ review_protocol.id }}" role="tab" data-toggle="tab">{% trans 'Checklist' %}</a></li>
+		  	<li><a href="#protocol_risks-{{ review_protocol.id }}" role="tab" data-toggle="tab">{% trans 'Risks' %}</a></li>
+		  	<li><a href="#protocol_data_extraction-{{ review_protocol.id }}" role="tab" data-toggle="tab">{% trans 'Data Extraction' %}</a></li>
 		</ul>
 		<div class="tab-content clearfix">
-			<div class="tab-pane active" id="protocol_detail">
-          		<div class="form-group">
-    				<label for="id_title" class="control-label">Title</label>
-    				{{ review_protocol.title }}
-  				</div>
-  				<div class="form-group">
-    				<label for="description" class="control-label">Description</label>
-    				{{ review_protocol.description }}
-  				</div>
-  				<div class="form-group">
-    				<label for="tags" class="control-label">Tags</label>
-    				{% for tag in review_protocol.get_tags %}
-    					<span class="badge">{{ tag }}</span>
-    				{% endfor %}
-  				</div>
-  				
-  				<div class="form-group text-muted small">
-    				<label for="create_date" class="control-label">Created</label>
-    				{{ review_protocol.create_date }}
-  				</div>
-  				<div class="form-group text-muted small">
-    				<label for="last_update" class="control-label">Last Update</label>
-    				{{ review_protocol.last_update }}
-  				</div>
-  				<div class="form-group text-muted small">
-    				<label for="author" class="control-label">Author</label>
-    				{{ review_protocol.author.profile.get_screen_name }}
-  				</div>
-  				
+			<div class="tab-pane active" id="protocol_detail-{{ review_protocol.id }}">
+  				 <ul class="list-group">
+				 	<li class="list-group-item">
+				 		<label for="id_title" class="control-label">{% trans 'Title' %}:</label>
+    					{{ review_protocol.title }}
+				 	</li>
+				  	<li class="list-group-item">
+				  		<label for="description" class="control-label">{% trans 'Description' %}:</label>
+    					{{ review_protocol.description }}
+				  	</li>
+				  	<li class="list-group-item">
+				  		<label for="tags" class="control-label">{% trans 'Tags' %}:</label>
+	    				{% for tag in review_protocol.get_tags %}
+	    					<span class="label label-default">{{ tag }}</span>
+	    				{% endfor %}
+				  	</li>
+				  	<li class="list-group-item">
+				  		<label for="author" class="control-label">{% trans 'Author' %}:</label>
+				  		{{ review_protocol.author.profile.get_screen_name }}
+				  	</li>
+				  	
+				  	<li class="list-group-item text-muted small">
+				  		<label for="last_update" class="control-label">{% trans 'Last Update' %}:</label>
+    					{{ review_protocol.last_update }}
+    					
+    					<label for="create_date" class="control-label">{% trans 'Created' %}:</label>
+    					{{ review_protocol.create_date }}
+				  	</li>
+				</ul>
 			</div>
-			<div class="tab-pane fade" id="protocol_checklist">
-          		<h3>Checklist</h3>
+			<div class="tab-pane fade" id="protocol_protocol-{{ review_protocol.id }}">
+          		 
+			 	<div class="panel panel-default">
+			 		<div class="panel-heading">
+		              <h3 class="panel-title">
+		                {% trans 'Objectives' %}
+		              </h3>
+		            </div>
+		            <div class="panel-body text-justify">
+		           		{{ review_protocol.objective }}
+		            </div>
+			 	</div>
+			 	
+			 	<div class="panel panel-default">
+			 		<div class="panel-heading">
+		              <h3 class="panel-title">
+		                {% trans 'PICOC' %}
+		              </h3>
+		            </div>
+		            <div class="panel-body">
+		           		<ul class="list-group">
+				 			<li class="list-group-item">
+				 				<label class="control-label">{% trans 'Population' %}:</label>
+				 				{{ review_protocol.population }}
+				 			</li>
+				 			<li class="list-group-item">
+				 				<label class="control-label">{% trans 'Intervention' %}:</label>
+				 				{{ review_protocol.intervention }}
+				 			</li>
+				 			<li class="list-group-item">
+				 				<label class="control-label">{% trans 'Comparison' %}</label>
+				 				{{ review_protocol.comparison }}
+				 			</li>
+				 			<li class="list-group-item">
+				 				<label class="control-label">{% trans 'Outcome' %}:</label>
+				 				{{ review_protocol.outcome }}
+				 			</li>
+				 			<li class="list-group-item">
+				 				<label class="control-label">{% trans 'Context' %}:</label>
+				 				{{ review_protocol.context }}
+				 			</li>
+				 		</ul>
+		            </div>
+			 	</div>
+			 	
+			 	<div class="panel panel-default">
+			 		<div class="panel-heading">
+		              <h3 class="panel-title">
+		                {% trans 'Research Questions' %}
+		              </h3>
+		            </div>
+		            <div class="panel-body text-justify">
+		           		{% for question in review_protocol.get_questions %}
+		           			<span class="label label-default">{{ question }}</span>
+		           		{% endfor%}
+		            </div>
+			 	</div>
+			 	
+			 	<div class="panel panel-default">
+			 		<div class="panel-heading">
+		              <h3 class="panel-title">
+		                {% trans 'Keywords and Synonyms' %}
+		              </h3>
+		            </div>
+		            <div class="panel-body text-justify">
+		           		<table class="table table-condensed" class="table-keywords-view">
+				            <thead>
+				              <tr>
+				                <th>{% trans 'Keyword' %}</th>
+				                <th>{% trans 'Synonyms' %}</th>
+				                <th>{% trans 'Related to' %}</th>
+				              </tr>
+				            </thead>
+				            <tbody>
+				              {% for keyword in review_protocol.get_keywords %}
+				              	<tr data-keyword-id="{{ keyword.pk }}" data-keyword-description="{{ keyword.description }}">
+								  <td style="vertical-align: middle;">
+								    {{ keyword.description }}
+								  </td>
+								  <td style="vertical-align: middle;">
+								    <ul class="list-unstyled" style="margin-bottom: 0;">
+								      {% for synonym in keyword.synonyms.all %}
+								        <li>{{ synonym.description }}</li>
+								      {% endfor %}
+								    </ul>
+								  </td>
+								  <td style="vertical-align: middle;">
+								    {{ keyword.get_related_to_display }}
+								  </td>
+								</tr>
+				              {% endfor %}
+				            </tbody>
+				     	</table>
+		            </div>
+			 	</div>
+			 	
+			 	<div class="panel panel-default">
+			 		<div class="panel-heading">
+		              <h3 class="panel-title">
+		                {% trans 'Search String' %}
+		              </h3>
+		            </div>
+		            <div class="panel-body text-justify">
+		           		<em>{{ review_protocol.get_generic_search_string.search_string }}</em>
+		            </div>
+			 	</div>
+			 	
+			 	<div class="panel panel-default">
+			 		<div class="panel-heading">
+		              <h3 class="panel-title">
+		                {% trans 'Sources' %}
+		              </h3>
+		            </div>
+		            <div class="panel-body text-justify">
+		           		<table class="table table-condensed" class="tbl-sources">
+				            <thead>
+				              <tr>
+				                <th>{% trans 'Name' %}</th>
+				                <th>URL</th>
+				              </tr>
+				            </thead>
+				            <tbody>
+				              {% for source in review_protocol.sources.all %}
+				                <tr data-source-id="{{ source.id }}">
+				                  <td>{{ source.name }}</td>
+				                  <td>
+				                    {% if source.url %}
+				                      <a href="{{ source.url }}" target="_blank">{{ source.url }}</a>
+				                    {% else %}
+				                      {{ source.url }}
+				                    {% endif %}
+				                  </td>
+				                </tr>
+				              {% endfor %}
+				            </tbody>
+				   		</table>
+		            </div>
+			 	</div>
+			 	
+			 	<div class="panel panel-default">
+			 		<div class="panel-heading">
+		              <h3 class="panel-title">
+		                {% trans 'Selection Criteria' %}
+		              </h3>
+		            </div>
+		            <div class="panel-body">
+		            	<ul class="list-group pull-left">
+				 			<li class="list-group-item text-success ">
+				 			 	<label for="input-inclusion" class="control-label">{% trans 'Inclusion Criteria' %}</label>
+				 			</li>
+				 			{% for criteria in review_protocol.get_inclusion_criterias %}
+				 				<li class="list-group-item">
+		           					{{ criteria }}
+		           				</li>
+		           			{% endfor%}
+				 		</ul>
+				 		
+				 		<ul class="list-group pull-right">
+				 			<li class="list-group-item text-danger" >
+				 				<label for="input-exclusion" class="control-label">{% trans 'Exclusion Criteria' %}</label>
+				 			</li>
+				 			{% for criteria in review_protocol.get_exclusion_criterias %}
+				 				<li class="list-group-item">
+		           					{{ criteria }}
+		           				</li>
+		           			{% endfor%}
+				 		</ul>
+		            </div>
+			 	</div>
+			
 			</div>
-			<div class="tab-pane fade" id="protocol_risks">
-          		<h3>Risks</h3>
+			<div class="tab-pane fade" id="protocol_checklist-{{ review_protocol.id }}">
+          		<div class="panel panel-default">
+			 		<div class="panel-heading">
+		              <h3 class="panel-title">{% trans 'Questions' %}</h3>
+		            </div>
+		            <div class="panel-body">
+		            	<ul class="list-group">
+		            	{% for quality_question in review_protocol.get_quality_assessment_questions %}
+		            		<li class="list-group-item">
+		            			{{ quality_question.description }}
+		            		</li>
+		            	{% endfor %}
+		            	</ul>
+		            </div>
+		        </div>
+		        
+		        <div class="panel panel-default">
+			 		<div class="panel-heading">
+		              <h3 class="panel-title">{% trans 'Answers' %}</h3>
+		            </div>
+		            <div class="panel-body">
+		            	<table class="table table-condensed">
+				        	<tbody>
+				        		{% for quality_answer in review_protocol.get_quality_assessment_answers %}
+				        		<tr>
+				            		<td style="white-space: nowrap; vertical-align: middle;"><strong>{{ quality_answer.description }}</strong></td>
+				                	<td><input type="text" class="form-control" readonly value="{{ quality_answer.weight }}" style="width: 70px; text-align: right;"></td>
+				              	</tr>
+				              	{% endfor %}
+				            </tbody>
+				    	</table>
+		            </div>
+		        </div>
+		        
+		        
+			    <div class="panel panel-default">
+			    	<div class="panel-heading">
+			    		<h3 class="panel-title">{% trans 'Quality Assessment Scores' %}</h3>
+			        </div>
+			        <div class="panel-body">
+				        <table class="table table-condensed">
+				        	<tbody>
+				        		<tr>
+				            		<td style="white-space: nowrap; vertical-align: middle;"><strong>{% trans 'Max Score' %}</strong></td>
+				                	<td>
+				                		<input type="text" class="form-control" readonly 
+				                			value="{{ review_protocol.calculate_quality_assessment_max_score }}" style="width: 70px; text-align: right;">
+				                	</td>
+				              	</tr>
+				              	<tr>
+				                	<td style="white-space: nowrap; vertical-align: middle;"><strong>{% trans 'Cutoff Score' %}</strong></td>
+				                	<td>
+				                		<input type="text" class="form-control" readonly 
+				                		value="{{ review_protocol.quality_assessment_cutoff_score }}" style="width: 70px; text-align: right;">
+				                	</td>
+				              	</tr>
+				            </tbody>
+				    	</table>
+				    </div>
+				</div>
+		        
+		        
 			</div>
-			<div class="tab-pane fade" id="protocol_data_extraction">
-          		<h3>Form Data Extraction</h3>
+			<div class="tab-pane fade" id="protocol_risks-{{ review_protocol.id }}">
+          		<div class="panel panel-default">
+		            <div class="panel-body">
+		            	<ul class="list-group">
+				 			{% for risk in review_protocol.get_risks %}
+				 				<li class="list-group-item">
+		           					{{ risk.risk }}
+		           				</li>
+		           			{% endfor%}
+				 		</ul>
+		            </div>
+			 	</div>
+			</div>
+			<div class="tab-pane fade" id="protocol_data_extraction-{{ review_protocol.id }}">
+          		<div class="panel panel-default">
+		            <div class="panel-body">
+		            	<ul class="list-group">
+				 			{% for field in review_protocol.get_data_extraction_fields %}
+				 				<li class="list-group-item">
+		           					{{ 	field.description }}
+		           					<span class="text-muted">({{ field.get_field_type_display }})</span>
+		           				</li>
+		           			{% endfor%}
+				 		</ul>
+		            </div>
+			 	</div>
 			</div>
 		</div>
       </form>

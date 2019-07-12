@@ -84,8 +84,6 @@ $(function () {
   
   $("#btn-open-import-protocol").click(function () {
 	  
-	
-	
 	$.ajax({
   		url: '/reviews/published_protocols/',
   		data: { 'review-id': $('#review-id').val() },
@@ -100,15 +98,83 @@ $(function () {
   			});
   		}
 	   });
-	
   });
   
-  $("table#tbl-import-protocols").on("click", "tbody tr", function () {
-  	
-      var hiddenClass = $(this)[0].nextElementSibling;
-      hiddenClass.className == "hidden"
-      ? hiddenClass.className = ""
-      : hiddenClass.className = "hidden"
+  $("table#tbl-import-protocols").on("click", "tbody tr.exported-review", function () {
+	 
+	  
+	  
+	  
+	  //$('tbody tr.detail-review-import').addClass('hidden');
+	  //$('tbody tr.exported-review').removeClass('font-bold');
+	  
+	  
+      var trDetails = $(this)[0].nextElementSibling;
+      
+      console.log('currentClass:'+  trDetails.className)
+      
+      trDetails.className.includes("hidden") ? trDetails.className = "" : trDetails.className = "hidden";
+      
+      
+      console.log('newClass:'+  trDetails.className)
+      
+      if(trDetails.className.includes("hidden")){
+    	  $(this).removeClass('active');
+    	  $(this).removeClass('font-bold');
+    	  $(this).filter( "td.td-detail-protocol button span" ).addClass('glyphicon-zoom-in');
+    	  $(this).filter( "td.td-detail-protocol button span" ).removeClass('glyphicon-zoom-out');
+      }else{
+    	  $(this).addClass('active');
+    	  $(this).addClass('font-bold'); 
+      }
+      
+      $(this).find('td.td-detail-protocol .glyphicon').filter(function() {
+		  if($(this).hasClass('glyphicon-zoom-in')){
+			  $(this).removeClass('glyphicon-zoom-in')
+			  $(this).addClass('glyphicon-zoom-out')
+		  }else{
+			  $(this).addClass('glyphicon-zoom-in')
+			  $(this).removeClass('glyphicon-zoom-out')
+		  }
+			  
+      });
+      
+     
+      
+      
+      
+      
+    	  
   });
+  
+  $("table#tbl-import-protocols").on("click", "tbody tr.exported-review button.btn-import-protocol", function () {
+	  var protocolId = $(this).data( "protocol-id" );
+	  var elementId = '#td-protocol-name-'+protocolId;
+	  var protocolName = $(elementId).text();
+	  
+	  $('#label_protocol_import1').text(protocolName);
+	  $('#label_protocol_import2').text(protocolName);
+	  
+	  console.log('protocolId::'+protocolId)
+	  console.log('protocol::'+protocolName);
+	  
+  });
+  
+  $("#enable-confirm-import").click(function () {
+      if ($(this).is(":checked")) {
+        $("#btn-confirm-import-protocol").prop("disabled", false);
+      }
+      else {
+        $("#btn-confirm-import-protocol").prop("disabled", true);
+      }
+  });
+  
+  
+  $("#btn-confirm-import-protocol").click(function () {
+	  $("#modal-confirm-import").modal("hide");
+	  $("#modal-published-protocols").modal("hide");
+  });
+  
+  
 
 });

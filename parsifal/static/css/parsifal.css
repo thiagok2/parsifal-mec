@@ -559,3 +559,18 @@ select optgroup {
   color: #8a6d3b;
   padding: 10px;
 }
+
+div#modal-published-protocols div.modal-dialog{
+	width: 80%;
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+.btn-sections-protocol-import .btn span.glyphicon {    			
+	opacity: 0.1;				
+}
+.btn-sections-protocol-import .btn.active span.glyphicon {				
+	opacity: 1;				
+}
