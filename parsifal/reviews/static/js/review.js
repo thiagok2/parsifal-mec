@@ -25,6 +25,29 @@ $(function () {
 
   });
 
+  $(".js-remove-visitor").click(function () {
+
+    console.log('entrou');
+
+    var user_container = $(this).closest("li");
+
+    var csrf_token = $("[name='csrfmiddlewaretoken']").val();
+    var user_id = $(this).closest("li").attr("data-user-id");
+    var review_id = $("#review-id").val();
+    var url = $(this).closest("ul").attr("data-remove-url");
+
+    $.post(url, {
+      'csrfmiddlewaretoken': csrf_token,
+      'user-id': user_id,
+      'review-id': review_id
+    }, function () {
+      $(user_container).fadeOut(400, function () {
+        $(this).remove();
+      });
+    });
+
+  });
+
   var REGEX_EMAIL = '([a-z0-9!#$%&\'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&\'*+/=?^_`{|}~-]+)*@' +
                     '(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)';
 
