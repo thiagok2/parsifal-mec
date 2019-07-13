@@ -335,15 +335,57 @@ def published_protocols(request):
     try:
         review_id = request.GET['review-id']
         
-        print('review_id::'+ review_id)
         published_protocols = Review.objects.filter(export_protocol=True).exclude(id=review_id)
-
-        print('published_protocols::'+ str(published_protocols))
         
         context = RequestContext(request, {'published_protocols': published_protocols})
         return render_to_response('reviews/partial_published_protocols.html', context)
     except Exception as e:
         print e
         return HttpResponseBadRequest()
+
+@login_required
+def import_protocol(request):
+    '''
+        Function used via Ajax request only.
+        This function import protocol to review.
+    '''
+    
+    try:
+        review_id = request.GET['review-id']
+        review = Review.objects.get(pk=review_id)
         
+        print(str(review))
+        
+        protocolId = request.GET['protocolId']
+        protocol = Review.objects.get(pk=protocolId)
+        
+        importDetail = request.GET['importDetail']
+        importProtocol = request.GET['importProtocol']
+        importChecklist = request.GET['importChecklist']
+        importRisks = request.GET['importRisks']
+        importDataExtraction = request.GET['importDataExtraction']
+        
+        if importDetail:
+            review.description = protocol.description
+            
+            for protocolTag in Tag.objects.filter(review__id=protocolId):
+                newTag = Tag(tag=protocolTag.tag, review = review)
+                newTag.save()
+        
+        if importProtocol:
+            review.objective = protocol.objective
+            review.population = protocol.population
+            review.intervention = protocol.intervention
+            review.comparison = protocol.comparison
+            review.outcome = protocol.outcome
+            review.context = protocol.context
+            
+        
+        review.save()
+        return HttpResponse()
+        
+    except Exception as e:
+        print e
+        return HttpResponseBadRequest()
+
     

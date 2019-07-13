@@ -124,22 +124,10 @@ $(function () {
   });
   
   $("table#tbl-import-protocols").on("click", "tbody tr.exported-review", function () {
-	 
-	  
-	  
-	  
-	  //$('tbody tr.detail-review-import').addClass('hidden');
-	  //$('tbody tr.exported-review').removeClass('font-bold');
-	  
 	  
       var trDetails = $(this)[0].nextElementSibling;
-      
-      console.log('currentClass:'+  trDetails.className)
-      
       trDetails.className.includes("hidden") ? trDetails.className = "" : trDetails.className = "hidden";
       
-      
-      console.log('newClass:'+  trDetails.className)
       
       if(trDetails.className.includes("hidden")){
     	  $(this).removeClass('active');
@@ -161,13 +149,7 @@ $(function () {
 		  }
 			  
       });
-      
-     
-      
-      
-      
-      
-    	  
+      	  
   });
   
   $("table#tbl-import-protocols").on("click", "tbody tr.exported-review button.btn-import-protocol", function () {
@@ -178,9 +160,8 @@ $(function () {
 	  $('#label_protocol_import1').text(protocolName);
 	  $('#label_protocol_import2').text(protocolName);
 	  
-	  console.log('protocolId::'+protocolId)
-	  console.log('protocol::'+protocolName);
-	  
+	  $('#protocol-import-id').val(protocolId)
+	 
   });
   
   $("#enable-confirm-import").click(function () {
@@ -194,8 +175,30 @@ $(function () {
   
   
   $("#btn-confirm-import-protocol").click(function () {
-	  $("#modal-confirm-import").modal("hide");
-	  $("#modal-published-protocols").modal("hide");
+	  
+	  $.ajax({
+	  		url: '/reviews/import_protocol/',
+	  		data: { 
+	  		
+	  			'review-id': $('#review-id').val(),
+	  			'protocolId': $('#protocol-import-id').val(),
+	  			'importDetail': $('#check_protocol_details').prop('checked'),
+	  			'importProtocol': $('#check_protocol_protocol').prop('checked'),
+	  			'importChecklist': $('#check_protocol_checklist').prop('checked'),
+	  			'importRisks': $('#check_protocol_risks').prop('checked'),
+	  			'importDataExtraction': $('#check_protocol_data_extraction').prop('checked')
+	  		
+	  		},
+	  		cache: false,
+	  		type: 'get',
+	  		success: function (data) {
+	  			
+	  			$("#modal-confirm-import").modal("hide");
+	  			$("#modal-published-protocols").modal("hide");
+	  			
+	  			location.reload();
+	  		}
+	  });
   });
   
   
