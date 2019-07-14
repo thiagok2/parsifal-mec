@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-08 00:42+0000\n"
+"POT-Creation-Date: 2019-07-14 21:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -90,7 +90,7 @@ msgstr ""
 #: parsifal/account_settings/templates/settings/picture.html:73
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:75
 #: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:75
-#: parsifal/reviews/planning/templates/planning/protocol.html:506
+#: parsifal/reviews/planning/templates/planning/protocol.html:508
 msgid "Close"
 msgstr ""
 
@@ -419,8 +419,13 @@ msgid "Your reviews"
 msgstr ""
 
 #: parsifal/core/templates/core/home.html:41
+#: parsifal/core/templates/core/home.html:54
 #: parsifal/reviews/templates/reviews/reviews.html:116
 msgid "You don't have any systematic literature review yet."
+msgstr ""
+
+#: parsifal/core/templates/core/home.html:48
+msgid "Reviews you are invited"
 msgstr ""
 
 #: parsifal/core/templates/core/support.html:7
@@ -967,7 +972,7 @@ msgid "Order"
 msgstr ""
 
 #: parsifal/lib/python2.7/site-packages/django/forms/formsets.py:372
-#: parsifal/reviews/settings/templates/settings/review_settings.html:62
+#: parsifal/reviews/settings/templates/settings/review_settings.html:70
 msgid "Delete"
 msgstr ""
 
@@ -1596,6 +1601,8 @@ msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_data_extraction.html:14
 #: parsifal/reviews/conducting/templates/conducting/conducting_header.html:18
+#: parsifal/reviews/templates/reviews/partial_published_protocols.html:28
+#: parsifal/reviews/templates/reviews/review.html:250
 msgid "Data Extraction"
 msgstr ""
 
@@ -1632,7 +1639,7 @@ msgid ""
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_header.html:9
-#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:20
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:19
 msgid "Import Studies"
 msgstr ""
 
@@ -1650,65 +1657,67 @@ msgstr ""
 msgid "6. Data Analysis"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:26
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:25
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_find_duplicates.html:15
 msgid "Source"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:27
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:26
 msgid "Imported Studies"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:46
-#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:90
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:45
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:89
 #: parsifal/reviews/planning/templates/planning/partial_data_extraction_suggested.html:10
+#: parsifal/reviews/planning/templates/planning/partial_quality_assessment_answer_suggested.html:10
 #: parsifal/reviews/planning/templates/planning/partial_quality_assessment_question_suggested.html:10
 #: parsifal/reviews/planning/templates/planning/partial_risks_suggested.html:10
+#: parsifal/reviews/templates/reviews/partial_published_protocols.html:9
 msgid "Import"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:50
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:49
 msgid "BibTeX file"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:51
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:50
 msgid "Paste BibTeX content"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:61
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:60
 msgid "There are a few steps you have to finish before you import the studies:"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:63
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:62
 msgid "Use the"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:63
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:62
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:25
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:44
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:110
 msgid "planning tab"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:63
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:62
 msgid "to add sources to your review."
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:80
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:79
 msgid "Parse BibTeX Content"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:84
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:83
 msgid "Paste the raw BibTeX file contents"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:89
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:88
 #: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:35
 #: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:50
 #: parsifal/reviews/planning/templates/planning/partial_keyword_form.html:66
 #: parsifal/reviews/templates/reviews/new.html:22
-#: parsifal/reviews/templates/reviews/review.html:109
-#: parsifal/reviews/templates/reviews/review.html:159
+#: parsifal/reviews/templates/reviews/review.html:115
+#: parsifal/reviews/templates/reviews/review.html:170
 msgid "Cancel"
 msgstr ""
 
@@ -1757,9 +1766,10 @@ msgid "Showing the available sources from you Protocol, defined in the "
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:52
-#: parsifal/reviews/planning/templates/planning/protocol.html:497
-#: parsifal/reviews/planning/templates/planning/protocol.html:537
+#: parsifal/reviews/planning/templates/planning/protocol.html:499
+#: parsifal/reviews/planning/templates/planning/protocol.html:539
 #: parsifal/reviews/reporting/templates/reporting/export.html:45
+#: parsifal/reviews/templates/reviews/partial_published_protocols.html:178
 msgid "Name"
 msgstr ""
 
@@ -1782,11 +1792,11 @@ msgstr "Nova ??"
 #: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:51
 #: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:76
 #: parsifal/reviews/planning/templates/planning/partial_keyword_form.html:69
-#: parsifal/reviews/planning/templates/planning/protocol.html:101
-#: parsifal/reviews/planning/templates/planning/protocol.html:194
-#: parsifal/reviews/planning/templates/planning/protocol.html:460
-#: parsifal/reviews/planning/templates/planning/protocol.html:507
-#: parsifal/reviews/templates/reviews/review.html:48
+#: parsifal/reviews/planning/templates/planning/protocol.html:103
+#: parsifal/reviews/planning/templates/planning/protocol.html:196
+#: parsifal/reviews/planning/templates/planning/protocol.html:462
+#: parsifal/reviews/planning/templates/planning/protocol.html:509
+#: parsifal/reviews/templates/reviews/review.html:49
 msgid "Save"
 msgstr ""
 
@@ -1795,11 +1805,11 @@ msgid "Search Strings"
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:87
-#: parsifal/reviews/planning/templates/planning/protocol.html:88
-#: parsifal/reviews/planning/templates/planning/protocol.html:152
-#: parsifal/reviews/planning/templates/planning/protocol.html:235
-#: parsifal/reviews/planning/templates/planning/protocol.html:346
-#: parsifal/reviews/planning/templates/planning/protocol.html:446
+#: parsifal/reviews/planning/templates/planning/protocol.html:90
+#: parsifal/reviews/planning/templates/planning/protocol.html:154
+#: parsifal/reviews/planning/templates/planning/protocol.html:237
+#: parsifal/reviews/planning/templates/planning/protocol.html:348
+#: parsifal/reviews/planning/templates/planning/protocol.html:448
 msgid "What is this? Click to get help."
 msgstr ""
 
@@ -1837,17 +1847,17 @@ msgstr ""
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:140
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:221
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:321
-#: parsifal/reviews/planning/templates/planning/protocol.html:104
-#: parsifal/reviews/planning/templates/planning/protocol.html:463
+#: parsifal/reviews/planning/templates/planning/protocol.html:106
+#: parsifal/reviews/planning/templates/planning/protocol.html:465
 msgid "Saving…"
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:143
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:224
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:324
-#: parsifal/reviews/planning/templates/planning/protocol.html:110
-#: parsifal/reviews/planning/templates/planning/protocol.html:203
-#: parsifal/reviews/planning/templates/planning/protocol.html:469
+#: parsifal/reviews/planning/templates/planning/protocol.html:112
+#: parsifal/reviews/planning/templates/planning/protocol.html:205
+#: parsifal/reviews/planning/templates/planning/protocol.html:471
 msgid "Saved!"
 msgstr ""
 
@@ -1917,6 +1927,7 @@ msgstr ""
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:61
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_find_duplicates.html:12
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_quality_assessment_summary.html:11
+#: parsifal/reviews/templates/reviews/partial_published_protocols.html:34
 #: parsifal/reviews/templates/reviews/reviews.html:89
 msgid "Title"
 msgstr ""
@@ -1925,7 +1936,7 @@ msgstr ""
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:353
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_find_duplicates.html:13
 #: parsifal/reviews/reporting/templates/reporting/export.html:48
-#: parsifal/reviews/templates/reviews/review.html:57
+#: parsifal/reviews/templates/reviews/review.html:63
 #: parsifal/reviews/templates/reviews/reviews.html:90
 msgid "Authors"
 msgstr ""
@@ -2033,6 +2044,8 @@ msgid "Select files..."
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:20
+#: parsifal/reviews/templates/reviews/partial_published_protocols.html:24
+#: parsifal/reviews/templates/reviews/review.html:230
 msgid "Details"
 msgstr ""
 
@@ -2055,9 +2068,10 @@ msgid "Status"
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:55
-#: parsifal/reviews/planning/templates/planning/protocol.html:56
-#: parsifal/reviews/planning/templates/planning/protocol.html:589
+#: parsifal/reviews/planning/templates/planning/protocol.html:58
+#: parsifal/reviews/planning/templates/planning/protocol.html:591
 #: parsifal/reviews/reporting/templates/reporting/export.html:80
+#: parsifal/reviews/templates/reviews/partial_published_protocols.html:203
 msgid "Selection Criteria"
 msgstr ""
 
@@ -2073,9 +2087,12 @@ msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:85
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:62
-#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:75
-#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:172
-#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:96
+#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:76
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:177
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:203
+#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:97
+#: parsifal/reviews/templates/reviews/partial_published_protocols.html:48
+#: parsifal/reviews/templates/reviews/review.html:198
 msgid "Author"
 msgstr ""
 
@@ -2263,92 +2280,96 @@ msgstr ""
 msgid "Try to keep it short, max 500 characters :)"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:8
-#: parsifal/reviews/planning/templates/planning/protocol.html:8
-#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:8
-#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:8
+#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:6
+#: parsifal/reviews/planning/templates/planning/protocol.html:6
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:6
+#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:6
 #: parsifal/reviews/reporting/templates/reporting/export.html:59
 #: parsifal/reviews/templates/reviews/review_header.html:17
 msgid "Planning"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:25
+#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:26
 #: parsifal/reviews/planning/templates/planning/planning_header.html:16
 #: parsifal/reviews/reporting/templates/reporting/export.html:86
 msgid "Data Extraction Form"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:31
-#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:95
+#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:32
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:96
 #: parsifal/reviews/reporting/templates/reporting/export.html:51
+#: parsifal/reviews/templates/reviews/partial_published_protocols.html:38
 msgid "Description"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:32
+#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:33
 msgid "Type"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:33
+#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:34
 #: parsifal/reviews/planning/templates/planning/partial_data_extraction_suggested.html:22
 msgid "Values"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:48
+#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:49
 msgid "Add Field"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:52
+#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:53
 msgid "Import Fields"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:56
+#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:57
 msgid "Share your Fields"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:66
+#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:67
 msgid "Import Data Extraction Fields"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:69
+#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:70
 msgid ""
 "Below you see the reviews that exported your data extraction fields, choose "
 "one to import the fields for your review"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:73
-#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:170
-#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:94
+#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:74
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:175
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:201
+#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:95
 msgid "ID"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:74
-#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:171
-#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:95
+#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:75
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:176
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:202
+#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:96
 #: parsifal/reviews/reporting/templates/reporting/export.html:42
+#: parsifal/reviews/templates/reviews/review.html:197
 #: parsifal/reviews/templates/reviews/review_header.html:14
 #, fuzzy
 #| msgid "New review"
 msgid "Review"
 msgstr "Nova ??"
 
-#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:92
-#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:108
+#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:93
+#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:109
 msgid "Export Data Extraction Fields"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:96
+#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:97
 msgid ""
 "Your Data Extraction Fields are already shared. Do you wanna make it private "
 "again?"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:98
+#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:99
 msgid ""
 "If you agree, your Data Extraction Fields will be made known to other "
 "researchers to use them"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:106
+#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:107
 msgid "Hide Data Extraction Fields"
 msgstr ""
 
@@ -2358,8 +2379,8 @@ msgstr ""
 #: parsifal/reviews/planning/templates/planning/partial_planning_risk.html:21
 #: parsifal/reviews/planning/templates/planning/partial_quality_assessment_answer.html:11
 #: parsifal/reviews/planning/templates/planning/partial_quality_assessment_question.html:21
-#: parsifal/reviews/planning/templates/planning/protocol.html:558
-#: parsifal/reviews/planning/templates/planning/protocol.html:564
+#: parsifal/reviews/planning/templates/planning/protocol.html:560
+#: parsifal/reviews/planning/templates/planning/protocol.html:566
 msgid "edit"
 msgstr ""
 
@@ -2375,7 +2396,7 @@ msgstr ""
 #: parsifal/reviews/planning/templates/planning/partial_planning_risk.html:29
 #: parsifal/reviews/planning/templates/planning/partial_quality_assessment_answer.html:15
 #: parsifal/reviews/planning/templates/planning/partial_quality_assessment_question.html:29
-#: parsifal/reviews/planning/templates/planning/protocol.html:569
+#: parsifal/reviews/planning/templates/planning/protocol.html:571
 msgid "remove"
 msgstr ""
 
@@ -2400,12 +2421,12 @@ msgstr ""
 #: parsifal/reviews/planning/templates/planning/partial_planning_risk_form.html:12
 #: parsifal/reviews/planning/templates/planning/partial_quality_assessment_answer_form.html:15
 #: parsifal/reviews/planning/templates/planning/partial_quality_assessment_question_form.html:12
-#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:142
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:147
 msgid "save"
 msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/partial_data_extraction_field_form.html:31
-#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:145
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:150
 msgid "saving…"
 msgstr ""
 
@@ -2417,7 +2438,7 @@ msgstr ""
 #: parsifal/reviews/planning/templates/planning/partial_planning_question_form.html:18
 #: parsifal/reviews/planning/templates/planning/partial_planning_risk_form.html:18
 #: parsifal/reviews/planning/templates/planning/partial_quality_assessment_question_form.html:18
-#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:148
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:153
 msgid "saved!"
 msgstr ""
 
@@ -2446,7 +2467,8 @@ msgid "New Keyword"
 msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/partial_keyword_form.html:25
-#: parsifal/reviews/planning/templates/planning/protocol.html:358
+#: parsifal/reviews/planning/templates/planning/protocol.html:360
+#: parsifal/reviews/templates/reviews/partial_published_protocols.html:130
 msgid "Synonyms"
 msgstr ""
 
@@ -2468,6 +2490,15 @@ msgstr ""
 msgid "saving..."
 msgstr ""
 
+#: parsifal/reviews/planning/templates/planning/partial_quality_assessment_answer_suggested.html:20
+msgid "Answer"
+msgstr ""
+
+#: parsifal/reviews/planning/templates/planning/partial_quality_assessment_answer_suggested.html:21
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:97
+msgid "Weight"
+msgstr ""
+
 #: parsifal/reviews/planning/templates/planning/partial_quality_assessment_question_suggested.html:20
 msgid "Question"
 msgstr ""
@@ -2477,12 +2508,14 @@ msgid "Risk"
 msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/planning_header.html:7
-#: parsifal/reviews/planning/templates/planning/protocol.html:47
+#: parsifal/reviews/planning/templates/planning/protocol.html:48
+#: parsifal/reviews/templates/reviews/partial_published_protocols.html:25
+#: parsifal/reviews/templates/reviews/review.html:235
 msgid "Protocol"
 msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/planning_header.html:10
-#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:43
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:44
 #: parsifal/reviews/reporting/templates/reporting/export.html:83
 msgid "Quality Assessment Checklist"
 msgstr ""
@@ -2491,47 +2524,53 @@ msgstr ""
 msgid "Risks To Review Validity"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:50
-#: parsifal/reviews/planning/templates/planning/protocol.html:87
+#: parsifal/reviews/planning/templates/planning/protocol.html:52
+#: parsifal/reviews/planning/templates/planning/protocol.html:89
 #: parsifal/reviews/reporting/templates/reporting/export.html:62
+#: parsifal/reviews/templates/reviews/partial_published_protocols.html:66
 msgid "Objectives"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:51
-#: parsifal/reviews/planning/templates/planning/protocol.html:151
+#: parsifal/reviews/planning/templates/planning/protocol.html:53
+#: parsifal/reviews/planning/templates/planning/protocol.html:153
 #: parsifal/reviews/reporting/templates/reporting/export.html:65
+#: parsifal/reviews/templates/reviews/partial_published_protocols.html:77
 msgid "PICOC"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:52
-#: parsifal/reviews/planning/templates/planning/protocol.html:234
+#: parsifal/reviews/planning/templates/planning/protocol.html:54
+#: parsifal/reviews/planning/templates/planning/protocol.html:236
 #: parsifal/reviews/reporting/templates/reporting/export.html:68
+#: parsifal/reviews/templates/reviews/partial_published_protocols.html:109
 msgid "Research Questions"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:53
-#: parsifal/reviews/planning/templates/planning/protocol.html:345
+#: parsifal/reviews/planning/templates/planning/protocol.html:55
+#: parsifal/reviews/planning/templates/planning/protocol.html:347
 #: parsifal/reviews/reporting/templates/reporting/export.html:71
+#: parsifal/reviews/templates/reviews/partial_published_protocols.html:122
 msgid "Keywords and Synonyms"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:54
-#: parsifal/reviews/planning/templates/planning/protocol.html:445
+#: parsifal/reviews/planning/templates/planning/protocol.html:56
+#: parsifal/reviews/planning/templates/planning/protocol.html:447
 #: parsifal/reviews/reporting/templates/reporting/export.html:74
+#: parsifal/reviews/templates/reviews/partial_published_protocols.html:160
 msgid "Search String"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:55
-#: parsifal/reviews/planning/templates/planning/protocol.html:532
+#: parsifal/reviews/planning/templates/planning/protocol.html:57
+#: parsifal/reviews/planning/templates/planning/protocol.html:534
 #: parsifal/reviews/reporting/templates/reporting/export.html:77
+#: parsifal/reviews/templates/reviews/partial_published_protocols.html:171
 msgid "Sources"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:69
+#: parsifal/reviews/planning/templates/planning/protocol.html:71
 msgid "About the Objectives"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:72
+#: parsifal/reviews/planning/templates/planning/protocol.html:74
 msgid ""
 "<strong>Identification of the need for a review.</strong> The need for a "
 "systematic review originates from a researcher aiming to understand the "
@@ -2544,35 +2583,35 @@ msgid ""
 "review."
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:107
-#: parsifal/reviews/planning/templates/planning/protocol.html:200
-#: parsifal/reviews/planning/templates/planning/protocol.html:466
+#: parsifal/reviews/planning/templates/planning/protocol.html:109
+#: parsifal/reviews/planning/templates/planning/protocol.html:202
+#: parsifal/reviews/planning/templates/planning/protocol.html:468
 msgid "Error!"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:125
+#: parsifal/reviews/planning/templates/planning/protocol.html:127
 msgid "About the PICOC"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:128
+#: parsifal/reviews/planning/templates/planning/protocol.html:130
 msgid ""
 "PICOC stands for <em>population</em>, <em>intervention</em>, <em>comparison</"
 "em>, <em>outcomes</em> and <em>context</em>."
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:130
+#: parsifal/reviews/planning/templates/planning/protocol.html:132
 msgid ""
 "The <em>population</em> in which the evidence is collected, i.e. which group "
 "of people, programs or businesses are of interest for the review?"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:131
+#: parsifal/reviews/planning/templates/planning/protocol.html:133
 msgid ""
 "The <em>intervention</em> applied in the empirical study, i.e. which "
 "technology, tool or procedure is under study?"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:132
+#: parsifal/reviews/planning/templates/planning/protocol.html:134
 msgid ""
 "The <em>comparison</em> to which the intervention is compared, i.e. how is "
 "the control treatment defined? In particular the ‘placebo’ intervention is "
@@ -2580,7 +2619,7 @@ msgid ""
 "software engineering."
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:133
+#: parsifal/reviews/planning/templates/planning/protocol.html:135
 #, python-format
 msgid ""
 "The <em>outcomes</em> of the experiment should not only be statistically "
@@ -2589,7 +2628,7 @@ msgid ""
 "some respect if it is twice as time consuming."
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:134
+#: parsifal/reviews/planning/templates/planning/protocol.html:136
 msgid ""
 "The <em>context</em> of the study must be defined, which is an extended view "
 "of the population, including whether it is conducted in academia or "
@@ -2597,49 +2636,54 @@ msgid ""
 "subjects."
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:158
+#: parsifal/reviews/planning/templates/planning/protocol.html:160
 msgid ""
 "Separate the terms used in the PICOC using commas. This will make possible "
 "to save them separately as keywords so we can help you design your search "
 "string."
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:159
+#: parsifal/reviews/planning/templates/planning/protocol.html:161
 msgid ""
 "If any of the sections of PICOC does not apply to your research, please "
 "leave it blank."
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:161
+#: parsifal/reviews/planning/templates/planning/protocol.html:163
+#: parsifal/reviews/templates/reviews/partial_published_protocols.html:83
 msgid "Population"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:167
+#: parsifal/reviews/planning/templates/planning/protocol.html:169
+#: parsifal/reviews/templates/reviews/partial_published_protocols.html:87
 msgid "Intervention"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:173
+#: parsifal/reviews/planning/templates/planning/protocol.html:175
+#: parsifal/reviews/templates/reviews/partial_published_protocols.html:91
 msgid "Comparison"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:179
-#: parsifal/reviews/planning/templates/planning/protocol.html:325
+#: parsifal/reviews/planning/templates/planning/protocol.html:181
+#: parsifal/reviews/planning/templates/planning/protocol.html:327
+#: parsifal/reviews/templates/reviews/partial_published_protocols.html:95
 msgid "Outcome"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:185
+#: parsifal/reviews/planning/templates/planning/protocol.html:187
+#: parsifal/reviews/templates/reviews/partial_published_protocols.html:99
 msgid "Context"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:197
+#: parsifal/reviews/planning/templates/planning/protocol.html:199
 msgid "Saving..."
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:218
+#: parsifal/reviews/planning/templates/planning/protocol.html:220
 msgid "About the Research Questions"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:221
+#: parsifal/reviews/planning/templates/planning/protocol.html:223
 msgid ""
 "The area of the systematic review and the specific research questions set "
 "the focus for the identification of the primary studies, the extraction of "
@@ -2648,147 +2692,149 @@ msgid ""
 "phrasing the research questions include the PICOC."
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:251
-#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:77
+#: parsifal/reviews/planning/templates/planning/protocol.html:253
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:78
 msgid "Add Question"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:264
+#: parsifal/reviews/planning/templates/planning/protocol.html:266
 msgid "About the Keywords and Synonyms"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:267
+#: parsifal/reviews/planning/templates/planning/protocol.html:269
 msgid ""
 "The keywords are basically extracted from the <em>population</em>, "
 "<em>intervention</em>, <em>comparison</em> and <em>outcomes</em>."
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:268
+#: parsifal/reviews/planning/templates/planning/protocol.html:270
 msgid ""
 "Every keyword must be related with one step of the PICOC. Please note, the "
 "<em>context</em> is related with the <em>population</em>."
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:269
+#: parsifal/reviews/planning/templates/planning/protocol.html:271
 msgid ""
 "After determining all relevant keywords, you should relate them if all their "
 "synonyms to make your search string broader."
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:270
+#: parsifal/reviews/planning/templates/planning/protocol.html:272
 msgid "Example:"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:274
+#: parsifal/reviews/planning/templates/planning/protocol.html:276
 msgid "Keyword:"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:275
+#: parsifal/reviews/planning/templates/planning/protocol.html:277
 msgid "Synonyms:"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:281
+#: parsifal/reviews/planning/templates/planning/protocol.html:283
 msgid "application:"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:284
+#: parsifal/reviews/planning/templates/planning/protocol.html:286
 msgid "product:"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:293
+#: parsifal/reviews/planning/templates/planning/protocol.html:295
 msgid "project:"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:296
+#: parsifal/reviews/planning/templates/planning/protocol.html:298
 msgid "development:"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:300
+#: parsifal/reviews/planning/templates/planning/protocol.html:302
 msgid "cross organisation"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:303
+#: parsifal/reviews/planning/templates/planning/protocol.html:305
 msgid "cross organization"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:306
+#: parsifal/reviews/planning/templates/planning/protocol.html:308
 msgid "multiple-organizational"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:309
+#: parsifal/reviews/planning/templates/planning/protocol.html:311
 msgid "multiple-organisational model"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:313
+#: parsifal/reviews/planning/templates/planning/protocol.html:315
 msgid "within-organization"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:316
+#: parsifal/reviews/planning/templates/planning/protocol.html:318
 msgid "within-organizational"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:319
+#: parsifal/reviews/planning/templates/planning/protocol.html:321
 msgid "within-organisational"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:322
+#: parsifal/reviews/planning/templates/planning/protocol.html:324
 msgid "single company"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:325
+#: parsifal/reviews/planning/templates/planning/protocol.html:327
 msgid "Accuracy"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:326
+#: parsifal/reviews/planning/templates/planning/protocol.html:328
 msgid "Mean Magnitude"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:329
+#: parsifal/reviews/planning/templates/planning/protocol.html:331
 msgid "Relative Error"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:352
+#: parsifal/reviews/planning/templates/planning/protocol.html:354
 msgid ""
 "To edit or remove a certain keyword or synonym you may click on it's "
 "description to enable the field."
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:357
+#: parsifal/reviews/planning/templates/planning/protocol.html:359
+#: parsifal/reviews/templates/reviews/partial_published_protocols.html:129
 msgid "Keyword"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:359
+#: parsifal/reviews/planning/templates/planning/protocol.html:361
+#: parsifal/reviews/templates/reviews/partial_published_protocols.html:131
 msgid "Related to"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:372
+#: parsifal/reviews/planning/templates/planning/protocol.html:374
 msgid "Add Keyword"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:376
+#: parsifal/reviews/planning/templates/planning/protocol.html:378
 msgid "Import PICO Keywods"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:397
-#: parsifal/reviews/planning/templates/planning/protocol.html:518
+#: parsifal/reviews/planning/templates/planning/protocol.html:399
+#: parsifal/reviews/planning/templates/planning/protocol.html:520
 msgid "Are you sure?"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:400
+#: parsifal/reviews/planning/templates/planning/protocol.html:402
 msgid ""
 "This action <strong>cannot</strong> be undone. This will remove the <strong "
 "id=\"delete-keyword-name\"></strong> keyword, and all related synonyms."
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:403
+#: parsifal/reviews/planning/templates/planning/protocol.html:405
 msgid "Remove this keyword"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:418
+#: parsifal/reviews/planning/templates/planning/protocol.html:420
 msgid "About the Search String"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:421
+#: parsifal/reviews/planning/templates/planning/protocol.html:423
 msgid ""
 "The golden rule to design a good search string is to separate the keywords "
 "and synonyms with the boolean operator <strong>OR</strong> and separate the "
@@ -2797,190 +2843,209 @@ msgid ""
 "<strong>AND</strong>, as following:"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:427
+#: parsifal/reviews/planning/templates/planning/protocol.html:429
 msgid "Good example"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:453
+#: parsifal/reviews/planning/templates/planning/protocol.html:455
 msgid ""
 "Use uppercase for boolean operators (<strong>AND</strong>, <strong>OR</"
 "strong>), double quotes for composite words and parentheses to logically "
 "separate the keywords and synonyms."
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:472
+#: parsifal/reviews/planning/templates/planning/protocol.html:474
 msgid "Suggested Search String"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:485
+#: parsifal/reviews/planning/templates/planning/protocol.html:487
 msgid "Digital Libraries"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:521
+#: parsifal/reviews/planning/templates/planning/protocol.html:523
 msgid ""
 "This action <strong>cannot</strong> be undone. This will remove the <strong "
 "id=\"delete-source-name\"></strong> source, and permanently delete all "
 "imported articles associated with it."
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:524
+#: parsifal/reviews/planning/templates/planning/protocol.html:526
 msgid "Remove this source"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:579
+#: parsifal/reviews/planning/templates/planning/protocol.html:581
 msgid "Add Source"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:581
+#: parsifal/reviews/planning/templates/planning/protocol.html:583
 msgid "Add a Digital Library"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:592
+#: parsifal/reviews/planning/templates/planning/protocol.html:594
 msgid ""
 "Inform your inclusion or exclusion criteria and press <strong>Enter</strong> "
 "to add."
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:596
+#: parsifal/reviews/planning/templates/planning/protocol.html:598
+#: parsifal/reviews/templates/reviews/partial_published_protocols.html:209
 msgid "Inclusion Criteria"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:608
-#: parsifal/reviews/planning/templates/planning/protocol.html:625
+#: parsifal/reviews/planning/templates/planning/protocol.html:610
+#: parsifal/reviews/planning/templates/planning/protocol.html:627
 msgid "remove selected"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:613
+#: parsifal/reviews/planning/templates/planning/protocol.html:615
+#: parsifal/reviews/templates/reviews/partial_published_protocols.html:220
 msgid "Exclusion Criteria"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:46
-#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:63
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:47
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:64
+#: parsifal/reviews/templates/reviews/partial_published_protocols.html:235
 msgid "Questions"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:47
-#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:90
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:48
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:91
+#: parsifal/reviews/templates/reviews/partial_published_protocols.html:250
 msgid "Answers"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:48
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:49
 msgid "Score"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:53
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:54
 msgid "Share Quality Assessment"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:81
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:82
 msgid "Import Questions"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:96
-msgid "Weight"
-msgstr ""
-
-#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:111
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:112
 msgid "Add Answer"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:115
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:116
+msgid "Import Answers"
+msgstr ""
+
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:120
 msgid "(Add Suggested Answers)"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:125
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:130
+#: parsifal/reviews/templates/reviews/partial_published_protocols.html:269
 msgid "Quality Assessment Scores"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:130
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:135
+#: parsifal/reviews/templates/reviews/partial_published_protocols.html:275
 msgid "Max Score"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:133
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:138
 msgid ""
 "Calculated based on the number of questions and on the answer of greater "
 "weight"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:137
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:142
+#: parsifal/reviews/templates/reviews/partial_published_protocols.html:282
 msgid "Cutoff Score"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:163
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:168
 msgid "Import Quality Assessment Questions"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:166
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:171
 msgid ""
 "Below you see the reviews that exported your quality assessment questions, "
 "choose one to import the questions for your review"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:189
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:194
+msgid "Import Quality Assessment Answers"
+msgstr ""
+
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:197
+msgid ""
+"Below you see the reviews that exported your quality assessment answers, "
+"choose one to import the answers for your review"
+msgstr ""
+
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:220
 msgid "Export Quality Assesment"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:193
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:224
 msgid ""
 "Your Quality Assessment are already shared. Do you wanna make it private "
 "again?"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:195
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:226
 msgid ""
 "If you agree, your Quality Assessment will be made known to other "
 "researchers to use them"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:203
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:234
 msgid "Hide Quality Assessment"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:205
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:236
 msgid "Export Quality Assessment"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:47
+#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:48
+#: parsifal/reviews/templates/reviews/partial_published_protocols.html:27
+#: parsifal/reviews/templates/reviews/review.html:245
 msgid "Risks"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:61
+#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:62
 msgid "Add Risk"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:65
+#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:66
 msgid "Import Risks"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:69
-#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:113
+#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:70
+#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:114
 msgid "Share your Risks"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:85
+#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:86
 msgid "Import Shared Risks"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:88
+#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:89
 msgid ""
 "Below you see the reviews that exported your Risks, choose one to import the "
 "risks for your review"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:119
+#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:120
 msgid "Your Risks are already shared. Do you wanna make it private again?"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:121
+#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:122
 msgid ""
 "If you agree, your Risks will be made known to other researchers to use them"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:130
+#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:131
 msgid "Hide Risks Fields"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:132
+#: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:133
 msgid "Export Risks"
 msgstr ""
 
@@ -2995,11 +3060,11 @@ msgstr ""
 msgid "Your review have been saved successfully!"
 msgstr ""
 
-#: parsifal/reviews/planning/views.py:858
+#: parsifal/reviews/planning/views.py:874
 msgid "Cutoff score saved successfully!"
 msgstr ""
 
-#: parsifal/reviews/planning/views.py:895
+#: parsifal/reviews/planning/views.py:911
 msgid "Description and Type are required fields."
 msgstr ""
 
@@ -3038,88 +3103,102 @@ msgstr ""
 msgid "Review Settings"
 msgstr ""
 
-#: parsifal/reviews/settings/templates/settings/review_settings.html:40
+#: parsifal/reviews/settings/templates/settings/review_settings.html:48
 #: parsifal/reviews/templates/reviews/review_header.html:6
 msgid "Review settings"
 msgstr ""
 
-#: parsifal/reviews/settings/templates/settings/review_settings.html:46
+#: parsifal/reviews/settings/templates/settings/review_settings.html:54
 msgid "Save changes"
 msgstr ""
 
-#: parsifal/reviews/settings/templates/settings/review_settings.html:53
+#: parsifal/reviews/settings/templates/settings/review_settings.html:61
 msgid "Danger zone"
 msgstr ""
 
-#: parsifal/reviews/settings/templates/settings/review_settings.html:57
+#: parsifal/reviews/settings/templates/settings/review_settings.html:65
 msgid "Transfer"
 msgstr ""
 
-#: parsifal/reviews/settings/templates/settings/review_settings.html:58
-#: parsifal/reviews/settings/templates/settings/review_settings.html:82
-#: parsifal/reviews/settings/templates/settings/review_settings.html:89
+#: parsifal/reviews/settings/templates/settings/review_settings.html:66
+#: parsifal/reviews/settings/templates/settings/review_settings.html:101
+#: parsifal/reviews/settings/templates/settings/review_settings.html:108
 msgid "Transfer ownership"
 msgstr ""
 
-#: parsifal/reviews/settings/templates/settings/review_settings.html:59
+#: parsifal/reviews/settings/templates/settings/review_settings.html:67
 msgid "Transfer this review to another user."
 msgstr ""
 
-#: parsifal/reviews/settings/templates/settings/review_settings.html:63
-#: parsifal/reviews/settings/templates/settings/review_settings.html:115
+#: parsifal/reviews/settings/templates/settings/review_settings.html:71
+#: parsifal/reviews/settings/templates/settings/review_settings.html:134
 #, fuzzy
 #| msgid "New review"
 msgid "Delete this review"
 msgstr "Nova ??"
 
-#: parsifal/reviews/settings/templates/settings/review_settings.html:64
+#: parsifal/reviews/settings/templates/settings/review_settings.html:72
 msgid "Once you delete a review, there is no going back. Please be certain."
 msgstr ""
 
-#: parsifal/reviews/settings/templates/settings/review_settings.html:67
+#: parsifal/reviews/settings/templates/settings/review_settings.html:77
+msgid "Unpublish"
+msgstr ""
+
+#: parsifal/reviews/settings/templates/settings/review_settings.html:79
 msgid "Publish"
 msgstr ""
 
-#: parsifal/reviews/settings/templates/settings/review_settings.html:68
+#: parsifal/reviews/settings/templates/settings/review_settings.html:82
 msgid "Publish protocol of review"
 msgstr ""
 
-#: parsifal/reviews/settings/templates/settings/review_settings.html:69
+#: parsifal/reviews/settings/templates/settings/review_settings.html:85
 msgid ""
-"Once you publish the protocol of review, other researchers might create "
-"other reviews based on it."
+"Once you <b>unpublish</b> the protocol of review, news reviews may not be "
+"based on your protocol.."
 msgstr ""
 
-#: parsifal/reviews/settings/templates/settings/review_settings.html:85
+#: parsifal/reviews/settings/templates/settings/review_settings.html:87
+msgid ""
+"Once you <b>publish</b> the protocol of review, other researchers might "
+"create other reviews based on it."
+msgstr ""
+
+#: parsifal/reviews/settings/templates/settings/review_settings.html:104
 msgid "New owner's Parsifal username:"
 msgstr ""
 
-#: parsifal/reviews/settings/templates/settings/review_settings.html:107
+#: parsifal/reviews/settings/templates/settings/review_settings.html:126
 msgid ""
 "This action <strong>CANNOT</strong> be undone. This will permanently delete "
 "the"
 msgstr ""
 
-#: parsifal/reviews/settings/templates/settings/review_settings.html:107
+#: parsifal/reviews/settings/templates/settings/review_settings.html:126
 msgid "review and all associated data."
 msgstr ""
 
-#: parsifal/reviews/settings/templates/settings/review_settings.html:110
-#: parsifal/reviews/settings/templates/settings/review_settings.html:136
+#: parsifal/reviews/settings/templates/settings/review_settings.html:129
+#: parsifal/reviews/settings/templates/settings/review_settings.html:161
+#: parsifal/reviews/templates/reviews/review.html:263
 msgid "I understand the consequences."
 msgstr ""
 
-#: parsifal/reviews/settings/templates/settings/review_settings.html:133
-msgid ""
-"This action <strong>CANNOT</strong> be undone. This will permanently open "
-"the protocol of "
+#: parsifal/reviews/settings/templates/settings/review_settings.html:153
+msgid "This will <b>close</b> the protocol of "
 msgstr ""
 
-#: parsifal/reviews/settings/templates/settings/review_settings.html:133
+#: parsifal/reviews/settings/templates/settings/review_settings.html:153
+#: parsifal/reviews/settings/templates/settings/review_settings.html:155
 msgid " and all planning data for other researchers."
 msgstr ""
 
-#: parsifal/reviews/settings/templates/settings/review_settings.html:141
+#: parsifal/reviews/settings/templates/settings/review_settings.html:155
+msgid "This will <b>open</b> the protocol of "
+msgstr ""
+
+#: parsifal/reviews/settings/templates/settings/review_settings.html:166
 #, fuzzy
 #| msgid "New review"
 msgid "Publish protocol this review"
@@ -3137,60 +3216,115 @@ msgstr "Nova ??"
 msgid "Create review"
 msgstr "Nova ??"
 
-#: parsifal/reviews/templates/reviews/review.html:33
+#: parsifal/reviews/templates/reviews/partial_published_protocols.html:26
+#: parsifal/reviews/templates/reviews/review.html:240
+msgid "Checklist"
+msgstr ""
+
+#: parsifal/reviews/templates/reviews/partial_published_protocols.html:42
+msgid "Tags"
+msgstr ""
+
+#: parsifal/reviews/templates/reviews/partial_published_protocols.html:53
+msgid "Last Update"
+msgstr ""
+
+#: parsifal/reviews/templates/reviews/partial_published_protocols.html:56
+#, fuzzy
+#| msgid "New review"
+msgid "Created"
+msgstr "Nova ??"
+
+#: parsifal/reviews/templates/reviews/review.html:34
 msgid "Review details"
 msgstr ""
 
-#: parsifal/reviews/templates/reviews/review.html:64
+#: parsifal/reviews/templates/reviews/review.html:54
+msgid "Import Protocol"
+msgstr ""
+
+#: parsifal/reviews/templates/reviews/review.html:70
 msgid "main author"
 msgstr ""
 
-#: parsifal/reviews/templates/reviews/review.html:77
+#: parsifal/reviews/templates/reviews/review.html:83
 msgid "(leave)"
 msgstr ""
 
-#: parsifal/reviews/templates/reviews/review.html:87
-#: parsifal/reviews/templates/reviews/review.html:97
+#: parsifal/reviews/templates/reviews/review.html:93
+#: parsifal/reviews/templates/reviews/review.html:103
 msgid "Add author"
 msgstr ""
 
-#: parsifal/reviews/templates/reviews/review.html:101
+#: parsifal/reviews/templates/reviews/review.html:107
 msgid ""
 "You may add someone that doesn't have a Parsifal Account. Just type his "
 "email adress and we will send an invitation. :)"
 msgstr ""
 
-#: parsifal/reviews/templates/reviews/review.html:104
-#: parsifal/reviews/templates/reviews/review.html:154
+#: parsifal/reviews/templates/reviews/review.html:110
+#: parsifal/reviews/templates/reviews/review.html:165
 msgid "Contacts"
 msgstr ""
 
-#: parsifal/reviews/templates/reviews/review.html:105
+#: parsifal/reviews/templates/reviews/review.html:111
 msgid "Pick an author or invite someone..."
 msgstr ""
 
-#: parsifal/reviews/templates/reviews/review.html:110
-#: parsifal/reviews/templates/reviews/review.html:160
+#: parsifal/reviews/templates/reviews/review.html:116
+#: parsifal/reviews/templates/reviews/review.html:171
 msgid "Send invitation"
 msgstr ""
 
-#: parsifal/reviews/templates/reviews/review.html:123
+#: parsifal/reviews/templates/reviews/review.html:129
 msgid "Visitors"
 msgstr ""
 
-#: parsifal/reviews/templates/reviews/review.html:137
-#: parsifal/reviews/templates/reviews/review.html:147
+#: parsifal/reviews/templates/reviews/review.html:148
+#: parsifal/reviews/templates/reviews/review.html:158
 msgid "Add visitor"
 msgstr ""
 
-#: parsifal/reviews/templates/reviews/review.html:151
+#: parsifal/reviews/templates/reviews/review.html:162
 msgid ""
 "You may add someone that doesn't have a Parsifal Account. Just type his "
 "email adress and we will send an invitation."
 msgstr ""
 
-#: parsifal/reviews/templates/reviews/review.html:155
+#: parsifal/reviews/templates/reviews/review.html:166
 msgid "Invite someone..."
+msgstr ""
+
+#: parsifal/reviews/templates/reviews/review.html:188
+msgid "Import Published Protocols"
+msgstr ""
+
+#: parsifal/reviews/templates/reviews/review.html:191
+msgid ""
+"Below you see the reviews that exported your protocol, choose one to import "
+"the protocol for your review"
+msgstr ""
+
+#: parsifal/reviews/templates/reviews/review.html:219
+msgid "Confirm Import "
+msgstr ""
+
+#: parsifal/reviews/templates/reviews/review.html:222
+msgid "Are you sure you want to import these sections of protocol "
+msgstr ""
+
+#: parsifal/reviews/templates/reviews/review.html:223
+msgid ""
+"The selected sections will be populated by information from the selected "
+"protocol. All information already filled in will be overwritten."
+msgstr ""
+
+#: parsifal/reviews/templates/reviews/review.html:257
+msgid "Clear all fields before import"
+msgstr ""
+
+#: parsifal/reviews/templates/reviews/review.html:270
+msgid "Import protocol for your review"
 msgstr ""
 
 #: parsifal/reviews/templates/reviews/review_tag.html:6
