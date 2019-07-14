@@ -569,8 +569,18 @@ div#modal-published-protocols div.modal-dialog{
 }
 
 .btn-sections-protocol-import .btn span.glyphicon {    			
-	opacity: 0.1;				
+	opacity: 0.1;
+	color: gray;				
 }
 .btn-sections-protocol-import .btn.active span.glyphicon {				
-	opacity: 1;				
+	opacity: 1;
+					
+}
+
+label.btn-default .active{
+	color: black;
+}
+
+label.btn-default {
+	color: gray;
 }

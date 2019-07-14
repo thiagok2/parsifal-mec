@@ -25,6 +25,8 @@
 {% block content %}
 
   {% include "reviews/review_header.html" with active_menu="review" %}
+  
+  
   <div class="row">
     <div class="col-sm-7 col-md-8 col-lg-9">
       <div class="panel panel-default">
@@ -248,7 +250,14 @@
 							{% trans 'Data Extraction' %}
 						</label>
 					</div>
-					
+					<!--
+					<div class="checkbox">
+						<label class=""> 
+							<input type="checkbox" id="check_clear_review" checked="checked" value="true"/>
+							{% trans 'Clear all fields before import' %}
+						</label>
+					</div>
+					-->
 					<div class="checkbox">
 						<label> 
 							<input type="checkbox" id="enable-confirm-import">{% trans 'I understand the consequences.' %}

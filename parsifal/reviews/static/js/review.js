@@ -187,6 +187,7 @@ $(function () {
 	  			'importChecklist': $('#check_protocol_checklist').prop('checked'),
 	  			'importRisks': $('#check_protocol_risks').prop('checked'),
 	  			'importDataExtraction': $('#check_protocol_data_extraction').prop('checked')
+	  			//'clearFiedls': $('#check_clear_review').prop('checked')
 	  		
 	  		},
 	  		cache: false,
@@ -197,6 +198,8 @@ $(function () {
 	  			$("#modal-published-protocols").modal("hide");
 	  			
 	  			location.reload();
+	  			
+	  			
 	  		}
 	  });
   });
