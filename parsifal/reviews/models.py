@@ -62,6 +62,8 @@ class Review(models.Model):
     export_risks = models.BooleanField(default=False)
     export_qualityassessment = models.BooleanField(default=False)
 
+    #protocol_base = models.ForeignKey('self', null=True, related_name='protocol_base')
+
     class Meta:
         verbose_name = u'Review'
         verbose_name_plural = u'Reviews'
@@ -69,7 +71,13 @@ class Review(models.Model):
 
     def __unicode__(self):
         return self.name
-
+    
+    def isExtended(self):
+        return protocol_base is None
+    
+    #def get_protocol_base(self):
+    #    return Review.objects.filter(review__id=self.review.id, protocol_base__id=self.id)
+    
     def get_absolute_url(self):
         from django.core.urlresolvers import reverse
         return reverse('review', args=(str(self.author.username), str(self.name)))
