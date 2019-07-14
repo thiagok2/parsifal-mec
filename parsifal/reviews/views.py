@@ -1,7 +1,7 @@
 # coding: utf-8
 
 from django.core.urlresolvers import reverse as r
-from django.template.defaultfilters import slugify
+from django.template.defaultfilters import slugify, nan
 from django.db.models import Q
 from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseForbidden, JsonResponse
 from django.contrib import messages
@@ -13,7 +13,7 @@ from django.utils.html import escape
 from django.views.decorators.http import require_POST
 from django.core.mail import EmailMultiAlternatives
 
-from parsifal.reviews.models import Review, Tag, Invite
+from parsifal.reviews.models import Review, Tag, Invite, Question, Keyword, SearchSession, SelectionCriteria, QualityAnswer, QualityQuestion, Risk,DataExtractionField, DataExtractionLookup
 from parsifal.reviews.decorators import main_author_required, author_required, author_or_visitor_required
 from parsifal.reviews.forms import CreateReviewForm, ReviewForm
 
@@ -354,8 +354,6 @@ def import_protocol(request):
         review_id = request.GET['review-id']
         review = Review.objects.get(pk=review_id)
         
-        print(str(review))
-        
         protocolId = request.GET['protocolId']
         protocol = Review.objects.get(pk=protocolId)
         
@@ -367,6 +365,7 @@ def import_protocol(request):
         
         if importDetail:
             review.description = protocol.description
+            #Tag.objects.filter(review_id=review_id).delete()
             
             for protocolTag in Tag.objects.filter(review__id=protocolId):
                 newTag = Tag(tag=protocolTag.tag, review = review)
@@ -380,7 +379,62 @@ def import_protocol(request):
             review.outcome = protocol.outcome
             review.context = protocol.context
             
+            #Question.objects.filter(review__id=review_id).delete()
+            for protocolQ in Question.objects.filter(review__id=protocolId):
+                newQ = Question(question=protocolQ.question, order = protocolQ.order, review = review)
+                newQ.save();
+            
+            #Keyword.objects.filter(review__id=review_id).delete()
+            for protocolKey in Keyword.objects.filter(review__id=protocolId, synonym_of__isnull=True):
+                newKey = Keyword(description = protocolKey.description, review = review, related_to = protocolKey.related_to )
+                newKey.save()
+                
+                for protocolSyn in protocolKey.get_synonyms():
+                    newSyn = Keyword(description = protocolSyn.description, review = review, synonym_of = newKey)
+                    newSyn.save()
+                
+                newKey.save()
+            
+            #SearchSession.objects.filter(review__id=review_id, source=None).delete()
+            protocolSS = SearchSession.objects.filter(review__id=protocolId, source=None)[:1].get()
+            newSearchSession = SearchSession(search_string = protocolSS.search_string,review = review, version = 1)
+            newSearchSession.save()
+            
+            for protocolSource in protocol.sources.all():
+                review.sources.add(protocolSource)
+                review.save()
+            
+            
+            for protocolCriteria in SelectionCriteria.objects.filter(review__id=protocolId):
+                newCriteria = SelectionCriteria(review = review, criteria_type = protocolCriteria.criteria_type, description = protocolCriteria.description)
+                newCriteria.save()
         
+        if importChecklist:
+            for protocol_aq in protocol.get_quality_assessment_questions():
+                newAssQuestion = QualityQuestion(review = review, description = protocol_aq.description, order = protocol_aq.order)
+                newAssQuestion.save()
+                
+            for protocol_aw in protocol.get_quality_assessment_answers():
+                newAssQuestion = QualityAnswer(review = review, description = protocol_aw.description, weight = protocol_aw.weight)
+                newAssQuestion.save()
+                
+            review.quality_assessment_cutoff_score = protocol.quality_assessment_cutoff_score
+            
+        if importRisks:
+            for protocol_risk in protocol.get_risks():
+                newRisk = Risk(review = review, risk = protocol_risk.risk)
+                newRisk.save()
+                
+        if importDataExtraction:
+                for protocol_df in protocol.get_data_extraction_fields(): 
+                    new_data_field = DataExtractionField(review = review, description = protocol_df.description, 
+                                                         field_type = protocol_df.field_type, order = protocol_df.order)
+                    new_data_field.save()
+                    
+                    for protocol_df_value in protocol_df.get_select_values():
+                        new_df_value = DataExtractionLookup(field = new_data_field, value = protocol_df_value.value)
+                        new_df_value.save()
+                    
         review.save()
         return HttpResponse()
         
