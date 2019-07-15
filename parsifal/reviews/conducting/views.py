@@ -21,6 +21,7 @@ from django.db.models import Count
 from django.utils.html import escape
 
 from parsifal.reviews.models import *
+from parsifal.reviews.forms import ArticleUploadForm
 from parsifal.reviews.decorators import main_author_required, author_required, author_or_visitor_required
 from parsifal.utils.elsevier.client import ElsevierClient
 from parsifal.utils.elsevier.exceptions import *
@@ -548,36 +549,55 @@ def article_details(request):
         mendeley_files = user.profile.get_mendeley_session().files.list().items
     context = RequestContext(request, { 'review': review, 'article': article, 'mendeley_files': mendeley_files })
     return render_to_response('conducting/partial_conducting_article_details.html', context)
-'''
+
 @author_required
 @login_required
 def articles_upload(request):
-    if request.method == 'POST':
-        form = ArticleUploadForm(request.POST, request.FILES)
-        if form.is_valid():
-            uploaded_file = request.FILES['article_file']
-            review_id = request.POST.get('review-id')
-            review = Review.objects.get(pk=review_id)
+    print 'upload'
+    try:
+        if request.method == 'POST':
+            form = ArticleUploadForm(request.POST, request.FILES)
+            print form
+            if form.is_valid():
+                uploaded_file = request.FILES['article_file']
+                review_id = request.POST.get('review-id')
+                review = Review.objects.get(pk=review_id)
 
-            article_id = request.POST.get('article-id')
-            article = Article.objects.get(pk=article_id)
+                article_id = request.POST.get('article-id')
+                article = Article.objects.get(pk=article_id)
 
-            article_file = ArticleFile(review=review,
-                    article=article,
-                    user=request.user,
-                    article_file=uploaded_file,
-                    name=uploaded_file.name,
-                    size=uploaded_file.size)
-            article_file.save()
+                article_file = ArticleFile(review=review,
+                        article=article,
+                        user=request.user,
+                        article_file=uploaded_file,
+                        name=uploaded_file.name,
+                        size=uploaded_file.size)
+                article_file.save()
 
-            results = [ { 'name': article_file.name, 'size': article_file.size } ]
-
-            return HttpResponse(json.dumps(results), content_type='application/json')
-        else:
-            return HttpResponseBadRequest()
-    else:
+                context = RequestContext(request, {'file': article_file })
+                return render_to_response('conducting/partial_article_files_row.html', context)
+            else:
+                print 'else'
+                return HttpResponseBadRequest()
+    except Exception as e:
+        print e
         return HttpResponseBadRequest()
-'''
+
+@author_required
+@login_required
+def remove_article_file(request):
+    try:
+        file_id = request.POST['file-id']
+        if file_id != 'None':
+            try:
+                file = ArticleFile.objects.get(pk=file_id)
+                file.delete()
+            except ArticleFile.DoesNotExist:
+                return HttpResponseBadRequest()
+        return HttpResponse()
+    except Exception as e:
+        return HttpResponseBadRequest()
+
 def build_article_table_row(article):
     name = ''
     if article.created_by:
