@@ -10,6 +10,36 @@ function isScrolledIntoView(elem) {
 
 $(function () {
 
+    $("body").on("click", ".btn-remove-file", function () {
+        var tr = $(this).closest("tr");
+        var btn = $(this);
+        var file_id = $(tr).attr("data-file-id");
+        var review_id = $("#review-id").val();
+        var csrf_token = $("#file-form input[name='csrfmiddlewaretoken']").val();
+        $.ajax({
+        url: '/reviews/conducting/remove_article_file/',
+        data: {
+            'review-id': review_id,
+            'file-id': file_id,
+            'csrfmiddlewaretoken': csrf_token
+        },
+        type: 'post',
+        cache: false,
+        beforeSend: function () {
+            $(btn).ajaxDisable();
+        },
+        success: function (data) {
+            $(tr).remove();
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(errorThrown)
+        },
+        complete: function () {
+            $(btn).ajaxEnable();
+        }
+        });
+    });
+
 
   $("body").on("click", ".js-start-upload", function () {
     $(this).siblings("input[type='file']").click();
@@ -34,7 +64,7 @@ $(function () {
         $("#tab-files").html(data);
       },
       error: function () {
-        
+
       },
       complete: function () {
         $.parsifal.pageLoading();
@@ -121,11 +151,10 @@ $(function () {
 
         $('#fileupload').fileupload({
           url: '/reviews/conducting/articles/upload/',
-          dataType: 'json',
+          dataType: 'html',
           done: function (e, data) {
-            data.result.forEach(function (uploadedFile) {
-              $("#files").append("<li class='list-group-item'>" + uploadedFile.name + "</li>");
-            });
+            $('#files tbody').append(data.result)
+            $('#files .no-data').addClass('hidden')
           },
           progressall: function (e, data) {
             var progress = parseInt(data.loaded / data.total * 100, 10);
@@ -155,10 +184,10 @@ $(function () {
 
     if (keyCode == ESCAPE_KEY) {
       if ($("body").hasClass("modal-open")) {
-        $(".modal").modal('hide');  
+        $(".modal").modal('hide');
       }
       else {
-        $(".source-articles tbody tr").removeClass("active");    
+        $(".source-articles tbody tr").removeClass("active");
       }
     }
     else if (!$("body").hasClass("modal-open")) {
@@ -184,7 +213,7 @@ $(function () {
     var size = $(".source-articles tbody tr").size();
     var next;
     do {
-      active = (active + step) % size;  
+      active = (active + step) % size;
       next = $(".source-articles tbody tr:eq("+active+")");
     } while($(next).is(":hidden"));
     $(".source-articles tbody tr").removeClass("active");
@@ -241,7 +270,7 @@ $(function () {
       }
     });
   }
-  
+
   $(".btn-save-article").click(function () {
     save_article(false);
   });

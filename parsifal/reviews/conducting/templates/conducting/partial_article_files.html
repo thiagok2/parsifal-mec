@@ -1,21 +1,32 @@
 {% load i18n %}
 
 {% load humanize %}
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">{% trans 'Library' %}</h3>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">{% trans 'Library' %}</h3>
+    </div>
+    <form method="post" id="file-form">
+      {% csrf_token %}
+      <table class="table" id="files" style="margin-bottom: 0px;">
+        <tbody>
+          {% for file in article.get_files %}
+            {% include 'conducting/partial_article_files_row.html' with file=file %}
+          {% empty %}
+            <tr class="no-data">
+              <td colspan="9">{% trans 'No files.' %}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </form>
+    <div id="progress" class="progress" style="margin-bottom: 0; border-radius: 0; height: 2px">
+        <div class="progress-bar progress-bar-success"></div>
+    </div>
+    <div class="panel-footer">
+      <span class="btn btn-primary fileinput-button">
+          <i class="glyphicon glyphicon-plus"></i>
+          <span>{% trans 'Select files...' %}</span>
+          <input id="fileupload" type="file" name="article_file" multiple>
+      </span>
+    </div>
   </div>
-  <ul class="list-group" id="files">
-
-  </ul>
-  <div id="progress" class="progress" style="margin-bottom: 0; border-radius: 0;">
-      <div class="progress-bar progress-bar-success"></div>
-  </div>
-  <div class="panel-footer">
-    <span class="btn btn-primary fileinput-button">
-        <i class="glyphicon glyphicon-plus"></i>
-        <span>{% trans 'Select files...' %}</span>
-        <input id="fileupload" type="file" name="article_file" multiple>
-    </span>
-  </div>
-</div>

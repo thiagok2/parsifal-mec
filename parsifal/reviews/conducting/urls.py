@@ -27,10 +27,11 @@ urlpatterns = patterns('parsifal.reviews.conducting.views',
     url(r'^multiple_articles_action/accept/$', 'multiple_articles_action_accept', name='multiple_articles_action_accept'),
     url(r'^multiple_articles_action/reject/$', 'multiple_articles_action_reject', name='multiple_articles_action_reject'),
     url(r'^multiple_articles_action/duplicated/$', 'multiple_articles_action_duplicated', name='multiple_articles_action_duplicated'),
-    #url(r'^articles/upload/$', 'articles_upload', name='articles_upload'),
+    url(r'^articles/upload/$', 'articles_upload', name='articles_upload'),
     url(r'^save_data_extraction/$', 'save_data_extraction', name='save_data_extraction'),
     url(r'^save_data_extraction_status/$', 'save_data_extraction_status', name='save_data_extraction_status'),
     url(r'^articles_selection_chart/$', 'articles_selection_chart', name='articles_selection_chart'),
     url(r'^articles_per_year/$', 'articles_per_year', name='articles_per_year'),
-    url(r'^export_data_extraction/$', 'export_data_extraction', name='export_data_extraction')
+    url(r'^export_data_extraction/$', 'export_data_extraction', name='export_data_extraction'),
+    url(r'^remove_article_file/$', 'remove_article_file', name='remove_article_file')
 )
