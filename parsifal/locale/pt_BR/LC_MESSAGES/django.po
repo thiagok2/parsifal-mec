@@ -2378,7 +2378,7 @@ msgstr "Planejamento"
 #: parsifal/reviews/planning/templates/planning/planning_header.html:16
 #: parsifal/reviews/reporting/templates/reporting/export.html:86
 msgid "Data Extraction Form"
-msgstr "Formulário de extração de dados"
+msgstr "Formulário de Extração de Dados"
 
 #: parsifal/reviews/planning/templates/planning/data_extraction_form.html:32
 #: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:96
@@ -2952,7 +2952,7 @@ msgstr "Add Palavra-chave"
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:378
 msgid "Import PICO Keywods"
-msgstr "Importar Palavras-chave(PICOC)"
+msgstr "Importar Palavras-chave (PICOC)"
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:399
 #: parsifal/reviews/planning/templates/planning/protocol.html:520
@@ -3075,7 +3075,7 @@ msgstr "Pontuação"
 
 #: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:54
 msgid "Share Quality Assessment"
-msgstr "Compartilhar Avaliação de Qualidade"
+msgstr "Compartilhar"
 
 #: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:82
 msgid "Import Questions"
@@ -3086,14 +3086,12 @@ msgid "Add Answer"
 msgstr "Add Resposta"
 
 #: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:116
-#, fuzzy
-#| msgid "Import Risks"
 msgid "Import Answers"
-msgstr "Importar Riscos"
+msgstr "Importar Respostas"
 
 #: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:120
 msgid "(Add Suggested Answers)"
-msgstr "(Adicionar respostas sugeridas)"
+msgstr "(Adicionar Respostas Sugeridas)"
 
 #: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:130
 #: parsifal/reviews/templates/reviews/partial_published_protocols.html:269
