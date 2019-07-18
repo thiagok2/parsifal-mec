@@ -71,13 +71,13 @@ class Review(models.Model):
 
     def __unicode__(self):
         return self.name
-    
+
     def isExtended(self):
         return protocol_base is None
-    
+
     #def get_protocol_base(self):
     #    return Review.objects.filter(review__id=self.review.id, protocol_base__id=self.id)
-    
+
     def get_absolute_url(self):
         from django.core.urlresolvers import reverse
         return reverse('review', args=(str(self.author.username), str(self.name)))
@@ -395,6 +395,20 @@ class Article(models.Model):
         label = { Article.UNCLASSIFIED: 'default', Article.REJECTED: 'danger', Article.ACCEPTED: 'success', Article.DUPLICATED: 'warning' }
         return u'<span class="label label-{0}">{1}</span>'.format(label[self.status], self.get_status_display())
 
+    def get_files(self):
+        files = ArticleFile.objects.filter(article__id=self.id)
+        return files
+
+def article_directory_path(instance, filename):
+    return 'article/{0}/{1}'.format(instance.article.id, filename)
+
+class ArticleFile(models.Model):
+    review = models.ForeignKey(Review, related_name='file_review')
+    article = models.ForeignKey(Article, related_name='file_article')
+    user = models.ForeignKey(User, related_name='file_user')
+    article_file = models.FileField(upload_to=article_directory_path)
+    name = models.CharField(max_length=300)
+    size = models.CharField(max_length=150)
 
 class Keyword(models.Model):
     POPULATION = u'P'
