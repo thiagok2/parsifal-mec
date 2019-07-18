@@ -22,9 +22,9 @@
       <li role="presentation">
         <a href="#tab-comments" aria-controls="tab-comments" role="tab" data-toggle="tab">{% trans 'Comments' %}</a>
       </li>
-      {% comment %}<li role="presentation">
+      <li role="presentation">
         <a href="#tab-files" aria-controls="tab-files" role="tab" data-toggle="tab">{% trans 'Files' %}</a>
-      </li>{% endcomment %}
+      </li>
       {% if article.url %}
         <li class="pull-right">
           <a href="{{ article.url|default_if_none:'' }}" target="_blank" role="tab" title="{% trans 'Change the URL via Article URL' %}">
@@ -148,9 +148,9 @@
           <textarea name="comments" class="form-control" id="comments" rows="5">{{ article.comments|default_if_none:'' }}</textarea>
         </div>
       </div>
-      {% comment %}<div role="tabpanel" class="tab-pane" id="tab-files">
+      </form>
+      <div role="tabpanel" class="tab-pane" id="tab-files">
         {% include 'conducting/partial_article_files.html' %}
-      </div>{% endcomment %}
+      </div>
     </div>
   </div>
-</form>
