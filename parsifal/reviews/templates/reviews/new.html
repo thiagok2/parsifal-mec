@@ -1,15 +1,22 @@
 {% extends 'base.html' %}
 
+{% load i18n staticfiles humanize is_visitor %}
+
 {% load i18n %}
 
 {% load humanize %}
 
+
 {% block javascript %}
-  <script>
-    $(function () {
-      $("#id_title").focus();
-    });
-  </script>
+  
+ 	<script src="{% static 'js/review_import.js' %}?_=1"></script>
+	<script>
+	    $(function () {
+	      $("#id_title").focus();
+	    });
+	</script>
+  
+
 {% endblock %}
 
 {% block content %}
@@ -18,8 +25,12 @@
     {% csrf_token %}
     {% include 'form_vertical.html' with form=form %}
     <div class="form-group">
-      <button type="submit" class="btn btn-success">{% trans 'Create review' %}</button>
-      <a href="{% url 'reviews' user.username %}" class="btn btn-default">{% trans 'Cancel' %}</a>
+    	<input type="hidden" id="review-id" name="review-id" value="0" />
+      	<button type="submit" class="btn btn-success">{% trans 'Create review' %}</button>
+      	<a href="{% url 'reviews' user.username %}" class="btn btn-default">{% trans 'Cancel' %}</a>
+    	
+    	
     </div>
   </form>
+>
 {% endblock content %}
