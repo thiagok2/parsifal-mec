@@ -335,6 +335,7 @@ def published_protocols(request):
     try:
         review_id = request.GET['review-id']
         
+        print(review_id)
         published_protocols = Review.objects.filter(export_protocol=True).exclude(id=review_id)
         
         context = RequestContext(request, {'published_protocols': published_protocols})
