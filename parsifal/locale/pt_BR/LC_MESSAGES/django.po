@@ -3330,28 +3330,20 @@ msgid "Publish protocol of review"
 msgstr "Publicar protocolo da revisão"
 
 #: parsifal/reviews/settings/templates/settings/review_settings.html:85
-#, fuzzy
-#| msgid ""
-#| "Once you publish the protocol of review, other researchers might create "
-#| "other reviews based on it."
 msgid ""
 "Once you <b>unpublish</b> the protocol of review, news reviews may not be "
 "based on your protocol.."
 msgstr ""
-"Depois de publicar o protocolo de revisão, outros pesquisadores podem criar "
-"outras revisões baseadas nele."
+"Depois de <b>cancelar a publicação</b> do protocolo da revisão, novas revisões não poderão tomar "
+"como base no seu protocolo."
 
 #: parsifal/reviews/settings/templates/settings/review_settings.html:87
-#, fuzzy
-#| msgid ""
-#| "Once you publish the protocol of review, other researchers might create "
-#| "other reviews based on it."
 msgid ""
 "Once you <b>publish</b> the protocol of review, other researchers might "
 "create other reviews based on it."
 msgstr ""
-"Depois de publicar o protocolo de revisão, outros pesquisadores podem criar "
-"outras revisões baseadas nele."
+"Uma vez que você <b>publique</b> o protocolo de revisão, outros pesquisadores poderão "
+"criar outras revisões baseadas nela."
 
 #: parsifal/reviews/settings/templates/settings/review_settings.html:104
 msgid "New owner's Parsifal username:"
@@ -3426,10 +3418,8 @@ msgid "Review details"
 msgstr "Detalhes da revisão"
 
 #: parsifal/reviews/templates/reviews/review.html:54
-#, fuzzy
-#| msgid "Protocol"
 msgid "Import Protocol"
-msgstr "Protocolo"
+msgstr "Importar Protocolo"
 
 #: parsifal/reviews/templates/reviews/review.html:70
 msgid "main author"
