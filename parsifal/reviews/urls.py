@@ -20,4 +20,5 @@ urlpatterns = patterns('parsifal.reviews.views',
     
     url(r'^published_protocols/$', 'published_protocols', name='published_protocols'),
     url(r'^import_protocol/$', 'import_protocol', name='import_protocol'),
+    
 )
