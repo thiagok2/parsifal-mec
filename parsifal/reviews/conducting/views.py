@@ -537,23 +537,31 @@ def source_articles(request):
 @author_or_visitor_required
 @login_required
 def article_details(request):
-    review_id = request.GET['review-id']
-    article_id = request.GET['article-id']
+    try:
+        review_id = request.GET['review-id']
+        article_id = request.GET['article-id']
+        user = request.user
 
-    review = Review.objects.get(pk=review_id)
-    article = Article.objects.get(pk=article_id)
+        review = Review.objects.get(pk=review_id)
+        article = Article.objects.get(pk=article_id)
 
-    user = request.user
-    mendeley_files = []
-    if user.profile.mendeley_token:
-        mendeley_files = user.profile.get_mendeley_session().files.list().items
-    context = RequestContext(request, { 'review': review, 'article': article, 'mendeley_files': mendeley_files })
-    return render_to_response('conducting/partial_conducting_article_details.html', context)
+        try:
+            article_evaluation = ArticleEvaluation.objects.get(article__id=article_id, user__id=user.id)
+        except ArticleEvaluation.DoesNotExist:
+            article_evaluation = ArticleEvaluation(review=review, article=article, user=user)
+
+        mendeley_files = []
+        if user.profile.mendeley_token:
+            mendeley_files = user.profile.get_mendeley_session().files.list().items
+        context = RequestContext(request, { 'review': review, 'article': article, 'mendeley_files': mendeley_files, 'article_evaluation': article_evaluation })
+        return render_to_response('conducting/partial_conducting_article_details.html', context)
+    except Exception as e:
+        print e
+        return HttpResponseBadRequest()
 
 @author_required
 @login_required
 def articles_upload(request):
-    print 'upload'
     try:
         if request.method == 'POST':
             form = ArticleUploadForm(request.POST, request.FILES)
@@ -664,26 +672,107 @@ def save_article_details(request):
             article.issn = request.POST['issn'][:50]
             article.language = request.POST['language'][:50]
             article.note = request.POST['note'][:500]
-
-            article.comments = request.POST['comments'][:4000]
-            status = request.POST['status'][:1]
-            if status in (Article.UNCLASSIFIED, Article.REJECTED, Article.ACCEPTED, Article.DUPLICATED):
-                article.status = status
-
-            selection_criteria_id = request.POST.get('selection_criteria')
-            try:
-                selection_criteria = SelectionCriteria.objects.get(pk=selection_criteria_id)
-                article.selection_criteria = selection_criteria
-            except:
-                article.selection_criteria = None
-
             article.updated_by = request.user
             article.save()
 
             return HttpResponse(build_article_table_row(article))
-        except:
+        except Exception as e:
+            print e
             return HttpResponseBadRequest()
     else:
+        return HttpResponseBadRequest()
+
+@author_required
+@login_required
+def save_article_evaluation(request):
+    if request.method == 'POST':
+        try:
+            article_id = request.POST['article-id']
+            article_evaluation_id = request.POST['article-evaluation-id']
+            review_id = ''
+
+            if article_evaluation_id != 'None':
+                article_evaluation = ArticleEvaluation.objects.get(pk=article_evaluation_id)
+                review_id = article_evaluation.review.id
+            else:
+                review_id = request.POST['review-id']
+                review = Review.objects.get(pk=review_id)
+                article = Article.objects.get(pk=article_id)
+                article_evaluation = ArticleEvaluation(review=review, article=article, user=request.user)
+
+            article_evaluation.comments = request.POST['comments'][:4000]
+            status = request.POST['status'][:1]
+            if status in (ArticleEvaluation.UNCLASSIFIED, ArticleEvaluation.REJECTED, ArticleEvaluation.ACCEPTED, ArticleEvaluation.DUPLICATED):
+                article_evaluation.status = status
+
+            selection_criteria_id = request.POST.get('selection_criteria')
+            try:
+                selection_criteria = SelectionCriteria.objects.get(pk=selection_criteria_id)
+                article_evaluation.selection_criteria = selection_criteria
+            except:
+                article_evaluation.selection_criteria = None
+
+            article_evaluation.save()
+
+            edit_article_status(review_id, article_id)
+
+            return HttpResponse()
+        except Exception as e:
+            print e
+            return HttpResponseBadRequest()
+    else:
+        return HttpResponseBadRequest()
+
+def edit_article_status(review_id, article_id):
+    try:
+        article_evaluations = ArticleEvaluation.objects.filter(review__id=review_id, article__id=article_id)
+        article = Article.objects.get(pk=article_id)
+        previous_status = ''
+
+        if not article.evaluation_finished:
+            if article_evaluations.count() == 0:
+                article.status = 'U'
+            elif article_evaluations.count() == 1:
+                article.status = 'W'
+            else:
+                for evaluation in article_evaluations:
+                    if previous_status == '':
+                        previous_status = evaluation.status
+                    else:
+                        if evaluation.status != previous_status:
+                            article.status = 'C'
+                            article.save()
+                            return HttpResponse()
+                        else:
+                            previous_status = evaluation.status
+                            article.status = evaluation.status
+
+            article.save()
+
+        return HttpResponse()
+    except Exception as e:
+        print e
+        return HttpResponseBadRequest()
+
+@author_required
+@login_required
+def article_solve_conflict(request):
+    try:
+        review_id = request.POST['review-id']
+        article_id = request.POST['article-id']
+        article = Article.objects.get(pk=article_id)
+
+        status = request.POST['status'][:1]
+        print 'status ', status
+        if status in (Article.UNCLASSIFIED, Article.WAITING, Article.REJECTED, Article.CONFLICT, Article.ACCEPTED, Article.DUPLICATED):
+            print 'status2 ', status
+            article.status = status
+            article.evaluation_finished = True
+
+            article.save()
+
+        return HttpResponse()
+    except:
         return HttpResponseBadRequest()
 
 @author_required
