@@ -28,6 +28,7 @@ from parsifal.utils.elsevier.exceptions import *
 
 from django.utils.translation import ugettext as _
 
+
 @author_or_visitor_required
 @login_required
 def conducting(request, username, review_name):
@@ -179,7 +180,7 @@ def study_selection(request, username, review_name):
 
     steps_messages = []
     if not add_sources: steps_messages.append(u'Use the <a href="{0}#sources-section">planning tab</a> to add sources to your review.'.format(r('protocol', args=(username, review_name))))
-    if not import_articles: steps_messages.append(u'Import the studies using the <a href="{0}">import studies tab</a>.'.format(r('import_studies', args=(username, review_name))))
+    if not import_articles: steps_messages.append(_('Import the studies using the') + '<a href="{0}">'+_('import studies tab')+'</a>.'.format(r('import_studies', args=(username, review_name))))
 
     finished_all_steps = len(steps_messages) == 0
 

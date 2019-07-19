@@ -24,6 +24,9 @@ urlpatterns = patterns('parsifal.reviews.planning.views',
     url(r'^add_or_edit_risk/$', 'add_or_edit_risk', name='add_or_edit_risk'),
     url(r'^suggested_risks/$', 'suggested_risks', name='suggested_risks'),
     url(r'^share_risks/$', 'share_risks', name='share_risks'),
+    url(r'^save_statistical_methods/$', 'save_statistical_methods', name='save_statistical_methods'),
+    
+    
 
 
     url(r'^import_pico_keywords/$', 'import_pico_keywords', name='import_pico_keywords'),

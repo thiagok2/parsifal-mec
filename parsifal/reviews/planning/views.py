@@ -55,7 +55,23 @@ def data_extraction_form(request, username, review_name):
     empty_field = DataExtractionField()
     return render(request, 'planning/data_extraction_form.html', { 'review': review, 'empty_field': empty_field })
 
+def statistical_methods_conventions(request, username, review_name):
+    review = get_object_or_404(Review, name=review_name, author__username__iexact=username)
+    return render(request, 'planning/statistical_methods_conventions.html', { 'review': review })
 
+def save_statistical_methods(request):
+    try:
+        review_id = request.POST['review-id']
+        statistical_methods = request.POST['statistical_methods']
+        review = Review.objects.get(pk=review_id)
+        if len(statistical_methods) > 1000:
+            return HttpResponseBadRequest(_('The review statistical and methods should not exceed 1000 characters. The given statistical and methods have %s characters.') % len(statistical_methods))
+        else:
+            review.statistical_methods = statistical_methods
+            review.save()
+            return HttpResponse(_('Your review have been saved successfully!'))
+    except:
+        return HttpResponseBadRequest()
 '''
     OBJECTIVE FUNCTIONS
 '''

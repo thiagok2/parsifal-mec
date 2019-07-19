@@ -43,6 +43,7 @@ urlpatterns = patterns('parsifal',
     url(r'^(?P<username>[^/]+)/(?P<review_name>[^/]+)/planning/quality/$', 'reviews.planning.views.quality_assessment_checklist', name='quality_assessment_checklist'),
     url(r'^(?P<username>[^/]+)/(?P<review_name>[^/]+)/planning/extraction/$', 'reviews.planning.views.data_extraction_form', name='data_extraction_form'),
     url(r'^(?P<username>[^/]+)/(?P<review_name>[^/]+)/planning/risks/$', 'reviews.planning.views.risks_to_review_validity', name='risks_to_review_validity'),
+    url(r'^(?P<username>[^/]+)/(?P<review_name>[^/]+)/planning/statistical/$', 'reviews.planning.views.statistical_methods_conventions', name='statistical_methods_conventions'),
 
     # Conducting Phase
     url(r'^(?P<username>[^/]+)/(?P<review_name>[^/]+)/conducting/$', 'reviews.conducting.views.conducting', name='conducting'),

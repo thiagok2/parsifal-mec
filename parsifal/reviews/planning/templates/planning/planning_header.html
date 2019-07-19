@@ -15,4 +15,7 @@
   <li role="presentation"{% if active_tab == 'extraction' %} class="active"{% endif %}>
     <a href="{% url 'data_extraction_form' review.author.username review.name %}">{% trans 'Data Extraction Form' %}</a>
   </li>
+  <li role="presentation"{% if active_tab == 'statistical-methods' %} class="active"{% endif %}>
+    <a href="{% url 'statistical_methods_conventions' review.author.username review.name %}">{% trans 'Statistical Methods and Conventions' %}</a>
+  </li>
 </ul>
