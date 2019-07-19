@@ -16,6 +16,7 @@
   ];
   </script>
   <script src="{% static 'js/review.js' %}?_=1"></script>
+  <script src="{% static 'js/review_import.js' %}?_=1"></script>
   <script src="{% static 'js/review_tag.js' %}?v=1"></script>
   {% if user|is_visitor:review %}
     <script src="{% static 'js/user_is_visitor.js' %}?v=1"></script>
@@ -180,98 +181,9 @@
   </div>
 
 	<section id="sources-section">
-	    <div class="modal fade" id="modal-published-protocols">
-	      <div class="modal-dialog">
-	        <div class="modal-content">
-	          <div class="modal-header">
-	            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	            <h4 class="modal-title">{% trans 'Import Published Protocols' %}</h4>
-	          </div>
-	          <div class="modal-body">
-	          	 <p style="margin-bottom: 20px;">{% trans 'Below you see the reviews that exported your protocol, choose one to import the protocol for your review' %}</p>
-	             {% csrf_token %}
-	             <input type="hidden" name="review-id" value="{{ review.id }}">
-	             <table class="table" id="tbl-import-protocols">
-	               <thead>
-		               	<tr>
-		               		<th width="50%">{% trans 'Review' %}</th>
-		               		<th width="30%">{% trans 'Author' %}</th>
-		               		<th></th>
-		               		<th></th>
-		               	</tr>
-	             	</thead>
-	               <tbody></tbody>
-	             </table>
-	          </div><!-- end modal-body-->
-	        </div><!-- end modal-content-->
-	      </div><!-- end modal-dialog-->
-	    </div> <!-- end modal import -->
-
-
-	<div class="modal fade" id="modal-confirm-import">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h4 class="modal-title">{% trans 'Confirm Import ' %} <b><span id="label_protocol_import1"></span>?</b></h4>
-				</div>
-				<div class="modal-body">
-					<p style="margin-bottom: 20px;">{% trans 'Are you sure you want to import these sections of protocol ' %} <b><span id="label_protocol_import2"></span></b>?</p>
-					<p style="margin-bottom: 20px;" class="text-muted">{% trans 'The selected sections will be populated by information from the selected protocol. All information already filled in will be overwritten.' %}</p>
-					
-					
-					<div class="btn-group btn-sections-protocol-import" data-toggle="buttons">
-						<label class="btn btn-default active" >
-							<input type="checkbox" autocomplete="off" checked="checked" value="1" id="check_protocol_details"/>
-							<span class="glyphicon glyphicon-ok"></span>
-							{% trans 'Details'%}
-						</label>
-						<label class="btn btn-default active" >
-							<input type="checkbox" autocomplete="off" checked="checked" value="1" id="check_protocol_protocol"/>
-							<span class="glyphicon glyphicon-ok"></span>
-							{% trans 'Protocol' %}
-						</label>
-						<label class="btn btn-default active" >
-							<input type="checkbox" autocomplete="off" checked="checked" value="1" id="check_protocol_checklist"/>
-							<span class="glyphicon glyphicon-ok"></span>
-							{% trans 'Checklist' %}
-						</label>
-						<label class="btn btn-default active" >
-							<input type="checkbox" autocomplete="off" checked="checked" value="1" id="check_protocol_risks"/>
-							<span class="glyphicon glyphicon-ok"></span>
-							{% trans 'Risks' %}
-						</label>
-						<label class="btn btn-default active" >
-							<input type="checkbox" autocomplete="off" checked="checked" value="1" id="check_protocol_data_extraction"/>
-							<span class="glyphicon glyphicon-ok"></span>
-							{% trans 'Data Extraction' %}
-						</label>
-					</div>
-					<!--
-					<div class="checkbox">
-						<label class=""> 
-							<input type="checkbox" id="check_clear_review" checked="checked" value="true"/>
-							{% trans 'Clear all fields before import' %}
-						</label>
-					</div>
-					-->
-					<div class="checkbox">
-						<label> 
-							<input type="checkbox" id="enable-confirm-import">{% trans 'I understand the consequences.' %}
-						</label>
-					</div>
-					<input type="hidden" name="review-import-id"">
-				</div><!-- end modal-body-->
-				<div class="modal-footer">
-					<input type="hidden" name="protocol-import-id" id="protocol-import-id"/>5
-					<button type="submit" id="btn-confirm-import-protocol" class="btn btn-danger btn-block" disabled>{% trans 'Import protocol for your review' %}</button>
-				</div>
-			</div><!-- end modal-content-->
-		</div><!-- end modal-dialog-->
-	</div><!-- end modal import -->
-</section>
+		{% include 'reviews/partial_modal_list_import_protocol.html' %}
+	
+	  	{% include 'reviews/partial_modal_confirm_import_protocol.html' %}
+	</section>
 
 {% endblock content %}
