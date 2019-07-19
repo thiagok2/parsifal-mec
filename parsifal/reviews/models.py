@@ -57,6 +57,7 @@ class Review(models.Model):
     comparison = models.CharField(max_length=200, blank=True)
     outcome = models.CharField(max_length=200, blank=True)
     context = models.CharField(max_length=200, blank=True)
+    selection_reviewer = models.ForeignKey(User, null=True, related_name='selection_reviewer')
     export_protocol = models.BooleanField(default=False)
     export_dataextraction = models.BooleanField(default=False)
     export_risks = models.BooleanField(default=False)
@@ -335,16 +336,19 @@ class Study(models.Model):
 
 class Article(models.Model):
     UNCLASSIFIED = u'U'
+    WAITING = u'W'
     REJECTED = u'R'
     ACCEPTED = u'A'
     DUPLICATED = u'D'
+    CONFLICT = u'C'
     ARTICLE_STATUS = (
         (UNCLASSIFIED, u'Unclassified'),
+        (WAITING, u'Waiting'),
         (REJECTED, u'Rejected'),
         (ACCEPTED, u'Accepted'),
         (DUPLICATED, u'Duplicated'),
+        (CONFLICT, u'Conflict'),
         )
-
     review = models.ForeignKey(Review)
     bibtex_key = models.CharField(max_length=100)
     title = models.CharField(max_length=1000, null=True, blank=True)
@@ -357,7 +361,7 @@ class Article(models.Model):
     abstract = models.TextField(max_length=4000, null=True, blank=True)
     document_type = models.CharField(max_length=100, null=True, blank=True)
     status = models.CharField(max_length=1, choices=ARTICLE_STATUS, default=UNCLASSIFIED)
-    comments = models.TextField(max_length=2000, null=True, blank=True)
+    #comments = models.TextField(max_length=2000, null=True, blank=True)
     doi = models.CharField(max_length=50, null=True, blank=True)
     url = models.CharField(max_length=500, null=True, blank=True)
     affiliation = models.CharField(max_length=500, null=True, blank=True)
@@ -368,11 +372,12 @@ class Article(models.Model):
     language = models.CharField(max_length=50, null=True, blank=True)
     note = models.CharField(max_length=500, null=True, blank=True)
     finished_data_extraction = models.BooleanField(default=False)
-    selection_criteria = models.ForeignKey(SelectionCriteria, null=True, blank=True, on_delete=models.SET_NULL)
+    #selection_criteria = models.ForeignKey(SelectionCriteria, null=True, blank=True, on_delete=models.SET_NULL)
     created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     updated_at = models.DateTimeField(auto_now=True, blank=True, null=True)
     created_by = models.ForeignKey(User, null=True, blank=True, related_name='articles_created', on_delete=models.SET_NULL)
     updated_by = models.ForeignKey(User, null=True, blank=True, related_name='articles_updated', on_delete=models.SET_NULL)
+    evaluation_finished = models.BooleanField(default=False)
 
     class Meta:
         verbose_name = 'Article'
@@ -392,12 +397,16 @@ class Article(models.Model):
         return quality_assessments
 
     def get_status_html(self):
-        label = { Article.UNCLASSIFIED: 'default', Article.REJECTED: 'danger', Article.ACCEPTED: 'success', Article.DUPLICATED: 'warning' }
+        label = { Article.UNCLASSIFIED: 'default', Article.WAITING: 'default', Article.REJECTED: 'danger', Article.CONFLICT: 'danger', Article.ACCEPTED: 'success', Article.DUPLICATED: 'warning' }
         return u'<span class="label label-{0}">{1}</span>'.format(label[self.status], self.get_status_display())
 
     def get_files(self):
         files = ArticleFile.objects.filter(article__id=self.id)
         return files
+
+    def get_evaluations(self):
+        evaluations = ArticleEvaluation.objects.filter(article__id=self.id)
+        return evaluations
 
 def article_directory_path(instance, filename):
     return 'article/{0}/{1}'.format(instance.article.id, filename)
@@ -409,6 +418,37 @@ class ArticleFile(models.Model):
     article_file = models.FileField(upload_to=article_directory_path)
     name = models.CharField(max_length=300)
     size = models.CharField(max_length=150)
+
+class ArticleEvaluation(models.Model):
+    UNCLASSIFIED = u'U'
+    REJECTED = u'R'
+    ACCEPTED = u'A'
+    DUPLICATED = u'D'
+    ARTICLE_STATUS = (
+        (UNCLASSIFIED, u'Unclassified'),
+        (REJECTED, u'Rejected'),
+        (ACCEPTED, u'Accepted'),
+        (DUPLICATED, u'Duplicated'),
+        )
+
+    review = models.ForeignKey(Review, related_name='evaluation_review')
+    article = models.ForeignKey(Article, related_name='evaluation_article')
+    user = models.ForeignKey(User, related_name='evaluation_user')
+    selection_criteria = models.ForeignKey(SelectionCriteria, null=True, blank=True, on_delete=models.SET_NULL)
+    status = models.CharField(max_length=1, choices=ARTICLE_STATUS, default=UNCLASSIFIED)
+    comments = models.TextField(max_length=2000, null=True, blank=True)
+
+    class Meta:
+        verbose_name = u'ArticleEvaluation'
+        verbose_name_plural = u'ArticleEvaluations'
+        ordering = ('status',)
+
+    def __unicode__(self):
+        return self.status
+
+    def get_status_html(self):
+        label = { ArticleEvaluation.UNCLASSIFIED: 'default', ArticleEvaluation.REJECTED: 'danger', ArticleEvaluation.ACCEPTED: 'success', ArticleEvaluation.DUPLICATED: 'warning' }
+        return u'<span class="label label-{0}">{1}</span>'.format(label[self.status], self.get_status_display())
 
 class Keyword(models.Model):
     POPULATION = u'P'

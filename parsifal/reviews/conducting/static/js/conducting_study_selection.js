@@ -269,6 +269,42 @@ $(function () {
         $(".btn-save-article").prop("disabled", false);
       }
     });
+    save_article_evaluation();
+    article_solve_conflict();
+  }
+
+  function save_article_evaluation() {
+    $.ajax({
+        url: '/reviews/conducting/save_article_evaluation/',
+        cache: false,
+        data: $("#article-evaluation").serialize(),
+        type: 'post',
+        beforeSend: function () {
+            $(".btn-save-article").prop("disabled", true);
+        },
+        success: function (data) {},
+        error: function () {},
+        complete: function () {
+            $(".btn-save-article").prop("disabled", false);
+        }
+    });
+  }
+
+  function article_solve_conflict() {
+    $.ajax({
+        url: '/reviews/conducting/article_solve_conflict/',
+        cache: false,
+        data: $("#article-solve-conflict").serialize(),
+        type: 'post',
+        beforeSend: function () {
+            $(".btn-save-article").prop("disabled", true);
+        },
+        success: function (data) {},
+        error: function () {},
+        complete: function () {
+            $(".btn-save-article").prop("disabled", false);
+        }
+    });
   }
 
   $(".btn-save-article").click(function () {

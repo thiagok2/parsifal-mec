@@ -1,0 +1,48 @@
+{% load i18n humanize %}
+
+{% if not article.evaluation_finished %}
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label class="control-label">{% trans 'Status' %}</label>
+        <select name="status" id="status" class="form-control">
+          {% for status in article_evaluation.ARTICLE_STATUS %}
+            <option value="{{ status.0 }}"{% if article_evaluation.status == status.0 %} selected{% endif %}>{{ status.1 }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label class="control-label">{% trans 'Selection Criteria' %}</label>
+        <select name="selection_criteria" class="form-control">
+          <option value="">{% trans 'Select...' %}</option>
+          <optgroup label="Inclusion Criterias">
+            {% for criteria in review.get_inclusion_criterias %}
+              <option value="{{ criteria.id }}"{% if article_evaluation.selection_criteria == criteria %} selected{% endif %}>{{ criteria.description }}</option>
+            {% endfor %}
+          </optgroup>
+          <optgroup label="Exclusion Criterias">
+            {% for criteria in review.get_exclusion_criterias %}
+              <option value="{{ criteria.id }}"{% if article_evaluation.selection_criteria == criteria %} selected{% endif %}>{{ criteria.description }}</option>
+            {% endfor %}
+          </optgroup>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="form-group">
+        <label class="control-label">{% trans 'Comments' %}</label>
+        <textarea name="comments" class="form-control" id="comments" rows="5">{{ article_evaluation.comments|default_if_none:'' }}</textarea>
+      </div>
+    </div>
+  </div>
+{% else %}
+  <div class="row">
+    <div class="col-md-12">
+      <p>{% trans 'The reviewer has already finished this article evaluation.' %}</p>
+    </div>
+  </div>
+{% endif %}
