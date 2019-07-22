@@ -334,7 +334,7 @@ $(function () {
       cache: false,
       beforeSend: function () {
         $(".go-button").prop("disabled", true);
-        $(".go-button").text("Processing...");
+        $(".go-button").text("Processando...");
       },
       success: function (data) {
         switch (action) {
@@ -347,21 +347,21 @@ $(function () {
             $(".source-articles table tbody input[type=checkbox]:checked").each(function () {
               var row = $(this).closest("tr");
               $(row).attr("article-status", "A");
-              $("span", row).replaceWith("<span class='label label-success'>Accepted</span>");
+              $("span", row).replaceWith("<span class='label label-success'>Aceito</span>");
             });
             break;
           case "reject":
             $(".source-articles table tbody input[type=checkbox]:checked").each(function () {
               var row = $(this).closest("tr");
               $(row).attr("article-status", "R");
-              $("span", row).replaceWith("<span class='label label-danger'>Rejected</span>");
+              $("span", row).replaceWith("<span class='label label-danger'>Rejeitado</span>");
             });
             break;
           case "duplicated":
             $(".source-articles table tbody input[type=checkbox]:checked").each(function () {
               var row = $(this).closest("tr");
               $(row).attr("article-status", "R");
-              $("span", row).replaceWith("<span class='label label-warning'>Duplicated</span>");
+              $("span", row).replaceWith("<span class='label label-warning'>Duplicado</span>");
             });
             break;
         }
@@ -371,7 +371,7 @@ $(function () {
       },
       complete: function () {
         $(".go-button").prop("disabled", false);
-        $(".go-button").text("Go");
+        $(".go-button").text("Executar");
         updateSelectedArticlesCount();
       }
     });

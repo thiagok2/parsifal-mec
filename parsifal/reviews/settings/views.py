@@ -31,7 +31,7 @@ def settings(request, username, review_name):
                     unique_name = u'{0}-{1}'.format(name, i)
             form.instance.name = unique_name
             review = form.save()
-            messages.success(request, u'Review was saved successfully.')
+            messages.success(request, _('Review was saved successfully.'))
             return redirect(r('settings', args=(review.author.username, unique_name)))
     else:
         form = ReviewSettingsForm(instance=review)
@@ -51,7 +51,7 @@ def transfer(request):
         try:
             transfer_user = User.objects.get(username=transfer_user_username)
         except Exception, e:
-            messages.warning(request, 'User not found.')
+            messages.warning(request, _('User not found.'))
             return redirect('settings', review.author.username, review.name)
 
         current_user = request.user
@@ -63,11 +63,11 @@ def transfer(request):
             review.save()
             return redirect('review', review.author.username, review.name)
         else:
-            messages.warning(request, 'Hey! You can\'t transfer the review to yourself.')
+            messages.warning(request, _('Hey! You can\'t transfer the review to yourself.'))
             return redirect('settings', review.author.username, review.name)
 
     except Exception, e:
-        return HttpResponseBadRequest('Something went wrong.')
+        return HttpResponseBadRequest(_('Something went wrong.'))
 
 def publish_protocol(request):
     review_id = request.POST['review-id']
@@ -90,5 +90,5 @@ def delete(request):
             review.sources.remove(source)
             source.delete()
     review.delete()
-    messages.success(request, u'The review was deleted successfully.')
+    messages.success(request, _('The review was deleted successfully.'))
     return redirect(r('reviews', args=(review.author.username,)))
