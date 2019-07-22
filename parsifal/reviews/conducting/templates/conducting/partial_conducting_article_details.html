@@ -54,12 +54,12 @@
                 <label class="control-label">{% trans 'Selection Criteria' %}</label>
                 <select name="selection_criteria" class="form-control">
                   <option value="">{% trans 'Select...' %}</option>
-                  <optgroup label="Inclusion Criterias">
+                  <optgroup label="{% trans 'Inclusion Criterias' %}">
                     {% for criteria in review.get_inclusion_criterias %}
                       <option value="{{ criteria.id }}"{% if article.selection_criteria == criteria %} selected{% endif %}>{{ criteria.description }}</option>
                     {% endfor %}
                   </optgroup>
-                  <optgroup label="Exclusion Criterias">
+                  <optgroup label="{% trans 'Exclusion Criterias' %}">
                     {% for criteria in review.get_exclusion_criterias %}
                       <option value="{{ criteria.id }}"{% if article.selection_criteria == criteria %} selected{% endif %}>{{ criteria.description }}</option>
                     {% endfor %}

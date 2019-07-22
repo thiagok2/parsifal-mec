@@ -17,6 +17,8 @@ from parsifal.reviews.models import Review, Tag, Invite, Question, Keyword, Sear
 from parsifal.reviews.decorators import main_author_required, author_required, author_or_visitor_required
 from parsifal.reviews.forms import CreateReviewForm, ReviewForm
 
+from django.utils.translation import ugettext as _
+
 
 def reviews(request, username):
     user = get_object_or_404(User, username__iexact=username)
@@ -54,7 +56,7 @@ def new(request):
                 unique_name = u'{0}-{1}'.format(name, i)
             form.instance.name = unique_name
             review = form.save()
-            messages.success(request, u'Review created successfully.')
+            messages.success(request, _('Review created successfully.'))
             return redirect(r('review', args=(review.author.username, review.name)))
     else:
         form = CreateReviewForm()
@@ -68,7 +70,7 @@ def review(request, username, review_name):
         form = ReviewForm(request.POST, instance=review)
         if form.is_valid():
             review = form.save()
-            messages.success(request, u'Review was saved successfully.')
+            messages.success(request, _(u'Review was saved successfully.'))
             return redirect(r('review', args=(review.author.username, review.name)))
     else:
         form = ReviewForm(instance=review)
@@ -123,13 +125,13 @@ def add_author_to_review(request):
     review.save()
 
     if not authors_added and not authors_invited:
-        messages.info(request, u'No author invited or added to the review. Nothing really changed.')
+        messages.info(request, _(u'No author invited or added to the review. Nothing really changed.'))
 
     if authors_added:
-        messages.success(request, u'The authors {0} were added successfully.'.format(u', '.join(authors_added)))
+        messages.success(request, _(u'The authors {0} were added successfully.').format(u', '.join(authors_added)))
 
     if authors_invited:
-        messages.success(request, u'{0} were invited successfully.'.format(u', '.join(authors_invited)))
+        messages.success(request, _(u'{0} were invited successfully.').format(u', '.join(authors_invited)))
 
     return redirect(r('review', args=(review.author.username, review.name)))
 
@@ -179,13 +181,13 @@ def add_visitor_to_review(request):
     review.save()
 
     if not visitors_added and not visitors_invited:
-        messages.info(request, u'No visitor invited or added to the review. Nothing really changed.')
+        messages.info(request, _(u'No visitor invited or added to the review. Nothing really changed.'))
 
     if visitors_added:
-        messages.success(request, u'The visitor {0} were added successfully.'.format(u', '.join(visitors_added)))
+        messages.success(request,  _(u'The visitor {0} were added successfully.').format(u', '.join(visitors_added)))
 
     if visitors_invited:
-        messages.success(request, u'{0} were invited successfully.'.format(u', '.join(visitors_invited)))
+        messages.success(request, _(u'{0} were invited successfully.').format(u', '.join(visitors_invited)))
 
     return redirect(r('review', args=(review.author.username, review.name)))
 
@@ -251,11 +253,11 @@ def save_description(request):
         description = request.POST['description']
         review = Review.objects.get(pk=review_id)
         if len(description) > 500:
-            return HttpResponseBadRequest('The review description should not exceed 500 characters. The given description have %s characters.' % len(description))
+            return HttpResponseBadRequest(_('The review description should not exceed 500 characters. The given description have %s characters.') % len(description))
         else:
             review.description = description
             review.save()
-            return HttpResponse('Your review has been saved successfully!')
+            return HttpResponse(_('Your review has been saved successfully!'))
     except:
         return HttpResponseBadRequest()
 

@@ -350,9 +350,9 @@ def build_data_extraction_table(review, is_finished):
                       <span class="badge">{1}</span>'''.format(escape(study.title), study.get_score())
 
                 if study.finished_data_extraction:
-                    str_table += u'<span class="pull-right"><a href="javascript:void(0);" class="js-finished-button js-mark-as-not-finished"><span class="glyphicon glyphicon-check"></span> <span class="action-text">mark as undone</span></a></span>'
+                    str_table += u'<span class="pull-right"><a href="javascript:void(0);" class="js-finished-button js-mark-as-not-finished"><span class="glyphicon glyphicon-check"></span> <span class="action-text">Marcar como não resolvido</span></a></span>'
                 else:
-                    str_table += u'<span class="pull-right"><a href="javascript:void(0);" class="js-finished-button js-mark-as-finished"><span class="glyphicon glyphicon-unchecked"></span> <span class="action-text">mark as done</span></a></span>'
+                    str_table += u'<span class="pull-right"><a href="javascript:void(0);" class="js-finished-button js-mark-as-finished"><span class="glyphicon glyphicon-unchecked"></span> <span class="action-text">Marcar como resolvido</span></a></span>'
 
                 str_table += u'</h3></div>'
                 str_table += u'<div class="panel-body form-horizontal" data-article-id="{0}">'.format(study.id)

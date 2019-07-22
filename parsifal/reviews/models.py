@@ -11,6 +11,8 @@ from django.template.defaultfilters import slugify
 
 from parsifal.library.models import Document
 
+from django.utils.translation import ugettext as _
+
 
 class Source(models.Model):
     name = models.CharField(max_length=100)
@@ -36,8 +38,8 @@ class Review(models.Model):
     UNPUBLISHED = u'U'
     PUBLISHED = u'P'
     REVIEW_STATUS = (
-        (UNPUBLISHED, u'Unpublished'),
-        (PUBLISHED, u'Published'),
+        (UNPUBLISHED, _(u'Unpublished')),
+        (PUBLISHED, _(u'Published')),
         )
 
     name = models.SlugField(max_length=255)
@@ -239,8 +241,8 @@ class SelectionCriteria(models.Model):
     INCLUSION = u'I'
     EXCLUSION = u'E'
     SELECTION_TYPES = (
-        (INCLUSION, u'Inclusion'),
-        (EXCLUSION, u'Exclusion'),
+        (INCLUSION, _(u'Inclusion')),
+        (EXCLUSION, _(u'Exclusion')),
         )
 
     review = models.ForeignKey(Review)
@@ -322,10 +324,10 @@ class Study(models.Model):
     ACCEPTED = u'A'
     DUPLICATED = u'D'
     STUDY_STATUS = (
-        (UNCLASSIFIED, u'Unclassified'),
-        (REJECTED, u'Rejected'),
-        (ACCEPTED, u'Accepted'),
-        (DUPLICATED, u'Duplicated'),
+        (UNCLASSIFIED, _(u'Unclassified')),
+        (REJECTED, _(u'Rejected')),
+        (ACCEPTED, _(u'Accepted')),
+        (DUPLICATED, _(u'Duplicated')),
         )
     study_selection = models.ForeignKey(StudySelection, related_name=u'studies')
     document = models.ForeignKey(Document)
@@ -341,10 +343,10 @@ class Article(models.Model):
     ACCEPTED = u'A'
     DUPLICATED = u'D'
     ARTICLE_STATUS = (
-        (UNCLASSIFIED, u'Unclassified'),
-        (REJECTED, u'Rejected'),
-        (ACCEPTED, u'Accepted'),
-        (DUPLICATED, u'Duplicated'),
+        (UNCLASSIFIED, _(u'Unclassified')),
+        (REJECTED, _(u'Rejected')),
+        (ACCEPTED, _(u'Accepted')),
+        (DUPLICATED, _(u'Duplicated')),
         )
 
     review = models.ForeignKey(Review)
