@@ -326,10 +326,10 @@ class Study(models.Model):
     ACCEPTED = u'A'
     DUPLICATED = u'D'
     STUDY_STATUS = (
-        (UNCLASSIFIED, _(u'Unclassified')),
-        (REJECTED, _(u'Rejected')),
-        (ACCEPTED, _(u'Accepted')),
-        (DUPLICATED, _(u'Duplicated')),
+        (UNCLASSIFIED, _('Unclassified')),
+        (REJECTED, _('Rejected')),
+        (ACCEPTED, _('Accepted')),
+        (DUPLICATED, _('Duplicated')),
         )
     study_selection = models.ForeignKey(StudySelection, related_name=u'studies')
     document = models.ForeignKey(Document)
@@ -348,12 +348,12 @@ class Article(models.Model):
     CONFLICT = u'C'
     ARTICLE_STATUS = (
 
-        (UNCLASSIFIED, u'Unclassified'),
-        (WAITING, u'Waiting'),
-        (REJECTED, u'Rejected'),
-        (ACCEPTED, u'Accepted'),
-        (DUPLICATED, u'Duplicated'),
-        (CONFLICT, u'Conflict'),
+        (UNCLASSIFIED, _('Unclassified')),
+        (WAITING, _('Waiting')),
+        (REJECTED, _('Rejected')),
+        (ACCEPTED, _('Accepted')),
+        (DUPLICATED, _('Duplicated')),
+        (CONFLICT, _('Conflict')),
 
         )
     review = models.ForeignKey(Review)

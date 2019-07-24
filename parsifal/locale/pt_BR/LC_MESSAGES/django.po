@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-24 17:44+0000\n"
+"POT-Creation-Date: 2019-07-24 17:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2247,6 +2247,12 @@ msgstr "Link Externo"
 msgid "Inclusion Criterias"
 msgstr "Critérios de Inclusão"
 
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:62
+#, fuzzy
+#| msgid "Exclusion Criteria"
+msgid "Exclusion Criterias"
+msgstr "Critérios de exclusão"
+
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:76
 msgid "Abstract"
 msgstr ""
@@ -2328,8 +2334,8 @@ msgid "Mark as conflict"
 msgstr "Marcar como conflito"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:33
-msgid "Go"
-msgstr "Ir"
+msgid "Run"
+msgstr "Executar"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:34
 msgid "of"
@@ -2345,30 +2351,32 @@ msgid "Show"
 msgstr "Mostrar"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:42
-#: parsifal/reviews/models.py:331
+#: parsifal/reviews/models.py:331 parsifal/reviews/models.py:354
 msgid "Accepted"
 msgstr "Aceito"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:45
-#: parsifal/reviews/models.py:330
+#: parsifal/reviews/models.py:330 parsifal/reviews/models.py:353
 msgid "Rejected"
 msgstr "Rejeitado"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:48
-#: parsifal/reviews/models.py:329
+#: parsifal/reviews/models.py:329 parsifal/reviews/models.py:351
 msgid "Unclassified"
 msgstr "Não classificado"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:51
-#: parsifal/reviews/models.py:332
+#: parsifal/reviews/models.py:332 parsifal/reviews/models.py:355
 msgid "Duplicated"
 msgstr "Duplicados"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:54
+#: parsifal/reviews/models.py:352
 msgid "Waiting"
 msgstr "Aguardando"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:57
+#: parsifal/reviews/models.py:356
 msgid "Conflict"
 msgstr "Conflito"
 
@@ -3786,6 +3794,9 @@ msgstr "Sair"
 msgid "Sign up"
 msgstr "Inscrever-se"
 
+#~ msgid "Go"
+#~ msgstr "Ir"
+
 #, fuzzy
 #~| msgid "Your review have been saved successfully!"
 #~ msgid "Review created successfully."
@@ -3800,11 +3811,6 @@ msgstr "Inscrever-se"
 #~| msgid "application:"
 #~ msgid "Evaluation"
 #~ msgstr "Avaliação"
-
-#, fuzzy
-#~| msgid "Exclusion Criteria"
-#~ msgid "Exclusion Criterias"
-#~ msgstr "Critérios de exclusão"
 
 #~ msgid ""
 #~ "This action <strong>CANNOT</strong> be undone. This will permanently open "
