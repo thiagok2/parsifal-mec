@@ -16,6 +16,7 @@ urlpatterns = patterns('parsifal.reviews.planning.views',
     url(r'^save_objective/$', 'save_objective', name='save_objective'),
     url(r'^add_criteria/$', 'add_criteria', name='add_criteria'),
     url(r'^remove_criteria/$', 'remove_criteria', name='remove_criteria'),
+    url(r'^save_selection_reviewer/$', 'save_selection_reviewer', name='save_selection_reviewer'),
 
     url(r'^save_risk/$', 'save_risk', name='save_risk'),
     url(r'^save_risk_order/$', 'save_risk_order', name='save_risk_order'),

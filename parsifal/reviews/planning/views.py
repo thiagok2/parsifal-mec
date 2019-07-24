@@ -538,6 +538,24 @@ def remove_criteria(request):
     except:
         return HttpResponseBadRequest()
 
+'''
+    SELECTION REVIEWER FUNCTIONS
+'''
+
+@author_required
+@login_required
+def save_selection_reviewer(request):
+    try:
+        review_id = request.POST['review-id']
+        selection_reviewer = request.POST['selection-reviewer']
+        reviewer = User.objects.get(pk=selection_reviewer)
+        review = Review.objects.get(pk=review_id)
+        review.selection_reviewer = reviewer
+        review.save()
+        return HttpResponse(_('Your review have been saved successfully!'))
+    except Exception as e:
+        print e
+        return HttpResponseBadRequest()
 
 '''
     RISK FUNCTIONS

@@ -27,6 +27,8 @@
         <option value="accept">{% trans 'Mark as accepted' %}</option>
         <option value="reject">{% trans 'Mark as rejected' %}</option>
         <option value="duplicated">{% trans 'Mark as duplicated' %}</option>
+        <option value="waiting">{% trans 'Mark as waiting' %}</option>
+        <option value="conflict">{% trans 'Mark as conflict' %}</option>
       </select>
       <button type="button" class="btn btn-default go-button">{% trans 'Go' %}</button>
       <span class="text-muted"><span class="articles-selected">0</span> {% trans 'of' %} <span class="articles-total">{{ articles.count }}</span> {% trans 'selected' %}</span>
@@ -48,6 +50,12 @@
       <label class="radio-inline">
         <input type="radio" name="filter" value="D"> {% trans 'Duplicated' %}
       </label>
+      <label class="radio-inline">
+        <input type="radio" name="filter" value="W"> {% trans 'Waiting' %}
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="filter" value="C"> {% trans 'Conflict' %}
+      </label>
     </p>
   </div>
   <div class="source-articles">
@@ -55,7 +63,6 @@
       <thead>
         <tr>
           <th style="width: 35px; text-align: center;"><input type="checkbox" id="ck-all-articles"></th>
-          {% comment %}<th style="width: 35px; text-align: center;"><span class="glyphicon glyphicon-file"></span></th>{% endcomment %}
           <th>{% trans 'Bibtex Key' %}</th>
           <th>{% trans 'Title' %}</th>
           <th>{% trans 'Author' %}</th>
