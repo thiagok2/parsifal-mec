@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-24 17:44+0000\n"
+"POT-Creation-Date: 2019-07-24 17:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2163,6 +2163,10 @@ msgstr ""
 msgid "Inclusion Criterias"
 msgstr ""
 
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:62
+msgid "Exclusion Criterias"
+msgstr ""
+
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:76
 msgid "Abstract"
 msgstr ""
@@ -2244,7 +2248,7 @@ msgid "Mark as conflict"
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:33
-msgid "Go"
+msgid "Run"
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:34
@@ -2261,30 +2265,32 @@ msgid "Show"
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:42
-#: parsifal/reviews/models.py:331
+#: parsifal/reviews/models.py:331 parsifal/reviews/models.py:354
 msgid "Accepted"
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:45
-#: parsifal/reviews/models.py:330
+#: parsifal/reviews/models.py:330 parsifal/reviews/models.py:353
 msgid "Rejected"
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:48
-#: parsifal/reviews/models.py:329
+#: parsifal/reviews/models.py:329 parsifal/reviews/models.py:351
 msgid "Unclassified"
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:51
-#: parsifal/reviews/models.py:332
+#: parsifal/reviews/models.py:332 parsifal/reviews/models.py:355
 msgid "Duplicated"
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:54
+#: parsifal/reviews/models.py:352
 msgid "Waiting"
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:57
+#: parsifal/reviews/models.py:356
 msgid "Conflict"
 msgstr ""
 
