@@ -56,6 +56,7 @@
           <a href="#search-string-section" class="list-group-item">{% trans 'Search String' %}</a>
           <a href="#sources-section" class="list-group-item">{% trans 'Sources' %}</a>
           <a href="#selection-section" class="list-group-item">{% trans 'Selection Criteria' %}</a>
+          <a href="#selection-reviewer-section" class="list-group-item">{% trans 'Selection Reviewer' %}</a>
         </div>
       </div>
     </div>
@@ -585,7 +586,7 @@
         </div>
       </section>
 
-      <section id="selection-section" style="margin-bottom: 20px;">
+      <section id="selection-section" >
         <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title">{% trans 'Selection Criteria' %}</h3>
@@ -630,6 +631,56 @@
             </div>
           </div>
         </div>
+      </section>
+
+      <section id="selection-reviewer-section" style="margin-bottom: 20px;">
+        <form method="post" id="form-selection-reviewer">
+          {% csrf_token %}
+          <input type="hidden" name="review-id" value="{{ review.id }}">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">
+                {% trans 'Selection Reviewer' %}
+              </h3>
+            </div>
+            <div class="panel-body">
+              <p>{% trans "The reviewer will resolve the conflicts between the author's article evaluations." %}</p>
+              <form method="post" id="form-objective">
+                {% csrf_token %}
+                <input type="hidden" name="review-id" value="{{ review.id }}">
+                <div class="form-group">
+                  <select name="selection-reviewer" class="form-control">
+                    <option value="{{review.selection_reviewer.id}}" selected>{{ review.selection_reviewer.username }}</option>
+                    {% if review.author.id != review.selection_reviewer.id %}
+                      <option value="{{review.author.id}}">{{ review.author.username }}</option>
+                    {% endif %}
+                    {% for co_author in review.co_authors.all %}
+                      {% if co_author.id != review.selection_reviewer.id %}
+                        <option value="{{ co_author.id }}">{{ co_author.username }}</option>
+                      {% endif %}
+                    {% endfor %}
+                  </select>
+                </div>
+              </form>
+            </div>
+            <div class="panel-footer">
+              <button type="button" class="btn btn-success btn-save-selection-reviewer">
+                <span class="btn-ajax-normal">
+                  <span class="glyphicon glyphicon-ok"></span> {% trans 'Save' %}
+                </span>
+                <span class="btn-ajax-loading">
+                  <span class="glyphicon glyphicon-refresh spin"></span> {% trans 'Saving…' %}
+                </span>
+                <span class="btn-ajax-error">
+                  <span class="glyphicon glyphicon-remove"></span> {% trans 'Error!' %}
+                </span>
+                <span class="btn-ajax-complete">
+                  <span class="glyphicon glyphicon-ok"></span> {% trans 'Saved!' %}
+                </span>
+              </button>
+            </div>
+          </div>
+        </form>
       </section>
 
     </div>
