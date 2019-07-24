@@ -59,7 +59,7 @@
                       <option value="{{ criteria.id }}"{% if article.selection_criteria == criteria %} selected{% endif %}>{{ criteria.description }}</option>
                     {% endfor %}
                   </optgroup>
-                  <optgroup label="{% trans 'Exclusion Criterias">
+                  <optgroup label="{% trans 'Exclusion Criterias' %}">
                     {% for criteria in review.get_exclusion_criterias %}
                       <option value="{{ criteria.id }}"{% if article.selection_criteria == criteria %} selected{% endif %}>{{ criteria.description }}</option>
                     {% endfor %}

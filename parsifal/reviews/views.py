@@ -56,7 +56,7 @@ def new(request):
                 unique_name = u'{0}-{1}'.format(name, i)
             form.instance.name = unique_name
             review = form.save()
-            messages.success(request, _('Review created successfully.'))
+            messages.success(request, _('Review') + ' criada com sucesso.')
             return redirect(r('review', args=(review.author.username, review.name)))
     else:
         form = CreateReviewForm()
@@ -70,7 +70,7 @@ def review(request, username, review_name):
         form = ReviewForm(request.POST, instance=review)
         if form.is_valid():
             review = form.save()
-            messages.success(request, _(u'Review was saved successfully.'))
+            messages.success(request, _(u'Review') +' foi criada com sucesso.')
             return redirect(r('review', args=(review.author.username, review.name)))
     else:
         form = ReviewForm(instance=review)

@@ -12,6 +12,7 @@ from django.template.defaultfilters import slugify
 from parsifal.library.models import Document
 
 from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as l_
 
 
 class Source(models.Model):

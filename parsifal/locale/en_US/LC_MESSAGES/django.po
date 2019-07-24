@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-24 13:32+0000\n"
+"POT-Creation-Date: 2019-07-24 17:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1936,6 +1936,7 @@ msgstr ""
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_quality_assessment_detailed.html:8
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_quality_assessment_detailed.html:9
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_quality_assessment_summary.html:11
+#: parsifal/reviews/forms.py:12
 #: parsifal/reviews/templates/reviews/partial_published_protocols.html:34
 #: parsifal/reviews/templates/reviews/reviews.html:89
 msgid "Title"
@@ -2260,22 +2261,22 @@ msgid "Show"
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:42
-#: parsifal/reviews/models.py:330
+#: parsifal/reviews/models.py:331
 msgid "Accepted"
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:45
-#: parsifal/reviews/models.py:329
+#: parsifal/reviews/models.py:330
 msgid "Rejected"
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:48
-#: parsifal/reviews/models.py:328
+#: parsifal/reviews/models.py:329
 msgid "Unclassified"
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:51
-#: parsifal/reviews/models.py:331
+#: parsifal/reviews/models.py:332
 msgid "Duplicated"
 msgstr ""
 
@@ -2366,32 +2367,48 @@ msgstr ""
 msgid "import studies tab"
 msgstr ""
 
-#: parsifal/reviews/forms.py:10
+#: parsifal/reviews/forms.py:11
 msgid "Systematic literature review's title"
 msgstr ""
 
-#: parsifal/reviews/forms.py:13
+#: parsifal/reviews/forms.py:14
 msgid "Give a brief description of your systematic literature review"
 msgstr ""
 
-#: parsifal/reviews/forms.py:15
+#: parsifal/reviews/forms.py:16
 msgid "Try to keep it short, max 500 characters :)"
 msgstr ""
 
-#: parsifal/reviews/models.py:41
-msgid "Unpublished"
+#: parsifal/reviews/forms.py:18 parsifal/reviews/forms.py:29
+#: parsifal/reviews/forms.py:34 parsifal/reviews/planning/forms.py:15
+#: parsifal/reviews/planning/forms.py:34
+#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:32
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:96
+#: parsifal/reviews/reporting/templates/reporting/export.html:51
+#: parsifal/reviews/templates/reviews/partial_published_protocols.html:38
+msgid "Description"
 msgstr ""
 
 #: parsifal/reviews/models.py:42
+msgid "Unpublished"
+msgstr ""
+
+#: parsifal/reviews/models.py:43
 msgid "Published"
 msgstr ""
 
-#: parsifal/reviews/models.py:245
+#: parsifal/reviews/models.py:246
 msgid "Inclusion"
 msgstr ""
 
-#: parsifal/reviews/models.py:246
+#: parsifal/reviews/models.py:247
 msgid "Exclusion"
+msgstr ""
+
+#: parsifal/reviews/planning/forms.py:21
+#: parsifal/reviews/planning/templates/planning/protocol.html:362
+#: parsifal/reviews/templates/reviews/partial_published_protocols.html:131
+msgid "Related to"
 msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/data_extraction_form.html:6
@@ -2408,13 +2425,6 @@ msgstr ""
 #: parsifal/reviews/planning/templates/planning/planning_header.html:16
 #: parsifal/reviews/reporting/templates/reporting/export.html:86
 msgid "Data Extraction Form"
-msgstr ""
-
-#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:32
-#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:96
-#: parsifal/reviews/reporting/templates/reporting/export.html:51
-#: parsifal/reviews/templates/reviews/partial_published_protocols.html:38
-msgid "Description"
 msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/data_extraction_form.html:33
@@ -2462,6 +2472,7 @@ msgstr ""
 #: parsifal/reviews/reporting/templates/reporting/export.html:42
 #: parsifal/reviews/templates/reviews/partial_modal_list_import_protocol.html:16
 #: parsifal/reviews/templates/reviews/review_header.html:14
+#: parsifal/reviews/views.py:59 parsifal/reviews/views.py:73
 #, fuzzy
 #| msgid "New review"
 msgid "Review"
@@ -2917,11 +2928,6 @@ msgstr ""
 msgid "Keyword"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:362
-#: parsifal/reviews/templates/reviews/partial_published_protocols.html:131
-msgid "Related to"
-msgstr ""
-
 #: parsifal/reviews/planning/templates/planning/protocol.html:375
 msgid "Add Keyword"
 msgstr ""
@@ -3176,16 +3182,7 @@ msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/statistical_methods_conventions.html:83
 msgid ""
-"<strong>Statistical Methods and Conventions used for the review.</strong>It "
-"is a long established fact that a reader will be distracted by the readable "
-"content of a page when looking at its layout. The point of using Lorem Ipsum "
-"is that it has a more-or-less normal distribution of letters, as opposed to "
-"using 'Content here, content here', making it look like readable English. "
-"Many desktop publishing packages and web page editors now use Lorem Ipsum as "
-"their default model text, and a search for 'lorem ipsum' will uncover many "
-"web sites still in their infancy. Various versions have evolved over the "
-"years, sometimes by accident, sometimes on purpose (injected humour and the "
-"like)."
+"<strong>Statistical Methods and Conventions used for the review.</strong>..."
 msgstr ""
 
 #: parsifal/reviews/planning/views.py:68
@@ -3351,7 +3348,7 @@ msgstr ""
 msgid "Publish protocol this review"
 msgstr "Nova ??"
 
-#: parsifal/reviews/settings/views.py:34 parsifal/reviews/views.py:73
+#: parsifal/reviews/settings/views.py:34
 msgid "Review was saved successfully."
 msgstr ""
 
@@ -3551,10 +3548,6 @@ msgstr ""
 
 #: parsifal/reviews/templates/reviews/reviews.html:125
 msgid "haven't published any systematic literature review yet."
-msgstr ""
-
-#: parsifal/reviews/views.py:59
-msgid "Review created successfully."
 msgstr ""
 
 #: parsifal/reviews/views.py:128
