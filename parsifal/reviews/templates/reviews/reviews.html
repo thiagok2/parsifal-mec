@@ -82,7 +82,7 @@
 
     {% if user.id == page_user.id %}
       <div style="margin-bottom: 20px;">
-        <a href="{% url 'reviews:new' %}" class="btn btn-primary">{% trans 'New review' %}</a>
+        <a href="{% url 'reviews:new' %}" class="btn btn-success">{% trans 'New review' %}</a>
       </div>
       {% if user_reviews %}
         <div class="panel panel-default">
@@ -120,7 +120,7 @@
         <div class="well text-center" style="padding: 5em;">
           <span class="glyphicon glyphicon-book" style="font-size: 2.6em; color: #aaa;"></span>
           <h3 style="margin-top: 25px; margin-bottom: 25px;">{% trans "You don't have any systematic literature review yet." %}</h3>
-          <a href="{% url 'reviews:new' %}" class="btn btn-primary">{% trans 'Start a review' %}</a>
+          <a href="{% url 'reviews:new' %}" class="btn btn-success">{% trans 'Start a review' %}</a>
         </div>
       {% endif %}
     {% else %}
