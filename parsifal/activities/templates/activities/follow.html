@@ -2,6 +2,10 @@
 
 {% load staticfiles %}
 
+{% load i18n %}
+
+{% load humanize %}
+
 {% block title %}{{ page_user.profile.get_screen_name }} {{ page_title }}{% endblock %}
 
 {% block javascript %}
@@ -35,11 +39,11 @@
                 {% if follow_user.pk != user.pk %}
                   {% if follow_user in user_following %}
                     <div class="user-actions following" data-user-id="{{ follow_user.id }}">
-                      <button class="btn btn-small btn-danger" type="button"><span class="glyphicon glyphicon-remove"></span> Unfollow</button>
+                      <button class="btn btn-small btn-danger" type="button"><span class="glyphicon glyphicon-remove"></span> {% trans 'Unfollow' %}</button>
                     </div>
                   {% else %}
                     <div class="user-actions not-following" data-user-id="{{ follow_user.id }}">
-                      <button class="btn btn-small btn-success" type="button"><span class="glyphicon glyphicon-ok"></span> Follow</button>
+                      <button class="btn btn-small btn-success" type="button"><span class="glyphicon glyphicon-ok"></span> {% trans 'Follow' %}</button>
                     </div>
                   {% endif %}
                 {% endif %}
@@ -55,9 +59,9 @@
       <span class="glyphicon glyphicon-education" style="font-size: 2.6em; color: #aaa;"></span>
       <div style="margin-top: 25px; margin-bottom: 25px;">
         {% if page_title == 'followers' %}
-          <h3>{{ page_user.profile.get_screen_name }} have no followers.</h3>
+          <h3>{{ page_user.profile.get_screen_name }} {% trans 'have no followers.' %}</h3>
         {% else %}
-          <h3>{{ page_user.profile.get_screen_name }} isn't following anybody.</h3>
+          <h3>{{ page_user.profile.get_screen_name }} {% trans "isn't following anybody." %}</h3>
         {% endif %}
       </div>
     </div>

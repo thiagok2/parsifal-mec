@@ -12,12 +12,14 @@ from django.contrib.auth.views import password_reset, password_reset_confirm
 from parsifal.authentication.forms import SignUpForm
 from parsifal.reviews.models import Review, Invite
 
+from django.utils.translation import ugettext as _
+
 
 def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if not form.is_valid():
-            messages.add_message(request, messages.ERROR, 'There was some problems while creating your account. Please review some fields before submiting again.')
+            messages.add_message(request, messages.ERROR, _('There was some problems while creating your account. Please review some fields before submiting again.'))
             return render(request, 'auth/signup.html', { 'form': form })
         else:
             username = form.cleaned_data.get('username')
@@ -38,7 +40,7 @@ def signup(request):
 
 
             login(request, user)
-            messages.add_message(request, messages.SUCCESS, 'Your account were successfully created.')
+            messages.add_message(request, messages.SUCCESS, _('Your account were successfully created.'))
             return HttpResponseRedirect('/' + username + '/')
     else:
         return render(request, 'auth/signup.html', { 'form': SignUpForm() })
@@ -59,10 +61,10 @@ def signin(request):
                     else:
                         return HttpResponseRedirect('/')
                 else:
-                    messages.add_message(request, messages.ERROR, 'Your account is desactivated.')
+                    messages.add_message(request, messages.ERROR, _('Your account is desactivated.'))
                     return render(request, 'auth/signin.html')
             else:
-                messages.add_message(request, messages.ERROR, 'Username or password invalid.')
+                messages.add_message(request, messages.ERROR, _('Username or password invalid.'))
                 return render(request, 'auth/signin.html')
         else:
             return render(request, 'auth/signin.html')
