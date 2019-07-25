@@ -13,7 +13,7 @@ class CreateReviewForm(forms.ModelForm):
     description = forms.CharField(
             widget=forms.Textarea(attrs={ 'class': 'form-control', 'placeholder': _('Give a brief description of your systematic literature review') }),
             max_length=500,
-            help_text=_('Try to keep it short, max 500 characters :)'),
+            help_text=_('Try to keep it short, max 500 characters'),
             required=False,
             label=_('Description'))
 

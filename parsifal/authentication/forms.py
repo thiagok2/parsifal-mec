@@ -6,13 +6,13 @@ from django.utils.translation import ugettext as _
 
 
 def ForbiddenUsernamesValidator(value):
-    forbidden_usernames = ['admin', 'settings', 'news', 'about', 'help', 'signin', 'signup', 
-        'signout', 'terms', 'privacy', 'cookie', 'new', 'login', 'logout', 'administrator', 
+    forbidden_usernames = ['admin', 'settings', 'news', 'about', 'help', 'signin', 'signup',
+        'signout', 'terms', 'privacy', 'cookie', 'new', 'login', 'logout', 'administrator',
         'join', 'account', 'username', 'root', 'blog', 'user', 'users', 'billing', 'subscribe',
-        'reviews', 'review', 'blog', 'blogs', 'edit', 'mail', 'email', 'home', 'job', 'jobs', 
+        'reviews', 'review', 'blog', 'blogs', 'edit', 'mail', 'email', 'home', 'job', 'jobs',
         'contribute', 'newsletter', 'shop', 'profile', 'register', 'auth', 'authentication',
-        'campaign', 'config', 'delete', 'remove', 'forum', 'forums', 'download', 'downloads', 
-        'contact', 'blogs', 'feed', 'faq', 'intranet', 'log', 'registration', 'search', 
+        'campaign', 'config', 'delete', 'remove', 'forum', 'forums', 'download', 'downloads',
+        'contact', 'blogs', 'feed', 'faq', 'intranet', 'log', 'registration', 'search',
         'explore', 'rss', 'support', 'status', 'static', 'media', 'setting', 'css', 'js',
         'follow', 'activity', 'library']
     if value.lower() in forbidden_usernames:
@@ -31,7 +31,7 @@ def UniqueUsernameIgnoreCaseValidator(value):
         raise ValidationError(_('User with this Username already exists.'))
 
 class SignUpForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput())
+    password = forms.CharField(widget=forms.PasswordInput(), label=_("Password"))
     confirm_password = forms.CharField(widget=forms.PasswordInput(), label=_("Confirm your password"))
     email = forms.CharField(required=True)
 

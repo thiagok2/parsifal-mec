@@ -7,7 +7,7 @@ from parsifal.authentication.models import Profile
 from django.utils.translation import ugettext as _
 
 class UserEmailForm(forms.ModelForm):
-    email = forms.CharField(widget=forms.EmailInput(attrs={ 'class': 'form-control' }), 
+    email = forms.CharField(widget=forms.EmailInput(attrs={ 'class': 'form-control' }),
             max_length=254,
             help_text=_('This email account will not be publicly available. It is used for your account management, such as internal notifications and password reset.'))
 
@@ -45,6 +45,6 @@ class ProfileForm(forms.ModelForm):
         return profile
 
 class PasswordForm(PasswordChangeForm):
-    old_password = forms.CharField(label='Old password', widget=forms.PasswordInput(attrs={ 'class': 'form-control' }), label=_('Old Password'))
-    new_password1 = forms.CharField(label='New password', widget=forms.PasswordInput(attrs={ 'class': 'form-control' }), label=_('New password1'))
-    new_password2 = forms.CharField(label='Confirm password', widget=forms.PasswordInput(attrs={ 'class': 'form-control' }), label=_('New password1'))
+    old_password = forms.CharField(widget=forms.PasswordInput(attrs={ 'class': 'form-control' }), label=_('Old Password'))
+    new_password1 = forms.CharField(widget=forms.PasswordInput(attrs={ 'class': 'form-control' }), label=_('New password'))
+    new_password2 = forms.CharField(widget=forms.PasswordInput(attrs={ 'class': 'form-control' }), label=_('Confirm password'))
