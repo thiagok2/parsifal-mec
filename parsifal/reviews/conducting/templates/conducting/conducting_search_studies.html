@@ -67,7 +67,7 @@
               <div class="well text-center" style="padding: 3em;">
                 <span class="glyphicon glyphicon-folder-open" style="font-size: 2.2em; color: #aaa;"></span>
                 <h4 style="margin-top: 20px; margin-bottom: 20px;">{% trans 'No source available. Add sources in the ' %}<a href="{% url 'planning' review.author.username review.name %}#sources-section">{% trans 'planning tab</a>.' %}</h4>
-                <a href="{% url 'planning' review.author.username review.name %}#sources-section" class="btn btn-primary">{% trans 'New source' %}</a>
+                <a href="{% url 'planning' review.author.username review.name %}#sources-section" class="btn btn-success">{% trans 'New source' %}</a>
               </div>
             {% endif %}
           </div>
@@ -143,7 +143,7 @@
                     <span class="glyphicon glyphicon-ok"></span> {% trans 'Saved!' %}
                   </span>
                 </button>
-                <button type="button" class="btn btn-sm btn-primary js-import-base-string" data-remote="{% url 'reviews:conducting:import_base_string' %}">
+                <button type="button" class="btn btn-sm btn-success js-import-base-string" data-remote="{% url 'reviews:conducting:import_base_string' %}">
                   <span class="btn-ajax-normal">
                     <span class="glyphicon glyphicon-import"></span> {% trans 'Import Base String' %}
                   </span>
@@ -161,7 +161,7 @@
       </div>
     </div>
     <div class="panel-footer">
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-source-string"><span class="glyphicon glyphicon-plus"></span> {% trans 'Add source-specific search string' %}</button>
+      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-source-string"><span class="glyphicon glyphicon-plus"></span> {% trans 'Add source-specific search string' %}</button>
     </div>
   </div>
 
@@ -201,7 +201,7 @@
                   <textarea class="form-control" name="query">{{ database_queries.scopus.search_string }}</textarea>
                 </div>
                 <div class="form-group">
-                  <button type="submit" class="btn btn-primary">
+                  <button type="submit" class="btn btn-success">
                     <span class="btn-ajax-normal">
                       <span class="glyphicon glyphicon-search"></span> {% trans 'Search' %}
                     </span>
@@ -301,7 +301,7 @@
                   <textarea class="form-control" name="query">{{ database_queries.science_direct.search_string }}</textarea>
                 </div>
                 <div class="form-group">
-                  <button type="submit" class="btn btn-primary">
+                  <button type="submit" class="btn btn-success">
                     <span class="btn-ajax-normal">
                       <span class="glyphicon glyphicon-search"></span> {% trans 'Search' %}
                     </span>

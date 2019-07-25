@@ -13,9 +13,13 @@
 }
 
 /* Parsifal base */
+html{
+	min-height: 100%;
+}
 
 html, body {
   height: 100%;
+  
 }
 
 article{
@@ -70,6 +74,8 @@ header .navbar .username-divider {
 
 main {
   margin-top: 20px;
+  margin-bottom: 60px;
+  min-height: 400px;
 }
 
 footer {
