@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-25 14:24+0000\n"
+"POT-Creation-Date: 2019-07-25 18:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -77,7 +77,7 @@ msgstr "Configurações da Conta"
 #: parsifal/authentication/templates/auth/signup.html:23
 #: parsifal/authentication/templates/auth/success.html:7
 #: parsifal/blog/templates/blog/entries.html:7
-#: parsifal/core/templates/core/about.html:5
+#: parsifal/core/templates/core/about.html:3
 #: parsifal/core/templates/core/cover.html:26
 #: parsifal/core/templates/core/support.html:6
 #: parsifal/help/templates/help/articles.html:6
@@ -85,8 +85,10 @@ msgstr "Configurações da Conta"
 #: parsifal/reviews/templates/reviews/reviews.html:7
 #: parsifal/templates/admin/base_site.html:8
 #: parsifal/templates/includes/footer.html:9
+#: parsifal/templates/includes/header-clear.html:14
+#: parsifal/templates/includes/header-clear.html:99
 #: parsifal/templates/includes/header.html:14
-#: parsifal/templates/includes/header.html:87
+#: parsifal/templates/includes/header.html:99
 msgid "Parsifal"
 msgstr "Parsifal"
 
@@ -201,106 +203,88 @@ msgid "Password"
 msgstr "Senha"
 
 #: parsifal/account_settings/views.py:34
-#, fuzzy
-#| msgid "Your review has been saved successfully!"
 msgid "Your profile were successfully edited."
-msgstr "Sua revisão foi salva com sucesso!"
+msgstr "Seu perfil foi salvo com sucesso!"
 
 #: parsifal/account_settings/views.py:56
-#, fuzzy
-#| msgid "Your review have been saved successfully!"
 msgid "Account Email changed successfully."
-msgstr "Sua revisão foi criada com sucesso!"
+msgstr "Sua conta de email foi criada com sucesso!"
 
 #: parsifal/account_settings/views.py:58 parsifal/account_settings/views.py:72
 msgid "Please correct the error below."
-msgstr ""
+msgstr "Por favor corrija o erro abaixo."
 
 #: parsifal/account_settings/views.py:69
-#, fuzzy
-#| msgid "Your review have been saved successfully!"
 msgid "Password changed successfully."
-msgstr "Sua revisão foi criada com sucesso!"
+msgstr "Sua senha foi alterada com sucesso!"
 
 #: parsifal/account_settings/views.py:176
-#, fuzzy
-#| msgid "Your review has been saved successfully!"
 msgid "Your Mendeley account were linked successfully!"
-msgstr "Sua revisão foi salva com sucesso!"
+msgstr "Sua conta do Mendeley foi associada com sucesso!"
 
 #: parsifal/account_settings/views.py:178
 msgid "A problem occurred while trying to connect your Mendeley account."
-msgstr ""
+msgstr "Ocorreu um problema ao tentar conectar sua conta Mendeley."
 
 #: parsifal/account_settings/views.py:193
-#, fuzzy
-#| msgid "Your review has been saved successfully!"
 msgid "Your Dropbox account were linked successfully!"
-msgstr "Sua revisão foi salva com sucesso!"
+msgstr "Sua conta do Dropbox foi associada com sucesso!"
 
 #: parsifal/account_settings/views.py:197
 msgid "You didn't approved Parsifal to connect your Dropbox account."
-msgstr ""
+msgstr "Você não aprovou o Parsifal para conectar sua conta do Dropbox."
 
 #: parsifal/account_settings/views.py:199
 msgid ""
 "A problem occurred while trying to connect your Dropbox account. Please try "
 "again later."
 msgstr ""
+"Ocorreu um problema ao tentar conectar sua conta do Dropbox. Por favor, "
+"tente novamente mais tarde."
 
 #: parsifal/account_settings/views.py:211
-#, fuzzy
-#| msgid "Your review has been saved successfully!"
 msgid "Your Dropbox account were disconnected successfully!"
-msgstr "Sua revisão foi salva com sucesso!"
+msgstr "Sua conta do Dropbox foi desconectada com sucesso!"
 
 #: parsifal/activities/templates/activities/follow.html:42
-#: parsifal/reviews/templates/reviews/reviews.html:34
+#: parsifal/reviews/templates/reviews/reviews.html:41
 msgid "Unfollow"
 msgstr "Deixar de seguir"
 
 #: parsifal/activities/templates/activities/follow.html:46
-#: parsifal/reviews/templates/reviews/reviews.html:38
+#: parsifal/reviews/templates/reviews/reviews.html:45
 msgid "Follow"
 msgstr "Seguir"
 
 #: parsifal/activities/templates/activities/follow.html:62
-#, fuzzy
-#| msgid "are now following"
 msgid "have no followers."
-msgstr "está seguindo agora"
+msgstr "não tem seguidores."
 
 #: parsifal/activities/templates/activities/follow.html:64
-#, fuzzy
-#| msgid "is now following"
 msgid "isn't following anybody."
-msgstr "está seguindo agora"
+msgstr "não está seguindo ninguém."
 
 #: parsifal/authentication/forms.py:19
 msgid "This is a reserved word."
-msgstr ""
+msgstr "Esta é uma palavra reservada."
 
 #: parsifal/authentication/forms.py:23
 msgid "Enter a valid username."
-msgstr ""
+msgstr "Informe um nome de usuário válido."
 
 #: parsifal/authentication/forms.py:27
 msgid "User with this Email already exists."
-msgstr ""
+msgstr "Já existe um usuário com esse email."
 
 #: parsifal/authentication/forms.py:31
 msgid "User with this Username already exists."
-msgstr ""
+msgstr "Já existe um usuário com esse nome."
 
 #: parsifal/authentication/forms.py:35
-#, fuzzy
-#| msgid "Forgot your password?"
 msgid "Confirm your password"
-msgstr "Confirmou senha?"
+msgstr "Confirmou sua senha?"
 
 #: parsifal/authentication/forms.py:54
-#, fuzzy
-#| msgid "Password reset initiated"
 msgid "Passwords don't match"
 msgstr "Senhas não correspondem"
 
@@ -333,6 +317,7 @@ msgstr "Seu username"
 #: parsifal/authentication/templates/auth/signin.html:7
 #: parsifal/authentication/templates/auth/signin.html:22
 #: parsifal/authentication/templates/auth/signin.html:35
+#: parsifal/templates/includes/header-clear.html:58
 #: parsifal/templates/includes/header.html:58
 msgid "Sign in"
 msgstr "Entrar"
@@ -347,6 +332,7 @@ msgid "Forgot your password?"
 msgstr "Esqueceu sua senha?"
 
 #: parsifal/authentication/templates/auth/signup.html:8
+#: parsifal/templates/includes/header-clear.html:61
 #: parsifal/templates/includes/header.html:61
 msgid "Sign up"
 msgstr "Inscrever-se"
@@ -393,22 +379,23 @@ msgid ""
 "There was some problems while creating your account. Please review some "
 "fields before submiting again."
 msgstr ""
+"Houve alguns problemas ao criar sua conta. Por favor, revise alguns campos "
+"antes de enviar novamente."
 
 #: parsifal/authentication/views.py:43
-#, fuzzy
-#| msgid "Your review has been saved successfully!"
 msgid "Your account were successfully created."
-msgstr "Sua revisão foi salva com sucesso!"
+msgstr "Sua conta foi criada com sucesso!"
 
 #: parsifal/authentication/views.py:64
 msgid "Your account is desactivated."
-msgstr ""
+msgstr "Sua conta está desativada."
 
 #: parsifal/authentication/views.py:67
 msgid "Username or password invalid."
-msgstr ""
+msgstr "Usuário ou senha inválidos"
 
 #: parsifal/blog/templates/blog/entries.html:7
+#: parsifal/templates/includes/header-clear.html:18
 #: parsifal/templates/includes/header.html:18
 msgid "Blog"
 msgstr ""
@@ -456,23 +443,19 @@ msgstr ""
 msgid "Medias"
 msgstr ""
 
-#: parsifal/core/templates/core/about.html:5
-#: parsifal/core/templates/core/about.html:9
+#: parsifal/core/templates/core/about.html:3
+#: parsifal/templates/includes/header-clear.html:19
 #: parsifal/templates/includes/header.html:19
 msgid "About"
 msgstr "Sobre"
 
-#: parsifal/core/templates/core/about.html:10
-msgid "Learn more about the project and our goals"
-msgstr "Conheça mais sobre o nosso projeto e seus objetivos"
+#: parsifal/core/templates/core/about.html:9
+msgid "What is?"
+msgstr "O que é?"
 
-#: parsifal/core/templates/core/about.html:18
-msgid "What is Parsifal?"
-msgstr "O que é Parsifal"
-
-#: parsifal/core/templates/core/about.html:19
+#: parsifal/core/templates/core/about.html:11
 msgid ""
-"<strong>Parsifal</strong> is an online tool designed to support researchers "
+"<strong>Parsifal?</strong> is an online tool designed to support researchers "
 "to perform systematic literature reviews within the context of "
 "<strong>Software Engineering</strong>. Geographically distributed "
 "researchers can work together within a shared workspace, designing the "
@@ -484,7 +467,7 @@ msgstr ""
 "geograficamente distribuídos podem trabalhar juntos em um ambiente "
 "compartilhado, projetando o protocolo e conduzindo a pesquisa"
 
-#: parsifal/core/templates/core/about.html:20
+#: parsifal/core/templates/core/about.html:14
 msgid ""
 "As well as providing a way to document the whole process, the tool will help "
 "you remind what is important during a systematic literature review. During "
@@ -502,7 +485,7 @@ msgstr ""
 "e exclusão. Irá também fornecer mecanismos para construir uma lista de "
 "verificação de avaliação de qualidade e formas de extração de dados."
 
-#: parsifal/core/templates/core/about.html:21
+#: parsifal/core/templates/core/about.html:17
 msgid ""
 "During the conducting phase, you will be able to import <em>bibtex</em> "
 "files and select the studies, find duplicates among all the different "
@@ -512,25 +495,9 @@ msgstr ""
 "e selecione os estudos, encontrar duplicatas entre todos as diferentes "
 "fontes, executar a avaliação de qualidade e extrair dados dos documentos."
 
-#: parsifal/core/templates/core/about.html:23
+#: parsifal/core/templates/core/about.html:20
 msgid "What is a Systematic Literature Review?"
 msgstr "O que é uma Revisão Sistemática da Literatura?"
-
-#: parsifal/core/templates/core/about.html:24
-msgid ""
-"A systematic literature review is a secondary study with the objective to "
-"identify, analyze and interpret all available evidences from primary studies "
-"related to a specific research question. As suggested by Kitchenham and "
-"Charters, the activity to perform a systematic literature review involves "
-"planning, conducting and reporting the review <sup><a href="
-"\"#kitchenham-2007\">[1]</a></sup>."
-msgstr ""
-"Uma revisão sistemática da literatura é um estudo secundário com o objetivo "
-"de identificar, analisar e interpretar todas as evidências disponíveis de "
-"estudos primários relacionados a uma questão de pesquisa específica. Como "
-"sugerido por Kitchenham e Charters, as atividades para realizar uma revisão "
-"sistemática da literatura envolvem planejando, condução e reporte da revisão "
-"<sup> <a href ='\"#kitchenham-2007\">[1]</a></sup>."
 
 #: parsifal/core/templates/core/about.html:25
 msgid ""
@@ -549,16 +516,6 @@ msgstr ""
 "de inclusão e removendo os artigos que atendem aos critérios de exclusão."
 "Depois disso, o pesquisador pode começar a analisar o resultado relevante um "
 "porum."
-
-#: parsifal/core/templates/core/about.html:26
-msgid ""
-"<strong>Parsifal</strong> was designed to help you through all those steps."
-msgstr ""
-"<strong>Parsifal</strong> foi projetado para ajudá-lo em todos esses passos."
-
-#: parsifal/core/templates/core/about.html:28
-msgid "References"
-msgstr "Referências"
 
 #: parsifal/core/templates/core/cover.html:20
 msgid "Perform Systematic Literature Reviews"
@@ -642,7 +599,7 @@ msgstr "Suas revisões"
 
 #: parsifal/core/templates/core/home.html:30
 #: parsifal/core/templates/core/home.html:46
-#: parsifal/reviews/templates/reviews/reviews.html:116
+#: parsifal/reviews/templates/reviews/reviews.html:123
 msgid "You don't have any systematic literature review yet."
 msgstr "Você não tem nenhum revisão sistemática da literatura ainda"
 
@@ -651,10 +608,8 @@ msgid "Reviews you are invited"
 msgstr "Revisões como convidado"
 
 #: parsifal/core/templates/core/home.html:53
-#, fuzzy
-#| msgid "Last Update"
 msgid "Recent Updates"
-msgstr "Última atualização"
+msgstr "Atualizações Recentes"
 
 #: parsifal/core/templates/core/home.html:59
 msgid "There are no recent updates"
@@ -693,6 +648,7 @@ msgstr "está seguindo agora"
 #: parsifal/help/templates/help/articles.html:6
 #: parsifal/help/templates/help/articles.html:10
 #: parsifal/help/templates/help/search.html:6
+#: parsifal/templates/includes/header-clear.html:20
 #: parsifal/templates/includes/header.html:20
 msgid "Help"
 msgstr "Ajuda"
@@ -707,6 +663,8 @@ msgstr "Se você não encontrou o que procurava, entre em contato conosco "
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:170
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:206
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:306
+#: parsifal/templates/includes/header-clear.html:67
+#: parsifal/templates/includes/header.html:67
 msgid "Search"
 msgstr "Pesquisar"
 
@@ -2181,7 +2139,7 @@ msgstr "Itens por página"
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_quality_assessment_summary.html:11
 #: parsifal/reviews/forms.py:12
 #: parsifal/reviews/templates/reviews/partial_published_protocols.html:34
-#: parsifal/reviews/templates/reviews/reviews.html:89
+#: parsifal/reviews/templates/reviews/reviews.html:96
 msgid "Title"
 msgstr "Título"
 
@@ -2190,7 +2148,7 @@ msgstr "Título"
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_find_duplicates.html:13
 #: parsifal/reviews/reporting/templates/reporting/export.html:48
 #: parsifal/reviews/templates/reviews/review.html:64
-#: parsifal/reviews/templates/reviews/reviews.html:90
+#: parsifal/reviews/templates/reviews/reviews.html:97
 msgid "Authors"
 msgstr "Autores"
 
@@ -3684,7 +3642,7 @@ msgstr "Eu entendo as consequências."
 
 #: parsifal/reviews/settings/templates/settings/review_settings.html:153
 msgid "This will <b>close</b> the protocol of "
-msgstr ""
+msgstr "Isso <b>fechará</b> o protocolo de "
 
 #: parsifal/reviews/settings/templates/settings/review_settings.html:153
 #: parsifal/reviews/settings/templates/settings/review_settings.html:155
@@ -3693,7 +3651,7 @@ msgstr " e todos os dados de planajemento para outros pesquisadores."
 
 #: parsifal/reviews/settings/templates/settings/review_settings.html:155
 msgid "This will <b>open</b> the protocol of "
-msgstr ""
+msgstr "Isso <b>abrirá</b> o protocolo de "
 
 #: parsifal/reviews/settings/templates/settings/review_settings.html:166
 msgid "Publish protocol this review"
@@ -3705,7 +3663,7 @@ msgstr "Sua revisão foi salva com sucesso!"
 
 #: parsifal/reviews/settings/views.py:54
 msgid "User not found."
-msgstr ""
+msgstr "Usuário não encontrado."
 
 #: parsifal/reviews/settings/views.py:66
 msgid "Hey! You can't transfer the review to yourself."
@@ -3713,7 +3671,7 @@ msgstr "Ei! Você não pode transferir a revisão para si mesmo."
 
 #: parsifal/reviews/settings/views.py:70
 msgid "Something went wrong."
-msgstr ""
+msgstr "Algo deu errado."
 
 #: parsifal/reviews/settings/views.py:93
 msgid "The review was deleted successfully."
@@ -3846,53 +3804,54 @@ msgstr "Convidar alguém..."
 msgid "Review tags"
 msgstr "Tags da Revisão"
 
-#: parsifal/reviews/templates/reviews/reviews.html:29
+#: parsifal/reviews/templates/reviews/reviews.html:36
 msgid "Edit profile"
 msgstr "Editar perfil"
 
-#: parsifal/reviews/templates/reviews/reviews.html:49
+#: parsifal/reviews/templates/reviews/reviews.html:56
 msgid "STAFF"
 msgstr "STAFF"
 
-#: parsifal/reviews/templates/reviews/reviews.html:51
+#: parsifal/reviews/templates/reviews/reviews.html:58
 msgid "Followers"
 msgstr "Seguidores"
 
-#: parsifal/reviews/templates/reviews/reviews.html:56
+#: parsifal/reviews/templates/reviews/reviews.html:63
 msgid "Following"
 msgstr "Seguindo"
 
-#: parsifal/reviews/templates/reviews/reviews.html:71
+#: parsifal/reviews/templates/reviews/reviews.html:78
 msgid "Joined on"
 msgstr "Entrou em"
 
-#: parsifal/reviews/templates/reviews/reviews.html:79
-#: parsifal/templates/includes/header.html:91
+#: parsifal/reviews/templates/reviews/reviews.html:86
+#: parsifal/templates/includes/header-clear.html:103
+#: parsifal/templates/includes/header.html:103
 msgid "New review"
 msgstr "Nova revisão"
 
-#: parsifal/reviews/templates/reviews/reviews.html:84
+#: parsifal/reviews/templates/reviews/reviews.html:91
 msgid "Work in progress"
 msgstr "Trabalho em progresso"
 
-#: parsifal/reviews/templates/reviews/reviews.html:91
+#: parsifal/reviews/templates/reviews/reviews.html:98
 msgid "Last update"
 msgstr "Última atualização"
 
-#: parsifal/reviews/templates/reviews/reviews.html:109
-#: parsifal/reviews/templates/reviews/reviews.html:123
+#: parsifal/reviews/templates/reviews/reviews.html:116
+#: parsifal/reviews/templates/reviews/reviews.html:130
 msgid "Published reviews"
 msgstr "Revisões publicadas"
 
-#: parsifal/reviews/templates/reviews/reviews.html:111
+#: parsifal/reviews/templates/reviews/reviews.html:118
 msgid "You haven't published any systematic literature review yet."
 msgstr "Você ainda não tem nenhuma revisão sistemática da literatura."
 
-#: parsifal/reviews/templates/reviews/reviews.html:117
+#: parsifal/reviews/templates/reviews/reviews.html:124
 msgid "Start a review"
 msgstr "Iniciar revisões"
 
-#: parsifal/reviews/templates/reviews/reviews.html:125
+#: parsifal/reviews/templates/reviews/reviews.html:132
 msgid "haven't published any systematic literature review yet."
 msgstr "Não há nenhuma revisão sistemática da literatura ainda."
 
@@ -3932,36 +3891,67 @@ msgstr ""
 msgid "Your review has been saved successfully!"
 msgstr "Sua revisão foi salva com sucesso!"
 
+#: parsifal/templates/includes/header-clear.html:10
 #: parsifal/templates/includes/header.html:10
 msgid "Toggle navigation"
 msgstr "Alternar Navegação"
 
+#: parsifal/templates/includes/header-clear.html:26
 #: parsifal/templates/includes/header.html:26
 msgid "My profile"
 msgstr "Meu Perfil"
 
+#: parsifal/templates/includes/header-clear.html:50
 #: parsifal/templates/includes/header.html:50
 msgid "Sign out"
 msgstr "Sair"
 
-#: parsifal/templates/includes/header.html:80
-#, fuzzy
-#| msgid "Followers"
+#: parsifal/templates/includes/header-clear.html:92
+#: parsifal/templates/includes/header.html:92
 msgid "followers"
 msgstr "Seguidores"
 
-#: parsifal/templates/includes/header.html:81
-#, fuzzy
-#| msgid "Following"
+#: parsifal/templates/includes/header-clear.html:93
+#: parsifal/templates/includes/header.html:93
 msgid "followings"
-msgstr "Seguindo"
+msgstr "Seguidores"
 
-#: parsifal/templates/includes/header.html:89
+#: parsifal/templates/includes/header-clear.html:101
+#: parsifal/templates/includes/header.html:101
 msgid ""
 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lacinia "
 "sagittis pharetra. Sed dapibus, erat ac fringilla pellentesque, lectim "
 "mauris elit vitae libero."
 msgstr ""
+
+#~ msgid "Learn more about the project and our goals"
+#~ msgstr "Conheça mais sobre o nosso projeto e seus objetivos"
+
+#~ msgid ""
+#~ "A systematic literature review is a secondary study with the objective to "
+#~ "identify, analyze and interpret all available evidences from primary "
+#~ "studies related to a specific research question. As suggested by "
+#~ "Kitchenham and Charters, the activity to perform a systematic literature "
+#~ "review involves planning, conducting and reporting the review <sup><a "
+#~ "href=\"#kitchenham-2007\">[1]</a></sup>."
+#~ msgstr ""
+#~ "Uma revisão sistemática da literatura é um estudo secundário com o "
+#~ "objetivo de identificar, analisar e interpretar todas as evidências "
+#~ "disponíveis de estudos primários relacionados a uma questão de pesquisa "
+#~ "específica. Como sugerido por Kitchenham e Charters, as atividades para "
+#~ "realizar uma revisão sistemática da literatura envolvem planejando, "
+#~ "condução e reporte da revisão <sup> <a href ='\"#kitchenham-2007\">[1]</"
+#~ "a></sup>."
+
+#~ msgid ""
+#~ "<strong>Parsifal</strong> was designed to help you through all those "
+#~ "steps."
+#~ msgstr ""
+#~ "<strong>Parsifal</strong> foi projetado para ajudá-lo em todos esses "
+#~ "passos."
+
+#~ msgid "References"
+#~ msgstr "Referências"
 
 #~ msgid "Welcome"
 #~ msgstr "Bem vindo"
