@@ -222,7 +222,15 @@ $(function () {
       cache: false,
       type: 'post',
       success: function (data) {
-        $("#modal-share-dataextraction").modal("hide");
+        $("#modal-share-dataextraction .alert").text(data);
+        $("#modal-share-dataextraction .alert").removeClass("alert-error").addClass("alert-success");
+        $("#modal-share-dataextraction .alert").removeClass("hide");
+        //$("#modal-share-dataextraction").modal("hide");
+      },
+      error: function () {
+        $("#modal-share-dataextraction .alert").text("Ocorreu um erro ao compartilhar os Campos de Extração de Dados!");
+        $("#modal-share-dataextraction .alert").removeClass("alert-success").addClass("alert-error");
+        $("#modal-share-dataextraction .alert").removeClass("hide");
       }
     });
   });
