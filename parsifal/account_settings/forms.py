@@ -4,10 +4,12 @@ from django.contrib.auth.forms import PasswordChangeForm
 
 from parsifal.authentication.models import Profile
 
+from django.utils.translation import ugettext as _
+
 class UserEmailForm(forms.ModelForm):
     email = forms.CharField(widget=forms.EmailInput(attrs={ 'class': 'form-control' }), 
             max_length=254,
-            help_text='This email account will not be publicly available. It is used for your Parsifal account management, such as internal notifications and password reset.')
+            help_text=_('This email account will not be publicly available. It is used for your account management, such as internal notifications and password reset.'))
 
     class Meta:
         model = User
@@ -15,12 +17,12 @@ class UserEmailForm(forms.ModelForm):
 
 
 class ProfileForm(forms.ModelForm):
-    first_name = forms.CharField(widget=forms.TextInput(attrs={ 'class': 'form-control' }), max_length=30, required=False)
-    last_name = forms.CharField(widget=forms.TextInput(attrs={ 'class': 'form-control' }), max_length=30, required=False)
-    public_email = forms.CharField(widget=forms.EmailInput(attrs={ 'class': 'form-control' }), max_length=254, required=False)
-    url = forms.CharField(widget=forms.TextInput(attrs={ 'class': 'form-control' }), max_length=50, required=False)
-    institution = forms.CharField(widget=forms.TextInput(attrs={ 'class': 'form-control' }), max_length=50, required=False)
-    location = forms.CharField(widget=forms.TextInput(attrs={ 'class': 'form-control' }), max_length=50, required=False)
+    first_name = forms.CharField(widget=forms.TextInput(attrs={ 'class': 'form-control' }), max_length=30, required=False, label=_('First Name'))
+    last_name = forms.CharField(widget=forms.TextInput(attrs={ 'class': 'form-control' }), max_length=30, required=False, label=_('Last Name'))
+    public_email = forms.CharField(widget=forms.EmailInput(attrs={ 'class': 'form-control' }), max_length=254, required=False, label=_('Public Email'))
+    url = forms.CharField(widget=forms.TextInput(attrs={ 'class': 'form-control' }), max_length=50, required=False, label=_('URL'))
+    institution = forms.CharField(widget=forms.TextInput(attrs={ 'class': 'form-control' }), max_length=50, required=False, label=_('Institution'))
+    location = forms.CharField(widget=forms.TextInput(attrs={ 'class': 'form-control' }), max_length=50, required=False, label=_('Location'))
 
     def __init__(self, *args, **kwargs):
         super(ProfileForm, self).__init__(*args, **kwargs)
@@ -43,6 +45,6 @@ class ProfileForm(forms.ModelForm):
         return profile
 
 class PasswordForm(PasswordChangeForm):
-    old_password = forms.CharField(label='Old password', widget=forms.PasswordInput(attrs={ 'class': 'form-control' }))
-    new_password1 = forms.CharField(label='New password', widget=forms.PasswordInput(attrs={ 'class': 'form-control' }))
-    new_password2 = forms.CharField(label='Confirm password', widget=forms.PasswordInput(attrs={ 'class': 'form-control' }))
+    old_password = forms.CharField(label='Old password', widget=forms.PasswordInput(attrs={ 'class': 'form-control' }), label=_('Old Password'))
+    new_password1 = forms.CharField(label='New password', widget=forms.PasswordInput(attrs={ 'class': 'form-control' }), label=_('New password1'))
+    new_password2 = forms.CharField(label='Confirm password', widget=forms.PasswordInput(attrs={ 'class': 'form-control' }), label=_('New password1'))

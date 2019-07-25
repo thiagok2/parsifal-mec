@@ -4,7 +4,7 @@
 {% load humanize %}
 {% load staticfiles %}
 
-{% block title %}{{ page_user.profile.get_screen_name }} · Parsifal{% endblock %}
+{% block title %}{{ page_user.profile.get_screen_name }} · {% trans 'Parsifal' %} {% endblock %}
 
 {% block javascript %}
   <script type="text/javascript" src="{% static 'js/activities.js' %}?_=1"></script>
