@@ -18,6 +18,8 @@ from django.contrib.auth import update_session_auth_hash
 
 from parsifal.account_settings.forms import UserEmailForm, ProfileForm, PasswordForm
 
+from django.utils.translation import ugettext as _
+
 
 @login_required
 def settings(request):
@@ -29,7 +31,7 @@ def profile(request):
         form = ProfileForm(request.POST, instance=request.user.profile)
         if form.is_valid():
             form.save()
-            messages.success(request, u'Your profile were successfully edited.')
+            messages.success(request, _('Your profile were successfully edited.'))
             return redirect(r('settings:profile'))
     else:
         form = ProfileForm(instance=request.user.profile)
@@ -51,9 +53,9 @@ def emails(request):
         form = UserEmailForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
-            messages.success(request, u'Account Email changed successfully.')
+            messages.success(request, _('Account Email changed successfully.'))
         else:
-            messages.error(request, u'Please correct the error below.')
+            messages.error(request, _('Please correct the error below.'))
     else:
         form = UserEmailForm(instance=request.user)
     return render(request, 'settings/emails.html', { 'form' : form })
@@ -64,10 +66,10 @@ def password(request):
         form = PasswordForm(request.user, request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, u'Password changed successfully.')
+            messages.success(request, _('Password changed successfully.'))
             update_session_auth_hash(request, form.user)
         else:
-            messages.error(request, u'Please correct the error below.')
+            messages.error(request, _('Please correct the error below.'))
     else:
         form = PasswordForm(request.user)
     return render(request, 'settings/password.html', { 'form' : form })
@@ -171,9 +173,9 @@ def connect_mendeley(request):
         mendeley_session = auth.authenticate(auth_path)
         request.user.profile.set_mendeley_token(mendeley_session.token)
         request.user.save()
-        messages.success(request, 'Your Mendeley account were linked successfully!')
+        messages.success(request, _('Your Mendeley account were linked successfully!'))
     else:
-        messages.error(request, 'A problem occurred while trying to connect your Mendeley account.')
+        messages.error(request, _('A problem occurred while trying to connect your Mendeley account.'))
     return redirect(r('settings:connections'))
 
 @login_required
@@ -188,13 +190,13 @@ def disconnect_mendeley(request):
 def connect_dropbox(request):
     try:
         access_token, user_id, url_state = get_dropbox_auth_flow(request.session).finish(request.GET)
-        messages.success(request, u'Your Dropbox account were linked successfully!')
+        messages.success(request, _('Your Dropbox account were linked successfully!'))
         request.user.profile.dropbox_token = access_token
         request.user.save()
     except DropboxOAuth2Flow.NotApprovedException, e:
-        messages.warning(request, 'You didn\'t approved Parsifal to connect your Dropbox account.')
+        messages.warning(request, _("You didn\'t approved Parsifal to connect your Dropbox account."))
     except Exception, e:
-        messages.error(request, 'A problem occurred while trying to connect your Dropbox account. Please try again later.')
+        messages.error(request, _('A problem occurred while trying to connect your Dropbox account. Please try again later.'))
     return redirect(r('settings:connections'))
 
 @login_required
@@ -206,5 +208,5 @@ def disconnect_dropbox(request):
             client.disable_access_token()
             request.user.profile.dropbox_token = None
             request.user.save()
-            messages.success(request, 'Your Dropbox account were disconnected successfully!')
+            messages.success(request, _('Your Dropbox account were disconnected successfully!'))
     return redirect(r('settings:connections'))

@@ -2,6 +2,8 @@ from django import forms
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 
+from django.utils.translation import ugettext as _
+
 
 def ForbiddenUsernamesValidator(value):
     forbidden_usernames = ['admin', 'settings', 'news', 'about', 'help', 'signin', 'signup', 
@@ -14,23 +16,23 @@ def ForbiddenUsernamesValidator(value):
         'explore', 'rss', 'support', 'status', 'static', 'media', 'setting', 'css', 'js',
         'follow', 'activity', 'library']
     if value.lower() in forbidden_usernames:
-        raise ValidationError('This is a reserved word.')
+        raise ValidationError(_('This is a reserved word.'))
 
 def InvalidUsernameValidator(value):
     if '@' in value or '+' in value or '-' in value:
-        raise ValidationError('Enter a valid username.')
+        raise ValidationError(_('Enter a valid username.'))
 
 def UniqueEmailValidator(value):
     if User.objects.filter(email__iexact=value).exists():
-        raise ValidationError('User with this Email already exists.')
+        raise ValidationError(_('User with this Email already exists.'))
 
 def UniqueUsernameIgnoreCaseValidator(value):
     if User.objects.filter(username__iexact=value).exists():
-        raise ValidationError('User with this Username already exists.')
+        raise ValidationError(_('User with this Username already exists.'))
 
 class SignUpForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
-    confirm_password = forms.CharField(widget=forms.PasswordInput(), label="Confirm your password")
+    confirm_password = forms.CharField(widget=forms.PasswordInput(), label=_("Confirm your password"))
     email = forms.CharField(required=True)
 
     class Meta:
@@ -49,5 +51,5 @@ class SignUpForm(forms.ModelForm):
         password = self.cleaned_data.get('password')
         confirm_password = self.cleaned_data.get('confirm_password')
         if password and password != confirm_password:
-            self._errors['password'] = self.error_class(['Passwords don\'t match'])
+            self._errors['password'] = self.error_class([_("Passwords don\'t match")])
         return self.cleaned_data
