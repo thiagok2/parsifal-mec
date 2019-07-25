@@ -1,12 +1,18 @@
+header .navbar2{
+	background-image: linear-gradient(black, #233744, #233744 );
+	border-bottom: none;
+}
+
+
 .header-home{
 	background-color: #233744;
     color: #ffffff;
-    padding: 30px 0;
+    padding: 10px 0;
 }
 
 .img-avatar {
     border-radius: 50%;
-    width: 150px;
+    width: 110px;
     border: solid 3px #72bda3;
 }
 
@@ -22,16 +28,18 @@
     display: inline-block;
 }
 
-.btn-default {
-    background-color: #72bda3;
-    color: #ffffff;
-}
 
-.btn {
+.btn-new {
     border-radius: 20px;
     border: 0;
     padding-right: 20px;
     padding-left: 20px;
+    
+}
+
+.btn-default2{
+	background-color: #72bda3;
+    color: #ffffff;
 }
 
 h1 {
@@ -45,4 +53,53 @@ h1 {
 
 .btn.icon-text .glyphicon {
     margin-right: 5px;
+}
+
+footer {
+    padding: 10px 0;
+    background: #72bda3;
+    color: #28292c;
+}
+
+img.img-logo{
+	width: 12%;
+}
+
+/****************************8*/
+
+.intro-content {
+    width: 1140px;
+    margin: auto;
+    padding: 80px 0;
+    box-sizing: border-box;
+}
+
+.intro-logos {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-pack: center;
+    justify-content: center;
+    padding: 30px 0;
+    border-width: 1px 0;
+    border-style: solid;
+    border-color: #e0e0e0;
+    box-sizing: border-box;
+}
+
+.intro-logos .item:first-child {
+    width: 22%;
+    border-left: none;
+}
+
+.intro-logos .item {
+    width: 20%;
+    height: 100px;
+    border-left: 1px solid #e0e0e0;
+    text-align: center;
+}
+
+.intro-logos .item img {
+    height: 100%;
 }

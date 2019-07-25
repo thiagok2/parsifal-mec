@@ -24,7 +24,13 @@
                 {{ page_user.get_full_name }}
                 {% if user.is_authenticated %}
                   {% if user.id == page_user.id %}
-                    <a href="{% url 'settings:settings' %}" class="btn btn-default btn-xs">
+                  	{% comment %}
+                  		<a href="{% url 'settings:settings' %}" class="btn btn-default btn-xs">
+	                      <span class="glyphicon glyphicon-pencil"></span>
+	                      {% trans 'Edit profile' %}
+	                    </a>
+                  	{% endcomment %}
+                    <a href="#" class="btn btn-default btn-xs">
                       <span class="glyphicon glyphicon-pencil"></span>
                       {% trans 'Edit profile' %}
                     </a>

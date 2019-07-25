@@ -18,6 +18,11 @@ html, body {
   height: 100%;
 }
 
+article{
+	text-align: justify;
+}
+
+
 .wrapper {
   position: relative;
   min-height: 100%;
@@ -47,7 +52,7 @@ header .navbar .username-divider {
   border-bottom: 1px solid #e7e7e7;
   text-align: center;
   color: #777;
-  padding: 70px 0;
+  padding: 15px 0;
 }
 
 .masthead h1 {
@@ -69,7 +74,7 @@ main {
 
 footer {
   border-top: 1px solid #E7E7E7;
-  height: 50px;
+  /*height: 50px;*/
   background-color: #fff;
 }
 

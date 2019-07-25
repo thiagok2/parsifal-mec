@@ -1,35 +1,42 @@
-{% extends 'base.html' %}
-{% load i18n %}
-
-{% load humanize %}
-{% block title %} {% trans 'About' %} · {% trans 'Parsifal' %}{% endblock title %}
-
+{% extends 'base.html' %} 
+{% load i18n %} 
+{% load humanize %} {% block title %} {% trans 'About' %} · {% trans 'Parsifal' %}{% endblock title %} 
 {% block fullwidthheader %}
-  <div class="masthead">
-    <h1>{% trans 'About' %}</h1>
-    <p>{% trans 'Learn more about the project and our goals' %}</p>
-  </div>
-{% endblock %}
+{% endblock %} {% block content %}
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<article>
+			<h2>{% trans 'What is?' %}</h2>
+			<p>
+				{% trans '<strong>Parsifal?</strong> is an online tool designed to support researchers to perform systematic literature reviews within the context of <strong>Software Engineering</strong>. Geographically distributed researchers can work together within a shared workspace, designing the protocol and conducting the research.' %}
+			</p>
+			<p>
+				{% trans 'As well as providing a way to document the whole process, the tool will help you remind what is important during a systematic literature review. During the planning phase, <strong>Parsifal</strong> will help you with the objectives, PICOC, research questions, search string, keywords and synonyms, selecting the sources, the inclusion and exclusion criterias. Will also provide mechanisms to build a quality assessment checklist and data extraction forms.' %}
+			</p>
+			<p>
+				{% trans 'During the conducting phase, you will be able to import <em>bibtex</em> files and select the studies, find duplicates among all the different sources, execute the quality assessment and extract data from the papers.' %}
+			</p>
 
-{% block content %}
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-      <article>
-        <h2>{% trans 'What is Parsifal?' %}</h2>
-        <p>{% trans '<strong>Parsifal</strong> is an online tool designed to support researchers to perform systematic literature reviews within the context of <strong>Software Engineering</strong>. Geographically distributed researchers can work together within a shared workspace, designing the protocol and conducting the research.' %}</p>
-        <p>{% trans 'As well as providing a way to document the whole process, the tool will help you remind what is important during a systematic literature review. During the planning phase, <strong>Parsifal</strong> will help you with the objectives, PICOC, research questions, search string, keywords and synonyms, selecting the sources, the inclusion and exclusion criterias. Will also provide mechanisms to build a quality assessment checklist and data extraction forms.' %}</p>
-        <p>{% trans 'During the conducting phase, you will be able to import <em>bibtex</em> files and select the studies, find duplicates among all the different sources, execute the quality assessment and extract data from the papers.' %}</p>
+			<h2>{% trans 'What is a Systematic Literature Review?' %}</h2>
+			<p>
+				{% trans 'A systematic literature review is a secondary study with the objective to identify, analyze and interpret all available evidences from primary studies related to a specific research question. As suggested by Kitchenham and Charters, the activity to perform a systematic literature review involves planning, conducting and reporting the review <sup><a href="#kitchenham-2007">[1]</a></sup>.'
+				%}
+			</p>
+			<p>{% trans 'Performing a systematic literature review is a labor-intensive task that requires a huge amount of work from the researcher, designing the protocol, adjusting the search string, filtering the results, sometimes more than a thousand of articles, selecting those articles that attends the include criteria and removing those articles that attends the exclude criteria. After that, the researcher might start to analyze the relevant result one by one.' %}</p>
 
-        <h2>{% trans 'What is a Systematic Literature Review?' %}</h2>
-        <p>{% trans 'A systematic literature review is a secondary study with the objective to identify, analyze and interpret all available evidences from primary studies related to a specific research question. As suggested by Kitchenham and Charters, the activity to perform a systematic literature review involves planning, conducting and reporting the review <sup><a href="#kitchenham-2007">[1]</a></sup>.' %}</p>
-        <p>{% trans 'Performing a systematic literature review is a labor-intensive task that requires a huge amount of work from the researcher, designing the protocol, adjusting the search string, filtering the results, sometimes more than a thousand of articles, selecting those articles that attends the include criteria and removing those articles that attends the exclude criteria. After that, the researcher might start to analyze the relevant result one by one.' %}</p>
-        <p>{% trans '<strong>Parsifal</strong> was designed to help you through all those steps.' %}</p>
-
-        <h2>{% trans 'References' %}</h2>
-        <ol class="references">
-          <li id="kitchenham-2007">Kitchenham B (2007) Guidelines for performing Systematic Literature Reviews in Software Engineering, Version 2.3, EBSE Technical Report EBSE-2007-01, Keele University and University of Durham</li>
-        </ol>
-      </article>
-    </div>
-  </div>
+		</article>
+	</div>
+</div>
+<div class="row">
+	<div class="intro-content">
+		<div class="intro-logos">
+			<div class="item">
+				<img src="/static/img/nees.png" alt="">
+			</div>
+			<div class="item">
+				<img src="/static/img/ufal.png" alt="">
+			</div>
+		</div>
+	</div>
+</div>
 {% endblock content %}
