@@ -180,7 +180,7 @@ def study_selection(request, username, review_name):
 
     steps_messages = []
     if not add_sources: steps_messages.append(u'Use the <a href="{0}#sources-section">planning tab</a> to add sources to your review.'.format(r('protocol', args=(username, review_name))))
-    if not import_articles: steps_messages.append(_('Import the studies using the') + '<a href="{0}">'+_('import studies tab')+'</a>.'.format(r('import_studies', args=(username, review_name))))
+    if not import_articles: steps_messages.append(_('Import the studies using the') + '<a href="{0}">'.format(r('import_studies', args=(username, review_name))) + _('import studies tab') +'</a>.')
 
     finished_all_steps = len(steps_messages) == 0
 
