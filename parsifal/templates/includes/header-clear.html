@@ -76,7 +76,6 @@
 		</div>
 	</nav>
 	
-	{% if show_head  %}
 	<div class="header-home">
 		<div class="container">
 			<div class="row">
@@ -86,21 +85,11 @@
 				<div class="col-sm-3 col-lg-4">
 					<div class="profile-data">
 						<p>
-							<a href="{% url 'reviews' user.username %}">
-								<strong>{{ user.profile.get_screen_name }}</strong>
-							</a>
+							<strong>{{ user.profile.get_screen_name }}</strong>
 						</p>
 						<p>
-							<a href="{% url 'followers' user.username %}">
-								<span class="follows">
-									{{ user.profile.get_followers_count }} {% trans 'followers' %}
-								</span>
-							</a>
-							<a href="{% url 'following' user.username %}">
-								<span class="follows">
-									{{ user.profile.get_following_count }} {% trans 'followings' %}
-								</span>
-							</a>
+							<span class="follows">{{ user.profile.get_followers_count }} {% trans 'followers' %}</span> 
+							<span class="follows">{{ user.profile.get_following_count }} {% trans 'followings' %}</span>
 						</p>
 						
 					</div>
@@ -116,6 +105,5 @@
 			</div>
 		</div>
 	</div>
-	{% endif %}
 	
 </header>

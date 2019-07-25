@@ -48,7 +48,9 @@ def get_following_feeds(user):
     return feeds
 
 def home(request):
+    
     if request.user.is_authenticated():
+        show_head = True
         user_reviews = request.user.profile.get_reviews()
         invited_reviews = request.user.profile.get_invited_reviews()
         feeds = get_following_feeds(request.user)
@@ -60,7 +62,9 @@ def home(request):
                 'user_reviews': user_reviews,
                 'invited_reviews': invited_reviews,
                 'feeds': feeds,
-                'latest_news': latest_news
+                'latest_news': latest_news,
+                'show_head' : show_head
             })
     else:
+        
         return render(request, 'core/cover.html')
