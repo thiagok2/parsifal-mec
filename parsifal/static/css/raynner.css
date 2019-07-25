@@ -20,6 +20,10 @@ header .navbar2{
     padding: 20px 0;
 }
 
+.profile-data  a{
+	color: white;
+}
+
 
 .follows:first-child {
     margin-right: 10px;

@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 
 from parsifal.activities.models import Activity
 
+from django.utils.translation import ugettext as _
 
 @login_required
 def follow(request):
@@ -56,7 +57,7 @@ def update_followers_count(request):
 
 def following(request, username):
     page_user = get_object_or_404(User, username=username)
-    page_title = 'following'
+    page_title = _('following')
     following = page_user.profile.get_following()
     user_following = None
 
@@ -72,7 +73,7 @@ def following(request, username):
 
 def followers(request, username):
     user = get_object_or_404(User, username=username)
-    page_title = 'followers'
+    page_title = _('followers')
     followers = user.profile.get_followers()
     user_following = None
 
