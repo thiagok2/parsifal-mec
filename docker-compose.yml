@@ -11,6 +11,8 @@ services:
     restart: always
     ports:
       - 7001:5432
+    env_file:
+      - .env
   web:
     build: .
     command:
@@ -21,7 +23,7 @@ services:
       - ./app-entrypoint.sh
         #command: ["./wait-for-postgres.sh", "db", "parsifal", $POSTGRES_PASSWORD,"./app-entrypoint.sh"]
     ports:
-      - 7000:8000
+      - 8000:8000
     depends_on:
       - db
     networks:
