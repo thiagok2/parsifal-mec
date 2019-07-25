@@ -1,7 +1,7 @@
 {% load i18n %} 
 {% load humanize %}
 
-<header>
+<header id="header-nav">
 	<nav class="navbar navbar-inverse navbar2">
 		<div class="container">
 			<div class="navbar-header">
@@ -17,10 +17,12 @@
 				<ul class="nav navbar-nav">
 					<li><a href="{% url 'blog:entries' %}">{% trans 'Blog' %}</a></li>
 					<li><a href="{% url 'about' %}">{% trans 'About' %}</a></li>
+					<li><a href="{% url 'about' %}">{% trans 'Explorer' %}</a></li>
+					<li><a href="{% url 'about' %}">{% trans 'Researchers' %}</a></li>
 					<li><a href="{% url 'help:articles' %}">{% trans 'Help' %}</a></li>
 				</ul>
 				{% if user.is_authenticated %}
-				<ul class="nav navbar-nav navbar-right">
+				<uel class="nav navbar-nav navbar-right">
 					<li>
 						<a href="{% url 'reviews' user.username %}"> 
 							<span data-toggle="tooltip" data-placement="bottom" data-container="body" title="{% trans 'My profile' %}">
@@ -53,12 +55,14 @@
 					</li>
 				</ul>
 				{% else %} 
-					<a href="{% url 'signin' %}" title="Sign in" class="btn btn-new btn-success navbar-btn navbar-right">
-					{% trans 'Sign in' %}
-					</a> 
-					<a href="{% url 'signup' %}" title="Sign up" class="btn btn-new btn-success navbar-btn navbar-right" style="margin-right: 5px;">
-						{% trans 'Sign up' %}
-					</a> 
+					<div id="group-buttons-sign" class="">
+						<a href="{% url 'signin' %}" title="Sign in" class="btn btn-new btn-success navbar-btn navbar-right">
+						{% trans 'Sign in' %}
+						</a> 
+						<a href="{% url 'signup' %}" title="Sign up" class="btn btn-new btn-success navbar-btn navbar-right" style="margin-right: 5px;">
+							{% trans 'Sign up' %}
+						</a>
+					</div>
 				{% endif %}
 				
 				<form class="navbar-form navbar-left" action="#">
