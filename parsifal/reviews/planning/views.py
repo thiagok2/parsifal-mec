@@ -1042,6 +1042,9 @@ def share_data_extraction_fields(request):
         review.export_dataextraction = True if not review.export_dataextraction else False
         review.save()
 
-        return HttpResponse()
+        if review.export_dataextraction:
+            return HttpResponse(_('Data Extraction Fields has been shared!'))
+
+        return HttpResponse(_('Data Extraction Fields has been made private again!'))
     except:
         return HttpResponseBadRequest()

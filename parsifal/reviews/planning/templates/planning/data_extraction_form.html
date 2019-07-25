@@ -93,6 +93,9 @@
             <h4 class="modal-title">{% trans 'Export Data Extraction Fields' %}</h4>
           </div>
           <div class="modal-body">
+            <div class="alert alert-error hide" role="alert">
+              <strong><span class="glyphicon glyphicon-info-sign"></span></strong> {% trans 'Showing the available sources from you Protocol, defined in the ' %}<a href="{% url 'planning' review.author.username review.name %}#sources-section">{% trans 'planning tab' %}</a>.
+            </div>
             {% if review.export_dataextraction %}
               <p>{% trans 'Your Data Extraction Fields are already shared. Do you wanna make it private again?' %}</p>
             {% elif not review.export_dataextraction %}
