@@ -30,6 +30,7 @@ services:
       - webnet    
     volumes:
       - /docker-volumes/parsifal/web/static:/static 
+      - /docker-volumes/parsifal/web/media:/media 
     restart: always  
 networks:
   webnet:
