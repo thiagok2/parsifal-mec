@@ -2,7 +2,7 @@
 {% load humanize %}
 
 <header>
-	<nav class="navbar navbar-default">
+	<nav class="navbar navbar-inverse navbar2">
 		<div class="container">
 			<div class="navbar-header">
 				<button data-target="#header-menu" data-toggle="collapse"
@@ -53,14 +53,26 @@
 					</li>
 				</ul>
 				{% else %} 
-					<a href="{% url 'signin' %}" title="Sign in" class="btn btn-default navbar-btn navbar-right">
+					<a href="{% url 'signin' %}" title="Sign in" class="btn btn-new btn-default btn-default2 navbar-btn navbar-right">
 					{% trans 'Sign in' %}
 					</a> 
-					<a href="{% url 'signup' %}" title="Sign up" class="btn btn-primary navbar-btn navbar-right" style="margin-right: 5px;">
+					<a href="{% url 'signup' %}" title="Sign up" class="btn btn-new btn-default btn-default2 navbar-btn navbar-right" style="margin-right: 5px;">
 						{% trans 'Sign up' %}
 					</a> 
 				{% endif %}
+				
+				<form class="navbar-form navbar-left" action="#">
+					<div class="input-group">
+				    	<input type="text" class="form-control" placeholder="{% trans 'Search' %}">
+				    	<div class="input-group-btn">
+				      	<button class="btn btn-default btn-default2" type="submit">
+				        	<i class="glyphicon glyphicon-search"></i>
+				      	</button>
+				    </div>
+				  </div>
+				</form>
 			</div>
+			
 		</div>
 	</nav>
 	
@@ -87,7 +99,7 @@
 					<p class="text-muted">
 						{% trans 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lacinia sagittis pharetra. Sed dapibus, erat ac fringilla pellentesque, lectim mauris elit vitae libero.' %}
 					</p>
-					<a href="/reviews/new/" class="btn btn-primary pull-right">{% trans 'New review' %}</a>
+					<a href="/reviews/new/" class="btn btn-new btn-default btn-default2 pull-right">{% trans 'New review' %}</a>
 					
 				</div>
 			</div>

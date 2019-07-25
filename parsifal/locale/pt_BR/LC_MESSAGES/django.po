@@ -296,13 +296,13 @@ msgstr ""
 #, fuzzy
 #| msgid "Forgot your password?"
 msgid "Confirm your password"
-msgstr "Esqueceu sua senha?"
+msgstr "Confirmou senha?"
 
 #: parsifal/authentication/forms.py:54
 #, fuzzy
 #| msgid "Password reset initiated"
 msgid "Passwords don't match"
-msgstr "Nova senha inicializada"
+msgstr "Senhas não correspondem"
 
 #: parsifal/authentication/templates/auth/reset.html:7
 #: parsifal/authentication/templates/auth/reset_confirm.html:7
