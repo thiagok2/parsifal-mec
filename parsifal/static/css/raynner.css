@@ -1,17 +1,22 @@
 a{
-	color: #333 !important;
+	color: #333;
 }
 
 a:hover{
-	color: #111 !important;
+	color: #111;
 }
 
 
 header .navbar2{
 	background-image: linear-gradient(black, #233744, #233744 );
 	border-bottom: none;
+	color: white;
 }
 
+#group-buttons-sign a{
+	color:white !important;
+	opacity: 1 !important; 
+}
 
 .header-home{
 	background-color: #233744;
@@ -47,6 +52,7 @@ header .navbar2{
     border: 0;
     padding-right: 20px;
     padding-left: 20px;
+    color:white;
     
 }
 
@@ -66,8 +72,8 @@ h1 {
 
 footer {
     padding: 10px 0;
-    background: #72bda3;
-    color: #28292c;
+   	background: linear-gradient(black, #233744, #233744 );
+    color: white;
 
 }
 

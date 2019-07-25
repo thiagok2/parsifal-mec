@@ -22,11 +22,6 @@ html, body {
   
 }
 
-article{
-	text-align: justify;
-}
-
-
 .wrapper {
   position: relative;
   min-height: 100%;
@@ -110,8 +105,9 @@ footer .social a:hover {
 }
 
 article {
-  font-size: 16px;
-  margin-bottom: 20px;
+  font-size: 14px;
+  margin-bottom: 5px;
+  text-align: justify;
 }
 
 article .table, article .alert {
@@ -289,11 +285,11 @@ a.library-documents-indexes:active  {
 
 .cover {
   padding-top: 60px; 
-  padding-bottom: 80px;
+  padding-bottom: 10px;
 }
 
 .cover h1 {
-  font-size: 64px; 
+  font-size: 32px; 
   margin-bottom: 30px;
 }
 
@@ -303,7 +299,7 @@ section.features {
 }
 
 section.features article {
-  padding: 20px 0;
+  padding: 5px 0;
   border-bottom: 1px solid #f8f8f8;
 }
 
@@ -312,7 +308,7 @@ section.features article:last-child {
 }
 
 section.features article span.glyphicon {
-  font-size: 44px;
+  font-size: 24px;
   color: #ccc;
   margin: 10px 0;
 }
@@ -595,3 +591,24 @@ label.btn-default .active{
 label.btn-default {
 	color: gray;
 }
+
+article p.lead{
+	font-size: 18px;
+}
+
+header#header-nav  nav.navbar a {
+	color: #ccc;
+	opacity: 0.85;
+}
+
+header#header-nav  nav.navbar a:hover {
+	
+	color: white;
+	opacity: 1;
+}
+
+
+header#header-nav  nav.navbar input {
+	border-radius: 10px 0px 0px 10px;
+}
+
