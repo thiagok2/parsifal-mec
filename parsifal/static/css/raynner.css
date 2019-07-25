@@ -1,3 +1,12 @@
+a{
+	color: #333;
+}
+
+a:hover{
+	color: #111;
+}
+
+
 header .navbar2{
 	background-image: linear-gradient(black, #233744, #233744 );
 	border-bottom: none;
@@ -41,10 +50,6 @@ header .navbar2{
     
 }
 
-.btn-default2{
-	background-color: #72bda3;
-    color: #ffffff;
-}
 
 h1 {
     font-weight: 300;
@@ -63,11 +68,18 @@ footer {
     padding: 10px 0;
     background: #72bda3;
     color: #28292c;
+
 }
 
 img.img-logo{
 	width: 12%;
+	opacity: 0.85;
 }
+
+img.img-logo:hover{
+	opacity: 1;
+}
+
 
 /****************************8*/
 
