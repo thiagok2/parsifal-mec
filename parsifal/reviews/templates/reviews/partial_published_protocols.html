@@ -5,12 +5,12 @@
     <td id="td-protocol-name-{{ review_protocol.id }}">{{review_protocol.title}}</td>
     <td >{{review_protocol.author}}</td>
     <td class="td-import-protocol">
-       <button class="btn btn-primary btn-sm btn-import-protocol"  data-protocol-id="{{review_protocol.id}}" data-toggle="modal" data-target="#modal-confirm-import">
+       <button class="btn btn-success btn-sm btn-import-protocol"  data-protocol-id="{{review_protocol.id}}" data-toggle="modal" data-target="#modal-confirm-import">
             {% trans 'Import' %}
         </button>
     </td>
     <td class="td-detail-protocol" id="tr-protocol-detail-{{review_protocol.id}}">
-    	<button type="button" class="btn btn-primary btn-sm" class="btn-details-protocol">
+    	<button type="button" class="btn btn-success btn-sm" class="btn-details-protocol">
        		<span class="glyphicon glyphicon-zoom-in"></span>    
         </button> 
     </td>
