@@ -29,6 +29,10 @@
         <div class="list-group">
           {% for review in user_reviews %}
             <a href="/{{ review.author.username }}/{{ review.name }}/" class="list-group-item">{{ review.title }}</a>
+            
+            <span class="text-muted">
+            {% for author in review.co_authors.all %}, <a href="/{{ author.username }}/"> {{ author.profile.get_screen_name }}</a>{% endfor %}
+            </span>
           {% empty %}
             <p class="list-group-item">{% trans "You don't have any systematic literature review yet." %}</p>
           {% endfor %}
