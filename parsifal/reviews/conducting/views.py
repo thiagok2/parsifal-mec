@@ -346,13 +346,14 @@ def build_data_extraction_table(review, is_finished):
             if has_quality_assessment:
                 str_table += u'''<div class="panel panel-default data-extraction-panel">
                   <div class="panel-heading">
-                    <h3 class="panel-title">{0}
-                      <span class="badge">{1}</span>'''.format(escape(study.title), study.get_score())
+                    <h3 class="panel-title row">
+                       <div class="col-sm-9">{0}
+                      <span class="badge">{1}</span></div>'''.format(escape(study.title), study.get_score())
 
                 if study.finished_data_extraction:
-                    str_table += u'<span class="pull-right"><a href="javascript:void(0);" class="js-finished-button js-mark-as-not-finished"><span class="glyphicon glyphicon-check"></span> <span class="action-text">Marcar como não resolvido</span></a></span>'
+                    str_table += u'<div class="col-sm-3"><span class="pull-right"><a href="javascript:void(0);" class="js-finished-button js-mark-as-not-finished"><span class="glyphicon glyphicon-check"></span> <span class="action-text">Marcar como não resolvido</span></a></span></div>'
                 else:
-                    str_table += u'<span class="pull-right"><a href="javascript:void(0);" class="js-finished-button js-mark-as-finished"><span class="glyphicon glyphicon-unchecked"></span> <span class="action-text">Marcar como resolvido</span></a></span>'
+                    str_table += u'<div class="col-sm-3"><span class="pull-right"><a href="javascript:void(0);" class="js-finished-button js-mark-as-finished"><span class="glyphicon glyphicon-unchecked"></span> <span class="action-text">Marcar como resolvido</span></a></span></div>'
 
                 str_table += u'</h3></div>'
                 str_table += u'<div class="panel-body form-horizontal" data-article-id="{0}">'.format(study.id)
