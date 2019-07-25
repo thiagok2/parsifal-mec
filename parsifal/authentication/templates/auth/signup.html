@@ -2,9 +2,10 @@
 
 {% load i18n %}
 
-{% load humanize
+{% load humanize %}
 
-{% block title %}{% trans 'Sign up · Parsifal ' %}{% endblock %}
+
+{% block title %}{% trans 'Sign up' %} · {% trans 'Parsifal' %}{% endblock %}
 
 {% block javascript %}
   <script>
@@ -19,7 +20,7 @@
     <div class="col-md-6 col-md-offset-3">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 class="panel-title">{% trans 'Sign up for Parsifal' %}</h3>
+          <h3 class="panel-title">{% trans 'Sign up for' %} {% trans 'Parsifal' %}</h3>
         </div>
         <div class="panel-body">
           <form action="/signup/" method="post">

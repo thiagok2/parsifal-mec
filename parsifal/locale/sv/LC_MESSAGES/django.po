@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-24 17:53+0000\n"
+"POT-Creation-Date: 2019-07-24 19:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +18,75 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: parsifal/account_settings/forms.py:12
+msgid ""
+"This email account will not be publicly available. It is used for your "
+"account management, such as internal notifications and password reset."
+msgstr ""
+
+#: parsifal/account_settings/forms.py:20
+msgid "First Name"
+msgstr ""
+
+#: parsifal/account_settings/forms.py:21
+msgid "Last Name"
+msgstr ""
+
+#: parsifal/account_settings/forms.py:22
+msgid "Public Email"
+msgstr ""
+
+#: parsifal/account_settings/forms.py:23
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:2308
+msgid "URL"
+msgstr ""
+
+#: parsifal/account_settings/forms.py:24
+msgid "Institution"
+msgstr ""
+
+#: parsifal/account_settings/forms.py:25
+msgid "Location"
+msgstr ""
+
+#: parsifal/account_settings/forms.py:48
+msgid "Old Password"
+msgstr ""
+
+#: parsifal/account_settings/forms.py:49 parsifal/account_settings/forms.py:50
+msgid "New password1"
+msgstr ""
+
 #: parsifal/account_settings/templates/settings/connections.html:7
+#: parsifal/account_settings/templates/settings/emails.html:7
 #: parsifal/account_settings/templates/settings/password.html:7
 #: parsifal/account_settings/templates/settings/picture.html:6
 #: parsifal/account_settings/templates/settings/profile.html:5
-msgid "Account Settings · Parsifal"
+msgid "Account Settings"
+msgstr ""
+
+#: parsifal/account_settings/templates/settings/connections.html:7
+#: parsifal/account_settings/templates/settings/emails.html:7
+#: parsifal/account_settings/templates/settings/password.html:7
+#: parsifal/account_settings/templates/settings/picture.html:6
+#: parsifal/account_settings/templates/settings/profile.html:5
+#: parsifal/authentication/templates/auth/reset.html:7
+#: parsifal/authentication/templates/auth/reset_confirm.html:7
+#: parsifal/authentication/templates/auth/signin.html:7
+#: parsifal/authentication/templates/auth/signup.html:8
+#: parsifal/authentication/templates/auth/signup.html:23
+#: parsifal/authentication/templates/auth/success.html:7
+#: parsifal/blog/templates/blog/entries.html:7
+#: parsifal/core/templates/core/about.html:5
+#: parsifal/core/templates/core/cover.html:26
+#: parsifal/core/templates/core/support.html:6
+#: parsifal/help/templates/help/articles.html:6
+#: parsifal/help/templates/help/search.html:6
+#: parsifal/reviews/templates/reviews/reviews.html:7
+#: parsifal/templates/admin/base_site.html:8
+#: parsifal/templates/includes/footer.html:9
+#: parsifal/templates/includes/header.html:15
+msgid "Parsifal"
 msgstr ""
 
 #: parsifal/account_settings/templates/settings/connections.html:47
@@ -37,8 +101,8 @@ msgstr ""
 #: parsifal/account_settings/templates/settings/connections.html:54
 msgid ""
 "Import your references from Mendeley. Associate your Mendeley library to "
-"your reviews. Friends you have on Mendeley who are also on Parsifal will "
-"become part of your Parsifal network."
+"your reviews. Friends you have on Mendeley who are also on plataform will "
+"become part of your network."
 msgstr ""
 
 #: parsifal/account_settings/templates/settings/connections.html:62
@@ -130,6 +194,11 @@ msgstr ""
 msgid "Password"
 msgstr ""
 
+#: parsifal/authentication/templates/auth/reset.html:7
+#: parsifal/authentication/templates/auth/reset_confirm.html:7
+msgid "Password Reset"
+msgstr ""
+
 #: parsifal/authentication/templates/auth/reset.html:14
 msgid "Password reset"
 msgstr ""
@@ -137,10 +206,6 @@ msgstr ""
 #: parsifal/authentication/templates/auth/reset.html:26
 #: parsifal/authentication/templates/auth/reset_confirm.html:34
 msgid "Submit"
-msgstr ""
-
-#: parsifal/authentication/templates/auth/reset_confirm.html:7
-msgid "Parsifal - Password Reset"
 msgstr ""
 
 #: parsifal/authentication/templates/auth/reset_confirm.html:15
@@ -156,9 +221,6 @@ msgid "Your username:"
 msgstr ""
 
 #: parsifal/authentication/templates/auth/signin.html:7
-msgid "Sign in · Parsifal"
-msgstr ""
-
 #: parsifal/authentication/templates/auth/signin.html:22
 #: parsifal/authentication/templates/auth/signin.html:35
 #: parsifal/templates/includes/header.html:57
@@ -174,28 +236,24 @@ msgstr ""
 msgid "Forgot your password?"
 msgstr ""
 
-#: parsifal/authentication/templates/auth/signup.html:7
-msgid "Sign up · Parsifal "
+#: parsifal/authentication/templates/auth/signup.html:8
+#: parsifal/templates/includes/header.html:58
+msgid "Sign up"
 msgstr ""
 
-#: parsifal/authentication/templates/auth/signup.html:22
+#: parsifal/authentication/templates/auth/signup.html:23
 #: parsifal/core/templates/core/cover.html:26
-msgid "Sign up for Parsifal"
+msgid "Sign up for"
 msgstr ""
 
-#: parsifal/authentication/templates/auth/signup.html:30
+#: parsifal/authentication/templates/auth/signup.html:31
 msgid ""
 "(Usernames may contain <strong>alphanumeric</strong>, <strong>_</strong> and "
 "<strong>.</strong> characters)"
 msgstr ""
 
-#: parsifal/authentication/templates/auth/signup.html:56
+#: parsifal/authentication/templates/auth/signup.html:57
 msgid "Create an account"
-msgstr ""
-
-#: parsifal/authentication/templates/auth/success.html:7
-#: parsifal/templates/includes/header.html:15
-msgid "Parsifal"
 msgstr ""
 
 #: parsifal/authentication/templates/auth/success.html:10
@@ -215,16 +273,17 @@ msgid ""
 msgstr ""
 
 #: parsifal/blog/templates/blog/entries.html:7
-msgid "Blog · Parsifal"
+#: parsifal/templates/includes/header.html:19
+msgid "Blog"
 msgstr ""
 
 #: parsifal/blog/templates/blog/entries.html:11
 #: parsifal/blog/templates/blog/entry.html:11
-msgid "The Parsifal Blog"
+msgid "The Blog"
 msgstr ""
 
 #: parsifal/blog/templates/blog/entries.html:12
-msgid "Find out the latest news on Parsifal"
+msgid "Find out the latest news"
 msgstr ""
 
 #: parsifal/blog/templates/blog/entries.html:23
@@ -262,12 +321,9 @@ msgid "Medias"
 msgstr ""
 
 #: parsifal/core/templates/core/about.html:5
+#: parsifal/core/templates/core/about.html:9
 #: parsifal/templates/includes/header.html:20
 msgid "About"
-msgstr ""
-
-#: parsifal/core/templates/core/about.html:9
-msgid "About Parsifal"
 msgstr ""
 
 #: parsifal/core/templates/core/about.html:10
@@ -429,11 +485,12 @@ msgstr ""
 msgid "Reviews you are invited"
 msgstr ""
 
-#: parsifal/core/templates/core/support.html:7
+#: parsifal/core/templates/core/support.html:6
+#: parsifal/core/templates/core/support.html:11
 msgid "Support"
 msgstr ""
 
-#: parsifal/core/templates/core/support.html:14
+#: parsifal/core/templates/core/support.html:18
 msgid ""
 "If you have any questions, please send us an email to <a href=\"mailto:"
 "support@parsif.al\">support@parsif.al</a>"
@@ -456,7 +513,9 @@ msgid "is now following"
 msgstr ""
 
 #: parsifal/help/templates/help/article.html:23
-#: parsifal/help/templates/help/articles.html:9
+#: parsifal/help/templates/help/articles.html:6
+#: parsifal/help/templates/help/articles.html:10
+#: parsifal/help/templates/help/search.html:6
 #: parsifal/templates/includes/header.html:21
 msgid "Help"
 msgstr ""
@@ -465,13 +524,8 @@ msgstr ""
 msgid "If you didn't find what you were looking for, contact us "
 msgstr ""
 
-#: parsifal/help/templates/help/articles.html:5
-#: parsifal/help/templates/help/search.html:5
-msgid "Help · Parsifal"
-msgstr ""
-
-#: parsifal/help/templates/help/articles.html:15
-#: parsifal/help/templates/help/search.html:13
+#: parsifal/help/templates/help/articles.html:16
+#: parsifal/help/templates/help/search.html:14
 #: parsifal/reviews/conducting/templates/conducting/conducting_header.html:6
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:170
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:206
@@ -479,15 +533,15 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
-#: parsifal/help/templates/help/articles.html:46
+#: parsifal/help/templates/help/articles.html:47
 msgid "If you didn't find what you were looking for, contact us"
 msgstr ""
 
-#: parsifal/help/templates/help/search.html:21
+#: parsifal/help/templates/help/search.html:22
 msgid "Search Result"
 msgstr ""
 
-#: parsifal/help/templates/help/search.html:30
+#: parsifal/help/templates/help/search.html:31
 msgid "If you didn"
 msgstr ""
 
@@ -792,10 +846,6 @@ msgstr ""
 
 #: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:2180
 msgid "Time"
-msgstr ""
-
-#: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:2308
-msgid "URL"
 msgstr ""
 
 #: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:2331
@@ -3307,7 +3357,7 @@ msgid ""
 msgstr ""
 
 #: parsifal/reviews/settings/templates/settings/review_settings.html:104
-msgid "New owner's Parsifal username:"
+msgid "New owner's username:"
 msgstr ""
 
 #: parsifal/reviews/settings/templates/settings/review_settings.html:126
@@ -3443,8 +3493,8 @@ msgstr ""
 
 #: parsifal/reviews/templates/reviews/review.html:108
 msgid ""
-"You may add someone that doesn't have a Parsifal Account. Just type his "
-"email adress and we will send an invitation. :)"
+"You may add someone that doesn't have a account. Just type his email adress "
+"and we will send an invitation. :)"
 msgstr ""
 
 #: parsifal/reviews/templates/reviews/review.html:111
@@ -3472,8 +3522,8 @@ msgstr ""
 
 #: parsifal/reviews/templates/reviews/review.html:163
 msgid ""
-"You may add someone that doesn't have a Parsifal Account. Just type his "
-"email adress and we will send an invitation."
+"You may add someone that doesn't have a account. Just type his email adress "
+"and we will send an invitation."
 msgstr ""
 
 #: parsifal/reviews/templates/reviews/review.html:167
@@ -3575,18 +3625,10 @@ msgstr ""
 msgid "Toggle navigation"
 msgstr ""
 
-#: parsifal/templates/includes/header.html:19
-msgid "Blog"
-msgstr ""
-
 #: parsifal/templates/includes/header.html:27
 msgid "My profile"
 msgstr ""
 
 #: parsifal/templates/includes/header.html:50
 msgid "Sign out"
-msgstr ""
-
-#: parsifal/templates/includes/header.html:58
-msgid "Sign up"
 msgstr ""

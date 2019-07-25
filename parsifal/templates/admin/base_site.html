@@ -1,5 +1,9 @@
 {% extends "admin/base.html" %}
 
+{% load i18n %}
+
+{% load humanize %}
+
 {% block branding %}
-<h1 id="site-name">Parsifal</h1>
+<h1 id="site-name">{% trans 'Parsifal' %}</h1>
 {% endblock %}

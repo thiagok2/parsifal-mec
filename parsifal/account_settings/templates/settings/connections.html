@@ -4,7 +4,7 @@
 
 {% load humanize %}
 
-{% block title %} {% trans 'Account Settings · Parsifal' %} {% endblock %}
+{% block title %} {% trans 'Account Settings' %} · {% trans 'Parsifal'%}  {% endblock %}
 
 {% block javascript %}
   <script>
@@ -51,7 +51,7 @@
             <h4>{% trans 'Connect to Mendeley' %}</h4>
             <div class="row">
               <div class="col-xs-8">
-                <p>{% trans 'Import your references from Mendeley. Associate your Mendeley library to your reviews. Friends you have on Mendeley who are also on Parsifal will become part of your Parsifal network.' %}</p>
+                <p>{% trans 'Import your references from Mendeley. Associate your Mendeley library to your reviews. Friends you have on Mendeley who are also on plataform will become part of your network.' %}</p>
               </div>
               <div class="col-xs-4 text-right mendeley-container" data-remote="{% url 'settings:mendeley_connection' %}">
 

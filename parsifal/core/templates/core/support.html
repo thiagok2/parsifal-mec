@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Parsifal - Support{% endblock %}
+{% load humanize %}
+
+{% block title %} {% trans 'Support' %} · {% trans 'Parsifal'%}  {% endblock %}
+
 
 {% block fullwidthheader %}
   <div class="masthead">
