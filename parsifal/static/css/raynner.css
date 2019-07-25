@@ -63,11 +63,18 @@ footer {
     padding: 10px 0;
     background: #72bda3;
     color: #28292c;
+
 }
 
 img.img-logo{
 	width: 12%;
+	opacity: 0.85;
 }
+
+img.img-logo:hover{
+	opacity: 1;
+}
+
 
 /****************************8*/
 
