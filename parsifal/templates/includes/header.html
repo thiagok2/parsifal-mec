@@ -1,65 +1,97 @@
-{% load i18n %}
-
+{% load i18n %} 
 {% load humanize %}
 
 <header>
-  <nav class="navbar navbar-default">
-    <div class="container">
-      <div class="navbar-header">
-        <button data-target="#header-menu" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
-          <span class="sr-only">{% trans 'Toggle navigation' %}</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a href="{% url 'home' %}" class="navbar-brand value-brand">{% trans 'Parsifal' %}</a>
-      </div>
-      <div class="collapse navbar-collapse" id="header-menu">
-        <ul class="nav navbar-nav">
-          <li><a href="{% url 'blog:entries' %}">{% trans 'Blog' %}</a></li>
-          <li><a href="{% url 'about' %}">{% trans 'About' %}</a></li>
-          <li><a href="{% url 'help:articles' %}">{% trans 'Help' %}</a></li>
-        </ul>
-        {% if user.is_authenticated %}
-          <ul class="nav navbar-nav navbar-right">
-            <li>
-              <a href="{% url 'reviews' user.username %}">
-                <span data-toggle="tooltip" data-placement="bottom" data-container="body" title="{% trans 'My profile' %}">{{ user.profile.get_screen_name }}</span>
-              </a>
-            </li>
-            <li>
-              <span class="navbar-text username-divider"></span>
-            </li>
-            {% comment %}
-            <li>
-              <a href="{% url 'library:index' %}">
-                {% trans 'Library' %}
-              </a>
-            </li>
-            {% endcomment %}
-            <!-- 
-            url 'settings:settings' 
-            <li>
-              <a href="">
-                <span data-toggle="tooltip" data-placement="bottom" data-container="body" title="{% trans 'Account settings' %}">
-                  <span class="glyphicon glyphicon-cog"></span>
-                </span>
-              </a>
-            </li>
-             -->
-            <li>
-              <a href="{% url 'signout' %}">
-                <span data-toggle="tooltip" data-placement="bottom" data-container="body" title="{% trans 'Sign out' %}">
-                  <span class="glyphicon glyphicon-log-out"></span>
-                </span>
-              </a>
-            </li>
-          </ul>
-        {% else %}
-          <a href="{% url 'signin' %}" title="Sign in" class="btn btn-default navbar-btn navbar-right">{% trans 'Sign in' %}</a>
-          <a href="{% url 'signup' %}" title="Sign up" class="btn btn-primary navbar-btn navbar-right" style="margin-right: 5px;">{% trans 'Sign up' %}</a>
-        {% endif %}
-      </div>
-    </div>
-  </nav>
+	<nav class="navbar navbar-default">
+		<div class="container">
+			<div class="navbar-header">
+				<button data-target="#header-menu" data-toggle="collapse"
+					class="navbar-toggle collapsed" type="button">
+					<span class="sr-only">{% trans 'Toggle navigation' %}</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a href="{% url 'home' %}" class="navbar-brand value-brand">{% trans 'Parsifal' %}</a>
+			</div>
+			<div class="collapse navbar-collapse" id="header-menu">
+				<ul class="nav navbar-nav">
+					<li><a href="{% url 'blog:entries' %}">{% trans 'Blog' %}</a></li>
+					<li><a href="{% url 'about' %}">{% trans 'About' %}</a></li>
+					<li><a href="{% url 'help:articles' %}">{% trans 'Help' %}</a></li>
+				</ul>
+				{% if user.is_authenticated %}
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<a href="{% url 'reviews' user.username %}"> 
+							<span data-toggle="tooltip" data-placement="bottom" data-container="body" title="{% trans 'My profile' %}">
+								{{ user.profile.get_screen_name }}
+							</span>
+						</a>
+					</li>
+					<li>
+						<span class="navbar-text username-divider"></span>
+					</li>
+					{% comment %}
+					<li>
+						<a href="{% url 'library:index' %}"> 
+							{% trans 'Library' %} </a>
+					</li> 
+		            <li>
+		              <a href="{% url 'settings:settings' %}">
+		                <span data-toggle="tooltip" data-placement="bottom" data-container="body" title="{% trans 'Account settings' %}">
+		                  <span class="glyphicon glyphicon-cog"></span>
+		                </span>
+		              </a>
+		            </li>
+		            {% endcomment %}
+					<li>
+						<a href="{% url 'signout' %}"> 
+							<span data-toggle="tooltip" data-placement="bottom" data-container="body" title="{% trans 'Sign out' %}"> 
+								<span class="glyphicon glyphicon-log-out"></span>
+							</span>
+						</a>
+					</li>
+				</ul>
+				{% else %} 
+					<a href="{% url 'signin' %}" title="Sign in" class="btn btn-default navbar-btn navbar-right">
+					{% trans 'Sign in' %}
+					</a> 
+					<a href="{% url 'signup' %}" title="Sign up" class="btn btn-primary navbar-btn navbar-right" style="margin-right: 5px;">
+						{% trans 'Sign up' %}
+					</a> 
+				{% endif %}
+			</div>
+		</div>
+	</nav>
+	
+	<div class="header-home">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-3 col-lg-2">
+					<img src="{{ user.profile.get_picture }}" alt="Avatar" class="img-avatar">
+				</div>
+				<div class="col-sm-3 col-lg-4">
+					<div class="profile-data">
+						<p>
+							<strong>{{ user.profile.get_screen_name }}</strong>
+						</p>
+						<p>
+							<span class="follows">{{ user.profile.get_followers_count }} {% trans 'followers' %}</span> 
+							<span class="follows">{{ user.profile.get_following_count }} {% trans 'followings' %}</span>
+						</p>
+						
+					</div>
+				</div>
+				<div class="col-sm-6 text-right">
+					<h1>{% trans 'Parsifal'%}</h1>
+					<p class="text-muted">
+						{% trans 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lacinia sagittis pharetra. Sed dapibus, erat ac fringilla pellentesque, lectim mauris elit vitae libero.' %}
+					</p>
+					<a href="/reviews/new/" class="btn btn-primary pull-right">{% trans 'New review' %}</a>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	
 </header>
