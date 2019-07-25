@@ -17,7 +17,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">{% trans 'About the Search Strings' %}</h4>
+          <h4 class="modal-title">{% trans 'About the Search Strings' %}</h4>2
         </div>
         <div class="modal-body">
           <p>{% trans "The base search string is the search string designed during the planning phase. It should be database agnostic, enhance the reader's readability and represent the essence of the search string used in the digital libraries." %}</p>
@@ -40,7 +40,7 @@
           </div>
           <div class="modal-body">
             {% if add_sources %}
-            <div class="alert alert-info" role="alert">
+            <div class="alert bg-green" role="alert">
               <strong><span class="glyphicon glyphicon-info-sign"></span></strong> {% trans 'Showing the available sources from you Protocol, defined in the ' %}<a href="{% url 'planning' review.author.username review.name %}#sources-section">{% trans 'planning tab' %}</a>.
             </div>
             <table class="table table-check-all">
@@ -91,7 +91,7 @@
     </div>
     <div class="panel-body">
 
-      <div class="alert alert-info" role="alert">
+      <div class="alert alert-success" role="alert">
         <strong><span class="glyphicon glyphicon-info-sign"></span></strong> {% trans 'Add digital source-specific search strings. Use this space to save all search string formats used during the research.' %}
       </div>
 
@@ -170,13 +170,13 @@
       <h3 class="panel-title">{% trans 'Search' %}</h3>
     </div>
     <div class="panel-body">
-      <div class="alert alert-info" role="alert">
+      <div class="alert alert-success" role="alert">
         <strong><span class="glyphicon glyphicon-info-sign"></span></strong> {% trans "<strong>Parsifal</strong> is integrated with <strong>Scopus's</strong> and <strong>Science@Direct's</strong> databases. To enable the automatic search pick them as sources in the" %}<a href="{% url 'planning' review.author.username review.name %}#sources-section">{% trans 'planning tab' %</a>.}
       </div>
 
       <div class="panel-group" id="remote-search-panels" role="tablist" aria-multiselectable="true">
 
-        <div class="panel panel-primary">
+        <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title">
               <a role="button" data-toggle="collapse" href="#search-scopus-collapse" aria-expanded="false">
@@ -276,7 +276,7 @@
           </div>
         </div>
 
-        <div class="panel panel-primary">
+        <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title">
               <a role="button" data-toggle="collapse" href="#search-science-direct-collapse" aria-expanded="false">

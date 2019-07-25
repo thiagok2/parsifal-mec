@@ -1,9 +1,9 @@
 a{
-	color: #333;
+	color: #333 !important;
 }
 
 a:hover{
-	color: #111;
+	color: #111 !important;
 }
 
 
