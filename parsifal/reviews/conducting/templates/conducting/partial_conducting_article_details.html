@@ -20,11 +20,16 @@
         <a href="#tab-details" aria-controls="tab-details" role="tab" data-toggle="tab">{% trans 'Details' %}</a>
       </li>
       <li role="presentation">
-        <a href="#tab-comments" aria-controls="tab-comments" role="tab" data-toggle="tab">{% trans 'Comments' %}</a>
+        <a href="#tab-evaluation" aria-controls="tab-evaluation" role="tab" data-toggle="tab">{% trans 'Evaluation' %}</a>
       </li>
       <li role="presentation">
         <a href="#tab-files" aria-controls="tab-files" role="tab" data-toggle="tab">{% trans 'Files' %}</a>
       </li>
+      {% if review.selection_reviewer.id == user.id and article.status == 'C' %}
+        <li role="presentation">
+          <a href="#tab-conflict" aria-controls="tab-conflict" role="tab" data-toggle="tab" style="color: red;">{% trans 'Conflict' %}</a>
+        </li>
+      {% endif %}
       {% if article.url %}
         <li class="pull-right">
           <a href="{{ article.url|default_if_none:'' }}" target="_blank" role="tab" title="{% trans 'Change the URL via Article URL' %}">
@@ -38,36 +43,6 @@
     </ul>
     <div class="tab-content">
       <div role="tabpanel" class="tab-pane active" id="tab-details">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label class="control-label">{% trans 'Status' %}</label>
-                <select name="status" id="status" class="form-control">
-                  {% for status in article.ARTICLE_STATUS %}
-                    <option value="{{ status.0 }}"{% if article.status == status.0 %} selected{% endif %}>{{ status.1 }}</option>
-                  {% endfor %}
-                </select>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label class="control-label">{% trans 'Selection Criteria' %}</label>
-                <select name="selection_criteria" class="form-control">
-                  <option value="">{% trans 'Select...' %}</option>
-                  <optgroup label="{% trans 'Inclusion Criterias' %}">
-                    {% for criteria in review.get_inclusion_criterias %}
-                      <option value="{{ criteria.id }}"{% if article.selection_criteria == criteria %} selected{% endif %}>{{ criteria.description }}</option>
-                    {% endfor %}
-                  </optgroup>
-                  <optgroup label="{% trans 'Exclusion Criterias' %}">
-                    {% for criteria in review.get_exclusion_criterias %}
-                      <option value="{{ criteria.id }}"{% if article.selection_criteria == criteria %} selected{% endif %}>{{ criteria.description }}</option>
-                    {% endfor %}
-                  </optgroup>
-                </select>
-              </div>
-            </div>
-          </div>
         <div class="form-group">
           <label class="control-label">{% trans 'Title' %}</label>
           <input type="text" class="form-control" name="title" id="title" value="{{ article.title }}">
@@ -142,15 +117,32 @@
         </div>
 
       </div>
-      <div role="tabpanel" class="tab-pane" id="tab-comments">
-        <div class="form-group">
-          <label class="control-label">{% trans 'Comments' %}</label>
-          <textarea name="comments" class="form-control" id="comments" rows="5">{{ article.comments|default_if_none:'' }}</textarea>
-        </div>
-      </div>
       </form>
+      <div role="tabpanel" class="tab-pane" id="tab-evaluation">
+        <form name="article-evaluation" id="article-evaluation" method="post" action=".">
+          {% csrf_token %}
+          <input type="hidden" name="article-id" id="article-id" value="{{ article.id }}">
+          <input type="hidden" name="review-id" id="review-id" value="{{ article.review.id }}">
+          <input type="hidden" name="article-evaluation-id" id="article-evaluation-id" value="{{ article_evaluation.id }}">
+          <div class="form-group">
+            {% include 'conducting/partial_article_evaluation.html' with article=article review=review article_evaluation=article_evaluation %}
+          </div>
+        </form>
+      </div>
       <div role="tabpanel" class="tab-pane" id="tab-files">
         {% include 'conducting/partial_article_files.html' %}
       </div>
+      {% if review.selection_reviewer.id == user.id and article.status == 'C' %}
+        <div role="tabpanel" class="tab-pane" id="tab-conflict">
+          <form name="article-solve-conflict" id="article-solve-conflict" method="post" action=".">
+            {% csrf_token %}
+            <input type="hidden" name="article-id" id="article-id" value="{{ article.id }}">
+            <input type="hidden" name="review-id" id="review-id" value="{{ article.review.id }}">
+            <div class="form-group">
+              {% include 'conducting/partial_article_conflict.html' with article=article review=review %}
+            </div>
+          </form>
+        </div>
+      {% endif %}
     </div>
   </div>
