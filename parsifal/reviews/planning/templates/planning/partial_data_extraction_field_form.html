@@ -5,7 +5,7 @@
   <td colspan="2">
     <input type="text" class="form-control" id="data-extraction-field-description" maxlength="255" value="{{ field.description }}">
   </td>
-  <td style="vertical-align: middle;">
+  <td>
     <select id="data-extraction-field-type" class="form-control">
       <option value="">{% trans 'Select...' %}</option>
       {% for field_type in field.FIELD_TYPES %}
