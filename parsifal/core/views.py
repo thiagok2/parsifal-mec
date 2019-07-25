@@ -27,7 +27,7 @@ def get_following_feeds(user):
         activities.sort(key=lambda a: a.date, reverse=True)
         for activity in activities:
             if activity.from_user == user:
-                activity.message = u'<a href="{0}">' + _('You') + '</a>' + _('are now following') + '<a href="{1}">{2}</a>'.format(
+                activity.message = u'<a href="{0}">' + _('You') + ' </a> ' + _('are now following') + ' <a href="{1}">{2}</a>'.format(
                     r('reviews', args=(user.username,)),
                     r('reviews', args=(activity.to_user.username,)),
                     escape(activity.to_user.profile.get_screen_name())
@@ -36,7 +36,7 @@ def get_following_feeds(user):
                 is_following = activity.to_user.profile.get_screen_name()
                 if activity.to_user == user:
                     is_following = _(u'you')
-                activity.message = u'<a href="{0}">{1}</a> ' + _('is now following') + '<a href="{2}">{3}</a>'.format(
+                activity.message = u'<a href="{0}">{1}</a> ' + _('is now following') + ' <a href="{2}">{3}</a>'.format(
                     r('reviews', args=(activity.from_user.username,)),
                     escape(activity.from_user.profile.get_screen_name()),
                     r('reviews', args=(activity.to_user.username,)),
