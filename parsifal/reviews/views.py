@@ -125,13 +125,13 @@ def add_author_to_review(request):
     review.save()
 
     if not authors_added and not authors_invited:
-        messages.info(request, _(u'No author invited or added to the review. Nothing really changed.'))
+        messages.info(request, _('No author invited or added to the review. Nothing really changed.'))
 
     if authors_added:
-        messages.success(request, _(u'The authors {0} were added successfully.').format(u', '.join(authors_added)))
+        messages.success(request, _('The authors {0} were added successfully.').format(u', '.join(authors_added)))
 
     if authors_invited:
-        messages.success(request, _(u'{0} were invited successfully.').format(u', '.join(authors_invited)))
+        messages.success(request, _('{0} were invited successfully.').format(u', '.join(authors_invited)))
 
     return redirect(r('review', args=(review.author.username, review.name)))
 
@@ -181,13 +181,13 @@ def add_visitor_to_review(request):
     review.save()
 
     if not visitors_added and not visitors_invited:
-        messages.info(request, _(u'No visitor invited or added to the review. Nothing really changed.'))
+        messages.info(request, _('No visitor invited or added to the review. Nothing really changed.'))
 
     if visitors_added:
-        messages.success(request,  _(u'The visitor {0} were added successfully.').format(u', '.join(visitors_added)))
+        messages.success(request,  _('The visitor {0} were added successfully.').format(u', '.join(visitors_added)))
 
     if visitors_invited:
-        messages.success(request, _(u'{0} were invited successfully.').format(u', '.join(visitors_invited)))
+        messages.success(request, _('{0} were invited successfully.').format(u', '.join(visitors_invited)))
 
     return redirect(r('review', args=(review.author.username, review.name)))
 
@@ -242,7 +242,7 @@ def leave(request):
     review = get_object_or_404(Review, pk=review_id)
     review.co_authors.remove(request.user)
     review.save()
-    messages.add_message(request, messages.SUCCESS, u'You successfully left the review {0}.'.format(review.title))
+    messages.add_message(request, messages.SUCCESS, _('You successfully left the review {0}.').format(review.title))
     return redirect('/' + request.user.username + '/')
 
 @author_required
