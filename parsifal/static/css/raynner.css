@@ -1,0 +1,48 @@
+.header-home{
+	background-color: #233744;
+    color: #ffffff;
+    padding: 30px 0;
+}
+
+.img-avatar {
+    border-radius: 50%;
+    width: 150px;
+    border: solid 3px #72bda3;
+}
+
+.profile-data {
+    padding: 20px 0;
+}
+
+
+.follows:first-child {
+    margin-right: 10px;
+}
+.follows {
+    display: inline-block;
+}
+
+.btn-default {
+    background-color: #72bda3;
+    color: #ffffff;
+}
+
+.btn {
+    border-radius: 20px;
+    border: 0;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+h1 {
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+.btn.icon-text {
+    padding-left: 15px;
+}
+
+.btn.icon-text .glyphicon {
+    margin-right: 5px;
+}
