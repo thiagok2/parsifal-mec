@@ -452,4 +452,19 @@ def import_protocol(request):
         print e
         return HttpResponseBadRequest()
 
-    
+def explorer(request):
+    public_reviews = Review.objects.filter(export_protocol=True).order_by('create_date', 'title')[:25]
+    context = RequestContext(request, {
+       'reviews': public_reviews
+    })
+    return render_to_response('reviews/explorer.html', context)
+
+def search(request):
+    q = request.GET['q']
+    public_reviews = Review.objects.filter(export_protocol=True, title__icontains=q).order_by('create_date', 'title')[:25]
+    context = RequestContext(request, {
+       'reviews': public_reviews,
+       'q': q
+       
+    })
+    return render_to_response('reviews/explorer.html', context)
