@@ -17,9 +17,9 @@
 				<ul class="nav navbar-nav">
 					<li><a href="{% url 'blog:entries' %}">{% trans 'Blog' %}</a></li>
 					<li><a href="{% url 'about' %}">{% trans 'About' %}</a></li>
+					 {% if user.is_authenticated %}
 					<li><a href="{% url 'reviews:explorer' %}">{% trans 'Explorer' %}</a></li>
 					<li><a href="{% url 'activities:explorer' %}">{% trans 'Researchers' %}</a></li>
-					<li><a href="{% url 'help:articles' %}">{% trans 'Help' %}</a></li>
 					<li>
 						<form class="navbar-form navbar-left" action="{% url 'reviews:search' %}"  method="get">
 							<div class="input-group">
@@ -32,6 +32,8 @@
 						  </div>
 						</form>
 					</li>
+					{% endif %}
+					<li><a href="{% url 'help:articles' %}">{% trans 'Help' %}</a></li>
 				</ul>
 				{% if user.is_authenticated %}
 				<ul class="nav navbar-nav navbar-right">
