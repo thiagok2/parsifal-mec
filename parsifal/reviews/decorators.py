@@ -68,10 +68,19 @@ def author_or_visitor_required(f):
         if 'review_name' in kwargs and 'username' in kwargs:
             try:
                 review = Review.objects.get(name=kwargs['review_name'], author__username__iexact=kwargs['username'])
-                if review.is_visitors(request.user) or review.is_author_or_coauthor(request.user):
-                    return f(request, *args, **kwargs)
+                if request.method == 'POST':
+                    if review.is_author_or_coauthor(request.user):
+                        print '1'
+                        return f(request, *args, **kwargs)
+                    else:
+                        raise Http404
                 else:
-                    raise Http404
+                    if review.is_author_or_coauthor(request.user) or review.is_visitors(request.user) or review.export_protocol:
+                        print '4'
+                        return f(request, *args, **kwargs)
+                    else:
+                        raise Http404
+
             except Review.DoesNotExist:
                 raise Http404
         else:
@@ -83,10 +92,19 @@ def author_or_visitor_required(f):
                 except:
                     return HttpResponseBadRequest()
             review = Review.objects.get(pk=review_id)
-            if review.is_visitors(request.user) or review.is_author_or_coauthor(request.user):
-                return f(request, *args, **kwargs)
+            print request.method
+            if request.method == 'POST':
+                print '2'
+                if review.is_author_or_coauthor(request.user):
+                    return f(request, *args, **kwargs)
+                else:
+                    return HttpResponseForbidden()
             else:
-                return HttpResponseForbidden()
+                print '3'
+                if review.is_author_or_coauthor(request.user) or review.is_visitors(request.user) or review.export_protocol:
+                    return f(request, *args, **kwargs)
+                else:
+                    return HttpResponseForbidden()
     wrap.__doc__=f.__doc__
     wrap.__name__=f.__name__
     return wrap
