@@ -26,16 +26,22 @@
 		</div>
 	</div>
 
-	<div class="row">
+	<div class="row explorer-results">
+		<div class="col-sm-12">
 		<div class="box-body no-padding">
 			<ul class="users-list clearfix">
+				{% for user in public_users %}
 				<li>
-					<img src="/static/img/user.png" alt="User Image"> 
-					<a class="users-list-name" href="#">Alexander Pierce</a> 
-					<span class="users-list-date">Today</span>
+					<img src="{{ user.profile.get_picture }}" alt="User Image"> 
+					<a class="users-list-name" href="#">{{ user.profile.get_screen_name }}</a> 
+					<span class="users-list-date">{{ user.profile.public_email }}</span>
+					<span class="users-list-date">{{ user.profile.institution }}</span>
+					<span class="users-list-date">{{ user.profile.location }}</span>
 				</li>
+				{% endfor %}
 			</ul>
 			<!-- /.users-list -->
+		</div>
 		</div>
 	</div>
 </div>
