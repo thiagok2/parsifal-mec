@@ -21,9 +21,9 @@
 					<li><a href="{% url 'activities:explorer' %}">{% trans 'Researchers' %}</a></li>
 					<li><a href="{% url 'help:articles' %}">{% trans 'Help' %}</a></li>
 					<li>
-						<form class="navbar-form navbar-left" action="#">
+						<form class="navbar-form navbar-left" action="{% url 'reviews:search' %}"  method="get">
 							<div class="input-group">
-						    	<input type="text" class="form-control" placeholder="{% trans 'Search Reviews' %}">
+						    	<input type="text"  name="q" class="form-control" placeholder="{% trans 'Search Reviews' %}" value="{{ q }}">
 						    	<div class="input-group-btn">
 						      	<button class="btn btn-default btn-default2" type="submit">
 						        	<i class="glyphicon glyphicon-search"></i>
