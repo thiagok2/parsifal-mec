@@ -1,6 +1,9 @@
-{% load i18n %}
+{% load i18n staticfiles is_visitor %}
 
 {% load humanize %}
+{% if user|is_visitor:review %}
+    <script src="{% static 'js/user_is_visitor.js' %}?v=1"></script>
+  {% endif %}
 <div class="alert hide" role="alert">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
