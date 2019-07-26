@@ -17,12 +17,24 @@
 				<ul class="nav navbar-nav">
 					<li><a href="{% url 'blog:entries' %}">{% trans 'Blog' %}</a></li>
 					<li><a href="{% url 'about' %}">{% trans 'About' %}</a></li>
-					<li><a href="{% url 'about' %}">{% trans 'Explorer' %}</a></li>
+					<li><a href="{% url 'reviews:explorer' %}">{% trans 'Explorer' %}</a></li>
 					<li><a href="{% url 'about' %}">{% trans 'Researchers' %}</a></li>
 					<li><a href="{% url 'help:articles' %}">{% trans 'Help' %}</a></li>
+					<li>
+						<form class="navbar-form navbar-left" action="#">
+							<div class="input-group">
+						    	<input type="text" class="form-control" placeholder="{% trans 'Search Reviews' %}">
+						    	<div class="input-group-btn">
+						      	<button class="btn btn-default btn-default2" type="submit">
+						        	<i class="glyphicon glyphicon-search"></i>
+						      	</button>
+						    </div>
+						  </div>
+						</form>
+					</li>
 				</ul>
 				{% if user.is_authenticated %}
-				<uel class="nav navbar-nav navbar-right">
+				<ul class="nav navbar-nav navbar-right">
 					<li>
 						<a href="{% url 'reviews' user.username %}"> 
 							<span data-toggle="tooltip" data-placement="bottom" data-container="body" title="{% trans 'My profile' %}">
@@ -64,17 +76,6 @@
 						</a>
 					</div>
 				{% endif %}
-				
-				<form class="navbar-form navbar-left" action="#">
-					<div class="input-group">
-				    	<input type="text" class="form-control" placeholder="{% trans 'Search' %}">
-				    	<div class="input-group-btn">
-				      	<button class="btn btn-default btn-default2" type="submit">
-				        	<i class="glyphicon glyphicon-search"></i>
-				      	</button>
-				    </div>
-				  </div>
-				</form>
 			</div>
 			
 		</div>

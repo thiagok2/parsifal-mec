@@ -125,3 +125,7 @@ img.img-logo:hover{
 .intro-logos .item img {
     height: 100%;
 }
+
+.explorer-results{
+	margin-top: 30px;
+}

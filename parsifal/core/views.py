@@ -68,3 +68,5 @@ def home(request):
     else:
         
         return render(request, 'core/cover.html')
+
+    
