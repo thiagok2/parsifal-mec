@@ -3,9 +3,6 @@
 
 {% block stylesheet %}
   <link href="{% static 'css/fileupload/jquery.fileupload.css' %}" rel="stylesheet">
-  {% if user|is_visitor:review %}
-    <script src="{% static 'js/user_is_visitor.js' %}?v=1"></script>
-  {% endif %}
 {% endblock stylesheet %}
 
 {% block javascript %}
@@ -13,6 +10,9 @@
   <script src="{% static 'js/fileupload/jquery.iframe-transport.js' %}"></script>
   <script src="{% static 'js/fileupload/jquery.fileupload.js' %}"></script>
   <script src="{% static 'js/conducting_study_selection.js' %}?v=2"></script>
+  {% if user|is_visitor:review %}
+    <script src="{% static 'js/user_is_visitor.js' %}?v=1"></script>
+  {% endif %}
 {% endblock javascript %}
 
 {% block tab_content %}
