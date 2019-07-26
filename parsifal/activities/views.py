@@ -87,3 +87,8 @@ def followers(request, username):
             'user_following': user_following
          })
 
+def explorer(request):
+    public_users = User.objects.order_by('username')[:25]
+    return render(request, 'activities/researchers.html', {
+              'public_users': public_users  
+            })
