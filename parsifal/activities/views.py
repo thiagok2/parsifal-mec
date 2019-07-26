@@ -88,6 +88,8 @@ def followers(request, username):
          })
 
 def explorer(request):
+    
+    from_user = request.user
     q = request.GET.get('q')
     if q:
         public_users = User.objects.filter(username__icontains=q).order_by('username')[:25]
@@ -95,5 +97,6 @@ def explorer(request):
         public_users = User.objects.order_by('username')[:25]
     return render(request, 'activities/researchers.html', {
               'public_users': public_users,
-              'q': q
+              'q': q,
+              'user': from_user
             })

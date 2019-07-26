@@ -8,6 +8,10 @@
 
 {% block title %}{{ page_user.profile.get_screen_name }} {{ page_title }}{% endblock %}
 
+{% block javascript %}
+  <script src="{% static 'js/activities.js' %}?_=1"></script>
+{% endblock javascript %}
+
 {% block content %}
 <div class="container">
 	<div class="row">
@@ -30,13 +34,21 @@
 		<div class="col-sm-12">
 		<div class="box-body no-padding">
 			<ul class="users-list clearfix">
-				{% for user in public_users %}
+				{% for u in public_users %}
 				<li>
-					<img src="{{ user.profile.get_picture }}" alt="User Image"> 
-					<a class="users-list-name" href="#">{{ user.profile.get_screen_name }}</a> 
-					<span class="users-list-date">{{ user.profile.public_email }}</span>
-					<span class="users-list-date">{{ user.profile.institution }}</span>
-					<span class="users-list-date">{{ user.profile.location }}</span>
+					<img src="{{ u.profile.get_picture }}" alt="User Image"> 
+					<a class="users-list-name" href="#">{{ u.profile.get_screen_name }}</a> 
+					<span class="users-list-date">{{ u.profile.public_email }}</span>
+					<span class="users-list-date">{{ u.profile.institution }}</span>
+					<span class="users-list-date">{{ u.profile.location }}</span>
+					
+		                    
+		            {% if user.is_authenticated %}   
+                    <div class="user-actions not-following" data-user-id="{{ u.id }}">
+                      <button class="btn btn-small btn-success" type="button"><span class="glyphicon glyphicon-ok"></span> {% trans 'Follow' %}</button>
+                    </div>
+                    {% endif %}
+		                  
 				</li>
 				{% endfor %}
 			</ul>
