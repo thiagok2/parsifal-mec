@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-29 14:53+0000\n"
+"POT-Creation-Date: 2019-07-29 20:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -91,7 +91,7 @@ msgstr ""
 #: parsifal/templates/admin/base_site.html:8
 #: parsifal/templates/includes/footer.html:9
 #: parsifal/templates/includes/header.html:14
-#: parsifal/templates/includes/header.html:117
+#: parsifal/templates/includes/header.html:119
 msgid "Parsifal"
 msgstr ""
 
@@ -178,6 +178,7 @@ msgid "Save profile"
 msgstr ""
 
 #: parsifal/account_settings/templates/settings/settings_menu.html:7
+#: parsifal/templates/includes/header.html:60
 msgid "Account settings"
 msgstr ""
 
@@ -216,6 +217,14 @@ msgstr ""
 msgid "Password changed successfully."
 msgstr ""
 
+#: parsifal/account_settings/views.py:99
+msgid "Invalid file format."
+msgstr ""
+
+#: parsifal/account_settings/views.py:101
+msgid "An expected error occurred."
+msgstr ""
+
 #: parsifal/account_settings/views.py:176
 msgid "Your Mendeley account were linked successfully!"
 msgstr ""
@@ -243,13 +252,13 @@ msgid "Your Dropbox account were disconnected successfully!"
 msgstr ""
 
 #: parsifal/activities/templates/activities/follow.html:42
-#: parsifal/reviews/templates/reviews/reviews.html:41
+#: parsifal/reviews/templates/reviews/reviews.html:37
 msgid "Unfollow"
 msgstr ""
 
 #: parsifal/activities/templates/activities/follow.html:46
 #: parsifal/activities/templates/activities/researchers.html:48
-#: parsifal/reviews/templates/reviews/reviews.html:45
+#: parsifal/reviews/templates/reviews/reviews.html:41
 msgid "Follow"
 msgstr ""
 
@@ -269,7 +278,7 @@ msgstr ""
 msgid "following"
 msgstr ""
 
-#: parsifal/activities/views.py:76 parsifal/templates/includes/header.html:104
+#: parsifal/activities/views.py:76 parsifal/templates/includes/header.html:106
 msgid "followers"
 msgstr ""
 
@@ -326,7 +335,7 @@ msgstr ""
 #: parsifal/authentication/templates/auth/signin.html:7
 #: parsifal/authentication/templates/auth/signin.html:22
 #: parsifal/authentication/templates/auth/signin.html:35
-#: parsifal/templates/includes/header.html:75
+#: parsifal/templates/includes/header.html:77
 msgid "Sign in"
 msgstr ""
 
@@ -340,7 +349,7 @@ msgid "Forgot your password?"
 msgstr ""
 
 #: parsifal/authentication/templates/auth/signup.html:8
-#: parsifal/templates/includes/header.html:78
+#: parsifal/templates/includes/header.html:80
 msgid "Sign up"
 msgstr ""
 
@@ -442,7 +451,7 @@ msgid "Medias"
 msgstr ""
 
 #: parsifal/core/templates/core/about.html:3
-#: parsifal/templates/includes/header.html:19
+#: parsifal/templates/includes/header.html:23
 msgid "About"
 msgstr ""
 
@@ -547,21 +556,20 @@ msgstr ""
 msgid "Your reviews"
 msgstr ""
 
-#: parsifal/core/templates/core/home.html:38
-#: parsifal/core/templates/core/home.html:54
-#: parsifal/reviews/templates/reviews/reviews.html:123
-msgid "You don't have any systematic literature review yet."
-msgstr ""
-
-#: parsifal/core/templates/core/home.html:48
+#: parsifal/core/templates/core/home.html:90
 msgid "Reviews you are invited"
 msgstr ""
 
-#: parsifal/core/templates/core/home.html:61
+#: parsifal/core/templates/core/home.html:96
+#: parsifal/reviews/templates/reviews/reviews.html:119
+msgid "You don't have any systematic literature review yet."
+msgstr ""
+
+#: parsifal/core/templates/core/home.html:103
 msgid "Recent Updates"
 msgstr ""
 
-#: parsifal/core/templates/core/home.html:67
+#: parsifal/core/templates/core/home.html:109
 msgid "There are no recent updates"
 msgstr ""
 
@@ -596,7 +604,7 @@ msgstr ""
 #: parsifal/help/templates/help/articles.html:6
 #: parsifal/help/templates/help/articles.html:10
 #: parsifal/help/templates/help/search.html:6
-#: parsifal/templates/includes/header.html:36
+#: parsifal/templates/includes/header.html:22
 msgid "Help"
 msgstr ""
 
@@ -1162,12 +1170,12 @@ msgid "Unknown"
 msgstr ""
 
 #: parsifal/lib/python2.7/site-packages/django/forms/widgets.py:556
-#: parsifal/reviews/models.py:495
+#: parsifal/reviews/models.py:504
 msgid "Yes"
 msgstr ""
 
 #: parsifal/lib/python2.7/site-packages/django/forms/widgets.py:557
-#: parsifal/reviews/models.py:497
+#: parsifal/reviews/models.py:506
 msgid "No"
 msgstr ""
 
@@ -2068,7 +2076,7 @@ msgstr ""
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_quality_assessment_summary.html:11
 #: parsifal/reviews/forms.py:12
 #: parsifal/reviews/templates/reviews/partial_published_protocols.html:34
-#: parsifal/reviews/templates/reviews/reviews.html:96
+#: parsifal/reviews/templates/reviews/reviews.html:92
 msgid "Title"
 msgstr ""
 
@@ -2077,7 +2085,7 @@ msgstr ""
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_find_duplicates.html:13
 #: parsifal/reviews/reporting/templates/reporting/export.html:48
 #: parsifal/reviews/templates/reviews/review.html:64
-#: parsifal/reviews/templates/reviews/reviews.html:97
+#: parsifal/reviews/templates/reviews/reviews.html:93
 msgid "Authors"
 msgstr ""
 
@@ -2280,7 +2288,7 @@ msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:33
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:60
-#: parsifal/reviews/models.py:356
+#: parsifal/reviews/models.py:365
 msgid "Conflict"
 msgstr ""
 
@@ -2390,31 +2398,31 @@ msgid "Show"
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:45
-#: parsifal/reviews/models.py:331 parsifal/reviews/models.py:354
-#: parsifal/reviews/models.py:437
+#: parsifal/reviews/models.py:340 parsifal/reviews/models.py:363
+#: parsifal/reviews/models.py:446
 msgid "Accepted"
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:48
-#: parsifal/reviews/models.py:330 parsifal/reviews/models.py:353
-#: parsifal/reviews/models.py:436
+#: parsifal/reviews/models.py:339 parsifal/reviews/models.py:362
+#: parsifal/reviews/models.py:445
 msgid "Rejected"
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:51
-#: parsifal/reviews/models.py:329 parsifal/reviews/models.py:351
-#: parsifal/reviews/models.py:435
+#: parsifal/reviews/models.py:338 parsifal/reviews/models.py:360
+#: parsifal/reviews/models.py:444
 msgid "Unclassified"
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:54
-#: parsifal/reviews/models.py:332 parsifal/reviews/models.py:355
-#: parsifal/reviews/models.py:438
+#: parsifal/reviews/models.py:341 parsifal/reviews/models.py:364
+#: parsifal/reviews/models.py:447
 msgid "Duplicated"
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:57
-#: parsifal/reviews/models.py:352
+#: parsifal/reviews/models.py:361
 msgid "Waiting"
 msgstr ""
 
@@ -2527,63 +2535,63 @@ msgstr ""
 msgid "Published"
 msgstr ""
 
-#: parsifal/reviews/models.py:246
+#: parsifal/reviews/models.py:255
 msgid "Inclusion"
 msgstr ""
 
-#: parsifal/reviews/models.py:247
+#: parsifal/reviews/models.py:256
 msgid "Exclusion"
 msgstr ""
 
-#: parsifal/reviews/models.py:466
+#: parsifal/reviews/models.py:475
 #: parsifal/reviews/planning/templates/planning/protocol.html:164
 #: parsifal/reviews/templates/reviews/partial_published_protocols.html:83
 msgid "Population"
 msgstr ""
 
-#: parsifal/reviews/models.py:467
+#: parsifal/reviews/models.py:476
 #: parsifal/reviews/planning/templates/planning/protocol.html:170
 #: parsifal/reviews/templates/reviews/partial_published_protocols.html:87
 msgid "Intervention"
 msgstr ""
 
-#: parsifal/reviews/models.py:468
+#: parsifal/reviews/models.py:477
 #: parsifal/reviews/planning/templates/planning/protocol.html:176
 #: parsifal/reviews/templates/reviews/partial_published_protocols.html:91
 msgid "Comparison"
 msgstr ""
 
-#: parsifal/reviews/models.py:469
+#: parsifal/reviews/models.py:478
 #: parsifal/reviews/planning/templates/planning/protocol.html:182
 #: parsifal/reviews/planning/templates/planning/protocol.html:328
 #: parsifal/reviews/templates/reviews/partial_published_protocols.html:95
 msgid "Outcome"
 msgstr ""
 
-#: parsifal/reviews/models.py:496
+#: parsifal/reviews/models.py:505
 msgid "Partially"
 msgstr ""
 
-#: parsifal/reviews/models.py:596
+#: parsifal/reviews/models.py:605
 msgid "Expected values: \"True\" or \"False\""
 msgstr ""
 
-#: parsifal/reviews/models.py:614 parsifal/reviews/models.py:624
-#: parsifal/reviews/models.py:634
+#: parsifal/reviews/models.py:623 parsifal/reviews/models.py:633
+#: parsifal/reviews/models.py:643
 msgid "Invalid input for "
 msgstr ""
 
-#: parsifal/reviews/models.py:614
+#: parsifal/reviews/models.py:623
 msgid ""
 " field. Expected value: floating point number. Please use dot instead of "
 "comma."
 msgstr ""
 
-#: parsifal/reviews/models.py:624
+#: parsifal/reviews/models.py:633
 msgid " field. Expected value: integer number."
 msgstr ""
 
-#: parsifal/reviews/models.py:634
+#: parsifal/reviews/models.py:643
 msgid " field. Expected value: date. Please use the format MM/DD/YYYY."
 msgstr ""
 
@@ -3530,7 +3538,7 @@ msgid "The review was deleted successfully."
 msgstr ""
 
 #: parsifal/reviews/templates/reviews/explorer.html:19
-#: parsifal/templates/includes/header.html:26
+#: parsifal/templates/includes/header.html:27
 msgid "Search Reviews"
 msgstr ""
 
@@ -3655,53 +3663,53 @@ msgstr ""
 msgid "Review tags"
 msgstr ""
 
-#: parsifal/reviews/templates/reviews/reviews.html:36
+#: parsifal/reviews/templates/reviews/reviews.html:30
 msgid "Edit profile"
 msgstr ""
 
-#: parsifal/reviews/templates/reviews/reviews.html:56
+#: parsifal/reviews/templates/reviews/reviews.html:52
 msgid "STAFF"
 msgstr ""
 
-#: parsifal/reviews/templates/reviews/reviews.html:58
+#: parsifal/reviews/templates/reviews/reviews.html:54
 msgid "Followers"
 msgstr ""
 
-#: parsifal/reviews/templates/reviews/reviews.html:63
+#: parsifal/reviews/templates/reviews/reviews.html:59
 msgid "Following"
 msgstr ""
 
-#: parsifal/reviews/templates/reviews/reviews.html:78
+#: parsifal/reviews/templates/reviews/reviews.html:74
 msgid "Joined on"
 msgstr ""
 
-#: parsifal/reviews/templates/reviews/reviews.html:86
-#: parsifal/templates/includes/header.html:121
+#: parsifal/reviews/templates/reviews/reviews.html:82
+#: parsifal/templates/includes/header.html:123
 msgid "New review"
 msgstr ""
 
-#: parsifal/reviews/templates/reviews/reviews.html:91
+#: parsifal/reviews/templates/reviews/reviews.html:87
 msgid "Work in progress"
 msgstr ""
 
-#: parsifal/reviews/templates/reviews/reviews.html:98
+#: parsifal/reviews/templates/reviews/reviews.html:94
 msgid "Last update"
 msgstr ""
 
-#: parsifal/reviews/templates/reviews/reviews.html:116
-#: parsifal/reviews/templates/reviews/reviews.html:130
+#: parsifal/reviews/templates/reviews/reviews.html:112
+#: parsifal/reviews/templates/reviews/reviews.html:126
 msgid "Published reviews"
 msgstr ""
 
-#: parsifal/reviews/templates/reviews/reviews.html:118
+#: parsifal/reviews/templates/reviews/reviews.html:114
 msgid "You haven't published any systematic literature review yet."
 msgstr ""
 
-#: parsifal/reviews/templates/reviews/reviews.html:124
+#: parsifal/reviews/templates/reviews/reviews.html:120
 msgid "Start a review"
 msgstr ""
 
-#: parsifal/reviews/templates/reviews/reviews.html:132
+#: parsifal/reviews/templates/reviews/reviews.html:128
 msgid "haven't published any systematic literature review yet."
 msgstr ""
 
@@ -3748,27 +3756,27 @@ msgstr ""
 msgid "Toggle navigation"
 msgstr ""
 
-#: parsifal/templates/includes/header.html:21
+#: parsifal/templates/includes/header.html:20
 msgid "Explorer"
 msgstr ""
 
-#: parsifal/templates/includes/header.html:22
+#: parsifal/templates/includes/header.html:21
 msgid "Researchers"
 msgstr ""
 
-#: parsifal/templates/includes/header.html:42
+#: parsifal/templates/includes/header.html:43
 msgid "My profile"
 msgstr ""
 
-#: parsifal/templates/includes/header.html:66
+#: parsifal/templates/includes/header.html:68
 msgid "Sign out"
 msgstr ""
 
-#: parsifal/templates/includes/header.html:109
+#: parsifal/templates/includes/header.html:111
 msgid "followings"
 msgstr ""
 
-#: parsifal/templates/includes/header.html:119
+#: parsifal/templates/includes/header.html:121
 msgid ""
 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lacinia "
 "sagittis pharetra. Sed dapibus, erat ac fringilla pellentesque, lectim "

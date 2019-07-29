@@ -195,6 +195,15 @@ class Review(models.Model):
                 return 0.0
         except:
             return 0.0
+    def is_pipoc_completed(self):
+        return self.population and self.intervention and self.context and self.objective and self.comparison
+    
+    def is_statistical_methods(self):
+        return self.statistical_methods is not None
+    
+    def articles_count(self):
+        articles_count = Article.objects.filter(review__id=self.id).count()
+        return articles_count
 
 class Tag(models.Model):
     review = models.ForeignKey(Review, related_name='review_tags')

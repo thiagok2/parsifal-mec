@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-29 14:53+0000\n"
+"POT-Creation-Date: 2019-07-29 20:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,6 +23,9 @@ msgid ""
 "This email account will not be publicly available. It is used for your "
 "account management, such as internal notifications and password reset."
 msgstr ""
+"Esta conta de e-mail não estará publicamente disponível. Ela é usada para o "
+"seu gerenciamento de conta, como notificações internas e redefinição de "
+"senha."
 
 #: parsifal/account_settings/forms.py:20
 msgid "First Name"
@@ -91,7 +94,7 @@ msgstr "Configurações da Conta"
 #: parsifal/templates/admin/base_site.html:8
 #: parsifal/templates/includes/footer.html:9
 #: parsifal/templates/includes/header.html:14
-#: parsifal/templates/includes/header.html:117
+#: parsifal/templates/includes/header.html:119
 msgid "Parsifal"
 msgstr "Parsifal"
 
@@ -184,6 +187,7 @@ msgid "Save profile"
 msgstr "Salvar Perfil"
 
 #: parsifal/account_settings/templates/settings/settings_menu.html:7
+#: parsifal/templates/includes/header.html:60
 msgid "Account settings"
 msgstr "Configurações da Conta"
 
@@ -222,6 +226,14 @@ msgstr "Por favor corrija o erro abaixo."
 msgid "Password changed successfully."
 msgstr "Sua senha foi alterada com sucesso!"
 
+#: parsifal/account_settings/views.py:99
+msgid "Invalid file format."
+msgstr ""
+
+#: parsifal/account_settings/views.py:101
+msgid "An expected error occurred."
+msgstr ""
+
 #: parsifal/account_settings/views.py:176
 msgid "Your Mendeley account were linked successfully!"
 msgstr "Sua conta do Mendeley foi associada com sucesso!"
@@ -251,13 +263,13 @@ msgid "Your Dropbox account were disconnected successfully!"
 msgstr "Sua conta do Dropbox foi desconectada com sucesso!"
 
 #: parsifal/activities/templates/activities/follow.html:42
-#: parsifal/reviews/templates/reviews/reviews.html:41
+#: parsifal/reviews/templates/reviews/reviews.html:37
 msgid "Unfollow"
 msgstr "Deixar de Seguir"
 
 #: parsifal/activities/templates/activities/follow.html:46
 #: parsifal/activities/templates/activities/researchers.html:48
-#: parsifal/reviews/templates/reviews/reviews.html:45
+#: parsifal/reviews/templates/reviews/reviews.html:41
 msgid "Follow"
 msgstr "Seguir"
 
@@ -270,16 +282,14 @@ msgid "isn't following anybody."
 msgstr "não está seguindo ninguém."
 
 #: parsifal/activities/templates/activities/researchers.html:21
-#, fuzzy
-#| msgid "Search Result"
 msgid "Search Researchers"
-msgstr "Resultados da Pesquisa"
+msgstr "Buscar Pesquisadores"
 
 #: parsifal/activities/views.py:60
 msgid "following"
 msgstr "Segue"
 
-#: parsifal/activities/views.py:76 parsifal/templates/includes/header.html:104
+#: parsifal/activities/views.py:76 parsifal/templates/includes/header.html:106
 msgid "followers"
 msgstr "Seguidores"
 
@@ -336,7 +346,7 @@ msgstr "Seu Username"
 #: parsifal/authentication/templates/auth/signin.html:7
 #: parsifal/authentication/templates/auth/signin.html:22
 #: parsifal/authentication/templates/auth/signin.html:35
-#: parsifal/templates/includes/header.html:75
+#: parsifal/templates/includes/header.html:77
 msgid "Sign in"
 msgstr "Entrar"
 
@@ -350,7 +360,7 @@ msgid "Forgot your password?"
 msgstr "Esqueceu sua Senha?"
 
 #: parsifal/authentication/templates/auth/signup.html:8
-#: parsifal/templates/includes/header.html:78
+#: parsifal/templates/includes/header.html:80
 msgid "Sign up"
 msgstr "Inscrever-se"
 
@@ -460,7 +470,7 @@ msgid "Medias"
 msgstr ""
 
 #: parsifal/core/templates/core/about.html:3
-#: parsifal/templates/includes/header.html:19
+#: parsifal/templates/includes/header.html:23
 msgid "About"
 msgstr "Sobre"
 
@@ -604,21 +614,20 @@ msgstr ""
 msgid "Your reviews"
 msgstr "Suas revisões"
 
-#: parsifal/core/templates/core/home.html:38
-#: parsifal/core/templates/core/home.html:54
-#: parsifal/reviews/templates/reviews/reviews.html:123
-msgid "You don't have any systematic literature review yet."
-msgstr "Você não tem nenhum revisão sistemática da literatura ainda"
-
-#: parsifal/core/templates/core/home.html:48
+#: parsifal/core/templates/core/home.html:90
 msgid "Reviews you are invited"
 msgstr "Revisões como convidado"
 
-#: parsifal/core/templates/core/home.html:61
+#: parsifal/core/templates/core/home.html:96
+#: parsifal/reviews/templates/reviews/reviews.html:119
+msgid "You don't have any systematic literature review yet."
+msgstr "Você não tem nenhum revisão sistemática da literatura ainda"
+
+#: parsifal/core/templates/core/home.html:103
 msgid "Recent Updates"
 msgstr "Atualizações Recentes"
 
-#: parsifal/core/templates/core/home.html:67
+#: parsifal/core/templates/core/home.html:109
 msgid "There are no recent updates"
 msgstr "Não há atualizações recentes"
 
@@ -655,7 +664,7 @@ msgstr "está seguindo agora"
 #: parsifal/help/templates/help/articles.html:6
 #: parsifal/help/templates/help/articles.html:10
 #: parsifal/help/templates/help/search.html:6
-#: parsifal/templates/includes/header.html:36
+#: parsifal/templates/includes/header.html:22
 msgid "Help"
 msgstr "Ajuda"
 
@@ -694,85 +703,70 @@ msgid "Static Files"
 msgstr ""
 
 #: parsifal/lib/python2.7/site-packages/django/contrib/syndication/apps.py:7
-#, fuzzy
-#| msgid "Send invitation"
 msgid "Syndication"
-msgstr "Enviar Convite"
+msgstr ""
 
 #: parsifal/lib/python2.7/site-packages/django/contrib/webdesign/apps.py:7
 msgid "Web Design"
 msgstr ""
 
 #: parsifal/lib/python2.7/site-packages/django/core/validators.py:20
-#, fuzzy
-#| msgid "Enter a valid username."
 msgid "Enter a valid value."
-msgstr "Informe um nome de usuário válido."
+msgstr "Informe valor válido."
 
 #: parsifal/lib/python2.7/site-packages/django/core/validators.py:87
 #: parsifal/lib/python2.7/site-packages/django/forms/fields.py:712
-#, fuzzy
-#| msgid "Enter a valid username."
 msgid "Enter a valid URL."
-msgstr "Informe um nome de usuário válido."
+msgstr "Informe uma URL válida."
 
 #: parsifal/lib/python2.7/site-packages/django/core/validators.py:130
-#, fuzzy
-#| msgid "Enter a valid username."
 msgid "Enter a valid integer."
-msgstr "Informe um nome de usuário válido."
+msgstr "Informe um número inteiro."
 
 #: parsifal/lib/python2.7/site-packages/django/core/validators.py:141
-#, fuzzy
-#| msgid "Enter a valid username."
 msgid "Enter a valid email address."
-msgstr "Informe um nome de usuário válido."
+msgstr "Informe um email válido."
 
 #: parsifal/lib/python2.7/site-packages/django/core/validators.py:215
 msgid ""
 "Enter a valid 'slug' consisting of letters, numbers, underscores or hyphens."
 msgstr ""
+"Digite um 'slug' válido, composto de letras, números, sublinhados ou hifens."
 
 #: parsifal/lib/python2.7/site-packages/django/core/validators.py:220
 #: parsifal/lib/python2.7/site-packages/django/core/validators.py:239
-#, fuzzy
-#| msgid "Enter a valid username."
 msgid "Enter a valid IPv4 address."
-msgstr "Informe um nome de usuário válido."
+msgstr "Informe um endereço IPv4 válido."
 
 #: parsifal/lib/python2.7/site-packages/django/core/validators.py:225
 #: parsifal/lib/python2.7/site-packages/django/core/validators.py:240
-#, fuzzy
-#| msgid "Enter a valid username."
 msgid "Enter a valid IPv6 address."
-msgstr "Informe um nome de usuário válido."
+msgstr "Informe um endereço IPv6 válido."
 
 #: parsifal/lib/python2.7/site-packages/django/core/validators.py:235
 #: parsifal/lib/python2.7/site-packages/django/core/validators.py:238
-#, fuzzy
-#| msgid "Enter a valid username."
 msgid "Enter a valid IPv4 or IPv6 address."
-msgstr "Informe um nome de usuário válido."
+msgstr "Informe um endereço IPv4 ou IPv6 válido."
 
 #: parsifal/lib/python2.7/site-packages/django/core/validators.py:263
 #: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1144
 msgid "Enter only digits separated by commas."
-msgstr ""
+msgstr "Entre somente com dígitos separados por vírgulas."
 
 #: parsifal/lib/python2.7/site-packages/django/core/validators.py:272
 #, python-format
 msgid "Ensure this value is %(limit_value)s (it is %(show_value)s)."
-msgstr ""
+msgstr "Garanta que esse valor é %(limit_value)s (isto é %(show_value)s)."
 
 #: parsifal/lib/python2.7/site-packages/django/core/validators.py:298
 #, python-format
 msgid "Ensure this value is less than or equal to %(limit_value)s."
-msgstr ""
+msgstr "Garanta que o valor é menor ou igual a %(limit_value)s."
 
 #: parsifal/lib/python2.7/site-packages/django/core/validators.py:305
 #, python-format
 msgid "Ensure this value is greater than or equal to %(limit_value)s."
-msgstr ""
+msgstr "Garanta que o valor é maior ou igual a %(limit_value)s."
 
 #: parsifal/lib/python2.7/site-packages/django/core/validators.py:314
 #, python-format
@@ -802,10 +796,9 @@ msgid "and"
 msgstr ""
 
 #: parsifal/lib/python2.7/site-packages/django/db/models/base.py:1108
-#, fuzzy, python-format
-#| msgid "User with this Username already exists."
+#, python-format
 msgid "%(model_name)s with this %(field_labels)s already exists."
-msgstr "Já existe um usuário com esse nome."
+msgstr "%(model_name)s com este %(field_labels)s já existe."
 
 #: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:107
 #, python-format
@@ -814,17 +807,16 @@ msgstr ""
 
 #: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:108
 msgid "This field cannot be null."
-msgstr ""
+msgstr "O campo não pode ser nulo."
 
 #: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:109
 msgid "This field cannot be blank."
-msgstr ""
+msgstr "O campo não pode ser vazio."
 
 #: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:110
-#, fuzzy, python-format
-#| msgid "User with this Username already exists."
+#, python-format
 msgid "%(model_name)s with this %(field_label)s already exists."
-msgstr "Já existe um usuário com esse nome."
+msgstr "%(model_name)s com este %(field_label)s já existe."
 
 #. Translators: The 'lookup_type' is one of 'date', 'year' or 'month'.
 #. Eg: "Title must be unique for pub_date year"
@@ -837,7 +829,7 @@ msgstr ""
 #: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:132
 #, python-format
 msgid "Field of type: %(field_type)s"
-msgstr ""
+msgstr "O campo é do tipo %(field_type)s"
 
 #: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:922
 #: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1832
@@ -848,21 +840,21 @@ msgstr ""
 #: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1830
 #, python-format
 msgid "'%(value)s' value must be an integer."
-msgstr ""
+msgstr "'%(value)s' valor precisar ser um inteiro."
 
 #: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1001
 #, python-format
 msgid "'%(value)s' value must be either True or False."
-msgstr ""
+msgstr "'%(value)s' valor precisa ser ou True ou False."
 
 #: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1003
 msgid "Boolean (Either True or False)"
-msgstr ""
+msgstr "Boolean (True ou False)"
 
 #: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1078
 #, python-format
 msgid "String (up to %(max_length)s)"
-msgstr ""
+msgstr "String (máximo %(max_length)s)"
 
 #: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1139
 msgid "Comma-separated integers"
@@ -922,18 +914,14 @@ msgid ""
 msgstr ""
 
 #: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1654
-#, fuzzy
-#| msgid "Evaluation"
 msgid "Duration"
-msgstr "Avaliação"
+msgstr "Duração"
 
 #: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1705
 msgid "Email address"
 msgstr "Email"
 
 #: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1729
-#, fuzzy
-#| msgid "File"
 msgid "File path"
 msgstr "Arquivo"
 
@@ -951,21 +939,17 @@ msgid "Big (8 byte) integer"
 msgstr ""
 
 #: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1914
-#, fuzzy
-#| msgid "Email address"
 msgid "IPv4 address"
-msgstr "Email"
+msgstr "Endereço IPv4"
 
 #: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1950
-#, fuzzy
-#| msgid "Email address"
 msgid "IP address"
-msgstr "Email"
+msgstr "Endereço IP"
 
 #: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:2029
 #, python-format
 msgid "'%(value)s' value must be either None, True or False."
-msgstr ""
+msgstr "'%(value)s' valor precisar ser nulo, True ou False."
 
 #: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:2031
 msgid "Boolean (Either True, False or None)"
@@ -1045,17 +1029,13 @@ msgid "This field is required."
 msgstr ""
 
 #: parsifal/lib/python2.7/site-packages/django/forms/fields.py:237
-#, fuzzy
-#| msgid "Enter a valid username."
 msgid "Enter a whole number."
-msgstr "Informe um nome de usuário válido."
+msgstr "Informe um número inteiro."
 
 #: parsifal/lib/python2.7/site-packages/django/forms/fields.py:280
 #: parsifal/lib/python2.7/site-packages/django/forms/fields.py:317
-#, fuzzy
-#| msgid "Enter a valid username."
 msgid "Enter a number."
-msgstr "Informe um nome de usuário válido."
+msgstr "Informe um número."
 
 #: parsifal/lib/python2.7/site-packages/django/forms/fields.py:319
 #, python-format
@@ -1082,29 +1062,21 @@ msgstr[1] ""
 
 #: parsifal/lib/python2.7/site-packages/django/forms/fields.py:438
 #: parsifal/lib/python2.7/site-packages/django/forms/fields.py:1193
-#, fuzzy
-#| msgid "Enter a valid username."
 msgid "Enter a valid date."
-msgstr "Informe um nome de usuário válido."
+msgstr "Informe uma data válida."
 
 #: parsifal/lib/python2.7/site-packages/django/forms/fields.py:462
 #: parsifal/lib/python2.7/site-packages/django/forms/fields.py:1194
-#, fuzzy
-#| msgid "Enter a valid username."
 msgid "Enter a valid time."
-msgstr "Informe um nome de usuário válido."
+msgstr "Informe um horário válido."
 
 #: parsifal/lib/python2.7/site-packages/django/forms/fields.py:484
-#, fuzzy
-#| msgid "Enter a valid username."
 msgid "Enter a valid date/time."
-msgstr "Informe um nome de usuário válido."
+msgstr "Informe uma data/horário válido."
 
 #: parsifal/lib/python2.7/site-packages/django/forms/fields.py:525
-#, fuzzy
-#| msgid "Enter a valid username."
 msgid "Enter a valid duration."
-msgstr "Informe um nome de usuário válido."
+msgstr "Informe uma duração válida."
 
 #: parsifal/lib/python2.7/site-packages/django/forms/fields.py:591
 msgid "No file was submitted. Check the encoding type on the form."
@@ -1146,22 +1118,16 @@ msgstr ""
 #: parsifal/lib/python2.7/site-packages/django/forms/fields.py:922
 #: parsifal/lib/python2.7/site-packages/django/forms/fields.py:1037
 #: parsifal/lib/python2.7/site-packages/django/forms/models.py:1237
-#, fuzzy
-#| msgid "Enter a valid username."
 msgid "Enter a list of values."
-msgstr "Informe um nome de usuário válido."
+msgstr "Informe uma lista de valores."
 
 #: parsifal/lib/python2.7/site-packages/django/forms/fields.py:1038
-#, fuzzy
-#| msgid "Enter a valid username."
 msgid "Enter a complete value."
-msgstr "Informe um nome de usuário válido."
+msgstr "Informe o valor completo"
 
 #: parsifal/lib/python2.7/site-packages/django/forms/fields.py:1264
-#, fuzzy
-#| msgid "Enter a valid username."
 msgid "Enter a valid UUID."
-msgstr "Informe um nome de usuário válido."
+msgstr "Informe um valid UUID."
 
 #. Translators: This is the default suffix added to form field labels
 #: parsifal/lib/python2.7/site-packages/django/forms/forms.py:129
@@ -1208,10 +1174,9 @@ msgid "Delete"
 msgstr "Deletar"
 
 #: parsifal/lib/python2.7/site-packages/django/forms/models.py:716
-#, fuzzy, python-format
-#| msgid "Please correct the error below."
+#, python-format
 msgid "Please correct the duplicate data for %(field)s."
-msgstr "Por favor corrija o erro abaixo."
+msgstr "Por favor corrija os dados duplicados para %(field)s."
 
 #: parsifal/lib/python2.7/site-packages/django/forms/models.py:720
 #, python-format
@@ -1226,10 +1191,8 @@ msgid ""
 msgstr ""
 
 #: parsifal/lib/python2.7/site-packages/django/forms/models.py:734
-#, fuzzy
-#| msgid "Please correct the error below."
 msgid "Please correct the duplicate values below."
-msgstr "Por favor corrija o erro abaixo."
+msgstr "Por favor corrija os valores duplicados abaixo."
 
 #: parsifal/lib/python2.7/site-packages/django/forms/models.py:1057
 msgid "The inline foreign key did not match the parent instance primary key."
@@ -1268,12 +1231,12 @@ msgid "Unknown"
 msgstr ""
 
 #: parsifal/lib/python2.7/site-packages/django/forms/widgets.py:556
-#: parsifal/reviews/models.py:495
+#: parsifal/reviews/models.py:504
 msgid "Yes"
 msgstr ""
 
 #: parsifal/lib/python2.7/site-packages/django/forms/widgets.py:557
-#: parsifal/reviews/models.py:497
+#: parsifal/reviews/models.py:506
 msgid "No"
 msgstr "Não"
 
@@ -1387,16 +1350,12 @@ msgid "Fri"
 msgstr ""
 
 #: parsifal/lib/python2.7/site-packages/django/utils/dates.py:11
-#, fuzzy
-#| msgid "at"
 msgid "Sat"
-msgstr "em"
+msgstr ""
 
 #: parsifal/lib/python2.7/site-packages/django/utils/dates.py:11
-#, fuzzy
-#| msgid "Run"
 msgid "Sun"
-msgstr "Executar"
+msgstr ""
 
 #: parsifal/lib/python2.7/site-packages/django/utils/dates.py:18
 msgid "January"
@@ -1407,10 +1366,8 @@ msgid "February"
 msgstr ""
 
 #: parsifal/lib/python2.7/site-packages/django/utils/dates.py:18
-#, fuzzy
-#| msgid "Search"
 msgid "March"
-msgstr "Pesquisar"
+msgstr ""
 
 #: parsifal/lib/python2.7/site-packages/django/utils/dates.py:18
 msgid "April"
@@ -1457,26 +1414,20 @@ msgid "feb"
 msgstr ""
 
 #: parsifal/lib/python2.7/site-packages/django/utils/dates.py:23
-#, fuzzy
-#| msgid "Summary"
 msgid "mar"
-msgstr "Sumário"
+msgstr ""
 
 #: parsifal/lib/python2.7/site-packages/django/utils/dates.py:23
 msgid "apr"
 msgstr ""
 
 #: parsifal/lib/python2.7/site-packages/django/utils/dates.py:23
-#, fuzzy
-#| msgid "Summary"
 msgid "may"
-msgstr "Sumário"
+msgstr ""
 
 #: parsifal/lib/python2.7/site-packages/django/utils/dates.py:23
-#, fuzzy
-#| msgid "Run"
 msgid "jun"
-msgstr "Executar"
+msgstr ""
 
 #: parsifal/lib/python2.7/site-packages/django/utils/dates.py:24
 msgid "jul"
@@ -1513,11 +1464,9 @@ msgid "Feb."
 msgstr ""
 
 #: parsifal/lib/python2.7/site-packages/django/utils/dates.py:33
-#, fuzzy
-#| msgid "Search"
 msgctxt "abbrev. month"
 msgid "March"
-msgstr "Pesquisar"
+msgstr ""
 
 #: parsifal/lib/python2.7/site-packages/django/utils/dates.py:34
 msgctxt "abbrev. month"
@@ -1575,11 +1524,9 @@ msgid "February"
 msgstr ""
 
 #: parsifal/lib/python2.7/site-packages/django/utils/dates.py:47
-#, fuzzy
-#| msgid "Search"
 msgctxt "alt. month"
 msgid "March"
-msgstr "Pesquisar"
+msgstr ""
 
 #: parsifal/lib/python2.7/site-packages/django/utils/dates.py:48
 msgctxt "alt. month"
@@ -2210,7 +2157,7 @@ msgstr "Itens por Página:"
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_quality_assessment_summary.html:11
 #: parsifal/reviews/forms.py:12
 #: parsifal/reviews/templates/reviews/partial_published_protocols.html:34
-#: parsifal/reviews/templates/reviews/reviews.html:96
+#: parsifal/reviews/templates/reviews/reviews.html:92
 msgid "Title"
 msgstr "Título"
 
@@ -2219,7 +2166,7 @@ msgstr "Título"
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_find_duplicates.html:13
 #: parsifal/reviews/reporting/templates/reporting/export.html:48
 #: parsifal/reviews/templates/reviews/review.html:64
-#: parsifal/reviews/templates/reviews/reviews.html:97
+#: parsifal/reviews/templates/reviews/reviews.html:93
 msgid "Authors"
 msgstr "Autores"
 
@@ -2429,7 +2376,7 @@ msgstr "Arquivos"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:33
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:60
-#: parsifal/reviews/models.py:356
+#: parsifal/reviews/models.py:365
 msgid "Conflict"
 msgstr "Conflito"
 
@@ -2539,31 +2486,31 @@ msgid "Show"
 msgstr "Mostrar"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:45
-#: parsifal/reviews/models.py:331 parsifal/reviews/models.py:354
-#: parsifal/reviews/models.py:437
+#: parsifal/reviews/models.py:340 parsifal/reviews/models.py:363
+#: parsifal/reviews/models.py:446
 msgid "Accepted"
 msgstr "Aceito"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:48
-#: parsifal/reviews/models.py:330 parsifal/reviews/models.py:353
-#: parsifal/reviews/models.py:436
+#: parsifal/reviews/models.py:339 parsifal/reviews/models.py:362
+#: parsifal/reviews/models.py:445
 msgid "Rejected"
 msgstr "Rejeitado"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:51
-#: parsifal/reviews/models.py:329 parsifal/reviews/models.py:351
-#: parsifal/reviews/models.py:435
+#: parsifal/reviews/models.py:338 parsifal/reviews/models.py:360
+#: parsifal/reviews/models.py:444
 msgid "Unclassified"
 msgstr "Não classificado"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:54
-#: parsifal/reviews/models.py:332 parsifal/reviews/models.py:355
-#: parsifal/reviews/models.py:438
+#: parsifal/reviews/models.py:341 parsifal/reviews/models.py:364
+#: parsifal/reviews/models.py:447
 msgid "Duplicated"
 msgstr "Duplicados"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:57
-#: parsifal/reviews/models.py:352
+#: parsifal/reviews/models.py:361
 msgid "Waiting"
 msgstr "Aguardando"
 
@@ -2683,63 +2630,63 @@ msgstr "Não publicado"
 msgid "Published"
 msgstr "Publicado"
 
-#: parsifal/reviews/models.py:246
+#: parsifal/reviews/models.py:255
 msgid "Inclusion"
 msgstr "Inclusão"
 
-#: parsifal/reviews/models.py:247
+#: parsifal/reviews/models.py:256
 msgid "Exclusion"
 msgstr "Exclusão"
 
-#: parsifal/reviews/models.py:466
+#: parsifal/reviews/models.py:475
 #: parsifal/reviews/planning/templates/planning/protocol.html:164
 #: parsifal/reviews/templates/reviews/partial_published_protocols.html:83
 msgid "Population"
 msgstr "População"
 
-#: parsifal/reviews/models.py:467
+#: parsifal/reviews/models.py:476
 #: parsifal/reviews/planning/templates/planning/protocol.html:170
 #: parsifal/reviews/templates/reviews/partial_published_protocols.html:87
 msgid "Intervention"
 msgstr "Intervenção"
 
-#: parsifal/reviews/models.py:468
+#: parsifal/reviews/models.py:477
 #: parsifal/reviews/planning/templates/planning/protocol.html:176
 #: parsifal/reviews/templates/reviews/partial_published_protocols.html:91
 msgid "Comparison"
 msgstr "Comparação"
 
-#: parsifal/reviews/models.py:469
+#: parsifal/reviews/models.py:478
 #: parsifal/reviews/planning/templates/planning/protocol.html:182
 #: parsifal/reviews/planning/templates/planning/protocol.html:328
 #: parsifal/reviews/templates/reviews/partial_published_protocols.html:95
 msgid "Outcome"
 msgstr "Resultados"
 
-#: parsifal/reviews/models.py:496
+#: parsifal/reviews/models.py:505
 msgid "Partially"
 msgstr ""
 
-#: parsifal/reviews/models.py:596
+#: parsifal/reviews/models.py:605
 msgid "Expected values: \"True\" or \"False\""
 msgstr ""
 
-#: parsifal/reviews/models.py:614 parsifal/reviews/models.py:624
-#: parsifal/reviews/models.py:634
+#: parsifal/reviews/models.py:623 parsifal/reviews/models.py:633
+#: parsifal/reviews/models.py:643
 msgid "Invalid input for "
 msgstr ""
 
-#: parsifal/reviews/models.py:614
+#: parsifal/reviews/models.py:623
 msgid ""
 " field. Expected value: floating point number. Please use dot instead of "
 "comma."
 msgstr ""
 
-#: parsifal/reviews/models.py:624
+#: parsifal/reviews/models.py:633
 msgid " field. Expected value: integer number."
 msgstr ""
 
-#: parsifal/reviews/models.py:634
+#: parsifal/reviews/models.py:643
 msgid " field. Expected value: date. Please use the format MM/DD/YYYY."
 msgstr ""
 
@@ -3616,20 +3563,12 @@ msgid "Description and Type are required fields."
 msgstr "Descrição e Tipos são campos obrigatórios."
 
 #: parsifal/reviews/planning/views.py:1046
-#, fuzzy
-#| msgid "Hide Data Extraction Fields"
 msgid "Data Extraction Fields has been shared!"
-msgstr "Esconder Campos de Extração de Dados"
+msgstr "Campos de Extração de Dados tem sido compartilhados."
 
 #: parsifal/reviews/planning/views.py:1048
-#, fuzzy
-#| msgid ""
-#| "Your Data Extraction Fields are already shared. Do you wanna make it "
-#| "private again?"
 msgid "Data Extraction Fields has been made private again!"
-msgstr ""
-"Seus campos de extração de dados já estão compartilhados. Você quer torná-lo "
-"privado novamente?"
+msgstr "Campos de Extração de Dados já estão privados novamente!"
 
 #: parsifal/reviews/reporting/templates/reporting/export.html:37
 msgid "Download a Report"
@@ -3792,11 +3731,9 @@ msgid "The review was deleted successfully."
 msgstr "Sua revisão foi excluída com sucesso!"
 
 #: parsifal/reviews/templates/reviews/explorer.html:19
-#: parsifal/templates/includes/header.html:26
-#, fuzzy
-#| msgid "Search Result"
+#: parsifal/templates/includes/header.html:27
 msgid "Search Reviews"
-msgstr "Resultados da Pesquisa"
+msgstr "Pesquisar Revisões"
 
 #: parsifal/reviews/templates/reviews/new.html:23
 msgid "Create a new review"
@@ -3925,53 +3862,53 @@ msgstr "Convidar Alguém..."
 msgid "Review tags"
 msgstr "Tags da Revisão"
 
-#: parsifal/reviews/templates/reviews/reviews.html:36
+#: parsifal/reviews/templates/reviews/reviews.html:30
 msgid "Edit profile"
 msgstr "Editar Perfil"
 
-#: parsifal/reviews/templates/reviews/reviews.html:56
+#: parsifal/reviews/templates/reviews/reviews.html:52
 msgid "STAFF"
 msgstr "STAFF"
 
-#: parsifal/reviews/templates/reviews/reviews.html:58
+#: parsifal/reviews/templates/reviews/reviews.html:54
 msgid "Followers"
 msgstr "Seguidores"
 
-#: parsifal/reviews/templates/reviews/reviews.html:63
+#: parsifal/reviews/templates/reviews/reviews.html:59
 msgid "Following"
 msgstr "Seguindo"
 
-#: parsifal/reviews/templates/reviews/reviews.html:78
+#: parsifal/reviews/templates/reviews/reviews.html:74
 msgid "Joined on"
 msgstr "Entrou em"
 
-#: parsifal/reviews/templates/reviews/reviews.html:86
-#: parsifal/templates/includes/header.html:121
+#: parsifal/reviews/templates/reviews/reviews.html:82
+#: parsifal/templates/includes/header.html:123
 msgid "New review"
 msgstr "Nova Revisão"
 
-#: parsifal/reviews/templates/reviews/reviews.html:91
+#: parsifal/reviews/templates/reviews/reviews.html:87
 msgid "Work in progress"
 msgstr "Trabalho em Progresso"
 
-#: parsifal/reviews/templates/reviews/reviews.html:98
+#: parsifal/reviews/templates/reviews/reviews.html:94
 msgid "Last update"
 msgstr "Última Atualização"
 
-#: parsifal/reviews/templates/reviews/reviews.html:116
-#: parsifal/reviews/templates/reviews/reviews.html:130
+#: parsifal/reviews/templates/reviews/reviews.html:112
+#: parsifal/reviews/templates/reviews/reviews.html:126
 msgid "Published reviews"
 msgstr "Revisões Publicadas"
 
-#: parsifal/reviews/templates/reviews/reviews.html:118
+#: parsifal/reviews/templates/reviews/reviews.html:114
 msgid "You haven't published any systematic literature review yet."
 msgstr "Você ainda não tem nenhuma revisão sistemática da literatura."
 
-#: parsifal/reviews/templates/reviews/reviews.html:124
+#: parsifal/reviews/templates/reviews/reviews.html:120
 msgid "Start a review"
 msgstr "Iniciar Revisões"
 
-#: parsifal/reviews/templates/reviews/reviews.html:132
+#: parsifal/reviews/templates/reviews/reviews.html:128
 msgid "haven't published any systematic literature review yet."
 msgstr "Não há nenhuma revisão sistemática da literatura ainda."
 
@@ -4001,7 +3938,7 @@ msgstr "O visitante {0} foi adicionado com sucesso."
 #: parsifal/reviews/views.py:245
 #, python-brace-format
 msgid "You successfully left the review {0}."
-msgstr ""
+msgstr "Você saiu com sucesso da revisão {0}."
 
 #: parsifal/reviews/views.py:256
 #, python-format
@@ -4020,29 +3957,27 @@ msgstr "Sua revisão foi salva com sucesso!"
 msgid "Toggle navigation"
 msgstr "Alternar Navegação"
 
-#: parsifal/templates/includes/header.html:21
+#: parsifal/templates/includes/header.html:20
 msgid "Explorer"
-msgstr ""
+msgstr "Explorar"
 
-#: parsifal/templates/includes/header.html:22
-#, fuzzy
-#| msgid "Research Questions"
+#: parsifal/templates/includes/header.html:21
 msgid "Researchers"
-msgstr "Questões de Pesquisa"
+msgstr "Pesquisadores"
 
-#: parsifal/templates/includes/header.html:42
+#: parsifal/templates/includes/header.html:43
 msgid "My profile"
 msgstr "Meu Perfil"
 
-#: parsifal/templates/includes/header.html:66
+#: parsifal/templates/includes/header.html:68
 msgid "Sign out"
 msgstr "Sair"
 
-#: parsifal/templates/includes/header.html:109
+#: parsifal/templates/includes/header.html:111
 msgid "followings"
 msgstr "Seguidores"
 
-#: parsifal/templates/includes/header.html:119
+#: parsifal/templates/includes/header.html:121
 msgid ""
 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lacinia "
 "sagittis pharetra. Sed dapibus, erat ac fringilla pellentesque, lectim "
