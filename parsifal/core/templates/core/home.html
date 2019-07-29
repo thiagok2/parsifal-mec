@@ -20,27 +20,51 @@
       {% endif %}
      </div>
      {% endcomment %}
-     
-     <div class="col-md-9">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">{% trans 'Your reviews' %}</h3>
-        </div>
-        <div class="list-group">
-          {% for review in user_reviews %}
-            <a href="/{{ review.author.username }}/{{ review.name }}/" class="list-group-item">{{ review.title }}</a>
-            
-            <span class="text-muted">
-            {% for author in review.co_authors.all %}, <a href="/{{ author.username }}/"> {{ author.profile.get_screen_name }}</a>{% endfor %}
-            </span>
-          {% empty %}
-            <p class="list-group-item">{% trans "You don't have any systematic literature review yet." %}</p>
-          {% endfor %}
-        </div>
-      </div>
 
-    </div>
-    <div class="col-md-3">
+	<div class="col-md-9">
+		<div id="painel-myreview" class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">{% trans 'Your reviews' %}</h3>
+			</div>
+			<div class="panel-body">
+				<div class="list-group">
+					
+					{% for review in user_reviews %}
+					<div class="list-group-item">
+						<div class="row">
+							<div class="col-md-6">
+								<a href="/{{ review.author.username }}/{{ review.name }}/">{{ review.title }}</a>
+							</div>
+		
+							<div class="col-md-2">
+								<span class="text-muted"> {% for author in review.co_authors.all %}, <a href="/{{ author.username }}/"> {{ author.profile.get_screen_name }}</a>{% endfor %}
+								</span>
+							</div>
+							<div class="col-md-4 text-right">
+								<span class="badge badge-secondary">
+								{% for status in review.REVIEW_STATUS %}
+	            					{% if review.status == status.0 %} {{ status.1 }} {% endif %}
+	          					{% endfor %}
+								</span>
+							</div>
+							
+						</div>
+						<div class="row text-muted small">
+	   						<div class="col-sm-6 pull-left text-left">
+	   							{{ review.create_date }}
+	   						</div>
+	   						
+	   						
+						</div>
+					</div>
+					{% endfor %}
+					
+				</div><!-- end list-group -->
+			</div><!-- end body-pabel -->
+		</div><!-- end panel -->
+	</div>
+
+	<div class="col-md-3">
       
       <div class="panel panel-default">
         <div class="panel-heading">
