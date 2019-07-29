@@ -4,6 +4,7 @@ a{
 
 a:hover{
 	color: #111;
+	text-decoration: underline;
 }
 
 
@@ -128,4 +129,8 @@ img.img-logo:hover{
 
 .explorer-results{
 	margin-top: 30px;
+}
+
+#painel-myreview > div{
+	padding: 15px 35px;
 }

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-25 20:00+0000\n"
+"POT-Creation-Date: 2019-07-29 14:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,6 +36,7 @@ msgid "Public Email"
 msgstr ""
 
 #: parsifal/account_settings/forms.py:23
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:2308
 msgid "URL"
 msgstr ""
 
@@ -84,17 +85,16 @@ msgstr ""
 #: parsifal/authentication/templates/auth/success.html:7
 #: parsifal/blog/templates/blog/entries.html:7
 #: parsifal/core/templates/core/about.html:3
-#: parsifal/core/templates/core/cover.html:26
+#: parsifal/core/templates/core/cover.html:28
 #: parsifal/core/templates/core/support.html:6
 #: parsifal/help/templates/help/articles.html:6
 #: parsifal/help/templates/help/search.html:6
+#: parsifal/reviews/templates/reviews/explorer.html:7
 #: parsifal/reviews/templates/reviews/reviews.html:7
 #: parsifal/templates/admin/base_site.html:8
 #: parsifal/templates/includes/footer.html:9
-#: parsifal/templates/includes/header-clear.html:14
-#: parsifal/templates/includes/header-clear.html:99
 #: parsifal/templates/includes/header.html:14
-#: parsifal/templates/includes/header.html:110
+#: parsifal/templates/includes/header.html:117
 msgid "Parsifal"
 msgstr ""
 
@@ -199,7 +199,7 @@ msgstr ""
 #: parsifal/account_settings/templates/settings/settings_menu.html:13
 #: parsifal/authentication/forms.py:34
 #: parsifal/authentication/templates/auth/signin.html:32
-#: parsifal/core/templates/core/cover.html:33
+#: parsifal/core/templates/core/cover.html:35
 msgid "Password"
 msgstr ""
 
@@ -251,6 +251,7 @@ msgid "Unfollow"
 msgstr ""
 
 #: parsifal/activities/templates/activities/follow.html:46
+#: parsifal/activities/templates/activities/researchers.html:48
 #: parsifal/reviews/templates/reviews/reviews.html:45
 msgid "Follow"
 msgstr ""
@@ -263,13 +264,15 @@ msgstr ""
 msgid "isn't following anybody."
 msgstr ""
 
+#: parsifal/activities/templates/activities/researchers.html:21
+msgid "Search Researchers"
+msgstr ""
+
 #: parsifal/activities/views.py:60
 msgid "following"
 msgstr ""
 
-#: parsifal/activities/views.py:76
-#: parsifal/templates/includes/header-clear.html:92
-#: parsifal/templates/includes/header.html:97
+#: parsifal/activities/views.py:76 parsifal/templates/includes/header.html:104
 msgid "followers"
 msgstr ""
 
@@ -326,13 +329,12 @@ msgstr ""
 #: parsifal/authentication/templates/auth/signin.html:7
 #: parsifal/authentication/templates/auth/signin.html:22
 #: parsifal/authentication/templates/auth/signin.html:35
-#: parsifal/templates/includes/header-clear.html:58
-#: parsifal/templates/includes/header.html:58
+#: parsifal/templates/includes/header.html:75
 msgid "Sign in"
 msgstr ""
 
 #: parsifal/authentication/templates/auth/signin.html:28
-#: parsifal/core/templates/core/cover.html:30
+#: parsifal/core/templates/core/cover.html:32
 msgid "Username"
 msgstr ""
 
@@ -341,13 +343,12 @@ msgid "Forgot your password?"
 msgstr ""
 
 #: parsifal/authentication/templates/auth/signup.html:8
-#: parsifal/templates/includes/header-clear.html:61
-#: parsifal/templates/includes/header.html:61
+#: parsifal/templates/includes/header.html:78
 msgid "Sign up"
 msgstr ""
 
 #: parsifal/authentication/templates/auth/signup.html:23
-#: parsifal/core/templates/core/cover.html:26
+#: parsifal/core/templates/core/cover.html:28
 msgid "Sign up for"
 msgstr ""
 
@@ -396,7 +397,6 @@ msgid "Username or password invalid."
 msgstr ""
 
 #: parsifal/blog/templates/blog/entries.html:7
-#: parsifal/templates/includes/header-clear.html:18
 #: parsifal/templates/includes/header.html:18
 msgid "Blog"
 msgstr ""
@@ -428,6 +428,7 @@ msgid "video"
 msgstr ""
 
 #: parsifal/core/models.py:9
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/files.py:389
 msgid "Image"
 msgstr ""
 
@@ -444,7 +445,6 @@ msgid "Medias"
 msgstr ""
 
 #: parsifal/core/templates/core/about.html:3
-#: parsifal/templates/includes/header-clear.html:19
 #: parsifal/templates/includes/header.html:19
 msgid "About"
 msgstr ""
@@ -499,33 +499,33 @@ msgstr ""
 msgid "Perform Systematic Literature Reviews"
 msgstr ""
 
-#: parsifal/core/templates/core/cover.html:22
+#: parsifal/core/templates/core/cover.html:23
 msgid ""
 "Performing a systematic literature review is a labor-intensive task that "
 "requires a huge amount of work from the researcher. <strong>Parsifal</"
 "strong> will help you planning, conducting and reporting the review."
 msgstr ""
 
-#: parsifal/core/templates/core/cover.html:40
+#: parsifal/core/templates/core/cover.html:42
 msgid "Create a new account"
 msgstr ""
 
-#: parsifal/core/templates/core/cover.html:53
+#: parsifal/core/templates/core/cover.html:56
 msgid "Support for geographically distributed researchers"
 msgstr ""
 
-#: parsifal/core/templates/core/cover.html:55
+#: parsifal/core/templates/core/cover.html:61
 msgid ""
 "Parsifal is a powerful platform that provides full support for researchers "
 "geographically distributed to work on the same Systematic Literature Review. "
 "There is no limit of authors per review."
 msgstr ""
 
-#: parsifal/core/templates/core/cover.html:59
+#: parsifal/core/templates/core/cover.html:68
 msgid "Publish extra information"
 msgstr ""
 
-#: parsifal/core/templates/core/cover.html:60
+#: parsifal/core/templates/core/cover.html:72
 msgid ""
 "Normally you can not publish all relevant information about the research as "
 "frequently there is a limit amount of pages to publish your article on a "
@@ -535,44 +535,36 @@ msgid ""
 "protocol, etc."
 msgstr ""
 
-#: parsifal/core/templates/core/cover.html:64
+#: parsifal/core/templates/core/cover.html:79
 msgid "Support for tertiary studies"
 msgstr ""
 
-#: parsifal/core/templates/core/cover.html:66
+#: parsifal/core/templates/core/cover.html:83
 msgid ""
 "Having a huge amount of Systematic Literature Reviews in the platform, it "
 "will provide a powerful support for tertiary studies, that is, systematic "
 "literature review of secondary studies."
 msgstr ""
 
-#: parsifal/core/templates/core/home.html:13
-msgid "Latest news"
-msgstr ""
-
-#: parsifal/core/templates/core/home.html:16
-msgid "Read more"
-msgstr ""
-
-#: parsifal/core/templates/core/home.html:24
+#: parsifal/core/templates/core/home.html:28
 msgid "Your reviews"
 msgstr ""
 
-#: parsifal/core/templates/core/home.html:30
-#: parsifal/core/templates/core/home.html:46
+#: parsifal/core/templates/core/home.html:38
+#: parsifal/core/templates/core/home.html:54
 #: parsifal/reviews/templates/reviews/reviews.html:123
 msgid "You don't have any systematic literature review yet."
 msgstr ""
 
-#: parsifal/core/templates/core/home.html:40
+#: parsifal/core/templates/core/home.html:48
 msgid "Reviews you are invited"
 msgstr ""
 
-#: parsifal/core/templates/core/home.html:53
+#: parsifal/core/templates/core/home.html:61
 msgid "Recent Updates"
 msgstr ""
 
-#: parsifal/core/templates/core/home.html:59
+#: parsifal/core/templates/core/home.html:67
 msgid "There are no recent updates"
 msgstr ""
 
@@ -607,8 +599,7 @@ msgstr ""
 #: parsifal/help/templates/help/articles.html:6
 #: parsifal/help/templates/help/articles.html:10
 #: parsifal/help/templates/help/search.html:6
-#: parsifal/templates/includes/header-clear.html:20
-#: parsifal/templates/includes/header.html:20
+#: parsifal/templates/includes/header.html:36
 msgid "Help"
 msgstr ""
 
@@ -622,8 +613,6 @@ msgstr ""
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:170
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:206
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:306
-#: parsifal/templates/includes/header-clear.html:67
-#: parsifal/templates/includes/header.html:67
 msgid "Search"
 msgstr ""
 
@@ -634,6 +623,1093 @@ msgstr ""
 
 #: parsifal/help/templates/help/search.html:22
 msgid "Search Result"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/contrib/messages/apps.py:7
+msgid "Messages"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/contrib/sitemaps/apps.py:7
+msgid "Site Maps"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/contrib/staticfiles/apps.py:7
+msgid "Static Files"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/contrib/syndication/apps.py:7
+msgid "Syndication"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/contrib/webdesign/apps.py:7
+msgid "Web Design"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/core/validators.py:20
+msgid "Enter a valid value."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/core/validators.py:87
+#: parsifal/lib/python2.7/site-packages/django/forms/fields.py:712
+msgid "Enter a valid URL."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/core/validators.py:130
+msgid "Enter a valid integer."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/core/validators.py:141
+msgid "Enter a valid email address."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/core/validators.py:215
+msgid ""
+"Enter a valid 'slug' consisting of letters, numbers, underscores or hyphens."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/core/validators.py:220
+#: parsifal/lib/python2.7/site-packages/django/core/validators.py:239
+msgid "Enter a valid IPv4 address."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/core/validators.py:225
+#: parsifal/lib/python2.7/site-packages/django/core/validators.py:240
+msgid "Enter a valid IPv6 address."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/core/validators.py:235
+#: parsifal/lib/python2.7/site-packages/django/core/validators.py:238
+msgid "Enter a valid IPv4 or IPv6 address."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/core/validators.py:263
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1144
+msgid "Enter only digits separated by commas."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/core/validators.py:272
+#, python-format
+msgid "Ensure this value is %(limit_value)s (it is %(show_value)s)."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/core/validators.py:298
+#, python-format
+msgid "Ensure this value is less than or equal to %(limit_value)s."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/core/validators.py:305
+#, python-format
+msgid "Ensure this value is greater than or equal to %(limit_value)s."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/core/validators.py:314
+#, python-format
+msgid ""
+"Ensure this value has at least %(limit_value)d character (it has "
+"%(show_value)d)."
+msgid_plural ""
+"Ensure this value has at least %(limit_value)d characters (it has "
+"%(show_value)d)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: parsifal/lib/python2.7/site-packages/django/core/validators.py:325
+#, python-format
+msgid ""
+"Ensure this value has at most %(limit_value)d character (it has "
+"%(show_value)d)."
+msgid_plural ""
+"Ensure this value has at most %(limit_value)d characters (it has "
+"%(show_value)d)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: parsifal/lib/python2.7/site-packages/django/db/models/base.py:1106
+#: parsifal/lib/python2.7/site-packages/django/forms/models.py:722
+msgid "and"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/db/models/base.py:1108
+#, python-format
+msgid "%(model_name)s with this %(field_labels)s already exists."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:107
+#, python-format
+msgid "Value %(value)r is not a valid choice."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:108
+msgid "This field cannot be null."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:109
+msgid "This field cannot be blank."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:110
+#, python-format
+msgid "%(model_name)s with this %(field_label)s already exists."
+msgstr ""
+
+#. Translators: The 'lookup_type' is one of 'date', 'year' or 'month'.
+#. Eg: "Title must be unique for pub_date year"
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:114
+#, python-format
+msgid ""
+"%(field_label)s must be unique for %(date_field_label)s %(lookup_type)s."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:132
+#, python-format
+msgid "Field of type: %(field_type)s"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:922
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1832
+msgid "Integer"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:926
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1830
+#, python-format
+msgid "'%(value)s' value must be an integer."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1001
+#, python-format
+msgid "'%(value)s' value must be either True or False."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1003
+msgid "Boolean (Either True or False)"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1078
+#, python-format
+msgid "String (up to %(max_length)s)"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1139
+msgid "Comma-separated integers"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1188
+#, python-format
+msgid ""
+"'%(value)s' value has an invalid date format. It must be in YYYY-MM-DD "
+"format."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1190
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1340
+#, python-format
+msgid ""
+"'%(value)s' value has the correct format (YYYY-MM-DD) but it is an invalid "
+"date."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1193
+msgid "Date (without time)"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1338
+#, python-format
+msgid ""
+"'%(value)s' value has an invalid format. It must be in YYYY-MM-DD HH:MM[:ss[."
+"uuuuuu]][TZ] format."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1342
+#, python-format
+msgid ""
+"'%(value)s' value has the correct format (YYYY-MM-DD HH:MM[:ss[.uuuuuu]]"
+"[TZ]) but it is an invalid date/time."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1346
+msgid "Date (with time)"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1498
+#, python-format
+msgid "'%(value)s' value must be a decimal number."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1500
+msgid "Decimal number"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1651
+#, python-format
+msgid ""
+"'%(value)s' value has an invalid format. It must be in [DD] [HH:[MM:]]ss[."
+"uuuuuu] format."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1654
+msgid "Duration"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1705
+msgid "Email address"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1729
+msgid "File path"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1796
+#, python-format
+msgid "'%(value)s' value must be a float."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1798
+msgid "Floating point number"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1899
+msgid "Big (8 byte) integer"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1914
+msgid "IPv4 address"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1950
+msgid "IP address"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:2029
+#, python-format
+msgid "'%(value)s' value must be either None, True or False."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:2031
+msgid "Boolean (Either True, False or None)"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:2091
+msgid "Positive integer"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:2103
+msgid "Positive small integer"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:2116
+#, python-format
+msgid "Slug (up to %(max_length)s)"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:2145
+msgid "Small integer"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:2152
+msgid "Text"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:2175
+#, python-format
+msgid ""
+"'%(value)s' value has an invalid format. It must be in HH:MM[:ss[.uuuuuu]] "
+"format."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:2177
+#, python-format
+msgid ""
+"'%(value)s' value has the correct format (HH:MM[:ss[.uuuuuu]]) but it is an "
+"invalid time."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:2180
+msgid "Time"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:2331
+msgid "Raw binary data"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/__init__.py:2375
+#, python-format
+msgid "'%(value)s' is not a valid UUID."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/files.py:239
+msgid "File"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/related.py:1807
+#, python-format
+msgid "%(model)s instance with %(field)s %(value)r does not exist."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/related.py:1809
+msgid "Foreign Key (type determined by related field)"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/related.py:2039
+msgid "One-to-one relationship"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/db/models/fields/related.py:2129
+msgid "Many-to-many relationship"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/forms/fields.py:64
+msgid "This field is required."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/forms/fields.py:237
+msgid "Enter a whole number."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/forms/fields.py:280
+#: parsifal/lib/python2.7/site-packages/django/forms/fields.py:317
+msgid "Enter a number."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/forms/fields.py:319
+#, python-format
+msgid "Ensure that there are no more than %(max)s digit in total."
+msgid_plural "Ensure that there are no more than %(max)s digits in total."
+msgstr[0] ""
+msgstr[1] ""
+
+#: parsifal/lib/python2.7/site-packages/django/forms/fields.py:323
+#, python-format
+msgid "Ensure that there are no more than %(max)s decimal place."
+msgid_plural "Ensure that there are no more than %(max)s decimal places."
+msgstr[0] ""
+msgstr[1] ""
+
+#: parsifal/lib/python2.7/site-packages/django/forms/fields.py:327
+#, python-format
+msgid ""
+"Ensure that there are no more than %(max)s digit before the decimal point."
+msgid_plural ""
+"Ensure that there are no more than %(max)s digits before the decimal point."
+msgstr[0] ""
+msgstr[1] ""
+
+#: parsifal/lib/python2.7/site-packages/django/forms/fields.py:438
+#: parsifal/lib/python2.7/site-packages/django/forms/fields.py:1193
+msgid "Enter a valid date."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/forms/fields.py:462
+#: parsifal/lib/python2.7/site-packages/django/forms/fields.py:1194
+msgid "Enter a valid time."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/forms/fields.py:484
+msgid "Enter a valid date/time."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/forms/fields.py:525
+msgid "Enter a valid duration."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/forms/fields.py:591
+msgid "No file was submitted. Check the encoding type on the form."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/forms/fields.py:592
+msgid "No file was submitted."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/forms/fields.py:593
+msgid "The submitted file is empty."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/forms/fields.py:595
+#, python-format
+msgid "Ensure this filename has at most %(max)d character (it has %(length)d)."
+msgid_plural ""
+"Ensure this filename has at most %(max)d characters (it has %(length)d)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: parsifal/lib/python2.7/site-packages/django/forms/fields.py:598
+msgid "Please either submit a file or check the clear checkbox, not both."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/forms/fields.py:660
+msgid ""
+"Upload a valid image. The file you uploaded was either not an image or a "
+"corrupted image."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/forms/fields.py:827
+#: parsifal/lib/python2.7/site-packages/django/forms/fields.py:921
+#: parsifal/lib/python2.7/site-packages/django/forms/models.py:1238
+#, python-format
+msgid "Select a valid choice. %(value)s is not one of the available choices."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/forms/fields.py:922
+#: parsifal/lib/python2.7/site-packages/django/forms/fields.py:1037
+#: parsifal/lib/python2.7/site-packages/django/forms/models.py:1237
+msgid "Enter a list of values."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/forms/fields.py:1038
+msgid "Enter a complete value."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/forms/fields.py:1264
+msgid "Enter a valid UUID."
+msgstr ""
+
+#. Translators: This is the default suffix added to form field labels
+#: parsifal/lib/python2.7/site-packages/django/forms/forms.py:129
+msgid ":"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/forms/forms.py:214
+#, python-format
+msgid "(Hidden field %(name)s) %(error)s"
+msgstr ""
+
+#. Translators: If found as last label character, these punctuation
+#. characters will prevent the default label_suffix to be appended to the label
+#: parsifal/lib/python2.7/site-packages/django/forms/forms.py:659
+msgid ":?.!"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/forms/formsets.py:96
+msgid "ManagementForm data is missing or has been tampered with"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/forms/formsets.py:333
+#, python-format
+msgid "Please submit %d or fewer forms."
+msgid_plural "Please submit %d or fewer forms."
+msgstr[0] ""
+msgstr[1] ""
+
+#: parsifal/lib/python2.7/site-packages/django/forms/formsets.py:340
+#, python-format
+msgid "Please submit %d or more forms."
+msgid_plural "Please submit %d or more forms."
+msgstr[0] ""
+msgstr[1] ""
+
+#: parsifal/lib/python2.7/site-packages/django/forms/formsets.py:368
+#: parsifal/lib/python2.7/site-packages/django/forms/formsets.py:370
+msgid "Order"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/forms/formsets.py:372
+#: parsifal/reviews/settings/templates/settings/review_settings.html:70
+msgid "Delete"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/forms/models.py:716
+#, python-format
+msgid "Please correct the duplicate data for %(field)s."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/forms/models.py:720
+#, python-format
+msgid "Please correct the duplicate data for %(field)s, which must be unique."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/forms/models.py:726
+#, python-format
+msgid ""
+"Please correct the duplicate data for %(field_name)s which must be unique "
+"for the %(lookup)s in %(date_field)s."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/forms/models.py:734
+msgid "Please correct the duplicate values below."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/forms/models.py:1057
+msgid "The inline foreign key did not match the parent instance primary key."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/forms/models.py:1123
+msgid "Select a valid choice. That choice is not one of the available choices."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/forms/models.py:1240
+#, python-format
+msgid "\"%(pk)s\" is not a valid value for a primary key."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/forms/utils.py:165
+#, python-format
+msgid ""
+"%(datetime)s couldn't be interpreted in time zone %(current_timezone)s; it "
+"may be ambiguous or it may not exist."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/forms/widgets.py:345
+msgid "Currently"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/forms/widgets.py:346
+msgid "Change"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/forms/widgets.py:347
+msgid "Clear"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/forms/widgets.py:555
+msgid "Unknown"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/forms/widgets.py:556
+#: parsifal/reviews/models.py:495
+msgid "Yes"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/forms/widgets.py:557
+#: parsifal/reviews/models.py:497
+msgid "No"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/template/defaultfilters.py:865
+msgid "yes,no,maybe"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/template/defaultfilters.py:894
+#: parsifal/lib/python2.7/site-packages/django/template/defaultfilters.py:906
+#, python-format
+msgid "%(size)d byte"
+msgid_plural "%(size)d bytes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: parsifal/lib/python2.7/site-packages/django/template/defaultfilters.py:908
+#, python-format
+msgid "%s KB"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/template/defaultfilters.py:910
+#, python-format
+msgid "%s MB"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/template/defaultfilters.py:912
+#, python-format
+msgid "%s GB"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/template/defaultfilters.py:914
+#, python-format
+msgid "%s TB"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/template/defaultfilters.py:916
+#, python-format
+msgid "%s PB"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dateformat.py:61
+msgid "p.m."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dateformat.py:62
+msgid "a.m."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dateformat.py:67
+msgid "PM"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dateformat.py:68
+msgid "AM"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dateformat.py:151
+msgid "midnight"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dateformat.py:153
+msgid "noon"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:6
+msgid "Monday"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:6
+msgid "Tuesday"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:6
+msgid "Wednesday"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:6
+msgid "Thursday"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:6
+msgid "Friday"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:7
+msgid "Saturday"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:7
+msgid "Sunday"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:10
+msgid "Mon"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:10
+msgid "Tue"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:10
+msgid "Wed"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:10
+msgid "Thu"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:10
+msgid "Fri"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:11
+msgid "Sat"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:11
+msgid "Sun"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:18
+msgid "January"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:18
+msgid "February"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:18
+msgid "March"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:18
+msgid "April"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:18
+msgid "May"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:18
+msgid "June"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:19
+msgid "July"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:19
+msgid "August"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:19
+msgid "September"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:19
+msgid "October"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:19
+msgid "November"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:20
+msgid "December"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:23
+msgid "jan"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:23
+msgid "feb"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:23
+msgid "mar"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:23
+msgid "apr"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:23
+msgid "may"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:23
+msgid "jun"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:24
+msgid "jul"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:24
+msgid "aug"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:24
+msgid "sep"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:24
+msgid "oct"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:24
+msgid "nov"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:24
+msgid "dec"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:31
+msgctxt "abbrev. month"
+msgid "Jan."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:32
+msgctxt "abbrev. month"
+msgid "Feb."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:33
+msgctxt "abbrev. month"
+msgid "March"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:34
+msgctxt "abbrev. month"
+msgid "April"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:35
+msgctxt "abbrev. month"
+msgid "May"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:36
+msgctxt "abbrev. month"
+msgid "June"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:37
+msgctxt "abbrev. month"
+msgid "July"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:38
+msgctxt "abbrev. month"
+msgid "Aug."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:39
+msgctxt "abbrev. month"
+msgid "Sept."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:40
+msgctxt "abbrev. month"
+msgid "Oct."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:41
+msgctxt "abbrev. month"
+msgid "Nov."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:42
+msgctxt "abbrev. month"
+msgid "Dec."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:45
+msgctxt "alt. month"
+msgid "January"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:46
+msgctxt "alt. month"
+msgid "February"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:47
+msgctxt "alt. month"
+msgid "March"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:48
+msgctxt "alt. month"
+msgid "April"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:49
+msgctxt "alt. month"
+msgid "May"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:50
+msgctxt "alt. month"
+msgid "June"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:51
+msgctxt "alt. month"
+msgid "July"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:52
+msgctxt "alt. month"
+msgid "August"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:53
+msgctxt "alt. month"
+msgid "September"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:54
+msgctxt "alt. month"
+msgid "October"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:55
+msgctxt "alt. month"
+msgid "November"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/dates.py:56
+msgctxt "alt. month"
+msgid "December"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/ipv6.py:10
+msgid "This is not a valid IPv6 address."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/text.py:79
+#, python-format
+msgctxt "String to return when truncating text"
+msgid "%(truncated_text)s..."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/text.py:248
+msgid "or"
+msgstr ""
+
+#. Translators: This string is used as a separator between list elements
+#: parsifal/lib/python2.7/site-packages/django/utils/text.py:267
+#: parsifal/lib/python2.7/site-packages/django/utils/timesince.py:58
+msgid ", "
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/timesince.py:10
+#, python-format
+msgid "%d year"
+msgid_plural "%d years"
+msgstr[0] ""
+msgstr[1] ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/timesince.py:11
+#, python-format
+msgid "%d month"
+msgid_plural "%d months"
+msgstr[0] ""
+msgstr[1] ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/timesince.py:12
+#, python-format
+msgid "%d week"
+msgid_plural "%d weeks"
+msgstr[0] ""
+msgstr[1] ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/timesince.py:13
+#, python-format
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/timesince.py:14
+#, python-format
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] ""
+msgstr[1] ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/timesince.py:15
+#, python-format
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: parsifal/lib/python2.7/site-packages/django/utils/timesince.py:47
+msgid "0 minutes"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/views/csrf.py:107
+msgid "Forbidden"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/views/csrf.py:108
+msgid "CSRF verification failed. Request aborted."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/views/csrf.py:112
+msgid ""
+"You are seeing this message because this HTTPS site requires a 'Referer "
+"header' to be sent by your Web browser, but none was sent. This header is "
+"required for security reasons, to ensure that your browser is not being "
+"hijacked by third parties."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/views/csrf.py:117
+msgid ""
+"If you have configured your browser to disable 'Referer' headers, please re-"
+"enable them, at least for this site, or for HTTPS connections, or for 'same-"
+"origin' requests."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/views/csrf.py:122
+msgid ""
+"You are seeing this message because this site requires a CSRF cookie when "
+"submitting forms. This cookie is required for security reasons, to ensure "
+"that your browser is not being hijacked by third parties."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/views/csrf.py:127
+msgid ""
+"If you have configured your browser to disable cookies, please re-enable "
+"them, at least for this site, or for 'same-origin' requests."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/views/csrf.py:132
+msgid "More information is available with DEBUG=True."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/views/debug.py:583
+msgid "Welcome to Django"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/views/debug.py:584
+msgid "It worked!"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/views/debug.py:585
+msgid "Congratulations on your first Django-powered page."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/views/debug.py:586
+msgid ""
+"Of course, you haven't actually done any work yet. Next, start your first "
+"app by running <code>python manage.py startapp [app_label]</code>."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/views/debug.py:588
+msgid ""
+"You're seeing this message because you have <code>DEBUG = True</code> in "
+"your Django settings file and you haven't configured any URLs. Get to work!"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/views/generic/dates.py:48
+msgid "No year specified"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/views/generic/dates.py:104
+msgid "No month specified"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/views/generic/dates.py:163
+msgid "No day specified"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/views/generic/dates.py:219
+msgid "No week specified"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/views/generic/dates.py:378
+#: parsifal/lib/python2.7/site-packages/django/views/generic/dates.py:406
+#, python-format
+msgid "No %(verbose_name_plural)s available"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/views/generic/dates.py:660
+#, python-format
+msgid ""
+"Future %(verbose_name_plural)s not available because %(class_name)s."
+"allow_future is False."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/views/generic/dates.py:694
+#, python-format
+msgid "Invalid date string '%(datestr)s' given format '%(format)s'"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/views/generic/detail.py:55
+#, python-format
+msgid "No %(verbose_name)s found matching the query"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/views/generic/list.py:76
+msgid "Page is not 'last', nor can it be converted to an int."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/views/generic/list.py:81
+#, python-format
+msgid "Invalid page (%(page_number)s): %(message)s"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/views/generic/list.py:172
+#, python-format
+msgid "Empty list and '%(class_name)s.allow_empty' is False."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/views/static.py:58
+msgid "Directory indexes are not allowed here."
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/views/static.py:60
+#, python-format
+msgid "\"%(path)s\" does not exist"
+msgstr ""
+
+#: parsifal/lib/python2.7/site-packages/django/views/static.py:100
+#, python-format
+msgid "Index of %(directory)s"
+msgstr ""
+
+#: parsifal/local/settings.py:32 parsifal/settings.py:32
+msgid "Português"
+msgstr ""
+
+#: parsifal/local/settings.py:33 parsifal/settings.py:33
+msgid "English"
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/conducting.html:5
@@ -677,7 +1753,7 @@ msgid "Done"
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_data_extraction.html:30
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:39
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:42
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_quality_assessment_detailed.html:15
 msgid "All"
 msgstr ""
@@ -753,6 +1829,7 @@ msgstr ""
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:25
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:44
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:110
+#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:97
 msgid "planning tab"
 msgstr ""
 
@@ -819,6 +1896,7 @@ msgid "Select Sources"
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:44
+#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:97
 msgid "Showing the available sources from you Protocol, defined in the "
 msgstr ""
 
@@ -987,8 +2065,8 @@ msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:252
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:352
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:47
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:67
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:50
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:70
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_find_duplicates.html:12
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_quality_assessment_detailed.html:8
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_quality_assessment_detailed.html:9
@@ -1010,8 +2088,8 @@ msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:254
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:354
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:55
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:70
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:58
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:73
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_find_duplicates.html:14
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_quality_assessment_detailed.html:10
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_quality_assessment_detailed.html:11
@@ -1020,8 +2098,8 @@ msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:255
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:355
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:75
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:69
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:78
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:72
 msgid "Journal"
 msgstr ""
 
@@ -1112,8 +2190,8 @@ msgid ""
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/partial_article_conflict.html:9
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:59
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:68
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:62
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:71
 #: parsifal/reviews/planning/templates/planning/data_extraction_form.html:76
 #: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:177
 #: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:203
@@ -1152,7 +2230,7 @@ msgid "Selection Criteria"
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/partial_article_evaluation.html:19
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:25
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:28
 #: parsifal/reviews/planning/templates/planning/partial_data_extraction_field_form.html:10
 msgid "Select..."
 msgstr ""
@@ -1193,169 +2271,173 @@ msgstr ""
 msgid "removing..."
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:20
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:23
 #: parsifal/reviews/templates/reviews/partial_modal_confirm_import_protocol.html:22
 #: parsifal/reviews/templates/reviews/partial_published_protocols.html:24
 msgid "Details"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:23
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:26
 msgid "Evaluation"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:26
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:29
 msgid "Files"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:30
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:57
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:33
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:60
 #: parsifal/reviews/models.py:356
 msgid "Conflict"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:35
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:38
 msgid "Change the URL via Article URL"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:38
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:41
 msgid "External Link"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:51
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:54
 msgid "Abstract"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:63
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:66
 msgid "Keywords"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:67
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:70
 msgid "Author Keywords"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:71
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:74
 msgid "BibTex Key"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:79
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:82
 msgid "Document Type"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:83
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:86
 msgid "Pages"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:87
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:90
 msgid "Volume"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:99
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:102
 msgid "Affiliation"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:103
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:106
 msgid "Publisher"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:111
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:114
 msgid "Language"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:115
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:118
 msgid "Note"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:10
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:13
 msgid "Find Duplicates"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:17
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:20
 msgid "Export Articles"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:23
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:26
 msgid "Action:"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:26
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:29
 msgid "Remove selected"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:27
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:30
 msgid "Mark as accepted"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:28
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:31
 msgid "Mark as rejected"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:29
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:32
 msgid "Mark as duplicated"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:30
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:33
 msgid "Mark as waiting"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:31
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:34
 msgid "Mark as conflict"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:33
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:36
 msgid "Run"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:34
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:37
 msgid "of"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:34
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:37
 msgid "selected"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:37
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:40
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_quality_assessment_detailed.html:14
 msgid "Show"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:42
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:45
 #: parsifal/reviews/models.py:331 parsifal/reviews/models.py:354
+#: parsifal/reviews/models.py:437
 msgid "Accepted"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:45
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:48
 #: parsifal/reviews/models.py:330 parsifal/reviews/models.py:353
+#: parsifal/reviews/models.py:436
 msgid "Rejected"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:48
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:51
 #: parsifal/reviews/models.py:329 parsifal/reviews/models.py:351
+#: parsifal/reviews/models.py:435
 msgid "Unclassified"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:51
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:54
 #: parsifal/reviews/models.py:332 parsifal/reviews/models.py:355
+#: parsifal/reviews/models.py:438
 msgid "Duplicated"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:54
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:57
 #: parsifal/reviews/models.py:352
 msgid "Waiting"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:66
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:69
 msgid "Bibtex Key"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:71
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:74
 msgid "Added by"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:72
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:75
 msgid "Added at"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:91
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:94
 msgid "No articles."
 msgstr ""
 
@@ -1460,6 +2542,58 @@ msgstr ""
 msgid "Exclusion"
 msgstr ""
 
+#: parsifal/reviews/models.py:466
+#: parsifal/reviews/planning/templates/planning/protocol.html:164
+#: parsifal/reviews/templates/reviews/partial_published_protocols.html:83
+msgid "Population"
+msgstr ""
+
+#: parsifal/reviews/models.py:467
+#: parsifal/reviews/planning/templates/planning/protocol.html:170
+#: parsifal/reviews/templates/reviews/partial_published_protocols.html:87
+msgid "Intervention"
+msgstr ""
+
+#: parsifal/reviews/models.py:468
+#: parsifal/reviews/planning/templates/planning/protocol.html:176
+#: parsifal/reviews/templates/reviews/partial_published_protocols.html:91
+msgid "Comparison"
+msgstr ""
+
+#: parsifal/reviews/models.py:469
+#: parsifal/reviews/planning/templates/planning/protocol.html:182
+#: parsifal/reviews/planning/templates/planning/protocol.html:328
+#: parsifal/reviews/templates/reviews/partial_published_protocols.html:95
+msgid "Outcome"
+msgstr ""
+
+#: parsifal/reviews/models.py:496
+msgid "Partially"
+msgstr ""
+
+#: parsifal/reviews/models.py:596
+msgid "Expected values: \"True\" or \"False\""
+msgstr ""
+
+#: parsifal/reviews/models.py:614 parsifal/reviews/models.py:624
+#: parsifal/reviews/models.py:634
+msgid "Invalid input for "
+msgstr ""
+
+#: parsifal/reviews/models.py:614
+msgid ""
+" field. Expected value: floating point number. Please use dot instead of "
+"comma."
+msgstr ""
+
+#: parsifal/reviews/models.py:624
+msgid " field. Expected value: integer number."
+msgstr ""
+
+#: parsifal/reviews/models.py:634
+msgid " field. Expected value: date. Please use the format MM/DD/YYYY."
+msgstr ""
+
 #: parsifal/reviews/planning/forms.py:21
 #: parsifal/reviews/planning/templates/planning/protocol.html:362
 #: parsifal/reviews/templates/reviews/partial_published_protocols.html:131
@@ -1534,23 +2668,23 @@ msgid "Review"
 msgstr "Nova ??"
 
 #: parsifal/reviews/planning/templates/planning/data_extraction_form.html:93
-#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:109
+#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:112
 msgid "Export Data Extraction Fields"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:97
+#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:100
 msgid ""
 "Your Data Extraction Fields are already shared. Do you wanna make it private "
 "again?"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:99
+#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:102
 msgid ""
 "If you agree, your Data Extraction Fields will be made known to other "
 "researchers to use them"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:107
+#: parsifal/reviews/planning/templates/planning/data_extraction_form.html:110
 msgid "Hide Data Extraction Fields"
 msgstr ""
 
@@ -1828,27 +2962,6 @@ msgstr ""
 msgid ""
 "If any of the sections of PICOC does not apply to your research, please "
 "leave it blank."
-msgstr ""
-
-#: parsifal/reviews/planning/templates/planning/protocol.html:164
-#: parsifal/reviews/templates/reviews/partial_published_protocols.html:83
-msgid "Population"
-msgstr ""
-
-#: parsifal/reviews/planning/templates/planning/protocol.html:170
-#: parsifal/reviews/templates/reviews/partial_published_protocols.html:87
-msgid "Intervention"
-msgstr ""
-
-#: parsifal/reviews/planning/templates/planning/protocol.html:176
-#: parsifal/reviews/templates/reviews/partial_published_protocols.html:91
-msgid "Comparison"
-msgstr ""
-
-#: parsifal/reviews/planning/templates/planning/protocol.html:182
-#: parsifal/reviews/planning/templates/planning/protocol.html:328
-#: parsifal/reviews/templates/reviews/partial_published_protocols.html:95
-msgid "Outcome"
 msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:188
@@ -2267,6 +3380,14 @@ msgstr ""
 msgid "Description and Type are required fields."
 msgstr ""
 
+#: parsifal/reviews/planning/views.py:1046
+msgid "Data Extraction Fields has been shared!"
+msgstr ""
+
+#: parsifal/reviews/planning/views.py:1048
+msgid "Data Extraction Fields has been made private again!"
+msgstr ""
+
 #: parsifal/reviews/reporting/templates/reporting/export.html:37
 msgid "Download a Report"
 msgstr ""
@@ -2327,10 +3448,6 @@ msgstr ""
 
 #: parsifal/reviews/settings/templates/settings/review_settings.html:67
 msgid "Transfer this review to another user."
-msgstr ""
-
-#: parsifal/reviews/settings/templates/settings/review_settings.html:70
-msgid "Delete"
 msgstr ""
 
 #: parsifal/reviews/settings/templates/settings/review_settings.html:71
@@ -2426,6 +3543,13 @@ msgstr ""
 #: parsifal/reviews/settings/views.py:93
 msgid "The review was deleted successfully."
 msgstr ""
+
+#: parsifal/reviews/templates/reviews/explorer.html:19
+#: parsifal/templates/includes/header.html:26
+#, fuzzy
+#| msgid "New review"
+msgid "Search Reviews"
+msgstr "Nova ??"
 
 #: parsifal/reviews/templates/reviews/new.html:23
 #, fuzzy
@@ -2577,8 +3701,7 @@ msgid "Joined on"
 msgstr ""
 
 #: parsifal/reviews/templates/reviews/reviews.html:86
-#: parsifal/templates/includes/header-clear.html:103
-#: parsifal/templates/includes/header.html:114
+#: parsifal/templates/includes/header.html:121
 msgid "New review"
 msgstr "Nova ??"
 
@@ -2630,6 +3753,11 @@ msgstr ""
 msgid "The visitor {0} were added successfully."
 msgstr ""
 
+#: parsifal/reviews/views.py:245
+#, python-brace-format
+msgid "You successfully left the review {0}."
+msgstr ""
+
 #: parsifal/reviews/views.py:256
 #, python-format
 msgid ""
@@ -2641,36 +3769,31 @@ msgstr ""
 msgid "Your review has been saved successfully!"
 msgstr ""
 
-#: parsifal/settings.py:32
-msgid "Português"
-msgstr ""
-
-#: parsifal/settings.py:33
-msgid "English"
-msgstr ""
-
-#: parsifal/templates/includes/header-clear.html:10
 #: parsifal/templates/includes/header.html:10
 msgid "Toggle navigation"
 msgstr ""
 
-#: parsifal/templates/includes/header-clear.html:26
-#: parsifal/templates/includes/header.html:26
+#: parsifal/templates/includes/header.html:21
+msgid "Explorer"
+msgstr ""
+
+#: parsifal/templates/includes/header.html:22
+msgid "Researchers"
+msgstr ""
+
+#: parsifal/templates/includes/header.html:42
 msgid "My profile"
 msgstr ""
 
-#: parsifal/templates/includes/header-clear.html:50
-#: parsifal/templates/includes/header.html:50
+#: parsifal/templates/includes/header.html:66
 msgid "Sign out"
 msgstr ""
 
-#: parsifal/templates/includes/header-clear.html:93
-#: parsifal/templates/includes/header.html:102
+#: parsifal/templates/includes/header.html:109
 msgid "followings"
 msgstr ""
 
-#: parsifal/templates/includes/header-clear.html:101
-#: parsifal/templates/includes/header.html:112
+#: parsifal/templates/includes/header.html:119
 msgid ""
 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lacinia "
 "sagittis pharetra. Sed dapibus, erat ac fringilla pellentesque, lectim "
