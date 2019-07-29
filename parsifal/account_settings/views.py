@@ -96,9 +96,9 @@ def upload_picture(request):
                 im.save(filename)
             return redirect('/settings/picture/?upload_picture=uploaded')
         else:
-            messages.error(request, u'Invalid file format.')
+            messages.error(request, _('Invalid file format.'))
     except Exception, e:
-        messages.error(request, u'An expected error occurred.')
+        messages.error(request, _('An expected error occurred.') + str(e))
     return redirect('/settings/picture/')
 
 

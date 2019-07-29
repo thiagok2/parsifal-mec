@@ -9,7 +9,7 @@ a:hover{
 
 
 header .navbar2{
-	background-image: linear-gradient(black, #233744, #233744 );
+	background-image: linear-gradient(black, #001a35, #001F3F );
 	border-bottom: none;
 	color: white;
 }
@@ -74,6 +74,7 @@ h1 {
 footer {
     padding: 10px 0;
    	background: linear-gradient(black, #233744, #233744 );
+   	background-image: linear-gradient(#001F3F, #001a35, ,black );
     color: white;
 
 }
