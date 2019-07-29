@@ -432,10 +432,10 @@ class ArticleEvaluation(models.Model):
     ACCEPTED = u'A'
     DUPLICATED = u'D'
     ARTICLE_STATUS = (
-        (UNCLASSIFIED, u'Unclassified'),
-        (REJECTED, u'Rejected'),
-        (ACCEPTED, u'Accepted'),
-        (DUPLICATED, u'Duplicated'),
+        (UNCLASSIFIED, _('Unclassified')),
+        (REJECTED, _('Rejected')),
+        (ACCEPTED, _('Accepted')),
+        (DUPLICATED, _('Duplicated')),
         )
 
     review = models.ForeignKey(Review, related_name='evaluation_review')
@@ -463,10 +463,10 @@ class Keyword(models.Model):
     COMPARISON = u'C'
     OUTCOME = u'O'
     RELATED_TO = (
-        (POPULATION, u'Population'),
-        (INTERVENTION, u'Intervention'),
-        (COMPARISON, u'Comparison'),
-        (OUTCOME, u'Outcome'),
+        (POPULATION, _('Population')),
+        (INTERVENTION, _('Intervention')),
+        (COMPARISON, _('Comparison')),
+        (OUTCOME, _('Outcome')),
         )
 
     review = models.ForeignKey(Review, related_name='keywords')
@@ -492,9 +492,9 @@ class Keyword(models.Model):
 
 class QualityAnswer(models.Model):
     SUGGESTED_ANSWERS = (
-        ('Yes', 1.0),
-        ('Partially', 0.5),
-        ('No', 0.0)
+        (_('Yes'), 1.0),
+        (_('Partially'), 0.5),
+        (_('No'), 0.0)
         )
 
     review = models.ForeignKey(Review)
@@ -593,7 +593,7 @@ class DataExtraction(models.Model):
             if value in ['True', 'False']:
                 self.value = value
             else:
-                raise ValueError('Expected values: "True" or "False"')
+                raise ValueError(_('Expected values: "True" or "False"'))
         else:
             self.value = ''
 
@@ -611,7 +611,7 @@ class DataExtraction(models.Model):
             else:
                 self.value = ''
         except:
-            raise Exception('Invalid input for ' + self.field.description + ' field. Expected value: floating point number. Please use dot instead of comma.')
+            raise Exception(_('Invalid input for ') + self.field.description + _(' field. Expected value: floating point number. Please use dot instead of comma.'))
 
     def _set_integer_value(self, value):
         try:
@@ -621,7 +621,7 @@ class DataExtraction(models.Model):
             else:
                 self.value = ''
         except:
-            raise Exception('Invalid input for ' + self.field.description + ' field. Expected value: integer number.')
+            raise Exception(_('Invalid input for ') + self.field.description + _(' field. Expected value: integer number.'))
 
     def _set_date_value(self, value):
         try:
@@ -631,7 +631,7 @@ class DataExtraction(models.Model):
             else:
                 self.value = ''
         except:
-            raise Exception('Invalid input for ' + self.field.description + ' field. Expected value: date. Please use the format MM/DD/YYYY.')
+            raise Exception(_('Invalid input for ') + self.field.description + _(' field. Expected value: date. Please use the format MM/DD/YYYY.'))
 
     def _set_select_one_value(self, value):
         try:

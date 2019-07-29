@@ -255,13 +255,13 @@ $(function () {
           $("#modal-article .modal-body").loadActiveArticle();
         }
         else {
-          $("#modal-article .alert .modal-alert").text("Article successfully saved!");
+          $("#modal-article .alert .modal-alert").text("Artigo salvo com sucesso!");
           $("#modal-article .alert").removeClass("alert-error").addClass("alert-success");
           $("#modal-article .alert").removeClass("hide");
         }
       },
       error: function () {
-          $("#modal-article .alert .modal-alert").text("Something went wrong! That's all we know :(");
+          $("#modal-article .alert .modal-alert").text("Algo deu errado! Isso é tudo que sabemos :(");
           $("#modal-article .alert").removeClass("alert-success").addClass("alert-error");
           $("#modal-article .alert").removeClass("hide");
       },
@@ -506,7 +506,7 @@ $(function () {
         $(btn).text("Resolving...");
       },
       success: function (data) {
-        $("span", row).replaceWith("<span class='label label-warning'>Duplicated</span>");
+        $("span", row).replaceWith("<span class='label label-warning'>Duplicado</span>");
         $(btn).text("Resolved");
         $(row).attr("resolved", "true");
         var duplicates = $("#modal-duplicates .modal-body tr[duplicate=" + duplicate + "]");
@@ -520,7 +520,7 @@ $(function () {
 
         var article_row = $(".source-tab-content .source-articles tr[oid=" + article_id + "]");
         $(article_row).attr("article-status", "D");
-        $("span", article_row).replaceWith("<span class=\"label label-warning\">Duplicated</span>");
+        $("span", article_row).replaceWith("<span class=\"label label-warning\">Duplicado</span>");
       },
       error: function () {
         $(btn).prop("disabled", false);
@@ -554,7 +554,7 @@ $(function () {
           for (var i = ids.length - 1; i >= 0; i--) {
             var article_row = $(".source-tab-content .source-articles tr[oid=" + ids[i] + "]");
             $(article_row).attr("article-status", "D");
-            $("span", article_row).replaceWith("<span class=\"label label-warning\">Duplicated</span>");
+            $("span", article_row).replaceWith("<span class=\"label label-warning\">Duplicado</span>");
           };
         }
       },

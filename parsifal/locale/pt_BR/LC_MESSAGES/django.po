@@ -53,14 +53,10 @@ msgid "Old Password"
 msgstr "Senha Antiga"
 
 #: parsifal/account_settings/forms.py:49
-#, fuzzy
-#| msgid "New password1"
 msgid "New password"
 msgstr "Nova Senha"
 
 #: parsifal/account_settings/forms.py:50
-#, fuzzy
-#| msgid "Forgot your password?"
 msgid "Confirm password"
 msgstr "Confirme a Senha"
 
@@ -273,10 +269,8 @@ msgid "isn't following anybody."
 msgstr "não está seguindo ninguém."
 
 #: parsifal/activities/views.py:60
-#, fuzzy
-#| msgid "followings"
 msgid "following"
-msgstr "Seguidores"
+msgstr "Segue"
 
 #: parsifal/activities/views.py:76
 #: parsifal/templates/includes/header-clear.html:92
@@ -1283,8 +1277,6 @@ msgid "Details"
 msgstr "Detalhes"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:23
-#, fuzzy
-#| msgid "application:"
 msgid "Evaluation"
 msgstr "Avaliação"
 
@@ -2828,10 +2820,8 @@ msgid "Português"
 msgstr ""
 
 #: parsifal/settings.py:33
-#, fuzzy
-#| msgid "Unpublish"
 msgid "English"
-msgstr "Despublicar"
+msgstr "Inglês"
 
 #: parsifal/templates/includes/header-clear.html:10
 #: parsifal/templates/includes/header.html:10
