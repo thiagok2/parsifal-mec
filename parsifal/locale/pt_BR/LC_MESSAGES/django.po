@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-31 01:20+0000\n"
+"POT-Creation-Date: 2019-07-31 01:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2595,10 +2595,9 @@ msgstr "Pontuações de Avaliação"
 
 #: parsifal/reviews/conducting/views.py:99
 #: parsifal/reviews/conducting/views.py:101
-#, fuzzy, python-brace-format
-#| msgid "{0} were invited successfully."
+#, python-brace-format
 msgid "{0} search string removed successfully!"
-msgstr "{0} foram convidados com sucesso."
+msgstr "{0} string de busca removida com sucesso."
 
 #: parsifal/reviews/conducting/views.py:139
 msgid ""
@@ -2622,49 +2621,40 @@ msgstr "Importar Estudos"
 
 #: parsifal/reviews/conducting/views.py:248
 #: parsifal/reviews/conducting/views.py:391
-#, fuzzy
-#| msgid "Use the <a href=\"{%% url "
 msgid "Use the <a href=\"/"
-msgstr "Use o <a href=\"{%% url "
+msgstr "Use o <a href=\"/"
 
 #: parsifal/reviews/conducting/views.py:249
 #: parsifal/reviews/conducting/views.py:392
-#, fuzzy
-#| msgid "Import the studies using the"
 msgid "Import the studies using the <a href=\"/"
-msgstr "Importar estudos usando o(a) "
+msgstr "Importar os estudos usando o <a href=\"/"
 
 #: parsifal/reviews/conducting/views.py:250
 #: parsifal/reviews/conducting/views.py:393
-#, fuzzy
-#| msgid "Import the studies using the"
 msgid "Classify the imported studies using the <a href=\"/"
-msgstr "Importar estudos usando o(a) "
+msgstr "Classifique os estudos importados usando o <a href=\"/"
 
 #: parsifal/reviews/conducting/views.py:251
-#, fuzzy
-#| msgid "Import Quality Assessment Questions"
 msgid "Create quality assessment questions using the <a href=\"/"
-msgstr "Importar Questões de Avaliação de Qualidade"
+msgstr "Crie perguntas de avaliação de qualidade usando o <a href=\"/"
 
 #: parsifal/reviews/conducting/views.py:252
 msgid "Create quality assessment answers using the <a href=\"/"
-msgstr ""
+msgstr "Crie respostas de avaliação de qualidade usando o <a href=\"/"
 
 #: parsifal/reviews/conducting/views.py:394
-#, fuzzy
-#| msgid "Data Extraction Fields has been shared!"
 msgid "Create data extraction fields using the <a href=\"/"
-msgstr "Campos de Extração de Dados tem sido compartilhados."
+msgstr "Crie Campos de Extração de Dados usando <a href=\"/"
 
 #: parsifal/reviews/conducting/views.py:415
 msgid "<h3>Something went wrong while rendering the data extraction form.</h3>"
 msgstr ""
+"<h3>Algo deu errado ao renderizar o formulário de extração de dados.</h3>"
 
 #: parsifal/reviews/conducting/views.py:471
 #, python-brace-format
 msgid "{0} articles successfully imported to {1}!"
-msgstr ""
+msgstr "{0} artigos importados com sucesso para {1}!"
 
 #: parsifal/reviews/conducting/views.py:473
 #, python-brace-format
@@ -2672,14 +2662,16 @@ msgid ""
 "{0} articles could not be imported because of invalid format or invalid "
 "utf-8 string."
 msgstr ""
+"{0} artigos não puderam ser importados por causa de formato inválido ou "
+"inválido da string utf-8"
 
 #: parsifal/reviews/conducting/views.py:475
 msgid "The bibtex file had no valid entry!"
-msgstr ""
+msgstr "O arquivo bibtex não tinha entrada válida!"
 
 #: parsifal/reviews/conducting/views.py:499
 msgid "Invalid file type. Only .bib or .bibtex files are accepted."
-msgstr ""
+msgstr "Tipo de arquivo inválido. Apenas arquivos .bib ou .bibtex são aceitos."
 
 #: parsifal/reviews/forms.py:11
 msgid "Systematic literature review's title"
@@ -3830,13 +3822,15 @@ msgstr "Confirmar Importação"
 
 #: parsifal/reviews/templates/reviews/partial_modal_confirm_import_protocol.html:14
 msgid "Are you sure you want to import these sections of protocol "
-msgstr ""
+msgstr "Tem certeza de que deseja importar essas seções do protocolo?"
 
 #: parsifal/reviews/templates/reviews/partial_modal_confirm_import_protocol.html:15
 msgid ""
 "The selected sections will be populated by information from the selected "
 "protocol. All information already filled in will be overwritten."
 msgstr ""
+"As seções selecionadas serão preenchidas por informações dos selecionadas do "
+"protocolo. Todas as informações já preenchidas serão sobrescritas."
 
 #: parsifal/reviews/templates/reviews/partial_modal_confirm_import_protocol.html:32
 #: parsifal/reviews/templates/reviews/partial_published_protocols.html:26
@@ -3845,7 +3839,7 @@ msgstr ""
 
 #: parsifal/reviews/templates/reviews/partial_modal_confirm_import_protocol.html:49
 msgid "Clear all fields before import"
-msgstr ""
+msgstr "Limpar todos os campos antes de importar"
 
 #: parsifal/reviews/templates/reviews/partial_modal_confirm_import_protocol.html:62
 msgid "Import protocol for your review"
@@ -3994,11 +3988,12 @@ msgid "haven't published any systematic literature review yet."
 msgstr "Não há nenhuma revisão sistemática da literatura ainda."
 
 #: parsifal/reviews/views.py:108
-#, fuzzy, python-brace-format
-#| msgid "You don't have any systematic literature review yet."
+#, python-brace-format
 msgid ""
 "{0} wants to add you as co-author on the systematic literature review {1}"
-msgstr "Você não tem nenhum revisão sistemática da literatura ainda"
+msgstr ""
+"{0} quer adicionar você como co-autor na revisão sistemática da literatura "
+"{1}"
 
 #: parsifal/reviews/views.py:109 parsifal/reviews/views.py:159
 #, python-brace-format
@@ -4040,10 +4035,11 @@ msgid "{0} were invited successfully."
 msgstr "{0} foram convidados com sucesso."
 
 #: parsifal/reviews/views.py:158
-#, fuzzy, python-brace-format
-#| msgid "You don't have any systematic literature review yet."
+#, python-brace-format
 msgid "{0} wants to add you as visitor on the systematic literature review {1}"
-msgstr "Você não tem nenhum revisão sistemática da literatura ainda"
+msgstr ""
+"{0} quer adicionar você como visitante na revisão sistemática da literatura "
+"{1}"
 
 #: parsifal/reviews/views.py:161
 #, python-brace-format
