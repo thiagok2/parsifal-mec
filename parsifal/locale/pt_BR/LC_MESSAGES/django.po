@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-31 02:15+0000\n"
+"POT-Creation-Date: 2019-07-31 03:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -311,7 +311,7 @@ msgstr "Já existe um usuário com esse nome."
 
 #: parsifal/authentication/forms.py:35
 msgid "Confirm your password"
-msgstr "Confirmou sua senha?"
+msgstr "Confirme sua senha"
 
 #: parsifal/authentication/forms.py:54
 msgid "Passwords don't match"
@@ -2513,7 +2513,7 @@ msgstr "Não classificado"
 #: parsifal/reviews/models.py:341 parsifal/reviews/models.py:364
 #: parsifal/reviews/models.py:447
 msgid "Duplicated"
-msgstr "Duplicados"
+msgstr "Duplicado"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:57
 #: parsifal/reviews/models.py:361
@@ -2545,8 +2545,8 @@ msgid ""
 "<p>Click on <strong>Resolve Button</strong> to change the article status to "
 "<span class=\"label label-warning\">Duplicated</span></p>"
 msgstr ""
-"<p>Clique em <strong> Resolver botão </strong> para alterar o status do "
-"artigo para <span class=\"label label-warning \"> Duplicado </span> </p>"
+"<p>Clique em <strong> Resolver </strong> para alterar o status do artigo "
+"para <span class=\"label label-warning \"> Duplicado </span> </p>"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_find_duplicates.html:17
 msgid "Action"

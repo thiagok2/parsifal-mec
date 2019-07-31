@@ -131,7 +131,7 @@ def export_review_to_docx(review, sections):
             document.add_paragraph(quality_question.description, style='List Bullet')
 
         p = document.add_paragraph()
-        p.add_run('Answers:').bold = True
+        p.add_run(_('Answers:')).bold = True
         for quality_answer in review.get_quality_assessment_answers():
             document.add_paragraph(quality_answer.description, style='List Bullet')
 

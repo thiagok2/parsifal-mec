@@ -290,9 +290,9 @@ def build_data_extraction_field_row(article, field):
                 false = u' selected'
 
         str_field = u'''<select name="value" class="form-control">
-            <option value="">Select...</option>
-            <option value="True"{0}>True</option>
-            <option value="False"{1}>False</option>
+            <option value="">Selecione...</option>
+            <option value="True"{0}>Verdadeiro</option>
+            <option value="False"{1}>Falso</option>
           </select>'''.format(true, false)
 
     elif field.field_type == DataExtractionField.DATE_FIELD:
@@ -304,7 +304,7 @@ def build_data_extraction_field_row(article, field):
 
     elif field.field_type == DataExtractionField.SELECT_ONE_FIELD:
         str_field = u'''<select name="{0}-{1}-value" class="form-control">
-            <option value="">Select...</option>'''.format(article.id, field.id)
+            <option value="">Selecione...</option>'''.format(article.id, field.id)
         for value in field.get_select_values():
             if extraction != None and extraction.get_value() != None and extraction.get_value().id == value.id:
                 selected = ' selected'

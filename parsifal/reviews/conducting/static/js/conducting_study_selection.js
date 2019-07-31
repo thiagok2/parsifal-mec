@@ -507,14 +507,14 @@ $(function () {
       },
       success: function (data) {
         $("span", row).replaceWith("<span class='label label-warning'>Duplicado</span>");
-        $(btn).text("Resolved");
+        $(btn).text("Resolvido");
         $(row).attr("resolved", "true");
         var duplicates = $("#modal-duplicates .modal-body tr[duplicate=" + duplicate + "]");
         var duplicates_resolved = $("#modal-duplicates .modal-body tr[duplicate=" + duplicate + "][resolved=true]");
 
         if (duplicates.length - duplicates_resolved.length == 1) {
           var btn_resolved = $("#modal-duplicates .modal-body tr[duplicate=" + duplicate + "][resolved=false] button");
-          $(btn_resolved).text("Resolved");
+          $(btn_resolved).text("Resolvido");
           $(btn_resolved).prop("disabled", true);
         }
 
@@ -549,7 +549,7 @@ $(function () {
         if (data != "") {
           var btn_modal = $("#modal-duplicates table tbody tr td button");
           $(btn_modal).prop("disabled", true);
-          $(btn_modal).text("Resolved");
+          $(btn_modal).text("Resolvido");
           var ids = data.split(",");
           for (var i = ids.length - 1; i >= 0; i--) {
             var article_row = $(".source-tab-content .source-articles tr[oid=" + ids[i] + "]");
@@ -560,7 +560,7 @@ $(function () {
       },
       complete: function () {
         $(btn).prop("disabled", false);
-        $(btn).text("Resolve All");
+        $(btn).text("Resolver Todos");
       }
     });
   });
