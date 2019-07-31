@@ -8,8 +8,8 @@ function drawChartCallback() {
 
 function drawPieChart(rows) {
   var data = new google.visualization.DataTable();
-  data.addColumn('string', 'Source');
-  data.addColumn('number', 'Number of Aticles');
+  data.addColumn('string', 'Fontes');
+  data.addColumn('number', 'Número de Artigos');
   data.addRows(rows);
   var options = {'height': 400};
   var chart = new google.visualization.PieChart(document.getElementById('articles-selection-pie'));
@@ -19,7 +19,7 @@ function drawPieChart(rows) {
 function drawColumnChart(rows) {
   var data = google.visualization.arrayToDataTable(rows);
   var options = {
-    vAxis: {title: 'Number of Articles',  titleTextStyle: {color: '#3A3D40'}},
+    vAxis: {title: 'Número de Artigos',  titleTextStyle: {color: '#3A3D40'}},
     'height': 400
   };
   var chart = new google.visualization.ColumnChart(document.getElementById('articles-selection-column'));
@@ -29,7 +29,7 @@ function drawColumnChart(rows) {
 function drawLineChart(rows) {
   var data = google.visualization.arrayToDataTable(rows);
   var options = {
-    vAxis: {title: 'Number of Articles',  titleTextStyle: {color: '#3A3D40'}},
+    vAxis: {title: 'Número de Artigos',  titleTextStyle: {color: '#3A3D40'}},
     'height': 400
   };
   var chart = new google.visualization.LineChart(document.getElementById('articles-selection-line'));
@@ -49,7 +49,7 @@ function drawChart() {
     success: function (data) {
       var source_data = data.split(",");
       var rows_pie = [];
-      var rows_chart = [['Source', 'Selected', 'Accepted']];
+      var rows_chart = [['Fonte', 'Selecionado', 'Aceito']];
       for (var i = source_data.length - 1; i >= 0; i--) {
         row = source_data[i].split(":");
         rows_pie.push([row[0], parseInt(row[1])]);
@@ -76,7 +76,7 @@ function drawYearLines() {
     },
     success: function (data) {
       var source_data = data.split(",");
-      var rows = [['Year', 'Number of Articles']];
+      var rows = [['Ano', 'Número de Artigos']];
       for (var i = source_data.length - 1; i >= 0; i--) {
         row = source_data[i].split(":");
         rows.push([row[0], parseInt(row[1])]);
