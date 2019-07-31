@@ -616,6 +616,27 @@ def build_article_table_row(article):
     if article.created_at:
         date = article.created_at.strftime('%d %b %Y %H:%M:%S')
 
+#     row = u'''<tr oid="{0}" article-status="{1}">
+#             <td><input type="checkbox" value="{0}""></td>
+#             <td>{2}</td>
+#             <td>{3}</td>
+#             <td>{4}</td>
+#             <td>{5}</td>
+#             <td>{6}</td>
+#             <td>{7}</td>
+#             <td>{8}</td>
+#             <td>{9}</td>
+#           </tr>'''.format(article.id,
+#             article.status,
+#             escape(article.bibtex_key),
+#             escape(article.title),
+#             escape(article.author),
+#             escape(article.journal),
+#             escape(article.year),
+#             name,
+#             date,
+#             article.get_status_html())
+          
     row = u'''<tr oid="{0}" article-status="{1}">
             <td><input type="checkbox" value="{0}""></td>
             <td>{2}</td>
@@ -624,17 +645,13 @@ def build_article_table_row(article):
             <td>{5}</td>
             <td>{6}</td>
             <td>{7}</td>
-            <td>{8}</td>
-            <td>{9}</td>
           </tr>'''.format(article.id,
             article.status,
             escape(article.bibtex_key),
             escape(article.title),
-            escape(article.author),
             escape(article.journal),
             escape(article.year),
-            name,
-            date,
+            escape(article.abstract),
             article.get_status_html())
     return row
 

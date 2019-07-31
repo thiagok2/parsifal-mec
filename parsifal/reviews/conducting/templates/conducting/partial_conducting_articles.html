@@ -68,11 +68,12 @@
           <th style="width: 35px; text-align: center;"><input type="checkbox" id="ck-all-articles"></th>
           <th>{% trans 'Bibtex Key' %}</th>
           <th>{% trans 'Title' %}</th>
-          <th>{% trans 'Author' %}</th>
+          <!-- <th>{% trans 'Author' %}</th> -->
           <th>{% trans 'Journal' %}</th>
           <th style="min-width: 80px;">{% trans 'Year' %}</th>
-          <th style="min-width: 100px;">{% trans 'Added by' %}</th>
-          <th style="min-width: 100px;">{% trans 'Added at' %}</th>
+          <th>{% trans 'Abstract' %}</th>
+          <!-- <th style="min-width: 100px;">{% trans 'Added by' %}</th>-->
+          <!-- <th style="min-width: 100px;">{% trans 'Added at' %}</th>-->
           <th>Status</th>
         </tr>
       </thead>
@@ -82,11 +83,12 @@
             <td style="text-align: center;"><input type="checkbox" value="{{ article.id }}"></td>
             <td>{{ article.bibtex_key }}</td>
             <td>{{ article.title }}</td>
-            <td>{{ article.author }}</td>
+            <!--<td>{{ article.author }}</td>>-->
             <td>{{ article.journal }}</td>
             <td>{{ article.year }}</td>
-            <td>{{ article.created_by.profile.get_screen_name }}</td>
-            <td>{{ article.created_at|date:"d M Y H:i:s" }}</td>
+            <td style="text-align: justify;" class="text-muted">{{ article.abstract|default:"" }}</td>
+            <!--<td>{{ article.created_by.profile.get_screen_name }}</td>-->
+            <!--<td>{{ article.created_at|date:"d M Y H:i:s" }}</td>-->
             <td>{{ article.get_status_html|safe }}</td>
           </tr>
         {% empty %}
