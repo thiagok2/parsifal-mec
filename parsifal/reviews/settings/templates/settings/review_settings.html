@@ -120,7 +120,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="delete-review-title">Are you sure?</h4>
+            <h4 class="modal-title" id="delete-review-title">{% trans 'Are you sure?' %}</h4>
           </div>
           <div class="modal-body">
             <p>{% trans 'This action <strong>CANNOT</strong> be undone. This will permanently delete the' %} <strong>{{ review.title }}</strong> {% trans 'review and all associated data.' %}</p>
@@ -146,7 +146,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="delete-review-title">Are you sure?</h4>
+            <h4 class="modal-title" id="delete-review-title">{% trans 'Are you sure?' %}</h4>
           </div>
           <div class="modal-body">
           	{% if review.export_protocol %}
