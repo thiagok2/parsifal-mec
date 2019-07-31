@@ -14,7 +14,7 @@ $(function () {
       },
       error: function (jqXHR, textStatus, errorThrown) {
         $(btn).ajaxEnableError();
-        $.parsifal.alert("An error ocurred", jqXHR.responseText);
+        $.parsifal.alert("Um erro ocorreu", jqXHR.responseText);
       }
     });
   });
@@ -34,7 +34,7 @@ $(function () {
         },
         error: function (jqXHR, textStatus, errorThrown) {
             $(btn).ajaxEnableError();
-            $.parsifal.alert("An error ocurred", jqXHR.responseText);
+            $.parsifal.alert("Um erro ocorreu", jqXHR.responseText);
         }
         });
     });

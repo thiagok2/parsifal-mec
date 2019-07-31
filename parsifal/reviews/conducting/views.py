@@ -96,9 +96,9 @@ def remove_source_string(request):
             search_session.delete()
         except SearchSession.DoesNotExist:
             pass
-        messages.success(request, u'{0} search string removed successfully!'.format(source.name))
+        messages.success(request, _('{0} search string removed successfully!').format(source.name))
     except:
-        messages.error(request, u'{0} search string removed successfully!'.format(source.name))
+        messages.error(request, _('{0} search string removed successfully!').format(source.name))
     return redirect(r('search_studies', args=(review.author.username, review.name)))
 
 @author_required
@@ -136,9 +136,9 @@ def elsevier_search(request, database):
         data = json.dumps(result)
         return HttpResponse(data, content_type='application/json')
     except ElsevierInvalidRequest, e:
-        return HttpResponseBadRequest('Invalid query. Please verify the syntax of your query before executing a new search.')
+        return HttpResponseBadRequest(_('Invalid query. Please verify the syntax of your query before executing a new search.'))
     except ElsevierQuotaExceeded, e:
-        return HttpResponseBadRequest('Parsifal\'s search quota on Elsevier\'s databases exceeded. Please try again later.')
+        return HttpResponseBadRequest(_('Parsifal\'s search quota on Elsevier\'s databases exceeded. Please try again later.'))
 
 
 @author_required
@@ -245,11 +245,11 @@ def quality_assessment(request, username, review_name):
 
     steps_messages = []
 
-    if not add_sources: steps_messages.append('Use the <a href="/'+ username +'/'+ review_name +'/planning/protocol/#sources-section">planning tab</a> to add sources to your review.')
-    if not import_articles: steps_messages.append('Import the studies using the <a href="/'+ username +'/'+ review_name +'/conducting/import/">import studies tab</a>.')
-    if not select_articles: steps_messages.append('Classify the imported studies using the <a href="/'+ username +'/'+ review_name +'/conducting/studies/">study selection tab</a>.')
-    if not create_questions: steps_messages.append('Create quality assessment questions using the <a href="/'+ username +'/'+ review_name +'/planning/quality/#questions">planning tab</a>.')
-    if not create_answers: steps_messages.append('Create quality assessment answers using the <a href="/'+ username +'/'+ review_name +'/planning/quality/#answers">planning tab</a>.')
+    if not add_sources: steps_messages.append(_('Use the <a href="/')+ username +'/'+ review_name +'/planning/protocol/#sources-section">planning tab</a> to add sources to your review.')
+    if not import_articles: steps_messages.append(_('Import the studies using the <a href="/')+ username +'/'+ review_name +'/conducting/import/">import studies tab</a>.')
+    if not select_articles: steps_messages.append(_('Classify the imported studies using the <a href="/')+ username +'/'+ review_name +'/conducting/studies/">study selection tab</a>.')
+    if not create_questions: steps_messages.append(_('Create quality assessment questions using the <a href="/')+ username +'/'+ review_name +'/planning/quality/#questions">planning tab</a>.')
+    if not create_answers: steps_messages.append(_('Create quality assessment answers using the <a href="/')+ username +'/'+ review_name +'/planning/quality/#answers">planning tab</a>.')
 
     finished_all_steps = len(steps_messages) == 0
 
@@ -388,10 +388,10 @@ def data_extraction(request, username, review_name):
 
     steps_messages = []
 
-    if not add_sources: steps_messages.append('Use the <a href="/'+ username +'/'+ review_name +'/planning/protocol/#sources-section">planning tab</a> to add sources to your review.')
-    if not import_articles: steps_messages.append('Import the studies using the <a href="/'+ username +'/'+ review_name +'/conducting/import/">import studies tab</a>.')
-    if not select_articles: steps_messages.append('Classify the imported studies using the <a href="/'+ username +'/'+ review_name +'/conducting/studies/">study selection tab</a>.')
-    if not create_fields: steps_messages.append('Create data extraction fields using the <a href="/'+ username +'/'+ review_name +'/planning/extraction/">planning tab</a>.')
+    if not add_sources: steps_messages.append(_('Use the <a href="/')+ username +'/'+ review_name +'/planning/protocol/#sources-section">planning tab</a> to add sources to your review.')
+    if not import_articles: steps_messages.append(_('Import the studies using the <a href="/')+ username +'/'+ review_name +'/conducting/import/">import studies tab</a>.')
+    if not select_articles: steps_messages.append(_('Classify the imported studies using the <a href="/')+ username +'/'+ review_name +'/conducting/studies/">study selection tab</a>.')
+    if not create_fields: steps_messages.append(_('Create data extraction fields using the <a href="/')+ username +'/'+ review_name +'/planning/extraction/">planning tab</a>.')
 
     finished_all_steps = not steps_messages
 
@@ -412,7 +412,7 @@ def data_extraction(request, username, review_name):
         data_extraction_table = build_data_extraction_table(review, is_finished)
     except Exception, e:
         raise e
-        data_extraction_table = '<h3>Something went wrong while rendering the data extraction form.</h3>'
+        data_extraction_table = _('<h3>Something went wrong while rendering the data extraction form.</h3>')
 
     return render(request, 'conducting/conducting_data_extraction.html', {
             'review': review,
@@ -468,11 +468,11 @@ def _import_articles(request, source, articles):
             except:
                 error = error + 1
         if success > 0:
-            messages.success(request, u'{0} articles successfully imported to {1}!'.format(success, source.name))
+            messages.success(request, _('{0} articles successfully imported to {1}!').format(success, source.name))
         if error > 0:
-            messages.warning(request, u'{0} articles could not be imported because of invalid format or invalid utf-8 string.'.format(error))
+            messages.warning(request, _('{0} articles could not be imported because of invalid format or invalid utf-8 string.').format(error))
     else:
-        messages.warning(request, u'The bibtex file had no valid entry!')
+        messages.warning(request, _('The bibtex file had no valid entry!'))
 
 @author_required
 @login_required
@@ -496,7 +496,7 @@ def import_bibtex(request):
         articles = bibtex_to_article_object(bib_database, review, source)
         _import_articles(request, source, articles)
     else:
-        messages.error(request, u'Invalid file type. Only .bib or .bibtex files are accepted.')
+        messages.error(request, _('Invalid file type. Only .bib or .bibtex files are accepted.'))
 
     return redirect(r('import_studies', args=(review.author.username, review.name)))
 

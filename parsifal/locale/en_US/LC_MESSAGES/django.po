@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-29 20:00+0000\n"
+"POT-Creation-Date: 2019-07-31 01:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2308,6 +2308,7 @@ msgid "External Link"
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:54
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:74
 msgid "Abstract"
 msgstr ""
 
@@ -2437,15 +2438,15 @@ msgstr ""
 msgid "Bibtex Key"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:74
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:75
 msgid "Added by"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:75
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:76
 msgid "Added at"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:94
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:96
 msgid "No articles."
 msgstr ""
 
@@ -2504,12 +2505,81 @@ msgstr ""
 msgid "Quality Score"
 msgstr ""
 
+#: parsifal/reviews/conducting/views.py:99
+#: parsifal/reviews/conducting/views.py:101
+#, python-brace-format
+msgid "{0} search string removed successfully!"
+msgstr ""
+
+#: parsifal/reviews/conducting/views.py:139
+msgid ""
+"Invalid query. Please verify the syntax of your query before executing a new "
+"search."
+msgstr ""
+
+#: parsifal/reviews/conducting/views.py:141
+msgid ""
+"Parsifal's search quota on Elsevier's databases exceeded. Please try again "
+"later."
+msgstr ""
+
 #: parsifal/reviews/conducting/views.py:183
 msgid "Import the studies using the"
 msgstr ""
 
 #: parsifal/reviews/conducting/views.py:183
 msgid "import studies tab"
+msgstr ""
+
+#: parsifal/reviews/conducting/views.py:248
+#: parsifal/reviews/conducting/views.py:391
+msgid "Use the <a href=\"/"
+msgstr ""
+
+#: parsifal/reviews/conducting/views.py:249
+#: parsifal/reviews/conducting/views.py:392
+msgid "Import the studies using the <a href=\"/"
+msgstr ""
+
+#: parsifal/reviews/conducting/views.py:250
+#: parsifal/reviews/conducting/views.py:393
+msgid "Classify the imported studies using the <a href=\"/"
+msgstr ""
+
+#: parsifal/reviews/conducting/views.py:251
+msgid "Create quality assessment questions using the <a href=\"/"
+msgstr ""
+
+#: parsifal/reviews/conducting/views.py:252
+msgid "Create quality assessment answers using the <a href=\"/"
+msgstr ""
+
+#: parsifal/reviews/conducting/views.py:394
+msgid "Create data extraction fields using the <a href=\"/"
+msgstr ""
+
+#: parsifal/reviews/conducting/views.py:415
+msgid "<h3>Something went wrong while rendering the data extraction form.</h3>"
+msgstr ""
+
+#: parsifal/reviews/conducting/views.py:471
+#, python-brace-format
+msgid "{0} articles successfully imported to {1}!"
+msgstr ""
+
+#: parsifal/reviews/conducting/views.py:473
+#, python-brace-format
+msgid ""
+"{0} articles could not be imported because of invalid format or invalid "
+"utf-8 string."
+msgstr ""
+
+#: parsifal/reviews/conducting/views.py:475
+msgid "The bibtex file had no valid entry!"
+msgstr ""
+
+#: parsifal/reviews/conducting/views.py:499
+msgid "Invalid file type. Only .bib or .bibtex files are accepted."
 msgstr ""
 
 #: parsifal/reviews/forms.py:11
@@ -3738,42 +3808,80 @@ msgstr ""
 msgid "haven't published any systematic literature review yet."
 msgstr ""
 
-#: parsifal/reviews/views.py:128
+#: parsifal/reviews/views.py:108
+#, python-brace-format
+msgid ""
+"{0} wants to add you as co-author on the systematic literature review {1}"
+msgstr ""
+
+#: parsifal/reviews/views.py:109 parsifal/reviews/views.py:159
+#, python-brace-format
+msgid "{0} via Parsifal <noreply@parsif.al>"
+msgstr ""
+
+#: parsifal/reviews/views.py:111
+#, python-brace-format
+msgid ""
+"Hi {0}, {1} invited you to a Parsifal Systematic Literature Review called "
+"\"{2}\". View the review at https://parsif.al/{3}/{4}/"
+msgstr ""
+
+#: parsifal/reviews/views.py:113 parsifal/reviews/views.py:163
+#, python-brace-format
+msgid ""
+"<p>Hi {0},</p><p>{1} invited you to a Parsifal Systematic Literature Review "
+"called \"{2}\".</p><p>View the review at https://parsif.al/{3}/{4}/</"
+"p><p>Sincerely,</p><p>The Parsifal Team</p>"
+msgstr ""
+
+#: parsifal/reviews/views.py:122
 msgid "No author invited or added to the review. Nothing really changed."
 msgstr ""
 
-#: parsifal/reviews/views.py:131
+#: parsifal/reviews/views.py:125
 #, python-brace-format
 msgid "The authors {0} were added successfully."
 msgstr ""
 
-#: parsifal/reviews/views.py:134 parsifal/reviews/views.py:190
+#: parsifal/reviews/views.py:128 parsifal/reviews/views.py:178
 #, python-brace-format
 msgid "{0} were invited successfully."
 msgstr ""
 
-#: parsifal/reviews/views.py:184
+#: parsifal/reviews/views.py:158
+#, python-brace-format
+msgid "{0} wants to add you as visitor on the systematic literature review {1}"
+msgstr ""
+
+#: parsifal/reviews/views.py:161
+#, python-brace-format
+msgid ""
+"Hi {0}, {1} invited you to a Parsifal Systematic Literature Review called "
+"\"{2}\".View the review at https://parsif.al/{3}/{4}/"
+msgstr ""
+
+#: parsifal/reviews/views.py:172
 msgid "No visitor invited or added to the review. Nothing really changed."
 msgstr ""
 
-#: parsifal/reviews/views.py:187
+#: parsifal/reviews/views.py:175
 #, python-brace-format
 msgid "The visitor {0} were added successfully."
 msgstr ""
 
-#: parsifal/reviews/views.py:245
+#: parsifal/reviews/views.py:233
 #, python-brace-format
 msgid "You successfully left the review {0}."
 msgstr ""
 
-#: parsifal/reviews/views.py:256
+#: parsifal/reviews/views.py:244
 #, python-format
 msgid ""
 "The review description should not exceed 500 characters. The given "
 "description have %s characters."
 msgstr ""
 
-#: parsifal/reviews/views.py:260
+#: parsifal/reviews/views.py:248
 msgid "Your review has been saved successfully!"
 msgstr ""
 
