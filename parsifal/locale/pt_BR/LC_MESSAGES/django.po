@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-29 20:00+0000\n"
+"POT-Creation-Date: 2019-07-31 01:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -96,7 +96,7 @@ msgstr "Configurações da Conta"
 #: parsifal/templates/includes/header.html:14
 #: parsifal/templates/includes/header.html:119
 msgid "Parsifal"
-msgstr "Parsifal"
+msgstr "Plataforma EbE"
 
 #: parsifal/account_settings/templates/settings/connections.html:47
 msgid "Connected Services"
@@ -114,8 +114,8 @@ msgid ""
 "become part of your network."
 msgstr ""
 "Importe suas referências de Mendeley. Associe sua biblioteca Mendeley as "
-"seus revisões. Amigos que você tem em Mendeley que também estão em Parsifal, "
-"poderam fazer parte da sua rede."
+"seus revisões. Amigos que você tem no Mendeley que também estão na nossa "
+"Plataforma, poderam fazer parte da sua rede."
 
 #: parsifal/account_settings/templates/settings/connections.html:62
 #: parsifal/account_settings/templates/settings/includes/dropbox_connection.html:9
@@ -248,7 +248,7 @@ msgstr "Sua conta do Dropbox foi associada com sucesso!"
 
 #: parsifal/account_settings/views.py:197
 msgid "You didn't approved Parsifal to connect your Dropbox account."
-msgstr "Você não aprovou o Parsifal para conectar sua conta do Dropbox."
+msgstr "Você não aprovou a Plataforma EbE para conectar sua conta do Dropbox."
 
 #: parsifal/account_settings/views.py:199
 msgid ""
@@ -486,7 +486,7 @@ msgid ""
 "researchers can work together within a shared workspace, designing the "
 "protocol and conducting the research."
 msgstr ""
-"<strong>Parsifal</strong> é uma ferramenta online projetada para "
+"<strong>A Plataforma EbE</strong> é uma ferramenta online projetada para "
 "pesquisadores para realizar reviões sistemáticas da literatura dentro de um "
 "contexto de <strong>Engenharia de Software</strong>. Pesquisadores "
 "geograficamente distribuídos podem trabalhar juntos em um ambiente "
@@ -504,11 +504,11 @@ msgid ""
 msgstr ""
 "Além de fornecer uma maneira de documentar todo o processo, a ferramenta "
 "ajudará você a lembrar o que é importante durante uma revisão sistemática da "
-"literatura. Durante a fase de planejamento, <strong> Parsifal </strong> irá "
-"ajudá-lo com o objetivos, PICOC, questões de pesquisa, string de busca, "
-"palavras-chave e sinônimos selecionando as fontes, os critérios de inclusão "
-"e exclusão. Irá também fornecer mecanismos para construir uma lista de "
-"verificação de avaliação de qualidade e formas de extração de dados."
+"literatura. Durante a fase de planejamento, <strong> a Plataforma EbE </"
+"strong> irá ajudá-lo com o objetivos, PICOC, questões de pesquisa, string de "
+"busca, palavras-chave e sinônimos selecionando as fontes, os critérios de "
+"inclusão e exclusão. Irá também fornecer mecanismos para construir uma lista "
+"de verificação de avaliação de qualidade e formas de extração de dados."
 
 #: parsifal/core/templates/core/about.html:17
 msgid ""
@@ -554,8 +554,8 @@ msgid ""
 msgstr ""
 "Realizar uma revisão sistemática da literatura é uma tarefa de trabalho "
 "intensivo que requer uma enorme quantidade de trabalho do pesquisador."
-"<strong> Parsifal </strong> irá ajudá-lo a planejar, conduzir e reportar a "
-"revisão."
+"<strong> Plataforma EbE </strong> irá ajudá-lo a planejar, conduzir e "
+"reportar a revisão."
 
 #: parsifal/core/templates/core/cover.html:42
 msgid "Create a new account"
@@ -571,7 +571,7 @@ msgid ""
 "geographically distributed to work on the same Systematic Literature Review. "
 "There is no limit of authors per review."
 msgstr ""
-"Parsifal é uma plataforma poderosa que fornece suporte completo para "
+"Plataforma EbE é uma plataforma poderosa que fornece suporte completo para "
 "pesquisadoresdistribuído geograficamente para trabalhar na mesma Revisão de "
 "Literatura Sistemática.Não há limite de autores por revisão."
 
@@ -590,7 +590,7 @@ msgid ""
 msgstr ""
 "Normalmente você não pode publicar todas as informações relevantes sobre a "
 "pesquisa como freqüentemente há uma quantidade limite de páginas para "
-"publicar seu artigo em um determinada conferência ou revista. Parsifal "
+"publicar seu artigo em um determinada conferência ou revista. Plataforma EbE "
 "fornece uma interface bonita para publicar qualquer informação extra, como o "
 "resultado total da pesquisa string, todas as modificações da string de "
 "pesquisa, mais detalhes sobre o protocolo e etc."
@@ -2104,9 +2104,9 @@ msgid ""
 "<strong>Science@Direct's</strong> databases. To enable the automatic search "
 "pick them as sources in the"
 msgstr ""
-"<strong> Parsifal </strong> está integrado com <strong> Scopus's </strong> e "
-"Bancos de dados <strong>Science @Direct</strong>. Para ativar a pesquisa "
-"automática escolha-os como fontes no "
+"<strong> Plataforma EbE </strong> está integrado com <strong> Scopus's </"
+"strong> e Bancos de dados <strong>Science @Direct</strong>. Para ativar a "
+"pesquisa automática escolha-os como fontes no "
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:200
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:300
@@ -2288,7 +2288,7 @@ msgstr ""
 #: parsifal/reviews/templates/reviews/partial_modal_list_import_protocol.html:17
 #: parsifal/reviews/templates/reviews/partial_published_protocols.html:48
 msgid "Author"
-msgstr "Autores"
+msgstr "Autor"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_article_conflict.html:10
 #: parsifal/reviews/conducting/templates/conducting/partial_article_conflict.html:32
@@ -2308,7 +2308,7 @@ msgstr "Comentários"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_article_conflict.html:28
 msgid "Choose what status the article should have."
-msgstr "Escolha o status que o artigo deve ter"
+msgstr "Escolha o status que o artigo deve ter."
 
 #: parsifal/reviews/conducting/templates/conducting/partial_article_evaluation.html:17
 #: parsifal/reviews/planning/templates/planning/protocol.html:58
@@ -2389,6 +2389,7 @@ msgid "External Link"
 msgstr "Link Externo"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:54
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:74
 msgid "Abstract"
 msgstr ""
 
@@ -2518,15 +2519,15 @@ msgstr "Aguardando"
 msgid "Bibtex Key"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:74
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:75
 msgid "Added by"
 msgstr "Adicionado por"
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:75
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:76
 msgid "Added at"
 msgstr "Adicionado em"
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:94
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:96
 msgid "No articles."
 msgstr "Sem Artigos"
 
@@ -2592,6 +2593,25 @@ msgstr ""
 msgid "Quality Score"
 msgstr "Pontuações de Avaliação"
 
+#: parsifal/reviews/conducting/views.py:99
+#: parsifal/reviews/conducting/views.py:101
+#, fuzzy, python-brace-format
+#| msgid "{0} were invited successfully."
+msgid "{0} search string removed successfully!"
+msgstr "{0} foram convidados com sucesso."
+
+#: parsifal/reviews/conducting/views.py:139
+msgid ""
+"Invalid query. Please verify the syntax of your query before executing a new "
+"search."
+msgstr ""
+
+#: parsifal/reviews/conducting/views.py:141
+msgid ""
+"Parsifal's search quota on Elsevier's databases exceeded. Please try again "
+"later."
+msgstr ""
+
 #: parsifal/reviews/conducting/views.py:183
 msgid "Import the studies using the"
 msgstr "Importar estudos usando o(a) "
@@ -2599,6 +2619,67 @@ msgstr "Importar estudos usando o(a) "
 #: parsifal/reviews/conducting/views.py:183
 msgid "import studies tab"
 msgstr "Importar Estudos"
+
+#: parsifal/reviews/conducting/views.py:248
+#: parsifal/reviews/conducting/views.py:391
+#, fuzzy
+#| msgid "Use the <a href=\"{%% url "
+msgid "Use the <a href=\"/"
+msgstr "Use o <a href=\"{%% url "
+
+#: parsifal/reviews/conducting/views.py:249
+#: parsifal/reviews/conducting/views.py:392
+#, fuzzy
+#| msgid "Import the studies using the"
+msgid "Import the studies using the <a href=\"/"
+msgstr "Importar estudos usando o(a) "
+
+#: parsifal/reviews/conducting/views.py:250
+#: parsifal/reviews/conducting/views.py:393
+#, fuzzy
+#| msgid "Import the studies using the"
+msgid "Classify the imported studies using the <a href=\"/"
+msgstr "Importar estudos usando o(a) "
+
+#: parsifal/reviews/conducting/views.py:251
+#, fuzzy
+#| msgid "Import Quality Assessment Questions"
+msgid "Create quality assessment questions using the <a href=\"/"
+msgstr "Importar Questões de Avaliação de Qualidade"
+
+#: parsifal/reviews/conducting/views.py:252
+msgid "Create quality assessment answers using the <a href=\"/"
+msgstr ""
+
+#: parsifal/reviews/conducting/views.py:394
+#, fuzzy
+#| msgid "Data Extraction Fields has been shared!"
+msgid "Create data extraction fields using the <a href=\"/"
+msgstr "Campos de Extração de Dados tem sido compartilhados."
+
+#: parsifal/reviews/conducting/views.py:415
+msgid "<h3>Something went wrong while rendering the data extraction form.</h3>"
+msgstr ""
+
+#: parsifal/reviews/conducting/views.py:471
+#, python-brace-format
+msgid "{0} articles successfully imported to {1}!"
+msgstr ""
+
+#: parsifal/reviews/conducting/views.py:473
+#, python-brace-format
+msgid ""
+"{0} articles could not be imported because of invalid format or invalid "
+"utf-8 string."
+msgstr ""
+
+#: parsifal/reviews/conducting/views.py:475
+msgid "The bibtex file had no valid entry!"
+msgstr ""
+
+#: parsifal/reviews/conducting/views.py:499
+msgid "Invalid file type. Only .bib or .bibtex files are accepted."
+msgstr ""
 
 #: parsifal/reviews/forms.py:11
 msgid "Systematic literature review's title"
@@ -3912,35 +3993,80 @@ msgstr "Iniciar Revisões"
 msgid "haven't published any systematic literature review yet."
 msgstr "Não há nenhuma revisão sistemática da literatura ainda."
 
-#: parsifal/reviews/views.py:128
+#: parsifal/reviews/views.py:108
+#, fuzzy, python-brace-format
+#| msgid "You don't have any systematic literature review yet."
+msgid ""
+"{0} wants to add you as co-author on the systematic literature review {1}"
+msgstr "Você não tem nenhum revisão sistemática da literatura ainda"
+
+#: parsifal/reviews/views.py:109 parsifal/reviews/views.py:159
+#, python-brace-format
+msgid "{0} via Parsifal <noreply@parsif.al>"
+msgstr "{0} via Plataforma EbE <noreply@parsif.al>"
+
+#: parsifal/reviews/views.py:111
+#, python-brace-format
+msgid ""
+"Hi {0}, {1} invited you to a Parsifal Systematic Literature Review called "
+"\"{2}\". View the review at https://parsif.al/{3}/{4}/"
+msgstr ""
+"Olá {0}, {1} convidou você para uma Revisão Sistemática da Literatura "
+"chamada \"{2}\". Veja a análise em https://parsif.al/{3}/{4}/"
+
+#: parsifal/reviews/views.py:113 parsifal/reviews/views.py:163
+#, python-brace-format
+msgid ""
+"<p>Hi {0},</p><p>{1} invited you to a Parsifal Systematic Literature Review "
+"called \"{2}\".</p><p>View the review at https://parsif.al/{3}/{4}/</"
+"p><p>Sincerely,</p><p>The Parsifal Team</p>"
+msgstr ""
+"<p> Olá {0}, </p> <p> {1} convidou você para uma revisão sistemática de "
+"literatura chamada \"{2}\". </p> <p> Veja a resenha em https://parsif.al/{3}/"
+"{4}/</p> <p> Atenciosamente, </p> <p> A Equipe EbE </p>"
+
+#: parsifal/reviews/views.py:122
 msgid "No author invited or added to the review. Nothing really changed."
 msgstr "Nenhum autor foi convidado ou adicionado à revisão. Nada mudou."
 
-#: parsifal/reviews/views.py:131
+#: parsifal/reviews/views.py:125
 #, python-brace-format
 msgid "The authors {0} were added successfully."
 msgstr "Os autores {0} foram adicionados com sucesso!"
 
-#: parsifal/reviews/views.py:134 parsifal/reviews/views.py:190
+#: parsifal/reviews/views.py:128 parsifal/reviews/views.py:178
 #, python-brace-format
 msgid "{0} were invited successfully."
 msgstr "{0} foram convidados com sucesso."
 
-#: parsifal/reviews/views.py:184
+#: parsifal/reviews/views.py:158
+#, fuzzy, python-brace-format
+#| msgid "You don't have any systematic literature review yet."
+msgid "{0} wants to add you as visitor on the systematic literature review {1}"
+msgstr "Você não tem nenhum revisão sistemática da literatura ainda"
+
+#: parsifal/reviews/views.py:161
+#, python-brace-format
+msgid ""
+"Hi {0}, {1} invited you to a Parsifal Systematic Literature Review called "
+"\"{2}\".View the review at https://parsif.al/{3}/{4}/"
+msgstr ""
+
+#: parsifal/reviews/views.py:172
 msgid "No visitor invited or added to the review. Nothing really changed."
 msgstr "Nenhum visitante convidado para a revisão. Nada foi "
 
-#: parsifal/reviews/views.py:187
+#: parsifal/reviews/views.py:175
 #, python-brace-format
 msgid "The visitor {0} were added successfully."
 msgstr "O visitante {0} foi adicionado com sucesso."
 
-#: parsifal/reviews/views.py:245
+#: parsifal/reviews/views.py:233
 #, python-brace-format
 msgid "You successfully left the review {0}."
 msgstr "Você saiu com sucesso da revisão {0}."
 
-#: parsifal/reviews/views.py:256
+#: parsifal/reviews/views.py:244
 #, python-format
 msgid ""
 "The review description should not exceed 500 characters. The given "
@@ -3949,7 +4075,7 @@ msgstr ""
 "A descrição da revisão não pode exceder 1000 characters. Essa descrição está "
 "com %s caracteres."
 
-#: parsifal/reviews/views.py:260
+#: parsifal/reviews/views.py:248
 msgid "Your review has been saved successfully!"
 msgstr "Sua revisão foi salva com sucesso!"
 
@@ -4082,9 +4208,6 @@ msgstr ""
 
 #~ msgid "Share"
 #~ msgstr "Compartilhar"
-
-#~ msgid "Use the <a href=\"{%% url "
-#~ msgstr "Use o <a href=\"{%% url "
 
 #~ msgid "Most of the digital libraries have it"
 #~ msgstr "A maioria das bibliotecas digitais tem"
