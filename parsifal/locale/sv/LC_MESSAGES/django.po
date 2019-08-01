@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-01 14:27+0000\n"
+"POT-Creation-Date: 2019-08-01 14:34+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -489,7 +489,16 @@ msgstr ""
 msgid "What is a Systematic Literature Review?"
 msgstr ""
 
-#: parsifal/core/templates/core/about.html:25
+#: parsifal/core/templates/core/about.html:22
+msgid ""
+"A systematic literature review is a secondary study with the objective to "
+"identify, analyze and interpret all available evidences from primary studies "
+"related to a specific research question. As suggested by Kitchenham and "
+"Charters, the activity to perform a systematic literature review involves "
+"planning, conducting and reporting the review"
+msgstr ""
+
+#: parsifal/core/templates/core/about.html:24
 msgid ""
 "Performing a systematic literature review is a labor-intensive task that "
 "requires a huge amount of work from the researcher, designing the protocol, "
