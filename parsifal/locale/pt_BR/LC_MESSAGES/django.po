@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-31 03:10+0000\n"
+"POT-Creation-Date: 2019-08-01 14:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -94,7 +94,7 @@ msgstr "Configurações da Conta"
 #: parsifal/templates/admin/base_site.html:8
 #: parsifal/templates/includes/footer.html:9
 #: parsifal/templates/includes/header.html:14
-#: parsifal/templates/includes/header.html:119
+#: parsifal/templates/includes/header.html:125
 msgid "Parsifal"
 msgstr "Plataforma EbE"
 
@@ -187,7 +187,7 @@ msgid "Save profile"
 msgstr "Salvar Perfil"
 
 #: parsifal/account_settings/templates/settings/settings_menu.html:7
-#: parsifal/templates/includes/header.html:60
+#: parsifal/templates/includes/header.html:66
 msgid "Account settings"
 msgstr "Configurações da Conta"
 
@@ -289,7 +289,7 @@ msgstr "Buscar Pesquisadores"
 msgid "following"
 msgstr "Segue"
 
-#: parsifal/activities/views.py:76 parsifal/templates/includes/header.html:106
+#: parsifal/activities/views.py:76 parsifal/templates/includes/header.html:112
 msgid "followers"
 msgstr "Seguidores"
 
@@ -346,7 +346,7 @@ msgstr "Seu Username"
 #: parsifal/authentication/templates/auth/signin.html:7
 #: parsifal/authentication/templates/auth/signin.html:22
 #: parsifal/authentication/templates/auth/signin.html:35
-#: parsifal/templates/includes/header.html:77
+#: parsifal/templates/includes/header.html:83
 msgid "Sign in"
 msgstr "Entrar"
 
@@ -360,7 +360,7 @@ msgid "Forgot your password?"
 msgstr "Esqueceu sua Senha?"
 
 #: parsifal/authentication/templates/auth/signup.html:8
-#: parsifal/templates/includes/header.html:80
+#: parsifal/templates/includes/header.html:86
 msgid "Sign up"
 msgstr "Inscrever-se"
 
@@ -422,7 +422,6 @@ msgid "Username or password invalid."
 msgstr "Usuário ou senha inválidos"
 
 #: parsifal/blog/templates/blog/entries.html:7
-#: parsifal/templates/includes/header.html:18
 msgid "Blog"
 msgstr ""
 
@@ -470,7 +469,7 @@ msgid "Medias"
 msgstr ""
 
 #: parsifal/core/templates/core/about.html:3
-#: parsifal/templates/includes/header.html:23
+#: parsifal/templates/includes/header.html:29
 msgid "About"
 msgstr "Sobre"
 
@@ -664,7 +663,6 @@ msgstr "está seguindo agora"
 #: parsifal/help/templates/help/articles.html:6
 #: parsifal/help/templates/help/articles.html:10
 #: parsifal/help/templates/help/search.html:6
-#: parsifal/templates/includes/header.html:22
 msgid "Help"
 msgstr "Ajuda"
 
@@ -3692,6 +3690,12 @@ msgstr "Critérios de Exclusão: "
 msgid "Questions:"
 msgstr "Questões: "
 
+#: parsifal/reviews/reporting/export.py:134
+#, fuzzy
+#| msgid "Answers"
+msgid "Answers:"
+msgstr "Respostas"
+
 #: parsifal/reviews/reporting/export.py:157
 msgid "Digital Libraries Search Strings"
 msgstr "Strings de Busca das Bibliotecas Digitais"
@@ -3861,7 +3865,7 @@ msgid "The review was deleted successfully."
 msgstr "Sua revisão foi excluída com sucesso!"
 
 #: parsifal/reviews/templates/reviews/explorer.html:19
-#: parsifal/templates/includes/header.html:27
+#: parsifal/templates/includes/header.html:33
 msgid "Search Reviews"
 msgstr "Pesquisar Revisões"
 
@@ -4015,7 +4019,7 @@ msgid "Joined on"
 msgstr "Entrou em"
 
 #: parsifal/reviews/templates/reviews/reviews.html:82
-#: parsifal/templates/includes/header.html:123
+#: parsifal/templates/includes/header.html:129
 msgid "New review"
 msgstr "Nova Revisão"
 
@@ -4136,27 +4140,27 @@ msgstr "Sua revisão foi salva com sucesso!"
 msgid "Toggle navigation"
 msgstr "Alternar Navegação"
 
-#: parsifal/templates/includes/header.html:20
+#: parsifal/templates/includes/header.html:23
 msgid "Explorer"
 msgstr "Explorar"
 
-#: parsifal/templates/includes/header.html:21
+#: parsifal/templates/includes/header.html:24
 msgid "Researchers"
 msgstr "Pesquisadores"
 
-#: parsifal/templates/includes/header.html:43
+#: parsifal/templates/includes/header.html:49
 msgid "My profile"
 msgstr "Meu Perfil"
 
-#: parsifal/templates/includes/header.html:68
+#: parsifal/templates/includes/header.html:74
 msgid "Sign out"
 msgstr "Sair"
 
-#: parsifal/templates/includes/header.html:111
+#: parsifal/templates/includes/header.html:117
 msgid "followings"
-msgstr "Seguidores"
+msgstr "Seguindo"
 
-#: parsifal/templates/includes/header.html:121
+#: parsifal/templates/includes/header.html:127
 msgid ""
 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lacinia "
 "sagittis pharetra. Sed dapibus, erat ac fringilla pellentesque, lectim "
