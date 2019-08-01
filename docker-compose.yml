@@ -7,10 +7,10 @@ services:
     networks:
       - webnet
     volumes:
-      - /docker-volumes/parsifal/db-data:/var/lib/postgresql/data
+      - ${DB_DATA_FOLDER}:/var/lib/postgresql/data
     restart: always
-    ports:
-      - 7001:5432
+#    ports:
+#      - 7001:5432
     env_file:
       - .env
   web:
@@ -21,16 +21,28 @@ services:
       - parsifal
       - ${POSTGRES_PASSWORD}
       - ./app-entrypoint.sh
-        #command: ["./wait-for-postgres.sh", "db", "parsifal", $POSTGRES_PASSWORD,"./app-entrypoint.sh"]
-    ports:
-      - 8000:8000
     depends_on:
       - db
     networks:
       - webnet    
     volumes:
-      - /docker-volumes/parsifal/web/static:/static 
-      - /docker-volumes/parsifal/web/media:/media 
-    restart: always  
+      - ${STATIC_FOLDER}:/static 
+      - ${MEDIA_FOLDER}:/media 
+    restart: always 
+  staticweb:
+    image: nginx:latest
+    container_name: staticweb
+    ports:
+      - "${STATIC_WEB_PORT}:80"
+    volumes:
+      - ${ROOT_FOLDER}:/app
+      - ./site.conf:/etc/nginx/conf.d/site.conf
+    depends_on:
+      - web
+    networks:
+      - webnet
+    env_file:
+      - .env
+
 networks:
   webnet:
