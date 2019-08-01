@@ -31,7 +31,6 @@ services:
     restart: always 
   staticweb:
     image: nginx:latest
-    container_name: staticweb
     ports:
       - "${STATIC_WEB_PORT}:80"
     volumes:
