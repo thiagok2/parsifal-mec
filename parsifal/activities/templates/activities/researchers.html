@@ -37,10 +37,10 @@
 				{% for u in public_users %}
 				<li>
 					<img src="{{ u.profile.get_picture }}" alt="User Image"> 
-					<a class="users-list-name" href="#">{{ u.profile.get_screen_name }}</a> 
-					<span class="users-list-date">{{ u.profile.public_email }}</span>
-					<span class="users-list-date">{{ u.profile.institution }}</span>
-					<span class="users-list-date">{{ u.profile.location }}</span>
+					<a class="users-list-name" href="{% url 'reviews' u.username %}">{{ u.profile.get_screen_name }}</a> 
+					<span class="users-list-date">{{ u.profile.public_email|default:"" }}</span>
+					<span class="users-list-date">{{ u.profile.institution|default:"" }}</span>
+					<span class="users-list-date">{{ u.profile.location|default:"" }}</span>
 					
 		                    
 		            {% if user.is_authenticated %}   
