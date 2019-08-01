@@ -95,6 +95,8 @@ def explorer(request):
         public_users = User.objects.filter(username__icontains=q).order_by('username')[:25]
     else:
         public_users = User.objects.order_by('username')[:25]
+    
+    q = '' if q is None else str(q)
     return render(request, 'activities/researchers.html', {
               'public_users': public_users,
               'q': q,
