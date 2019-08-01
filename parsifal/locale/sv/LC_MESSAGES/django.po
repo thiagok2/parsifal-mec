@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-31 03:10+0000\n"
+"POT-Creation-Date: 2019-08-01 14:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -91,7 +91,7 @@ msgstr ""
 #: parsifal/templates/admin/base_site.html:8
 #: parsifal/templates/includes/footer.html:9
 #: parsifal/templates/includes/header.html:14
-#: parsifal/templates/includes/header.html:119
+#: parsifal/templates/includes/header.html:125
 msgid "Parsifal"
 msgstr ""
 
@@ -178,7 +178,7 @@ msgid "Save profile"
 msgstr ""
 
 #: parsifal/account_settings/templates/settings/settings_menu.html:7
-#: parsifal/templates/includes/header.html:60
+#: parsifal/templates/includes/header.html:66
 msgid "Account settings"
 msgstr ""
 
@@ -278,7 +278,7 @@ msgstr ""
 msgid "following"
 msgstr ""
 
-#: parsifal/activities/views.py:76 parsifal/templates/includes/header.html:106
+#: parsifal/activities/views.py:76 parsifal/templates/includes/header.html:112
 msgid "followers"
 msgstr ""
 
@@ -335,7 +335,7 @@ msgstr ""
 #: parsifal/authentication/templates/auth/signin.html:7
 #: parsifal/authentication/templates/auth/signin.html:22
 #: parsifal/authentication/templates/auth/signin.html:35
-#: parsifal/templates/includes/header.html:77
+#: parsifal/templates/includes/header.html:83
 msgid "Sign in"
 msgstr ""
 
@@ -349,7 +349,7 @@ msgid "Forgot your password?"
 msgstr ""
 
 #: parsifal/authentication/templates/auth/signup.html:8
-#: parsifal/templates/includes/header.html:80
+#: parsifal/templates/includes/header.html:86
 msgid "Sign up"
 msgstr ""
 
@@ -403,7 +403,6 @@ msgid "Username or password invalid."
 msgstr ""
 
 #: parsifal/blog/templates/blog/entries.html:7
-#: parsifal/templates/includes/header.html:18
 msgid "Blog"
 msgstr ""
 
@@ -451,7 +450,7 @@ msgid "Medias"
 msgstr ""
 
 #: parsifal/core/templates/core/about.html:3
-#: parsifal/templates/includes/header.html:23
+#: parsifal/templates/includes/header.html:29
 msgid "About"
 msgstr ""
 
@@ -604,7 +603,6 @@ msgstr ""
 #: parsifal/help/templates/help/articles.html:6
 #: parsifal/help/templates/help/articles.html:10
 #: parsifal/help/templates/help/search.html:6
-#: parsifal/templates/includes/header.html:22
 msgid "Help"
 msgstr ""
 
@@ -3504,6 +3502,10 @@ msgstr ""
 msgid "Questions:"
 msgstr ""
 
+#: parsifal/reviews/reporting/export.py:134
+msgid "Answers:"
+msgstr ""
+
 #: parsifal/reviews/reporting/export.py:157
 msgid "Digital Libraries Search Strings"
 msgstr ""
@@ -3665,7 +3667,7 @@ msgid "The review was deleted successfully."
 msgstr ""
 
 #: parsifal/reviews/templates/reviews/explorer.html:19
-#: parsifal/templates/includes/header.html:27
+#: parsifal/templates/includes/header.html:33
 msgid "Search Reviews"
 msgstr ""
 
@@ -3811,7 +3813,7 @@ msgid "Joined on"
 msgstr ""
 
 #: parsifal/reviews/templates/reviews/reviews.html:82
-#: parsifal/templates/includes/header.html:123
+#: parsifal/templates/includes/header.html:129
 msgid "New review"
 msgstr ""
 
@@ -3921,27 +3923,27 @@ msgstr ""
 msgid "Toggle navigation"
 msgstr ""
 
-#: parsifal/templates/includes/header.html:20
+#: parsifal/templates/includes/header.html:23
 msgid "Explorer"
 msgstr ""
 
-#: parsifal/templates/includes/header.html:21
+#: parsifal/templates/includes/header.html:24
 msgid "Researchers"
 msgstr ""
 
-#: parsifal/templates/includes/header.html:43
+#: parsifal/templates/includes/header.html:49
 msgid "My profile"
 msgstr ""
 
-#: parsifal/templates/includes/header.html:68
+#: parsifal/templates/includes/header.html:74
 msgid "Sign out"
 msgstr ""
 
-#: parsifal/templates/includes/header.html:111
+#: parsifal/templates/includes/header.html:117
 msgid "followings"
 msgstr ""
 
-#: parsifal/templates/includes/header.html:121
+#: parsifal/templates/includes/header.html:127
 msgid ""
 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lacinia "
 "sagittis pharetra. Sed dapibus, erat ac fringilla pellentesque, lectim "
