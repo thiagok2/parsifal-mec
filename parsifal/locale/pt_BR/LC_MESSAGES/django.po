@@ -2223,7 +2223,7 @@ msgstr "Detalhes do Artigo"
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:69
 msgid "Automatically save the status on change and move next"
-msgstr "Salvar automaticamente o status na mudança e seguir em frente"
+msgstr "Salvar automaticamente a mudança de status e passar para o próximo"
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:85
 msgid "All Sources"
