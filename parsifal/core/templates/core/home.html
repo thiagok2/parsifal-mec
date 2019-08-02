@@ -83,8 +83,10 @@
 	   						</div>
 	   						
 	   						<div class="col-md-4">
-								<span class="text-muted small"> 
+								<span class="text-muted small">
+									{% if review.co_authors.count != 0 %}
 									<span class="btn btn-xs btn-default outline">Co:</span> 
+									{% endif %}
 									{% for author in review.co_authors.all %} 
 										<a class="btn btn-xs btn-default outline" href="/{{ author.username }}/"> {{ author.profile.get_screen_name }}</a>
 									{% endfor %}
