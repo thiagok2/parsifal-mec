@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-02 02:50+0000\n"
+"POT-Creation-Date: 2019-08-02 11:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -89,7 +89,7 @@ msgstr ""
 #: parsifal/reviews/templates/reviews/explorer.html:7
 #: parsifal/reviews/templates/reviews/reviews.html:7
 #: parsifal/templates/admin/base_site.html:8
-#: parsifal/templates/includes/footer.html:9
+#: parsifal/templates/includes/footer.html:10
 #: parsifal/templates/includes/header.html:14
 #: parsifal/templates/includes/header.html:125
 msgid "Parsifal"
@@ -533,11 +533,11 @@ msgstr ""
 msgid "Your reviews"
 msgstr ""
 
-#: parsifal/core/templates/core/home.html:100
+#: parsifal/core/templates/core/home.html:104
 msgid "Reviews you are invited"
 msgstr ""
 
-#: parsifal/core/templates/core/home.html:106
+#: parsifal/core/templates/core/home.html:110
 #: parsifal/reviews/templates/reviews/reviews.html:119
 msgid "You don't have any systematic literature review yet."
 msgstr ""
@@ -3911,7 +3911,6 @@ msgstr ""
 
 #: parsifal/templates/includes/header.html:127
 msgid ""
-"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lacinia "
-"sagittis pharetra. Sed dapibus, erat ac fringilla pellentesque, lectim "
-"mauris elit vitae libero."
+"Um ambiente colaborativo para o desenvolvimento de revisões sistemáticas da "
+"literatura e elaboração de metanálises."
 msgstr ""

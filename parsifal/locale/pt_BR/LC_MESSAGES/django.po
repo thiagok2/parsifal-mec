@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-02 02:50+0000\n"
+"POT-Creation-Date: 2019-08-02 11:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -92,7 +92,7 @@ msgstr "Configurações da Conta"
 #: parsifal/reviews/templates/reviews/explorer.html:7
 #: parsifal/reviews/templates/reviews/reviews.html:7
 #: parsifal/templates/admin/base_site.html:8
-#: parsifal/templates/includes/footer.html:9
+#: parsifal/templates/includes/footer.html:10
 #: parsifal/templates/includes/header.html:14
 #: parsifal/templates/includes/header.html:125
 msgid "Parsifal"
@@ -572,10 +572,10 @@ msgid ""
 "requires a huge amount of work from the researcher. <strong>Parsifal</"
 "strong> will help you planning, conducting and reporting the review."
 msgstr ""
-"Realizar uma revisão sistemática da literatura é uma tarefa de trabalho "
-"intensivo que requer uma enorme quantidade de trabalho do pesquisador."
-"<strong> Plataforma EbE </strong> irá ajudá-lo a planejar, conduzir e "
-"reportar a revisão."
+"Realizar uma revisão sistemática da literatura é uma tarefa intensiva que "
+"requer um grande esforço dos pesquisadores. A <strong> Plataforma EbE </"
+"strong> irá ajudá-lo(a) a planejar, conduzir, exportar e construir "
+"metanálises da sua revisão."
 
 #: parsifal/core/templates/core/cover.html:42
 msgid "Create a new account"
@@ -585,11 +585,11 @@ msgstr "Crie uma nova conta"
 msgid "Your reviews"
 msgstr "Suas revisões"
 
-#: parsifal/core/templates/core/home.html:100
+#: parsifal/core/templates/core/home.html:104
 msgid "Reviews you are invited"
 msgstr "Revisões como convidado"
 
-#: parsifal/core/templates/core/home.html:106
+#: parsifal/core/templates/core/home.html:110
 #: parsifal/reviews/templates/reviews/reviews.html:119
 msgid "You don't have any systematic literature review yet."
 msgstr "Você não tem nenhum revisão sistemática da literatura ainda"
@@ -4120,9 +4120,8 @@ msgstr "Seguindo"
 
 #: parsifal/templates/includes/header.html:127
 msgid ""
-"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lacinia "
-"sagittis pharetra. Sed dapibus, erat ac fringilla pellentesque, lectim "
-"mauris elit vitae libero."
+"Um ambiente colaborativo para o desenvolvimento de revisões sistemáticas da "
+"literatura e elaboração de metanálises."
 msgstr ""
 
 #~ msgid "Support for geographically distributed researchers"
