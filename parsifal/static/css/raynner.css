@@ -140,3 +140,7 @@ img.img-logo:hover{
 #painel-myreview > div{
 	padding: 15px 35px;
 }
+
+.outline{
+	background: transparent;
+}

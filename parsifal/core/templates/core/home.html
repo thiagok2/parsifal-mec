@@ -32,11 +32,11 @@
 					{% for review in user_reviews %}
 					<div class="list-group-item">
 						<div class="row">
-							<div class="col-md-5">
+							<div class="col-md-7">
 								<a href="/{{ review.author.username }}/{{ review.name }}/">{{ review.title }} </a>
 							</div>
 							
-							<div class="col-md-5 text-right">
+							<div class="col-md-3 text-right">
 								<span class="badge badge-secondary" data-toggle="tooltip" data-placement="top" title="Artigos">
 									 <i class="fa fa-fw fa-files-o"></i>
 									 {{review.articles_count}}
@@ -78,12 +78,16 @@
 									
 						</div>
 						<div class="row text-muted small">
-	   						<div class="col-sm-6 pull-left text-left">
+	   						<div class="col-sm-3 pull-left text-left">
 	   							{{ review.create_date }}
 	   						</div>
 	   						
 	   						<div class="col-md-4">
-								<span class="text-muted"> {% for author in review.co_authors.all %}, <a href="/{{ author.username }}/"> {{ author.profile.get_screen_name }}</a>{% endfor %}
+								<span class="text-muted small"> 
+									<span class="btn btn-xs btn-default outline">Co:</span> 
+									{% for author in review.co_authors.all %} 
+										<a class="btn btn-xs btn-default outline" href="/{{ author.username }}/"> {{ author.profile.get_screen_name }}</a>
+									{% endfor %}
 								</span>
 							</div>
 	   						
