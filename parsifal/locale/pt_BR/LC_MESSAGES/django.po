@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-01 14:34+0000\n"
+"POT-Creation-Date: 2019-08-02 02:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -262,6 +262,11 @@ msgstr ""
 msgid "Your Dropbox account were disconnected successfully!"
 msgstr "Sua conta do Dropbox foi desconectada com sucesso!"
 
+#: parsifal/activities/templates/activities/follow.html:35
+#: parsifal/reviews/templates/reviews/reviews.html:74
+msgid "Joined on"
+msgstr "Entrou em"
+
 #: parsifal/activities/templates/activities/follow.html:42
 #: parsifal/reviews/templates/reviews/reviews.html:37
 msgid "Unfollow"
@@ -485,11 +490,11 @@ msgid ""
 "researchers can work together within a shared workspace, designing the "
 "protocol and conducting the research."
 msgstr ""
-"<strong>A Plataforma EbE</strong> é uma ferramenta online projetada para "
-"pesquisadores para realizar reviões sistemáticas da literatura dentro de um "
-"contexto de <strong>Engenharia de Software</strong>. Pesquisadores "
-"geograficamente distribuídos podem trabalhar juntos em um ambiente "
-"compartilhado, projetando o protocolo e conduzindo a pesquisa"
+"<strong>A Plataforma EbE</strong> é uma ferramenta projetada para "
+"pesquisadores para realizarem reviões sistemáticas da literatura. "
+"Pesquisadores geograficamente distribuídos podem trabalhar juntos em um "
+"ambiente compartilhado, projetando o protocolo e conduzindo a pesquisa até o "
+"desenvolvimento da metanálise da pesquisa."
 
 #: parsifal/core/templates/core/about.html:14
 msgid ""
@@ -504,10 +509,11 @@ msgstr ""
 "Além de fornecer uma maneira de documentar todo o processo, a ferramenta "
 "ajudará você a lembrar o que é importante durante uma revisão sistemática da "
 "literatura. Durante a fase de planejamento, <strong> a Plataforma EbE </"
-"strong> irá ajudá-lo com o objetivos, PICOC, questões de pesquisa, string de "
-"busca, palavras-chave e sinônimos selecionando as fontes, os critérios de "
-"inclusão e exclusão. Irá também fornecer mecanismos para construir uma lista "
-"de verificação de avaliação de qualidade e formas de extração de dados."
+"strong> irá ajudá-lo com o objetivos, definição de PICOC, questões de "
+"pesquisa, string de busca, palavras-chave e sinônimos selecionando as "
+"fontes, os critérios de inclusão e exclusão. Irá também fornecer mecanismos "
+"para construir uma lista de verificação de avaliação de qualidade e formas "
+"de extração de dados."
 
 #: parsifal/core/templates/core/about.html:17
 msgid ""
@@ -583,75 +589,18 @@ msgstr ""
 msgid "Create a new account"
 msgstr "Crie uma nova conta"
 
-#: parsifal/core/templates/core/cover.html:56
-msgid "Support for geographically distributed researchers"
-msgstr "Suporte a pesquisadores distribuídos geograficamente"
-
-#: parsifal/core/templates/core/cover.html:61
-msgid ""
-"Parsifal is a powerful platform that provides full support for researchers "
-"geographically distributed to work on the same Systematic Literature Review. "
-"There is no limit of authors per review."
-msgstr ""
-"Plataforma EbE é uma plataforma poderosa que fornece suporte completo para "
-"pesquisadoresdistribuído geograficamente para trabalhar na mesma Revisão de "
-"Literatura Sistemática.Não há limite de autores por revisão."
-
-#: parsifal/core/templates/core/cover.html:68
-msgid "Publish extra information"
-msgstr "Publique informações complementares"
-
-#: parsifal/core/templates/core/cover.html:72
-msgid ""
-"Normally you can not publish all relevant information about the research as "
-"frequently there is a limit amount of pages to publish your article on a "
-"certain conference or journal. Parsifal provides you a beautiful interface "
-"to publish any extra information like the whole result from the search "
-"string, all modifications of the search string, more details about the "
-"protocol, etc."
-msgstr ""
-"Normalmente você não pode publicar todas as informações relevantes sobre a "
-"pesquisa como freqüentemente há uma quantidade limite de páginas para "
-"publicar seu artigo em um determinada conferência ou revista. Plataforma EbE "
-"fornece uma interface bonita para publicar qualquer informação extra, como o "
-"resultado total da pesquisa string, todas as modificações da string de "
-"pesquisa, mais detalhes sobre o protocolo e etc."
-
-#: parsifal/core/templates/core/cover.html:79
-msgid "Support for tertiary studies"
-msgstr "Suporte para estudos de graduação e pós-graduação"
-
-#: parsifal/core/templates/core/cover.html:83
-msgid ""
-"Having a huge amount of Systematic Literature Reviews in the platform, it "
-"will provide a powerful support for tertiary studies, that is, systematic "
-"literature review of secondary studies."
-msgstr ""
-"Havendo uma enorme quantidade de Revisões Sistemáticas de Literatura na "
-"plataforma, a ferramenta fornecerá um suporte poderoso para os estudos "
-"posteriores, isto é a sistemática revisão bibliográfica de estudos "
-"secundários."
-
 #: parsifal/core/templates/core/home.html:28
 msgid "Your reviews"
 msgstr "Suas revisões"
 
-#: parsifal/core/templates/core/home.html:90
+#: parsifal/core/templates/core/home.html:100
 msgid "Reviews you are invited"
 msgstr "Revisões como convidado"
 
-#: parsifal/core/templates/core/home.html:96
+#: parsifal/core/templates/core/home.html:106
 #: parsifal/reviews/templates/reviews/reviews.html:119
 msgid "You don't have any systematic literature review yet."
 msgstr "Você não tem nenhum revisão sistemática da literatura ainda"
-
-#: parsifal/core/templates/core/home.html:103
-msgid "Recent Updates"
-msgstr "Atualizações Recentes"
-
-#: parsifal/core/templates/core/home.html:109
-msgid "There are no recent updates"
-msgstr "Não há atualizações recentes"
 
 #: parsifal/core/templates/core/support.html:6
 #: parsifal/core/templates/core/support.html:11
@@ -4037,10 +3986,6 @@ msgstr "Seguidores"
 msgid "Following"
 msgstr "Seguindo"
 
-#: parsifal/reviews/templates/reviews/reviews.html:74
-msgid "Joined on"
-msgstr "Entrou em"
-
 #: parsifal/reviews/templates/reviews/reviews.html:82
 #: parsifal/templates/includes/header.html:129
 msgid "New review"
@@ -4189,6 +4134,55 @@ msgid ""
 "sagittis pharetra. Sed dapibus, erat ac fringilla pellentesque, lectim "
 "mauris elit vitae libero."
 msgstr ""
+
+#~ msgid "Support for geographically distributed researchers"
+#~ msgstr "Suporte a pesquisadores distribuídos geograficamente"
+
+#~ msgid ""
+#~ "Parsifal is a powerful platform that provides full support for "
+#~ "researchers geographically distributed to work on the same Systematic "
+#~ "Literature Review. There is no limit of authors per review."
+#~ msgstr ""
+#~ "Plataforma EbE é uma plataforma poderosa que fornece suporte completo "
+#~ "para pesquisadoresdistribuído geograficamente para trabalhar na mesma "
+#~ "Revisão de Literatura Sistemática.Não há limite de autores por revisão."
+
+#~ msgid "Publish extra information"
+#~ msgstr "Publique informações complementares"
+
+#~ msgid ""
+#~ "Normally you can not publish all relevant information about the research "
+#~ "as frequently there is a limit amount of pages to publish your article on "
+#~ "a certain conference or journal. Parsifal provides you a beautiful "
+#~ "interface to publish any extra information like the whole result from the "
+#~ "search string, all modifications of the search string, more details about "
+#~ "the protocol, etc."
+#~ msgstr ""
+#~ "Normalmente você não pode publicar todas as informações relevantes sobre "
+#~ "a pesquisa como freqüentemente há uma quantidade limite de páginas para "
+#~ "publicar seu artigo em um determinada conferência ou revista. Plataforma "
+#~ "EbE fornece uma interface bonita para publicar qualquer informação extra, "
+#~ "como o resultado total da pesquisa string, todas as modificações da "
+#~ "string de pesquisa, mais detalhes sobre o protocolo e etc."
+
+#~ msgid "Support for tertiary studies"
+#~ msgstr "Suporte para estudos de graduação e pós-graduação"
+
+#~ msgid ""
+#~ "Having a huge amount of Systematic Literature Reviews in the platform, it "
+#~ "will provide a powerful support for tertiary studies, that is, systematic "
+#~ "literature review of secondary studies."
+#~ msgstr ""
+#~ "Havendo uma enorme quantidade de Revisões Sistemáticas de Literatura na "
+#~ "plataforma, a ferramenta fornecerá um suporte poderoso para os estudos "
+#~ "posteriores, isto é a sistemática revisão bibliográfica de estudos "
+#~ "secundários."
+
+#~ msgid "Recent Updates"
+#~ msgstr "Atualizações Recentes"
+
+#~ msgid "There are no recent updates"
+#~ msgstr "Não há atualizações recentes"
 
 #~ msgid "Latest news"
 #~ msgstr "Últimas novidades"

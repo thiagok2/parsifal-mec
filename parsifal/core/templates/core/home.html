@@ -32,24 +32,34 @@
 					{% for review in user_reviews %}
 					<div class="list-group-item">
 						<div class="row">
-							<div class="col-md-6">
-								<a href="/{{ review.author.username }}/{{ review.name }}/">{{ review.title }} ({{review.articles_count}})</a>
+							<div class="col-md-5">
+								<a href="/{{ review.author.username }}/{{ review.name }}/">{{ review.title }} </a>
 							</div>
 							
-							<div class="col-md-4 text-right">
+							<div class="col-md-5 text-right">
+								<span class="badge badge-secondary" data-toggle="tooltip" data-placement="top" title="Artigos">
+									 <i class="fa fa-fw fa-files-o"></i>
+									 {{review.articles_count}}
+								</span>
+								
 								{%if review.export_protocol%}
 								<span class="badge badge-secondary" data-toggle="tooltip" data-placement="top" title="Protocolo Público">
 									<i class="fa fa-fw fa-share-alt"></i>
 								</span>
 								{%endif %}
-								{%if review.export_protocol%}
-								<span class="badge badge-secondary" data-toggle="tooltip" data-placement="top" title="PICOC Completed">
+								{%if review.is_pipoc_completed%}
+								<span class="badge badge-secondary" data-toggle="tooltip" data-placement="top" title="PICOC">
 									<i class="fa fa-fw fa-list"></i>
 								</span>
 								{%endif %}
-								{%if review.export_protocol%}
-								<span class="badge badge-secondary" data-toggle="tooltip" data-placement="top" title="Statistic and Methods">
+								{%if review.is_statistical_methods%}
+								<span class="badge badge-secondary" data-toggle="tooltip" data-placement="top" title="Métodos Estatísticos e Convenções">
 									<i class="fa fa-fw fa-calculator"></i>
+								</span>
+								{%endif %}
+								{%if review.has_quality_assessment_checklist%}
+								<span class="badge badge-secondary" data-toggle="tooltip" data-placement="top" title="Checklist">
+									<i class="fa fa-fw  fa-check-square-o"></i>
 								</span>
 								{%endif %}
 							</div>
@@ -97,6 +107,7 @@
         </div>
       </div>
       
+      {% comment %}
       <div class="panel panel-default">
       	<div class="panel-heading">
           <h3 class="panel-title">{% trans 'Recent Updates' %}</h3>
@@ -109,6 +120,7 @@
 	      {% endfor %}
 	     </div>
       </div>
+      {% endcomment %}
     </div>
   </div>
 {% endblock content %}
