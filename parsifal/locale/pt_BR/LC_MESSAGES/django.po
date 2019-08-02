@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-02 02:46+0000\n"
+"POT-Creation-Date: 2019-08-02 02:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -530,14 +530,6 @@ msgid "What is a Systematic Literature Review?"
 msgstr "O que é uma Revisão Sistemática da Literatura?"
 
 #: parsifal/core/templates/core/about.html:22
-#, fuzzy
-#| msgid ""
-#| "A systematic literature review is a secondary study with the objective to "
-#| "identify, analyze and interpret all available evidences from primary "
-#| "studies related to a specific research question. As suggested by "
-#| "Kitchenham and Charters, the activity to perform a systematic literature "
-#| "review involves planning, conducting and reporting the review <sup><a "
-#| "href=\"#kitchenham-2007\">[1]</a></sup>."
 msgid ""
 "A systematic literature review is a secondary study with the objective to "
 "identify, analyze and interpret all available evidences from primary studies "
@@ -3663,8 +3655,6 @@ msgid "Questions:"
 msgstr "Questões: "
 
 #: parsifal/reviews/reporting/export.py:134
-#, fuzzy
-#| msgid "Answers"
 msgid "Answers:"
 msgstr "Respostas"
 
