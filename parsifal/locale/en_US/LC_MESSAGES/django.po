@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-01 14:34+0000\n"
+"POT-Creation-Date: 2019-08-02 02:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -252,6 +252,11 @@ msgstr ""
 
 #: parsifal/account_settings/views.py:211
 msgid "Your Dropbox account were disconnected successfully!"
+msgstr ""
+
+#: parsifal/activities/templates/activities/follow.html:35
+#: parsifal/reviews/templates/reviews/reviews.html:74
+msgid "Joined on"
 msgstr ""
 
 #: parsifal/activities/templates/activities/follow.html:42
@@ -527,61 +532,17 @@ msgstr ""
 msgid "Create a new account"
 msgstr ""
 
-#: parsifal/core/templates/core/cover.html:56
-msgid "Support for geographically distributed researchers"
-msgstr ""
-
-#: parsifal/core/templates/core/cover.html:61
-msgid ""
-"Parsifal is a powerful platform that provides full support for researchers "
-"geographically distributed to work on the same Systematic Literature Review. "
-"There is no limit of authors per review."
-msgstr ""
-
-#: parsifal/core/templates/core/cover.html:68
-msgid "Publish extra information"
-msgstr ""
-
-#: parsifal/core/templates/core/cover.html:72
-msgid ""
-"Normally you can not publish all relevant information about the research as "
-"frequently there is a limit amount of pages to publish your article on a "
-"certain conference or journal. Parsifal provides you a beautiful interface "
-"to publish any extra information like the whole result from the search "
-"string, all modifications of the search string, more details about the "
-"protocol, etc."
-msgstr ""
-
-#: parsifal/core/templates/core/cover.html:79
-msgid "Support for tertiary studies"
-msgstr ""
-
-#: parsifal/core/templates/core/cover.html:83
-msgid ""
-"Having a huge amount of Systematic Literature Reviews in the platform, it "
-"will provide a powerful support for tertiary studies, that is, systematic "
-"literature review of secondary studies."
-msgstr ""
-
 #: parsifal/core/templates/core/home.html:28
 msgid "Your reviews"
 msgstr ""
 
-#: parsifal/core/templates/core/home.html:90
+#: parsifal/core/templates/core/home.html:100
 msgid "Reviews you are invited"
 msgstr ""
 
-#: parsifal/core/templates/core/home.html:96
+#: parsifal/core/templates/core/home.html:106
 #: parsifal/reviews/templates/reviews/reviews.html:119
 msgid "You don't have any systematic literature review yet."
-msgstr ""
-
-#: parsifal/core/templates/core/home.html:103
-msgid "Recent Updates"
-msgstr ""
-
-#: parsifal/core/templates/core/home.html:109
-msgid "There are no recent updates"
 msgstr ""
 
 #: parsifal/core/templates/core/support.html:6
@@ -3840,10 +3801,6 @@ msgstr ""
 
 #: parsifal/reviews/templates/reviews/reviews.html:59
 msgid "Following"
-msgstr ""
-
-#: parsifal/reviews/templates/reviews/reviews.html:74
-msgid "Joined on"
 msgstr ""
 
 #: parsifal/reviews/templates/reviews/reviews.html:82
