@@ -30,29 +30,31 @@
 	
 	<div class="row explorer-results">
 		<div class="col-sm-12">
-			<table class="table table-hover">
-				<tbody>
-					{% for review in reviews %}
-					<tr>
-						<td>
-							<a href="/{{ review.author.username }}/{{ review.name }}/">{{ review.title }}</a>
-						</td>
-						<td>
-							<a href="{% url 'reviews' review.author.username %}">{{ review.author.profile.get_screen_name }}</a>
-								{% for author in sreview.co_authors.all %}, 
-									<a href="/{{ author.username }}/">{{ author.profile.get_screen_name }}</a>
-								{% endfor %}
-						
-							<p class="text-muted"><small>{{ review.description|truncatechars:'255' }}</small></p>
-								
-						</td>
-						<td>
-							{{ review.last_update|date:"D d M Y" }}
-						</td>
-					</tr>
-					{% endfor %}
-				</tbody>
-			</table>
+			<div class="panel panel-default">
+				<table class="table table-hover">
+					<tbody>
+						{% for review in reviews %}
+						<tr>
+							<td width="25%">
+								<a href="/{{ review.author.username }}/{{ review.name }}/">{{ review.title }}</a>
+							</td>
+							<td>
+								<a href="{% url 'reviews' review.author.username %}">{{ review.author.profile.get_screen_name }}</a>
+									{% for author in sreview.co_authors.all %}, 
+										<a href="/{{ author.username }}/">{{ author.profile.get_screen_name }}</a>
+									{% endfor %}
+							
+								<p class="text-muted"><small>{{ review.description|truncatechars:'255' }}</small></p>
+									
+							</td>
+							<td width="15%">
+								<span class="small">{{ review.last_update|date:"D d M Y" }}</span>
+							</td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 </div>

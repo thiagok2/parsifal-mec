@@ -1,5 +1,5 @@
 body{
-	
+	background: #ecf1f6;
    
 }
 
@@ -143,4 +143,20 @@ img.img-logo:hover{
 
 .outline{
 	background: transparent;
+}
+
+.btn-success{
+	
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+	color: #ffffff;
+    background-color: #00a65a;
+    border-color: #008d4c;
+    border: 1px solid #72bda3;
+    border-radius: 6px 6px 0 0;
+}
+.panel-default>.panel-heading {
+	
+	
 }
