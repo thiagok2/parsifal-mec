@@ -4,7 +4,7 @@
 <p>
   <form method="get" class="pull-right" style="display: inline;">
     <strong>{% trans 'Order by' %}: </strong>
-    <select name="order" id="quality-assessment-order">
+    <select name="order" class="form-control" id="quality-assessment-order">
       <option value="title"{% if order = 'title' %} selected{% endif %}>{% trans 'Title' %} (a - z)</option>
       <option value="-title"{% if order = '-title' %} selected{% endif %}>{% trans 'Title' %} (z - a)</option>
       <option value="year"{% if order = 'year' %} selected{% endif %}>{% trans 'Year' %} (0 - 9)</option>
