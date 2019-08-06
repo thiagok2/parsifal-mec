@@ -160,3 +160,46 @@ img.img-logo:hover{
 	
 	
 }
+
+.source-tab-content, .quality-container{
+	background: white;
+    padding: 10px;
+    border-radius: 15px;
+}
+#planning-tab, #conducting-tab, #data-extraction-menu, #source-tab, #quality-menu{
+	background-color: #f5f5f5;
+    border-color: #ddd;
+}
+
+nav-tabs > li:hover{
+	background-color:#72bda3;
+    border-color: #ddd;
+}
+
+span.label{
+	padding: 5px;
+    font-size: 0.9em;
+}
+
+input[type=checkbox], input[type=radio]
+{
+  /* Double-sized Checkboxes */
+  -ms-transform: scale(1.5); /* IE */
+  -moz-transform: scale(1.5); /* FF */
+  -webkit-transform: scale(1.5); /* Safari and Chrome */
+  -o-transform: scale(1.5); /* Opera */
+  transform: scale(1.5);
+  padding: 10px;
+}
+
+nav li:hover {
+  background-color: #a9a9a9;
+}
+.nav-pills>li.active>a{
+	background: #00a65a;
+	border-top-color: #00a65a;
+}
+.nav-pills>li.active>a:hover{
+	background: #4e9a06;
+	border-top-color: #00a65a;
+}
