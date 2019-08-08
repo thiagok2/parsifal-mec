@@ -40,6 +40,7 @@ services:
       - web
     networks:
       - webnet
+    restart: always
     env_file:
       - .env
 
