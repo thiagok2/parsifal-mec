@@ -56,7 +56,7 @@ $(function () {
         if (tab === "all") {
           var action_button = $(".js-finished-button", panel);
           $(".glyphicon", action_button).removeClass().addClass("glyphicon glyphicon-check");
-          $(".action-text", action_button).text("mark as undone");
+          $(".action-text", action_button).text("Marcar como não resolvido");
           $(action_button).removeClass().addClass("js-finished-button js-mark-as-not-finished");
         } 
         else {
@@ -83,7 +83,7 @@ $(function () {
         if (tab === "all") {
           var action_button = $(".js-finished-button", panel);
           $(".glyphicon", action_button).removeClass().addClass("glyphicon glyphicon-unchecked");
-          $(".action-text", action_button).text("marcar como resolvido");
+          $(".action-text", action_button).text("Marcar como resolvido");
           $(action_button).removeClass().addClass("js-finished-button js-mark-as-finished");
         } 
         else {

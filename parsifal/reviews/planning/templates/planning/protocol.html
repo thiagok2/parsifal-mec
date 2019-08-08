@@ -41,23 +41,24 @@
   {% include 'reviews/review_header.html' with active_menu='planning' %}
   {% include 'planning/planning_header.html' with active_tab='protocol' %}
 
-  <div class="row">
+  <div class="row"> 
     <div class="hidden-sm col-md-4 col-lg-3" style="padding-top: 20px;">
       <div id="protocol" class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title">{% trans 'Protocol' %}</h3>
         </div>
-        <div class="list-group">
-
-          <a href="#objective-section" class="list-group-item">{% trans 'Objectives' %}</a>
-          <a href="#picoc-section" class="list-group-item">{% trans 'PICOC' %}</a>
-          <a href="#question-section" class="list-group-item">{% trans 'Research Questions' %}</a>
-          <a href="#keywords-section" class="list-group-item">{% trans 'Keywords and Synonyms' %}</a>
-          <a href="#search-string-section" class="list-group-item">{% trans 'Search String' %}</a>
-          <a href="#sources-section" class="list-group-item">{% trans 'Sources' %}</a>
-          <a href="#selection-section" class="list-group-item">{% trans 'Selection Criteria' %}</a>
-          <a href="#selection-reviewer-section" class="list-group-item">{% trans 'Selection Reviewer' %}</a>
-        </div>
+        <nav id="link-list">
+        <ul class="nav nav-pills nav-stacked">
+          <li><a href="#objective-section" class="list-group-item">{% trans 'Objectives' %}</a></li>
+          <li><a href="#picoc-section" class="list-group-item">{% trans 'PICOC' %}</a></li>
+          <li><a href="#question-section" class="list-group-item">{% trans 'Research Questions' %}</a></li>
+          <li><a href="#keywords-section" class="list-group-item">{% trans 'Keywords and Synonyms' %}</a></li>
+          <li><a href="#search-string-section" class="list-group-item">{% trans 'Search String' %}</a></li>
+          <li><a href="#sources-section" class="list-group-item">{% trans 'Sources' %}</a></li>
+          <li><a href="#selection-section" class="list-group-item">{% trans 'Selection Criteria' %}</a></li>
+          <li><a href="#selection-reviewer-section" class="list-group-item">{% trans 'Selection Reviewer' %}</a></li>
+        </ul>
+        </nav>
       </div>
     </div>
     <div class="col-sm-12 col-md-8 col-lg-9">

@@ -347,8 +347,21 @@ def build_data_extraction_table(review, is_finished):
                 str_table += u'''<div class="panel panel-default data-extraction-panel">
                   <div class="panel-heading">
                     <h3 class="panel-title row">
-                       <div class="col-sm-9">{0}
-                      <span class="badge">{1}</span></div>'''.format(escape(study.title), study.get_score())
+                       <div class="col-sm-9" style="padding: 0px 5px">{0}
+                      <span class="badge">{1}</span>'''.format(escape(study.title), study.get_score())
+            
+                files = study.get_files();
+                if files:
+                    pdf_file = files[0]
+                    str_table +='''<a href="{0}"><span class="badge"><i class="glyphicon glyphicon-cloud-download"></i></span></a>'''.format(pdf_file.article_file.url)
+                if study.doi:
+                    str_table +='''<a href="{0}"><span class="badge">DOI:{0}</a>'''.format(study.doi,study.doi)
+                
+                str_table +=u'''<div class="detail-article-data-extraction">
+                                <small><span class="text-muted">{0} ({1})</span></small>
+                            </div>'''.format(escape(study.author), study.year)
+                            
+                str_table +='</div>'
 
                 if study.finished_data_extraction:
                     str_table += u'<div class="col-sm-3"><span class="pull-right"><a href="javascript:void(0);" class="js-finished-button js-mark-as-not-finished"><span class="glyphicon glyphicon-check"></span> <span class="action-text">Marcar como não resolvido</span></a></span></div>'
