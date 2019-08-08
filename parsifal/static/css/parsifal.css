@@ -356,7 +356,7 @@ ul.review-menu li {
   list-style: none;
   padding: 0;
   font-size: 14px;
-  border-bottom: 3px solid #CCCCCC;
+  /*border-bottom: 3px solid #CCCCCC;*/
   border-right: 1px solid #C2C2C2;
 }
 
@@ -385,9 +385,9 @@ ul.review-menu li:hover {
 }
 
 ul.review-menu li.active {
-  background: #F5F5F5;
-  color: #666B71;
-  border-bottom: 3px solid #AC4539;
+  background: #00a65a;
+  color: white;
+  border-bottom: 3px solid #d8dee4;
 }
 
 #protocol.affix-top {
@@ -430,10 +430,10 @@ ul.review-menu li.active {
 
 #tbl-quality td.answer:hover {
   background-color: #f5f5f5;
-}
+} 
 
 #tbl-quality td.selected-answer {
-  background-color: #00a65a!important;
+  background-color: #00a65a! important;
   color: #fff;
 }
 

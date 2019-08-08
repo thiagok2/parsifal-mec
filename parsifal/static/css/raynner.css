@@ -1,5 +1,5 @@
 body{
-	background: #ecf1f6;
+	background: #e1e4e8;
    
 }
 
@@ -171,6 +171,10 @@ img.img-logo:hover{
     border-color: #ddd;
 }
 
+.nav>li>a:hover{
+	background: #babdb6
+}
+
 nav-tabs > li:hover{
 	background-color:#72bda3;
     border-color: #ddd;
@@ -193,13 +197,20 @@ input[type=checkbox], input[type=radio]
 }
 
 nav li:hover {
-  background-color: #a9a9a9;
+  /*background-color: #a9a9a9;*/
 }
 .nav-pills>li.active>a{
 	background: #00a65a;
 	border-top-color: #00a65a;
+	color:white;
+	border-left-color: #00a65a;
 }
 .nav-pills>li.active>a:hover{
-	background: #4e9a06;
+	background: #00a65a;
 	border-top-color: #00a65a;
+	color:white;
+}
+
+div.data-extraction-panel  span.badge{
+	margin: 0px 5px;
 }
