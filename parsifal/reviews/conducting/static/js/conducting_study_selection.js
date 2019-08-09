@@ -29,7 +29,10 @@ $(function () {
             $(btn).ajaxDisable();
         },
         success: function (data) {
-            $(tr).remove();
+            //$(tr).remove();
+            console.log(data)
+            $("#tab-files").html(data);
+
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log(errorThrown)
@@ -148,19 +151,6 @@ $(function () {
       },
       success: function (data) {
         $(container).html(data);
-
-        $('#fileupload').fileupload({
-          url: '/reviews/conducting/articles/upload/',
-          dataType: 'html',
-          done: function (e, data) {
-            $('#files tbody').append(data.result)
-            $('#files .no-data').addClass('hidden')
-          },
-          progressall: function (e, data) {
-            var progress = parseInt(data.loaded / data.total * 100, 10);
-            $('#progress .progress-bar').css('width', progress + '%');
-          }
-        }).prop('disabled', !$.support.fileInput).parent().addClass($.support.fileInput ? undefined : 'disabled');
 
       },
       complete: function () {

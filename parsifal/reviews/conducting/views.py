@@ -2,6 +2,7 @@
 
 import json
 import os
+from os.path import splitext
 import bibtexparser
 from bibtexparser.bparser import BibTexParser
 from bibtexparser.customization import convert_to_unicode
@@ -349,18 +350,18 @@ def build_data_extraction_table(review, is_finished):
                     <h3 class="panel-title row">
                        <div class="col-sm-9" style="padding: 0px 5px">{0}
                       <span class="badge">{1}</span>'''.format(escape(study.title), study.get_score())
-            
+
                 files = study.get_files();
                 if files:
                     pdf_file = files[0]
                     str_table +='''<a href="{0}"><span class="badge"><i class="glyphicon glyphicon-cloud-download"></i></span></a>'''.format(pdf_file.article_file.url)
                 if study.doi:
                     str_table +='''<a href="{0}"><span class="badge">DOI:{0}</a>'''.format(study.doi,study.doi)
-                
+
                 str_table +=u'''<div class="detail-article-data-extraction">
                                 <small><span class="text-muted">{0} ({1})</span></small>
                             </div>'''.format(escape(study.author), study.year)
-                            
+
                 str_table +='</div>'
 
                 if study.finished_data_extraction:
@@ -578,30 +579,36 @@ def article_details(request):
 @login_required
 def articles_upload(request):
     try:
+        print 'upload'
         if request.method == 'POST':
             form = ArticleUploadForm(request.POST, request.FILES)
-            print form
             if form.is_valid():
                 uploaded_file = request.FILES['article_file']
+
                 review_id = request.POST.get('review-id')
                 review = Review.objects.get(pk=review_id)
 
                 article_id = request.POST.get('article-id')
                 article = Article.objects.get(pk=article_id)
+                hasFile = ArticleFile.objects.filter(review=review, article=article).count()
+                if not hasFile:
+                    article_file = ArticleFile(review=review,
+                            article=article,
+                            user=request.user,
+                            article_file=uploaded_file,
+                            name=uploaded_file.name,
+                            size=uploaded_file.size)
+                    article_file.save()
 
-                article_file = ArticleFile(review=review,
-                        article=article,
-                        user=request.user,
-                        article_file=uploaded_file,
-                        name=uploaded_file.name,
-                        size=uploaded_file.size)
-                article_file.save()
+                    #context = RequestContext(request, {'file': article_file })
+                    #return render_to_response('conducting/partial_article_files_row.html', context)
+                    return reload_article_files_tab(request, article_id)
+                else:
+                    return HttpResponseBadRequest(_('File has already updated. Only one file per article is permitted. Delete existing file to upload new.'))
 
-                context = RequestContext(request, {'file': article_file })
-                return render_to_response('conducting/partial_article_files_row.html', context)
             else:
-                print 'else'
-                return HttpResponseBadRequest()
+                error = form['article_file'].errors.as_data()[0]
+                return HttpResponseBadRequest(error)
     except Exception as e:
         print e
         return HttpResponseBadRequest()
@@ -614,10 +621,22 @@ def remove_article_file(request):
         if file_id != 'None':
             try:
                 file = ArticleFile.objects.get(pk=file_id)
+                article_id = file.article.id
                 file.delete()
+                return reload_article_files_tab(request, article_id)
             except ArticleFile.DoesNotExist:
                 return HttpResponseBadRequest()
+
         return HttpResponse()
+    except Exception as e:
+        print e
+        return HttpResponseBadRequest()
+
+def reload_article_files_tab(request, article_id):
+    try:
+        article = Article.objects.get(pk=article_id)
+        context = RequestContext(request, {"article": article})
+        return render_to_response('conducting/partial_article_files.html', context)
     except Exception as e:
         return HttpResponseBadRequest()
 
@@ -649,7 +668,7 @@ def build_article_table_row(article):
 #             name,
 #             date,
 #             article.get_status_html())
-          
+
     row = u'''<tr oid="{0}" article-status="{1}">
             <td><input type="checkbox" value="{0}""></td>
             <td>{2}</td>

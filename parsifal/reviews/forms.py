@@ -1,3 +1,4 @@
+# coding: utf-8
 from django import forms
 
 from django.utils.translation import ugettext as _
@@ -43,6 +44,20 @@ class ArticleUploadForm(forms.ModelForm):
         super(ArticleUploadForm, self).__init__(*args, **kwargs)
 
         self.fields['article_file'].widget.attrs['class'] = 'form-control'
+
+    def clean(self):
+        cleaned_data = self.cleaned_data
+        if not self.instance.id and not cleaned_data.has_key('article_file'):
+            self._errors["article_file"] = self.error_class([_('This field is required.')])
+        else:
+            filename = cleaned_data['article_file'].name.lower()
+            fileext  = filename[filename.rfind('.'):] if '.' in filename else None
+
+            if not fileext or fileext not in ('.pdf'):
+                self._errors["article_file"] = self.error_class([_('File extension not allowed, use only .pdf')])
+                del self.cleaned_data["article_file"]
+
+        return cleaned_data
 
     class Meta:
         model = ArticleFile
