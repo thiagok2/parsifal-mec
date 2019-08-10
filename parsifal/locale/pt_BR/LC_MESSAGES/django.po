@@ -3176,7 +3176,7 @@ msgstr ""
 #: parsifal/reviews/planning/templates/planning/protocol.html:254
 #: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:78
 msgid "Add Question"
-msgstr "Add Questão"
+msgstr "Questão"
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:267
 msgid "About the Keywords and Synonyms"

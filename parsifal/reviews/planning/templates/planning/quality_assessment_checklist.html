@@ -59,9 +59,29 @@
     <div class="col-sm-12 col-md-8 col-lg-9">
 
       <section id="questions">
+      
+      	<div class="modal fade" id="questions-help">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{% trans 'About Question' %}</h4>
+              </div>
+              <div class="modal-body">
+              	<p>{% trans 'The Question help RSL'%}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title">{% trans 'Questions' %}</h3>
+            <h3 class="panel-title">
+            	{% trans 'Questions' %}
+            	<a href="javascript:void(0);" class="pull-right" data-toggle="tooltip" title="{% trans 'What is this? Click to get help.' %}" data-placement="top" data-container="body">
+                  <span class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#questions-help"></span>
+                </a>	
+            </h3>
           </div>
           <table class="table" id="tbl-quality-questions">
             <tbody>
@@ -86,9 +106,27 @@
       </section>
 
       <section id="answers">
+      	<div class="modal fade" id="answers-help">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{% trans 'About Answers' %}</h4>
+              </div>
+              <div class="modal-body">
+              	<p>{% trans 'The Answers help RSL'%}</p>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title">{% trans 'Answers' %}</h3>
+            <h3 class="panel-title">
+            	{% trans 'Answers' %}
+            	<a href="javascript:void(0);" class="pull-right" data-toggle="tooltip" title="{% trans 'What is this? Click to get help.' %}" data-placement="top" data-container="body">
+                  <span class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#answers-help"></span>
+                </a>
+            </h3>
           </div>
           <table class="table" id="tbl-quality-answers">
             <thead>
@@ -125,9 +163,29 @@
       </section>
 
       <section id="score" style="margin-bottom: 20px;">
+      	<div class="modal fade" id="scores-help">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">
+                	{% trans 'Quality Assessment Scores' %}
+                </h4>
+              </div>
+              <div class="modal-body">
+              	<p>{% trans 'The Quality Assessment Scores help RSL'%}</p>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title">{% trans 'Quality Assessment Scores' %}</h3>
+            <h3 class="panel-title">
+            	{% trans 'Quality Assessment Scores' %}
+            	<a href="javascript:void(0);" class="pull-right" data-toggle="tooltip" title="{% trans 'What is this? Click to get help.' %}" data-placement="top" data-container="body">
+                  	<span class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#scores-help"></span>
+                </a>
+            </h3>
           </div>
           <table class="table" id="tbl-cutoff-score">
             <tbody>
