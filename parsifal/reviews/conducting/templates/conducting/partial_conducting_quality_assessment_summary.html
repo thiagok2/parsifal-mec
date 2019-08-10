@@ -2,9 +2,25 @@
 
 {% load humanize %}
 
+<div class="modal fade" id="summary-help">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">{% trans 'About Summary' %}</h4>
+      </div>
+      <div class="modal-body">
+        <p>The summary help RSL</p>
+      </div>
+    </div>
+  </div>
+</div>
 {% if review.quality_assessment_cutoff_score > 0.0 %}
   <p>{% trans '<span class="higher-than-cutoff-label">Green</span> means higher than cutoff score. <span class="lower-than-cutoff-label">Red</span> means lower or equal to the cutoff score.' %}</p>
 {% endif %}
+<a href="javascript:void(0);" class="pull-right" data-toggle="tooltip" title="{% trans 'What is this? Click to get help.' %}" data-placement="top" data-container="body">
+	<span class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#summary-help"></span>
+</a> 
 <table class="table">
   <thead>
     <tr>
