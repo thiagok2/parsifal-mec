@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-12 08:33+0000\n"
+"POT-Creation-Date: 2019-08-12 12:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -170,7 +170,7 @@ msgstr ""
 #: parsifal/account_settings/templates/settings/picture.html:73
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:89
 #: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:75
-#: parsifal/reviews/planning/templates/planning/protocol.html:524
+#: parsifal/reviews/planning/templates/planning/protocol.html:525
 msgid "Close"
 msgstr "Fechar"
 
@@ -1765,10 +1765,8 @@ msgstr ""
 "de qualidade) </small>"
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_data_extraction.html:17
-#, fuzzy
-#| msgid "Data Extraction"
 msgid "About Data Extraction"
-msgstr "Extração de Dados"
+msgstr "Sobre a Extração de Dados"
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_data_extraction.html:27
 #: parsifal/reviews/conducting/templates/conducting/conducting_header.html:18
@@ -1791,9 +1789,9 @@ msgstr "Extração de Dados"
 #: parsifal/reviews/planning/templates/planning/protocol.html:239
 #: parsifal/reviews/planning/templates/planning/protocol.html:350
 #: parsifal/reviews/planning/templates/planning/protocol.html:450
-#: parsifal/reviews/planning/templates/planning/protocol.html:551
-#: parsifal/reviews/planning/templates/planning/protocol.html:628
-#: parsifal/reviews/planning/templates/planning/protocol.html:697
+#: parsifal/reviews/planning/templates/planning/protocol.html:552
+#: parsifal/reviews/planning/templates/planning/protocol.html:632
+#: parsifal/reviews/planning/templates/planning/protocol.html:702
 #: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:81
 #: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:126
 #: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:185
@@ -1859,10 +1857,8 @@ msgstr "6. Análise de Dados"
 #: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:20
 #: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:87
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:13
-#, fuzzy
-#| msgid "Import Studies"
 msgid "About Import Studies"
-msgstr "Importar Estudos"
+msgstr "Sobre Importar os Estudos"
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:43
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_find_duplicates.html:15
@@ -1976,10 +1972,8 @@ msgid "You can edit the base search string in the"
 msgstr "Você pode editar a string de pesquisa na "
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:36
-#, fuzzy
-#| msgid "About the Search Strings"
 msgid "About Search Databases"
-msgstr "Sobre a String de Busca"
+msgstr "Sobre a Busca de Bases de Dados"
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:53
 msgid "Select Sources"
@@ -1991,8 +1985,8 @@ msgid "Showing the available sources from you Protocol, defined in the "
 msgstr "Mostrando as fontes disponíveis do seu Protocolo, definido na "
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:66
-#: parsifal/reviews/planning/templates/planning/protocol.html:515
-#: parsifal/reviews/planning/templates/planning/protocol.html:559
+#: parsifal/reviews/planning/templates/planning/protocol.html:516
+#: parsifal/reviews/planning/templates/planning/protocol.html:560
 #: parsifal/reviews/reporting/templates/reporting/export.html:45
 #: parsifal/reviews/templates/reviews/partial_published_protocols.html:178
 msgid "Name"
@@ -2018,8 +2012,8 @@ msgstr "Nova Fonte"
 #: parsifal/reviews/planning/templates/planning/protocol.html:105
 #: parsifal/reviews/planning/templates/planning/protocol.html:198
 #: parsifal/reviews/planning/templates/planning/protocol.html:464
-#: parsifal/reviews/planning/templates/planning/protocol.html:525
-#: parsifal/reviews/planning/templates/planning/protocol.html:725
+#: parsifal/reviews/planning/templates/planning/protocol.html:526
+#: parsifal/reviews/planning/templates/planning/protocol.html:730
 #: parsifal/reviews/planning/templates/planning/statistical_methods_conventions.html:50
 #: parsifal/reviews/templates/reviews/review.html:50
 msgid "Save"
@@ -2067,7 +2061,7 @@ msgstr "Removido!"
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:340
 #: parsifal/reviews/planning/templates/planning/protocol.html:108
 #: parsifal/reviews/planning/templates/planning/protocol.html:467
-#: parsifal/reviews/planning/templates/planning/protocol.html:728
+#: parsifal/reviews/planning/templates/planning/protocol.html:733
 #: parsifal/reviews/planning/templates/planning/statistical_methods_conventions.html:54
 msgid "Saving…"
 msgstr "Salvando…"
@@ -2078,7 +2072,7 @@ msgstr "Salvando…"
 #: parsifal/reviews/planning/templates/planning/protocol.html:114
 #: parsifal/reviews/planning/templates/planning/protocol.html:207
 #: parsifal/reviews/planning/templates/planning/protocol.html:473
-#: parsifal/reviews/planning/templates/planning/protocol.html:734
+#: parsifal/reviews/planning/templates/planning/protocol.html:739
 #: parsifal/reviews/planning/templates/planning/statistical_methods_conventions.html:64
 msgid "Saved!"
 msgstr "Salvo!"
@@ -2313,7 +2307,7 @@ msgstr "Escolha o status que o artigo deve ter."
 
 #: parsifal/reviews/conducting/templates/conducting/partial_article_evaluation.html:17
 #: parsifal/reviews/planning/templates/planning/protocol.html:58
-#: parsifal/reviews/planning/templates/planning/protocol.html:627
+#: parsifal/reviews/planning/templates/planning/protocol.html:631
 #: parsifal/reviews/reporting/export.py:126
 #: parsifal/reviews/reporting/templates/reporting/export.html:80
 #: parsifal/reviews/templates/reviews/partial_published_protocols.html:203
@@ -2360,7 +2354,7 @@ msgstr "abrir"
 #: parsifal/reviews/planning/templates/planning/partial_planning_risk.html:29
 #: parsifal/reviews/planning/templates/planning/partial_quality_assessment_answer.html:15
 #: parsifal/reviews/planning/templates/planning/partial_quality_assessment_question.html:29
-#: parsifal/reviews/planning/templates/planning/protocol.html:591
+#: parsifal/reviews/planning/templates/planning/protocol.html:592
 msgid "remove"
 msgstr "remover"
 
@@ -2565,10 +2559,8 @@ msgid "No duplicate found."
 msgstr "Duplicatas não encontradas."
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_quality_assessment_detailed.html:10
-#, fuzzy
-#| msgid "Detailed"
 msgid "About Detailed"
-msgstr "Detalhado"
+msgstr "Sobre o Detalhamento"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_quality_assessment_detailed.html:23
 msgid "Order by"
@@ -2595,10 +2587,8 @@ msgstr ""
 "as tabelas."
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_quality_assessment_summary.html:10
-#, fuzzy
-#| msgid "Summary"
 msgid "About Summary"
-msgstr "Sumário"
+msgstr "Sobre o Sumário"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_quality_assessment_summary.html:19
 msgid ""
@@ -2809,10 +2799,8 @@ msgid "Planning"
 msgstr "Planejamento"
 
 #: parsifal/reviews/planning/templates/planning/data_extraction_form.html:29
-#, fuzzy
-#| msgid "Data Extraction Form"
 msgid "About Data Extraction Form"
-msgstr "Formulário de Extração de Dados"
+msgstr "Sobre o Formulário de Extração de Dados"
 
 #: parsifal/reviews/planning/templates/planning/data_extraction_form.html:33
 #, fuzzy
@@ -2909,8 +2897,8 @@ msgstr "Esconder Campos de Extração de Dados"
 #: parsifal/reviews/planning/templates/planning/partial_planning_risk.html:21
 #: parsifal/reviews/planning/templates/planning/partial_quality_assessment_answer.html:11
 #: parsifal/reviews/planning/templates/planning/partial_quality_assessment_question.html:21
-#: parsifal/reviews/planning/templates/planning/protocol.html:580
-#: parsifal/reviews/planning/templates/planning/protocol.html:586
+#: parsifal/reviews/planning/templates/planning/protocol.html:581
+#: parsifal/reviews/planning/templates/planning/protocol.html:587
 msgid "edit"
 msgstr "editar"
 
@@ -3093,7 +3081,7 @@ msgid "Search String"
 msgstr "String de Busca"
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:57
-#: parsifal/reviews/planning/templates/planning/protocol.html:550
+#: parsifal/reviews/planning/templates/planning/protocol.html:551
 #: parsifal/reviews/reporting/export.py:98
 #: parsifal/reviews/reporting/templates/reporting/export.html:77
 #: parsifal/reviews/templates/reviews/partial_published_protocols.html:171
@@ -3101,7 +3089,7 @@ msgid "Sources"
 msgstr "Fontes"
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:59
-#: parsifal/reviews/planning/templates/planning/protocol.html:696
+#: parsifal/reviews/planning/templates/planning/protocol.html:701
 msgid "Selection Reviewer"
 msgstr "Revisor Principal"
 
@@ -3134,7 +3122,7 @@ msgstr ""
 #: parsifal/reviews/planning/templates/planning/protocol.html:111
 #: parsifal/reviews/planning/templates/planning/protocol.html:204
 #: parsifal/reviews/planning/templates/planning/protocol.html:470
-#: parsifal/reviews/planning/templates/planning/protocol.html:731
+#: parsifal/reviews/planning/templates/planning/protocol.html:736
 #: parsifal/reviews/planning/templates/planning/statistical_methods_conventions.html:59
 msgid "Error!"
 msgstr "Erro!"
@@ -3176,9 +3164,7 @@ msgid ""
 "software engineering."
 msgstr ""
 "A <em> comparação </em> à qual a intervenção é comparada, ou seja, como é o "
-"tratamento de controle definido? Em particular, a intervenção 'placebo' é "
-"crítico, como 'não usar a intervenção' não é na maioria das vezes uma ação "
-"válida em Engenharia de software."
+"tratamento de controle definido?"
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:137
 #, python-format
@@ -3188,10 +3174,11 @@ msgid ""
 "example, it is probably not interesting that an outcome is 10%% better in "
 "some respect if it is twice as time consuming."
 msgstr ""
-"Os <em> resultados </em> do experimento não devem ser apenas "
-"estatisticamente significativo, mas também ser significativo do ponto de "
+"Os <em> resultados </em> (outcome) do experimento não devem ser apenas "
+"estatisticamente significativo mas também ser significativo do ponto de "
 "vista prático. Por exemplo, provavelmente não é interessante que um "
-"resultado seja 10 %% melhor em algum aspecto se for duas vezes mais demorado."
+"resultado seja 10 %% melhor em algum aspecto se ele consumir o dobro do "
+"tempo."
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:138
 msgid ""
@@ -3201,9 +3188,9 @@ msgid ""
 "subjects."
 msgstr ""
 "O <em> contexto </em> do estudo deve ser definido, como uma visão ampliada "
-"da população, incluindo se este está sendo conduzido na academia "
-"ouindústria, em qual segmento da indústria, e também os incentivos para "
-"osassuntos."
+"da população, incluindo se esta revisão está sendo conduzido na academia ou "
+"indústria, em qual segmento da indústria, ou ainda, e também os incentivos "
+"para os assuntos."
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:162
 msgid ""
@@ -3394,7 +3381,7 @@ msgid "Import PICO Keywods"
 msgstr "Importar Palavras-chave (PICOC)"
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:401
-#: parsifal/reviews/planning/templates/planning/protocol.html:536
+#: parsifal/reviews/planning/templates/planning/protocol.html:537
 #: parsifal/reviews/settings/templates/settings/review_settings.html:123
 #: parsifal/reviews/settings/templates/settings/review_settings.html:149
 msgid "Are you sure?"
@@ -3432,37 +3419,27 @@ msgstr ""
 "strong>, da seguinte forma:"
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:426
-#, fuzzy
-#| msgid "Population"
 msgid "population"
-msgstr "População"
+msgstr "população"
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:426
 #: parsifal/reviews/planning/templates/planning/protocol.html:427
 #: parsifal/reviews/planning/templates/planning/protocol.html:428
 #: parsifal/reviews/planning/templates/planning/protocol.html:429
-#, fuzzy
-#| msgid "Synonyms"
 msgid "synonym"
-msgstr "Sinônimos"
+msgstr "Sinônimo"
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:427
-#, fuzzy
-#| msgid "Intervention"
 msgid "intervention"
-msgstr "Intervenção"
+msgstr "intervenção"
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:428
-#, fuzzy
-#| msgid "Comparison"
 msgid "comparison"
-msgstr "Comparação"
+msgstr "comparação"
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:429
-#, fuzzy
-#| msgid "Outcome"
 msgid "outcomes"
-msgstr "Resultados"
+msgstr "resultados"
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:431
 msgid "Good example"
@@ -3473,22 +3450,16 @@ msgid "software"
 msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:432
-#, fuzzy
-#| msgid "application:"
 msgid "application"
 msgstr "aplicação"
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:432
-#, fuzzy
-#| msgid "product:"
 msgid "product"
 msgstr "produto"
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:435
-#, fuzzy
-#| msgid "Good example"
 msgid "Bad example"
-msgstr "Bom exemplo"
+msgstr "Mau exemplo"
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:457
 msgid ""
@@ -3505,20 +3476,30 @@ msgid "Suggested Search String"
 msgstr "Strings de Busca Sugeridas"
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:489
-#, fuzzy
-#| msgid "About the Objectives"
 msgid "About the Sources"
-msgstr "Sobre os Objetivos"
+msgstr "Sobre as Fontes"
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:492
-msgid "The sources help RSL"
+#: parsifal/reviews/planning/templates/planning/protocol.html:493
+msgid ""
+"This section specifies which sources will be sought from the papers "
+"considered in this systematic literature review. It can identify electronic "
+"databases such as IEEE, ACM, Springer Link, ERIC or indicate that the search "
+"will be performed from offline sources. The sources indicated in this "
+"section will be presented during Conducting the Study Import process and "
+"subsequent Study Selection."
 msgstr ""
+"Esta seção especifica quais serão as fontes em que serão buscadas os "
+"trabalhos considerados nesta revisão sistemática de literatura. Pode "
+"identificar bases eletrônicas tais como IEEE, ACM, Springer Link, ERIC ou "
+"então indicar que a busca será realizada em fontes offline. As fontes "
+"indicadas nesta seção serão apresentadas durante Condução para o processo de "
+"Importação de Estudos e posterior Seleção de Estudos."
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:503
+#: parsifal/reviews/planning/templates/planning/protocol.html:504
 msgid "Digital Libraries"
 msgstr "Bibliotecas Digitais"
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:539
+#: parsifal/reviews/planning/templates/planning/protocol.html:540
 msgid ""
 "This action <strong>cannot</strong> be undone. This will remove the <strong "
 "id=\"delete-source-name\"></strong> source, and permanently delete all "
@@ -3528,31 +3509,42 @@ msgstr ""
 "id=\"delete-source-name\"></strong> fonte(biblioteca) e excluíra "
 "permanentemente todos os artigos importados associados a ela."
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:542
+#: parsifal/reviews/planning/templates/planning/protocol.html:543
 msgid "Remove this source"
 msgstr "Remover essa Fonte"
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:601
+#: parsifal/reviews/planning/templates/planning/protocol.html:602
 msgid "Add Source"
 msgstr "Adicionar Fonte"
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:603
+#: parsifal/reviews/planning/templates/planning/protocol.html:606
 msgid "Add a Digital Library"
 msgstr "Adicionar Biblioteca Digital"
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:615
-#, fuzzy
-#| msgid "Selection Criteria"
+#: parsifal/reviews/planning/templates/planning/protocol.html:619
 msgid "About Selection Criterias"
-msgstr "Critérios de Seleção"
+msgstr "Sobre os Critérios de Seleção"
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:618
-#, fuzzy
-#| msgid "Selection Criteria"
-msgid "The Selection Criterias help RSL"
-msgstr "Critérios de Seleção"
+#: parsifal/reviews/planning/templates/planning/protocol.html:622
+msgid ""
+"The inclusion and exclusion criteria indicate which parameters will be "
+"considered to determine whether or not a given study will be included in the "
+"systematic review performed. Inclusion criteria indicate all criteria that "
+"must be met for a given work to be considered. On the other hand, exclusion "
+"criteria indicate parameters that cannot be detected in a job to be "
+"considered in such a way that if any criteria are applied to a job it should "
+"not be considered while conducting the systematic review."
+msgstr ""
+"Os critérios de inclusão e exclusão indicam quais parâmetros serão "
+"considerados para determinar se um dado estudo será inserido ou não na "
+"revisão sistemática realizada. Os critérios de inclusão indicam todos os "
+"critérios que devem ser atendidos para que um dado trabalho seja "
+"considerado. Por outro lado, os critérios de exclusão indicam os parâmetros "
+"que não podem ser detectados em um trabalho para ser considerado de tal modo "
+"que caso algum critério seja aplicado a um trabalho o mesmo não deve ser "
+"considerado durante a condução da revisão sistemática. "
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:634
+#: parsifal/reviews/planning/templates/planning/protocol.html:638
 msgid ""
 "Inform your inclusion or exclusion criteria and press <strong>Enter</strong> "
 "to add."
@@ -3560,32 +3552,51 @@ msgstr ""
 "Informe seus critérios de inclusão ou exclusão e pressione <strong> Enter </"
 "strong> para adicionar."
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:638
+#: parsifal/reviews/planning/templates/planning/protocol.html:642
 #: parsifal/reviews/templates/reviews/partial_published_protocols.html:209
 msgid "Inclusion Criteria"
 msgstr "Critérios de Inclusão"
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:650
-#: parsifal/reviews/planning/templates/planning/protocol.html:667
+#: parsifal/reviews/planning/templates/planning/protocol.html:654
+#: parsifal/reviews/planning/templates/planning/protocol.html:671
 msgid "remove selected"
 msgstr "remover selecionado"
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:655
+#: parsifal/reviews/planning/templates/planning/protocol.html:659
 #: parsifal/reviews/templates/reviews/partial_published_protocols.html:220
 msgid "Exclusion Criteria"
 msgstr "Critérios de Exclusão"
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:681
-#, fuzzy
-#| msgid "Selection Reviewer"
-msgid "Selection Master Reviewer"
-msgstr "Revisor Principal"
+#: parsifal/reviews/planning/templates/planning/protocol.html:685
+msgid "About Selection Master Reviewer"
+msgstr "Sobre a Seleção do Revisor Mestre"
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:684
-msgid "The Master Reviewer help RSL"
+#: parsifal/reviews/planning/templates/planning/protocol.html:688
+msgid ""
+"During the study selection process, reviewers should evaluate the papers "
+"considered and, in the light of the inclusion and exclusion criteria, "
+"determine whether they should be selected or not for further consideration. "
+"In this sense, considering that the evaluation should preferably be "
+"performed by two or more reviewers, there may be conflicting scenarios in "
+"which the selections made by the reviewers differ from each other."
 msgstr ""
+"Durante o processo de seleção de estudos os revisores devem avaliar os "
+"trabalhos considerados e, em face dos critérios de inclusão e exclusão, "
+"determinar se os mesmos devem ser selecionados ou não para posterior "
+"consideração. Neste sentido, considerando que a avaliação deve ser, "
+"preferencialmente, realizada por dois ou mais revisores, pode haver cenários "
+"de conflito em que as seleções realizadas pelos revisores destoam uma das "
+"outras."
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:703
+#: parsifal/reviews/planning/templates/planning/protocol.html:689
+msgid ""
+"Thus, this section indicates which reviewer will be considered as the master "
+"reviewer for conflict resolution during the study selection process."
+msgstr ""
+"Deste modo, esta seção indica qual revisor será considerado como revisor "
+"mestre para resolução de conflitos durante o processo de seleção de estudos. "
+
+#: parsifal/reviews/planning/templates/planning/protocol.html:708
 msgid ""
 "The reviewer will resolve the conflicts between the author's article "
 "evaluations."
@@ -3614,28 +3625,60 @@ msgid "Share Quality Assessment"
 msgstr "Compartilhar"
 
 #: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:68
-#, fuzzy
-#| msgid "Add Question"
 msgid "About Question"
-msgstr "Adicionar Questão"
+msgstr "Sobre as Questões"
 
 #: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:71
-msgid "The Question help RSL"
+#, fuzzy
+#| msgid ""
+#| "One of the stages of conducting a Systematic Review is the application of "
+#| "a Quality Assessment questionnaire. The main motivation is to be able to "
+#| "determine an evaluation barema that will be applied to the considered "
+#| "works in order to determine which works meet the established minimum "
+#| "quality criteria. Examples of questions for quality assessment would be "
+#| "to verify whether the work under consideration performs empirical "
+#| "evaluation or whether the method considered is, in the reviewer"
+msgid ""
+"One of the stages of conducting a Systematic Review is the application of a "
+"Quality Assessment questionnaire. The main motivation is to be able to "
+"determine an evaluation barema that will be applied to the considered works "
+"in order to determine which works meet the established minimum quality "
+"criteria. Examples of questions for quality assessment would be to verify "
+"whether the work under consideration performs empirical evaluation or "
+"whether the method considered is, in the reviewer's view, systematically "
+"described."
 msgstr ""
+"Uma das etapas da condução de uma Revisão Sistemática é a aplicação de um "
+"questionário de avaliação de qualidade (Quality Assessment). A principal "
+"motivação é poder determinar um barema de avaliação que será aplicado sobre "
+"os trabalhos considerados de modo a determinar quais trabalhos atendem a "
+"critérios mínimos de qualidade estabelecidos. Exemplos de questões para "
+"avaliação de qualidade seria verificar se o trabalho considerado realiza "
+"avaliação empírica ou se o método considerado está, na visão do revisor, "
+"sistematicamente descrito."
 
 #: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:102
 msgid "Import Questions"
 msgstr "Importar Questões"
 
 #: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:114
-#, fuzzy
-#| msgid "Import Answers"
 msgid "About Answers"
-msgstr "Importar Respostas"
+msgstr "Sobre as Respostas"
 
 #: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:117
-msgid "The Answers help RSL"
+msgid ""
+"In this section you should indicate the possible answers to the quality "
+"assessment questionnaire. In the current version, the answers will apply to "
+"all questions so that they must be defined in a generic way. Commonly used "
+"answers are threefold (Yes, No and Partially) to indicate the level of "
+"adherence of the work to the considered quality criterion."
 msgstr ""
+"Nesta seção deve-se indicar as possíveis respostas ao questionário de "
+"avaliação de qualidade. Na versão atual, as respostas serão aplicadas a "
+"todas as perguntas de tal modo que as mesmas devem ser definidas de modo "
+"genérico. Respostas comumente utilizadas são a tríplice (Sim, Não e "
+"Parcialmente) para indicar o nível de aderência do trabalho ao critério de "
+"qualidade considerado."
 
 #: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:150
 msgid "Add Answer"
@@ -3650,15 +3693,16 @@ msgid "(Add Suggested Answers)"
 msgstr "(Adicionar Respostas Sugeridas)"
 
 #: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:172
+msgid "About Quality Assessment Scores"
+msgstr "Sobre as Pontuações de Avaliação de Qualidade"
+
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:176
+msgid "The help-text is under construction."
+msgstr "Texto de ajuda ainda em construção."
+
 #: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:184
 #: parsifal/reviews/templates/reviews/partial_published_protocols.html:269
 msgid "Quality Assessment Scores"
-msgstr "Pontuações de Avaliação de Qualidade"
-
-#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:176
-#, fuzzy
-#| msgid "Quality Assessment Scores"
-msgid "The Quality Assessment Scores help RSL"
 msgstr "Pontuações de Avaliação de Qualidade"
 
 #: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:193
@@ -3730,10 +3774,8 @@ msgid "Export Quality Assessment"
 msgstr "Exportar Avaliação de Qualidade"
 
 #: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:49
-#, fuzzy
-#| msgid "Import Risks"
 msgid "About Risks"
-msgstr "Importar Riscos"
+msgstr "Sobre os Riscos"
 
 #: parsifal/reviews/planning/templates/planning/risks_to_review_validity.html:53
 msgid "The Risks help RSL"
@@ -4340,6 +4382,16 @@ msgid ""
 "Um ambiente colaborativo para o desenvolvimento de revisões sistemáticas da "
 "literatura e elaboração de metanálises."
 msgstr ""
+
+#, fuzzy
+#~| msgid "Quality Assessment Scores"
+#~ msgid "The Quality Assessment Scores help RSL"
+#~ msgstr "Pontuações de Avaliação de Qualidade"
+
+#, fuzzy
+#~| msgid "Selection Criteria"
+#~ msgid "The Selection Criterias help RSL"
+#~ msgstr "Critérios de Seleção"
 
 #~ msgid "Support for geographically distributed researchers"
 #~ msgstr "Suporte a pesquisadores distribuídos geograficamente"
