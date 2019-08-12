@@ -2482,7 +2482,7 @@ msgstr "de"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:57
 msgid "selected"
-msgstr "selecionado"
+msgstr "selecionado(s)"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:60
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_quality_assessment_detailed.html:31
