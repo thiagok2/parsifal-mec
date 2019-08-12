@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-12 08:33+0000\n"
+"POT-Creation-Date: 2019-08-12 12:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -161,7 +161,7 @@ msgstr ""
 #: parsifal/account_settings/templates/settings/picture.html:73
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:89
 #: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:75
-#: parsifal/reviews/planning/templates/planning/protocol.html:524
+#: parsifal/reviews/planning/templates/planning/protocol.html:525
 msgid "Close"
 msgstr ""
 
@@ -1732,9 +1732,9 @@ msgstr ""
 #: parsifal/reviews/planning/templates/planning/protocol.html:239
 #: parsifal/reviews/planning/templates/planning/protocol.html:350
 #: parsifal/reviews/planning/templates/planning/protocol.html:450
-#: parsifal/reviews/planning/templates/planning/protocol.html:551
-#: parsifal/reviews/planning/templates/planning/protocol.html:628
-#: parsifal/reviews/planning/templates/planning/protocol.html:697
+#: parsifal/reviews/planning/templates/planning/protocol.html:552
+#: parsifal/reviews/planning/templates/planning/protocol.html:632
+#: parsifal/reviews/planning/templates/planning/protocol.html:702
 #: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:81
 #: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:126
 #: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:185
@@ -1917,8 +1917,8 @@ msgid "Showing the available sources from you Protocol, defined in the "
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:66
-#: parsifal/reviews/planning/templates/planning/protocol.html:515
-#: parsifal/reviews/planning/templates/planning/protocol.html:559
+#: parsifal/reviews/planning/templates/planning/protocol.html:516
+#: parsifal/reviews/planning/templates/planning/protocol.html:560
 #: parsifal/reviews/reporting/templates/reporting/export.html:45
 #: parsifal/reviews/templates/reviews/partial_published_protocols.html:178
 msgid "Name"
@@ -1944,8 +1944,8 @@ msgstr ""
 #: parsifal/reviews/planning/templates/planning/protocol.html:105
 #: parsifal/reviews/planning/templates/planning/protocol.html:198
 #: parsifal/reviews/planning/templates/planning/protocol.html:464
-#: parsifal/reviews/planning/templates/planning/protocol.html:525
-#: parsifal/reviews/planning/templates/planning/protocol.html:725
+#: parsifal/reviews/planning/templates/planning/protocol.html:526
+#: parsifal/reviews/planning/templates/planning/protocol.html:730
 #: parsifal/reviews/planning/templates/planning/statistical_methods_conventions.html:50
 #: parsifal/reviews/templates/reviews/review.html:50
 msgid "Save"
@@ -1991,7 +1991,7 @@ msgstr ""
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:340
 #: parsifal/reviews/planning/templates/planning/protocol.html:108
 #: parsifal/reviews/planning/templates/planning/protocol.html:467
-#: parsifal/reviews/planning/templates/planning/protocol.html:728
+#: parsifal/reviews/planning/templates/planning/protocol.html:733
 #: parsifal/reviews/planning/templates/planning/statistical_methods_conventions.html:54
 msgid "Saving…"
 msgstr ""
@@ -2002,7 +2002,7 @@ msgstr ""
 #: parsifal/reviews/planning/templates/planning/protocol.html:114
 #: parsifal/reviews/planning/templates/planning/protocol.html:207
 #: parsifal/reviews/planning/templates/planning/protocol.html:473
-#: parsifal/reviews/planning/templates/planning/protocol.html:734
+#: parsifal/reviews/planning/templates/planning/protocol.html:739
 #: parsifal/reviews/planning/templates/planning/statistical_methods_conventions.html:64
 msgid "Saved!"
 msgstr ""
@@ -2225,7 +2225,7 @@ msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/partial_article_evaluation.html:17
 #: parsifal/reviews/planning/templates/planning/protocol.html:58
-#: parsifal/reviews/planning/templates/planning/protocol.html:627
+#: parsifal/reviews/planning/templates/planning/protocol.html:631
 #: parsifal/reviews/reporting/export.py:126
 #: parsifal/reviews/reporting/templates/reporting/export.html:80
 #: parsifal/reviews/templates/reviews/partial_published_protocols.html:203
@@ -2272,7 +2272,7 @@ msgstr ""
 #: parsifal/reviews/planning/templates/planning/partial_planning_risk.html:29
 #: parsifal/reviews/planning/templates/planning/partial_quality_assessment_answer.html:15
 #: parsifal/reviews/planning/templates/planning/partial_quality_assessment_question.html:29
-#: parsifal/reviews/planning/templates/planning/protocol.html:591
+#: parsifal/reviews/planning/templates/planning/protocol.html:592
 msgid "remove"
 msgstr ""
 
@@ -2797,8 +2797,8 @@ msgstr ""
 #: parsifal/reviews/planning/templates/planning/partial_planning_risk.html:21
 #: parsifal/reviews/planning/templates/planning/partial_quality_assessment_answer.html:11
 #: parsifal/reviews/planning/templates/planning/partial_quality_assessment_question.html:21
-#: parsifal/reviews/planning/templates/planning/protocol.html:580
-#: parsifal/reviews/planning/templates/planning/protocol.html:586
+#: parsifal/reviews/planning/templates/planning/protocol.html:581
+#: parsifal/reviews/planning/templates/planning/protocol.html:587
 msgid "edit"
 msgstr ""
 
@@ -2979,7 +2979,7 @@ msgid "Search String"
 msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:57
-#: parsifal/reviews/planning/templates/planning/protocol.html:550
+#: parsifal/reviews/planning/templates/planning/protocol.html:551
 #: parsifal/reviews/reporting/export.py:98
 #: parsifal/reviews/reporting/templates/reporting/export.html:77
 #: parsifal/reviews/templates/reviews/partial_published_protocols.html:171
@@ -2987,7 +2987,7 @@ msgid "Sources"
 msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:59
-#: parsifal/reviews/planning/templates/planning/protocol.html:696
+#: parsifal/reviews/planning/templates/planning/protocol.html:701
 msgid "Selection Reviewer"
 msgstr ""
 
@@ -3011,7 +3011,7 @@ msgstr ""
 #: parsifal/reviews/planning/templates/planning/protocol.html:111
 #: parsifal/reviews/planning/templates/planning/protocol.html:204
 #: parsifal/reviews/planning/templates/planning/protocol.html:470
-#: parsifal/reviews/planning/templates/planning/protocol.html:731
+#: parsifal/reviews/planning/templates/planning/protocol.html:736
 #: parsifal/reviews/planning/templates/planning/statistical_methods_conventions.html:59
 msgid "Error!"
 msgstr ""
@@ -3230,7 +3230,7 @@ msgid "Import PICO Keywods"
 msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:401
-#: parsifal/reviews/planning/templates/planning/protocol.html:536
+#: parsifal/reviews/planning/templates/planning/protocol.html:537
 #: parsifal/reviews/settings/templates/settings/review_settings.html:123
 #: parsifal/reviews/settings/templates/settings/review_settings.html:149
 msgid "Are you sure?"
@@ -3317,71 +3317,96 @@ msgstr ""
 msgid "About the Sources"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:492
-msgid "The sources help RSL"
+#: parsifal/reviews/planning/templates/planning/protocol.html:493
+msgid ""
+"This section specifies which sources will be sought from the papers "
+"considered in this systematic literature review. It can identify electronic "
+"databases such as IEEE, ACM, Springer Link, ERIC or indicate that the search "
+"will be performed from offline sources. The sources indicated in this "
+"section will be presented during Conducting the Study Import process and "
+"subsequent Study Selection."
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:503
+#: parsifal/reviews/planning/templates/planning/protocol.html:504
 msgid "Digital Libraries"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:539
+#: parsifal/reviews/planning/templates/planning/protocol.html:540
 msgid ""
 "This action <strong>cannot</strong> be undone. This will remove the <strong "
 "id=\"delete-source-name\"></strong> source, and permanently delete all "
 "imported articles associated with it."
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:542
+#: parsifal/reviews/planning/templates/planning/protocol.html:543
 msgid "Remove this source"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:601
+#: parsifal/reviews/planning/templates/planning/protocol.html:602
 msgid "Add Source"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:603
+#: parsifal/reviews/planning/templates/planning/protocol.html:606
 msgid "Add a Digital Library"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:615
+#: parsifal/reviews/planning/templates/planning/protocol.html:619
 msgid "About Selection Criterias"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:618
-msgid "The Selection Criterias help RSL"
+#: parsifal/reviews/planning/templates/planning/protocol.html:622
+msgid ""
+"The inclusion and exclusion criteria indicate which parameters will be "
+"considered to determine whether or not a given study will be included in the "
+"systematic review performed. Inclusion criteria indicate all criteria that "
+"must be met for a given work to be considered. On the other hand, exclusion "
+"criteria indicate parameters that cannot be detected in a job to be "
+"considered in such a way that if any criteria are applied to a job it should "
+"not be considered while conducting the systematic review."
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:634
+#: parsifal/reviews/planning/templates/planning/protocol.html:638
 msgid ""
 "Inform your inclusion or exclusion criteria and press <strong>Enter</strong> "
 "to add."
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:638
+#: parsifal/reviews/planning/templates/planning/protocol.html:642
 #: parsifal/reviews/templates/reviews/partial_published_protocols.html:209
 msgid "Inclusion Criteria"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:650
-#: parsifal/reviews/planning/templates/planning/protocol.html:667
+#: parsifal/reviews/planning/templates/planning/protocol.html:654
+#: parsifal/reviews/planning/templates/planning/protocol.html:671
 msgid "remove selected"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:655
+#: parsifal/reviews/planning/templates/planning/protocol.html:659
 #: parsifal/reviews/templates/reviews/partial_published_protocols.html:220
 msgid "Exclusion Criteria"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:681
-msgid "Selection Master Reviewer"
+#: parsifal/reviews/planning/templates/planning/protocol.html:685
+msgid "About Selection Master Reviewer"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:684
-msgid "The Master Reviewer help RSL"
+#: parsifal/reviews/planning/templates/planning/protocol.html:688
+msgid ""
+"During the study selection process, reviewers should evaluate the papers "
+"considered and, in the light of the inclusion and exclusion criteria, "
+"determine whether they should be selected or not for further consideration. "
+"In this sense, considering that the evaluation should preferably be "
+"performed by two or more reviewers, there may be conflicting scenarios in "
+"which the selections made by the reviewers differ from each other."
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:703
+#: parsifal/reviews/planning/templates/planning/protocol.html:689
+msgid ""
+"Thus, this section indicates which reviewer will be considered as the master "
+"reviewer for conflict resolution during the study selection process."
+msgstr ""
+
+#: parsifal/reviews/planning/templates/planning/protocol.html:708
 msgid ""
 "The reviewer will resolve the conflicts between the author's article "
 "evaluations."
@@ -3412,7 +3437,15 @@ msgid "About Question"
 msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:71
-msgid "The Question help RSL"
+msgid ""
+"One of the stages of conducting a Systematic Review is the application of a "
+"Quality Assessment questionnaire. The main motivation is to be able to "
+"determine an evaluation barema that will be applied to the considered works "
+"in order to determine which works meet the established minimum quality "
+"criteria. Examples of questions for quality assessment would be to verify "
+"whether the work under consideration performs empirical evaluation or "
+"whether the method considered is, in the reviewer's view, systematically "
+"described."
 msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:102
@@ -3424,7 +3457,12 @@ msgid "About Answers"
 msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:117
-msgid "The Answers help RSL"
+msgid ""
+"In this section you should indicate the possible answers to the quality "
+"assessment questionnaire. In the current version, the answers will apply to "
+"all questions so that they must be defined in a generic way. Commonly used "
+"answers are threefold (Yes, No and Partially) to indicate the level of "
+"adherence of the work to the considered quality criterion."
 msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:150
@@ -3440,13 +3478,16 @@ msgid "(Add Suggested Answers)"
 msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:172
-#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:184
-#: parsifal/reviews/templates/reviews/partial_published_protocols.html:269
-msgid "Quality Assessment Scores"
+msgid "About Quality Assessment Scores"
 msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:176
-msgid "The Quality Assessment Scores help RSL"
+msgid "The help-text is under construction."
+msgstr ""
+
+#: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:184
+#: parsifal/reviews/templates/reviews/partial_published_protocols.html:269
+msgid "Quality Assessment Scores"
 msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:193
