@@ -281,7 +281,7 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <td rowspan="6" style="vertical-align: middle;">software <small>(Population)</small></td>
+                      <td rowspan="6" style="vertical-align: middle;">software <small>({% trans 'Population' %})</small></td>
                       <td>{% trans 'application:' %}</td>
                     </tr>
                     <tr>
@@ -300,7 +300,7 @@
                       <td>{% trans 'development:' %}</td>
                     </tr>
                     <tr style="background-color: #f9f9f9;">
-                      <td rowspan="4" style="vertical-align: middle;">cross company <small>(Intervention)</small></td>
+                      <td rowspan="4" style="vertical-align: middle;">{% trans 'cross company' %} <small>({% trans 'Intervention' %})</small></td>
                       <td>{% trans 'cross organisation' %}</td>
                     </tr>
                     <tr style="background-color: #f9f9f9;">
@@ -313,7 +313,7 @@
                       <td>{% trans 'multiple-organisational model' %}</td>
                     </tr>
                     <tr>
-                      <td rowspan="4" style="vertical-align: middle;">within-organisation <small>(Comparison)</small></td>
+                      <td rowspan="4" style="vertical-align: middle;">{% trans 'within-organisation' %} <small>({% trans 'Comparison' %})</small></td>
                       <td>{% trans 'within-organization' %}</td>
                     </tr>
                     <tr>
@@ -423,17 +423,17 @@
               </div>
               <div class="modal-body">
                 <p>{% trans 'The golden rule to design a good search string is to separate the keywords and synonyms with the boolean operator <strong>OR</strong> and separate the <em>population</em>, <em>intervention</em>, <em>comparison</em> and <em>outcomes</em> with parentheses and using the boolean operator <strong>AND</strong>, as following:' %}</p>
-                <pre><code>(<em>population</em>   <strong>OR</strong> synonym-1 <strong>OR</strong> synonym-2 <strong>OR</strong> synonym-n) <strong>AND</strong>
-(<em>intervention</em> <strong>OR</strong> synonym-1 <strong>OR</strong> synonym-2 <strong>OR</strong> synonym-n) <strong>AND</strong>
-(<em>comparison</em>   <strong>OR</strong> synonym-1 <strong>OR</strong> synonym-2 <strong>OR</strong> synonym-n) <strong>AND</strong>
-(<em>outcomes</em>     <strong>OR</strong> synonym-1 <strong>OR</strong> synonym-2 <strong>OR</strong> synonym-n)</code></pre>
+                <pre><code>(<em>{% trans 'population' %}</em>   <strong>OR</strong> {% trans 'synonym' %}-1 <strong>OR</strong> {% trans 'synonym' %}-2 <strong>OR</strong> {% trans 'synonym' %}-n) <strong>AND</strong>
+(<em>{% trans 'intervention' %}</em> <strong>OR</strong> {% trans 'synonym' %}-1 <strong>OR</strong> {% trans 'synonym' %}-2 <strong>OR</strong> {% trans 'synonym' %}-n) <strong>AND</strong>
+(<em>{% trans 'comparison' %}</em>   <strong>OR</strong> {% trans 'synonym' %}-1 <strong>OR</strong> {% trans 'synonym' %}-2 <strong>OR</strong> {% trans 'synonym' %}-n) <strong>AND</strong>
+(<em>{% trans 'outcomes' %}</em>     <strong>OR</strong> {% trans 'synonym' %}-1 <strong>OR</strong> {% trans 'synonym' %}-2 <strong>OR</strong> {% trans 'synonym' %}-n)</code></pre>
                 <p>
                   <strong class="text-success"><span class="glyphicon glyphicon-ok"></span> {% trans 'Good example' %}</strong>
-                  <pre style="word-break: normal;"><code>(software <strong>OR</strong> application <strong>OR</strong> product <strong>OR</strong> Web <strong>OR</strong> WWW <strong>OR</strong> project) <strong>AND</strong> (development <strong>OR</strong> "cross company" <strong>OR</strong> "cross organisation" <strong>OR</strong> "cross organization" <strong>OR</strong> multiple-organizational) <strong>AND</strong> ("multiple-organisational model" <strong>OR</strong> within-organisation <strong>OR</strong> within-organization <strong>OR</strong> within-organizational <strong>OR</strong> within-organisational <strong>OR</strong> "single company") <strong>AND</strong> (Accuracy <strong>OR</strong> "Mean Magnitude" <strong>OR</strong> "Relative Error")</code></pre>
+                  <pre style="word-break: normal;"><code>({% trans 'software' %} <strong>OR</strong> {% trans 'application' %} <strong>OR</strong> {% trans 'product' %} <strong>OR</strong> Web <strong>OR</strong> WWW <strong>OR</strong> projeto) <strong>AND</strong> (desenvolvimento <strong>OR</strong> "{% trans 'cross company' %}" <strong>OR</strong> "{% trans 'cross organisation' %}" <strong>OR</strong> "{% trans 'cross organization' %}" <strong>OR</strong> {% trans 'multiple-organizational' %}) <strong>AND</strong> ("multiple-organisational model" <strong>OR</strong> within-organisation <strong>OR</strong> within-organization <strong>OR</strong> within-organizational <strong>OR</strong> within-organisational <strong>OR</strong> "single company") <strong>AND</strong> (Accuracy <strong>OR</strong> "Mean Magnitude" <strong>OR</strong> "Relative Error")</code></pre>
                 </p>
                 <p>
-                  <strong class="text-danger"><span class="glyphicon glyphicon-ban-circle"></span> Bad example</strong>
-                  <pre style="word-break: normal;"><code>software <strong>or</strong> application <strong>or</strong> product <strong>or</strong> Web <strong>or</strong> WWW <strong>or</strong> project <strong>and</strong> development <strong>or</strong> cross company <strong>or</strong> cross organisation <strong>or</strong> cross organization <strong>or</strong> multiple-organizational <strong>and</strong> multiple-organisational model <strong>or</strong> within-organisation <strong>or</strong> within-organization <strong>or</strong> within-organizational <strong>or</strong> within-organisational <strong>or</strong> single company <strong>and</strong> Accuracy <strong>or</strong> Mean Magnitude <strong>or</strong> Relative Error</code></pre>
+                  <strong class="text-danger"><span class="glyphicon glyphicon-ban-circle"></span> {% trans 'Bad example' %}</strong>
+                  <pre style="word-break: normal;"><code>software <strong>or</strong> aplicação <strong>or</strong> produto <strong>or</strong> Web <strong>or</strong> WWW <strong>or</strong> projeto <strong>and</strong> desenvolvimento <strong>or</strong> cross company <strong>or</strong> cross organisation <strong>or</strong> cross organization <strong>or</strong> multiple-organizational <strong>and</strong> multiple-organisational model <strong>or</strong> within-organisation <strong>or</strong> within-organization <strong>or</strong> within-organizational <strong>or</strong> within-organisational <strong>or</strong> single company <strong>and</strong> Accuracy <strong>or</strong> Mean Magnitude <strong>or</strong> Relative Error</code></pre>
                 </p>
               </div>
             </div>
@@ -480,6 +480,21 @@
       </section>
 
       <section id="sources-section">
+      
+      	<div class="modal fade" id="sources-help">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{% trans 'About the Sources' %}</h4>
+              </div>
+              <div class="modal-body">
+              	
+              	<p>{% trans 'This section specifies which sources will be sought from the papers considered in this systematic literature review. It can identify electronic databases such as IEEE, ACM, Springer Link, ERIC or indicate that the search will be performed from offline sources. The sources indicated in this section will be presented during Conducting the Study Import process and subsequent Study Selection.'%}</p>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div class="modal fade" id="modal-suggested-sources">
           <div class="modal-dialog">
@@ -533,7 +548,11 @@
 
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title">{% trans 'Sources' %}</h3>
+            <h3 class="panel-title">{% trans 'Sources' %}
+            	<a href="javascript:void(0);" class="pull-right" data-toggle="tooltip" title="{% trans 'What is this? Click to get help.' %}" data-placement="top" data-container="body">
+                	<span class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#sources-help"></span>
+             	</a>
+            </h3>
           </div>
           <table class="table" id="tbl-sources">
             <thead>
@@ -582,15 +601,38 @@
               <span class="glyphicon glyphicon-plus"></span>
               {% trans 'Add Source' %}
             </button>
-            <button type="button" class="btn btn-success" id="btn-suggested-sources" data-toggle="modal" data-target="#modal-suggested-sources">{% trans 'Add a Digital Library' %}</button>
+            <button type="button" class="btn btn-success" id="btn-suggested-sources" data-toggle="modal" data-target="#modal-suggested-sources">
+            	<span class="glyphicon glyphicon-plus"></span>
+            	{% trans 'Add a Digital Library' %}
+            </button>
           </div>
         </div>
       </section>
 
       <section id="selection-section" >
+      
+      	<div class="modal fade" id="selection-criteria-help">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{% trans 'About Selection Criterias' %}</h4>
+              </div>
+              <div class="modal-body">
+              	<p>{% trans 'The inclusion and exclusion criteria indicate which parameters will be considered to determine whether or not a given study will be included in the systematic review performed. Inclusion criteria indicate all criteria that must be met for a given work to be considered. On the other hand, exclusion criteria indicate parameters that cannot be detected in a job to be considered in such a way that if any criteria are applied to a job it should not be considered while conducting the systematic review.'%}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title">{% trans 'Selection Criteria' %}</h3>
+            <h3 class="panel-title">
+            	{% trans 'Selection Criteria' %}
+            	<a href="javascript:void(0);" class="pull-right" data-toggle="tooltip" title="{% trans 'What is this? Click to get help.' %}" data-placement="top" data-container="body">
+                	<span class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#selection-criteria-help"></span>
+             	</a>
+            </h3>
           </div>
           <div class="panel-body">
             <p>{% trans 'Inform your inclusion or exclusion criteria and press <strong>Enter</strong> to add.' %}</p>
@@ -635,6 +677,21 @@
       </section>
 
       <section id="selection-reviewer-section" style="margin-bottom: 20px;">
+      	<div class="modal fade" id="master-reviewer-help">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{% trans 'About Selection Master Reviewer' %}</h4>
+              </div>
+              <div class="modal-body">
+              	<p>{% trans 'During the study selection process, reviewers should evaluate the papers considered and, in the light of the inclusion and exclusion criteria, determine whether they should be selected or not for further consideration. In this sense, considering that the evaluation should preferably be performed by two or more reviewers, there may be conflicting scenarios in which the selections made by the reviewers differ from each other.'%}</p>
+              	<p>{% trans 'Thus, this section indicates which reviewer will be considered as the master reviewer for conflict resolution during the study selection process.' %}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
         <form method="post" id="form-selection-reviewer">
           {% csrf_token %}
           <input type="hidden" name="review-id" value="{{ review.id }}">
@@ -642,6 +699,9 @@
             <div class="panel-heading">
               <h3 class="panel-title">
                 {% trans 'Selection Reviewer' %}
+                <a href="javascript:void(0);" class="pull-right" data-toggle="tooltip" title="{% trans 'What is this? Click to get help.' %}" data-placement="top" data-container="body">
+                	<span class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#master-reviewer-help"></span>
+             	</a>
               </h3>
             </div>
             <div class="panel-body">

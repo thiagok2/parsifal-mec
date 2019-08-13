@@ -12,11 +12,29 @@
 
   {% include "conducting/conducting_header.html" with active_tab="import" %}
 
+  <div class="modal fade" id="import-studies-help">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">{% trans 'About Import Studies' %}</h4>
+        </div>
+        <div class="modal-body">
+          <p>The Import Studies help RSL</p>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="row">
     <div class="col-sm-6">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 class="panel-title">{% trans 'Import Studies' %}</h3>
+          <h3 class="panel-title">
+          	{% trans 'Import Studies' %}
+         	<a href="javascript:void(0);" class="pull-right" data-toggle="tooltip" title="{% trans 'What is this? Click to get help.' %}" data-placement="top" data-container="body">
+          		<span class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#import-studies-help"></span>
+        	</a> 	
+         </h3>
         </div>
         {% if review.sources.all %}
           <table class="table table-v-align-middle" id="tbl-import-studies">

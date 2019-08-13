@@ -102,6 +102,22 @@ def export_review_to_docx(review, sections):
             if source.url:
                 text = u'{0} ({1})'.format(source.name, source.url)
             document.add_paragraph(text, style='List Bullet')
+            
+    '''
+        Risks
+    '''
+    if 'risks' in sections:
+        document.add_heading(_('Risks To Review Validity'), level=3)
+
+        for risk in review.get_risks():
+            document.add_paragraph(risk.risk, style='List Bullet')
+            
+    '''
+        Statistical Methods and Conventions
+    '''
+    if 'statistics_methods' in sections:
+        document.add_heading(_('Statistical Methods and Conventions'), level=3)
+        document.add_paragraph(review.statistical_methods)
 
     '''
         Selection Criteria

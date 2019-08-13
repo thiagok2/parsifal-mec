@@ -20,10 +20,29 @@
   {% csrf_token %}
 
   <section id="data-extraction-section" style="margin-bottom: 20px;">
-
+	<div class="modal fade" id="data-extraction-help">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">
+            	{% trans 'About Data Extraction Form' %}
+            </h4>
+          </div>
+          <div class="modal-body">
+          	<p>{% trans 'The Data Extraction Form help RSL'%}</p>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">{% trans 'Data Extraction Form' %}</h3>
+        <h3 class="panel-title">
+        	{% trans 'Data Extraction Form' %}
+        	<a href="javascript:void(0);" class="pull-right" data-toggle="tooltip" title="{% trans 'What is this? Click to get help.' %}" data-placement="top" data-container="body">
+            	<span class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#data-extraction-help"></span>
+          	</a>
+        </h3>
       </div>
       <table class="table" id="tbl-data-extraction">
         <thead>

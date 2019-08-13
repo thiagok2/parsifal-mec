@@ -17,12 +17,26 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">{% trans 'About the Search Strings' %}</h4>2
+          <h4 class="modal-title">{% trans 'About the Search Strings' %}</h4>
         </div>
         <div class="modal-body">
           <p>{% trans "The base search string is the search string designed during the planning phase. It should be database agnostic, enhance the reader's readability and represent the essence of the search string used in the digital libraries." %}</p>
           <p>{% trans "Most of the digital libraries have it's particularities and different advanced search resources. Here you can store the specific search string used in each database." %}</p>
           <p>{% trans 'You can edit the base search string in the' %} <a href="{% url 'planning' review.author.username review.name %}#search-string-section">{% trans 'planning tab' %}</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal fade" id="search-help">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">{% trans 'About Search Databases' %}</h4>
+        </div>
+        <div class="modal-body">
+          <p>The Search Databases help RSL</p>
         </div>
       </div>
     </div>
@@ -167,11 +181,16 @@
 
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3 class="panel-title">{% trans 'Search' %}</h3>
+      <h3 class="panel-title">
+      	{% trans 'Search' %}
+      	<a href="javascript:void(0);" class="pull-right" data-toggle="tooltip" title="{% trans 'What is this? Click to get help.' %}" data-placement="top" data-container="body">
+          <span class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#search-help"></span>
+        </a>
+      </h3>
     </div>
     <div class="panel-body">
       <div class="alert alert-success" role="alert">
-        <strong><span class="glyphicon glyphicon-info-sign"></span></strong> {% trans "<strong>Parsifal</strong> is integrated with <strong>Scopus's</strong> and <strong>Science@Direct's</strong> databases. To enable the automatic search pick them as sources in the" %}<a href="{% url 'planning' review.author.username review.name %}#sources-section">{% trans 'planning tab' %</a>.}
+        <strong><span class="glyphicon glyphicon-info-sign"></span></strong> {% trans "<strong>Parsifal</strong> is integrated with <strong>Scopus's</strong> and <strong>Science@Direct's</strong> databases. To enable the automatic search pick them as sources in the" %}<a href="{% url 'planning' review.author.username review.name %}#sources-section">aba planejamento.</a>
       </div>
 
       <div class="panel-group" id="remote-search-panels" role="tablist" aria-multiselectable="true">
