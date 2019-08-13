@@ -312,7 +312,7 @@ $(function () {
 
   $("#modal-article").on("change", "#status", function () {
     if ($("#save-and-move-next").is(":checked")) {
-      save_article(true);
+      save_article(false);
     }
   });
 
