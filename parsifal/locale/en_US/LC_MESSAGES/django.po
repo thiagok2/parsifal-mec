@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-14 15:47+0000\n"
+"POT-Creation-Date: 2019-08-14 17:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,16 +53,12 @@ msgid "Old Password"
 msgstr ""
 
 #: parsifal/account_settings/forms.py:49
-#, fuzzy
-#| msgid "New review"
 msgid "New password"
-msgstr "Nova ??"
+msgstr ""
 
 #: parsifal/account_settings/forms.py:50
-#, fuzzy
-#| msgid "New review"
 msgid "Confirm password"
-msgstr "Nova ??"
+msgstr ""
 
 #: parsifal/account_settings/templates/settings/connections.html:7
 #: parsifal/account_settings/templates/settings/emails.html:7
@@ -96,7 +92,7 @@ msgstr ""
 #: parsifal/templates/includes/header.html:14
 #: parsifal/templates/includes/header.html:146
 msgid "Parsifal"
-msgstr ""
+msgstr "EbE Plataform"
 
 #: parsifal/account_settings/templates/settings/connections.html:47
 msgid "Connected Services"
@@ -242,7 +238,7 @@ msgstr ""
 
 #: parsifal/account_settings/views.py:197
 msgid "You didn't approved Parsifal to connect your Dropbox account."
-msgstr ""
+msgstr "You didn't approved Parsifal to connect your Dropbox account."
 
 #: parsifal/account_settings/views.py:199
 msgid ""
@@ -485,6 +481,13 @@ msgid ""
 "provide mechanisms to build a quality assessment checklist and data "
 "extraction forms."
 msgstr ""
+"As well as providing a way to document the whole process, the tool will help "
+"you remind what is important during a systematic literature review. During "
+"the planning phase, <strong>EbE Plataform</strong> will help you with the "
+"objectives, PICOC, research questions, search string, keywords and synonyms, "
+"selecting the sources, the inclusion and exclusion criterias. Will also "
+"provide mechanisms to build a quality assessment checklist and data "
+"extraction forms."
 
 #: parsifal/core/templates/core/about.html:17
 msgid ""
@@ -527,6 +530,9 @@ msgid ""
 "requires a huge amount of work from the researcher. <strong>Parsifal</"
 "strong> will help you planning, conducting and reporting the review."
 msgstr ""
+"Performing a systematic literature review is a labor-intensive task that "
+"requires a huge amount of work from the researcher. <strong>Plataform EbE</"
+"strong> will help you planning, conducting and reporting the review."
 
 #: parsifal/core/templates/core/cover.html:42
 msgid "Create a new account"
@@ -536,11 +542,11 @@ msgstr ""
 msgid "Your reviews"
 msgstr ""
 
-#: parsifal/core/templates/core/home.html:110
+#: parsifal/core/templates/core/home.html:111
 msgid "Reviews you are invited"
 msgstr ""
 
-#: parsifal/core/templates/core/home.html:116
+#: parsifal/core/templates/core/home.html:117
 #: parsifal/reviews/templates/reviews/reviews.html:119
 msgid "You don't have any systematic literature review yet."
 msgstr ""
@@ -1142,12 +1148,12 @@ msgid "Unknown"
 msgstr ""
 
 #: parsifal/lib/python2.7/site-packages/django/forms/widgets.py:556
-#: parsifal/reviews/models.py:504
+#: parsifal/reviews/models.py:508
 msgid "Yes"
 msgstr ""
 
 #: parsifal/lib/python2.7/site-packages/django/forms/widgets.py:557
-#: parsifal/reviews/models.py:506
+#: parsifal/reviews/models.py:510
 msgid "No"
 msgstr ""
 
@@ -1936,10 +1942,8 @@ msgid "planning tab</a>."
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:84
-#, fuzzy
-#| msgid "New review"
 msgid "New source"
-msgstr "Nova ??"
+msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:90
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:151
@@ -2170,10 +2174,8 @@ msgid "Resolve All"
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:45
-#, fuzzy
-#| msgid "New review"
 msgid "New Article"
-msgstr "Nova ??"
+msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:60
 msgid "Article Details"
@@ -2304,7 +2306,7 @@ msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:33
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:80
-#: parsifal/reviews/models.py:365
+#: parsifal/reviews/models.py:369
 msgid "Conflict"
 msgstr ""
 
@@ -2415,31 +2417,31 @@ msgid "Show"
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:65
-#: parsifal/reviews/models.py:340 parsifal/reviews/models.py:363
-#: parsifal/reviews/models.py:446
+#: parsifal/reviews/models.py:344 parsifal/reviews/models.py:367
+#: parsifal/reviews/models.py:450
 msgid "Accepted"
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:68
-#: parsifal/reviews/models.py:339 parsifal/reviews/models.py:362
-#: parsifal/reviews/models.py:445
+#: parsifal/reviews/models.py:343 parsifal/reviews/models.py:366
+#: parsifal/reviews/models.py:449
 msgid "Rejected"
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:71
-#: parsifal/reviews/models.py:338 parsifal/reviews/models.py:360
-#: parsifal/reviews/models.py:444
+#: parsifal/reviews/models.py:342 parsifal/reviews/models.py:364
+#: parsifal/reviews/models.py:448
 msgid "Unclassified"
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:74
-#: parsifal/reviews/models.py:341 parsifal/reviews/models.py:364
-#: parsifal/reviews/models.py:447
+#: parsifal/reviews/models.py:345 parsifal/reviews/models.py:368
+#: parsifal/reviews/models.py:451
 msgid "Duplicated"
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:77
-#: parsifal/reviews/models.py:361
+#: parsifal/reviews/models.py:365
 msgid "Waiting"
 msgstr ""
 
@@ -2539,6 +2541,8 @@ msgid ""
 "Parsifal's search quota on Elsevier's databases exceeded. Please try again "
 "later."
 msgstr ""
+"Plataform's search quota on Elsevier's databases exceeded. Please try again "
+"later."
 
 #: parsifal/reviews/conducting/views.py:184
 msgid "Import the studies using the"
@@ -2633,66 +2637,66 @@ msgstr ""
 msgid "Published"
 msgstr ""
 
-#: parsifal/reviews/models.py:255
+#: parsifal/reviews/models.py:259
 msgid "Inclusion"
 msgstr ""
 
-#: parsifal/reviews/models.py:256
+#: parsifal/reviews/models.py:260
 msgid "Exclusion"
 msgstr ""
 
-#: parsifal/reviews/models.py:475
+#: parsifal/reviews/models.py:479
 #: parsifal/reviews/planning/templates/planning/protocol.html:171
 #: parsifal/reviews/planning/templates/planning/protocol.html:293
 #: parsifal/reviews/templates/reviews/partial_published_protocols.html:83
 msgid "Population"
 msgstr ""
 
-#: parsifal/reviews/models.py:476
+#: parsifal/reviews/models.py:480
 #: parsifal/reviews/planning/templates/planning/protocol.html:177
 #: parsifal/reviews/planning/templates/planning/protocol.html:312
 #: parsifal/reviews/templates/reviews/partial_published_protocols.html:87
 msgid "Intervention"
 msgstr ""
 
-#: parsifal/reviews/models.py:477
+#: parsifal/reviews/models.py:481
 #: parsifal/reviews/planning/templates/planning/protocol.html:183
 #: parsifal/reviews/planning/templates/planning/protocol.html:325
 #: parsifal/reviews/templates/reviews/partial_published_protocols.html:91
 msgid "Comparison"
 msgstr ""
 
-#: parsifal/reviews/models.py:478
+#: parsifal/reviews/models.py:482
 #: parsifal/reviews/planning/templates/planning/protocol.html:189
 #: parsifal/reviews/planning/templates/planning/protocol.html:338
 #: parsifal/reviews/templates/reviews/partial_published_protocols.html:95
 msgid "Outcome"
 msgstr ""
 
-#: parsifal/reviews/models.py:505
+#: parsifal/reviews/models.py:509
 msgid "Partially"
 msgstr ""
 
-#: parsifal/reviews/models.py:605
+#: parsifal/reviews/models.py:609
 msgid "Expected values: \"True\" or \"False\""
 msgstr ""
 
-#: parsifal/reviews/models.py:623 parsifal/reviews/models.py:633
-#: parsifal/reviews/models.py:643
+#: parsifal/reviews/models.py:627 parsifal/reviews/models.py:637
+#: parsifal/reviews/models.py:647
 msgid "Invalid input for "
 msgstr ""
 
-#: parsifal/reviews/models.py:623
+#: parsifal/reviews/models.py:627
 msgid ""
 " field. Expected value: floating point number. Please use dot instead of "
 "comma."
 msgstr ""
 
-#: parsifal/reviews/models.py:633
+#: parsifal/reviews/models.py:637
 msgid " field. Expected value: integer number."
 msgstr ""
 
-#: parsifal/reviews/models.py:643
+#: parsifal/reviews/models.py:647
 msgid " field. Expected value: date. Please use the format MM/DD/YYYY."
 msgstr ""
 
@@ -2774,10 +2778,8 @@ msgstr ""
 #: parsifal/reviews/templates/reviews/partial_modal_list_import_protocol.html:16
 #: parsifal/reviews/templates/reviews/review_header.html:14
 #: parsifal/reviews/views.py:59 parsifal/reviews/views.py:73
-#, fuzzy
-#| msgid "New review"
 msgid "Review"
-msgstr "Nova ??"
+msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/data_extraction_form.html:112
 #: parsifal/reviews/planning/templates/planning/data_extraction_form.html:131
@@ -2997,10 +2999,8 @@ msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:59
 #: parsifal/reviews/planning/templates/planning/protocol.html:722
-#, fuzzy
-#| msgid "New review"
 msgid "Selection Reviewer"
-msgstr "Nova ??"
+msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:73
 msgid "About the Objectives"
@@ -3021,7 +3021,7 @@ msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:97
 msgid "Identification of the need and objectives for a review."
-msgstr "Identificação da necessidade e objetivos de uma revisão."
+msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:114
 #: parsifal/reviews/planning/templates/planning/protocol.html:210
@@ -3041,24 +3041,18 @@ msgid ""
 "PICOC stands for <em>population</em>, <em>intervention</em>, <em>comparison</"
 "em>, <em>outcomes</em> and <em>context</em>."
 msgstr ""
-"PICOC significa <em> população </em>, <em> intervenção </em>, <em> "
-"comparação </em>, <em> resultados </em> e <em> contexto </em>."
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:137
 msgid ""
 "The <em>population</em> in which the evidence is collected, i.e. which group "
 "of people, programs or businesses are of interest for the review?"
 msgstr ""
-"A <em> população </em> na qual a evidência é coletada, ou seja, qualquer "
-"grupo de pessoas, programas ou empresas que são de interesse para a revisão?"
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:138
 msgid ""
 "The <em>intervention</em> applied in the empirical study, i.e. which "
 "technology, tool or procedure is under study?"
 msgstr ""
-"A <em> intervenção </em> aplicada no estudo empírico, ou seja, que "
-"tecnologia, ferramenta ou procedimento está em estudo?"
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:139
 msgid ""
@@ -3067,9 +3061,6 @@ msgid ""
 "critical, as “not using the intervention” is mostly not a valid action in "
 "software engineering."
 msgstr ""
-"A <em> comparação </em> à qual a intervenção é comparada, ou seja, como é o "
-"tratamento de controle definido? Em particular, a intervenção 'placebo' é "
-"crítica, como 'não usar a intervenção' não é mais uma ação válida em ."
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:140
 #, python-format
@@ -3079,10 +3070,6 @@ msgid ""
 "example, it is probably not interesting that an outcome is 10%% better in "
 "some respect if it is twice as time consuming."
 msgstr ""
-"Os <em> resultados </em> do experimento não devem ser "
-"estatisticamentesignificativo, mas também ser significativo do ponto de "
-"vista prático. Paraexemplo, provavelmente não é interessante que um "
-"resultado seja 10 %% melhor emalgum respeito se for duas vezes mais demorado."
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:141
 msgid ""
@@ -3406,10 +3393,8 @@ msgid "Add a Digital Library"
 msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:637
-#, fuzzy
-#| msgid "New review"
 msgid "About Selection Criterias"
-msgstr "Nova ??"
+msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:640
 msgid ""
@@ -3451,10 +3436,8 @@ msgid "Exclusion Criteria"
 msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:706
-#, fuzzy
-#| msgid "New review"
 msgid "About Selection Master Reviewer"
-msgstr "Nova ??"
+msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:709
 msgid ""
@@ -3795,6 +3778,10 @@ msgstr ""
 msgid "Reporting"
 msgstr ""
 
+#: parsifal/reviews/settings/forms.py:13
+msgid "Only letters, numbers, _or - are allowed."
+msgstr ""
+
 #: parsifal/reviews/settings/templates/settings/review_settings.html:7
 msgid "Review Settings"
 msgstr ""
@@ -3828,10 +3815,8 @@ msgstr ""
 
 #: parsifal/reviews/settings/templates/settings/review_settings.html:71
 #: parsifal/reviews/settings/templates/settings/review_settings.html:134
-#, fuzzy
-#| msgid "New review"
 msgid "Delete this review"
-msgstr "Nova ??"
+msgstr ""
 
 #: parsifal/reviews/settings/templates/settings/review_settings.html:72
 msgid "Once you delete a review, there is no going back. Please be certain."
@@ -3895,10 +3880,8 @@ msgid "This will <b>open</b> the protocol of "
 msgstr ""
 
 #: parsifal/reviews/settings/templates/settings/review_settings.html:166
-#, fuzzy
-#| msgid "New review"
 msgid "Publish protocol this review"
-msgstr "Nova ??"
+msgstr ""
 
 #: parsifal/reviews/settings/views.py:34
 msgid "Review was saved successfully."
@@ -3922,22 +3905,16 @@ msgstr ""
 
 #: parsifal/reviews/templates/reviews/explorer.html:19
 #: parsifal/templates/includes/header.html:33
-#, fuzzy
-#| msgid "New review"
 msgid "Search Reviews"
-msgstr "Nova ??"
+msgstr ""
 
 #: parsifal/reviews/templates/reviews/new.html:23
-#, fuzzy
-#| msgid "New review"
 msgid "Create a new review"
-msgstr "Nova ??"
+msgstr ""
 
 #: parsifal/reviews/templates/reviews/new.html:29
-#, fuzzy
-#| msgid "New review"
 msgid "Create review"
-msgstr "Nova ??"
+msgstr ""
 
 #: parsifal/reviews/templates/reviews/partial_modal_confirm_import_protocol.html:11
 msgid "Confirm Import "
@@ -3985,10 +3962,8 @@ msgid "Last Update"
 msgstr ""
 
 #: parsifal/reviews/templates/reviews/partial_published_protocols.html:56
-#, fuzzy
-#| msgid "New review"
 msgid "Created"
-msgstr "Nova ??"
+msgstr ""
 
 #: parsifal/reviews/templates/reviews/review.html:35
 msgid "Review details"
@@ -4051,10 +4026,8 @@ msgid "Invite someone..."
 msgstr ""
 
 #: parsifal/reviews/templates/reviews/review_tag.html:6
-#, fuzzy
-#| msgid "New review"
 msgid "Review tags"
-msgstr "Nova ??"
+msgstr ""
 
 #: parsifal/reviews/templates/reviews/reviews.html:30
 msgid "Edit profile"
@@ -4075,7 +4048,7 @@ msgstr ""
 #: parsifal/reviews/templates/reviews/reviews.html:82
 #: parsifal/templates/includes/header.html:150
 msgid "New review"
-msgstr "Nova ??"
+msgstr ""
 
 #: parsifal/reviews/templates/reviews/reviews.html:87
 msgid "Work in progress"
@@ -4119,6 +4092,8 @@ msgid ""
 "Hi {0}, {1} invited you to a Parsifal Systematic Literature Review called "
 "\"{2}\". View the review at https://parsif.al/{3}/{4}/"
 msgstr ""
+"Hi {0}, {1} invited you to a EbE Systematic Literature Review called "
+"\"{2}\". View the review at https://parsif.al/{3}/{4}/"
 
 #: parsifal/reviews/views.py:113 parsifal/reviews/views.py:163
 #, python-brace-format
@@ -4127,6 +4102,9 @@ msgid ""
 "called \"{2}\".</p><p>View the review at https://parsif.al/{3}/{4}/</"
 "p><p>Sincerely,</p><p>The Parsifal Team</p>"
 msgstr ""
+"<p>Hi {0},</p><p>{1} invited you to a EbE Systematic Literature Review "
+"called \"{2}\".</p><p>View the review at https://parsif.al/{3}/{4}/</"
+"p><p>Sincerely,</p><p>The EbE Team</p>"
 
 #: parsifal/reviews/views.py:122
 msgid "No author invited or added to the review. Nothing really changed."
@@ -4153,6 +4131,8 @@ msgid ""
 "Hi {0}, {1} invited you to a Parsifal Systematic Literature Review called "
 "\"{2}\".View the review at https://parsif.al/{3}/{4}/"
 msgstr ""
+"Hi {0}, {1} invited you to a EbE Systematic Literature Review called \"{2}\"."
+"View the review at https://parsif.al/{3}/{4}/"
 
 #: parsifal/reviews/views.py:172
 msgid "No visitor invited or added to the review. Nothing really changed."
@@ -4205,6 +4185,6 @@ msgstr ""
 
 #: parsifal/templates/includes/header.html:148
 msgid ""
-"Um ambiente colaborativo para o desenvolvimento de revisões sistemáticas da "
-"literatura e elaboração de metanálises."
+"A collaborative environment for the development of systematic literature "
+"reviews and meta-analyzes."
 msgstr ""
