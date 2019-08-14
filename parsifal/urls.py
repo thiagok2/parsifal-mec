@@ -1,6 +1,6 @@
 # coding: utf-8
 
-from django.conf.urls import patterns, include, url
+from django.conf.urls import patterns, include, url, i18n
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
@@ -10,6 +10,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('parsifal',
+    url(r'^i18n/', include('django.conf.urls.i18n'), name='set_language'),
     url(r'^$', 'core.views.home', name='home'),
     url(r'^about/$', TemplateView.as_view(template_name='core/about.html'), name='about'),
     url(r'^signup/$', 'authentication.views.signup', name='signup'),
@@ -32,7 +33,6 @@ urlpatterns = patterns('parsifal',
     url(r'^robots.txt$', TemplateView.as_view(template_name='robots.txt', content_type='text/plain')),
     url(r'^(?P<username>[^/]+)/following/$', 'activities.views.following', name='following'),
     url(r'^(?P<username>[^/]+)/followers/$', 'activities.views.followers', name='followers'),
-
     # Review URLs
     url(r'^(?P<username>[^/]+)/(?P<review_name>[^/]+)/$', 'reviews.views.review', name='review'),
     url(r'^(?P<username>[^/]+)/(?P<review_name>[^/]+)/settings/$', 'reviews.settings.views.settings', name='settings'),

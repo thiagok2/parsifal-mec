@@ -4,11 +4,18 @@
 
   /* Parsifal base scripts */
 
+
   $.parsifal = {
 
-    /* General application initialization */
+      /* General application initialization */
 
-    init: function () {
+      init: function () {
+
+      $("body").on("click", "img[id='language']", function() {
+          console.log($(this).val())
+          console.log($("body #form_language"))
+          $("body #form_language").submit()
+      });
 
       $("[data-toggle='tooltip']").tooltip();
 
@@ -57,7 +64,7 @@
 
       $.fn.ajaxEnable = function (callback) {
         callback = callback || function () {};
-        
+
         var btn = $(this);
         $(this).prop("disabled", false);
         $("span[class^='btn-ajax-']", this).hide();
@@ -81,7 +88,7 @@
 
       $.fn.ajaxEnableError = function (callback) {
         callback = callback || function () {};
-        
+
         var btn = $(this);
         $(this).prop("disabled", false);
         $("span[class^='btn-ajax-']", this).hide();
@@ -137,7 +144,7 @@
         });
 
       };
-      
+
     },
 
     uuid: function () {

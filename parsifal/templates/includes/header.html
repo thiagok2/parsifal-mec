@@ -1,4 +1,4 @@
-{% load i18n %} 
+{% load i18n staticfiles %}
 {% load humanize %}
 
 <header id="header-nav">
@@ -38,57 +38,78 @@
 						</form>
 					</li>
 					{% endif %}
-					
+
 				</ul>
-				{% if user.is_authenticated %}
 				<ul class="nav navbar-nav navbar-right">
-					<li>
-						<a href="{% url 'reviews' user.username %}"> 
-							<span data-toggle="tooltip" data-placement="bottom" data-container="body" title="{% trans 'My profile' %}">
-								{{ user.profile.get_screen_name }}
-							</span>
-						</a>
-					</li>
-					<li>
-						<span class="navbar-text username-divider"></span>
-					</li>
-					{%comment%}
-					<li>
-						<a href="{% url 'library:index' %}"> 
-							{% trans 'Library' %} </a>
-					</li>
-					{%endcomment%}
-		            <li>
-		              <a href="{% url 'settings:settings' %}">
-		                <span data-toggle="tooltip" data-placement="bottom" data-container="body" title="{% trans 'Account settings' %}">
-		                  <span class="glyphicon glyphicon-cog"></span>
-		                </span>
-		              </a>
-		            </li>
-		            
-					<li>
-						<a href="{% url 'signout' %}"> 
-							<span data-toggle="tooltip" data-placement="bottom" data-container="body" title="{% trans 'Sign out' %}"> 
-								<span class="glyphicon glyphicon-log-out"></span>
-							</span>
-						</a>
-					</li>
-				</ul>
-				{% else %} 
-					<div id="group-buttons-sign" class="">
-						<a href="{% url 'signin' %}" title="Sign in" class="btn btn-new btn-success navbar-btn navbar-right">
-						{% trans 'Sign in' %}
-						</a> 
-						<a href="{% url 'signup' %}" title="Sign up" class="btn btn-new btn-success navbar-btn navbar-right" style="margin-right: 5px;">
-							{% trans 'Sign up' %}
-						</a>
-					</div>
-				{% endif %}
+          <li style="padding-top: 13px">
+            <form id="form_language" action="{% url 'set_language' %}" method="post">
+              {% csrf_token %}
+              <input name="next" type="hidden" value="{{ redirect_to }}" />
+              {% get_current_language as LANGUAGE_CODE %}
+              {% get_available_languages as LANGUAGES %}
+              {% get_language_info_list for LANGUAGES as languages %}
+              {% for language in languages %}
+                {% if language.code != LANGUAGE_CODE %}
+                  <input name="language" type="hidden" value="{{language.code}}">
+                  <img id="language" src="{% static 'img/'|add:language.code|add:'.gif' %}" style="margin-right: 5px; cursor: pointer;" />
+                {% else %}
+                  <img src="{% static 'img/'|add:language.code|add:'.gif' %}" style="margin-right: 5px; cursor: pointer;" />
+                {% endif %}
+
+              {% endfor %}
+            </form>
+          </li>
+				  {% if user.is_authenticated %}
+            <li>
+              <a href="{% url 'reviews' user.username %}">
+                <span data-toggle="tooltip" data-placement="bottom" data-container="body" title="{% trans 'My profile' %}">
+                  {{ user.profile.get_screen_name }}
+                </span>
+              </a>
+            </li>
+            <li>
+              <span class="navbar-text username-divider"></span>
+            </li>
+            {%comment%}
+            <li>
+              <a href="{% url 'library:index' %}">
+                {% trans 'Library' %} </a>
+            </li>
+            {%endcomment%}
+                  <li>
+                    <a href="{% url 'settings:settings' %}">
+                      <span data-toggle="tooltip" data-placement="bottom" data-container="body" title="{% trans 'Account settings' %}">
+                        <span class="glyphicon glyphicon-cog"></span>
+                      </span>
+                    </a>
+                  </li>
+
+            <li>
+              <a href="{% url 'signout' %}">
+                <span data-toggle="tooltip" data-placement="bottom" data-container="body" title="{% trans 'Sign out' %}">
+                  <span class="glyphicon glyphicon-log-out"></span>
+                </span>
+              </a>
+            </li>
+          {% else %}
+            <li id="group-buttons-sign" class="">
+              <a href="{% url 'signin' %}" title="Sign in" class="btn btn-new btn-success" style="padding: 10px;margin-top: 5px; margin-right: 5px; margin-left: 10px;">
+              {% trans 'Sign in' %}
+              </a>
+            </li>
+            <li>
+              <a href="{% url 'signup' %}" title="Sign up" class="btn btn-new btn-success" style="padding: 10px; margin-top: 5px">
+                {% trans 'Sign up' %}
+              </a>
+            </li>
+          {% endif %}
+          </ul>
+
 			</div>
-			
+
 		</div>
 	</nav>
-	
+
 	{% if show_head  %}
 	<div class="header-home">
 		<div class="container">
@@ -115,7 +136,7 @@
 								</span>
 							</a>
 						</p>
-						
+
 					</div>
 				</div>
 				<div class="col-sm-6 text-right">
@@ -124,11 +145,11 @@
 						{% trans 'Um ambiente colaborativo para o desenvolvimento de revisões sistemáticas da literatura e elaboração de metanálises.' %}
 					</p>
 					<a href="/reviews/new/" class="btn btn-new btn-success pull-right">{% trans 'New review' %}</a>
-					
+
 				</div>
 			</div>
 		</div>
 	</div>
 	{% endif %}
-	
+
 </header>

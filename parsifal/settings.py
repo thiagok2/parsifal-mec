@@ -29,8 +29,8 @@ ADMINS = (
 MANAGERS = ADMINS
 
 LANGUAGES = (
-    ('pt_BR', _('Português')),
-    ('en_US', _('English')),
+    ('pt-br', _('Portugues')),
+    ('en', _('English')),
 )
 
 TIME_ZONE = 'UTC'
