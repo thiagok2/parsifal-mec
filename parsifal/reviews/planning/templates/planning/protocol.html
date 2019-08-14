@@ -86,13 +86,16 @@
           {% csrf_token %}
           <input type="hidden" name="review-id" value="{{ review.id }}">
           <div class="panel panel-default">
-            <div class="panel-heading">
+            <div class="panel-heading has-help">
               <h3 class="panel-title">
                 {% trans 'Objectives' %}
                 <a href="javascript:void(0);" class="pull-right" data-toggle="tooltip" title="{% trans 'What is this? Click to get help.' %}" data-placement="top" data-container="body">
-                  <span class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#objective-help"></span>
+                  <span class="glyphicon glyphicon-question-sign big-glyphicon" data-toggle="modal" data-target="#objective-help"></span>
                 </a>
               </h3>
+              <small class="text-muted pull-left help-info">
+              	{% trans "Identification of the need and objectives for a review." %}
+              </small>
             </div>
             <div class="panel-body">
               <div class="form-group">
@@ -150,13 +153,16 @@
           <input type="hidden" name="review-id" value="{{ review.id }}">
 
           <div class="panel panel-default">
-            <div class="panel-heading">
+            <div class="panel-heading has-help">
               <h3 class="panel-title">
                 {% trans 'PICOC' %}
                 <a href="javascript:void(0);" class="pull-right" data-toggle="tooltip" title="{% trans 'What is this? Click to get help.' %}" data-placement="top" data-container="body">
-                  <span class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#picoc-help"></span>
+                  <span class="glyphicon glyphicon-question-sign big-glyphicon" data-toggle="modal" data-target="#picoc-help"></span>
                 </a>
               </h3>
+              <small class="text-muted pull-left help-info">
+              	{% trans 'PICOC stands for <em>population</em>, <em>intervention</em>, <em>comparison</em>, <em>outcomes</em> and <em>context</em>.' %}
+              </small>
             </div>
             <div class="panel-body">
               <p>{% trans 'Separate the terms used in the PICOC using commas. This will make possible to save them separately as keywords so we can help you design your search string.' %}</p>
@@ -233,13 +239,16 @@
         <form method="post" id="question-form">
           {% csrf_token %}
           <div class="panel panel-default">
-            <div class="panel-heading">
+            <div class="panel-heading has-help">
               <h3 class="panel-title">
                 {% trans 'Research Questions' %}
                 <a href="javascript:void(0);" class="pull-right" data-toggle="tooltip" title="{% trans 'What is this? Click to get help.' %}" data-placement="top" data-container="body">
-                  <span class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#question-help"></span>
+                  <span class="glyphicon glyphicon-question-sign big-glyphicon" data-toggle="modal" data-target="#question-help"></span>
                 </a>
               </h3>
+              <small class="text-muted pull-left help-info">
+              	{% trans 'A research question is the question around which you center your research. It should be <i>clear</i>, <i>focused</i>, <i>concise</i> and <i>arguable</i>.' %}
+              </small>
             </div>
             <table class="table">
               <tbody>
@@ -344,32 +353,35 @@
           </div>
         </div>
         <div class="panel panel-default">
-          <div class="panel-heading">
+          <div class="panel-heading has-help">
             <h3 class="panel-title">
               {% trans 'Keywords and Synonyms' %}
               <a href="javascript:void(0);" class="pull-right" data-toggle="tooltip" title="{% trans 'What is this? Click to get help.' %}" data-placement="top" data-container="body">
-                <span class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#keywords-help"></span>
+                <span class="glyphicon glyphicon-question-sign big-glyphicon" data-toggle="modal" data-target="#keywords-help"></span>
               </a>
             </h3>
+            <small class="text-muted pull-left help-info">
+            	{%trans "The keywords are basically extracted from the PIPOC and be related with one of your step. After you should relate them if all their synonyms to make your search string broader." %}
+            </small>
           </div>
           <div class="panel-body">
-            {% trans "To edit or remove a certain keyword or synonym you may click on it's description to enable the field." %}
+          	<table class="table" id="table-keywords">
+	            <thead>
+	              <tr>
+	                <th>{% trans 'Keyword' %}</th>
+	                <th>{% trans 'Synonyms' %}</th>
+	                <th>{% trans 'Related to' %}</th>
+	                <th></th>
+	              </tr>
+	            </thead>
+	            <tbody>
+	              {% for keyword in review.get_keywords %}
+	                {% include 'planning/partial_keyword.html' with keyword=keyword %}
+	              {% endfor %}
+	            </tbody>
+          	</table>
           </div>
-          <table class="table" id="table-keywords">
-            <thead>
-              <tr>
-                <th>{% trans 'Keyword' %}</th>
-                <th>{% trans 'Synonyms' %}</th>
-                <th>{% trans 'Related to' %}</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for keyword in review.get_keywords %}
-                {% include 'planning/partial_keyword.html' with keyword=keyword %}
-              {% endfor %}
-            </tbody>
-          </table>
+          
           <div class="panel-footer">
             <button type="button" class="btn btn-success" id="add-keyword">
               <span class="glyphicon glyphicon-plus"></span>
@@ -444,16 +456,19 @@
           {% csrf_token %}
           <input type="hidden" name="review-id" value="{{ review.id }}">
           <div class="panel panel-default">
-            <div class="panel-heading">
+            <div class="panel-heading has-help">
               <h3 class="panel-title">
                 {% trans 'Search String' %}
                 <a href="javascript:void(0);" class="pull-right" data-toggle="tooltip" title="{% trans 'What is this? Click to get help.' %}" data-placement="top" data-container="body">
-                  <span class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#search-string-help"></span>
+                  <span class="glyphicon glyphicon-question-sign big-glyphicon" data-toggle="modal" data-target="#search-string-help"></span>
                 </a>
               </h3>
+              <small class="text-muted pull-left help-info">
+              	<span class="glyphicon glyphicon-info-sign"></span> {% trans "Separate the keywords and synonyms with the boolean operator <strong>OR</strong> and separate the <em>population</em>, <em>intervention</em>, <em>comparison</em> and <em>outcomes</em> with parentheses and using the boolean operator <strong>AND</strong>." %}
+              </small>
             </div>
             <div class="panel-body">
-              <div class="alert alert-success" role="alert">
+              <div class="well" role="alert">
                 <strong><span class="glyphicon glyphicon-info-sign"></span></strong> {% trans 'Use uppercase for boolean operators (<strong>AND</strong>, <strong>OR</strong>), double quotes for composite words and parentheses to logically separate the keywords and synonyms.' %}
               </div>
               <textarea rows="4" name="search-string" class="form-control expanding search-string" maxlength="10000">{{ review.get_generic_search_string.search_string }}</textarea>
@@ -547,12 +562,15 @@
         </div>
 
         <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">{% trans 'Sources' %}
+          <div class="panel-heading has-help">
+            <h3 class="panel-title">{% trans 'Sources' %} ({% trans 'Digital Library' %})
             	<a href="javascript:void(0);" class="pull-right" data-toggle="tooltip" title="{% trans 'What is this? Click to get help.' %}" data-placement="top" data-container="body">
                 	<span class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#sources-help"></span>
              	</a>
             </h3>
+            <small class="text-muted pull-left help-info">
+            	{% trans "You can identify electronic databases such as IEEE, ACM or indicate that the search will be performed from offline sources." %}
+            </small>
           </div>
           <table class="table" id="tbl-sources">
             <thead>
@@ -626,13 +644,16 @@
         </div>
         
         <div class="panel panel-default">
-          <div class="panel-heading">
+          <div class="panel-heading has-help">
             <h3 class="panel-title">
             	{% trans 'Selection Criteria' %}
             	<a href="javascript:void(0);" class="pull-right" data-toggle="tooltip" title="{% trans 'What is this? Click to get help.' %}" data-placement="top" data-container="body">
                 	<span class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#selection-criteria-help"></span>
              	</a>
             </h3>
+            <small class="text-muted pull-left help-info">
+            	{% trans "The inclusion and exclusion criteria indicate which parameters will be considered to determine whether or not a given study will be included in the systematic review performed." %}
+            </small>
           </div>
           <div class="panel-body">
             <p>{% trans 'Inform your inclusion or exclusion criteria and press <strong>Enter</strong> to add.' %}</p>
@@ -696,16 +717,19 @@
           {% csrf_token %}
           <input type="hidden" name="review-id" value="{{ review.id }}">
           <div class="panel panel-default">
-            <div class="panel-heading">
+            <div class="panel-heading has-help">
               <h3 class="panel-title">
                 {% trans 'Selection Reviewer' %}
                 <a href="javascript:void(0);" class="pull-right" data-toggle="tooltip" title="{% trans 'What is this? Click to get help.' %}" data-placement="top" data-container="body">
-                	<span class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#master-reviewer-help"></span>
+                	<span class="glyphicon glyphicon-question-sign big-glyphicon" data-toggle="modal" data-target="#master-reviewer-help"></span>
              	</a>
               </h3>
+              <small class="text-muted pull-left help-info">
+              	{% trans "Necessary only if the review has more one reviewer, when there are conflicts between reviewers." %}
+              </small>
             </div>
             <div class="panel-body">
-              <p>{% trans "The reviewer will resolve the conflicts between the author's article evaluations." %}</p>
+              <p>{% trans "The reviewer will resolve the conflicts between the author's article evaluations for resolution conflits." %}</p>
               <form method="post" id="form-objective">
                 {% csrf_token %}
                 <input type="hidden" name="review-id" value="{{ review.id }}">
