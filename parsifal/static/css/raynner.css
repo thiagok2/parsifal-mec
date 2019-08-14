@@ -161,6 +161,15 @@ img.img-logo:hover{
 	
 }
 
+.panel>.has-help{
+	overflow: hidden;
+	min-height: 50px;
+}
+
+.big-glyphicon{
+	font-size: 1.5em;
+}
+
 .source-tab-content, .quality-container{
 	background: white;
     padding: 10px;
