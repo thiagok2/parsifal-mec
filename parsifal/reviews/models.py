@@ -39,8 +39,8 @@ class Review(models.Model):
     UNPUBLISHED = u'U'
     PUBLISHED = u'P'
     REVIEW_STATUS = (
-        (UNPUBLISHED, _(u'Unpublished')),
-        (PUBLISHED, _(u'Published')),
+        (UNPUBLISHED, _('Unpublished')),
+        (PUBLISHED, _('Published')),
         )
 
     name = models.SlugField(max_length=255)
@@ -204,6 +204,10 @@ class Review(models.Model):
     def articles_count(self):
         articles_count = Article.objects.filter(review__id=self.id).count()
         return articles_count
+    
+    def articles_accepts_count(self):
+        accepts_count = Article.objects.filter(review__id=self.id,status=Article.ACCEPTED).count()
+        return accepts_count
 
 class Tag(models.Model):
     review = models.ForeignKey(Review, related_name='review_tags')

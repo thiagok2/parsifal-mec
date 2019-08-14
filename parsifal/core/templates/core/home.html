@@ -36,7 +36,7 @@
 								<a href="/{{ review.author.username }}/{{ review.name }}/">{{ review.title }} </a>
 							</div>
 							
-							<div class="col-md-3 text-right">
+							<div class="col-md-5 text-right">
 								<span class="badge badge-secondary" data-toggle="tooltip" data-placement="top" title="Artigos">
 									 <i class="fa fa-fw fa-files-o"></i>
 									 {{review.articles_count}}
@@ -44,6 +44,7 @@
 								
 								<span class="badge badge-secondary" data-toggle="tooltip" data-placement="top" title="Selecionados">
 									 <i class="fa fa-fw fa-filter"></i>
+									 {{review.articles_accepts_count}}
 								</span>
 								
 								{%if review.export_protocol%}
@@ -68,7 +69,7 @@
 								{%endif %}
 							</div>
 							
-							<div class="col-md-2 text-right">
+							<div class="col-md-2 text-right hidden">
 								<span class="badge badge-secondary">
 								{% for status in review.REVIEW_STATUS %}
 	            					{% if review.status == status.0 %} {{ status.1 }} {% endif %}

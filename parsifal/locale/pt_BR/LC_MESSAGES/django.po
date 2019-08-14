@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-14 15:47+0000\n"
+"POT-Creation-Date: 2019-08-14 17:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -585,11 +585,11 @@ msgstr "Crie uma nova conta"
 msgid "Your reviews"
 msgstr "Suas revisões"
 
-#: parsifal/core/templates/core/home.html:110
+#: parsifal/core/templates/core/home.html:111
 msgid "Reviews you are invited"
 msgstr "Revisões como convidado"
 
-#: parsifal/core/templates/core/home.html:116
+#: parsifal/core/templates/core/home.html:117
 #: parsifal/reviews/templates/reviews/reviews.html:119
 msgid "You don't have any systematic literature review yet."
 msgstr "Você não tem nenhum revisão sistemática da literatura ainda"
@@ -1194,12 +1194,12 @@ msgid "Unknown"
 msgstr ""
 
 #: parsifal/lib/python2.7/site-packages/django/forms/widgets.py:556
-#: parsifal/reviews/models.py:504
+#: parsifal/reviews/models.py:508
 msgid "Yes"
 msgstr ""
 
 #: parsifal/lib/python2.7/site-packages/django/forms/widgets.py:557
-#: parsifal/reviews/models.py:506
+#: parsifal/reviews/models.py:510
 msgid "No"
 msgstr "Não"
 
@@ -2379,7 +2379,7 @@ msgstr "Arquivos"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:33
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:80
-#: parsifal/reviews/models.py:365
+#: parsifal/reviews/models.py:369
 msgid "Conflict"
 msgstr "Conflito"
 
@@ -2490,31 +2490,31 @@ msgid "Show"
 msgstr "Mostrar"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:65
-#: parsifal/reviews/models.py:340 parsifal/reviews/models.py:363
-#: parsifal/reviews/models.py:446
+#: parsifal/reviews/models.py:344 parsifal/reviews/models.py:367
+#: parsifal/reviews/models.py:450
 msgid "Accepted"
 msgstr "Aceito"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:68
-#: parsifal/reviews/models.py:339 parsifal/reviews/models.py:362
-#: parsifal/reviews/models.py:445
+#: parsifal/reviews/models.py:343 parsifal/reviews/models.py:366
+#: parsifal/reviews/models.py:449
 msgid "Rejected"
 msgstr "Rejeitado"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:71
-#: parsifal/reviews/models.py:338 parsifal/reviews/models.py:360
-#: parsifal/reviews/models.py:444
+#: parsifal/reviews/models.py:342 parsifal/reviews/models.py:364
+#: parsifal/reviews/models.py:448
 msgid "Unclassified"
 msgstr "Não classificado"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:74
-#: parsifal/reviews/models.py:341 parsifal/reviews/models.py:364
-#: parsifal/reviews/models.py:447
+#: parsifal/reviews/models.py:345 parsifal/reviews/models.py:368
+#: parsifal/reviews/models.py:451
 msgid "Duplicated"
 msgstr "Duplicado"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:77
-#: parsifal/reviews/models.py:361
+#: parsifal/reviews/models.py:365
 msgid "Waiting"
 msgstr "Aguardando"
 
@@ -2718,66 +2718,66 @@ msgstr "Não publicado"
 msgid "Published"
 msgstr "Publicado"
 
-#: parsifal/reviews/models.py:255
+#: parsifal/reviews/models.py:259
 msgid "Inclusion"
 msgstr "Inclusão"
 
-#: parsifal/reviews/models.py:256
+#: parsifal/reviews/models.py:260
 msgid "Exclusion"
 msgstr "Exclusão"
 
-#: parsifal/reviews/models.py:475
+#: parsifal/reviews/models.py:479
 #: parsifal/reviews/planning/templates/planning/protocol.html:171
 #: parsifal/reviews/planning/templates/planning/protocol.html:293
 #: parsifal/reviews/templates/reviews/partial_published_protocols.html:83
 msgid "Population"
 msgstr "População"
 
-#: parsifal/reviews/models.py:476
+#: parsifal/reviews/models.py:480
 #: parsifal/reviews/planning/templates/planning/protocol.html:177
 #: parsifal/reviews/planning/templates/planning/protocol.html:312
 #: parsifal/reviews/templates/reviews/partial_published_protocols.html:87
 msgid "Intervention"
 msgstr "Intervenção"
 
-#: parsifal/reviews/models.py:477
+#: parsifal/reviews/models.py:481
 #: parsifal/reviews/planning/templates/planning/protocol.html:183
 #: parsifal/reviews/planning/templates/planning/protocol.html:325
 #: parsifal/reviews/templates/reviews/partial_published_protocols.html:91
 msgid "Comparison"
 msgstr "Comparação"
 
-#: parsifal/reviews/models.py:478
+#: parsifal/reviews/models.py:482
 #: parsifal/reviews/planning/templates/planning/protocol.html:189
 #: parsifal/reviews/planning/templates/planning/protocol.html:338
 #: parsifal/reviews/templates/reviews/partial_published_protocols.html:95
 msgid "Outcome"
 msgstr "Resultados"
 
-#: parsifal/reviews/models.py:505
+#: parsifal/reviews/models.py:509
 msgid "Partially"
 msgstr ""
 
-#: parsifal/reviews/models.py:605
+#: parsifal/reviews/models.py:609
 msgid "Expected values: \"True\" or \"False\""
 msgstr ""
 
-#: parsifal/reviews/models.py:623 parsifal/reviews/models.py:633
-#: parsifal/reviews/models.py:643
+#: parsifal/reviews/models.py:627 parsifal/reviews/models.py:637
+#: parsifal/reviews/models.py:647
 msgid "Invalid input for "
 msgstr ""
 
-#: parsifal/reviews/models.py:623
+#: parsifal/reviews/models.py:627
 msgid ""
 " field. Expected value: floating point number. Please use dot instead of "
 "comma."
 msgstr ""
 
-#: parsifal/reviews/models.py:633
+#: parsifal/reviews/models.py:637
 msgid " field. Expected value: integer number."
 msgstr ""
 
-#: parsifal/reviews/models.py:643
+#: parsifal/reviews/models.py:647
 msgid " field. Expected value: date. Please use the format MM/DD/YYYY."
 msgstr ""
 
@@ -4005,6 +4005,10 @@ msgstr "Exportar"
 msgid "Reporting"
 msgstr "Relatórios"
 
+#: parsifal/reviews/settings/forms.py:13
+msgid "Only letters, numbers, _or - are allowed."
+msgstr "Apenas letras, números, _ou - são permitidos"
+
 #: parsifal/reviews/settings/templates/settings/review_settings.html:7
 msgid "Review Settings"
 msgstr "Configurações"
@@ -4428,9 +4432,11 @@ msgstr "Seguindo"
 
 #: parsifal/templates/includes/header.html:148
 msgid ""
-"Um ambiente colaborativo para o desenvolvimento de revisões sistemáticas da "
-"literatura e elaboração de metanálises."
+"A collaborative environment for the development of systematic literature "
+"reviews and meta-analyzes."
 msgstr ""
+"Um ambiente colaborativo para o desenvolvimento de revisões sistemáticas da "
+"literatura e metanálise."
 
 #~ msgid ""
 #~ "To edit or remove a certain keyword or synonym you may click on it's "
