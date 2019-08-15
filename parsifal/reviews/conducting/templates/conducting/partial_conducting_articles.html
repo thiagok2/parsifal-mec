@@ -42,20 +42,15 @@
     <a href="javascript:void(0);" class="pull-right" data-toggle="tooltip" title="{% trans 'What is this? Click to get help.' %}" data-placement="top" data-container="body">
        	<span class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#import-studies-help"></span>
      </a>
-    {% comment %} <div class="studies-action" style="margin: 10px 0;">
+    <div class="studies-action" style="margin: 10px 0;">
       <strong>{% trans 'Action:' %}</strong>
       <select class="select-action form-control" style="width: 200px; display: inline-block;">
         <option value="">{% trans 'Select...' %}</option>
         <option value="remove">{% trans 'Remove selected' %}</option>
-        <option value="accept">{% trans 'Mark as accepted' %}</option>
-        <option value="reject">{% trans 'Mark as rejected' %}</option>
-        <option value="duplicated">{% trans 'Mark as duplicated' %}</option>
-        <option value="waiting">{% trans 'Mark as waiting' %}</option>
-        <option value="conflict">{% trans 'Mark as conflict' %}</option>
       </select>
       <button type="button" class="btn btn-default go-button">{% trans 'Run' %}</button>
       <span class="text-muted"><span class="articles-selected">0</span> {% trans 'of' %} <span class="articles-total">{{ articles.count }}</span> {% trans 'selected' %}</span>
-    </div> {% endcomment %}
+    </div>
     <p>
       <strong>{% trans 'Show' %}:</strong>
       <label class="radio-inline">
