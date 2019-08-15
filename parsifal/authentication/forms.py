@@ -3,6 +3,7 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 
 from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as l_
 
 
 def ForbiddenUsernamesValidator(value):
@@ -20,19 +21,19 @@ def ForbiddenUsernamesValidator(value):
 
 def InvalidUsernameValidator(value):
     if '@' in value or '+' in value or '-' in value:
-        raise ValidationError(_('Enter a valid username.'))
+        raise ValidationError(l_('Enter a valid username.'))
 
 def UniqueEmailValidator(value):
     if User.objects.filter(email__iexact=value).exists():
-        raise ValidationError(_('User with this Email already exists.'))
+        raise ValidationError(l_('User with this Email already exists.'))
 
 def UniqueUsernameIgnoreCaseValidator(value):
     if User.objects.filter(username__iexact=value).exists():
-        raise ValidationError(_('User with this Username already exists.'))
+        raise ValidationError(l_('User with this Username already exists.'))
 
 class SignUpForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput(), label=_("Password"))
-    confirm_password = forms.CharField(widget=forms.PasswordInput(), label=_("Confirm your password"))
+    password = forms.CharField(widget=forms.PasswordInput(), label=l_("Password"))
+    confirm_password = forms.CharField(widget=forms.PasswordInput(), label=l_("Confirm your password"))
     email = forms.CharField(required=True)
 
     class Meta:
@@ -51,5 +52,5 @@ class SignUpForm(forms.ModelForm):
         password = self.cleaned_data.get('password')
         confirm_password = self.cleaned_data.get('confirm_password')
         if password and password != confirm_password:
-            self._errors['password'] = self.error_class([_("Passwords don\'t match")])
+            self._errors['password'] = self.error_class([l_("Passwords don\'t match")])
         return self.cleaned_data
