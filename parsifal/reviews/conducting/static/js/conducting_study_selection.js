@@ -159,10 +159,10 @@ $(function () {
     });
   };
 
-  $(".source-tab-content").on("click", "tbody tr", function () {
-    if (!$(this).hasClass("no-data")) {
+  $(".source-tab-content").on("click", "tbody .table-link", function () {
+    if (!$(this).closest('tr').hasClass("no-data")) {
       $(".source-articles tbody tr").removeClass("active");
-      $(this).addClass("active");
+      $(this).closest('tr').addClass("active");
       $("#modal-article .modal-body").css("height", $(window).height() * 0.7);
       $("#modal-article .modal-body").loadActiveArticle();
       $("#modal-article").modal('show');
@@ -263,11 +263,25 @@ $(function () {
     article_solve_conflict();
   }
 
-  function save_article_evaluation() {
+  $("body").on("change", "select[id^='evaluation-status']", function () {
+    evaluation_id = $(this).attr('data-evaluation-id');
+    console.log('evaluationn ', evaluation_id)
+    save_article_evaluation(evaluation_id);
+  });
+
+  function save_article_evaluation(evaluation_id="") {
+    var serialize = ''
+
+    if (evaluation_id !== '') {
+        serialize = $("#article-evaluation-" + evaluation_id).serialize()
+    } else {
+        serialize = $("#article-evaluation").serialize()
+    }
+    console.log('evaluationnss ', evaluation_id)
     $.ajax({
         url: '/reviews/conducting/save_article_evaluation/',
         cache: false,
-        data: $("#article-evaluation").serialize(),
+        data: serialize,
         type: 'post',
         beforeSend: function () {
             $(".btn-save-article").prop("disabled", true);

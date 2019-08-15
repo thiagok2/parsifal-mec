@@ -65,7 +65,7 @@ class Review(models.Model):
     export_dataextraction = models.BooleanField(default=False)
     export_risks = models.BooleanField(default=False)
     export_qualityassessment = models.BooleanField(default=False)
-    
+
     statistical_methods=models.TextField(max_length=1000,blank=True)
 
     #protocol_base = models.ForeignKey('self', null=True, related_name='protocol_base')
@@ -197,14 +197,14 @@ class Review(models.Model):
             return 0.0
     def is_pipoc_completed(self):
         return self.population and self.intervention and self.context and self.objective and self.comparison
-    
+
     def is_statistical_methods(self):
         return self.statistical_methods is not None
-    
+
     def articles_count(self):
         articles_count = Article.objects.filter(review__id=self.id).count()
         return articles_count
-    
+
     def articles_accepts_count(self):
         accepts_count = Article.objects.filter(review__id=self.id,status=Article.ACCEPTED).count()
         return accepts_count
@@ -427,6 +427,16 @@ class Article(models.Model):
     def get_evaluations(self):
         evaluations = ArticleEvaluation.objects.filter(article__id=self.id)
         return evaluations
+
+    def get_user_evaluation(self, user_id=None):
+        evaluation = ArticleEvaluation.objects \
+                        .filter(article__id=self.id, user__id=user_id)
+
+       # if evaluation.count() > 0:
+        #    evaluation = evaluation[0]['status']
+        # evaluation_status = dict(ArticleEvaluation.ARTICLE_STATUS).get(evaluation)
+
+        return evaluation
 
 def article_directory_path(instance, filename):
     return 'article/{0}/{1}'.format(instance.article.id, filename)
