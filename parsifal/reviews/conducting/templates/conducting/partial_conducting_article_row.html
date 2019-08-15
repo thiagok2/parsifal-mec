@@ -1,0 +1,14 @@
+{% load i18n humanize %}
+
+<tr oid="{{article.id}}" article-status="{{article.status}}">
+  <td><input type="checkbox" value="{{article.id}}"></td>
+  <td class="table-link">{{article.bibtex_key}}</td>
+  <td class="table-link">{{article.title}}</td>
+  <td class="table-link">{{article.journal}}</td>
+  <td class="table-link">{{article.year}}</td>
+  <td class="table-link">{{article.abstract}}</td>
+  <td class="table-link">{{article.get_status_html|safe}}</td>
+  <td width="170px">
+    {% include 'conducting/partial_article_evaluation_table_form.html' %}
+  </td>
+</tr>

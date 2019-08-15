@@ -536,19 +536,24 @@ def import_bibtex_raw_content(request):
 @author_or_visitor_required
 @login_required
 def source_articles(request):
-    review_id = request.GET['review-id']
-    source_id = request.GET['source-id']
+    try:
+        review_id = request.GET['review-id']
+        source_id = request.GET['source-id']
 
-    review = Review.objects.get(pk=review_id)
-    if source_id != 'None':
-        articles = review.get_source_articles(source_id)
-        source = Source.objects.get(pk=source_id)
-    else:
-        articles = review.get_source_articles()
-        source = Source()
+        status_evaluation = ArticleEvaluation.ARTICLE_STATUS
 
-    return render(request, 'conducting/partial_conducting_articles.html', {'review': review, 'source': source, 'articles': articles})
+        review = Review.objects.get(pk=review_id)
+        if source_id != 'None':
+            articles = review.get_source_articles(source_id)
+            source = Source.objects.get(pk=source_id)
+        else:
+            articles = review.get_source_articles()
+            source = Source()
 
+        return render(request, 'conducting/partial_conducting_articles.html', {'review': review, 'source': source, 'articles': articles, 'status_evaluation': status_evaluation})
+    except Exception as e:
+        print e
+        return HttpResponseBadRequest()
 
 @author_or_visitor_required
 @login_required
@@ -640,7 +645,8 @@ def reload_article_files_tab(request, article_id):
     except Exception as e:
         return HttpResponseBadRequest()
 
-def build_article_table_row(article):
+def build_article_table_row(request, article, user):
+    status_evaluation = ArticleEvaluation.ARTICLE_STATUS
     name = ''
     if article.created_by:
         name = escape(article.created_by.profile.get_screen_name())
@@ -648,44 +654,8 @@ def build_article_table_row(article):
     if article.created_at:
         date = article.created_at.strftime('%d %b %Y %H:%M:%S')
 
-#     row = u'''<tr oid="{0}" article-status="{1}">
-#             <td><input type="checkbox" value="{0}""></td>
-#             <td>{2}</td>
-#             <td>{3}</td>
-#             <td>{4}</td>
-#             <td>{5}</td>
-#             <td>{6}</td>
-#             <td>{7}</td>
-#             <td>{8}</td>
-#             <td>{9}</td>
-#           </tr>'''.format(article.id,
-#             article.status,
-#             escape(article.bibtex_key),
-#             escape(article.title),
-#             escape(article.author),
-#             escape(article.journal),
-#             escape(article.year),
-#             name,
-#             date,
-#             article.get_status_html())
-
-    row = u'''<tr oid="{0}" article-status="{1}">
-            <td><input type="checkbox" value="{0}""></td>
-            <td>{2}</td>
-            <td>{3}</td>
-            <td>{4}</td>
-            <td>{5}</td>
-            <td>{6}</td>
-            <td>{7}</td>
-          </tr>'''.format(article.id,
-            article.status,
-            escape(article.bibtex_key),
-            escape(article.title),
-            escape(article.journal),
-            escape(article.year),
-            escape(article.abstract),
-            article.get_status_html())
-    return row
+    context = RequestContext(request, {'article': article, 'user': user, 'status_evaluation': status_evaluation})
+    return render_to_response('conducting/partial_conducting_article_row.html', context)
 
 
 @author_required
@@ -726,7 +696,7 @@ def save_article_details(request):
             article.updated_by = request.user
             article.save()
 
-            return HttpResponse(build_article_table_row(article))
+            return HttpResponse(build_article_table_row(request, article, request.user))
         except Exception as e:
             print e
             return HttpResponseBadRequest()
@@ -738,20 +708,25 @@ def save_article_details(request):
 def save_article_evaluation(request):
     if request.method == 'POST':
         try:
+            print 'tryyy'
             article_id = request.POST['article-id']
             article_evaluation_id = request.POST['article-evaluation-id']
             review_id = ''
 
+            print 'aeid ', article_evaluation_id
+
             if article_evaluation_id != 'None':
+                print 'ifff'
                 article_evaluation = ArticleEvaluation.objects.get(pk=article_evaluation_id)
                 review_id = article_evaluation.review.id
             else:
+                print 'elseee'
                 review_id = request.POST['review-id']
                 review = Review.objects.get(pk=review_id)
                 article = Article.objects.get(pk=article_id)
                 article_evaluation = ArticleEvaluation(review=review, article=article, user=request.user)
 
-            article_evaluation.comments = request.POST['comments'][:4000]
+            article_evaluation.comments = ''
             status = request.POST['status'][:1]
             if status in (ArticleEvaluation.UNCLASSIFIED, ArticleEvaluation.REJECTED, ArticleEvaluation.ACCEPTED, ArticleEvaluation.DUPLICATED):
                 article_evaluation.status = status
@@ -763,13 +738,14 @@ def save_article_evaluation(request):
             except:
                 article_evaluation.selection_criteria = None
 
+            print 'aaaaaa ', article_evaluation
             article_evaluation.save()
 
             edit_article_status(review_id, article_id)
 
             return HttpResponse()
         except Exception as e:
-            print e
+            print 'eee ', e
             return HttpResponseBadRequest()
     else:
         return HttpResponseBadRequest()
