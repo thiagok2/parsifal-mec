@@ -12,7 +12,7 @@ class KeywordForm(forms.ModelForm):
             widget=forms.TextInput(attrs={ 'class': 'form-control' }),
             max_length=200,
             required=True,
-            label=_('Description')
+            label=l_('Description')
         )
     related_to = forms.ChoiceField(
             widget=forms.Select(attrs={ 'class': 'form-control' }),
@@ -31,7 +31,7 @@ class SynonymForm(forms.ModelForm):
             widget=forms.TextInput(attrs={ 'class': 'form-control input-sm' }),
             max_length=200,
             required=True,
-            label=_('Description')
+            label=l_('Description')
         )
 
     class Meta:
