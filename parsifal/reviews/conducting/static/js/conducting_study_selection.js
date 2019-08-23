@@ -30,7 +30,6 @@ $(function () {
         },
         success: function (data) {
             //$(tr).remove();
-            console.log(data)
             $("#tab-files").html(data);
 
         },
@@ -265,8 +264,24 @@ $(function () {
 
   $("body").on("change", "select[id^='evaluation-status']", function () {
     evaluation_id = $(this).attr('data-evaluation-id');
-    console.log('evaluationn ', evaluation_id)
-    save_article_evaluation(evaluation_id);
+    is_rejeitado = $(this).val()
+    if (is_rejeitado == 'R') {
+        if (!$(this).closest('tr').hasClass("no-data")) {
+            $(".source-articles tbody tr").removeClass("active");
+            $(this).closest('tr').addClass("active");
+            $("#modal-article .modal-body").css("height", $(window).height() * 0.7);
+            $("#modal-article .modal-body").loadActiveArticle();
+            $("#modal-article").modal('show');
+            $("#modal-article").on('shown.bs.modal', function(e) {
+                $('#modal-article #status').val('R')
+                $('#modal-article a[href="#tab-evaluation"]').tab('show')
+            })
+        }
+        //$('#modal-rejected').modal('show')
+    } else {
+        save_article_evaluation(evaluation_id);
+    }
+
   });
 
   function save_article_evaluation(evaluation_id="") {
@@ -277,7 +292,6 @@ $(function () {
     } else {
         serialize = $("#article-evaluation").serialize()
     }
-    console.log('evaluationnss ', evaluation_id)
     $.ajax({
         url: '/reviews/conducting/save_article_evaluation/',
         cache: false,

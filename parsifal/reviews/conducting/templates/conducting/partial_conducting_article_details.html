@@ -18,19 +18,19 @@
   <input type="hidden" name="source-id" id="source-id" value="{{ article.source.id }}">
 
   <div role="tabpanel">
-    <ul class="nav nav-tabs" role="tablist">
-      <li role="presentation" class="active">
-        <a href="#tab-details" aria-controls="tab-details" role="tab" data-toggle="tab">{% trans 'Details' %}</a>
+    <ul class="nav nav-tabs" role="tablist" id="article-details-tabs">
+      <li role="presentation" class="active" id="tab-list-details">
+        <a id="details-tab" href="#tab-details" aria-controls="tab-details" role="tab" data-toggle="tab" aria-selected="true">{% trans 'Details' %}</a>
       </li>
-      <li role="presentation">
-        <a href="#tab-evaluation" aria-controls="tab-evaluation" role="tab" data-toggle="tab">{% trans 'Evaluation' %}</a>
+      <li role="presentation" id="tab-list-evaluation">
+        <a id="evluation-tab" href="#tab-evaluation" aria-controls="tab-evaluation" role="tab" data-toggle="tab" aria-selected="false">{% trans 'Evaluation' %}</a>
       </li>
-      <li role="presentation">
-        <a href="#tab-files" aria-controls="tab-files" role="tab" data-toggle="tab">{% trans 'Files' %}</a>
+      <li role="presentation" id="tab-list-files">
+        <a id="files-tab" href="#tab-files" aria-controls="tab-files" role="tab" data-toggle="tab" aria-selected="false">{% trans 'Files' %}</a>
       </li>
       {% if review.selection_reviewer.id == user.id and article.status == 'C' %}
-        <li role="presentation">
-          <a href="#tab-conflict" aria-controls="tab-conflict" role="tab" data-toggle="tab" style="color: red;">{% trans 'Conflict' %}</a>
+        <li role="presentation" id="tab-list-conflict">
+          <a id="conflict-tab" href="#tab-conflict" aria-controls="tab-conflict" role="tab" data-toggle="tab" aria-selected="false" style="color: red;">{% trans 'Conflict' %}</a>
         </li>
       {% endif %}
       {% if article.url %}
@@ -45,7 +45,7 @@
       {% endif %}
     </ul>
     <div class="tab-content">
-      <div role="tabpanel" class="tab-pane active" id="tab-details">
+      <div role="tabpanel" class="tab-pane active" id="tab-details" aria-labelledby="details-tab">
         <div class="form-group">
           <label class="control-label">{% trans 'Title' %}</label>
           <input type="text" class="form-control" name="title" id="title" value="{{ article.title }}">
@@ -121,7 +121,7 @@
 
       </div>
       </form>
-      <div role="tabpanel" class="tab-pane" id="tab-evaluation">
+      <div role="tabpanel" class="tab-pane" id="tab-evaluation" aria-labelledby="evluation-tab">
         <form name="article-evaluation" id="article-evaluation" method="post" action=".">
           {% csrf_token %}
           <input type="hidden" name="article-id" id="article-id" value="{{ article.id }}">
@@ -132,11 +132,11 @@
           </div>
         </form>
       </div>
-      <div role="tabpanel" class="tab-pane" id="tab-files">
+      <div role="tabpanel" class="tab-pane" id="tab-files" aria-labelledby="files-tab">
         {% include 'conducting/partial_article_files.html' %}
       </div>
       {% if review.selection_reviewer.id == user.id and article.status == 'C' %}
-        <div role="tabpanel" class="tab-pane" id="tab-conflict">
+        <div role="tabpanel" class="tab-pane" id="tab-conflict" aria-labelledby="conflict-tab">
           <form name="article-solve-conflict" id="article-solve-conflict" method="post" action=".">
             {% csrf_token %}
             <input type="hidden" name="article-id" id="article-id" value="{{ article.id }}">
