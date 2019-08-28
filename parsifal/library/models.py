@@ -4,6 +4,9 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.text import slugify
 
+from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as l_
+
 
 class SharedFolder(models.Model):
     name = models.CharField(max_length=50)
@@ -79,20 +82,20 @@ class Document(models.Model):
     UNPUBLISHED = 'unpublished'
 
     ENTRY_TYPES = (
-        (ARTICLE, 'Article'),
-        (BOOK, 'Book'),
-        (BOOKLET, 'Booklet'),
-        (CONFERENCE, 'Conference'),
-        (INBOOK, 'Inbook'),
-        (INCOLLECTION, 'Incollection'),
-        (INPROCEEDINGS, 'Inproceedings'),
-        (MANUAL, 'Manual'),
-        (MASTERSTHESIS, 'Master\'s Thesis'),
-        (MISC, 'Misc'),
-        (PHDTHESIS, 'Ph.D. Thesis'),
-        (PROCEEDINGS, 'Proceedings'),
-        (TECHREPORT, 'Tech Report'),
-        (UNPUBLISHED, 'Unpublished'),
+        (ARTICLE, _('Article')),
+        (BOOK, _('Book')),
+        (BOOKLET, _('Booklet')),
+        (CONFERENCE, _('Conference')),
+        (INBOOK, _('Inbook')),
+        (INCOLLECTION, _('Incollection')),
+        (INPROCEEDINGS, _('Inproceedings')),
+        (MANUAL, _('Manual')),
+        (MASTERSTHESIS, _('Master\'s Thesis')),
+        (MISC, _('Misc')),
+        (PHDTHESIS, _('Ph.D. Thesis')),
+        (PROCEEDINGS, _('Proceedings')),
+        (TECHREPORT, _('Tech Report')),
+        (UNPUBLISHED, _('Unpublished')),
         )
 
     # Bibtex required fields

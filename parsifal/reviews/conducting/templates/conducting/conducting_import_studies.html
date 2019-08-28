@@ -2,7 +2,7 @@
 {% load i18n staticfiles humanize is_visitor %}
 
 {% block javascript %}
-  <script type="text/javascript" src="{% static 'js/conducting_import_studies.js' %}?_=2"></script>
+  <script type="text/javascript" src="{% static 'js/conducting_import_studies.js' %}"></script>
   {% if user|is_visitor:review %}
     <script src="{% static 'js/user_is_visitor.js' %}?v=1"></script>
   {% endif %}
@@ -66,6 +66,7 @@
                       <ul class="dropdown-menu">
                         <li><a href="javascript:void(0);" class="btn-import-bibtex">{% trans 'BibTeX file' %} <small>(.bib, .bibtex)</small></a></li>
                         <li><a href="javascript:void(0);" class="js-import-bibtex-raw-content" data-source-id="{{ source.source.id }}" data-toggle="modal" data-target="#parse-bibtex">{% trans 'Paste BibTeX content' %}</a></li>
+                      	<li><a href="javascript:void(0);" class="js-new-document" data-source-id="{{ source.source.id }}" data-review-id="{{ review.id }}">{% trans 'Add document' %}</a></li>
                       </ul>
                     </div>
                   </td>
@@ -110,6 +111,13 @@
       </div>
     </div>
   </form>
+  
+  <div class="modal fade" id="modal-document" data-remote-url="{% url 'reviews:conducting:new_document' %}">
+    <div class="modal-dialog modal-lg">
+    
+    
+    </div>
+  </div>
 
 
 {% endblock tab_content %}

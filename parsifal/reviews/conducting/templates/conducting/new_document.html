@@ -1,0 +1,50 @@
+{% load i18n %}
+
+{% load humanize %}
+
+<div class="modal-content">
+  <form id="form-new-document" action="{% url 'reviews:conducting:new_document' %}" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="source_id" id="source_id" value="{{ source_id }}"/>
+    <input type="hidden" name="review_id" id="review_id" value="{{ review_id }}"/>
+    {% for hidden in form.hidden_fields %}
+      {{ hidden }}
+    {% endfor %}
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <h4 class="modal-title">{% trans 'Add document' %}</h4>
+    </div>
+    <div class="modal-body">
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#details" aria-controls="details" role="tab" data-toggle="tab">{% trans 'Details' %}</a></li>
+        <li role="presentation"><a href="#files" aria-controls="files" role="tab" data-toggle="tab">{% trans 'Files' %}</a></li>
+      </ul>
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="details">
+          <div class="pull-right" style="margin-bottom:10px">
+          	<button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
+          	<button type="button" class="btn btn-success js-save-new-document">{% trans 'Save changes' %}</button>
+          </div>
+          <br/>
+          <br/>
+          <hr/>
+          {% for field in form.visible_fields %}
+            <div class="form-group{% if field.errors %} has-error{% endif %}">
+              <label for="{{ field.id_for_label }}" class="control-label">{{ field.label }}</label>
+              {{ field }}
+              {% for error in field.errors %}
+                <p class="help-block">{{ error }}</p>
+              {% endfor %}
+              <span class="help-block">{{ field.help_text }}</span>
+            </div>
+          {% endfor %}
+        </div>
+        <div role="tabpanel" class="tab-pane" id="files"></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Cancel' %}</button>
+      <button type="button" class="btn btn-success js-save-new-document">{% trans 'Save changes' %}</button>
+    </div>
+  </form>
+</div>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-15 03:20+0000\n"
+"POT-Creation-Date: 2019-08-27 23:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -91,7 +91,7 @@ msgstr ""
 #: parsifal/templates/admin/base_site.html:8
 #: parsifal/templates/includes/footer.html:10
 #: parsifal/templates/includes/header.html:14
-#: parsifal/templates/includes/header.html:146
+#: parsifal/templates/includes/header.html:145
 msgid "Parsifal"
 msgstr ""
 
@@ -161,6 +161,8 @@ msgstr ""
 #: parsifal/account_settings/templates/settings/picture.html:73
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:89
 #: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:75
+#: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:102
+#: parsifal/reviews/conducting/templates/conducting/new_document.html:23
 #: parsifal/reviews/planning/templates/planning/protocol.html:540
 msgid "Close"
 msgstr ""
@@ -178,7 +180,7 @@ msgid "Save profile"
 msgstr ""
 
 #: parsifal/account_settings/templates/settings/settings_menu.html:7
-#: parsifal/templates/includes/header.html:84
+#: parsifal/templates/includes/header.html:83
 msgid "Account settings"
 msgstr ""
 
@@ -282,7 +284,7 @@ msgstr ""
 msgid "following"
 msgstr ""
 
-#: parsifal/activities/views.py:76 parsifal/templates/includes/header.html:133
+#: parsifal/activities/views.py:76 parsifal/templates/includes/header.html:132
 msgid "followers"
 msgstr ""
 
@@ -319,7 +321,7 @@ msgstr ""
 #: parsifal/authentication/templates/auth/signin.html:7
 #: parsifal/authentication/templates/auth/signin.html:22
 #: parsifal/authentication/templates/auth/signin.html:35
-#: parsifal/templates/includes/header.html:100
+#: parsifal/templates/includes/header.html:99
 msgid "Sign in"
 msgstr ""
 
@@ -333,7 +335,7 @@ msgid "Forgot your password?"
 msgstr ""
 
 #: parsifal/authentication/templates/auth/signup.html:8
-#: parsifal/templates/includes/header.html:105
+#: parsifal/templates/includes/header.html:104
 msgid "Sign up"
 msgstr ""
 
@@ -1657,12 +1659,180 @@ msgstr ""
 msgid "Index of %(directory)s"
 msgstr ""
 
+#: parsifal/library/models.py:85
+msgid "Article"
+msgstr ""
+
+#: parsifal/library/models.py:86
+msgid "Book"
+msgstr ""
+
+#: parsifal/library/models.py:87
+msgid "Booklet"
+msgstr ""
+
+#: parsifal/library/models.py:88
+msgid "Conference"
+msgstr ""
+
+#: parsifal/library/models.py:89
+msgid "Inbook"
+msgstr ""
+
+#: parsifal/library/models.py:90
+msgid "Incollection"
+msgstr ""
+
+#: parsifal/library/models.py:91
+msgid "Inproceedings"
+msgstr ""
+
+#: parsifal/library/models.py:92
+msgid "Manual"
+msgstr ""
+
+#: parsifal/library/models.py:93
+msgid "Master's Thesis"
+msgstr ""
+
+#: parsifal/library/models.py:94
+msgid "Misc"
+msgstr ""
+
+#: parsifal/library/models.py:95
+msgid "Ph.D. Thesis"
+msgstr ""
+
+#: parsifal/library/models.py:96
+msgid "Proceedings"
+msgstr ""
+
+#: parsifal/library/models.py:97
+msgid "Tech Report"
+msgstr ""
+
+#: parsifal/library/models.py:98 parsifal/reviews/models.py:42
+msgid "Unpublished"
+msgstr ""
+
 #: parsifal/local/settings.py:32 parsifal/settings.py:32
 msgid "Portugues"
 msgstr ""
 
 #: parsifal/local/settings.py:33 parsifal/settings.py:33
 msgid "English"
+msgstr ""
+
+#: parsifal/reviews/conducting/forms.py:39
+msgid "Entry type"
+msgstr ""
+
+#: parsifal/reviews/conducting/forms.py:40
+msgid "BibTeX key"
+msgstr ""
+
+#: parsifal/reviews/conducting/forms.py:41
+msgid "title"
+msgstr ""
+
+#: parsifal/reviews/conducting/forms.py:42
+msgid "author"
+msgstr ""
+
+#: parsifal/reviews/conducting/forms.py:43
+msgid "abstract"
+msgstr ""
+
+#: parsifal/reviews/conducting/forms.py:43
+msgid "Max. 4000 characters"
+msgstr ""
+
+#: parsifal/reviews/conducting/forms.py:44
+msgid "keywords"
+msgstr ""
+
+#: parsifal/reviews/conducting/forms.py:45
+msgid "year"
+msgstr ""
+
+#: parsifal/reviews/conducting/forms.py:46
+msgid "month"
+msgstr ""
+
+#: parsifal/reviews/conducting/forms.py:48
+msgid "Book title"
+msgstr ""
+
+#: parsifal/reviews/conducting/forms.py:49
+msgid "editor"
+msgstr ""
+
+#: parsifal/reviews/conducting/forms.py:50
+msgid "How it was published"
+msgstr ""
+
+#: parsifal/reviews/conducting/forms.py:51
+msgid "journal"
+msgstr ""
+
+#: parsifal/reviews/conducting/forms.py:53
+msgid "publisher"
+msgstr ""
+
+#: parsifal/reviews/conducting/forms.py:54
+msgid "pages"
+msgstr ""
+
+#: parsifal/reviews/conducting/forms.py:55
+msgid "number"
+msgstr ""
+
+#: parsifal/reviews/conducting/forms.py:56
+msgid "volume"
+msgstr ""
+
+#: parsifal/reviews/conducting/forms.py:57
+msgid "edition"
+msgstr ""
+
+#: parsifal/reviews/conducting/forms.py:58
+msgid "chapter"
+msgstr ""
+
+#: parsifal/reviews/conducting/forms.py:60
+msgid "address"
+msgstr ""
+
+#: parsifal/reviews/conducting/forms.py:61
+msgid "Cross-reference"
+msgstr ""
+
+#: parsifal/reviews/conducting/forms.py:62
+msgid "institution"
+msgstr ""
+
+#: parsifal/reviews/conducting/forms.py:63
+msgid "organization"
+msgstr ""
+
+#: parsifal/reviews/conducting/forms.py:64
+msgid "school"
+msgstr ""
+
+#: parsifal/reviews/conducting/forms.py:65
+msgid "series"
+msgstr ""
+
+#: parsifal/reviews/conducting/forms.py:66
+msgid "language"
+msgstr ""
+
+#: parsifal/reviews/conducting/forms.py:68
+msgid "coden"
+msgstr ""
+
+#: parsifal/reviews/conducting/forms.py:73
+msgid "note"
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/conducting.html:5
@@ -1775,7 +1945,7 @@ msgid "6. Data Analysis"
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:20
-#: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:87
+#: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:114
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:13
 msgid "About Import Studies"
 msgstr ""
@@ -1791,7 +1961,7 @@ msgid "Imported Studies"
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:63
-#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:107
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:108
 #: parsifal/reviews/planning/templates/planning/partial_data_extraction_suggested.html:10
 #: parsifal/reviews/planning/templates/planning/partial_quality_assessment_answer_suggested.html:10
 #: parsifal/reviews/planning/templates/planning/partial_quality_assessment_question_suggested.html:10
@@ -1808,15 +1978,20 @@ msgstr ""
 msgid "Paste BibTeX content"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:78
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:69
+#: parsifal/reviews/conducting/templates/conducting/new_document.html:13
+msgid "Add document"
+msgstr ""
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:79
 msgid "There are a few steps you have to finish before you import the studies:"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:80
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:81
 msgid "Use the"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:80
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:81
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:25
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:58
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:124
@@ -1824,21 +1999,22 @@ msgstr ""
 msgid "planning tab"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:80
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:81
 msgid "to add sources to your review."
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:97
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:98
 msgid "Parse BibTeX Content"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:101
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:102
 msgid "Paste the raw BibTeX file contents"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:106
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:107
 #: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:35
 #: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:50
+#: parsifal/reviews/conducting/templates/conducting/new_document.html:41
 #: parsifal/reviews/planning/templates/planning/partial_keyword_form.html:66
 #: parsifal/reviews/templates/reviews/new.html:30
 #: parsifal/reviews/templates/reviews/review.html:116
@@ -1919,6 +2095,7 @@ msgstr ""
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:151
 #: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:51
 #: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:76
+#: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:103
 #: parsifal/reviews/planning/templates/planning/partial_keyword_form.html:69
 #: parsifal/reviews/planning/templates/planning/protocol.html:108
 #: parsifal/reviews/planning/templates/planning/protocol.html:204
@@ -2103,6 +2280,7 @@ msgstr ""
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:287
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:387
 #: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:73
+#: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:100
 msgid "Previous"
 msgstr ""
 
@@ -2114,6 +2292,7 @@ msgstr ""
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:289
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:389
 #: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:74
+#: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:101
 msgid "Next"
 msgstr ""
 
@@ -2151,15 +2330,38 @@ msgid "Article Details"
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:69
+#: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:96
 msgid "Automatically save the status on change and move next"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:99
+#: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:87
+msgid "Justify why article was rejected"
+msgstr ""
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:126
 msgid "All Sources"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:109
+#: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:136
 msgid "There are a few steps you have to finish before you select the studies:"
+msgstr ""
+
+#: parsifal/reviews/conducting/templates/conducting/new_document.html:17
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:23
+#: parsifal/reviews/templates/reviews/partial_modal_confirm_import_protocol.html:22
+#: parsifal/reviews/templates/reviews/partial_published_protocols.html:24
+msgid "Details"
+msgstr ""
+
+#: parsifal/reviews/conducting/templates/conducting/new_document.html:18
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:29
+msgid "Files"
+msgstr ""
+
+#: parsifal/reviews/conducting/templates/conducting/new_document.html:24
+#: parsifal/reviews/conducting/templates/conducting/new_document.html:42
+#: parsifal/reviews/settings/templates/settings/review_settings.html:54
+msgid "Save changes"
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/partial_article_conflict.html:5
@@ -2221,6 +2423,7 @@ msgid "The reviewer has already finished this article evaluation."
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/partial_article_files.html:6
+#: parsifal/templates/includes/header.html:78
 msgid "Library"
 msgstr ""
 
@@ -2233,7 +2436,7 @@ msgid "Select files..."
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/partial_article_files.html:34
-#: parsifal/reviews/conducting/views.py:612
+#: parsifal/reviews/conducting/views.py:615
 msgid ""
 "File has already updated. Only one file per article is permitted. Delete "
 "existing file to upload new."
@@ -2259,18 +2462,8 @@ msgstr ""
 msgid "removing..."
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:23
-#: parsifal/reviews/templates/reviews/partial_modal_confirm_import_protocol.html:22
-#: parsifal/reviews/templates/reviews/partial_published_protocols.html:24
-msgid "Details"
-msgstr ""
-
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:26
 msgid "Evaluation"
-msgstr ""
-
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:29
-msgid "Files"
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:33
@@ -2477,89 +2670,89 @@ msgstr ""
 msgid "Quality Score"
 msgstr ""
 
-#: parsifal/reviews/conducting/views.py:100
-#: parsifal/reviews/conducting/views.py:102
+#: parsifal/reviews/conducting/views.py:103
+#: parsifal/reviews/conducting/views.py:105
 #, python-brace-format
 msgid "{0} search string removed successfully!"
 msgstr ""
 
-#: parsifal/reviews/conducting/views.py:140
+#: parsifal/reviews/conducting/views.py:143
 msgid ""
 "Invalid query. Please verify the syntax of your query before executing a new "
 "search."
 msgstr ""
 
-#: parsifal/reviews/conducting/views.py:142
+#: parsifal/reviews/conducting/views.py:145
 msgid ""
 "Parsifal's search quota on Elsevier's databases exceeded. Please try again "
 "later."
 msgstr ""
 
-#: parsifal/reviews/conducting/views.py:184
+#: parsifal/reviews/conducting/views.py:187
 msgid "Import the studies using the"
 msgstr ""
 
-#: parsifal/reviews/conducting/views.py:184
+#: parsifal/reviews/conducting/views.py:187
 msgid "import studies tab"
 msgstr ""
 
-#: parsifal/reviews/conducting/views.py:249
-#: parsifal/reviews/conducting/views.py:405
+#: parsifal/reviews/conducting/views.py:252
+#: parsifal/reviews/conducting/views.py:408
 msgid "Use the <a href=\"/"
 msgstr ""
 
-#: parsifal/reviews/conducting/views.py:250
-#: parsifal/reviews/conducting/views.py:406
+#: parsifal/reviews/conducting/views.py:253
+#: parsifal/reviews/conducting/views.py:409
 msgid "Import the studies using the <a href=\"/"
 msgstr ""
 
-#: parsifal/reviews/conducting/views.py:251
-#: parsifal/reviews/conducting/views.py:407
+#: parsifal/reviews/conducting/views.py:254
+#: parsifal/reviews/conducting/views.py:410
 msgid "Classify the imported studies using the <a href=\"/"
 msgstr ""
 
-#: parsifal/reviews/conducting/views.py:252
+#: parsifal/reviews/conducting/views.py:255
 msgid "Create quality assessment questions using the <a href=\"/"
 msgstr ""
 
-#: parsifal/reviews/conducting/views.py:253
+#: parsifal/reviews/conducting/views.py:256
 msgid "Create quality assessment answers using the <a href=\"/"
 msgstr ""
 
-#: parsifal/reviews/conducting/views.py:408
+#: parsifal/reviews/conducting/views.py:411
 msgid "Create data extraction fields using the <a href=\"/"
 msgstr ""
 
-#: parsifal/reviews/conducting/views.py:429
+#: parsifal/reviews/conducting/views.py:432
 msgid "<h3>Something went wrong while rendering the data extraction form.</h3>"
 msgstr ""
 
-#: parsifal/reviews/conducting/views.py:485
+#: parsifal/reviews/conducting/views.py:488
 #, python-brace-format
 msgid "{0} articles successfully imported to {1}!"
 msgstr ""
 
-#: parsifal/reviews/conducting/views.py:487
+#: parsifal/reviews/conducting/views.py:490
 #, python-brace-format
 msgid ""
 "{0} articles could not be imported because of invalid format or invalid "
 "utf-8 string."
 msgstr ""
 
-#: parsifal/reviews/conducting/views.py:489
+#: parsifal/reviews/conducting/views.py:492
 msgid "The bibtex file had no valid entry!"
 msgstr ""
 
-#: parsifal/reviews/conducting/views.py:513
+#: parsifal/reviews/conducting/views.py:516
 msgid "Invalid file type. Only .bib or .bibtex files are accepted."
+msgstr ""
+
+#: parsifal/reviews/conducting/views.py:1217
+msgid "Document added successfully!"
 msgstr ""
 
 #: parsifal/reviews/forms.py:57
 msgid "File extension not allowed, use only .pdf"
-msgstr ""
-
-#: parsifal/reviews/models.py:42
-msgid "Unpublished"
 msgstr ""
 
 #: parsifal/reviews/models.py:43
@@ -3733,10 +3926,6 @@ msgstr ""
 msgid "Review settings"
 msgstr ""
 
-#: parsifal/reviews/settings/templates/settings/review_settings.html:54
-msgid "Save changes"
-msgstr ""
-
 #: parsifal/reviews/settings/templates/settings/review_settings.html:61
 msgid "Danger zone"
 msgstr ""
@@ -3988,7 +4177,7 @@ msgid "Following"
 msgstr ""
 
 #: parsifal/reviews/templates/reviews/reviews.html:82
-#: parsifal/templates/includes/header.html:150
+#: parsifal/templates/includes/header.html:149
 msgid "New review"
 msgstr ""
 
@@ -4110,15 +4299,15 @@ msgstr ""
 msgid "My profile"
 msgstr ""
 
-#: parsifal/templates/includes/header.html:92
+#: parsifal/templates/includes/header.html:91
 msgid "Sign out"
 msgstr ""
 
-#: parsifal/templates/includes/header.html:138
+#: parsifal/templates/includes/header.html:137
 msgid "followings"
 msgstr ""
 
-#: parsifal/templates/includes/header.html:148
+#: parsifal/templates/includes/header.html:147
 msgid ""
 "A collaborative environment for the development of systematic literature "
 "reviews and meta-analyzes."

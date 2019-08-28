@@ -26,8 +26,11 @@ from parsifal.reviews.forms import ArticleUploadForm
 from parsifal.reviews.decorators import main_author_required, author_required, author_or_visitor_required
 from parsifal.utils.elsevier.client import ElsevierClient
 from parsifal.utils.elsevier.exceptions import *
+from django.template.loader import render_to_string
 
 from django.utils.translation import ugettext as _
+
+from parsifal.reviews.conducting.forms import FolderForm, DocumentForm, SharedFolderForm
 
 
 @author_or_visitor_required
@@ -1203,3 +1206,32 @@ def export_data_extraction(request):
 
     wb.save(response)
     return response
+@login_required
+def new_document(request):
+    json_context = {}
+    source_id = 0
+    review_id = 0
+    if request.method == 'POST':
+        source_id = request.POST.get('source-id')
+        review_id = request.POST.get('review-id')
+        form = DocumentForm(request.POST)
+        if form.is_valid():
+            form.instance.user = request.user
+            document = form.save()
+            
+            
+            messages.success(request, _('Document added successfully!'))
+            json_context['status'] = 'success'
+            json_context['redirect_to'] =  request.get_full_path()
+        else:
+            json_context['status'] = 'error'
+    else:
+        source_id = request.GET.get('source-id')
+        review_id = request.GET.get('review-id')
+        form = DocumentForm()
+        json_context['status'] = 'ok'
+    csrf_token = unicode(csrf(request)['csrf_token'])
+    html = render_to_string('conducting/new_document.html', { 'form': form, 'csrf_token': csrf_token, 'source_id': source_id, 'review_id': review_id})
+    json_context['html'] = html
+    dump = json.dumps(json_context)
+    return HttpResponse(dump, content_type='application/json')
