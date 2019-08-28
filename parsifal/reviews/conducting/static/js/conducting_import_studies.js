@@ -29,8 +29,10 @@ $(function () {
       url: url,
       data: {
     	  'source-id':source_id,
-    	  'review_id': review_id
+    	  'review-id': review_id
       },
+      type: 'get',
+      cache: false,
       success: function (data) {
         $("#modal-document .modal-dialog").html(data.html);
         

@@ -31,7 +31,7 @@ from django.template.loader import render_to_string
 from django.utils.translation import ugettext as _
 
 from parsifal.reviews.conducting.forms import FolderForm, DocumentForm, SharedFolderForm
-
+from parsifal.reviews.models import Article, Source, Review
 
 @author_or_visitor_required
 @login_required
@@ -1212,14 +1212,19 @@ def new_document(request):
     source_id = 0
     review_id = 0
     if request.method == 'POST':
-        source_id = request.POST.get('source-id')
-        review_id = request.POST.get('review-id')
+        source_id = request.POST.get('source_id')
+        review_id = request.POST.get('review_id')
+        
+        
         form = DocumentForm(request.POST)
         if form.is_valid():
             form.instance.user = request.user
             document = form.save()
+            article = Article()
+            article.review = Review.objects.get(pk=review_id)
+            article.source = Source.objects.get(pk=source_id)
             
-            
+          
             messages.success(request, _('Document added successfully!'))
             json_context['status'] = 'success'
             json_context['redirect_to'] =  request.get_full_path()
@@ -1228,10 +1233,11 @@ def new_document(request):
     else:
         source_id = request.GET.get('source-id')
         review_id = request.GET.get('review-id')
+        
         form = DocumentForm()
         json_context['status'] = 'ok'
     csrf_token = unicode(csrf(request)['csrf_token'])
-    html = render_to_string('conducting/new_document.html', { 'form': form, 'csrf_token': csrf_token, 'source_id': source_id, 'review_id': review_id})
+    html = render_to_string('conducting/new_document.html', { 'form': form, 'csrf_token': csrf_token, 'review_id': review_id, 'source_id': source_id})
     json_context['html'] = html
     dump = json.dumps(json_context)
     return HttpResponse(dump, content_type='application/json')
