@@ -1228,6 +1228,7 @@ def new_document(request):
             article = Article(review=review, source=source)
             
             article.build(document)
+            article.created_by = request.user
             article.save()
           
             messages.success(request, _('Document added successfully!'))
