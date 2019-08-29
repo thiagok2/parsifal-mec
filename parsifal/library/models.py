@@ -150,6 +150,7 @@ class Document(models.Model):
 
     def __unicode__(self):
         return self.title
+            
 
 
 def document_file_upload_to(instance, filename):
