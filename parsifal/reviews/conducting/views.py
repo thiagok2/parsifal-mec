@@ -1247,3 +1247,4 @@ def new_document(request):
     json_context['html'] = html
     dump = json.dumps(json_context)
     return HttpResponse(dump, content_type='application/json')
+    
