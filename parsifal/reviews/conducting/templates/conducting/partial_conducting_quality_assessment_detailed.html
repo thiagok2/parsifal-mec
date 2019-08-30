@@ -19,7 +19,7 @@
   <form method="get" class="pull-right" style="display: inline;">
     <a href="javascript:void(0);" class="pull-right" data-toggle="tooltip" title="{% trans 'What is this? Click to get help.' %}" data-placement="top" data-container="body">
   		<span class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#detailed-help"></span>
-  	</a> 
+  	</a>
     <strong>{% trans 'Order by' %}: </strong>
     <select name="order" class="form-control" id="quality-assessment-order">
       <option value="title"{% if order = 'title' %} selected{% endif %}>{% trans 'Title' %} (a - z)</option>
@@ -29,14 +29,14 @@
     </select>
   </form>
   <strong>{% trans 'Show' %}:</strong>
-  <input type="radio" name="filter" id="all-filter" checked> {% trans 'All' %} 
+  <input type="radio" name="filter" id="all-filter" checked> {% trans 'All' %}
   <input type="radio" name="filter" id="done-filter"> {% trans 'Done' %}
   <input type="radio" name="filter" id="pending-filter"> {% trans 'Pending' %}
   {% if review.quality_assessment_cutoff_score > 0.0 %}
     <input type="radio" name="filter" id="score-higher-filter"> {% trans 'Score higher than' %} {{ review.quality_assessment_cutoff_score }}
     <input type="radio" name="filter" id="score-lower-filter"> {% trans 'Score lower or equal to' %} {{ review.quality_assessment_cutoff_score }}
   {% endif %}
- 
+
 </p>
 
 <p>{% trans 'To answer the form you may click on the desired answer on the following tables.' %}</p>

@@ -19,9 +19,9 @@ $(function () {
     });
   });
 
-    $('.btn-save-selection-reviewer').click(function() {
-        var btn = $(this);
-        $.ajax({
+  $('.btn-save-selection-reviewer').click(function() {
+      var btn = $(this);
+      $.ajax({
         url: '/reviews/planning/save_selection_reviewer/',
         data: $('#form-selection-reviewer').serialize(),
         type: 'post',
@@ -36,6 +36,6 @@ $(function () {
             $(btn).ajaxEnableError();
             $.parsifal.alert("Um erro ocorreu", jqXHR.responseText);
         }
-        });
-    });
+      });
+  });
 });

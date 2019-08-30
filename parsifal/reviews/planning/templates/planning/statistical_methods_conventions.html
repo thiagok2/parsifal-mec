@@ -1,8 +1,8 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 
-{% load i18n humanize is_visitor %} 
+{% load i18n humanize is_visitor %}
 
-{% load staticfiles %} 
+{% load staticfiles %}
 
 {% block title %} {% trans 'Planning' %} · {{review.title }}{% endblock %}
 
@@ -12,7 +12,7 @@
 
 {% block content %}
 
-{% include 'reviews/review_header.html' with active_menu='planning' %} 
+{% include 'reviews/review_header.html' with active_menu='planning' %}
 {% include 'planning/planning_header.html' with active_tab='statistical-methods' %}
 
 <section id="statistical-methods" style="margin-bottom: 20px;">
@@ -21,14 +21,15 @@
 
 		<div class="panel-heading">
 			<h3 class="panel-title">
-				{% trans 'Statistical Methods and Conventions' %} 
+				{% trans 'Statistical Methods and Conventions' %}
 				<a
 					href="javascript:void(0);" class="pull-right" data-toggle="tooltip"
 					title="{% trans 'What is this? Click to get help.' %}"
 					data-placement="top" data-container="body"> <span
 					class="glyphicon glyphicon-question-sign" data-toggle="modal"
 					data-target="#statistical-help"></span>
-				</a>
+        </a>
+        {% include 'comments/comment_icon_button.html' with user=user about="STATISTICAL_METHODS" %}
 			</h3>
 		</div>
 		<div class="panel-body">
@@ -39,28 +40,28 @@
 					<textarea rows="8" name=statistical_methods id="statistical_methods" class="form-control expanding">{{ review.statistical_methods }}</textarea>
 				</div>
 			</form>
-			
+
 		</div>
 
 
 		<div class="panel-footer">
 			<button type="button" class="btn btn-success btn-save-statistical-methods">
-				<span class="btn-ajax-normal"> 
-					<span class="glyphicon glyphicon-ok"></span> 
+				<span class="btn-ajax-normal">
+					<span class="glyphicon glyphicon-ok"></span>
 					{% trans 'Save' %}
-				</span> 
-				<span class="btn-ajax-loading"> 
-					<span class="glyphicon glyphicon-refresh spin"></span> 
+				</span>
+				<span class="btn-ajax-loading">
+					<span class="glyphicon glyphicon-refresh spin"></span>
 					{% trans 'Saving…'%}
-				</span> 
-				
-				<span class="btn-ajax-error"> 
-					<span class="glyphicon glyphicon-remove"></span> 
+				</span>
+
+				<span class="btn-ajax-error">
+					<span class="glyphicon glyphicon-remove"></span>
 					{% trans 'Error!' %}
-				</span> 
-				
-				<span class="btn-ajax-complete"> 
-					<span class="glyphicon glyphicon-ok"></span> 
+				</span>
+
+				<span class="btn-ajax-complete">
+					<span class="glyphicon glyphicon-ok"></span>
 					{% trans 'Saved!' %}
 				</span>
 			</button>

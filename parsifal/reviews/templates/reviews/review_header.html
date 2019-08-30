@@ -1,11 +1,11 @@
-{% load i18n %}
+{% load i18n is_visitor %}
 
 {% load humanize %}
 <h3 class="review-title">
   {% if user == review.author %}
     <a href="{% url 'settings' review.author.username review.name %}" class="btn btn-success pull-right"><span class="glyphicon glyphicon-cog"></span> {% trans 'Review settings' %}</a>
   {% endif %}
-  <a href="{{ review.author.get_absolute_url }}" class="review-title-user">{{ review.author.profile.get_screen_name }}</a> 
+  <a href="{{ review.author.get_absolute_url }}" class="review-title-user">{{ review.author.profile.get_screen_name }}</a>
   <span class="text-muted">/</span>
   <a href="{{ review.get_absolute_url }}">{{ review.title }}</a>
 </h3>
@@ -22,5 +22,10 @@
   <li{% if active_menu == "reporting"%} class="active"{% endif %}>
     <a href="{% url 'reporting' review.author.username review.name %}">{% trans 'Reporting' %}</a>
   </li>
+  {% if not user|is_visitor:review %}
+    <li{% if active_menu == "comments"%} class="active"{% endif %}>
+      <a href="{% url 'comments' review.author.username review.name %}">{% trans 'Comments' %}</a>
+    </li>
+  {% endif %}
 </ul>
 <input type="hidden" id="review-id" value="{{ review.id }}">

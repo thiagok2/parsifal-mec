@@ -1,8 +1,8 @@
-{% load staticfiles %}<!DOCTYPE html>
+{% load staticfiles i18n %}<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
-  
+
   <title>{% block title %} Plataforma {% endblock %}</title>
   {% block meta %}
   <meta name="Description" content="Plataform EbE is a tool to support researchers to perform systematic literature reviews. Performing a systematic literature review is a labor-intensive task that requires a huge amount of work from the researcher. The Plataform will help you planning, conducting and reporting the review.">
@@ -10,7 +10,7 @@
   <meta property="og:description" content="Plataform EbE is a tool to support researchers to perform systematic literature reviews. Performing a systematic literature review is a labor-intensive task that requires a huge amount of work from the researcher. The Plataform will help you planning, conducting and reporting the review." />
   <meta property="og:type" content="website">
   {% endblock %}
-  <!--  
+  <!--
   <meta property="og:site_name" content="Plataform EbE" />
   <meta property="og:url" content="https://parsif.al{{ request.path }}" />
   <meta property="og:locale" content="en_US" />
@@ -40,12 +40,12 @@
   <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
   <link href="{% static 'css/selectize.bootstrap3.css' %}" rel="stylesheet">
   <link href="{% static 'css/AdminLTE.min.css' %}" rel="stylesheet">
-  
- 
-  
+
+
+
   <link href="{% static 'css/parsifal.css' %}" rel="stylesheet">
   <link href="{% static 'css/raynner.css' %}" rel="stylesheet">
-  
+
   {% block stylesheet %}{% endblock %}
 </head>
 <body data-spy="scroll" data-target="#link-list"  data-offset="50">
@@ -90,6 +90,36 @@
       <div class="bounce3"></div>
     </div>
   </div>
+
+  <div class="modal fade" id="visitor-comment">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">{% trans 'Leave a Comment to Help the Authors' %}</h4>
+        </div>
+        <div class="modal-body">
+          <div class="alert hide" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <span class="modal-alert"></span>
+          </div>
+          <form id="form-visitor-comment">
+            {% csrf_token %}
+            <input type="hidden" name="review-id" value="{{review.id}}" />
+            <input type="hidden" name="about" id="about" />
+            <textarea class="form-control" name="comment" rows="7"></textarea>
+            <br />
+            <button type="button" class="btn btn-success" id="save-visitor-comment">
+                <span class="glyphicon glyphicon-ok"></span> {% trans 'Save' %}
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script src="{% static 'js/mustache.min.js' %}"></script>
   <script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
   <script src="{% static 'js/bootstrap.min.js' %}"></script>
@@ -97,10 +127,9 @@
   <script src="{% static 'js/selectize.min.js' %}"></script>
   <script src="{% static 'js/expanding.js' %}"></script>
   <script src="{% static 'js/parsifal.js' %}?v=2"></script>
-  
-  <script src="{% static 'js/parsifal.js' %}?v=2"></script>
+
   <script src="{% static 'js/adminlte.min.js' %}?v=2"></script>
-	
+
   <script>
     $(function () {
       $.parsifal.init();
