@@ -18,7 +18,7 @@ from django.shortcuts import render_to_response, redirect, get_object_or_404, re
 from django.template import RequestContext
 from django.conf import settings as django_settings
 from django.core.context_processors import csrf
-from django.db.models import Count
+from django.db.models import Count, Sum
 from django.utils.html import escape
 
 from parsifal.reviews.models import *
@@ -196,7 +196,8 @@ def study_selection(request, username, review_name):
         })
 
 def build_quality_assessment_table(request, review, order):
-    selected_studies = review.get_accepted_articles().order_by(order)
+    selected_studies = review.get_accepted_articles().annotate(sum=Sum('qualityassessment__answer__weight')).order_by(order)
+    # selected_studies = selected_studies.distinct('title')
     quality_questions = review.get_quality_assessment_questions()
     quality_answers = review.get_quality_assessment_answers()
 
@@ -262,7 +263,7 @@ def quality_assessment(request, username, review_name):
         order = request.GET.get('order')
     elif 'quality_assessment_order' in request.session:
         order = request.session.get('quality_assessment_order')
-    if order not in ('title', '-title', 'year', '-year'):
+    if order not in ('title', '-title', 'year', '-year', 'sum', '-sum'):
         order = 'title'
     request.session['quality_assessment_order'] = order
 
@@ -1214,23 +1215,23 @@ def new_document(request):
     if request.method == 'POST':
         source_id = request.POST.get('source_id')
         review_id = request.POST.get('review_id')
-        
-        
+
+
         form = DocumentForm(request.POST)
         if form.is_valid():
             form.instance.user = request.user
             document = form.save()
-           
+
             source = Source.objects.get(pk=source_id)
             review = Review.objects.get(pk=review_id)
-            
-            
+
+
             article = Article(review=review, source=source)
-            
+
             article.build(document)
             article.created_by = request.user
             article.save()
-          
+
             messages.success(request, _('Document added successfully!'))
             json_context['status'] = 'success'
             json_context['redirect_to'] =  request.get_full_path()
@@ -1239,7 +1240,7 @@ def new_document(request):
     else:
         source_id = request.GET.get('source-id')
         review_id = request.GET.get('review-id')
-        
+
         form = DocumentForm()
         json_context['status'] = 'ok'
     csrf_token = unicode(csrf(request)['csrf_token'])
