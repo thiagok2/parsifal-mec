@@ -31,20 +31,23 @@ def save_visitor_comment(request):
         review_id = request.POST['review-id']
         comment = request.POST['comment']
         about = request.POST['about']
-        parent_id = request.POST['parent']
+        parent_id = request.POST.get('parent', None)
         user = request.user
         to = request.POST['to']
 
         review = Review.objects.get(pk=review_id)
-        parent_comment = VisitorComment.objects.get(pk=parent_id)
 
         comment = VisitorComment(
                     review=review,
                     comment=comment,
                     about=about,
                     to=to,
-                    user=user,
-                    parent=parent_comment)
+                    user=user)
+
+        if parent_id:
+            parent_comment = VisitorComment.objects.get(pk=parent_id)
+            comment.parent = parent_comment
+
         comment.save()
 
         if parent_id:

@@ -271,7 +271,7 @@ class VisitorComment(models.Model):
     about = models.CharField(max_length=50, choices=ABOUT_TYPES)
     comment = models.CharField(max_length=2000)
     to = models.IntegerField(default=0, null=True)
-    parent = models.ForeignKey('self', null=True, related_name='parent_comment')
+    parent = models.ForeignKey('self', null=True, default=None, related_name='parent_comment')
     date = models.DateTimeField(auto_now=True)
     is_new = models.BooleanField(default=True)
 
