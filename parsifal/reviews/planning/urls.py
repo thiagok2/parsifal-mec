@@ -58,4 +58,6 @@ urlpatterns = patterns('parsifal.reviews.planning.views',
     url(r'^save_cutoff_score/$', 'save_cutoff_score', name='save_cutoff_score'),
     url(r'^generate_search_string/$', 'generate_search_string', name='generate_search_string'),
     url(r'^save_generic_search_string/$', 'save_generic_search_string', name='save_generic_search_string'),
+    
+    url(r'^setting_pico/$', 'setting_pico', name='setting_pico'),
 )

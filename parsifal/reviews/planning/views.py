@@ -186,13 +186,21 @@ def remove_question(request):
 @login_required
 def save_picoc(request):
     try:
+        
         review_id = request.POST['review-id']
         review = Review.objects.get(pk=review_id)
-        review.population = request.POST['population'][:200]
-        review.intervention = request.POST['intervention'][:200]
-        review.comparison = request.POST['comparison'][:200]
-        review.outcome = request.POST['outcome'][:200]
-        review.context = request.POST['context'][:200]
+        if review.pico_type in ['PICOC','PICOS']:
+            review.population = request.POST['population'][:200]
+            review.intervention = request.POST['intervention'][:200]
+            review.comparison = request.POST['comparison'][:200]
+            review.outcome = request.POST['outcome'][:200]
+        
+        if review.pico_type == 'PICOC':
+            review.context = request.POST['context'][:200]
+        if review.pico_type == 'PICOS':
+            review.study_type = request.POST['study_type'][:200]
+        if review.pico_type == 'Free Text':
+            review.pico_text = request.POST['pico_text'][:1000]
         review.save()
         return HttpResponse()
     except Exception, e:
@@ -1048,3 +1056,10 @@ def share_data_extraction_fields(request):
         return HttpResponse(_('Data Extraction Fields has been made private again!'))
     except:
         return HttpResponseBadRequest()
+def setting_pico(request):
+    review_id = request.POST['review-id']
+    review = Review.objects.get(pk=review_id)
+    pico_type = request.POST['pico_type']
+    review.pico_type = pico_type
+    review.save()
+    return render(request, 'planning/protocol.html', { 'review': review })

@@ -18,4 +18,16 @@ $(function () {
       }
     });
   });
+  
+  $('.list-group a').click(function(e) {
+      e.preventDefault()
+
+      $that = $(this);
+      
+      $('#pico_type').val($(this).attr('data-pico-value'));
+
+      $that.parent().find('a').removeClass('active');
+      $that.addClass('active');
+  });
+  
 });
