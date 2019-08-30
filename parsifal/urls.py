@@ -37,6 +37,9 @@ urlpatterns = patterns('parsifal',
     url(r'^(?P<username>[^/]+)/(?P<review_name>[^/]+)/$', 'reviews.views.review', name='review'),
     url(r'^(?P<username>[^/]+)/(?P<review_name>[^/]+)/settings/$', 'reviews.settings.views.settings', name='settings'),
 
+    # Review comments
+    url(r'^(?P<username>[^/]+)/(?P<review_name>[^/]+)/comments/$', 'reviews.comments.views.comments', name='comments'),
+
     # Planning Phase
     url(r'^(?P<username>[^/]+)/(?P<review_name>[^/]+)/planning/$', 'reviews.planning.views.planning', name='planning'),
     url(r'^(?P<username>[^/]+)/(?P<review_name>[^/]+)/planning/protocol/$', 'reviews.planning.views.protocol', name='protocol'),

@@ -118,6 +118,9 @@ class Review(models.Model):
     def get_risks(self):
         return Risk.objects.filter(review__id=self.id)
 
+    def get_visitors_comments(self):
+        return VisitorComment.objects.filter(review__id=self.id)
+
     def is_author_or_coauthor(self, user):
         if user.id == self.author.id:
             return True
@@ -220,6 +223,62 @@ class Review(models.Model):
     def articles_accepts_count(self):
         accepts_count = Article.objects.filter(review__id=self.id,status=Article.ACCEPTED).count()
         return accepts_count
+
+class VisitorComment(models.Model):
+    OBJECTIVES = u'OBJECTIVES'
+    PICOC = u'PICOC'
+    QUESTIONS = u'QUESTIONS'
+    KEYWORDS = u'KEYWORDS'
+    SEARCH_STRING = u'SEARCH_STRING'
+    SOURCES = u'SOURCES'
+    CRITERIA = u'CRITERIA'
+    QA_QUESTIONS = u'QA_QUESTIONS'
+    QA_ANSWERS = u'QA_ANSWERS'
+    QA_SCORES = u'QA_SCORES'
+    RISKS = u'RISKS'
+    DATA_EXTRACTION_FORM = u'DATA_EXTRACTION_FORM'
+    STATISTICAL_METHODS = u'STATISTICAL_METHODS'
+    CONDUCTING_SEARCH = u'CONDUCTING_SEARCH'
+    IMPORT_STUDIES = u'IMPORT_STUDIES'
+    STUDY_SELECTION = u'STUDY_SELECTION'
+    QUALITY_ASSESSMENT = u'QUALITY_ASSESSMENT'
+    DATA_EXTRACTION = u'DATA_EXTRACTION'
+    DATA_ANALYSIS = u'DATA_ANALYSIS'
+    ABOUT_TYPES = (
+        (OBJECTIVES, _(u'Objectives')),
+        (PICOC, _(u'PICOC')),
+        (QUESTIONS, _(u'Research Questions')),
+        (KEYWORDS, _(u'Keywords and Synonyms')),
+        (SEARCH_STRING, _(u'Search String')),
+        (SOURCES, _(u'Sources')),
+        (CRITERIA, _(u'Selection Criteria')),
+        (QA_QUESTIONS, _(u'Quality Assessment Checklist Questions')),
+        (QA_ANSWERS, _(u'Quality Assessment Checklist Answers')),
+        (QA_SCORES, _(u'Quality Assessment Checklist Scores')),
+        (RISKS, _(u'Risks to Review Validity')),
+        (DATA_EXTRACTION_FORM, _(u'Data Extraction Form')),
+        (STATISTICAL_METHODS, _(u'Statistical Methods and Conventions')),
+        (CONDUCTING_SEARCH, _(u'Conducting Search')),
+        (IMPORT_STUDIES, _(u'Import Studies')),
+        (STUDY_SELECTION, _(u'Study Selection')),
+        (QUALITY_ASSESSMENT, _(u'Quality Assessment')),
+        (DATA_EXTRACTION, _(u'Data Extraction')),
+        (DATA_ANALYSIS, _(u'Data Analysis')),
+        )
+
+    review = models.ForeignKey(Review, related_name='review_comments')
+    user = models.ForeignKey(User, null=True)
+    about = models.CharField(max_length=50, choices=ABOUT_TYPES)
+    comment = models.CharField(max_length=2000)
+    date = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = u'Visitor Comment'
+        verbose_name_plural = u'Visitor Comments'
+        ordering = ('-date',)
+
+    def __unicode__(self):
+        return self.comment
 
 class Tag(models.Model):
     review = models.ForeignKey(Review, related_name='review_tags')

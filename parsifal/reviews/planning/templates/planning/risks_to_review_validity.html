@@ -65,6 +65,7 @@
               	<a href="javascript:void(0);" class="pull-right" data-toggle="tooltip" title="{% trans 'What is this? Click to get help.' %}" data-placement="top" data-container="body">
                   	<span class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#risks-help"></span>
                 </a>
+                {% include 'comments/comment_icon_button.html' with user=user about="RISKS" %}
               </h3>
             </div>
             <table class="table" id="tbl-risks">

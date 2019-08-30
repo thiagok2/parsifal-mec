@@ -59,7 +59,7 @@
     <div class="col-sm-12 col-md-8 col-lg-9">
 
       <section id="questions">
-      
+
       	<div class="modal fade" id="questions-help">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -73,14 +73,15 @@
             </div>
           </div>
         </div>
-        
+
         <div class="panel panel-default">
           <div class="panel-heading has-help">
             <h3 class="panel-title">
             	{% trans 'Questions' %}
             	<a href="javascript:void(0);" class="pull-right" data-toggle="tooltip" title="{% trans 'What is this? Click to get help.' %}" data-placement="top" data-container="body">
                   <span class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#questions-help"></span>
-                </a>	
+                </a>
+                {% include 'comments/comment_icon_button.html' with user=user about="QA_QUESTIONS" %}
             </h3>
             <small class="text-muted pull-left help-info">
             	{% trans 'Defines which questions will considered for evaluate a study in terms of quality assessment.' %}
@@ -129,6 +130,7 @@
             	<a href="javascript:void(0);" class="pull-right" data-toggle="tooltip" title="{% trans 'What is this? Click to get help.' %}" data-placement="top" data-container="body">
                   <span class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#answers-help"></span>
                 </a>
+                {% include 'comments/comment_icon_button.html' with user=user about="QA_ANSWERS" %}
             </h3>
           </div>
           <table class="table" id="tbl-quality-answers">
@@ -188,6 +190,7 @@
             	<a href="javascript:void(0);" class="pull-right" data-toggle="tooltip" title="{% trans 'What is this? Click to get help.' %}" data-placement="top" data-container="body">
                   	<span class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#scores-help"></span>
                 </a>
+                {% include 'comments/comment_icon_button.html' with user=user about="QA_SCORES" %}
             </h3>
           </div>
           <table class="table" id="tbl-cutoff-score">

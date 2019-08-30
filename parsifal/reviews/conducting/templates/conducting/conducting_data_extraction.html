@@ -28,16 +28,18 @@
     <form method="post" action="{% url 'reviews:conducting:export_data_extraction' %}" class="pull-right" style="display: inline-block;">
       {% csrf_token %}
       <input type="hidden" name="review-id" value="{{ review.id }}">
-      <a href="javascript:void(0);" class="pull-right" data-toggle="tooltip" title="{% trans 'What is this? Click to get help.' %}" 
-      	style="margin-left: 10px;" data-placement="top" data-container="body">
-          <span class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#data-extraction-help" ></span>
-      </a>
+
       <button type="submit" class="btn btn-sm btn-default">
         <span class="glyphicon glyphicon-download-alt"></span>
         {% trans 'Export Data' %}
       </button>
     </form>
   </h3>
+  <a href="javascript:void(0);" class="pull-right" data-toggle="tooltip" title="{% trans 'What is this? Click to get help.' %}"
+      	style="margin-left: 10px;" data-placement="top" data-container="body">
+          <span class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#data-extraction-help" ></span>
+      </a>
+  {% include 'comments/comment_icon_button.html' with user=user about="DATA_EXTRACTION" %}
 
   {% if finished_all_steps %}
     {% csrf_token %}
