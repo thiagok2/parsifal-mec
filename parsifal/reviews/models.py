@@ -42,6 +42,15 @@ class Review(models.Model):
         (UNPUBLISHED, _('Unpublished')),
         (PUBLISHED, _('Published')),
         )
+    
+    PICOC = u'PICOC'
+    PICOS = u'PICOS'
+    FREE_TEXT = u'Free Text'
+    PICO_TYPE = (
+        (PICOC, _('PICOC')),
+        (PICOS, _('PICOS')),
+        (FREE_TEXT, _('Free Text')),
+        )
 
     name = models.SlugField(max_length=255)
     title = models.CharField(max_length=255)
@@ -60,6 +69,9 @@ class Review(models.Model):
     comparison = models.CharField(max_length=200, blank=True)
     outcome = models.CharField(max_length=200, blank=True)
     context = models.CharField(max_length=200, blank=True)
+    study_type = models.CharField(max_length=200, blank=True)
+    pico_type = models.CharField(max_length=200, choices=PICO_TYPE, default=PICOC)
+    pico_text = models.CharField(max_length=1000,  blank=True)
     selection_reviewer = models.ForeignKey(User, null=True, related_name='selection_reviewer')
     export_protocol = models.BooleanField(default=False)
     export_dataextraction = models.BooleanField(default=False)
