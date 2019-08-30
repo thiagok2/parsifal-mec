@@ -1,0 +1,55 @@
+{% load staticfiles i18n %}
+
+<div class="modal fade" id="visitor-comment">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">{% trans 'Leave a Comment to Help the Authors' %}</h4>
+        </div>
+        <div class="modal-body">
+          <div class="alert hide" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <span class="modal-alert"></span>
+          </div>
+          <form id="form-visitor-comment">
+            {% csrf_token %}
+            <input type="hidden" name="review-id" value="{{review.id}}" />
+            <input type="hidden" name="about" id="about" />
+
+            <div class="form-group row">
+                <div class="col-sm-4">
+                  <label for="to">Para</label>
+                  <select name="to" class="form-control">
+                    <option value="0">Todos</option>
+                    {% if review.author.id != user.id %}
+                      <option value="{{review.author.id}}">{{ review.author.username }} {% trans '(author)' %}</option>
+                    {% endif %}
+                    {% for co_author in review.co_authors.all %}
+                      {% if co_author.id != user.id %}
+                        <option value="{{ co_author.id }}">{{ co_author.username }} {% trans '(co author)' %}</option>
+                      {% endif %}
+                    {% endfor %}
+                    {% for visitor in review.visitors.all %}
+                      {% if visitor.id != user.id %}
+                        <option value="{{ visitor.id }}">{{ visitor.username }} {% trans '(visitor)' %}</option>
+                      {% endif %}
+                    {% endfor %}
+                  </select>
+                </div>
+            </div>
+            <div class="form-group">
+              <label for="comment">Comentário</label>
+              <textarea class="form-control" name="comment" rows="7"></textarea>
+            </div>
+            <br />
+            <button type="button" class="btn btn-success" id="save-visitor-comment">
+                <span class="glyphicon glyphicon-ok"></span> {% trans 'Save' %}
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

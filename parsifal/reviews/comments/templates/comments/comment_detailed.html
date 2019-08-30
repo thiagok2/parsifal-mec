@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load i18n humanize is_visitor %}
+
+{% load staticfiles %}
+
+{% block title %} {% trans 'Planning' %} · {{ review.title }}{% endblock %}
+
+{% block content %}
+
+  {% include 'reviews/review_header.html' with active_menu='comments' %}
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            {% trans 'Discussions about comment ' %} <strong>{{comment.id}}</strong>
+          </h3>
+        </div>
+        <div class="panel-body">
+          <div class="row" style="border-bottom: 1px solid #ececec;padding-bottom: 20px;margin-bottom: 20px;">
+            <div class="col-sm-12">
+              <strong>{{comment.user}}</strong> {% trans 'commented about' %} {{comment.get_about_display}}:
+            </div>
+            <div class="col-sm-12" style="margin-left: 20px;margin-top: 20px;">
+              {{comment.comment}}
+              <p style="margin-top: 20px;">
+                <span class="fa fa-calendar"></span> {{comment.date}}
+              </p>
+            </div>
+            <div class="col-sm-12">
+            </div>
+          </div>
+          <div class="row">
+            <div id="answers" style="margin-left: 30px;">
+              <div class="col-sm-12" style="margin-bottom: 15px;">
+                <h4>{% trans 'Answers' %}</h4>
+              </div>
+                {% for answer in comment.get_children_comments %}
+                  {% include 'comments/partial_children_comment.html' with answer=answer %}
+                {% endfor %}
+            </div>
+          </div>
+
+          <div class="col-sm-12" style="margin-top: 30px;">
+            <h4>{% trans 'Add a new comment' %}</h4>
+            <form id="form-add-new-comment">
+              {% csrf_token %}
+              <input type="hidden" name="review-id" value="{{review.id}}">
+              <input type="hidden" name="about" value="{{comment.about}}">
+              <input type="hidden" name="parent" value="{{comment.id}}">
+              <input type="hidden" name="to" value="0">
+              <div class="form-group">
+                <textarea class="form-control" name="comment" rows="7"></textarea>
+              </div>
+              <button type="button" class="btn btn-success" id="save-new-comment">
+                <span class="glyphicon glyphicon-ok"></span> {% trans 'Save' %}
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

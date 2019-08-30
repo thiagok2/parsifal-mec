@@ -1,7 +1,5 @@
 {% load i18n humanize is_visitor %}
 
-{% if user|is_visitor:review %}
   <a id="add-visitor-comment" data-about="{{about}}" style="margin-right: 10px;" class="pull-right" data-toggle="tooltip" title="{% trans 'What is this? Leave a comment about this topic.' %}" data-placement="top" data-container="body">
     <span class="glyphicon glyphicon-comment big-glyphicon"></span>
   </a>
-{% endif %}

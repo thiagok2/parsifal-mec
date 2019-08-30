@@ -91,34 +91,7 @@
     </div>
   </div>
 
-  <div class="modal fade" id="visitor-comment">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">{% trans 'Leave a Comment to Help the Authors' %}</h4>
-        </div>
-        <div class="modal-body">
-          <div class="alert hide" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-            <span class="modal-alert"></span>
-          </div>
-          <form id="form-visitor-comment">
-            {% csrf_token %}
-            <input type="hidden" name="review-id" value="{{review.id}}" />
-            <input type="hidden" name="about" id="about" />
-            <textarea class="form-control" name="comment" rows="7"></textarea>
-            <br />
-            <button type="button" class="btn btn-success" id="save-visitor-comment">
-                <span class="glyphicon glyphicon-ok"></span> {% trans 'Save' %}
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
+  {% include 'comments/add_comment_modal.html' %}
 
   <script src="{% static 'js/mustache.min.js' %}"></script>
   <script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
@@ -127,6 +100,7 @@
   <script src="{% static 'js/selectize.min.js' %}"></script>
   <script src="{% static 'js/expanding.js' %}"></script>
   <script src="{% static 'js/parsifal.js' %}?v=2"></script>
+  <script src="{% static 'js/comments.js' %}"></script>
 
   <script src="{% static 'js/adminlte.min.js' %}?v=2"></script>
 
