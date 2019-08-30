@@ -9,7 +9,7 @@ from django.db.models import Sum
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 
-from parsifal.library.models import Document
+from parsifal.library.models import Folder, Document
 
 from django.utils.translation import ugettext as _
 from django.utils.translation import ugettext_lazy as l_
@@ -496,6 +496,26 @@ class Article(models.Model):
         # evaluation_status = dict(ArticleEvaluation.ARTICLE_STATUS).get(evaluation)
 
         return evaluation
+    
+    def build(self, document):
+        self.title = document.title
+        self.author = document.author
+        self.bibtex_key = document.bibtexkey
+        self.author = document.bibtexkey
+        self.journal = document.journal
+        self.year = document.year
+        self.pages = document.pages
+        self.volume = document.volume
+        self.abstract = document.abstract
+        self.document_type = document.entry_type
+        self.doi = document.doi
+        self.issn = document.issn
+        self.url = document.url
+        self.affiliation = document.institution
+        self.publisher = document.publisher
+        self.language = document.language
+        self.note = document.note
+        
 
 def article_directory_path(instance, filename):
     return 'article/{0}/{1}'.format(instance.article.id, filename)
