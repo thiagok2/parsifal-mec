@@ -41,7 +41,7 @@
   {% include 'reviews/review_header.html' with active_menu='planning' %}
   {% include 'planning/planning_header.html' with active_tab='protocol' %}
 
-  <div class="row"> 
+  <div class="row">
     <div class="hidden-sm col-md-4 col-lg-3" style="padding-top: 20px;">
       <div id="protocol" class="panel panel-default">
         <div class="panel-heading">
@@ -92,6 +92,7 @@
                 <a href="javascript:void(0);" class="pull-right" data-toggle="tooltip" title="{% trans 'What is this? Click to get help.' %}" data-placement="top" data-container="body">
                   <span class="glyphicon glyphicon-question-sign big-glyphicon" data-toggle="modal" data-target="#objective-help"></span>
                 </a>
+                {% include 'comments/comment_icon_button.html' with user=user about="OBJECTIVES" %}
               </h3>
               <small class="text-muted pull-left help-info">
               	{% trans "Identification of the need and objectives for a review." %}
@@ -159,6 +160,7 @@
                 <a href="javascript:void(0);" class="pull-right" data-toggle="tooltip" title="{% trans 'What is this? Click to get help.' %}" data-placement="top" data-container="body">
                   <span class="glyphicon glyphicon-question-sign big-glyphicon" data-toggle="modal" data-target="#picoc-help"></span>
                 </a>
+                {% include 'comments/comment_icon_button.html' with user=user about="PICOC" %}
               </h3>
               <small class="text-muted pull-left help-info">
               	{% trans 'PICOC stands for <em>population</em>, <em>intervention</em>, <em>comparison</em>, <em>outcomes</em> and <em>context</em>.' %}
@@ -245,6 +247,7 @@
                 <a href="javascript:void(0);" class="pull-right" data-toggle="tooltip" title="{% trans 'What is this? Click to get help.' %}" data-placement="top" data-container="body">
                   <span class="glyphicon glyphicon-question-sign big-glyphicon" data-toggle="modal" data-target="#question-help"></span>
                 </a>
+                {% include 'comments/comment_icon_button.html' with user=user about="QUESTIONS" %}
               </h3>
               <small class="text-muted pull-left help-info">
               	{% trans 'A research question is the question around which you center your research. It should be <i>clear</i>, <i>focused</i>, <i>concise</i> and <i>arguable</i>.' %}
@@ -359,6 +362,7 @@
               <a href="javascript:void(0);" class="pull-right" data-toggle="tooltip" title="{% trans 'What is this? Click to get help.' %}" data-placement="top" data-container="body">
                 <span class="glyphicon glyphicon-question-sign big-glyphicon" data-toggle="modal" data-target="#keywords-help"></span>
               </a>
+              {% include 'comments/comment_icon_button.html' with user=user about="KEYWORDS" %}
             </h3>
             <small class="text-muted pull-left help-info">
             	{%trans "The keywords are basically extracted from the PIPOC and be related with one of your step. After you should relate them if all their synonyms to make your search string broader." %}
@@ -381,7 +385,7 @@
 	            </tbody>
           	</table>
           </div>
-          
+
           <div class="panel-footer">
             <button type="button" class="btn btn-success" id="add-keyword">
               <span class="glyphicon glyphicon-plus"></span>
@@ -462,6 +466,7 @@
                 <a href="javascript:void(0);" class="pull-right" data-toggle="tooltip" title="{% trans 'What is this? Click to get help.' %}" data-placement="top" data-container="body">
                   <span class="glyphicon glyphicon-question-sign big-glyphicon" data-toggle="modal" data-target="#search-string-help"></span>
                 </a>
+                {% include 'comments/comment_icon_button.html' with user=user about="SEARCH_STRING" %}
               </h3>
               <small class="text-muted pull-left help-info">
               	<span class="glyphicon glyphicon-info-sign"></span> {% trans "Separate the keywords and synonyms with the boolean operator <strong>OR</strong> and separate the <em>population</em>, <em>intervention</em>, <em>comparison</em> and <em>outcomes</em> with parentheses and using the boolean operator <strong>AND</strong>." %}
@@ -495,7 +500,7 @@
       </section>
 
       <section id="sources-section">
-      
+
       	<div class="modal fade" id="sources-help">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -504,7 +509,7 @@
                 <h4 class="modal-title">{% trans 'About the Sources' %}</h4>
               </div>
               <div class="modal-body">
-              	
+
               	<p>{% trans 'This section specifies which sources will be sought from the papers considered in this systematic literature review. It can identify electronic databases such as IEEE, ACM, Springer Link, ERIC or indicate that the search will be performed from offline sources. The sources indicated in this section will be presented during Conducting the Study Import process and subsequent Study Selection.'%}</p>
               </div>
             </div>
@@ -566,7 +571,8 @@
             <h3 class="panel-title">{% trans 'Sources' %} ({% trans 'Digital Library' %})
             	<a href="javascript:void(0);" class="pull-right" data-toggle="tooltip" title="{% trans 'What is this? Click to get help.' %}" data-placement="top" data-container="body">
                 	<span class="glyphicon glyphicon-question-sign big-glyphicon" data-toggle="modal" data-target="#sources-help"></span>
-             	</a>
+               </a>
+               {% include 'comments/comment_icon_button.html' with user=user about="SOURCES" %}
             </h3>
             <small class="text-muted pull-left help-info">
             	{% trans "You can identify electronic databases such as IEEE, ACM or indicate that the search will be performed from offline sources." %}
@@ -628,7 +634,7 @@
       </section>
 
       <section id="selection-section" >
-      
+
       	<div class="modal fade" id="selection-criteria-help">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -642,14 +648,15 @@
             </div>
           </div>
         </div>
-        
+
         <div class="panel panel-default">
           <div class="panel-heading has-help">
             <h3 class="panel-title">
             	{% trans 'Selection Criteria' %}
             	<a href="javascript:void(0);" class="pull-right" data-toggle="tooltip" title="{% trans 'What is this? Click to get help.' %}" data-placement="top" data-container="body">
                 	<span class="glyphicon glyphicon-question-sign big-glyphicon" data-toggle="modal" data-target="#selection-criteria-help"></span>
-             	</a>
+               </a>
+               {% include 'comments/comment_icon_button.html' with user=user about="CRITERIA" %}
             </h3>
             <small class="text-muted pull-left help-info">
             	{% trans "The inclusion and exclusion criteria indicate which parameters will be considered to determine whether or not a given study will be included in the systematic review performed." %}
@@ -712,7 +719,7 @@
             </div>
           </div>
         </div>
-        
+
         <form method="post" id="form-selection-reviewer">
           {% csrf_token %}
           <input type="hidden" name="review-id" value="{{ review.id }}">

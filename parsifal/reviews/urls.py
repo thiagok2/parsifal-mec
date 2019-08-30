@@ -17,11 +17,12 @@ urlpatterns = patterns('parsifal.reviews.views',
     url(r'^planning/', include('parsifal.reviews.planning.urls', namespace='planning')),
     url(r'^conducting/', include('parsifal.reviews.conducting.urls', namespace='conducting')),
     url(r'^reporting/', include('parsifal.reviews.reporting.urls', namespace='reporting')),
-    
+    url(r'^comments/', include('parsifal.reviews.comments.urls', namespace='comments')),
+
     url(r'^published_protocols/$', 'published_protocols', name='published_protocols'),
     url(r'^import_protocol/$', 'import_protocol', name='import_protocol'),
-    
+
     url(r'^explorer/$', 'explorer', name='explorer'),
     url(r'^search/$', 'search', name='search'),
-    
+
 )
