@@ -1220,10 +1220,16 @@ def new_document(request):
         if form.is_valid():
             form.instance.user = request.user
             document = form.save()
-            article = Article()
-            article.review = Review.objects.get(pk=review_id)
-            article.source = Source.objects.get(pk=source_id)
+           
+            source = Source.objects.get(pk=source_id)
+            review = Review.objects.get(pk=review_id)
             
+            
+            article = Article(review=review, source=source)
+            
+            article.build(document)
+            article.created_by = request.user
+            article.save()
           
             messages.success(request, _('Document added successfully!'))
             json_context['status'] = 'success'
