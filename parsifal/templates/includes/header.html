@@ -70,12 +70,12 @@
             <li>
               <span class="navbar-text username-divider"></span>
             </li>
-            
+            {%comment%}
             <li>
               <a href="{% url 'library:index' %}">
                 {% trans 'Library' %} </a>
             </li>
-            
+            {%endcomment%}
              <li>
                <a href="{% url 'settings:settings' %}">
                  <span data-toggle="tooltip" data-placement="bottom" data-container="body" title="{% trans 'Account settings' %}">
