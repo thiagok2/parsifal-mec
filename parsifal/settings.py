@@ -50,6 +50,7 @@ STATIC_ROOT = PROJECT_DIR.parent.parent.child('static')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     PROJECT_DIR.child('static'),
+    PROJECT_DIR.child('reviews').child('comments').child('static'),
 )
 
 SECRET_KEY = config('SECRET_KEY')

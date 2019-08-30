@@ -1,0 +1,11 @@
+{% load i18n humanize %}
+
+<div class="col-sm-12">
+  <strong>{{answer.user}}</strong> {% trans 'answered' %}:
+</div>
+<div class="col-sm-12" style="margin-left: 20px;margin-top: 20px;margin-bottom: 30px;">
+  {{answer.comment}}
+  <p style="margin-top: 20px;">
+    <span class="fa fa-calendar"></span> {{answer.date}}
+  </p>
+</div>

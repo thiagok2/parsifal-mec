@@ -18,16 +18,30 @@
           </h3>
         </div>
         <div class="panel-body">
-          {% for comment in review.get_visitors_comments %}
-            <div class="row" style="margin-bottom: 15px;">
-              <div class="col-sm-12">
-                <strong>{{comment.user.username|title}} {% trans 'commented about' %} {{comment.get_about_display}}</strong> <br />
-                {{comment.date}} <br /><br />
-                {{comment.comment}}
-              </div>
-            </div>
-            <hr />
-          {% endfor %}
+          <table class="table table-striped table-bordered">
+            <thead>
+              <tr>
+                <th>{% trans 'ID' %}</th>
+                <th>{% trans 'Created by' %}</th>
+                <th>{% trans 'Comment' %}</th>
+                <th>{% trans 'To' %}</th>
+                <th>{% trans 'About' %}</th>
+                <th>{% trans 'Date' %}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for comment in comments %}
+                <tr data-href="{% url 'comment_detailed' review.author.username review.name comment.id %}">
+                  <td>{{comment.id}}</td>
+                  <td>{{comment.user}}</td>
+                  <td style="max-width: 450px;">{{comment.comment}}</td>
+                  <td>{{comment.get_user_sended_to}}</td>
+                  <td><span class="badge">{{comment.get_about_display}}</span></td>
+                  <td>{{comment.date|date:"M d, Y"}}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
