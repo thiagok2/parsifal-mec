@@ -26,6 +26,8 @@
       <option value="-title"{% if order = '-title' %} selected{% endif %}>{% trans 'Title' %} (z - a)</option>
       <option value="year"{% if order = 'year' %} selected{% endif %}>{% trans 'Year' %} (0 - 9)</option>
       <option value="-year"{% if order = '-year' %} selected{% endif %}>{% trans 'Year' %} (9 - 0)</option>
+      <option value="sum"{% if order = 'sum' %} selected{% endif %}>{% trans 'Score' %} (0 - 5)</option>
+      <option value="-sum"{% if order = '-sum' %} selected{% endif %}>{% trans 'Score' %} (5 - 0)</option>
     </select>
   </form>
   <strong>{% trans 'Show' %}:</strong>

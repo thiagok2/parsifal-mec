@@ -496,7 +496,7 @@ class Article(models.Model):
         # evaluation_status = dict(ArticleEvaluation.ARTICLE_STATUS).get(evaluation)
 
         return evaluation
-    
+
     def build(self, document):
         self.title = document.title
         self.author = document.author
@@ -515,7 +515,7 @@ class Article(models.Model):
         self.publisher = document.publisher
         self.language = document.language
         self.note = document.note
-        
+
 
 def article_directory_path(instance, filename):
     return 'article/{0}/{1}'.format(instance.article.id, filename)
