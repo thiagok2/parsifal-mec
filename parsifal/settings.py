@@ -88,6 +88,7 @@ INSTALLED_APPS = (
     'django.contrib.humanize',
 
     'parsifal.reviews',
+    'parsifal.reviews.comments',
     'parsifal.reviews.planning',
     'parsifal.reviews.conducting',
     'parsifal.reviews.reporting',

@@ -42,6 +42,7 @@
     <a href="javascript:void(0);" class="pull-right" data-toggle="tooltip" title="{% trans 'What is this? Click to get help.' %}" data-placement="top" data-container="body">
        	<span class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#import-studies-help"></span>
      </a>
+     {% include 'comments/comment_icon_button.html' with user=user about="STUDY_SELECTION" %}
     <div class="studies-action" style="margin: 10px 0;">
       <strong>{% trans 'Action:' %}</strong>
       <select class="select-action form-control" style="width: 200px; display: inline-block;">

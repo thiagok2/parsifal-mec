@@ -129,7 +129,7 @@ def add_author_to_review(request):
 
     return redirect(r('review', args=(review.author.username, review.name)))
 
-@main_author_required
+@author_required
 @login_required
 @require_POST
 def add_visitor_to_review(request):
@@ -324,10 +324,10 @@ def published_protocols(request):
     '''
     try:
         review_id = request.GET['review-id']
-        
+
         print(review_id)
         published_protocols = Review.objects.filter(export_protocol=True).exclude(id=review_id)
-        
+
         context = RequestContext(request, {'published_protocols': published_protocols})
         return render_to_response('reviews/partial_published_protocols.html', context)
     except Exception as e:
@@ -340,29 +340,29 @@ def import_protocol(request):
         Function used via Ajax request only.
         This function import protocol to review.
     '''
-    
+
     try:
         review_id = request.GET['review-id']
         review = Review.objects.get(pk=review_id)
-        
+
         protocolId = request.GET['protocolId']
         protocol = Review.objects.get(pk=protocolId)
-        
+
         importDetail = request.GET['importDetail']
         importProtocol = request.GET['importProtocol']
         importChecklist = request.GET['importChecklist']
         importRisks = request.GET['importRisks']
         importDataExtraction = request.GET['importDataExtraction']
         #clearFiedls = request.GET['clearFiedls']
-        
+
         if importDetail:
             review.description = protocol.description
-            
+
             Tag.objects.filter(review_id=review_id).delete()
             for protocolTag in Tag.objects.filter(review__id=protocolId):
                 newTag = Tag(tag=protocolTag.tag, review = review)
                 newTag.save()
-        
+
         if importProtocol:
             review.objective = protocol.objective
             review.population = protocol.population
@@ -370,72 +370,72 @@ def import_protocol(request):
             review.comparison = protocol.comparison
             review.outcome = protocol.outcome
             review.context = protocol.context
-            
+
             Question.objects.filter(review__id=review_id).delete()
             for protocolQ in Question.objects.filter(review__id=protocolId):
                 newQ = Question(question=protocolQ.question, order = protocolQ.order, review = review)
                 newQ.save();
-            
+
             Keyword.objects.filter(review__id=review_id).delete()
             for protocolKey in Keyword.objects.filter(review__id=protocolId, synonym_of__isnull=True):
                 newKey = Keyword(description = protocolKey.description, review = review, related_to = protocolKey.related_to )
                 newKey.save()
-                
+
                 for protocolSyn in protocolKey.get_synonyms():
                     newSyn = Keyword(description = protocolSyn.description, review = review, synonym_of = newKey)
                     newSyn.save()
-                
+
                 newKey.save()
-            
+
             SearchSession.objects.filter(review__id=review_id, source=None).delete()
             protocolSS = SearchSession.objects.filter(review__id=protocolId, source=None)[:1].get()
             newSearchSession = SearchSession(search_string = protocolSS.search_string,review = review, version = 1)
             newSearchSession.save()
-            
+
             review.sources.clear()
             for protocolSource in protocol.sources.all():
                 review.sources.add(protocolSource)
                 review.save()
-            
+
             SelectionCriteria.objects.filter(review__id=review_id).delete()
             for protocolCriteria in SelectionCriteria.objects.filter(review__id=protocolId):
                 newCriteria = SelectionCriteria(review = review, criteria_type = protocolCriteria.criteria_type, description = protocolCriteria.description)
                 newCriteria.save()
-        
+
         if importChecklist:
             QualityQuestion.objects.filter(review__id=review_id).delete()
             for protocol_aq in protocol.get_quality_assessment_questions():
                 newAssQuestion = QualityQuestion(review = review, description = protocol_aq.description, order = protocol_aq.order)
                 newAssQuestion.save()
-                
+
             QualityAnswer.objects.filter(review__id=review_id).delete()
             for protocol_aw in protocol.get_quality_assessment_answers():
                 newAssQuestion = QualityAnswer(review = review, description = protocol_aw.description, weight = protocol_aw.weight)
                 newAssQuestion.save()
-                
+
             review.quality_assessment_cutoff_score = protocol.quality_assessment_cutoff_score
-            
+
         if importRisks:
             Risk.objects.filter(review__id=review_id).delete()
             for protocol_risk in protocol.get_risks():
                 newRisk = Risk(review = review, risk = protocol_risk.risk)
                 newRisk.save()
-                
+
         if importDataExtraction:
                 DataExtractionField.objects.filter(review__id=review_id).delete()
-                
-                for protocol_df in protocol.get_data_extraction_fields(): 
-                    new_data_field = DataExtractionField(review = review, description = protocol_df.description, 
+
+                for protocol_df in protocol.get_data_extraction_fields():
+                    new_data_field = DataExtractionField(review = review, description = protocol_df.description,
                                                          field_type = protocol_df.field_type, order = protocol_df.order)
                     new_data_field.save()
-                    
+
                     for protocol_df_value in protocol_df.get_select_values():
                         new_df_value = DataExtractionLookup(field = new_data_field, value = protocol_df_value.value)
                         new_df_value.save()
-                    
+
         review.save()
         return HttpResponse()
-        
+
     except Exception as e:
         print e
         return HttpResponseBadRequest()
@@ -453,6 +453,6 @@ def search(request):
     context = RequestContext(request, {
        'reviews': public_reviews,
        'q': q
-       
+
     })
     return render_to_response('reviews/explorer.html', context)

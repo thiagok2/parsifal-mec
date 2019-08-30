@@ -27,7 +27,7 @@
       </div>
     </div>
   </div>
-  
+
   <div class="modal fade" id="search-help">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -101,6 +101,7 @@
         <a href="javascript:void(0);" class="pull-right" data-toggle="tooltip" title="{% trans 'What is this? Click to get help.' %}" data-placement="top" data-container="body">
           <span class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#base-string-help"></span>
         </a>
+        {% include 'comments/comment_icon_button.html' with user=user about="CONDUCTING_SEARCH" %}
       </h3>
     </div>
     <div class="panel-body">

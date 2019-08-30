@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load i18n humanize is_visitor %}
+
+{% load staticfiles %}
+
+{% block title %} {% trans 'Planning' %} · {{ review.title }}{% endblock %}
+
+{% block content %}
+
+  {% include 'reviews/review_header.html' with active_menu='comments' %}
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            {% trans 'Comments about review topics' %}
+          </h3>
+        </div>
+        <div class="panel-body">
+          {% for comment in review.get_visitors_comments %}
+            <div class="row" style="margin-bottom: 15px;">
+              <div class="col-sm-12">
+                <strong>{{comment.user.username|title}} {% trans 'commented about' %} {{comment.get_about_display}}</strong> <br />
+                {{comment.date}} <br /><br />
+                {{comment.comment}}
+              </div>
+            </div>
+            <hr />
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

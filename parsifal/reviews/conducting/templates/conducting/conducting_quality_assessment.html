@@ -11,6 +11,7 @@
 {% block tab_content %}
   {% include "conducting/conducting_header.html" with active_tab="quality" %}
   <h3>{% trans 'Quality Assessment' %}</h3>
+  {% include 'comments/comment_icon_button.html' with user=user about="QUALITY_ASSESSMENT" %}
 
   {% if finished_all_steps %}
     <ul class="nav nav-pills" id="quality-menu" style="margin-bottom: 20px;">
@@ -20,7 +21,9 @@
 
     <div class="quality-container">
       {% include "conducting/partial_conducting_quality_assessment_detailed.html" with review=review quality_assessment_table=quality_assessment_table %}
+
     </div>
+
   {% else %}
     <p>{% trans 'There are a few steps you have to finish before assess the quality of the studies:' %}</p>
     <ul>
