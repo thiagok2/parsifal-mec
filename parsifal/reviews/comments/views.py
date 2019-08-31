@@ -6,6 +6,7 @@ from django.shortcuts import render, redirect, get_object_or_404, render_to_resp
 from django.http import HttpResponse, HttpResponseBadRequest
 from django.utils.translation import ugettext as _
 from django.template import RequestContext
+import datetime
 
 from parsifal.reviews.models import *
 from parsifal.reviews.decorators import author_required, author_or_visitor_required, visitor_required
@@ -34,6 +35,7 @@ def save_visitor_comment(request):
         parent_id = request.POST.get('parent', None)
         user = request.user
         to = request.POST['to']
+        date = datetime.datetime.now()
 
         review = Review.objects.get(pk=review_id)
 
@@ -42,6 +44,7 @@ def save_visitor_comment(request):
                     comment=comment,
                     about=about,
                     to=to,
+                    date=date,
                     user=user)
 
         if parent_id:
@@ -55,6 +58,19 @@ def save_visitor_comment(request):
             return render_to_response('comments/partial_children_comment.html', context)
 
         return HttpResponse(_('Your comment have been sended successfully!'))
+    except Exception as e:
+        print e
+        return HttpResponseBadRequest()
+
+def close_comment_thread(request):
+    try:
+        comment_id = request.POST['comment_id']
+        comment = VisitorComment.objects.get(pk=comment_id)
+        comment.is_open = False
+        comment.save()
+
+        context = RequestContext(request, {'comment': comment})
+        return render_to_response('comments/partial_is_closed.html', context)
     except Exception as e:
         print e
         return HttpResponseBadRequest()

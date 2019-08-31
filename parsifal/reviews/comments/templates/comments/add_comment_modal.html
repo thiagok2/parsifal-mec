@@ -25,16 +25,16 @@
                   <select name="to" class="form-control">
                     <option value="0">Todos</option>
                     {% if review.author.id != user.id %}
-                      <option value="{{review.author.id}}">{{ review.author.username }} {% trans '(author)' %}</option>
+                      <option value="{{review.author.id}}">{{ review.author.profile.get_screen_name }} {% trans '(author)' %}</option>
                     {% endif %}
                     {% for co_author in review.co_authors.all %}
                       {% if co_author.id != user.id %}
-                        <option value="{{ co_author.id }}">{{ co_author.username }} {% trans '(co author)' %}</option>
+                        <option value="{{ co_author.id }}">{{ co_author.profile.get_screen_name }} {% trans '(co author)' %}</option>
                       {% endif %}
                     {% endfor %}
                     {% for visitor in review.visitors.all %}
                       {% if visitor.id != user.id %}
-                        <option value="{{ visitor.id }}">{{ visitor.username }} {% trans '(visitor)' %}</option>
+                        <option value="{{ visitor.id }}">{{ visitor.profile.get_screen_name }} {% trans '(visitor)' %}</option>
                       {% endif %}
                     {% endfor %}
                   </select>

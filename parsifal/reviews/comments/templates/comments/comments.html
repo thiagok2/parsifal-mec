@@ -21,6 +21,7 @@
           <table class="table table-striped table-bordered">
             <thead>
               <tr>
+                <th>#</th>
                 <th>{% trans 'ID' %}</th>
                 <th>{% trans 'Created by' %}</th>
                 <th>{% trans 'Comment' %}</th>
@@ -31,9 +32,12 @@
             </thead>
             <tbody>
               {% for comment in comments %}
-                <tr data-href="{% url 'comment_detailed' review.author.username review.name comment.id %}">
-                  <td>{{comment.id}}</td>
-                  <td>{{comment.user}}</td>
+                <tr style="cursor: pointer;" data-href="{% url 'comment_detailed' review.author.username review.name comment.id %}">
+                  <td><i class="fa fa-exclamation-circle" style="{% if comment.is_open %}color: green;{% else %}color: red;{% endif %}"></i></td>
+                  <td>
+                    {{comment.id}}
+                  </td>
+                  <td>{{comment.user.profile.get_screen_name}}</td>
                   <td style="max-width: 450px;">{{comment.comment}}</td>
                   <td>{{comment.get_user_sended_to}}</td>
                   <td><span class="badge">{{comment.get_about_display}}</span></td>
