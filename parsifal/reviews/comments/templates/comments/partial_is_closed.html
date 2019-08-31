@@ -1,0 +1,8 @@
+{% load i18n humanize %}
+
+{% if comment.is_open %}
+  <span id="close-comments" style="font-size: 11px;margin-right: 5px;cursor: pointer;">Close the discussion</span>
+  <span class="label label-success"><i class="fa fa-exclamation-circle"></i> {% trans 'Open' %}</span>
+{% else %}
+  <span class="label label-danger">{% trans 'Closed' %}</span>
+{% endif %}

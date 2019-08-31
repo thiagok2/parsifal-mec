@@ -57,6 +57,27 @@ $('#save-new-comment').click(function() {
     });
 });
 
+$('#close-comments').click(function() {
+    var btn = $(this);
+    $.ajax({
+        url: '/reviews/comments/close_comment_thread/',
+        data: $('#form-close-comments').serialize(),
+        type: 'post',
+        cache: false,
+        beforeSend: function () {
+            $(btn).ajaxDisable();
+        },
+        success: function (data) {
+            $(btn).ajaxEnable();
+            $('#is-open').html(data)
+            $('#new-comment').text('')
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            $(btn).ajaxEnableError();
+        }
+    });
+});
+
 $('*[data-href]').on('click', function() {
     window.location = $(this).data("href");
 });

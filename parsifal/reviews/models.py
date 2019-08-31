@@ -272,8 +272,9 @@ class VisitorComment(models.Model):
     comment = models.CharField(max_length=2000)
     to = models.IntegerField(default=0, null=True)
     parent = models.ForeignKey('self', null=True, default=None, related_name='parent_comment')
-    date = models.DateTimeField(auto_now=True)
+    date = models.DateTimeField()
     is_new = models.BooleanField(default=True)
+    is_open = models.BooleanField(default=True)
 
     class Meta:
         verbose_name = u'Visitor Comment'
