@@ -182,6 +182,7 @@
           		<input type="hidden" name="review-id" id="review-id" value="{{ review.id }}">
 	            <div class="modal-content">
 	           		<div class="modal-header">
+	           			<p><small class="text-muted">{% trans 'Choose an alternative to apply to your search.' %}</small></p>
 	             		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	           		</div>
 	           		<div class="modal-body">
@@ -200,11 +201,11 @@
 						</div>
 	              	</div>
 		            <div class="modal-footer" style="text-align: left;">
-		                <p><small class="text-muted">{% trans 'Choose an alternative to apply to your search.' %}</small></p>
+		                
 		              	<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-							<button type="submit" class="btn btn-success">
-								<span class="glyphicon glyphicon-ok"></span>Salvar
+							<button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Cancel' %}</button>
+							<button type="submit" class="btn btn-success btn-setup-picoc">
+								<span class="glyphicon glyphicon-ok"></span>{% trans 'Update' %}
 							</button>
 						</div>
 		            </div>
@@ -231,50 +232,58 @@
               </h3>
               <small class="text-muted pull-left help-info">
               	{% if review.pico_type == 'PICOC' %}
-              		{% trans 'PICOC stands for <em>population</em>, <em>intervention</em>, <em>comparison</em>, <em>outcomes</em> and <em>context</em>.' %}
+              		<div class="picoc">
+              			{% trans 'PICOC stands for <em>population</em>, <em>intervention</em>, <em>comparison</em>, <em>outcomes</em> and <em>context</em>.' %}
+              		</div>
               	{% endif %}
               	{% if review.pico_type == 'PICOS' %}
-              		{% trans 'PICOC stands for <em>population</em>, <em>intervention</em>, <em>comparison</em>, <em>outcomes</em> and <em>study type</em>.' %}
+              		<div class="picos">
+              		{% trans 'PICOS stands for <em>population</em>, <em>intervention</em>, <em>comparison</em>, <em>outcomes</em> and <em>study type</em>.' %}
+              		</div>
               	{% endif %}
               	{% if review.pico_type == 'Free Text' %}
+              		<div class="free_text">
               		{% trans 'Write your framework for a systematic review of the literature used in this project.' %}
+              		</div>
               	{% endif %}
               </small>
             </div>
             <div class="panel-body">
               	  {% if review.pico_type == 'PICOC' %}
-	              	<p>{% trans 'Separate the terms used in the PICOC using commas. This will make possible to save them separately as keywords so we can help you design your search string.' %}</p>
+	              	<p class="picoc">{% trans 'Separate the terms used in the PICOC using commas. This will make possible to save them separately as keywords so we can help you design your search string.' %}</p>
 		          	<p>{% trans "If any of the sections of PICOC does not apply to your research, please leave it blank." %}</p>
 	              {% endif %}
 	              
 	              {% if review.pico_type == 'PICOC' or review.pico_type == 'PICOS'%}
-	              <div class="form-group">
-	                <label class="control-label col-md-2" for="population">{% trans 'Population' %}</label>
-	                <div class="col-md-10">
-	                  <input type="text" class="form-control" id="population" name="population" maxlength="200" value="{{ review.population }}">
-	                </div>
-	              </div>
-	              <div class="form-group">
-	                <label class="control-label col-md-2" for="intervention">{% trans 'Intervention' %}</label>
-	                <div class="col-md-10">
-	                  <input type="text" class="form-control" id="intervention" name="intervention" maxlength="200" value="{{ review.intervention }}">
-	                </div>
-	              </div>
-	              <div class="form-group">
-	                <label class="control-label col-md-2" for="comparison">{% trans 'Comparison' %}</label>
-	                <div class="col-md-10">
-	                  <input type="text" class="form-control" id="comparison" name="comparison" maxlength="200" value="{{ review.comparison }}">
-	                </div>
-	              </div>
-	              <div class="form-group">
-	                <label class="control-label col-md-2" for="outcome">{% trans 'Outcome' %}</label>
-	                <div class="col-md-10">
-	                  <input type="text" class="form-control" id="outcome" name="outcome" maxlength="200" value="{{ review.outcome }}">
-	                </div>
+	              <div class="picoc picos">
+		              <div class="form-group">
+		                <label class="control-label col-md-2" for="population">{% trans 'Population' %}</label>
+		                <div class="col-md-10">
+		                  <input type="text" class="form-control" id="population" name="population" maxlength="200" value="{{ review.population }}">
+		                </div>
+		              </div>
+		              <div class="form-group">
+		                <label class="control-label col-md-2" for="intervention">{% trans 'Intervention' %}</label>
+		                <div class="col-md-10">
+		                  <input type="text" class="form-control" id="intervention" name="intervention" maxlength="200" value="{{ review.intervention }}">
+		                </div>
+		              </div>
+		              <div class="form-group">
+		                <label class="control-label col-md-2" for="comparison">{% trans 'Comparison' %}</label>
+		                <div class="col-md-10">
+		                  <input type="text" class="form-control" id="comparison" name="comparison" maxlength="200" value="{{ review.comparison }}">
+		                </div>
+		              </div>
+		              <div class="form-group">
+		                <label class="control-label col-md-2" for="outcome">{% trans 'Outcome' %}</label>
+		                <div class="col-md-10">
+		                  <input type="text" class="form-control" id="outcome" name="outcome" maxlength="200" value="{{ review.outcome }}">
+		                </div>
+		              </div>
 	              </div>
 	         	{% endif %}
 	         	{% if review.pico_type == 'PICOC' %}
-	              <div class="form-group">
+	              <div class="form-group picoc">
 	                <label class="control-label col-md-2" for="context">{% trans 'Context' %}</label>
 	                <div class="col-md-10">
 	                  <input type="text" class="form-control" id="context" name="context" maxlength="200" value="{{ review.context }}">
@@ -282,7 +291,7 @@
 	              </div>
               {% endif %}
               {% if review.pico_type == 'PICOS' %}
-	              <div class="form-group">
+	              <div class="form-group picos">
 	                <label class="control-label col-md-2" for="study_type">{% trans 'Study Type' %}</label>
 	                <div class="col-md-10">
 	                  <input type="text" class="form-control" id="study_type" name="study_type" maxlength="200" value="{{ review.study_type }}">
@@ -290,7 +299,7 @@
 	              </div>
               {% endif %}
               {% if review.pico_type == 'Free Text' %}
-	              <div class="form-group" style="margin-right: 0px;margin-left: 0px;">
+	              <div class="form-group free_text" style="margin-right: 0px;margin-left: 0px;">
 	                <textarea rows="6" name="pico_text" class="form-control" >{{ review.pico_text }}</textarea>
 	              </div>
               {% endif %}
