@@ -42,7 +42,7 @@ class Review(models.Model):
         (UNPUBLISHED, _('Unpublished')),
         (PUBLISHED, _('Published')),
         )
-    
+
     PICOC = u'PICOC'
     PICOS = u'PICOS'
     FREE_TEXT = u'Free Text'
@@ -118,8 +118,8 @@ class Review(models.Model):
     def get_risks(self):
         return Risk.objects.filter(review__id=self.id)
 
-    def get_visitors_comments(self):
-        return VisitorComment.objects.filter(review__id=self.id)
+    def get_visitors_comments(self, user):
+        return VisitorComment.objects.filter(review__id=self.id, parent=None, to__in=[user.id, 0])
 
     def is_author_or_coauthor(self, user):
         if user.id == self.author.id:
@@ -270,7 +270,11 @@ class VisitorComment(models.Model):
     user = models.ForeignKey(User, null=True)
     about = models.CharField(max_length=50, choices=ABOUT_TYPES)
     comment = models.CharField(max_length=2000)
-    date = models.DateTimeField(auto_now=True)
+    to = models.IntegerField(default=0, null=True)
+    parent = models.ForeignKey('self', null=True, default=None, related_name='parent_comment')
+    date = models.DateTimeField()
+    is_new = models.BooleanField(default=True)
+    is_open = models.BooleanField(default=True)
 
     class Meta:
         verbose_name = u'Visitor Comment'
@@ -279,6 +283,15 @@ class VisitorComment(models.Model):
 
     def __unicode__(self):
         return self.comment
+
+    def get_user_sended_to(self):
+        try:
+            return User.objects.get(pk=self.to)
+        except:
+            return 'Todos'
+
+    def get_children_comments(self):
+        return VisitorComment.objects.filter(parent=self.id).order_by('date')
 
 class Tag(models.Model):
     review = models.ForeignKey(Review, related_name='review_tags')
@@ -508,7 +521,7 @@ class Article(models.Model):
         # evaluation_status = dict(ArticleEvaluation.ARTICLE_STATUS).get(evaluation)
 
         return evaluation
-    
+
     def build(self, document):
         self.title = document.title
         self.author = document.author
@@ -527,7 +540,7 @@ class Article(models.Model):
         self.publisher = document.publisher
         self.language = document.language
         self.note = document.note
-        
+
 
 def article_directory_path(instance, filename):
     return 'article/{0}/{1}'.format(instance.article.id, filename)
