@@ -62,7 +62,16 @@
             <div class="checkbox"><label><input type="checkbox" checked name="export" value="objectives"> {% trans 'Objectives' %}</label></div>
           </div>
           <div class="col-sm-4 col-md-3">
-            <div class="checkbox"><label><input type="checkbox" checked name="export" value="picoc"> {% trans 'PICOC' %}</label></div>
+            <div class="checkbox">
+            	<label>
+            		<input type="checkbox" checked name="export" value="picoc"> 
+            		{% trans 'Type Study'%} (
+            		{% if review.pico_type == 'PICOC' %}	{% trans 'PICOC' %} {%endif%}
+            		{% if review.pico_type == 'PICOS' %}	{% trans 'PICOS' %} {%endif%}
+            		{% if review.pico_type == 'Free Text' %}	{% trans 'Free Text' %} {%endif%}
+            		)
+            	</label>
+            </div>
           </div>
           <div class="col-sm-4 col-md-3">
             <div class="checkbox"><label><input type="checkbox" checked name="export" value="research_questions"> {% trans 'Research Questions' %}</label></div>
