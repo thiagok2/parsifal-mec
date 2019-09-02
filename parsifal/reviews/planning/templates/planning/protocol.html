@@ -206,7 +206,39 @@
 	            </div><!-- end modal-content -->
             </form>
           </div>
-        </div>
+        </div><!-- end picoc config -->
+
+		<div class="modal fade" id="modal-pico-share">
+	        <div class="modal-dialog">
+	          <div class="modal-content">
+	            <div class="modal-header">
+	              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	              <h4 class="modal-title">{% trans 'Export Study Type(PICO)' %}</h4>
+	            </div>
+	            <div class="modal-body">
+	              {% if review.export_pico %}
+	                <p>{% trans 'Your Study Type(PICO) are already shared. Do you wanna make it private again?' %}</p>
+	              {% elif not review.export_pico %}
+	                <p>{% trans 'If you agree, your Study Type(PICO) will be made known to other researchers to use them' %}</p>
+	              {% endif %}
+	            </div>
+	            <div class="modal-footer" style="text-align: left;">
+	              <form id="form-pico-share">
+	                {% csrf_token %}
+	                <button type="button" id="btn-confirm-pico-share" class="btn btn-success btn-block" data-review-id="{{review.id}}">
+	                    {% if review.export_pico %}
+	                      {% trans 'Hide Study Type(PICO)' %}
+	                    {% elif not review.export_pico %}
+	                      {% trans 'Export Study Type(PICO)' %}
+	                    {% endif %}
+	                </button>
+	              </form>
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+		
+
 
         <form method="post" id="picoc-form" class="form-horizontal">
           {% csrf_token %}
@@ -219,9 +251,15 @@
                 <a href="javascript:void(0);" data-toggle="tooltip" title="{% trans 'Edit' %}" data-placement="top" data-container="body">
                   <span class="glyphicon glyphicon-cog" data-toggle="modal" data-target="#picoc-config"></span>
                 </a>
+                
                 <a href="javascript:void(0);" class="pull-right" data-toggle="tooltip" title="{% trans 'What is this? Click to get help.' %}" data-placement="top" data-container="body">
                   <span class="glyphicon glyphicon-question-sign big-glyphicon" data-toggle="modal" data-target="#review-framework-help"></span>
                 </a>
+                
+                <a href="javascript:void(0);" style="margin-right: 1%;" class="pull-right" data-toggle="tooltip" title="{% trans 'Share' %}" data-placement="top" data-container="body">
+                  <span class="glyphicon glyphicon-share big-glyphicon" data-toggle="modal" data-target="#modal-pico-share"></span>
+                </a>
+                
                 {% include 'comments/comment_icon_button.html' with user=user about="PICOC" %}
               </h3>
               <div class="small text-muted pull-left help-info">

@@ -72,4 +72,19 @@ $(function () {
         });
   });
   
+  $("#btn-confirm-pico-share").click(function () {
+	    var csrf_token = $("#form-pico-share input[name='csrfmiddlewaretoken']").val();
+	    $.ajax({
+	      url: '/reviews/planning/share_pico/',
+	      data: {
+	        'review-id': $('#review-id').val(),
+	        'csrfmiddlewaretoken': csrf_token
+	      },
+	      cache: false,
+	      type: 'post',
+	      success: function (data) {
+	        $("#modal-pico-share").modal("hide");
+	      }
+	    });
+  
 });

@@ -77,6 +77,7 @@ class Review(models.Model):
     export_dataextraction = models.BooleanField(default=False)
     export_risks = models.BooleanField(default=False)
     export_qualityassessment = models.BooleanField(default=False)
+    export_pico = models.BooleanField(default=False)
 
     statistical_methods=models.TextField(max_length=1000,blank=True)
 
