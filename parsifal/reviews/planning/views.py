@@ -1066,3 +1066,18 @@ def setting_pico(request):
     review.pico_type = pico_type
     review.save()
     return render(request, 'planning/protocol.html', { 'review': review })
+
+@author_required
+@login_required
+def share_pico(request):
+    try:
+        review_id = request.POST['review-id']
+        review = Review.objects.get(pk=review_id)
+        review.export_pico = True if not review.export_risks else False
+        review.save()
+        return HttpResponse()
+    except Exception as e:
+        print str(e)
+        return HttpResponseBadRequest()
+
+
