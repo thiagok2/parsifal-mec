@@ -183,11 +183,8 @@
 	            <div class="modal-content">
 	           		<div class="modal-header">
 	           			<p><small class="text-muted">{% trans 'Choose an alternative to apply to your search.' %}</small></p>
-	             		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	           		</div>
 	           		<div class="modal-body">
-	            	
-		             	
 		                <div class="list-group">
 							<a href="#" class="list-group-item {% if review.pico_type == 'PICOC' %} active {% endif %}" data-pico-value="PICOC">
 						    	{% trans 'PICOC stands for <em>Population</em>, <em>Intervention</em>, <em>Comparison</em>, <em>Outcomes</em> and <strong><em>Context</em></strong>.' %}
@@ -203,10 +200,7 @@
 		            <div class="modal-footer" style="text-align: left;">
 		                
 		              	<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Cancel' %}</button>
-							<button type="submit" class="btn btn-success btn-setup-picoc">
-								<span class="glyphicon glyphicon-ok"></span>{% trans 'Update' %}
-							</button>
+							<button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
 						</div>
 		            </div>
 	            </div><!-- end modal-content -->
@@ -221,7 +215,7 @@
           <div class="panel panel-default">
             <div class="panel-heading has-help">
               <h3 class="panel-title">
-                {{ review.pico_type }}
+                <span id="pico_type_title">{{ review.pico_type }}</span>
                 <a href="javascript:void(0);" data-toggle="tooltip" title="{% trans 'Edit' %}" data-placement="top" data-container="body">
                   <span class="glyphicon glyphicon-cog" data-toggle="modal" data-target="#picoc-config"></span>
                 </a>
@@ -230,32 +224,30 @@
                 </a>
                 {% include 'comments/comment_icon_button.html' with user=user about="PICOC" %}
               </h3>
-              <small class="text-muted pull-left help-info">
-              	{% if review.pico_type == 'PICOC' %}
-              		<div class="picoc">
-              			{% trans 'PICOC stands for <em>population</em>, <em>intervention</em>, <em>comparison</em>, <em>outcomes</em> and <em>context</em>.' %}
-              		</div>
-              	{% endif %}
-              	{% if review.pico_type == 'PICOS' %}
-              		<div class="picos">
+              <div class="small text-muted pull-left help-info">
+              	<div class="picoc {% if review.pico_type != 'PICOC' %} hidden {% endif %}" id="picoc-subtitle">
+              	        		
+              		{% trans 'PICOC stands for <em>population</em>, <em>intervention</em>, <em>comparison</em>, <em>outcomes</em> and <em>context</em>.' %}
+              	
+              	</div>
+              	<div class="picos {% if review.pico_type != 'PICOS' %} hidden {% endif %}" id="picos-subtitle">
+              
               		{% trans 'PICOS stands for <em>population</em>, <em>intervention</em>, <em>comparison</em>, <em>outcomes</em> and <em>study type</em>.' %}
-              		</div>
-              	{% endif %}
-              	{% if review.pico_type == 'Free Text' %}
-              		<div class="free_text">
+              
+              	</div>
+              	<div class="pico_free {% if review.pico_type != 'Free Text' %} hidden {% endif %}" id="pico_free-subtitle">
               		{% trans 'Write your framework for a systematic review of the literature used in this project.' %}
-              		</div>
-              	{% endif %}
-              </small>
+              	</div>
+              </div>
             </div>
             <div class="panel-body">
-              	  {% if review.pico_type == 'PICOC' %}
+              	  <div class="{% if review.pico_type != 'PICOC' %} hidden {% endif %}">
 	              	<p class="picoc">{% trans 'Separate the terms used in the PICOC using commas. This will make possible to save them separately as keywords so we can help you design your search string.' %}</p>
 		          	<p>{% trans "If any of the sections of PICOC does not apply to your research, please leave it blank." %}</p>
-	              {% endif %}
+	             </div>
 	              
-	              {% if review.pico_type == 'PICOC' or review.pico_type == 'PICOS'%}
-	              <div class="picoc picos">
+	             
+	              <div class="picoc picos  {% if review.pico_type == 'Free Text' %} hidden {% endif %}" >
 		              <div class="form-group">
 		                <label class="control-label col-md-2" for="population">{% trans 'Population' %}</label>
 		                <div class="col-md-10">
@@ -281,28 +273,30 @@
 		                </div>
 		              </div>
 	              </div>
-	         	{% endif %}
-	         	{% if review.pico_type == 'PICOC' %}
-	              <div class="form-group picoc">
+	         	
+	         
+	              <div class="form-group picoc {% if review.pico_type != 'PICOC' %} hidden {% endif %}">
 	                <label class="control-label col-md-2" for="context">{% trans 'Context' %}</label>
 	                <div class="col-md-10">
 	                  <input type="text" class="form-control" id="context" name="context" maxlength="200" value="{{ review.context }}">
 	                </div>
 	              </div>
-              {% endif %}
-              {% if review.pico_type == 'PICOS' %}
-	              <div class="form-group picos">
+             
+              
+	              <div class="form-group picos {% if review.pico_type != 'PICOS' %} hidden {% endif %}">
 	                <label class="control-label col-md-2" for="study_type">{% trans 'Study Type' %}</label>
 	                <div class="col-md-10">
 	                  <input type="text" class="form-control" id="study_type" name="study_type" maxlength="200" value="{{ review.study_type }}">
 	                </div>
 	              </div>
-              {% endif %}
-              {% if review.pico_type == 'Free Text' %}
-	              <div class="form-group free_text" style="margin-right: 0px;margin-left: 0px;">
-	                <textarea rows="6" name="pico_text" class="form-control" >{{ review.pico_text }}</textarea>
+             
+              
+              	  <div class="pico_free {% if review.pico_type != 'Free Text' %} hidden {% endif %}">
+		              <div class="form-group" style="margin-right: 0px;margin-left: 0px;">
+		                <textarea rows="6" name="pico_text" class="form-control" >{{ review.pico_text }}</textarea>
+		              </div>
 	              </div>
-              {% endif %}
+             
             </div>
             <div class="panel-footer">
               <button type="button" class="btn btn-success btn-save-picoc" data-loading="Saving...">

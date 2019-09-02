@@ -6,7 +6,7 @@ $(function () {
       data: $("#picoc-form").serialize(),
       type: 'post',
       cache: false,
-      beforeSend: function () {
+       beforeSend: function () {
         $(btn).ajaxDisable();
       },
       success: function (data) {
@@ -14,7 +14,7 @@ $(function () {
       },
       error: function () {
         $(btn).ajaxEnableError();
-        $.parsifal.alert("An error ocurred", "Algo deu errado! Por favor entre em contato com o administrador.");
+        $.parsifal.alert("Problemas aconteceram", "Algo deu errado! Por favor entre em contato com o administrador.");
       }
     });
   });
@@ -24,10 +24,52 @@ $(function () {
 
       $that = $(this);
       
-      $('#pico_type').val($(this).attr('data-pico-value'));
-
+      var review_id = $('#review-id').val();
+      var pico_type = $(this).attr('data-pico-value');
+      $('#pico_type').val(pico_type);
+      $("input[id=pico_type]").val(pico_type);
+      
+      
+      $('#pico_type_title').text(pico_type);
+      
+      if(pico_type == 'PICOC'){
+    	  $('.picos').hide();
+    	  $('.pico_free').hide();
+    	  
+    	  $('.picoc').show();
+    	  $('.picoc').removeClass('hidden');
+      }else if(pico_type == 'PICOS'){
+    	  $('.pico_free').hide();
+    	  $('.picoc').hide();
+    	  
+    	  $('.picos').show();
+    	  $('.picos').removeClass('hidden');
+      }else if(pico_type == 'Free Text'){
+    	  $('.picoc').hide();
+    	  $('.picos').hide();
+    	  $('.pico_free').show();
+    	  $('.pico_free').removeClass('hidden');
+      }
+      
       $that.parent().find('a').removeClass('active');
       $that.addClass('active');
+      
+      $.ajax({
+          url: '/reviews/planning/setting_pico/',
+          data: {
+        	  'pico_type': pico_type,
+        	  'review-id': review_id
+          },
+          type: 'get',
+          cache: false,
+          success: function (data) {
+            $($that).ajaxEnable();
+          },
+          error: function () {
+            $($that).ajaxEnableError();
+            $.parsifal.alert("Problemas aconteceram", "Algo deu errado! Por favor entre em contato com o administrador.");
+          }
+        });
   });
   
 });
