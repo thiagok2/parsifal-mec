@@ -1056,10 +1056,13 @@ def share_data_extraction_fields(request):
         return HttpResponse(_('Data Extraction Fields has been made private again!'))
     except:
         return HttpResponseBadRequest()
+
+@author_required
+@login_required   
 def setting_pico(request):
-    review_id = request.POST['review-id']
+    review_id = request.GET['review-id']
     review = Review.objects.get(pk=review_id)
-    pico_type = request.POST['pico_type']
+    pico_type = request.GET['pico_type']
     review.pico_type = pico_type
     review.save()
     return render(request, 'planning/protocol.html', { 'review': review })
