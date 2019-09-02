@@ -1,0 +1,13 @@
+{% load i18n humanize %}
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+      <img src="{{answer.user.profile.get_picture}}" class="img-rounded" width="20px" style="margin-right: 5px;"> <strong>{{answer.user.profile.get_screen_name}}</strong> {% trans 'commented on' %} {{answer.date}}
+      <!-- <span class="pull-right">
+        <span class="badge">{{answer.profile</span>
+      </span> -->
+  </div>
+  <div class="panel-body">
+    {{answer.comment}}
+  </div>
+</div>
