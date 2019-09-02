@@ -37,28 +37,47 @@ def export_review_to_docx(review, sections):
         PICOC
     '''
     if 'picoc' in sections:
-        document.add_heading(_('PICOC'), level=3)
-
-        p = document.add_paragraph('', style='List Bullet')
-        p.add_run(_('Population: ')).bold = True
-        p.add_run(review.population)
-
-        p = document.add_paragraph('', style='List Bullet')
-        p.add_run(_('Intervention: ')).bold = True
-        p.add_run(review.intervention)
-
-        p = document.add_paragraph('', style='List Bullet')
-        p.add_run(_('Comparison: ')).bold = True
-        p.add_run(review.comparison)
-
-        p = document.add_paragraph('', style='List Bullet')
-        p.add_run(_('Outcome: ')).bold = True
-        p.add_run(review.outcome)
-
-        p = document.add_paragraph('', style='List Bullet')
-        p.add_run(_('Context: ')).bold = True
-        p.add_run(review.context)
-
+        
+        if review.isPicoc():
+            document.add_heading(_('PICOC'), level=3)
+        elif review.isPicos():
+            document.add_heading(_('PICOS'), level=3)
+        elif review.isStudyTypeFree():
+            document.add_heading(_('Free Text'), level=3)
+        else:
+            document.add_heading( review.study_type, level=3)
+            
+        if review.isStudyTypeFree():
+            p = document.add_paragraph('', style='List Bullet')
+            p.add_run(_('Study: ')).bold = True
+            p.add_run(review.pico_text)
+        else:
+            p = document.add_paragraph('', style='List Bullet')
+            p.add_run(_('Population: ')).bold = True
+            p.add_run(review.population)
+    
+            p = document.add_paragraph('', style='List Bullet')
+            p.add_run(_('Intervention: ')).bold = True
+            p.add_run(review.intervention)
+    
+            p = document.add_paragraph('', style='List Bullet')
+            p.add_run(_('Comparison: ')).bold = True
+            p.add_run(review.comparison)
+    
+            p = document.add_paragraph('', style='List Bullet')
+            p.add_run(_('Outcome: ')).bold = True
+            p.add_run(review.outcome)
+            
+            if review.isPicoc():
+                p = document.add_paragraph('', style='List Bullet')
+                p.add_run(_('Context: ')).bold = True
+                p.add_run(review.context)
+            if review.isPicos():
+                p = document.add_paragraph('', style='List Bullet')
+                p.add_run(_('Study Type: ')).bold = True
+                p.add_run(review.study_type)
+            
+        
     '''
         Research Questions
     '''
