@@ -2,9 +2,9 @@
 
 {% for review in suggested_reviews %}
 <tr id="exported-review" style="cursor: pointer;">
-    <td>{{review.id}}</td>
-    <td>{{review.title}}</td>
-    <td>{{review.author}}</td>
+    <td>
+    	{{review.title}} <span class="text-muted">({{review.author}})</span>
+    </td>
     <td id="import-pico-fields">
        <button type="button" class="btn btn-success btn-sm" id="btn-import-pico" data-review-ref-id="{{review.id}}" data-review-ref-title="{{review.title}}">
             {% trans 'Import' %}
@@ -18,7 +18,7 @@
     </td>
 </tr>
 <tr class="hidden">
-    <td colspan="5">
+    <td colspan="3">
       <form method="post" id="form-suggested-pico-{{review.id}}">
       	{% csrf_token %}
       	
