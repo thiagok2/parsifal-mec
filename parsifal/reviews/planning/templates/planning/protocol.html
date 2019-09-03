@@ -249,7 +249,7 @@
 	          	 <p style="margin-bottom: 20px;">{% trans 'Below you see the reviews that exported your methods, choose one to import for your review' %}</p>
 	             {% csrf_token %}
 	             <input type="hidden" name="review-id" value="{{ review.id }}">
-	             <table class="table" id="tbl-import-pico">
+	             <table class="table table-condensed table-modal" id="tbl-import-pico">
 	               <thead>
 	               	<tr>
 	               		<th>{% trans 'ID' %}</th>

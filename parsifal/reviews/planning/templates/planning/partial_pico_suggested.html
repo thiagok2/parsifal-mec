@@ -5,8 +5,8 @@
     <td>{{review.id}}</td>
     <td>{{review.title}}</td>
     <td>{{review.author}}</td>
-    <td id="import-risk-fields">
-       <button type="button" class="btn btn-success btn-sm" id="btn-import-pico" data-review-ref-id="{{review.id}}">
+    <td id="import-pico-fields">
+       <button type="button" class="btn btn-success btn-sm" id="btn-import-pico" data-review-ref-id="{{review.id}}" data-review-ref-title="{{review.title}}">
             {% trans 'Import' %}
         </button>
     </td>
@@ -21,45 +21,79 @@
     <td colspan="5">
       <form method="post" id="form-suggested-pico-{{review.id}}">
       	{% csrf_token %}
-      	<input type="hidden" name="review_id" value="{{ review.id }}" />
-      	<input type="hidden" name="review_ref_id" id="review_ref_id" value="{{risk.id}}"  />
+      	
+      	<input type="hidden" name="review_ref_id" id="review_ref_id" value="{{ review.id }}"  />
+        
         <div class="row">
         	<div class="col-lg-12">
         		<h4>{{ review.pico_type }}</h4>
         	</div>
         </div>
-        <div class="row">
-        	<div class="form-group">
-               <label class="control-label col-md-2 text-muted" for="population">{% trans 'Population' %}:</label>
-               <div class="col-md-10 text-muted">
-                 {{ review.population }}
-               </div>
-             </div>
-        </div>
-        <div class="row">
-        	<div class="form-group">
-              <label class="control-label col-md-2 text-muted" for="intervention">{% trans 'Intervention' %}:</label>
-              <div class="col-md-10 text-muted">
-                {{ review.intervention }}
-              </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group">
-              <label class="control-label col-md-2 text-muted" for="comparison">{% trans 'Comparison' %}:</label>
-              <div class="col-md-10 text-muted">
-                {{ review.comparison }}
-              </div>
-            </div>
-         </div>
-         <div class="row">
-            <div class="form-group">
-               <label class="control-label col-md-2 text-muted" for="outcome">{% trans 'Outcome' %}:</label>
-               <div class="col-md-10 text-muted">
-                 {{ review.outcome }}
-               </div>
-            </div>           
-        </div>
+        
+        {% if not review.isStudyTypeFree %}
+	        <div class="row">
+	        	<div class="form-group">
+	               <label class="control-label col-md-3 text-muted" for="population">{% trans 'Population' %}:</label>
+	               <div class="col-md-9 text-muted">
+	                 {{ review.population }}
+	               </div>
+	             </div>
+	        </div>
+	        <div class="row">
+	        	<div class="form-group">
+	              <label class="control-label col-md-3 text-muted" for="intervention">{% trans 'Intervention' %}:</label>
+	              <div class="col-md-9 text-muted">
+	                {{ review.intervention }}
+	              </div>
+	            </div>
+	        </div>
+	        <div class="row">
+	            <div class="form-group">
+	              <label class="control-label col-md-3 text-muted" for="comparison">{% trans 'Comparison' %}:</label>
+	              <div class="col-md-9 text-muted">
+	                {{ review.comparison }}
+	              </div>
+	            </div>
+	         </div>
+	         <div class="row">
+	            <div class="form-group">
+	               <label class="control-label col-md-3 text-muted" for="outcome">{% trans 'Outcome' %}:</label>
+	               <div class="col-md-9 text-muted">
+	                 {{ review.outcome }}
+	               </div>
+	            </div>           
+	        </div>
+        {% endif %}
+        {% if review.isPicoc %}
+	        <div class="row">
+	            <div class="form-group">
+	               <label class="control-label col-md-3 text-muted" for="outcome">{% trans 'Context' %}:</label>
+	               <div class="col-md-9 text-muted">
+	                 {{ review.context }}
+	               </div>
+	            </div>           
+	        </div>
+        {% endif %}
+        {% if review.isPicos %}
+	        <div class="row">
+	            <div class="form-group">
+	               <label class="control-label col-md-3 text-muted" for="outcome">{% trans 'PICO Type' %}:</label>
+	               <div class="col-md-9 text-muted">
+	                 {{ review.pico_type }}
+	               </div>
+	            </div>           
+	        </div>
+        {% endif %}
+        {% if review.isStudyTypeFree %}
+	        <div class="row">
+	            <div class="form-group">
+	               <label class="control-label col-md-3 text-muted" for="outcome">{% trans 'PICO Text' %}:</label>
+	               <div class="col-md-9 text-muted">
+	                 {{ review.pico_text }}
+	               </div>
+	            </div>           
+	        </div>
+        {% endif %}
       </form>
     </td>
 </tr>
