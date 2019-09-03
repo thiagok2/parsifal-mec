@@ -227,16 +227,45 @@
 	                {% csrf_token %}
 	                <button type="button" id="btn-confirm-pico-share" class="btn btn-success btn-block" data-review-id="{{review.id}}">
 	                    {% if review.export_pico %}
-	                      {% trans 'Hide Study Type(PICO)' %}
+	                      {% trans 'Hide Study Type(PICO)...' %}
 	                    {% elif not review.export_pico %}
-	                      {% trans 'Export Study Type(PICO)' %}
+	                      {% trans 'Export Study Type(PICO).' %}
 	                    {% endif %}
 	                </button>
 	              </form>
 	            </div>
 	          </div>
 	        </div>
+	    </div> <!-- end modal share -->
+	    
+	    <div class="modal fade" id="modal-suggested-pico">
+	      <div class="modal-dialog">
+	        <div class="modal-content">
+	          <div class="modal-header">
+	            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	            <h4 class="modal-title">{% trans 'Import Shared' %}</h4>
+	          </div>
+	          <div class="modal-body">
+	          	 <p style="margin-bottom: 20px;">{% trans 'Below you see the reviews that exported your methods, choose one to import for your review' %}</p>
+	             {% csrf_token %}
+	             <input type="hidden" name="review-id" value="{{ review.id }}">
+	             <table class="table" id="tbl-import-pico">
+	               <thead>
+	               	<tr>
+	               		<th>{% trans 'ID' %}</th>
+	               		<th>{% trans 'Review' %}</th>
+	               		<th>{% trans 'Author' %}</th>
+	               		<th></th>
+	               		<th></th>
+	               	</tr>
+	             	</thead>
+	               <tbody></tbody>
+	             </table>
+	          </div>
+	        </div>
 	      </div>
+	    </div>  
+	    
 		
 
 
@@ -350,6 +379,17 @@
                   <span class="glyphicon glyphicon-ok"></span> {% trans 'Saved!' %}
                 </span>
               </button>
+              
+              <button type="button" style="margin:5px" class="btn btn-success" id="btn-modal-import-pico" data-toggle="modal" data-target="#modal-suggested-pico">
+                <span class="glyphicon glyphicon-import"></span>
+                {% trans 'Import PICO' %}
+              </button>
+              
+              <span class="pull-right text-muted small" id="import-pico-msg">
+              	{% if review.export_pico %} 
+              		Compartilhado
+              	{% endif%}
+              </span>
             </div>
           </div>
         </form>

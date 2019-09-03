@@ -74,6 +74,7 @@ $(function () {
   
   $("#btn-confirm-pico-share").click(function () {
 	    var csrf_token = $("#form-pico-share input[name='csrfmiddlewaretoken']").val();
+	    
 	    $.ajax({
 	      url: '/reviews/planning/share_pico/',
 	      data: {
@@ -84,7 +85,40 @@ $(function () {
 	      type: 'post',
 	      success: function (data) {
 	        $("#modal-pico-share").modal("hide");
+	       
+	        if($.parseJSON(data.toLowerCase().trim()))
+	        	$('#import-pico-msg').html('Definição do métodos de pesqiosa compartilhados com sucesso.');
+	        else{
+	        	$('#import-pico-msg').html('Compartilhamento removido com sucesso.');
+	        }
+	        	
 	      }
 	    });
+  });
+  
+  $("#btn-modal-import-pico").click(function () {
+  	$.ajax({
+  		url: '/reviews/planning/suggested_pico/',
+  		data: { 'review-id': $('#review-id').val() },
+  		cache: false,
+  		type: 'get',
+  		success: function (data) {
+	        
+  			$("#modal-suggested-pico table tbody").html(data);
+  			$("#modal-suggested-pico").before("<div class='shade'></div>");
+  			$("#modal-suggested-pico").slideDown(400, function () {
+  				$("body").addClass("modal-open");
+  			});
+  		}
+	   });
+  });
+  
+  $("table#tbl-import-pico").on("click", "tbody tr", function () {
+  	
+      var hiddenClass = $(this)[0].nextElementSibling;
+      hiddenClass.className == "hidden"
+      ? hiddenClass.className = ""
+      : hiddenClass.className = "hidden"
+  });
   
 });
