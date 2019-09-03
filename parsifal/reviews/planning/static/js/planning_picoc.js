@@ -14,25 +14,13 @@ $(function () {
       },
       error: function () {
         $(btn).ajaxEnableError();
-        $.parsifal.alert("Problemas aconteceram", "Algo deu errado! Por favor entre em contato com o administrador.");
+        $.parsifal.alert("Problemas aconteceram", "Algo deu errado! Por favor entre em contato com o administrador1.");
       }
     });
   });
   
-  $('.list-group a').click(function(e) {
-      e.preventDefault()
-
-      $that = $(this);
-      
-      var review_id = $('#review-id').val();
-      var pico_type = $(this).attr('data-pico-value');
-      $('#pico_type').val(pico_type);
-      $("input[id=pico_type]").val(pico_type);
-      
-      
-      $('#pico_type_title').text(pico_type);
-      
-      if(pico_type == 'PICOC'){
+  function update_inputs(pico_type){
+	  if(pico_type == 'PICOC'){
     	  $('.picos').hide();
     	  $('.pico_free').hide();
     	  
@@ -50,6 +38,23 @@ $(function () {
     	  $('.pico_free').show();
     	  $('.pico_free').removeClass('hidden');
       }
+  }
+  
+  $('.list-group a').click(function(e) {
+      e.preventDefault()
+
+      $that = $(this);
+      
+      var review_id = $('#review-id').val();
+      var pico_type = $(this).attr('data-pico-value');
+      $('#pico_type').val(pico_type);
+      $("input[id=pico_type]").val(pico_type);
+      
+      
+      $('#pico_type_title').text(pico_type);
+      
+      update_inputs(pico_type);
+      
       
       $that.parent().find('a').removeClass('active');
       $that.addClass('active');
@@ -67,13 +72,15 @@ $(function () {
           },
           error: function () {
             $($that).ajaxEnableError();
-            $.parsifal.alert("Problemas aconteceram", "Algo deu errado! Por favor entre em contato com o administrador.");
+            $.parsifal.alert("Problemas aconteceram", "Algo deu errado! Por favor entre em contato com o administrador2.");
           }
         });
   });
   
   $("#btn-confirm-pico-share").click(function () {
 	    var csrf_token = $("#form-pico-share input[name='csrfmiddlewaretoken']").val();
+	    
+	    
 	    
 	    $.ajax({
 	      url: '/reviews/planning/share_pico/',
@@ -87,7 +94,7 @@ $(function () {
 	        $("#modal-pico-share").modal("hide");
 	       
 	        if($.parseJSON(data.toLowerCase().trim()))
-	        	$('#import-pico-msg').html('Definição do métodos de pesqiosa compartilhados com sucesso.');
+	        	$('#import-pico-msg').html('Definição dos métodos de pesquisa compartilhados com sucesso.');
 	        else{
 	        	$('#import-pico-msg').html('Compartilhamento removido com sucesso.');
 	        }
@@ -119,6 +126,40 @@ $(function () {
       hiddenClass.className == "hidden"
       ? hiddenClass.className = ""
       : hiddenClass.className = "hidden"
+  });
+  
+  $("table#tbl-import-pico").on("click", "#btn-import-pico", function () {
+	  var ref_review_id = $(this).data("review-ref-id");
+	  var ref_review_title = $(this).data("review-ref-title");
+	  var review_id = $("#review-id").val();
+	  
+	  $.ajax({
+          url: '/reviews/planning/import_pico/',
+          data: {
+          	'review-id': review_id,
+            'ref-review-id': ref_review_id,
+          },
+          type: 'get',
+          cache: false,
+          success: function (data) {
+              //alert(JSON.stringify(data));
+        	 
+    		  $('#population').val(data.population);
+        	  $('#intervention').val(data.intervention);
+        	  $('#comparison').val(data.comparison);
+        	  $('#outcome').val(data.outcome);
+        	  $('#context').val(data.outcome);
+        	  $('#study_type').val(data.study_type); 
+        	  $('#pico_text').text(data.pico_text);
+        	  
+        	  $('#import-pico-msg').html('Definição do métodos de pesquisa importados com sucesso. Referência: '+ ref_review_title);
+        	  $("input[id=pico_type]").val(data.pico_type);
+        	  
+        	  update_inputs(data.pico_type);
+        	  
+              $("#modal-suggested-pico").modal("hide");
+          }
+      });
   });
   
 });
