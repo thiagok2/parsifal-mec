@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-04 14:52+0000\n"
+"POT-Creation-Date: 2019-09-04 17:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -163,7 +163,7 @@ msgstr ""
 #: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:102
 #: parsifal/reviews/conducting/templates/conducting/new_document.html:25
 #: parsifal/reviews/planning/templates/planning/protocol.html:203
-#: parsifal/reviews/planning/templates/planning/protocol.html:720
+#: parsifal/reviews/planning/templates/planning/protocol.html:721
 msgid "Close"
 msgstr ""
 
@@ -1132,12 +1132,12 @@ msgid "Unknown"
 msgstr ""
 
 #: parsifal/lib/python2.7/site-packages/django/forms/widgets.py:556
-#: parsifal/reviews/models.py:649
+#: parsifal/reviews/models.py:651
 msgid "Yes"
 msgstr ""
 
 #: parsifal/lib/python2.7/site-packages/django/forms/widgets.py:557
-#: parsifal/reviews/models.py:651
+#: parsifal/reviews/models.py:653
 msgid "No"
 msgstr ""
 
@@ -1761,9 +1761,9 @@ msgstr ""
 #: parsifal/reviews/planning/templates/planning/partial_keyword_form.html:69
 #: parsifal/reviews/planning/templates/planning/protocol.html:109
 #: parsifal/reviews/planning/templates/planning/protocol.html:370
-#: parsifal/reviews/planning/templates/planning/protocol.html:659
-#: parsifal/reviews/planning/templates/planning/protocol.html:721
-#: parsifal/reviews/planning/templates/planning/protocol.html:936
+#: parsifal/reviews/planning/templates/planning/protocol.html:660
+#: parsifal/reviews/planning/templates/planning/protocol.html:722
+#: parsifal/reviews/planning/templates/planning/protocol.html:937
 #: parsifal/reviews/planning/templates/planning/statistical_methods_conventions.html:51
 #: parsifal/reviews/templates/reviews/review.html:55
 msgid "Save"
@@ -2013,10 +2013,10 @@ msgstr ""
 #: parsifal/reviews/planning/templates/planning/protocol.html:284
 #: parsifal/reviews/planning/templates/planning/protocol.html:422
 #: parsifal/reviews/planning/templates/planning/protocol.html:537
-#: parsifal/reviews/planning/templates/planning/protocol.html:641
-#: parsifal/reviews/planning/templates/planning/protocol.html:747
-#: parsifal/reviews/planning/templates/planning/protocol.html:831
-#: parsifal/reviews/planning/templates/planning/protocol.html:905
+#: parsifal/reviews/planning/templates/planning/protocol.html:642
+#: parsifal/reviews/planning/templates/planning/protocol.html:748
+#: parsifal/reviews/planning/templates/planning/protocol.html:832
+#: parsifal/reviews/planning/templates/planning/protocol.html:906
 #: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:81
 #: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:130
 #: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:190
@@ -2204,8 +2204,8 @@ msgid "Showing the available sources from you Protocol, defined in the "
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:66
-#: parsifal/reviews/planning/templates/planning/protocol.html:711
-#: parsifal/reviews/planning/templates/planning/protocol.html:759
+#: parsifal/reviews/planning/templates/planning/protocol.html:712
+#: parsifal/reviews/planning/templates/planning/protocol.html:760
 #: parsifal/reviews/reporting/templates/reporting/export.html:45
 #: parsifal/reviews/templates/reviews/partial_published_protocols.html:178
 msgid "Name"
@@ -2262,8 +2262,8 @@ msgstr ""
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:241
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:341
 #: parsifal/reviews/planning/templates/planning/protocol.html:112
-#: parsifal/reviews/planning/templates/planning/protocol.html:662
-#: parsifal/reviews/planning/templates/planning/protocol.html:939
+#: parsifal/reviews/planning/templates/planning/protocol.html:663
+#: parsifal/reviews/planning/templates/planning/protocol.html:940
 #: parsifal/reviews/planning/templates/planning/statistical_methods_conventions.html:55
 msgid "Saving…"
 msgstr ""
@@ -2273,8 +2273,8 @@ msgstr ""
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:344
 #: parsifal/reviews/planning/templates/planning/protocol.html:118
 #: parsifal/reviews/planning/templates/planning/protocol.html:379
-#: parsifal/reviews/planning/templates/planning/protocol.html:668
-#: parsifal/reviews/planning/templates/planning/protocol.html:945
+#: parsifal/reviews/planning/templates/planning/protocol.html:669
+#: parsifal/reviews/planning/templates/planning/protocol.html:946
 #: parsifal/reviews/planning/templates/planning/statistical_methods_conventions.html:65
 msgid "Saved!"
 msgstr ""
@@ -2524,7 +2524,7 @@ msgstr ""
 #: parsifal/reviews/conducting/templates/conducting/partial_article_evaluation.html:17
 #: parsifal/reviews/models.py:268
 #: parsifal/reviews/planning/templates/planning/protocol.html:58
-#: parsifal/reviews/planning/templates/planning/protocol.html:830
+#: parsifal/reviews/planning/templates/planning/protocol.html:831
 #: parsifal/reviews/reporting/export.py:145
 #: parsifal/reviews/reporting/templates/reporting/export.html:89
 #: parsifal/reviews/templates/reviews/partial_published_protocols.html:203
@@ -2571,7 +2571,7 @@ msgstr ""
 #: parsifal/reviews/planning/templates/planning/partial_planning_risk.html:29
 #: parsifal/reviews/planning/templates/planning/partial_quality_assessment_answer.html:15
 #: parsifal/reviews/planning/templates/planning/partial_quality_assessment_question.html:29
-#: parsifal/reviews/planning/templates/planning/protocol.html:791
+#: parsifal/reviews/planning/templates/planning/protocol.html:792
 msgid "remove"
 msgstr ""
 
@@ -2938,7 +2938,7 @@ msgstr ""
 
 #: parsifal/reviews/models.py:266
 #: parsifal/reviews/planning/templates/planning/protocol.html:56
-#: parsifal/reviews/planning/templates/planning/protocol.html:640
+#: parsifal/reviews/planning/templates/planning/protocol.html:641
 #: parsifal/reviews/reporting/export.py:110
 #: parsifal/reviews/reporting/templates/reporting/export.html:83
 #: parsifal/reviews/templates/reviews/partial_published_protocols.html:160
@@ -2947,7 +2947,7 @@ msgstr ""
 
 #: parsifal/reviews/models.py:267
 #: parsifal/reviews/planning/templates/planning/protocol.html:57
-#: parsifal/reviews/planning/templates/planning/protocol.html:746
+#: parsifal/reviews/planning/templates/planning/protocol.html:747
 #: parsifal/reviews/reporting/export.py:117
 #: parsifal/reviews/reporting/templates/reporting/export.html:86
 #: parsifal/reviews/templates/reviews/partial_published_protocols.html:171
@@ -3002,7 +3002,7 @@ msgstr ""
 msgid "Exclusion"
 msgstr ""
 
-#: parsifal/reviews/models.py:620
+#: parsifal/reviews/models.py:621
 #: parsifal/reviews/planning/templates/planning/partial_pico_suggested.html:36
 #: parsifal/reviews/planning/templates/planning/protocol.html:318
 #: parsifal/reviews/planning/templates/planning/protocol.html:471
@@ -3010,7 +3010,7 @@ msgstr ""
 msgid "Population"
 msgstr ""
 
-#: parsifal/reviews/models.py:621
+#: parsifal/reviews/models.py:622
 #: parsifal/reviews/planning/templates/planning/partial_pico_suggested.html:44
 #: parsifal/reviews/planning/templates/planning/protocol.html:324
 #: parsifal/reviews/planning/templates/planning/protocol.html:490
@@ -3018,7 +3018,7 @@ msgstr ""
 msgid "Intervention"
 msgstr ""
 
-#: parsifal/reviews/models.py:622
+#: parsifal/reviews/models.py:623
 #: parsifal/reviews/planning/templates/planning/partial_pico_suggested.html:52
 #: parsifal/reviews/planning/templates/planning/protocol.html:330
 #: parsifal/reviews/planning/templates/planning/protocol.html:503
@@ -3026,7 +3026,7 @@ msgstr ""
 msgid "Comparison"
 msgstr ""
 
-#: parsifal/reviews/models.py:623
+#: parsifal/reviews/models.py:624
 #: parsifal/reviews/planning/templates/planning/partial_pico_suggested.html:60
 #: parsifal/reviews/planning/templates/planning/protocol.html:336
 #: parsifal/reviews/planning/templates/planning/protocol.html:516
@@ -3034,30 +3034,35 @@ msgstr ""
 msgid "Outcome"
 msgstr ""
 
-#: parsifal/reviews/models.py:650
+#: parsifal/reviews/models.py:625
+#: parsifal/reviews/planning/templates/planning/protocol.html:353
+msgid "Study Type"
+msgstr ""
+
+#: parsifal/reviews/models.py:652
 msgid "Partially"
 msgstr ""
 
-#: parsifal/reviews/models.py:750
+#: parsifal/reviews/models.py:752
 msgid "Expected values: \"True\" or \"False\""
 msgstr ""
 
-#: parsifal/reviews/models.py:768 parsifal/reviews/models.py:778
-#: parsifal/reviews/models.py:788
+#: parsifal/reviews/models.py:770 parsifal/reviews/models.py:780
+#: parsifal/reviews/models.py:790
 msgid "Invalid input for "
 msgstr ""
 
-#: parsifal/reviews/models.py:768
+#: parsifal/reviews/models.py:770
 msgid ""
 " field. Expected value: floating point number. Please use dot instead of "
 "comma."
 msgstr ""
 
-#: parsifal/reviews/models.py:778
+#: parsifal/reviews/models.py:780
 msgid " field. Expected value: integer number."
 msgstr ""
 
-#: parsifal/reviews/models.py:788
+#: parsifal/reviews/models.py:790
 msgid " field. Expected value: date. Please use the format MM/DD/YYYY."
 msgstr ""
 
@@ -3152,8 +3157,8 @@ msgstr ""
 #: parsifal/reviews/planning/templates/planning/partial_planning_risk.html:21
 #: parsifal/reviews/planning/templates/planning/partial_quality_assessment_answer.html:11
 #: parsifal/reviews/planning/templates/planning/partial_quality_assessment_question.html:21
-#: parsifal/reviews/planning/templates/planning/protocol.html:780
-#: parsifal/reviews/planning/templates/planning/protocol.html:786
+#: parsifal/reviews/planning/templates/planning/protocol.html:781
+#: parsifal/reviews/planning/templates/planning/protocol.html:787
 msgid "edit"
 msgstr ""
 
@@ -3306,7 +3311,7 @@ msgid "Search Methodology"
 msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:59
-#: parsifal/reviews/planning/templates/planning/protocol.html:904
+#: parsifal/reviews/planning/templates/planning/protocol.html:905
 msgid "Selection Reviewer"
 msgstr ""
 
@@ -3333,8 +3338,8 @@ msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:115
 #: parsifal/reviews/planning/templates/planning/protocol.html:376
-#: parsifal/reviews/planning/templates/planning/protocol.html:665
-#: parsifal/reviews/planning/templates/planning/protocol.html:942
+#: parsifal/reviews/planning/templates/planning/protocol.html:666
+#: parsifal/reviews/planning/templates/planning/protocol.html:943
 #: parsifal/reviews/planning/templates/planning/statistical_methods_conventions.html:60
 msgid "Error!"
 msgstr "Error!"
@@ -3475,10 +3480,6 @@ msgid ""
 "leave it blank."
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:353
-msgid "Study Type"
-msgstr ""
-
 #: parsifal/reviews/planning/templates/planning/protocol.html:373
 msgid "Saving..."
 msgstr ""
@@ -3564,22 +3565,22 @@ msgid "development:"
 msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:490
-#: parsifal/reviews/planning/templates/planning/protocol.html:623
+#: parsifal/reviews/planning/templates/planning/protocol.html:624
 msgid "cross company"
 msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:491
-#: parsifal/reviews/planning/templates/planning/protocol.html:623
+#: parsifal/reviews/planning/templates/planning/protocol.html:624
 msgid "cross organisation"
 msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:494
-#: parsifal/reviews/planning/templates/planning/protocol.html:623
+#: parsifal/reviews/planning/templates/planning/protocol.html:624
 msgid "cross organization"
 msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:497
-#: parsifal/reviews/planning/templates/planning/protocol.html:623
+#: parsifal/reviews/planning/templates/planning/protocol.html:624
 msgid "multiple-organizational"
 msgstr ""
 
@@ -3637,31 +3638,31 @@ msgid "Add Keyword"
 msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:571
-msgid "Import PICO(C|S) Keywords"
+msgid "Import Keywords from"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:592
-#: parsifal/reviews/planning/templates/planning/protocol.html:732
+#: parsifal/reviews/planning/templates/planning/protocol.html:593
+#: parsifal/reviews/planning/templates/planning/protocol.html:733
 #: parsifal/reviews/settings/templates/settings/review_settings.html:123
 #: parsifal/reviews/settings/templates/settings/review_settings.html:149
 msgid "Are you sure?"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:595
+#: parsifal/reviews/planning/templates/planning/protocol.html:596
 msgid ""
 "This action <strong>cannot</strong> be undone. This will remove the <strong "
 "id=\"delete-keyword-name\"></strong> keyword, and all related synonyms."
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:598
+#: parsifal/reviews/planning/templates/planning/protocol.html:599
 msgid "Remove this keyword"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:613
+#: parsifal/reviews/planning/templates/planning/protocol.html:614
 msgid "About the Search String"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:616
+#: parsifal/reviews/planning/templates/planning/protocol.html:617
 msgid ""
 "The golden rule to design a good search string is to separate the keywords "
 "and synonyms with the boolean operator <strong>OR</strong> and separate the "
@@ -3670,50 +3671,50 @@ msgid ""
 "<strong>AND</strong>, as following:"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:617
+#: parsifal/reviews/planning/templates/planning/protocol.html:618
 msgid "population"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:617
 #: parsifal/reviews/planning/templates/planning/protocol.html:618
 #: parsifal/reviews/planning/templates/planning/protocol.html:619
 #: parsifal/reviews/planning/templates/planning/protocol.html:620
+#: parsifal/reviews/planning/templates/planning/protocol.html:621
 msgid "synonym"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:618
+#: parsifal/reviews/planning/templates/planning/protocol.html:619
 msgid "intervention"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:619
+#: parsifal/reviews/planning/templates/planning/protocol.html:620
 msgid "comparison"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:620
+#: parsifal/reviews/planning/templates/planning/protocol.html:621
 msgid "outcomes"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:622
+#: parsifal/reviews/planning/templates/planning/protocol.html:623
 msgid "Good example"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:623
+#: parsifal/reviews/planning/templates/planning/protocol.html:624
 msgid "software"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:623
+#: parsifal/reviews/planning/templates/planning/protocol.html:624
 msgid "application"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:623
+#: parsifal/reviews/planning/templates/planning/protocol.html:624
 msgid "product"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:626
+#: parsifal/reviews/planning/templates/planning/protocol.html:627
 msgid "Bad example"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:647
+#: parsifal/reviews/planning/templates/planning/protocol.html:648
 msgid ""
 "Separate the keywords and synonyms with the boolean operator <strong>OR</"
 "strong> and separate the <em>population</em>, <em>intervention</em>, "
@@ -3721,22 +3722,22 @@ msgid ""
 "boolean operator <strong>AND</strong>."
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:652
+#: parsifal/reviews/planning/templates/planning/protocol.html:653
 msgid ""
 "Use uppercase for boolean operators (<strong>AND</strong>, <strong>OR</"
 "strong>), double quotes for composite words and parentheses to logically "
 "separate the keywords and synonyms."
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:671
+#: parsifal/reviews/planning/templates/planning/protocol.html:672
 msgid "Suggested Search String"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:684
+#: parsifal/reviews/planning/templates/planning/protocol.html:685
 msgid "About the Sources"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:688
+#: parsifal/reviews/planning/templates/planning/protocol.html:689
 msgid ""
 "This section specifies which sources will be sought from the papers "
 "considered in this systematic literature review. It can identify electronic "
@@ -3746,44 +3747,44 @@ msgid ""
 "subsequent Study Selection."
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:699
+#: parsifal/reviews/planning/templates/planning/protocol.html:700
 msgid "Digital Libraries"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:735
+#: parsifal/reviews/planning/templates/planning/protocol.html:736
 msgid ""
 "This action <strong>cannot</strong> be undone. This will remove the <strong "
 "id=\"delete-source-name\"></strong> source, and permanently delete all "
 "imported articles associated with it."
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:738
+#: parsifal/reviews/planning/templates/planning/protocol.html:739
 msgid "Remove this source"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:746
+#: parsifal/reviews/planning/templates/planning/protocol.html:747
 msgid "Digital Library"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:753
+#: parsifal/reviews/planning/templates/planning/protocol.html:754
 msgid ""
 "You can identify electronic databases such as IEEE, ACM or indicate that the "
 "search will be performed from offline sources."
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:801
+#: parsifal/reviews/planning/templates/planning/protocol.html:802
 msgid "Add Source"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:805
+#: parsifal/reviews/planning/templates/planning/protocol.html:806
 msgid "Add a Digital Library"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:818
+#: parsifal/reviews/planning/templates/planning/protocol.html:819
 msgid "About Selection Criterias"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:821
+#: parsifal/reviews/planning/templates/planning/protocol.html:822
 msgid ""
 "The inclusion and exclusion criteria indicate which parameters will be "
 "considered to determine whether or not a given study will be included in the "
@@ -3794,39 +3795,39 @@ msgid ""
 "not be considered while conducting the systematic review."
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:837
+#: parsifal/reviews/planning/templates/planning/protocol.html:838
 msgid ""
 "The inclusion and exclusion criteria indicate which parameters will be "
 "considered to determine whether or not a given study will be included in the "
 "systematic review performed."
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:841
+#: parsifal/reviews/planning/templates/planning/protocol.html:842
 msgid ""
 "Inform your inclusion or exclusion criteria and press <strong>Enter</strong> "
 "to add."
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:845
+#: parsifal/reviews/planning/templates/planning/protocol.html:846
 #: parsifal/reviews/templates/reviews/partial_published_protocols.html:209
 msgid "Inclusion Criteria"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:857
-#: parsifal/reviews/planning/templates/planning/protocol.html:874
+#: parsifal/reviews/planning/templates/planning/protocol.html:858
+#: parsifal/reviews/planning/templates/planning/protocol.html:875
 msgid "remove selected"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:862
+#: parsifal/reviews/planning/templates/planning/protocol.html:863
 #: parsifal/reviews/templates/reviews/partial_published_protocols.html:220
 msgid "Exclusion Criteria"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:888
+#: parsifal/reviews/planning/templates/planning/protocol.html:889
 msgid "About Selection Master Reviewer"
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:891
+#: parsifal/reviews/planning/templates/planning/protocol.html:892
 msgid ""
 "During the study selection process, reviewers should evaluate the papers "
 "considered and, in the light of the inclusion and exclusion criteria, "
@@ -3836,19 +3837,19 @@ msgid ""
 "which the selections made by the reviewers differ from each other."
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:892
+#: parsifal/reviews/planning/templates/planning/protocol.html:893
 msgid ""
 "Thus, this section indicates which reviewer will be considered as the master "
 "reviewer for conflict resolution during the study selection process."
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:910
+#: parsifal/reviews/planning/templates/planning/protocol.html:911
 msgid ""
 "Necessary only if the review has more than one reviewer, since it could "
 "occur conflicts between reviewers during the Study Selection phase."
 msgstr ""
 
-#: parsifal/reviews/planning/templates/planning/protocol.html:914
+#: parsifal/reviews/planning/templates/planning/protocol.html:915
 msgid ""
 "The reviewer will resolve the conflicts between the author's article "
 "evaluations for resolution conflits."
@@ -4065,7 +4066,7 @@ msgid ""
 msgstr ""
 
 #: parsifal/reviews/planning/views.py:79 parsifal/reviews/planning/views.py:98
-#: parsifal/reviews/planning/views.py:570
+#: parsifal/reviews/planning/views.py:571
 msgid "Your review have been saved successfully!"
 msgstr ""
 
@@ -4076,19 +4077,19 @@ msgid ""
 "objectives have %s characters."
 msgstr ""
 
-#: parsifal/reviews/planning/views.py:923
+#: parsifal/reviews/planning/views.py:924
 msgid "Cutoff score saved successfully!"
 msgstr ""
 
-#: parsifal/reviews/planning/views.py:960
+#: parsifal/reviews/planning/views.py:961
 msgid "Description and Type are required fields."
 msgstr ""
 
-#: parsifal/reviews/planning/views.py:1061
+#: parsifal/reviews/planning/views.py:1062
 msgid "Data Extraction Fields has been shared!"
 msgstr ""
 
-#: parsifal/reviews/planning/views.py:1063
+#: parsifal/reviews/planning/views.py:1064
 msgid "Data Extraction Fields has been made private again!"
 msgstr ""
 
