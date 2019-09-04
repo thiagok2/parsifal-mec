@@ -182,11 +182,9 @@
           		<input type="hidden" name="review-id" id="review-id" value="{{ review.id }}">
 	            <div class="modal-content">
 	           		<div class="modal-header">
-	             		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	           			<p><small class="text-muted">{% trans 'Choose an alternative to apply to your search.' %}</small></p>
 	           		</div>
 	           		<div class="modal-body">
-	            	
-		             	
 		                <div class="list-group">
 							<a href="#" class="list-group-item {% if review.pico_type == 'PICOC' %} active {% endif %}" data-pico-value="PICOC">
 						    	{% trans 'PICOC stands for <em>Population</em>, <em>Intervention</em>, <em>Comparison</em>, <em>Outcomes</em> and <strong><em>Context</em></strong>.' %}
@@ -200,18 +198,76 @@
 						</div>
 	              	</div>
 		            <div class="modal-footer" style="text-align: left;">
-		                <p><small class="text-muted">{% trans 'Choose an alternative to apply to your search.' %}</small></p>
+		                
 		              	<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-							<button type="submit" class="btn btn-success">
-								<span class="glyphicon glyphicon-ok"></span>Salvar
-							</button>
+							<button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
 						</div>
 		            </div>
 	            </div><!-- end modal-content -->
             </form>
           </div>
-        </div>
+        </div><!-- end picoc config -->
+
+		<div class="modal fade" id="modal-pico-share">
+	        <div class="modal-dialog">
+	          <div class="modal-content">
+	            <div class="modal-header">
+	              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	              <h4 class="modal-title">{% trans 'Export Study Type(PICO)' %}</h4>
+	            </div>
+	            <div class="modal-body">
+	              {% if review.export_pico %}
+	                <p>{% trans 'Your Study Type(PICO) are already shared. Do you wanna make it private again?' %}</p>
+	              {% elif not review.export_pico %}
+	                <p>{% trans 'If you agree, your Study Type(PICO) will be made known to other researchers to use them' %}</p>
+	              {% endif %}
+	            </div>
+	            <div class="modal-footer" style="text-align: left;">
+	              <form id="form-pico-share">
+	                {% csrf_token %}
+	                <button type="button" id="btn-confirm-pico-share" class="btn btn-success btn-block" data-review-id="{{review.id}}">
+	                    {% if review.export_pico %}
+	                      {% trans 'Hide Study Type(PICO)...' %}
+	                    {% elif not review.export_pico %}
+	                      {% trans 'Export Study Type(PICO).' %}
+	                    {% endif %}
+	                </button>
+	              </form>
+	            </div>
+	          </div>
+	        </div>
+	    </div> <!-- end modal share -->
+	    
+	    <div class="modal fade" id="modal-suggested-pico">
+	      <div class="modal-dialog">
+	        <div class="modal-content">
+	          <div class="modal-header">
+	            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	            <h4 class="modal-title">{% trans 'Import Shared' %}</h4>
+	          </div>
+	          <div class="modal-body">
+	          	 <p style="margin-bottom: 20px;">{% trans 'Below you see the reviews that exported your methods, choose one to import for your review' %}</p>
+	             {% csrf_token %}
+	             <input type="hidden" name="review-id" value="{{ review.id }}">
+	             <table class="table table-condensed table-modal" id="tbl-import-pico">
+	               <thead>
+	               	<tr>
+	               		<th>{% trans 'ID' %}</th>
+	               		<th>{% trans 'Review' %}</th>
+	               		<th>{% trans 'Author' %}</th>
+	               		<th></th>
+	               		<th></th>
+	               	</tr>
+	             	</thead>
+	               <tbody></tbody>
+	             </table>
+	          </div>
+	        </div>
+	      </div>
+	    </div>  
+	    
+		
+
 
         <form method="post" id="picoc-form" class="form-horizontal">
           {% csrf_token %}
@@ -220,80 +276,93 @@
           <div class="panel panel-default">
             <div class="panel-heading has-help">
               <h3 class="panel-title">
-                {{ review.pico_type }}
+                <span id="pico_type_title">{{ review.pico_type }}</span>
                 <a href="javascript:void(0);" data-toggle="tooltip" title="{% trans 'Edit' %}" data-placement="top" data-container="body">
                   <span class="glyphicon glyphicon-cog" data-toggle="modal" data-target="#picoc-config"></span>
                 </a>
+                
                 <a href="javascript:void(0);" class="pull-right" data-toggle="tooltip" title="{% trans 'What is this? Click to get help.' %}" data-placement="top" data-container="body">
                   <span class="glyphicon glyphicon-question-sign big-glyphicon" data-toggle="modal" data-target="#review-framework-help"></span>
                 </a>
+                
+                <a href="javascript:void(0);" style="margin-right: 1%;" class="pull-right" data-toggle="tooltip" title="{% trans 'Share' %}" data-placement="top" data-container="body">
+                  <span class="glyphicon glyphicon-share big-glyphicon" data-toggle="modal" data-target="#modal-pico-share"></span>
+                </a>
+                
                 {% include 'comments/comment_icon_button.html' with user=user about="PICOC" %}
               </h3>
-              <small class="text-muted pull-left help-info">
-              	{% if review.pico_type == 'PICOC' %}
+              <div class="small text-muted pull-left help-info">
+              	<div class="picoc {% if review.pico_type != 'PICOC' %} hidden {% endif %}" id="picoc-subtitle">
+              	        		
               		{% trans 'PICOC stands for <em>population</em>, <em>intervention</em>, <em>comparison</em>, <em>outcomes</em> and <em>context</em>.' %}
-              	{% endif %}
-              	{% if review.pico_type == 'PICOS' %}
-              		{% trans 'PICOC stands for <em>population</em>, <em>intervention</em>, <em>comparison</em>, <em>outcomes</em> and <em>study type</em>.' %}
-              	{% endif %}
-              	{% if review.pico_type == 'Free Text' %}
+              	
+              	</div>
+              	<div class="picos {% if review.pico_type != 'PICOS' %} hidden {% endif %}" id="picos-subtitle">
+              
+              		{% trans 'PICOS stands for <em>population</em>, <em>intervention</em>, <em>comparison</em>, <em>outcomes</em> and <em>study type</em>.' %}
+              
+              	</div>
+              	<div class="pico_free {% if review.pico_type != 'Free Text' %} hidden {% endif %}" id="pico_free-subtitle">
               		{% trans 'Write your framework for a systematic review of the literature used in this project.' %}
-              	{% endif %}
-              </small>
+              	</div>
+              </div>
             </div>
             <div class="panel-body">
-              	  {% if review.pico_type == 'PICOC' %}
-	              	<p>{% trans 'Separate the terms used in the PICOC using commas. This will make possible to save them separately as keywords so we can help you design your search string.' %}</p>
+              	  <div class="{% if review.pico_type != 'PICOC' %} hidden {% endif %}">
+	              	<p class="picoc">{% trans 'Separate the terms used in the PICOC using commas. This will make possible to save them separately as keywords so we can help you design your search string.' %}</p>
 		          	<p>{% trans "If any of the sections of PICOC does not apply to your research, please leave it blank." %}</p>
-	              {% endif %}
+	             </div>
 	              
-	              {% if review.pico_type == 'PICOC' or review.pico_type == 'PICOS'%}
-	              <div class="form-group">
-	                <label class="control-label col-md-2" for="population">{% trans 'Population' %}</label>
-	                <div class="col-md-10">
-	                  <input type="text" class="form-control" id="population" name="population" maxlength="200" value="{{ review.population }}">
-	                </div>
+	              <div class="picoc picos  {% if review.pico_type == 'Free Text' %} hidden {% endif %}" >
+		              <div class="form-group">
+		                <label class="control-label col-md-2" for="population">{% trans 'Population' %}</label>
+		                <div class="col-md-10">
+		                  <input type="text" class="form-control" id="population" name="population" maxlength="200" value="{{ review.population }}">
+		                </div>
+		              </div>
+		              <div class="form-group">
+		                <label class="control-label col-md-2" for="intervention">{% trans 'Intervention' %}</label>
+		                <div class="col-md-10">
+		                  <input type="text" class="form-control" id="intervention" name="intervention" maxlength="200" value="{{ review.intervention }}">
+		                </div>
+		              </div>
+		              <div class="form-group">
+		                <label class="control-label col-md-2" for="comparison">{% trans 'Comparison' %}</label>
+		                <div class="col-md-10">
+		                  <input type="text" class="form-control" id="comparison" name="comparison" maxlength="200" value="{{ review.comparison }}">
+		                </div>
+		              </div>
+		              <div class="form-group">
+		                <label class="control-label col-md-2" for="outcome">{% trans 'Outcome' %}</label>
+		                <div class="col-md-10">
+		                  <input type="text" class="form-control" id="outcome" name="outcome" maxlength="200" value="{{ review.outcome }}">
+		                </div>
+		              </div>
 	              </div>
-	              <div class="form-group">
-	                <label class="control-label col-md-2" for="intervention">{% trans 'Intervention' %}</label>
-	                <div class="col-md-10">
-	                  <input type="text" class="form-control" id="intervention" name="intervention" maxlength="200" value="{{ review.intervention }}">
-	                </div>
-	              </div>
-	              <div class="form-group">
-	                <label class="control-label col-md-2" for="comparison">{% trans 'Comparison' %}</label>
-	                <div class="col-md-10">
-	                  <input type="text" class="form-control" id="comparison" name="comparison" maxlength="200" value="{{ review.comparison }}">
-	                </div>
-	              </div>
-	              <div class="form-group">
-	                <label class="control-label col-md-2" for="outcome">{% trans 'Outcome' %}</label>
-	                <div class="col-md-10">
-	                  <input type="text" class="form-control" id="outcome" name="outcome" maxlength="200" value="{{ review.outcome }}">
-	                </div>
-	              </div>
-	         	{% endif %}
-	         	{% if review.pico_type == 'PICOC' %}
-	              <div class="form-group">
+	         	
+	         
+	              <div class="form-group picoc {% if review.pico_type != 'PICOC' %} hidden {% endif %}">
 	                <label class="control-label col-md-2" for="context">{% trans 'Context' %}</label>
 	                <div class="col-md-10">
 	                  <input type="text" class="form-control" id="context" name="context" maxlength="200" value="{{ review.context }}">
 	                </div>
 	              </div>
-              {% endif %}
-              {% if review.pico_type == 'PICOS' %}
-	              <div class="form-group">
+             
+              
+	              <div class="form-group picos {% if review.pico_type != 'PICOS' %} hidden {% endif %}">
 	                <label class="control-label col-md-2" for="study_type">{% trans 'Study Type' %}</label>
 	                <div class="col-md-10">
 	                  <input type="text" class="form-control" id="study_type" name="study_type" maxlength="200" value="{{ review.study_type }}">
 	                </div>
 	              </div>
-              {% endif %}
-              {% if review.pico_type == 'Free Text' %}
-	              <div class="form-group" style="margin-right: 0px;margin-left: 0px;">
-	                <textarea rows="6" name="pico_text" class="form-control" >{{ review.pico_text }}</textarea>
+             
+              
+              	  <div class="pico_free {% if review.pico_type != 'Free Text' %} hidden {% endif %}">
+		              <div class="form-group" style="margin-right: 0px;margin-left: 0px;">
+		                <textarea rows="6" name="pico_text" class="form-control" >{{ review.pico_text }}</textarea>
+		              </div>
 	              </div>
-              {% endif %}
+             
             </div>
             <div class="panel-footer">
               <button type="button" class="btn btn-success btn-save-picoc" data-loading="Saving...">
@@ -310,6 +379,17 @@
                   <span class="glyphicon glyphicon-ok"></span> {% trans 'Saved!' %}
                 </span>
               </button>
+              
+              <button type="button" style="margin:5px" class="btn btn-success" id="btn-modal-import-pico" data-toggle="modal" data-target="#modal-suggested-pico">
+                <span class="glyphicon glyphicon-import"></span>
+                {% trans 'Import PICO' %}
+              </button>
+              
+              <span class="pull-right text-muted small" id="import-pico-msg">
+              	{% if review.export_pico %} 
+              		Compartilhado
+              	{% endif%}
+              </span>
             </div>
           </div>
         </form>
