@@ -43,9 +43,9 @@ class Review(models.Model):
         (PUBLISHED, _('Published')),
         )
 
-    PICOC = u'PICOC'
-    PICOS = u'PICOS'
-    FREE_TEXT = u'Free Text'
+    PICOC = 'PICOC'
+    PICOS = 'PICOS'
+    FREE_TEXT = 'Free Text'
     PICO_TYPE = (
         (PICOC, _('PICOC')),
         (PICOS, _('PICOS')),
@@ -77,6 +77,7 @@ class Review(models.Model):
     export_dataextraction = models.BooleanField(default=False)
     export_risks = models.BooleanField(default=False)
     export_qualityassessment = models.BooleanField(default=False)
+    export_pico = models.BooleanField(default=False)
 
     statistical_methods=models.TextField(max_length=1000,blank=True)
 
@@ -91,7 +92,16 @@ class Review(models.Model):
         return self.name
 
     def isExtended(self):
-        return protocol_base is None
+        return self.protocol_base is None
+    
+    def isPicoc(self):
+        return self.pico_type == self.PICOC
+    
+    def isPicos(self):
+        return self.pico_type == self.PICOS
+    
+    def isStudyTypeFree(self):
+        return self.pico_type == self.FREE_TEXT
 
     #def get_protocol_base(self):
     #    return Review.objects.filter(review__id=self.review.id, protocol_base__id=self.id)

@@ -4,6 +4,7 @@ import time
 import json
 
 from django.db import transaction
+from django.db.models import Q
 from django.core.urlresolvers import reverse as r
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -16,6 +17,7 @@ from django.template.loader import render_to_string
 from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseForbidden
 from django.views.decorators.http import require_POST
 from django.utils.html import escape
+
 
 from parsifal.reviews.models import *
 from parsifal.reviews.planning.forms import KeywordForm, SynonymForm
@@ -1061,10 +1063,84 @@ def share_data_extraction_fields(request):
         return HttpResponse(_('Data Extraction Fields has been made private again!'))
     except:
         return HttpResponseBadRequest()
+
+@author_required
+@login_required   
 def setting_pico(request):
-    review_id = request.POST['review-id']
+    review_id = request.GET['review-id']
     review = Review.objects.get(pk=review_id)
-    pico_type = request.POST['pico_type']
+    pico_type = request.GET['pico_type']
     review.pico_type = pico_type
     review.save()
     return render(request, 'planning/protocol.html', { 'review': review })
+
+@author_required
+@login_required
+def share_pico(request):
+    try:
+        review_id = request.POST['review-id']
+        review = Review.objects.get(pk=review_id)
+        review.export_pico = True if not review.export_pico else False
+        review.save()
+        return HttpResponse(review.export_pico)
+    except Exception as e:
+        print str(e)
+        return HttpResponseBadRequest()
+
+@author_required
+@login_required
+def suggested_pico(request):
+    try:
+        review_id = request.GET['review-id']
+        suggested_reviews = Review.objects.filter(Q(export_pico=True) | Q(export_protocol=True)).exclude(id=review_id)
+
+        context = RequestContext(request, {'suggested_reviews': suggested_reviews})
+        return render_to_response('planning/partial_pico_suggested.html', context)
+    except Exception as e:
+        print e
+        return HttpResponseBadRequest()
+    
+@author_required
+@login_required  
+def import_pico(request):
+    try:
+        review_id = request.GET['review-id']
+        review = Review.objects.get(pk=review_id)
+        
+        ref_review_id = request.GET['ref-review-id']
+        ref_review = Review.objects.get(pk=ref_review_id)
+        
+        response = {};
+        
+        review.pico_type = ref_review.pico_type
+        response['pico_type'] = review.pico_type
+        
+        if ref_review.isStudyTypeFree():
+            review.pico_text = ref_review.pico_text
+            response['pico_text'] = review.pico_text
+        else:
+            review.population = ref_review.population
+            review.intervention = ref_review.intervention
+            review.comparison = ref_review.comparison
+            review.outcome = ref_review.outcome
+            
+            response['population'] = review.population
+            response['intervention'] = review.intervention
+            response['comparison'] = review.comparison
+            response['outcome'] = review.outcome
+            
+            if ref_review.isPicoc():
+                review.context = ref_review.context
+                response['context'] = review.context
+            elif ref_review.isPicos():
+                review.study_type = ref_review.study_type
+                response['study_type'] = review.study_type
+            
+        review.save()
+         
+        dump = json.dumps(response)
+        return HttpResponse(dump, content_type='application/json')
+    except Exception as e:
+        print str(e)
+        return HttpResponseBadRequest()
+
