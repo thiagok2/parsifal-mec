@@ -50,7 +50,7 @@
         <nav id="link-list">
         <ul class="nav nav-pills nav-stacked">
           <li><a href="#objective-section" class="list-group-item">{% trans 'Objectives' %}</a></li>
-          <li><a href="#picoc-section" class="list-group-item">{% trans 'PICOC' %}</a></li>
+          <li><a href="#picoc-section" class="list-group-item">{% trans 'Search Methodology' %}</a></li>
           <li><a href="#question-section" class="list-group-item">{% trans 'Research Questions' %}</a></li>
           <li><a href="#keywords-section" class="list-group-item">{% trans 'Keywords and Synonyms' %}</a></li>
           <li><a href="#search-string-section" class="list-group-item">{% trans 'Search String' %}</a></li>
@@ -130,7 +130,7 @@
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">{% trans 'About systematic literature review framework' %}</h4>
+                <h4 class="modal-title">{% trans 'About Search Methodolgy' %}</h4>
               </div>
               <div class="modal-body">
               	
@@ -143,7 +143,7 @@
 			
 			  	<div class="tab-content">
 			    	<div id="what-help" class="tab-pane fade in active">
-			      		<h3>{% trans 'Review System Lierature Framework'%}</h3>
+			      		<h3>{% trans 'Search Methodolgy'%}</h3>
 			      		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 			    	</div>
 			    	<div id="picoc-help" class="tab-pane fade">
@@ -213,13 +213,13 @@
 	          <div class="modal-content">
 	            <div class="modal-header">
 	              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	              <h4 class="modal-title">{% trans 'Export Study Type(PICO)' %}</h4>
+	              <h4 class="modal-title">{% trans 'Export Search Methodology' %}</h4>
 	            </div>
 	            <div class="modal-body">
 	              {% if review.export_pico %}
-	                <p>{% trans 'Your Study Type(PICO) are already shared. Do you wanna make it private again?' %}</p>
+	                <p>{% trans 'Your Search Methodology are already shared. Do you wanna make it private again?' %}</p>
 	              {% elif not review.export_pico %}
-	                <p>{% trans 'If you agree, your Study Type(PICO) will be made known to other researchers to use them' %}</p>
+	                <p>{% trans 'If you agree, your Search Methodology will be made known to other researchers to use them.' %}</p>
 	              {% endif %}
 	            </div>
 	            <div class="modal-footer" style="text-align: left;">
@@ -227,9 +227,9 @@
 	                {% csrf_token %}
 	                <button type="button" id="btn-confirm-pico-share" class="btn btn-success btn-block" data-review-id="{{review.id}}">
 	                    {% if review.export_pico %}
-	                      {% trans 'Hide Study Type(PICO)...' %}
+	                      {% trans 'Hide Search Methodology' %}
 	                    {% elif not review.export_pico %}
-	                      {% trans 'Export Study Type(PICO).' %}
+	                      {% trans 'Export Search Methodology' %}
 	                    {% endif %}
 	                </button>
 	              </form>
@@ -246,7 +246,7 @@
 	            <h4 class="modal-title">{% trans 'Import Shared' %}</h4>
 	          </div>
 	          <div class="modal-body">
-	          	 <p style="margin-bottom: 20px;">{% trans 'Below you see the reviews that exported your methods, choose one to import for your review' %}</p>
+	          	 <p style="margin-bottom: 20px;">{% trans 'Below you see the reviews that exported your methodology, choose one to import for your review' %}</p>
 	             {% csrf_token %}
 	             <input type="hidden" name="review-id" value="{{ review.id }}">
 	             <table class="table table-condensed table-modal" id="tbl-import-pico">
@@ -303,7 +303,7 @@
               
               	</div>
               	<div class="pico_free {% if review.pico_type != 'Free Text' %} hidden {% endif %}" id="pico_free-subtitle">
-              		{% trans 'Write your framework for a systematic review of the literature used in this project.' %}
+              		{% trans 'Write your search methodology for a systematic review of the literature used in this project.' %}
               	</div>
               </div>
             </div>
@@ -382,7 +382,7 @@
               
               <button type="button" style="margin:5px" class="btn btn-success" id="btn-modal-import-pico" data-toggle="modal" data-target="#modal-suggested-pico">
                 <span class="glyphicon glyphicon-import"></span>
-                {% trans 'Import PICO' %}
+                {% trans 'Import Methodology' %}
               </button>
               
               <span class="pull-right text-muted small" id="import-pico-msg">
@@ -405,7 +405,7 @@
                 <h4 class="modal-title">{% trans 'About the Research Questions' %}</h4>
               </div>
               <div class="modal-body">
-                <p>{% trans 'The area of the systematic review and the specific research questions set the focus for the identification of the primary studies, the extraction of data from the studies and the analysis. Hence, the research questions must be well thought through and phrased. Aspects to take into account in phrasing the research questions include the PICOC.' %}</p>
+                <p>{% trans 'The area of the systematic review and the specific research questions set the focus for the identification of the primary studies, the extraction of data from the studies and the analysis. Hence, the research questions must be well thought through and phrased. Aspects to take into account in phrasing the research questions include the PICOC or PICOS.' %}</p>
               </div>
               <div class="modal-footer" style="text-align: left;">
                 <p><small class="text-muted">C. Wohlin, P. Runeson, M. Höst, M. C. Ohlsson, B. Regnell and A. Wesslén, <a href="http://www.springer.com/us/book/9783642290435" target="_blank">"Experimentation in Software Engineering"</a>, Springer, ISBN 978-3-642-29043-5, 2012.</small></p>
@@ -456,7 +456,7 @@
               </div>
               <div class="modal-body">
                 <p>{% trans 'The keywords are basically extracted from the <em>population</em>, <em>intervention</em>, <em>comparison</em> and <em>outcomes</em>.' %}</p>
-                <p>{% trans 'Every keyword must be related with one step of the PICOC. Please note, the <em>context</em> is related with the <em>population</em>.' %}</p>
+                <p>{% trans 'Every keyword must be related with one step of your Search Methodology (PICOC, PICOS or orther). Please note, the <em>context</em> is related with the <em>population</em>.' %}</p>
                 <p>{% trans 'After determining all relevant keywords, you should relate them if all their synonyms to make your search string broader.' %}</p>
                 <p><strong>{% trans 'Example:' %}</strong> <sup><a href="#kitchenham2007-keywords">[1]</a></sup></p>
                 <table class="table table-bordered table-condensed">
@@ -568,7 +568,7 @@
             </button>
             <button type="button" class="btn btn-success" id="import-pico-keywords">
               <span class="glyphicon glyphicon-import"></span>
-              {% trans 'Import PICO Keywods' %}</button>
+              {% trans 'Import PICO(C|S) Keywords' %}</button>
           </div>
         </div>
 
