@@ -748,7 +748,7 @@ msgstr "Discussões sobre o comentário "
 #, fuzzy
 #| msgid "Joined on"
 msgid "commented on"
-msgstr "Entrou em"
+msgstr "comentou em"
 
 #: parsifal/reviews/comments/templates/comments/comment_detailed.html:46
 #, fuzzy
