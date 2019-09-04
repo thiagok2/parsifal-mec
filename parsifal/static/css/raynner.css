@@ -223,3 +223,11 @@ nav li:hover {
 div.data-extraction-panel  span.badge{
 	margin: 0px 5px;
 }
+
+
+.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {
+    z-index: 2;
+    color: #fff;
+    background-color: #00a65a;
+    border-color: #00a65a;
+}
