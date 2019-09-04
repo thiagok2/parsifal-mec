@@ -276,7 +276,7 @@
           <div class="panel panel-default">
             <div class="panel-heading has-help">
               <h3 class="panel-title">
-                <span id="pico_type_title">{{ review.pico_type }}</span>
+                <span class="pico_type_title">{{ review.pico_type }}</span>
                 <a href="javascript:void(0);" data-toggle="tooltip" title="{% trans 'Edit' %}" data-placement="top" data-container="body">
                   <span class="glyphicon glyphicon-cog" data-toggle="modal" data-target="#picoc-config"></span>
                 </a>
@@ -566,9 +566,10 @@
               <span class="glyphicon glyphicon-plus"></span>
               {% trans 'Add Keyword' %}
             </button>
-            <button type="button" class="btn btn-success" id="import-pico-keywords">
+            <button type="button" class="btn btn-success picoc picos {% if review.pico_type == 'Free Text' %} hidden {% endif %}" id="import-pico-keywords">
               <span class="glyphicon glyphicon-import"></span>
-              {% trans 'Import PICO(C|S) Keywords' %}</button>
+              {% trans 'Import Keywords from' %} <span class="pico_type_title">({{review.pico_type}})</span>
+            </button>
           </div>
         </div>
 

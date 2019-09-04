@@ -38,6 +38,10 @@ $(function () {
     	  $('.pico_free').show();
     	  $('.pico_free').removeClass('hidden');
       }
+	  
+	  $('.pico_type_title').text(pico_type);
+	  
+	  
   }
   
   $('.list-group a').click(function(e) {
@@ -49,9 +53,6 @@ $(function () {
       var pico_type = $(this).attr('data-pico-value');
       $('#pico_type').val(pico_type);
       $("input[id=pico_type]").val(pico_type);
-      
-      
-      $('#pico_type_title').text(pico_type);
       
       update_inputs(pico_type);
       
