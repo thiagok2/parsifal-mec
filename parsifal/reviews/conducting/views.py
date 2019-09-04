@@ -42,6 +42,7 @@ def conducting(request, username, review_name):
 @login_required
 def search_studies(request, username, review_name):
     review = get_object_or_404(Review, name=review_name, author__username__iexact=username)
+    unseen_comments = review.get_visitors_unseen_comments(request.user)
     sessions = review.get_latest_source_search_strings()
     add_sources = review.sources.exclude(id__in=sessions.values('source__id'))
     database_queries = {}
@@ -62,7 +63,8 @@ def search_studies(request, username, review_name):
             'review': review,
             'add_sources': add_sources,
             'database_queries': database_queries,
-            'sources_names': sources_names
+            'sources_names': sources_names,
+            'unseen_comments': unseen_comments
             })
 
 @author_required
@@ -159,6 +161,7 @@ def search_science_direct(request):
 @login_required
 def import_studies(request, username, review_name):
     review = Review.objects.get(name=review_name, author__username__iexact=username)
+    unseen_comments = review.get_visitors_unseen_comments(request.user)
     sources = []
     for source in review.sources.all():
         sources.append({
@@ -167,13 +170,15 @@ def import_studies(request, username, review_name):
             })
     return render(request, 'conducting/conducting_import_studies.html', {
             'review': review,
-            'sources': sources
+            'sources': sources,
+            'unseen_comments': unseen_comments
         })
 
 @author_or_visitor_required
 @login_required
 def study_selection(request, username, review_name):
     review = Review.objects.get(name=review_name, author__username__iexact=username)
+    unseen_comments = review.get_visitors_unseen_comments(request.user)
     try:
         active_tab = int(request.GET['source'])
     except Exception, e:
@@ -192,7 +197,8 @@ def study_selection(request, username, review_name):
             'review': review,
             'active_tab': active_tab,
             'steps_messages': steps_messages,
-            'finished_all_steps': finished_all_steps
+            'finished_all_steps': finished_all_steps,
+            'unseen_comments': unseen_comments
         })
 
 def build_quality_assessment_table(request, review, order):
@@ -241,6 +247,7 @@ def build_quality_assessment_table(request, review, order):
 @login_required
 def quality_assessment(request, username, review_name):
     review = Review.objects.get(name=review_name, author__username__iexact=username)
+    unseen_comments = review.get_visitors_unseen_comments(request.user)
 
     add_sources = review.sources.count()
     import_articles = review.get_source_articles().count()
@@ -274,7 +281,8 @@ def quality_assessment(request, username, review_name):
             'steps_messages': steps_messages,
             'quality_assessment_table': quality_assessment_table,
             'finished_all_steps': finished_all_steps,
-            'order': order
+            'order': order,
+            'unseen_comments': unseen_comments
         })
 
 def build_data_extraction_field_row(article, field):
@@ -398,6 +406,7 @@ def build_data_extraction_table(review, is_finished):
 @login_required
 def data_extraction(request, username, review_name):
     review = Review.objects.get(name=review_name, author__username__iexact=username)
+    unseen_comments = review.get_visitors_unseen_comments(request.user)
 
     add_sources = review.sources.count()
     import_articles = review.get_source_articles().count()
@@ -437,7 +446,8 @@ def data_extraction(request, username, review_name):
             'steps_messages': steps_messages,
             'data_extraction_table': data_extraction_table,
             'finished_all_steps': finished_all_steps,
-            'tab': tab
+            'tab': tab,
+            'unseen_comments': unseen_comments
         })
 
 def bibtex_to_article_object(bib_database, review, source):
@@ -1002,7 +1012,8 @@ def new_article(request):
 @login_required
 def data_analysis(request, username, review_name):
     review = get_object_or_404(Review, name=review_name, author__username__iexact=username)
-    return render(request, 'conducting/conducting_data_analysis.html', { 'review': review })
+    unseen_comments = review.get_visitors_unseen_comments(request.user)
+    return render(request, 'conducting/conducting_data_analysis.html', { 'review': review, 'unseen_comments': unseen_comments })
 
 def articles_selection_chart(request):
     review_id = request.GET['review-id']

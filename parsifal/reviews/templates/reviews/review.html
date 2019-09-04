@@ -30,6 +30,11 @@
 
   <div class="row">
     <div class="col-sm-7 col-md-8 col-lg-9">
+      {% if unseen_comments.count > 0 %}
+        <div class="alert alert-warning">
+          {% trans 'This review has ' %}{{unseen_comments.count}} {% trans "new comments you didn't see" %}
+        </div>
+      {% endif %}
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title">{% trans 'Review details' %}</h3>

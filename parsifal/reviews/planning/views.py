@@ -34,30 +34,35 @@ def planning(request, username, review_name):
 @login_required
 def protocol(request, username, review_name):
     review = get_object_or_404(Review, name=review_name, author__username__iexact=username)
-    return render(request, 'planning/protocol.html', { 'review': review })
+    unseen_comments = review.get_visitors_unseen_comments(request.user)
+    return render(request, 'planning/protocol.html', { 'review': review, 'unseen_comments': unseen_comments })
 
 @author_or_visitor_required
 @login_required
 def quality_assessment_checklist(request, username, review_name):
     review = get_object_or_404(Review, name=review_name, author__username__iexact=username)
-    return render(request, 'planning/quality_assessment_checklist.html', { 'review': review })
+    unseen_comments = review.get_visitors_unseen_comments(request.user)
+    return render(request, 'planning/quality_assessment_checklist.html', { 'review': review, 'unseen_comments': unseen_comments })
 
 @author_or_visitor_required
 @login_required
 def risks_to_review_validity(request, username, review_name):
     review = get_object_or_404(Review, name=review_name, author__username__iexact=username)
-    return render(request, 'planning/risks_to_review_validity.html', { 'review': review })
+    unseen_comments = review.get_visitors_unseen_comments(request.user)
+    return render(request, 'planning/risks_to_review_validity.html', { 'review': review, 'unseen_comments': unseen_comments })
 
 @author_or_visitor_required
 @login_required
 def data_extraction_form(request, username, review_name):
     review = get_object_or_404(Review, name=review_name, author__username__iexact=username)
+    unseen_comments = review.get_visitors_unseen_comments(request.user)
     empty_field = DataExtractionField()
-    return render(request, 'planning/data_extraction_form.html', { 'review': review, 'empty_field': empty_field })
+    return render(request, 'planning/data_extraction_form.html', { 'review': review, 'unseen_comments': unseen_comments, 'empty_field': empty_field })
 
 def statistical_methods_conventions(request, username, review_name):
     review = get_object_or_404(Review, name=review_name, author__username__iexact=username)
-    return render(request, 'planning/statistical_methods_conventions.html', { 'review': review })
+    unseen_comments = review.get_visitors_unseen_comments(request.user)
+    return render(request, 'planning/statistical_methods_conventions.html', { 'review': review, 'unseen_comments': unseen_comments })
 
 def save_statistical_methods(request):
     try:
@@ -186,7 +191,7 @@ def remove_question(request):
 @login_required
 def save_picoc(request):
     try:
-        
+
         review_id = request.POST['review-id']
         review = Review.objects.get(pk=review_id)
         if review.pico_type in ['PICOC','PICOS']:
@@ -194,7 +199,7 @@ def save_picoc(request):
             review.intervention = request.POST['intervention'][:200]
             review.comparison = request.POST['comparison'][:200]
             review.outcome = request.POST['outcome'][:200]
-        
+
         if review.pico_type == 'PICOC':
             review.context = request.POST['context'][:200]
         if review.pico_type == 'PICOS':

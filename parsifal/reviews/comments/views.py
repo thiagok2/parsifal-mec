@@ -16,14 +16,20 @@ from parsifal.reviews.decorators import author_required, author_or_visitor_requi
 def comments(request, username, review_name):
     review = get_object_or_404(Review, name=review_name, author__username__iexact=username)
     comments = review.get_visitors_comments(request.user)
-    return render(request, 'comments/comments.html', { 'review': review, 'comments': comments })
+    closed_comments = comments.filter(is_open=False)
+    unseen_comments = review.get_visitors_unseen_comments(request.user)
+    return render(request, 'comments/comments.html', { 'review': review, 'comments': comments, 'unseen_comments': unseen_comments, 'closed_comments': closed_comments })
 
 @author_or_visitor_required
 @login_required
 def comment_detailed(request, username, review_name, comment_id):
     review = get_object_or_404(Review, name=review_name, author__username__iexact=username)
+    unseen_comments = review.get_visitors_unseen_comments(request.user)
     comment = VisitorComment.objects.get(pk=comment_id)
-    return render(request, 'comments/comment_detailed.html', { 'review': review, 'comment': comment })
+
+    comment_seen = CommentSeen(review=review, user=request.user, comment=comment)
+    comment_seen.save()
+    return render(request, 'comments/comment_detailed.html', { 'review': review, 'comment': comment, 'unseen_comments': unseen_comments })
 
 @login_required
 def save_visitor_comment(request):
