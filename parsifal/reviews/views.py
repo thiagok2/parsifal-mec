@@ -66,6 +66,7 @@ def new(request):
 @author_or_visitor_required
 def review(request, username, review_name):
     review = Review.objects.get(name=review_name, author__username__iexact=username)
+    unseen_comments = review.get_visitors_unseen_comments(request.user)
     if request.method == 'POST':
         form = ReviewForm(request.POST, instance=review)
         if form.is_valid():
@@ -76,7 +77,8 @@ def review(request, username, review_name):
         form = ReviewForm(instance=review)
     return render(request, 'reviews/review.html', {
             'review': review,
-            'form': form
+            'form': form,
+            'unseen_comments': unseen_comments
             })
 
 

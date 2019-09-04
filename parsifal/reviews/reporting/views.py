@@ -19,7 +19,9 @@ def reporting(request, username, review_name):
 @login_required
 def export(request, username, review_name):
     review = get_object_or_404(Review, name=review_name, author__username__iexact=username)
-    return render(request, 'reporting/export.html', { 'review': review })
+    unseen_comments = review.get_visitors_unseen_comments(request.user)
+
+    return render(request, 'reporting/export.html', { 'review': review, 'unseen_comments': unseen_comments })
 
 @author_or_visitor_required
 @login_required

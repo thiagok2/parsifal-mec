@@ -5,7 +5,7 @@ import datetime
 from django.utils import timezone
 from django.utils.html import escape
 from django.db import models
-from django.db.models import Sum
+from django.db.models import Sum, Q
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 
@@ -120,6 +120,10 @@ class Review(models.Model):
 
     def get_visitors_comments(self, user):
         return VisitorComment.objects.filter(review__id=self.id, parent=None, to__in=[user.id, 0])
+
+    def get_visitors_unseen_comments(self, user):
+        comments = self.get_visitors_comments(user)
+        return comments.filter(~Q(comment_seencomments__user=user))
 
     def is_author_or_coauthor(self, user):
         if user.id == self.author.id:
@@ -273,7 +277,6 @@ class VisitorComment(models.Model):
     to = models.IntegerField(default=0, null=True)
     parent = models.ForeignKey('self', null=True, default=None, related_name='parent_comment')
     date = models.DateTimeField()
-    is_new = models.BooleanField(default=True)
     is_open = models.BooleanField(default=True)
 
     class Meta:
@@ -286,12 +289,26 @@ class VisitorComment(models.Model):
 
     def get_user_sended_to(self):
         try:
-            return User.objects.get(pk=self.to)
+            return User.objects.get(pk=self.to).profile.get_screen_name()
         except:
             return 'Todos'
 
     def get_children_comments(self):
         return VisitorComment.objects.filter(parent=self.id).order_by('date')
+
+class CommentSeen(models.Model):
+    review = models.ForeignKey(Review, related_name='review_seencomments')
+    comment = models.ForeignKey(VisitorComment, related_name='comment_seencomments')
+    user = models.ForeignKey(User, related_name='user_seencomments')
+
+    class Meta:
+        verbose_name = u'Comment Seen'
+        verbose_name_plural = u'Comments Seen'
+        ordering = ('user',)
+
+    def __unicode__(self):
+        return self.user
+
 
 class Tag(models.Model):
     review = models.ForeignKey(Review, related_name='review_tags')

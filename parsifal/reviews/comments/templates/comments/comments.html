@@ -16,6 +16,14 @@
           <h3 class="panel-title">
             {% trans 'Comments about review topics' %}
           </h3>
+          <small>
+            {% if unseen_comments.count > 0 %}
+              {{unseen_comments.count}} {% trans 'new comments' %} &nbsp;&bull;&nbsp;
+            {% endif %}
+            {% if closed_comments.count > 0 %}
+              {{closed_comments.count}} {% trans 'closed comments' %}
+            {% endif %}
+          </small>
         </div>
         <div class="panel-body">
           <table class="table table-striped table-bordered">
@@ -38,7 +46,11 @@
                     {{comment.id}}
                   </td>
                   <td>{{comment.user.profile.get_screen_name}}</td>
-                  <td style="max-width: 450px;">{{comment.comment}}</td>
+                  <td style="max-width: 450px;">
+                    {% if comment in unseen_comments %}
+                    <span class="badge label-primary">{% trans 'New' %}</span>
+                    {% endif %}
+                    &nbsp;{{comment.comment}}</td>
                   <td>{{comment.get_user_sended_to}}</td>
                   <td><span class="badge">{{comment.get_about_display}}</span></td>
                   <td>{{comment.date|date:"M d, Y"}}</td>

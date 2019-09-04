@@ -23,7 +23,7 @@
     <a href="{% url 'reporting' review.author.username review.name %}">{% trans 'Reporting' %}</a>
   </li>
   <li{% if active_menu == "comments"%} class="active"{% endif %}>
-    <a href="{% url 'comments' review.author.username review.name %}">{% trans 'Comments' %}</a>
+    <a href="{% url 'comments' review.author.username review.name %}">{% trans 'Comments' %} {% if unseen_comments.count > 0 %}<span class="badge {% if active_menu == 'comments' %} label-default {% endif %}">{{unseen_comments.count}}</span> {% endif %}</a>
   </li>
 </ul>
 <input type="hidden" id="review-id" value="{{ review.id }}">
