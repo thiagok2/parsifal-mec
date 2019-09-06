@@ -93,13 +93,13 @@ class Review(models.Model):
 
     def isExtended(self):
         return self.protocol_base is None
-    
+
     def isPicoc(self):
         return self.pico_type == self.PICOC
-    
+
     def isPicos(self):
         return self.pico_type == self.PICOS
-    
+
     def isStudyTypeFree(self):
         return self.pico_type == self.FREE_TEXT
 
@@ -216,10 +216,15 @@ class Review(models.Model):
 
     def calculate_quality_assessment_max_score(self):
         try:
-            questions_count = QualityQuestion.objects.filter(review__id=self.id).count()
-            higher_weight_answer = QualityAnswer.objects.filter(review__id=self.id).order_by('-weight')[:1].get()
-            if questions_count and higher_weight_answer:
-                return questions_count * higher_weight_answer.weight
+            questions = QualityQuestion.objects.filter(review__id=self.id)
+            weight_sum_score = 0.0
+
+            if questions:
+                for question in questions:
+                    higher_weight_answer = QualityAnswer.objects.filter(review__id=self.id, question__id=question.id).order_by('-weight')[:1].get()
+                    weight_sum_score = weight_sum_score + higher_weight_answer.weight
+
+                return weight_sum_score
             else:
                 return 0.0
         except:
@@ -645,27 +650,6 @@ class Keyword(models.Model):
     def get_synonyms(self):
         return Keyword.objects.filter(review__id=self.review.id, synonym_of__id=self.id)
 
-
-class QualityAnswer(models.Model):
-    SUGGESTED_ANSWERS = (
-        (_('Yes'), 1.0),
-        (_('Partially'), 0.5),
-        (_('No'), 0.0)
-        )
-
-    review = models.ForeignKey(Review)
-    description = models.CharField(max_length=255)
-    weight = models.FloatField()
-
-    class Meta:
-        verbose_name = 'Quality Assessment Answer'
-        verbose_name_plural = 'Quality Assessment Answers'
-        ordering = ('-weight',)
-
-    def __unicode__(self):
-        return self.description
-
-
 class QualityQuestion(models.Model):
     review = models.ForeignKey(Review)
     description = models.CharField(max_length=255)
@@ -679,6 +663,28 @@ class QualityQuestion(models.Model):
     def __unicode__(self):
         return self.description
 
+    def get_answers(self):
+        return QualityAnswer.objects.filter(question__id=self.id, review__id=self.review.id)
+
+class QualityAnswer(models.Model):
+    SUGGESTED_ANSWERS = (
+        (_('Yes'), 1.0),
+        (_('Partially'), 0.5),
+        (_('No'), 0.0)
+        )
+
+    review = models.ForeignKey(Review)
+    question = models.ForeignKey(QualityQuestion)
+    description = models.CharField(max_length=255)
+    weight = models.FloatField()
+
+    class Meta:
+        verbose_name = 'Quality Assessment Answer'
+        verbose_name_plural = 'Quality Assessment Answers'
+        ordering = ('-weight',)
+
+    def __unicode__(self):
+        return self.description
 
 class QualityAssessment(models.Model):
     user = models.ForeignKey(User, null=True)

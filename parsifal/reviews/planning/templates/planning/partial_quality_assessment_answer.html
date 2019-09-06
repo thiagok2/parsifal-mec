@@ -2,7 +2,7 @@
 
 {% load humanize %}
 
-<tr oid="{{ quality_answer.id }}">
+<tr oid="{{ quality_answer.id }}" data-question-id={{quality_question.id}}>
   <td style="vertical-align: middle;">{{ quality_answer.description }}</td>
   <td style="vertical-align: middle;">{{ quality_answer.weight }}</td>
   <td style="width: 200px; text-align: right; vertical-align: middle;">

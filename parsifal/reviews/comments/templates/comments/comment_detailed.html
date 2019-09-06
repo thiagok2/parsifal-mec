@@ -14,7 +14,7 @@
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title">
-            {% trans 'Discussions about comment ' %} <strong>#{{comment.id}}</strong> in <span class="badge">{{comment.get_about_display}}</span>
+            {% trans 'Discussions about comment ' %} <strong>#{{comment.id}}</strong> {% trans 'in' %} <span class="badge">{{comment.get_about_display}}</span>
             <span id="is-open" class="pull-right">
                 {% include 'comments/partial_is_closed.html' with comment=comment %}
             </span>
@@ -32,7 +32,6 @@
               {{comment.comment}}
             </div>
           </div>
-
 
           <div id="answers">
               {% for answer in comment.get_children_comments %}
