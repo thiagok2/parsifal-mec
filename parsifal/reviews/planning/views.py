@@ -1,4 +1,4 @@
-# coding: utf-8
+# -*- coding: utf-8 -*-
 
 import time
 import json
@@ -795,8 +795,10 @@ def share_quality_assessment_questions(request):
 @login_required
 def add_quality_assessment_answer(request):
     try:
+        quality_question_id = request.GET['quality-question-id']
         quality_answer = QualityAnswer()
-        context = RequestContext(request, {'quality_answer': quality_answer})
+        quality_question = QualityQuestion.objects.get(pk=quality_question_id)
+        context = RequestContext(request, {'quality_answer': quality_answer, 'quality_question': quality_question})
         return render_to_response('planning/partial_quality_assessment_answer_form.html', context)
     except:
         return HttpResponseBadRequest()
@@ -807,8 +809,11 @@ def add_quality_assessment_answer(request):
 def edit_quality_assessment_answer(request):
     try:
         quality_answer_id = request.GET['quality-answer-id']
+        quality_question_id = request.GET['quality-question-id']
+
         quality_answer = QualityAnswer.objects.get(pk=quality_answer_id)
-        context = RequestContext(request, {'quality_answer': quality_answer})
+        quality_question = QualityQuestion.objects.get(pk=quality_question_id)
+        context = RequestContext(request, {'quality_answer': quality_answer, 'quality_question': quality_question})
         return render_to_response('planning/partial_quality_assessment_answer_form.html', context)
     except:
         return HttpResponseBadRequest()
@@ -822,9 +827,7 @@ def save_quality_assessment_answer(request):
         weight = request.POST['weight']
         review_id = request.POST['review-id']
         quality_answer_id = request.POST['quality-answer-id']
-
-        print 'desc', description
-        print 'wei', weight
+        quality_question_id = request.POST['quality-question-id']
 
         weight = weight.replace(',', '.')
         try:
@@ -833,6 +836,7 @@ def save_quality_assessment_answer(request):
             weight = 0.0
 
         review = Review.objects.get(pk=review_id)
+        question = QualityQuestion.objects.get(pk=quality_question_id)
 
         if quality_answer_id == 'None':
             quality_answer = QualityAnswer(review=review)
@@ -841,11 +845,13 @@ def save_quality_assessment_answer(request):
 
         quality_answer.description = description
         quality_answer.weight = weight
+        quality_answer.question = question
         quality_answer.save()
 
         context = RequestContext(request, {'quality_answer': quality_answer})
         return render_to_response('planning/partial_quality_assessment_answer.html', context)
-    except:
+    except Exception as e:
+        print e
         return HttpResponseBadRequest()
 
 
@@ -879,24 +885,28 @@ def suggested_quality_assessment_answers(request):
 def add_suggested_answer(request):
     try:
         review_id = request.GET['review-id']
+        quality_question_id = request.GET['quality-question-id']
         review = Review.objects.get(pk=review_id)
-        if not review.get_quality_assessment_answers():
+        quality_question = QualityQuestion.objects.get(pk=quality_question_id)
+
+        if not quality_question.get_answers():
             html_answers = u''
             for answer, value in QualityAnswer.SUGGESTED_ANSWERS:
-                quality_answer = QualityAnswer(review=review, description=answer, weight=value)
+                quality_answer = QualityAnswer(review=review, description=answer, weight=value, question=quality_question)
                 quality_answer.save()
-                html_answers += '''<tr oid="{0}">
+                html_answers += '''<tr oid="{0}" data-question-id="{3}">
                   <td>{1}</td>
                   <td>{2}</td>
                   <td>
                     <button type="button" class="btn btn-warning btn-sm btn-edit-quality-answer">edit</button>
                     <button type="button" class="btn btn-danger btn-sm btn-remove-quality-answer">remove</button>
                   </td>
-                </tr>'''.format(quality_answer.id, quality_answer.description, quality_answer.weight)
+                </tr>'''.format(quality_answer.id, quality_answer.description.encode('ascii', 'replace'), quality_answer.weight, quality_question.id)
             return HttpResponse(html_answers)
         else:
             return HttpResponseBadRequest()
-    except:
+    except Exception as e:
+        print 'except ', e
         return HttpResponseBadRequest()
 
 
@@ -1066,7 +1076,7 @@ def share_data_extraction_fields(request):
         return HttpResponseBadRequest()
 
 @author_required
-@login_required   
+@login_required
 def setting_pico(request):
     review_id = request.GET['review-id']
     review = Review.objects.get(pk=review_id)
@@ -1100,22 +1110,22 @@ def suggested_pico(request):
     except Exception as e:
         print e
         return HttpResponseBadRequest()
-    
+
 @author_required
-@login_required  
+@login_required
 def import_pico(request):
     try:
         review_id = request.GET['review-id']
         review = Review.objects.get(pk=review_id)
-        
+
         ref_review_id = request.GET['ref-review-id']
         ref_review = Review.objects.get(pk=ref_review_id)
-        
+
         response = {};
-        
+
         review.pico_type = ref_review.pico_type
         response['pico_type'] = review.pico_type
-        
+
         if ref_review.isStudyTypeFree():
             review.pico_text = ref_review.pico_text
             response['pico_text'] = review.pico_text
@@ -1124,21 +1134,21 @@ def import_pico(request):
             review.intervention = ref_review.intervention
             review.comparison = ref_review.comparison
             review.outcome = ref_review.outcome
-            
+
             response['population'] = review.population
             response['intervention'] = review.intervention
             response['comparison'] = review.comparison
             response['outcome'] = review.outcome
-            
+
             if ref_review.isPicoc():
                 review.context = ref_review.context
                 response['context'] = review.context
             elif ref_review.isPicos():
                 review.study_type = ref_review.study_type
                 response['study_type'] = review.study_type
-            
+
         review.save()
-         
+
         dump = json.dumps(response)
         return HttpResponse(dump, content_type='application/json')
     except Exception as e:

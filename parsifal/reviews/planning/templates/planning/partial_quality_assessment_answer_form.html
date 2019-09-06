@@ -2,7 +2,7 @@
 
 {% load humanize %}
 
-<tr oid="{{ quality_answer.id|default:'None' }}" csrf-token="{{ csrf_token }}">
+<tr oid="{{ quality_answer.id|default:'None' }}" data-question-id="{{quality_question.id}}" csrf-token="{{ csrf_token }}">
   <td>
     <input type="text" maxlength="255" class="form-control quality-answer-description" value="{{ quality_answer.description }}">
   </td>

@@ -250,26 +250,32 @@ $(function () {
 
   var cancel_answer_edition_row = new Array();
 
-  $("#btn-add-quality-answer").click(function () {
+  $("button[id^='btn-add-quality-answer']").click(function () {
     var review_id = $("#review-id").val();
+    var quality_question_id = $(this).attr("data-question-id");
+    console.log('add ', quality_question_id)
     $.ajax({
       url: '/reviews/planning/add_quality_assessment_answer/',
-      data: {'review-id': review_id},
+      data: {
+        'review-id': review_id,
+        'quality-question-id': quality_question_id
+      },
       type: 'get',
       cache: false,
       success: function (data) {
-        $("#tbl-quality-answers tbody").append(data);
-        $("#tbl-quality-answers tbody tr:first-child .quality-answer-description").focus();
+        $("#tbl-quality-answers-"+quality_question_id+" tbody").append(data);
+        $("#tbl-quality-answers-"+quality_question_id+" tbody tr:first-child .quality-answer-description").focus();
       }
     });
   });
 
-  $("table#tbl-quality-answers").on("click", ".btn-save-quality-answer", function () {
+  $("table[id^='tbl-quality-answers']").on("click", ".btn-save-quality-answer", function () {
     var row = $(this).closest("tr");
     var review_id = $("#review-id").val();
     var description = $(".quality-answer-description", row).val();
     var weight = $(".quality-answer-weight", row).val();
     var quality_answer_id = $(row).attr("oid");
+    var quality_question_id = $(row).attr("data-question-id");
     var csrf_token = $(row).attr("csrf-token");
 
     $.ajax({
@@ -278,6 +284,7 @@ $(function () {
         'description': description,
         'weight': weight,
         'quality-answer-id': quality_answer_id,
+        'quality-question-id': quality_question_id,
         'csrfmiddlewaretoken': csrf_token
       },
       type: 'post',
@@ -289,7 +296,7 @@ $(function () {
     });
   });
 
-  $("table#tbl-quality-answers").on("click", ".btn-cancel-quality-answer", function () {
+  $("table[id^='tbl-quality-answers']").on("click", ".btn-cancel-quality-answer", function () {
     var row = $(this).closest("tr");
     var quality_answer_id = $(row).attr("oid");
     if (quality_answer_id == 'None') {
@@ -302,15 +309,20 @@ $(function () {
     }
   });
 
-  $("table#tbl-quality-answers").on("click", ".btn-edit-quality-answer", function () {
+  $("table[id^='tbl-quality-answers']").on("click", ".btn-edit-quality-answer", function () {
     var row = $(this).closest("tr");
+    var quality_question_id = $(row).attr("data-question-id")
     var quality_answer_id = $(row).attr("oid");
     var review_id = $("#review-id").val();
     cancel_answer_edition_row[quality_answer_id] = row;
 
     $.ajax({
       url: '/reviews/planning/edit_quality_assessment_answer/',
-      data: {'review-id': review_id, 'quality-answer-id': quality_answer_id},
+      data: {
+        'review-id': review_id,
+        'quality-answer-id': quality_answer_id,
+        'quality-question-id': quality_question_id
+      },
       type: 'get',
       cache: false,
       success: function (data) {
@@ -319,14 +331,17 @@ $(function () {
     });
   });
 
-  $("table#tbl-quality-answers").on("click", ".btn-remove-quality-answer", function () {
-    var quality_answer_id = $(this).closest("tr").attr("oid");
-    var review_id = $("#review-id").val();
+  $("table[id^='tbl-quality-answers']").on("click", ".btn-remove-quality-answer", function () {
     var row = $(this).closest("tr");
+    var quality_answer_id = $(row).attr("oid");
+    var review_id = $("#review-id").val();
 
     $.ajax({
       url: '/reviews/planning/remove_quality_assessment_answer/',
-      data: {'review-id': review_id, 'quality-answer-id': quality_answer_id},
+      data: {
+        'review-id': review_id,
+        'quality-answer-id': quality_answer_id
+      },
       type: 'get',
       cache: false,
       success: function (data) {
@@ -405,16 +420,23 @@ $(function () {
     : hiddenClass.className = "hidden"
   });
 
-  $("#add-suggested-answers").click(function () {
+  $("button[id^='add-suggested-answers']").click(function () {
+    var quality_question_id = $(this).attr("data-question-id");
     $.ajax({
       url: '/reviews/planning/add_suggested_answer/',
-      data: {'review-id': $("#review-id").val()},
+      data: {
+        'review-id': $("#review-id").val(),
+        'quality-question-id': quality_question_id
+      },
       type: 'get',
       cache: false,
       success: function (data) {
-        $("#tbl-quality-answers tbody").replaceWith("<tbody>" + data + "</tbody>");
+        $("#tbl-quality-answers-"+quality_question_id+" tbody").replaceWith("<tbody>" + data + "</tbody>");
         $(".no-answers").fadeOut();
         update_max_score();
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+        console.log('erro ', jqXHR)
       }
     });
   });

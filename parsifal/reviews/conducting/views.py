@@ -204,10 +204,13 @@ def study_selection(request, username, review_name):
 def build_quality_assessment_table(request, review, order):
     selected_studies = review.get_accepted_articles().annotate(sum=Sum('qualityassessment__answer__weight')).order_by(order)
     # selected_studies = selected_studies.distinct('title')
-    quality_questions = review.get_quality_assessment_questions()
-    quality_answers = review.get_quality_assessment_answers()
+    #quality_questions = review.get_quality_assessment_questions()
+    #quality_answers = review.get_quality_assessment_answers()
 
-    if quality_questions and quality_answers:
+    quality_questions = QualityQuestion.objects.filter(review__id=review.id)
+    print 'questions ', quality_questions
+
+    if quality_questions:
         str_table = u''
         for study in selected_studies:
             str_table += u'''
@@ -222,6 +225,7 @@ def build_quality_assessment_table(request, review, order):
             quality_assessment = study.get_quality_assesment()
 
             for question in quality_questions:
+                quality_answers = question.get_answers()
                 str_table += u'''<tr question-id="''' + str(question.id) + '''">
                 <td>''' + escape(question.description) + '''</td>'''
 

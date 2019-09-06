@@ -133,36 +133,43 @@
                 {% include 'comments/comment_icon_button.html' with user=user about="QA_ANSWERS" %}
             </h3>
           </div>
-          <table class="table" id="tbl-quality-answers">
-            <thead>
-              <tr>
-                <th>{% trans 'Description' %}</th>
-                <th>{% trans 'Weight' %}</th>
-                <th style="width: 150px;"></th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for quality_answer in review.get_quality_assessment_answers %}
-                {% include "planning/partial_quality_assessment_answer.html" with quality_answer=quality_answer %}
-              {% empty %}
-                {% include "planning/partial_quality_assessment_answer_form.html" %}
-              {% endfor %}
-            </tbody>
-          </table>
-          <div class="panel-footer">
-            <button type="button" class="btn btn-success" id="btn-add-quality-answer">
-              <span class="glyphicon glyphicon-plus"></span>
-              {% trans 'Add Answer' %}
-            </button>
-            <button type="button" class="btn btn-success" id="btn-import-quality-answers" data-toggle="modal" data-target="#modal-suggested-quality-answers">
-              <span class="glyphicon glyphicon-import"></span>
-              {% trans 'Import Answers' %}
-            </button>
-            {% if not review.get_quality_assessment_answers %}
-              <button type="button" class="btn btn-link" id="add-suggested-answers">
-              {% trans '(Add Suggested Answers)' %}
-              </button>
-            {% endif %}
+          <div class="panel-body">
+            {% for quality_question in review.get_quality_assessment_questions %}
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{quality_question.description}}</h3>
+                </div>
+                <div class="panel-body">
+                  <table class="table" id="tbl-quality-answers-{{quality_question.id}}" data-question-id={{quality_question.id}}>
+                    <thead>
+                      <tr>
+                        <th>{% trans 'Description' %}</th>
+                        <th>{% trans 'Weight' %}</th>
+                        <th style="width: 150px;"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for quality_answer in quality_question.get_answers %}
+                        {% include "planning/partial_quality_assessment_answer.html" with quality_answer=quality_answer quality_question=quality_question %}
+                      {% empty %}
+                        {% include "planning/partial_quality_assessment_answer_form.html" with quality_question=quality_question %}
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+                <div class="panel-footer">
+                  <button type="button" class="btn btn-success" id="btn-add-quality-answer" data-question-id="{{quality_question.id}}">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    {% trans 'Add Answer' %}
+                  </button>
+                  {% if not quality_question.get_answers %}
+                    <button type="button" class="btn btn-link" id="add-suggested-answers" data-question-id="{{quality_question.id}}">
+                    {% trans '(Add Suggested Answers)' %}
+                    </button>
+                  {% endif %}
+                </div>
+              </div>
+            {% endfor %}
           </div>
         </div>
       </section>
