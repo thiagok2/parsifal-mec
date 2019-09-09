@@ -62,7 +62,12 @@ $(function () {
   });
   
   $("#modal-document").on("change", "#id_entry_type", function () {
-  
-	  alert($(this).val());
+	  
+	  var classe = '.'+$("#id_entry_type").val();
+	  
+	  $(".form-group").hide();
+	  $(classe).parent().show();
+	  $(".generic").parent().show();
+	  
   });
 });
