@@ -60,4 +60,9 @@ $(function () {
       }
     });
   });
+  
+  $("#modal-document").on("change", "#id_entry_type", function () {
+  
+	  alert($(this).val());
+  });
 });

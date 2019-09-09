@@ -20,9 +20,8 @@
           <h4 class="modal-title">{% trans 'About the Search Strings' %}</h4>
         </div>
         <div class="modal-body">
-          <p>{% trans "The base search string is the search string designed during the planning phase. It should be database agnostic, enhance the reader's readability and represent the essence of the search string used in the digital libraries." %}</p>
-          <p>{% trans "Most of the digital libraries have it's particularities and different advanced search resources. Here you can store the specific search string used in each database." %}</p>
-          <p>{% trans 'You can edit the base search string in the' %} <a href="{% url 'planning' review.author.username review.name %}#search-string-section">{% trans 'planning tab' %}</a>.</p>
+        	{% trans 'Describes the search string that will be used to the study retrievement.' %}
+        	 
         </div>
       </div>
     </div>
@@ -36,7 +35,7 @@
           <h4 class="modal-title">{% trans 'About Search Databases' %}</h4>
         </div>
         <div class="modal-body">
-          <p>The Search Databases help RSL</p>
+          {% trans 'Allows a search preview of the search string on the connected digital libraries.' %}
         </div>
       </div>
     </div>
