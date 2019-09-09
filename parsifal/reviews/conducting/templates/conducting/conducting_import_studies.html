@@ -11,7 +11,6 @@
 {% block tab_content %}
 
   {% include "conducting/conducting_header.html" with active_tab="import" %}
-
   <div class="modal fade" id="import-studies-help">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -37,6 +36,7 @@
           {% include 'comments/comment_icon_button.html' with user=user about="IMPORT_STUDIES" %}
          </h3>
         </div>
+        9999
         {% if review.sources.all %}
           <table class="table table-v-align-middle" id="tbl-import-studies">
             <thead>
