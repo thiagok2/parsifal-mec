@@ -66,6 +66,7 @@ class Collaborator(models.Model):
 
 
 class Document(models.Model):
+    UNDEFINED= 'undefined'
     ARTICLE = 'article'
     BOOK = 'book'
     BOOKLET = 'booklet'
@@ -82,6 +83,7 @@ class Document(models.Model):
     UNPUBLISHED = 'unpublished'
 
     ENTRY_TYPES = (
+        (UNDEFINED, _('Undefined')),
         (ARTICLE, _('Article')),
         (BOOK, _('Book')),
         (BOOKLET, _('Booklet')),
