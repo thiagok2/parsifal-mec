@@ -42,24 +42,36 @@ $(function () {
   });
   
   $("#modal-document").on("click", ".js-save-new-document", function () {
-    var form = $("#form-new-document");
-    $.ajax({
-      url: $(form).attr("action"),
-      data: $(form).serialize(),
-      type: $(form).attr("method"),
-      success: function (data) {
-        if (data.status === 'success') {
-         
-          $("#modal-document").modal('hide');
-          location.reload();
-          //location.href = data.redirect_to;
-        }
-        else {
-          $("#modal-document .modal-dialog").html(data.html);
-        }
-      }
-    });
+	  
+	if(validarForm()){
+		$.parsifal.alert("Dados Inválidos", "Dados inválidos ou ausentes. Corrija e envie novamente.");
+		return false;
+	}else{
+		var form = $("#form-new-document");
+	    $.ajax({
+	      url: $(form).attr("action"),
+	      data: $(form).serialize(),
+	      type: $(form).attr("method"),
+	      success: function (data) {
+	        if (data.status === 'success') {
+	         
+	          $("#modal-document").modal('hide');
+	          location.reload();
+	          //location.href = data.redirect_to;
+	        }
+	        else {
+	          $("#modal-document .modal-dialog").html(data.html);
+	        }
+	      }
+	    });
+	}
+	  
+    
   });
+  
+  $("#modal-document > .form-group").hide();
+  $("#modal-document > .article").parent().show();
+  $("#modal-document > .form-type").parent().show();
   
   $("#modal-document").on("change", "#id_entry_type", function () {
 	  
@@ -67,7 +79,28 @@ $(function () {
 	  
 	  $(".form-group").hide();
 	  $(classe).parent().show();
-	  $(".generic").parent().show();
+	  
+	  $(".form-type").parent().show();
+	  //$(".generic").parent().show();
+	  
+	  var classe_required = classe +'-r';
+	  $(classe_required).attr('required',true);
 	  
   });
 });
+
+function validarForm(){
+	var isValid = true;
+	  $('form input').map(function() {
+		  isValid &= this.validity['valid'] ;
+	  }) ;
+	  if (isValid) {
+		  //alert('valid!');
+		  //
+		  return true;
+	  } else{
+		  //alert('not valid!');
+		  return false;
+	  }
+		 
+}
