@@ -42,8 +42,9 @@ $(function () {
   });
   
   $("#modal-document").on("click", ".js-save-new-document", function () {
-	  
-	if(validarForm()){
+	var isValid = $("#form-new-document")[0].checkValidity();
+	
+	if(!isValid){
 		$.parsifal.alert("Dados Inválidos", "Dados inválidos ou ausentes. Corrija e envie novamente.");
 		return false;
 	}else{
@@ -82,25 +83,12 @@ $(function () {
 	  
 	  $(".form-type").parent().show();
 	  //$(".generic").parent().show();
+	  $(".form-control").css("border-color","border-color");
+	  
 	  
 	  var classe_required = classe +'-r';
+	  $(classe_required).css("border","0.5px solid red");
 	  $(classe_required).attr('required',true);
 	  
   });
 });
-
-function validarForm(){
-	var isValid = true;
-	  $('form input').map(function() {
-		  isValid &= this.validity['valid'] ;
-	  }) ;
-	  if (isValid) {
-		  //alert('valid!');
-		  //
-		  return true;
-	  } else{
-		  //alert('not valid!');
-		  return false;
-	  }
-		 
-}

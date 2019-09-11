@@ -553,6 +553,14 @@ class Article(models.Model):
         # evaluation_status = dict(ArticleEvaluation.ARTICLE_STATUS).get(evaluation)
 
         return evaluation
+    
+    def get_document_type(self):
+        result = filter(lambda x: x[0].startswith(self.document_type), Document.ENTRY_TYPES)
+        
+        types = asarray(Document.ENTRY_TYPES)
+        return types['article']
+        
+        #return result[0]
 
     def build(self, document):
         self.title = document.title
