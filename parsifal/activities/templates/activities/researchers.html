@@ -15,6 +15,12 @@
 {% block content %}
 <div class="container">
 	<div class="row">
+		<div class="col-sm-10 col-sm-offset-1 text-center">
+			<h2>{% trans 'Researchers' %}</h2>
+		</div>
+	</div>
+
+	<div class="row">
 		<div class="col-sm-10 col-sm-offset-1">
 			<form action="{% url 'activities:explorer' %}" method="get">
 				<div class="input-group">
@@ -33,25 +39,36 @@
 	<div class="row explorer-results">
 		<div class="col-sm-12">
 		<div class="panel panel-default">
-			<ul class="users-list clearfix">
-				{% for u in public_users %}
-				<li>
-					<img src="{{ u.profile.get_picture }}" alt="User Image"> 
-					<a class="users-list-name" href="{% url 'reviews' u.username %}">{{ u.profile.get_screen_name }}</a> 
-					<span class="users-list-date">{{ u.profile.public_email|default:"" }}</span>
-					<span class="users-list-date">{{ u.profile.institution|default:"" }}</span>
-					<span class="users-list-date">{{ u.profile.location|default:"" }}</span>
-					
-		                    
-		            {% if user.is_authenticated %}   
-                    <div class="user-actions not-following" data-user-id="{{ u.id }}">
-                      <button class="btn btn-small btn-success" type="button"><span class="glyphicon glyphicon-ok"></span> {% trans 'Follow' %}</button>
-                    </div>
-                    {% endif %}
-		                  
-				</li>
-				{% endfor %}
-			</ul>
+		
+			<div class="panel-heading">
+			{% trans 'Results' %}({{public_users.count}})
+			</div>
+			<div class="panel-body">
+				<ul class="users-list clearfix">
+					{% for u in public_users %}
+					<li>
+						<img src="{{ u.profile.get_picture }}" alt="User Image" height="150px" width="150px"> 
+						<a class="users-list-name" href="{% url 'reviews' u.username %}">{{ u.profile.get_screen_name }}</a> 
+						<span class="users-list-date">{{ u.profile.public_email|default:"" }}</span>
+						<span class="users-list-date">{{ u.profile.institution|default:"" }}</span>
+						<span class="users-list-date">{{ u.profile.location|default:"" }}</span>
+						
+			                    
+			            {% if user.is_authenticated %}   
+	                    <div class="user-actions not-following" data-user-id="{{ u.id }}">
+	                      <button class="btn btn-small btn-success" type="button"><span class="glyphicon glyphicon-ok"></span> {% trans 'Follow' %}</button>
+	                    </div>
+	                    {% endif %}
+			                  
+					</li>
+					{% empty %}
+						<li style="text-align: center; width:100%;">
+							{% trans 'No researcher found for term "' %}<b>{{ q }}</b>"
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+			
 			<!-- /.users-list -->
 		</div>
 		</div>

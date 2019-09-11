@@ -34,7 +34,6 @@ def comment_detailed(request, username, review_name, comment_id):
 @login_required
 def save_visitor_comment(request):
     try:
-        print 'save'
         review_id = request.POST['review-id']
         comment = request.POST['comment']
         about = request.POST['about']

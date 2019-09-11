@@ -33,6 +33,10 @@ class Source(models.Model):
             self.url = u'http://{0}'.format(value)
         else:
             self.url = value
+            
+    def get_articles_count(self, review_id):
+        articles_count = Article.objects.filter(review__id=review_id).count()
+        return 20
 
 
 class Review(models.Model):
@@ -556,11 +560,7 @@ class Article(models.Model):
     
     def get_document_type(self):
         result = filter(lambda x: x[0].startswith(self.document_type), Document.ENTRY_TYPES)
-        
-        types = asarray(Document.ENTRY_TYPES)
-        return types['article']
-        
-        #return result[0]
+        return result[0]
 
     def build(self, document):
         self.title = document.title
