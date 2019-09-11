@@ -10,12 +10,14 @@
       $(".js-toggle-all").click(function () {
         var group = $(this).closest("[class$='-group']")
         if ($(this).attr("data-checked") === "true") {
+          $(this).html("Marcar Todos");
           $(this).attr("data-checked", "false");
           $("input[type='checkbox']", group).prop("checked", false);
         }
         else {
-          $(this).attr("data-checked", "true");
-          $("input[type='checkbox']", group).prop("checked", true);
+        	$(this).html("Desmarcar Todos");
+          	$(this).attr("data-checked", "true");
+          	$("input[type='checkbox']", group).prop("checked", true);
         }
       });
 
@@ -28,7 +30,7 @@
 
 {% block tab_content %}
 
-  {% include 'reporting/includes/header.html' with active_tab='export' %}
+ 
 
   <form method="get" action="{% url 'reviews:reporting:download_docx' %}">
     <input type="hidden" name="review-id" value="{{ review.pk }}">

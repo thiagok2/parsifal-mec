@@ -22,8 +22,10 @@
 
 <div class="articles clearfix">
   <div class="source-buttons">
+  	
     {% if not source.id %}
       <div style="margin-bottom: 20px">
+      	
         <button type="button" class="btn btn-sm btn-default btn-find-duplicates">
           <span class="glyphicon glyphicon-duplicate"></span>
           {% trans 'Find Duplicates' %}
@@ -37,8 +39,19 @@
             {% trans 'Export Articles' %}
           </button>
         </form>
+        <span class="pull-right text-muted">
+        	Total de <span class="articles-total ">{{ articles.count }}</span> artigos
+        </span>
+       
       </div>
-    {% endif %}
+   	{% else %}
+    	<div style="margin-bottom: 20px">
+    		<span class="badge badge-secondary pull-right" data-toggle="tooltip" data-placement="top" title="Artigos">
+				<i class="fa fa-fw fa-files-o"></i>
+				<span class="articles-total ">{{ articles.count }}</span>
+			</span>
+        </div>
+     {% endif %}
     <a href="javascript:void(0);" class="pull-right" data-toggle="tooltip" title="{% trans 'What is this? Click to get help.' %}" data-placement="top" data-container="body">
        	<span class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#selection-studies-help"></span>
      </a>
