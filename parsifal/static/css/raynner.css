@@ -36,6 +36,12 @@ header .navbar2{
     border: solid 3px #72bda3;
 }
 
+.img-avatar2 {
+    border-radius: 50%;
+    width: 30px;
+    /*border: solid 1.5px #72bda3;*/
+}
+
 .profile-data {
     padding: 20px 0;
 }
@@ -151,7 +157,7 @@ img.img-logo:hover{
 
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
 	color: #ffffff;
-    background-color: #00a65a;
+    /*background-color: #00a65a;*/
     border-color: #008d4c;
     border: 1px solid #72bda3;
     border-radius: 6px 6px 0 0;
@@ -181,7 +187,7 @@ img.img-logo:hover{
 }
 
 .nav>li>a:hover{
-	background: #babdb6
+	/* background: #babdb6; */
 }
 
 nav-tabs > li:hover{

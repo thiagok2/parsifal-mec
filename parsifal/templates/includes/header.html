@@ -3,7 +3,7 @@
 
 <header id="header-nav">
 	<nav class="navbar navbar-inverse navbar2">
-		<div class="container">
+		<div class="container-fluid">
 			<div class="navbar-header">
 				<button data-target="#header-menu" data-toggle="collapse"
 					class="navbar-toggle collapsed" type="button">
@@ -11,145 +11,139 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a href="{% url 'home' %}" class="navbar-brand value-brand">{% trans 'Parsifal' %}</a>
+				<a href="{% url 'home' %}" class="navbar-brand value-brand" style="padding:0px;margin-left: 0px;">
+					<img id="language" src="{% static 'img/logomarca-branca-qeed2.png' %}" height="50px" style="cursor: pointer;" />
+				</a>
 			</div>
 			<div class="collapse navbar-collapse" id="header-menu">
-				<ul class="nav navbar-nav">
-					{%comment%}
-					<li class=""><a href="{% url 'blog:entries' %}">{% trans 'Blog' %}</a></li>
-					{%endcomment%}
-					 {% if user.is_authenticated %}
-					<li><a href="{% url 'reviews:explorer' %}">{% trans 'Explorer' %}</a></li>
-					<li><a href="{% url 'activities:explorer' %}">{% trans 'Researchers' %}</a></li>
-					{%comment%}
-					<li><a href="{% url 'help:articles' %}">{% trans 'Help' %}</a></li>
-					{%endcomment%}
-					<li><a href="{% url 'about' %}">{% trans 'About' %}</a></li>
-					<li>
-						<form class="navbar-form navbar-left" action="{% url 'reviews:search' %}"  method="get">
-							<div class="input-group">
-						    	<input type="text"  name="q" class="form-control" placeholder="{% trans 'Search Reviews' %}" value="{{ q }}">
-						    	<div class="input-group-btn">
-						      	<button class="btn btn-default btn-default2" type="submit">
-						        	<i class="glyphicon glyphicon-search"></i>
-						      	</button>
-						    </div>
-						  </div>
-						</form>
-					</li>
-					{% endif %}
-
-				</ul>
 				<ul class="nav navbar-nav navbar-right">
-          <li style="padding-top: 13px">
-            <form id="form_language" action="{% url 'set_language' %}" method="post">
-              {% csrf_token %}
-              <input name="next" type="hidden" value="{{ redirect_to }}" />
-              {% get_current_language as LANGUAGE_CODE %}
-              {% get_available_languages as LANGUAGES %}
-              {% get_language_info_list for LANGUAGES as languages %}
-              {% for language in languages %}
-                {% if language.code != LANGUAGE_CODE %}
-                  <input name="language" type="hidden" value="{{language.code}}">
-                  <img id="language" src="{% static 'img/'|add:language.code|add:'.gif' %}" style="margin-right: 5px; cursor: pointer;" />
-                {% else %}
-                  <img src="{% static 'img/'|add:language.code|add:'.gif' %}" style="margin-right: 5px; cursor: pointer;" />
-                {% endif %}
-
-              {% endfor %}
-            </form>
-          </li>
-				  {% if user.is_authenticated %}
-            <li>
-              <a href="{% url 'reviews' user.username %}">
-                <span data-toggle="tooltip" data-placement="bottom" data-container="body" title="{% trans 'My profile' %}">
-                  {{ user.profile.get_screen_name }}
-                </span>
-              </a>
-            </li>
-            <li>
-              <span class="navbar-text username-divider"></span>
-            </li>
-            {%comment%}
-            <li>
-              <a href="{% url 'library:index' %}">
-                {% trans 'Library' %} </a>
-            </li>
-            {%endcomment%}
-             <li>
-               <a href="{% url 'settings:settings' %}">
-                 <span data-toggle="tooltip" data-placement="bottom" data-container="body" title="{% trans 'Account settings' %}">
-                   <span class="glyphicon glyphicon-cog"></span>
-                 </span>
-               </a>
-             </li>
-
-            <li>
-              <a href="{% url 'signout' %}">
-                <span data-toggle="tooltip" data-placement="bottom" data-container="body" title="{% trans 'Sign out' %}">
-                  <span class="glyphicon glyphicon-log-out"></span>
-                </span>
-              </a>
-            </li>
-          {% else %}
-            <li id="group-buttons-sign" class="">
-              <a href="{% url 'signin' %}" title="Sign in" class="btn btn-new btn-success" style="padding: 10px;margin-top: 5px; margin-right: 5px; margin-left: 10px;">
-              {% trans 'Sign in' %}
-              </a>
-            </li>
-            <li>
-              <a href="{% url 'signup' %}" title="Sign up" class="btn btn-new btn-success" style="padding: 10px; margin-top: 5px">
-                {% trans 'Sign up' %}
-              </a>
-            </li>
-          {% endif %}
-          </ul>
-
-			</div>
-
-		</div>
-	</nav>
-
-	{% if show_head  %}
-	<div class="header-home">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-3 col-lg-2">
-					<img src="{{ user.profile.get_picture }}" alt="Avatar" class="img-avatar">
-				</div>
-				<div class="col-sm-3 col-lg-4">
-					<div class="profile-data">
-						<p>
-							<a href="{% url 'reviews' user.username %}">
-								<strong>{{ user.profile.get_screen_name }}</strong>
-							</a>
-						</p>
-						<p>
+					{% if user.is_authenticated %}
+						<li>
+							<img src="{{ user.profile.get_picture }}" alt="Avatar" class="img-avatar2" style="padding-top: 10px;">
+						</li>
+					
+						<li>
+							
+			            	<a href="{% url 'reviews' user.username %}">
+			                	<span data-toggle="tooltip" data-placement="bottom" data-container="body" title="{% trans 'My profile' %}">
+			                  		{{ user.profile.get_screen_name }}
+			                	</span>
+			              	</a>
+			              	
+			            </li>
+				        <li>
+				        	<span class="navbar-text username-divider"></span>
+				        </li>
+				        
+				        
+						<li>
 							<a href="{% url 'followers' user.username %}">
 								<span class="follows">
 									{{ user.profile.get_followers_count }} {% trans 'followers' %}
 								</span>
 							</a>
+						</li>
+						<li>
 							<a href="{% url 'following' user.username %}">
 								<span class="follows">
 									{{ user.profile.get_following_count }} {% trans 'followings' %}
 								</span>
 							</a>
-						</p>
+						</li>
+					{% endif %}
+			    	<li style="padding-top: 13px">
+			            <form id="form_language" action="{% url 'set_language' %}" method="post">
+			              {% csrf_token %}
+			              <input name="next" type="hidden" value="{{ redirect_to }}" />
+			              {% get_current_language as LANGUAGE_CODE %}
+			              {% get_available_languages as LANGUAGES %}
+			              {% get_language_info_list for LANGUAGES as languages %}
+			              {% for language in languages %}
+			                {% if language.code != LANGUAGE_CODE %}
+			                  <input name="language" type="hidden" value="{{language.code}}">
+			                  <img id="language" src="{% static 'img/'|add:language.code|add:'.gif' %}" style="margin-right: 5px; cursor: pointer;" />
+			                {% else %}
+			                  <img src="{% static 'img/'|add:language.code|add:'.gif' %}" style="margin-right: 5px; cursor: pointer;" />
+			                {% endif %}
+			
+			              {% endfor %}
+			            </form>
+			        </li>
+				  {% if user.is_authenticated %}
+			            {%comment%}
+			            <li>
+			              <a href="{% url 'library:index' %}">
+			                {% trans 'Library' %} </a>
+			            </li>
+			            {%endcomment%}
+			             <li>
+			               <a href="{% url 'settings:settings' %}">
+			                 <span data-toggle="tooltip" data-placement="bottom" data-container="body" title="{% trans 'Account settings' %}">
+			                   <span class="glyphicon glyphicon-cog"></span>
+			                 </span>
+			               </a>
+			             </li>
 
-					</div>
-				</div>
-				<div class="col-sm-6 text-right">
-					<h1>{% trans 'Parsifal'%}</h1>
-					<p class="text-muted">
-						{% trans 'A collaborative environment for the development of systematic literature reviews and meta-analyzes.' %}
-					</p>
-					<a href="/reviews/new/" class="btn btn-new btn-success pull-right">{% trans 'New review' %}</a>
+			            <li>
+			              <a href="{% url 'signout' %}">
+			                <span data-toggle="tooltip" data-placement="bottom" data-container="body" title="{% trans 'Sign out' %}">
+			                  <span class="glyphicon glyphicon-log-out"></span>
+			                </span>
+			              </a>
+			            </li>
+		          {% else %}
+			            <li id="group-buttons-sign" class="">
+			              <a href="{% url 'signin' %}" title="Sign in" class="btn btn-new btn-success" style="padding: 10px;margin-top: 5px; margin-right: 5px; margin-left: 10px;">
+			              {% trans 'Sign in' %}
+			              </a>
+			            </li>
+			            <li>
+			              <a href="{% url 'signup' %}" title="Sign up" class="btn btn-new btn-success" style="padding: 10px; margin-top: 5px">
+			                {% trans 'Sign up' %}
+			              </a>
+			            </li>
+		          {% endif %}
+          		</ul>
 
-				</div>
 			</div>
+
 		</div>
-	</div>
+	</nav>
+	{% if show_head  %}
+	<nav class="navbar navbar-inverse header-home">
+		<div class="container-fluid">
+			<ul class="nav navbar-nav">
+				<li>
+					<a href="/reviews/new/" class="btn btn-success">{% trans 'New review' %}</a>
+				</li>
+				<li>
+					<form class="navbar-form navbar-left" action="{% url 'reviews:search' %}"  method="get">
+						<div class="input-group">
+					    	<input type="text"  name="q" class="form-control" placeholder="{% trans 'Search Reviews' %}" value="{{ q }}">
+					    	<div class="input-group-btn">
+					      	<button class="btn btn-default btn-default2" type="submit">
+					        	<i class="glyphicon glyphicon-search"></i>
+					      	</button>
+					    </div>
+					  </div>
+					</form>
+				</li>
+				{%comment%}
+					<li class=""><a href="{% url 'blog:entries' %}">{% trans 'Blog' %}</a></li>
+				{%endcomment%}
+				{% if user.is_authenticated %}
+					<li><a href="{% url 'reviews:explorer' %}">{% trans 'Explorer' %}</a></li>
+					<li><a href="{% url 'activities:explorer' %}">{% trans 'Researchers' %}</a></li>
+				{%comment%}
+					<li><a href="{% url 'help:articles' %}">{% trans 'Help' %}</a></li>
+				{%endcomment%}
+				<li><a href="{% url 'about' %}">{% trans 'About' %}</a></li>
+				
+				{% endif %}
+	
+			</ul>
+		</div>
+	</nav>
 	{% endif %}
 
 </header>
