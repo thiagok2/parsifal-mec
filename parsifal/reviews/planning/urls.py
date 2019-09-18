@@ -25,8 +25,8 @@ urlpatterns = patterns('parsifal.reviews.planning.views',
     url(r'^suggested_risks/$', 'suggested_risks', name='suggested_risks'),
     url(r'^share_risks/$', 'share_risks', name='share_risks'),
     url(r'^save_statistical_methods/$', 'save_statistical_methods', name='save_statistical_methods'),
-    
-    
+
+
 
 
     url(r'^import_pico_keywords/$', 'import_pico_keywords', name='import_pico_keywords'),
@@ -37,6 +37,7 @@ urlpatterns = patterns('parsifal.reviews.planning.views',
     url(r'^add_quality_assessment_question/$', 'add_quality_assessment_question', name='add_quality_assessment_question'),
     url(r'^edit_quality_assessment_question/$', 'edit_quality_assessment_question', name='edit_quality_assessment_question'),
     url(r'^save_quality_assessment_question/$', 'save_quality_assessment_question', name='save_quality_assessment_question'),
+    url(r'^save_imported_quality_assessment/$', 'save_imported_quality_assessment', name='save_imported_quality_assessment'),
     url(r'^save_quality_assessment_question_order/$', 'save_quality_assessment_question_order', name='save_quality_assessment_question_order'),
     url(r'^remove_quality_assessment_question/$', 'remove_quality_assessment_question', name='remove_quality_assessment_question'),
     url(r'^suggested_quality_assessment_questions/$', 'suggested_quality_assessment_questions', name='suggested_quality_assessment_questions'),
@@ -58,7 +59,7 @@ urlpatterns = patterns('parsifal.reviews.planning.views',
     url(r'^save_cutoff_score/$', 'save_cutoff_score', name='save_cutoff_score'),
     url(r'^generate_search_string/$', 'generate_search_string', name='generate_search_string'),
     url(r'^save_generic_search_string/$', 'save_generic_search_string', name='save_generic_search_string'),
-    
+
     url(r'^share_pico/$', 'share_pico', name='share_pico'),
     url(r'^setting_pico/$', 'setting_pico', name='setting_pico'),
     url(r'^suggested_pico/$', 'suggested_pico', name='suggested_pico'),

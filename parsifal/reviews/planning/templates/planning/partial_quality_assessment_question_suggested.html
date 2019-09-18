@@ -14,7 +14,31 @@
 <tr class="hidden">
     <td colspan="4">
       <form method="post" id="form-suggested-quality-questions-{{review.id}}">
-        <table class="table" id="tbl-exported-questions-{{review.id}}">
+        {% csrf_token %}
+        <input type="hidden" name="review_id" value="{{ review.id }}" />
+        {% for quality_question in review.get_quality_assessment_questions %}
+          <p>{% trans 'Question' %}: {{quality_question.description}}</p>
+          <table class="table" id="tbl-exported-questions-{{review.id}}" data-question-id="{{quality_question.id}}">
+            <input type="hidden" value="{{quality_question.id}}" name="id" id="id" />
+            <input type="hidden" value="{{quality_question.description}}" name="description-{{quality_question.id}}" id="description" />
+            <tr>
+              <th>{% trans 'Answers' %}</th>
+            </tr>
+            {% for answer in quality_question.get_answers %}
+              <input type="hidden" value="{{answer.id}}" name="answer-id-{{quality_question.id}}" id="answer-id-{{quality_question.id}}" />
+              <input type="hidden" value="{{answer.description}}" name="answer-description-{{answer.id}}-{{quality_question.id}}" id="answer-description" />
+              <input type="hidden" value="{{answer.weight}}" name="answer-weight-{{answer.id}}-{{quality_question.id}}" id="answer-weight" />
+              <tr>
+                <td>{{answer}}</td>
+              </tr>
+            {% empty %}
+              <tr>
+                <td>{% trans 'No answers for this question.' %}</td>
+              </tr>
+            {% endfor %}
+          </table>
+        {% endfor %}
+        <!-- <table class="table" id="tbl-exported-questions-{{review.id}}">
           {% csrf_token %}
           <input type="hidden" name="review_id" value="{{ review.id }}" />
           <th>{% trans 'Question' %}</th>
@@ -24,8 +48,16 @@
               <input type="hidden" value="{{quality_question.description}}" name="description-{{quality_question.id}}" id="description" />
               <td>{{quality_question.description}}</td>
             </tr>
+            <tr>
+              <th>{% trans 'Answers' %}</th>
+            </tr>
+            <tr>
+              {% for answer in quality_question.get_answers %}
+                <td>{{answer}}</td>
+              {% endfor %}
+            </tr>
           {% endfor %}
-        </table>
+        </table> -->
       </form>
     </td>
 </tr>
