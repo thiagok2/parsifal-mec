@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-18 13:43+0000\n"
+"POT-Creation-Date: 2019-09-18 14:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -303,7 +303,7 @@ msgstr "Resultados"
 
 #: parsifal/activities/templates/activities/researchers.html:66
 msgid "No researcher found for term \""
-msgstr ""
+msgstr "Nenhum pesquisador encontrado com o termo \""
 
 #: parsifal/activities/views.py:60
 msgid "following"
@@ -3672,13 +3672,15 @@ msgid ""
 msgstr ""
 "PICOS significa <em> <b>P</b>opulação </em>, <em> <b>I</b>ntervenção </em> , "
 "<em> <b>C</b>omparação </em>, <em> Resultados(<b>O</b>utcome) </em> e <em> "
-"Tipo de Estaudo(<b>S</b>tudy Type </em>."
+"Tipo de Estudo(<b>S</b>tudy Type </em>."
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:307
 msgid ""
 "Write your search methodology for a systematic review of the literature used "
 "in this project."
 msgstr ""
+"Escreva sua metodologia de pesquisa para a revisão sistemática da literatura "
+"utilizada neste projeto."
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:313
 msgid ""
@@ -4617,7 +4619,7 @@ msgstr "Pesquisar Revisões"
 
 #: parsifal/reviews/templates/reviews/explorer.html:69
 msgid "No reviews found for term \""
-msgstr ""
+msgstr "Nenhuma revisão encontrada para esse termo \""
 
 #: parsifal/reviews/templates/reviews/new.html:23
 msgid "Create a new review"
@@ -4686,7 +4688,7 @@ msgstr "Esta revisão tem "
 
 #: parsifal/reviews/templates/reviews/review.html:34
 msgid "new comments you didn't see"
-msgstr "novos comentários que você não viu"
+msgstr "novos comentários que você não visualizou."
 
 #: parsifal/reviews/templates/reviews/review.html:39
 msgid "Review details"

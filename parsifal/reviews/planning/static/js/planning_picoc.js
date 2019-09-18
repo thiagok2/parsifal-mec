@@ -26,20 +26,23 @@ $(function () {
     	  
     	  $('.picoc').show();
     	  $('.picoc').removeClass('hidden');
+    	  $('.pico_type_title').text('PICOC');
       }else if(pico_type == 'PICOS'){
     	  $('.pico_free').hide();
     	  $('.picoc').hide();
     	  
     	  $('.picos').show();
     	  $('.picos').removeClass('hidden');
+    	  $('.pico_type_title').text('PICOS');
       }else if(pico_type == 'Free Text'){
     	  $('.picoc').hide();
     	  $('.picos').hide();
     	  $('.pico_free').show();
     	  $('.pico_free').removeClass('hidden');
+    	  $('.pico_type_title').text('Texto Livre');
       }
 	  
-	  $('.pico_type_title').text(pico_type);
+	
 	  
 	  
   }

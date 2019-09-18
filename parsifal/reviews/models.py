@@ -246,6 +246,12 @@ class Review(models.Model):
     def articles_accepts_count(self):
         accepts_count = Article.objects.filter(review__id=self.id,status=Article.ACCEPTED).count()
         return accepts_count
+    
+    def pico_type_label(self):
+        if (self.pico_type == Review.FREE_TEXT):
+            return 'Texto Livre'
+        else:
+            return self.pico_type
 
 class VisitorComment(models.Model):
     OBJECTIVES = u'OBJECTIVES'
