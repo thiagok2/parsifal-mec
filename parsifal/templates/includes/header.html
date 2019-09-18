@@ -112,12 +112,15 @@
 	{% if show_head  %}
 	<nav class="navbar navbar-default header-home">
 		<div class="container-fluid">
-      <a href="/reviews/new/" class="btn btn-success pull-left" style="margin-top:8px;">{% trans 'New review' %}</a>
-			<ul class="nav navbar-nav">
+      		<a href="/reviews/new/" class="btn btn-success pull-left" style="margin-top:8px;">
+      			<span class="glyphicon glyphicon-plus"></span>
+      			{% trans 'Create Review' %}
+      		</a>
+			<ul class="nav navbar-nav" style="margin-left: 15%">
 				<li>
 					<form class="navbar-form" action="{% url 'reviews:search' %}"  method="get">
 						<div class="input-group">
-					    	<input type="text"  name="q" class="form-control" placeholder="{% trans 'Search Reviews' %}" value="{{ q }}">
+					    	<input type="text"  name="q" class="form-control" size="50" placeholder="{% trans 'Search Reviews' %}" value="{{ q }}">
 					    	<div class="input-group-btn">
 					      	<button class="btn btn-default btn-default2" type="submit">
 					        	<i class="glyphicon glyphicon-search"></i>
@@ -126,6 +129,9 @@
 					  </div>
 					</form>
 				</li>
+				<li>
+              		<span class="navbar-text username-divider"></span>
+            	</li>
 				{%comment%}
 					<li class=""><a href="{% url 'blog:entries' %}">{% trans 'Blog' %}</a></li>
 				{%endcomment%}

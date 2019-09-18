@@ -7,7 +7,9 @@
 {% block title %}{% trans 'Parsifal' %}{% endblock title %}
 
 {% block content %}
-  <h2 class="page-header">{% trans 'Password reset initiated' %}</h2>
-  <p class="lead">{% trans 'An email has been sent to the given address. To continue the password reset process please follow the instructions in this email.' %}</p>
-  <p class="lead">{% trans 'If you have any problem with the password reset, please contact us at <a href="mailto:support@parsif.al">support@parsif.al</a>.' %}</p>
+<div class="container">
+  	<h2 class="page-header">{% trans 'Password reset initiated' %}</h2>
+	<p>{% trans 'An email has been sent to the given address. To continue the password reset process please follow the instructions in this email.' %}</p>
+  	<p>{% trans 'If you have any problem with the password reset, please contact us at <a href="mailto:support@parsif.al">support@parsif.al</a>.' %}</p>
+</div>
 {% endblock content %}

@@ -11,6 +11,7 @@
 {% endblock javascript %}
 
 {% block content %}
+<div class="container">
     <div class="media" style="margin-bottom: 20px;">
       <div class="media-left">
         <a href="{% url 'reviews' page_user.username %}">
@@ -128,5 +129,6 @@
         <div class="panel-body">{{ page_user.profile.get_screen_name }} {% trans "haven't published any systematic literature review yet." %}</div>
       </div>
     {% endif %}
+</div>
 
 {% endblock content %}

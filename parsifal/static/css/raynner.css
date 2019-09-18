@@ -8,8 +8,8 @@ a{
 }
 
 a:hover{
-	color: #111;
-	text-decoration: underline;
+	color: #333;
+	text-decoration: none;
 }
 
 
@@ -153,11 +153,12 @@ img.img-logo:hover{
 }
 
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
-	color: #ffffff;
+	font-weight: bold;
     background-color: #10ab64;
     border-color: #008d4c;
     border: 1px solid #72bda3;
     border-radius: 6px 6px 0 0;
+    color:white;
 }
 .panel-default>.panel-heading {
 
@@ -214,13 +215,13 @@ nav li:hover {
 .nav-pills>li.active>a{
 	background: #10ab64;
 	border-top-color: #10ab64;
-	color:white;
+	color: white;
 	border-left-color: #10ab64;
 }
 .nav-pills>li.active>a:hover{
 	background: #10ab64;
 	border-top-color: #10ab64;
-	color:white;
+	color: white;
 }
 
 div.data-extraction-panel  span.badge{
@@ -233,4 +234,10 @@ div.data-extraction-panel  span.badge{
     color: #fff;
     background-color: #10ab64;
     border-color: #10ab64;
+}
+
+.alert-warning{
+	background-color: #98d6ba !important;
+    border-color: #57c191 !important;
+    color: #777 !important;
 }
