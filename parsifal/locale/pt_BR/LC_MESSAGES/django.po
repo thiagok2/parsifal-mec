@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-18 02:41+0000\n"
+"POT-Creation-Date: 2019-09-18 13:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -95,7 +95,7 @@ msgstr "Configurações da Conta"
 #: parsifal/templates/admin/base_site.html:8
 #: parsifal/templates/includes/footer.html:10
 msgid "Parsifal"
-msgstr "Plataforma EbE"
+msgstr "Plataforma QeeD"
 
 #: parsifal/account_settings/templates/settings/connections.html:47
 msgid "Connected Services"
@@ -249,7 +249,7 @@ msgstr "Sua conta do Dropbox foi associada com sucesso!"
 
 #: parsifal/account_settings/views.py:197
 msgid "You didn't approved Parsifal to connect your Dropbox account."
-msgstr "Você não aprovou a Plataforma EbE para conectar sua conta do Dropbox."
+msgstr "Você não aprovou a Plataforma QeeD para conectar sua conta do Dropbox."
 
 #: parsifal/account_settings/views.py:199
 msgid ""
@@ -263,27 +263,27 @@ msgstr ""
 msgid "Your Dropbox account were disconnected successfully!"
 msgstr "Sua conta do Dropbox foi desconectada com sucesso!"
 
-#: parsifal/activities/templates/activities/follow.html:35
-#: parsifal/reviews/templates/reviews/reviews.html:74
+#: parsifal/activities/templates/activities/follow.html:41
+#: parsifal/reviews/templates/reviews/reviews.html:75
 msgid "Joined on"
 msgstr "Entrou em"
 
-#: parsifal/activities/templates/activities/follow.html:42
-#: parsifal/reviews/templates/reviews/reviews.html:37
+#: parsifal/activities/templates/activities/follow.html:48
+#: parsifal/reviews/templates/reviews/reviews.html:38
 msgid "Unfollow"
 msgstr "Deixar de Seguir"
 
-#: parsifal/activities/templates/activities/follow.html:46
+#: parsifal/activities/templates/activities/follow.html:52
 #: parsifal/activities/templates/activities/researchers.html:59
-#: parsifal/reviews/templates/reviews/reviews.html:41
+#: parsifal/reviews/templates/reviews/reviews.html:42
 msgid "Follow"
 msgstr "Seguir"
 
-#: parsifal/activities/templates/activities/follow.html:62
+#: parsifal/activities/templates/activities/follow.html:68
 msgid "have no followers."
 msgstr "não tem seguidores."
 
-#: parsifal/activities/templates/activities/follow.html:64
+#: parsifal/activities/templates/activities/follow.html:70
 msgid "isn't following anybody."
 msgstr "não está seguindo ninguém."
 
@@ -381,11 +381,11 @@ msgstr ""
 msgid "Create an account"
 msgstr "Crie uma Conta"
 
-#: parsifal/authentication/templates/auth/success.html:10
+#: parsifal/authentication/templates/auth/success.html:11
 msgid "Password reset initiated"
 msgstr "Nova senha inicializada"
 
-#: parsifal/authentication/templates/auth/success.html:11
+#: parsifal/authentication/templates/auth/success.html:12
 msgid ""
 "An email has been sent to the given address. To continue the password reset "
 "process please follow the instructions in this email."
@@ -393,7 +393,7 @@ msgstr ""
 "Um email foi enviado para o endereço fornecido. Para continuar a processo de "
 "redefinição de senha por favor, siga as instruções do email."
 
-#: parsifal/authentication/templates/auth/success.html:12
+#: parsifal/authentication/templates/auth/success.html:13
 msgid ""
 "If you have any problem with the password reset, please contact us at <a "
 "href=\"mailto:support@parsif.al\">support@parsif.al</a>."
@@ -421,7 +421,7 @@ msgstr "Sua conta está desativada."
 msgid "Username or password invalid."
 msgstr "Usuário ou senha inválidos"
 
-#: parsifal/blog/templates/blog/entries.html:7
+#: parsifal/blog/templates/blog/entries.html:7 parsifal/templates/403.html:30
 msgid "Blog"
 msgstr ""
 
@@ -491,7 +491,7 @@ msgid ""
 "researchers can work together within a shared workspace, designing the "
 "protocol and conducting the research."
 msgstr ""
-"<strong>A Plataforma EbE</strong> é uma ferramenta projetada para "
+"<strong>A Plataforma QeeD</strong> é uma ferramenta projetada para "
 "pesquisadores para realizarem reviões sistemáticas da literatura. "
 "Pesquisadores geograficamente distribuídos podem trabalhar juntos em um "
 "ambiente compartilhado, projetando o protocolo e conduzindo a pesquisa até o "
@@ -509,7 +509,7 @@ msgid ""
 msgstr ""
 "Além de fornecer uma maneira de documentar todo o processo, a ferramenta "
 "ajudará você a lembrar o que é importante durante uma revisão sistemática da "
-"literatura. Durante a fase de planejamento, <strong> a Plataforma EbE </"
+"literatura. Durante a fase de planejamento, <strong> a Plataforma QeeD </"
 "strong> irá ajudá-lo com o objetivos, definição de PICOC, questões de "
 "pesquisa, string de busca, palavras-chave e sinônimos selecionando as "
 "fontes, os critérios de inclusão e exclusão. Irá também fornecer mecanismos "
@@ -574,7 +574,7 @@ msgid ""
 "strong> will help you planning, conducting and reporting the review."
 msgstr ""
 "Realizar uma revisão sistemática da literatura é uma tarefa intensiva que "
-"requer um grande esforço dos pesquisadores. A <strong> Plataforma EbE </"
+"requer um grande esforço dos pesquisadores. A <strong> Plataforma QeeD </"
 "strong> irá ajudá-lo(a) a planejar, conduzir, exportar e construir "
 "metanálises da sua revisão."
 
@@ -591,7 +591,7 @@ msgid "Reviews you are invited"
 msgstr "Revisões como convidado"
 
 #: parsifal/core/templates/core/home.html:117
-#: parsifal/reviews/templates/reviews/reviews.html:119
+#: parsifal/reviews/templates/reviews/reviews.html:120
 msgid "You don't have any systematic literature review yet."
 msgstr "Você não tem nenhum revisão sistemática da literatura ainda"
 
@@ -627,7 +627,7 @@ msgstr "está seguindo agora"
 #: parsifal/help/templates/help/article.html:23
 #: parsifal/help/templates/help/articles.html:6
 #: parsifal/help/templates/help/articles.html:10
-#: parsifal/help/templates/help/search.html:6
+#: parsifal/help/templates/help/search.html:6 parsifal/templates/403.html:32
 msgid "Help"
 msgstr "Ajuda"
 
@@ -1857,7 +1857,7 @@ msgstr "(visitantes)"
 #: parsifal/reviews/planning/templates/planning/protocol.html:723
 #: parsifal/reviews/planning/templates/planning/protocol.html:938
 #: parsifal/reviews/planning/templates/planning/statistical_methods_conventions.html:51
-#: parsifal/reviews/templates/reviews/review.html:55
+#: parsifal/reviews/templates/reviews/review.html:54
 msgid "Save"
 msgstr "Salvar"
 
@@ -1880,7 +1880,7 @@ msgstr "Discussões sobre o comentário "
 
 #: parsifal/reviews/comments/templates/comments/comment_detailed.html:17
 msgid "in"
-msgstr ""
+msgstr "nos"
 
 #: parsifal/reviews/comments/templates/comments/comment_detailed.html:26
 #: parsifal/reviews/comments/templates/comments/partial_children_comment.html:5
@@ -1935,6 +1935,10 @@ msgstr "Data"
 #: parsifal/reviews/comments/templates/comments/comments.html:51
 msgid "New"
 msgstr "Novo"
+
+#: parsifal/reviews/comments/templates/comments/partial_is_closed.html:4
+msgid "Close the discussion"
+msgstr "Fechar Discussão"
 
 #: parsifal/reviews/comments/templates/comments/partial_is_closed.html:5
 msgid "Open"
@@ -2259,8 +2263,8 @@ msgstr "Cole o conteúdo do arquivo BibTeX"
 #: parsifal/reviews/conducting/templates/conducting/new_document.html:46
 #: parsifal/reviews/planning/templates/planning/partial_keyword_form.html:66
 #: parsifal/reviews/templates/reviews/new.html:30
-#: parsifal/reviews/templates/reviews/review.html:121
-#: parsifal/reviews/templates/reviews/review.html:176
+#: parsifal/reviews/templates/reviews/review.html:120
+#: parsifal/reviews/templates/reviews/review.html:175
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -2411,7 +2415,7 @@ msgid ""
 "<strong>Science@Direct's</strong> databases. To enable the automatic search "
 "pick them as sources in the"
 msgstr ""
-"<strong> Plataforma EbE </strong> está integrado com <strong> Scopus's </"
+"<strong> Plataforma QeeD </strong> está integrado com <strong> Scopus's </"
 "strong> e Bancos de dados <strong>Science @Direct</strong>. Para ativar a "
 "pesquisa automática escolha-os como fontes no "
 
@@ -2463,7 +2467,7 @@ msgstr "Itens por Página:"
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_quality_assessment_detailed.html:26
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_quality_assessment_summary.html:27
 #: parsifal/reviews/templates/reviews/partial_published_protocols.html:34
-#: parsifal/reviews/templates/reviews/reviews.html:92
+#: parsifal/reviews/templates/reviews/reviews.html:93
 msgid "Title"
 msgstr "Título"
 
@@ -2471,8 +2475,8 @@ msgstr "Título"
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:372
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_find_duplicates.html:13
 #: parsifal/reviews/reporting/templates/reporting/export.html:50
-#: parsifal/reviews/templates/reviews/review.html:69
-#: parsifal/reviews/templates/reviews/reviews.html:93
+#: parsifal/reviews/templates/reviews/review.html:68
+#: parsifal/reviews/templates/reviews/reviews.html:94
 msgid "Authors"
 msgstr "Autores"
 
@@ -3591,7 +3595,7 @@ msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:185
 msgid "Choose an alternative to apply to your search."
-msgstr "Choose an alternative to apply to your search."
+msgstr "Escolha uma alternativa para aplicar à sua pesquisa."
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:190
 msgid ""
@@ -4143,10 +4147,8 @@ msgid "Share Quality Assessment"
 msgstr "Compartilhar"
 
 #: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:58
-#, fuzzy
-#| msgid "Export Quality Assessment"
 msgid "Import Quality Assessment"
-msgstr "Exportar Avaliação de Qualidade"
+msgstr "Importar Avaliação de Qualidade"
 
 #: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:72
 msgid "About Question"
@@ -4678,36 +4680,36 @@ msgstr "Última Atualização"
 msgid "Created"
 msgstr "Criada"
 
-#: parsifal/reviews/templates/reviews/review.html:35
+#: parsifal/reviews/templates/reviews/review.html:34
 msgid "This review has "
 msgstr "Esta revisão tem "
 
-#: parsifal/reviews/templates/reviews/review.html:35
+#: parsifal/reviews/templates/reviews/review.html:34
 msgid "new comments you didn't see"
 msgstr "novos comentários que você não viu"
 
-#: parsifal/reviews/templates/reviews/review.html:40
+#: parsifal/reviews/templates/reviews/review.html:39
 msgid "Review details"
 msgstr "Detalhes da Revisão"
 
-#: parsifal/reviews/templates/reviews/review.html:60
+#: parsifal/reviews/templates/reviews/review.html:59
 msgid "Import Protocol"
 msgstr "Importar Protocolo"
 
-#: parsifal/reviews/templates/reviews/review.html:76
+#: parsifal/reviews/templates/reviews/review.html:75
 msgid "main author"
 msgstr "Autor Principal"
 
-#: parsifal/reviews/templates/reviews/review.html:89
+#: parsifal/reviews/templates/reviews/review.html:88
 msgid "(leave)"
 msgstr "(sair)"
 
-#: parsifal/reviews/templates/reviews/review.html:99
-#: parsifal/reviews/templates/reviews/review.html:109
+#: parsifal/reviews/templates/reviews/review.html:98
+#: parsifal/reviews/templates/reviews/review.html:108
 msgid "Add author"
 msgstr "Adicionar Autor"
 
-#: parsifal/reviews/templates/reviews/review.html:113
+#: parsifal/reviews/templates/reviews/review.html:112
 msgid ""
 "You may add someone that doesn't have a account. Just type his email adress "
 "and we will send an invitation. :)"
@@ -4715,30 +4717,30 @@ msgstr ""
 "Você pode adicionar alguém que não tenha uma conta. Basta digitar endereço "
 "de e-mail e nós enviaremos um convite. :)"
 
-#: parsifal/reviews/templates/reviews/review.html:116
-#: parsifal/reviews/templates/reviews/review.html:171
+#: parsifal/reviews/templates/reviews/review.html:115
+#: parsifal/reviews/templates/reviews/review.html:170
 msgid "Contacts"
 msgstr "Contatos"
 
-#: parsifal/reviews/templates/reviews/review.html:117
+#: parsifal/reviews/templates/reviews/review.html:116
 msgid "Pick an author or invite someone..."
 msgstr "Escolha um autor ou convide alguém..."
 
-#: parsifal/reviews/templates/reviews/review.html:122
-#: parsifal/reviews/templates/reviews/review.html:177
+#: parsifal/reviews/templates/reviews/review.html:121
+#: parsifal/reviews/templates/reviews/review.html:176
 msgid "Send invitation"
 msgstr "Enviar Convite"
 
-#: parsifal/reviews/templates/reviews/review.html:135
+#: parsifal/reviews/templates/reviews/review.html:134
 msgid "Visitors"
 msgstr "Visitantes"
 
-#: parsifal/reviews/templates/reviews/review.html:154
-#: parsifal/reviews/templates/reviews/review.html:164
+#: parsifal/reviews/templates/reviews/review.html:153
+#: parsifal/reviews/templates/reviews/review.html:163
 msgid "Add visitor"
 msgstr "Adicionar Visitante"
 
-#: parsifal/reviews/templates/reviews/review.html:168
+#: parsifal/reviews/templates/reviews/review.html:167
 msgid ""
 "You may add someone that doesn't have a account. Just type his email adress "
 "and we will send an invitation."
@@ -4746,7 +4748,7 @@ msgstr ""
 "Você pode adicionar alguém que não tenha uma conta. Basta digitar endereço "
 "de e-mail e nós enviaremos um convite."
 
-#: parsifal/reviews/templates/reviews/review.html:172
+#: parsifal/reviews/templates/reviews/review.html:171
 msgid "Invite someone..."
 msgstr "Convidar Alguém..."
 
@@ -4754,48 +4756,48 @@ msgstr "Convidar Alguém..."
 msgid "Review tags"
 msgstr "Tags da Revisão"
 
-#: parsifal/reviews/templates/reviews/reviews.html:30
+#: parsifal/reviews/templates/reviews/reviews.html:31
 msgid "Edit profile"
 msgstr "Editar Perfil"
 
-#: parsifal/reviews/templates/reviews/reviews.html:52
+#: parsifal/reviews/templates/reviews/reviews.html:53
 msgid "STAFF"
 msgstr "STAFF"
 
-#: parsifal/reviews/templates/reviews/reviews.html:54
+#: parsifal/reviews/templates/reviews/reviews.html:55
 msgid "Followers"
 msgstr "Seguidores"
 
-#: parsifal/reviews/templates/reviews/reviews.html:59
+#: parsifal/reviews/templates/reviews/reviews.html:60
 msgid "Following"
 msgstr "Seguindo"
 
-#: parsifal/reviews/templates/reviews/reviews.html:82
+#: parsifal/reviews/templates/reviews/reviews.html:83
 msgid "New review"
 msgstr "Nova Revisão"
 
-#: parsifal/reviews/templates/reviews/reviews.html:87
+#: parsifal/reviews/templates/reviews/reviews.html:88
 msgid "Work in progress"
 msgstr "Trabalho em Progresso"
 
-#: parsifal/reviews/templates/reviews/reviews.html:94
+#: parsifal/reviews/templates/reviews/reviews.html:95
 msgid "Last update"
 msgstr "Última Atualização"
 
-#: parsifal/reviews/templates/reviews/reviews.html:112
-#: parsifal/reviews/templates/reviews/reviews.html:126
+#: parsifal/reviews/templates/reviews/reviews.html:113
+#: parsifal/reviews/templates/reviews/reviews.html:127
 msgid "Published reviews"
 msgstr "Revisões Publicadas"
 
-#: parsifal/reviews/templates/reviews/reviews.html:114
+#: parsifal/reviews/templates/reviews/reviews.html:115
 msgid "You haven't published any systematic literature review yet."
 msgstr "Você ainda não tem nenhuma revisão sistemática da literatura."
 
-#: parsifal/reviews/templates/reviews/reviews.html:120
+#: parsifal/reviews/templates/reviews/reviews.html:121
 msgid "Start a review"
 msgstr "Iniciar Revisões"
 
-#: parsifal/reviews/templates/reviews/reviews.html:128
+#: parsifal/reviews/templates/reviews/reviews.html:129
 msgid "haven't published any systematic literature review yet."
 msgstr "Não publicou nenhuma revisão sistemática da literatura."
 
@@ -4810,7 +4812,7 @@ msgstr ""
 #: parsifal/reviews/views.py:111 parsifal/reviews/views.py:161
 #, python-brace-format
 msgid "{0} via Parsifal <noreply@parsif.al>"
-msgstr "{0} via Plataforma EbE <noreply@parsif.al>"
+msgstr "{0} via Plataforma QeeD <noreply@parsif.al>"
 
 #: parsifal/reviews/views.py:113
 #, python-brace-format
@@ -4830,7 +4832,7 @@ msgid ""
 msgstr ""
 "<p> Olá {0}, </p> <p> {1} convidou você para uma revisão sistemática de "
 "literatura chamada \"{2}\". </p> <p> Veja a resenha em https://parsif.al/{3}/"
-"{4}/</p> <p> Atenciosamente, </p> <p> A Equipe EbE </p>"
+"{4}/</p> <p> Atenciosamente, </p> <p> A Equipe QeeD </p>"
 
 #: parsifal/reviews/views.py:124
 msgid "No author invited or added to the review. Nothing really changed."
@@ -4886,6 +4888,18 @@ msgstr ""
 #: parsifal/reviews/views.py:250
 msgid "Your review has been saved successfully!"
 msgstr "Sua revisão foi salva com sucesso!"
+
+#: parsifal/templates/403.html:26
+msgid "Permission denied"
+msgstr ""
+
+#: parsifal/templates/403.html:27
+msgid "We think you should not be here."
+msgstr ""
+
+#: parsifal/templates/403.html:28
+msgid "Home"
+msgstr ""
 
 #: parsifal/templates/includes/header.html:10
 msgid "Toggle navigation"
@@ -5075,7 +5089,7 @@ msgstr "Explorar"
 #~ "researchers geographically distributed to work on the same Systematic "
 #~ "Literature Review. There is no limit of authors per review."
 #~ msgstr ""
-#~ "Plataforma EbE é uma plataforma poderosa que fornece suporte completo "
+#~ "Plataforma QeeD é uma plataforma poderosa que fornece suporte completo "
 #~ "para pesquisadoresdistribuído geograficamente para trabalhar na mesma "
 #~ "Revisão de Literatura Sistemática.Não há limite de autores por revisão."
 
@@ -5093,9 +5107,9 @@ msgstr "Explorar"
 #~ "Normalmente você não pode publicar todas as informações relevantes sobre "
 #~ "a pesquisa como freqüentemente há uma quantidade limite de páginas para "
 #~ "publicar seu artigo em um determinada conferência ou revista. Plataforma "
-#~ "EbE fornece uma interface bonita para publicar qualquer informação extra, "
-#~ "como o resultado total da pesquisa string, todas as modificações da "
-#~ "string de pesquisa, mais detalhes sobre o protocolo e etc."
+#~ "QeeD fornece uma interface bonita para publicar qualquer informação "
+#~ "extra, como o resultado total da pesquisa string, todas as modificações "
+#~ "da string de pesquisa, mais detalhes sobre o protocolo e etc."
 
 #~ msgid "Support for tertiary studies"
 #~ msgstr "Suporte para estudos de graduação e pós-graduação"

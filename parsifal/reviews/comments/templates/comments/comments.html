@@ -18,10 +18,10 @@
           </h3>
           <small>
             {% if unseen_comments.count > 0 %}
-              {{unseen_comments.count}} {% trans 'new comments' %} &nbsp;&bull;&nbsp;
+               {% trans 'new comments' %} ({{unseen_comments.count}})
             {% endif %}
             {% if closed_comments.count > 0 %}
-              {{closed_comments.count}} {% trans 'closed comments' %}
+              {% trans 'closed comments' %} ({{closed_comments.count}})
             {% endif %}
           </small>
         </div>
@@ -53,7 +53,7 @@
                     &nbsp;{{comment.comment}}</td>
                   <td>{{comment.get_user_sended_to}}</td>
                   <td><span class="badge">{{comment.get_about_display}}</span></td>
-                  <td>{{comment.date|date:"M d, Y"}}</td>
+                  <td>{{comment.date|date:"d M, Y"}}</td>
                 </tr>
               {% endfor %}
             </tbody>
