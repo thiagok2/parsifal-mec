@@ -40,10 +40,10 @@ header .navbar {
 }
 
 header .navbar .username-divider {
-  border-right: 1px solid #ccc;
+  border-right: 2px solid #ccc;
   height: 20px;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 5px;
+  margin-right: 30px;
 }
 
 .masthead {
@@ -385,10 +385,13 @@ ul.review-menu li:hover {
 }
 
 ul.review-menu li.active {
-  background: #00a65a;
+  background: #10ab64;
   color: white;
-  border-bottom: 3px solid #d8dee4;
 }
+
+ul.review-menu li.active a {
+    color: white;
+  }
 
 #protocol.affix-top {
   position: relative;
@@ -433,7 +436,7 @@ ul.review-menu li.active {
 }
 
 #tbl-quality td.selected-answer {
-  background-color: #00a65a! important;
+  background-color: #10ab64! important;
   color: #fff;
 }
 
@@ -609,18 +612,29 @@ article p.lead{
 }
 
 header#header-nav  nav.navbar a {
-	color: #ccc;
-	opacity: 0.85;
+	color: #fff;
+}
+
+header#header-nav  nav.navbar-default ul a {
+	color: #10ab64;
 }
 
 header#header-nav  nav.navbar a:hover {
 
-	color: white;
+	color: #eee;
 	opacity: 1;
 }
 
 
 header#header-nav  nav.navbar input {
-	border-radius: 10px 0px 0px 10px;
+	border-radius: 5px 0px 0px 5px;
 }
 
+
+.label {
+    margin-right: 5px;
+}
+
+#painel-myreview .list-group-item {
+    border-color: #98d6ba;
+}

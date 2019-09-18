@@ -5,7 +5,7 @@
 
 {% block content %}
   <div class="row">
-    
+
     {% comment %}
     <div class="col-md-12">
       {% if latest_news and latest_news.summary %}
@@ -24,87 +24,87 @@
 	<div class="col-md-9">
 		<div id="painel-myreview" class="panel panel-default">
 			<div class="panel-heading">
-				<h3 class="panel-title">{% trans 'Your reviews' %}</h3>
+				<h3 class="panel-title"><strong>{% trans 'Your reviews' %}</strong></h3>
 			</div>
-			
+
 				<div class="list-group">
-					
+
 					{% for review in user_reviews %}
 					<div class="list-group-item">
 						<div class="row">
 							<div class="col-md-7">
 								<a href="/{{ review.author.username }}/{{ review.name }}/">{{ review.title }} </a>
 							</div>
-							
+
 							<div class="col-md-5 text-right">
-								<span class="badge badge-secondary" data-toggle="tooltip" data-placement="top" title="Artigos">
+								<span class="label label-success" data-toggle="tooltip" data-placement="top" title="Artigos">
 									 <i class="fa fa-fw fa-files-o"></i>
 									 {{review.articles_count}}
 								</span>
-								
-								<span class="badge badge-secondary" data-toggle="tooltip" data-placement="top" title="Selecionados">
+
+								<span class="label label-success" data-toggle="tooltip" data-placement="top" title="Selecionados">
 									 <i class="fa fa-fw fa-filter"></i>
 									 {{review.articles_accepts_count}}
 								</span>
-								
+
 								{%if review.export_protocol%}
-								<span class="badge badge-secondary" data-toggle="tooltip" data-placement="top" title="Protocolo Público">
+								<span class="label label-success" data-toggle="tooltip" data-placement="top" title="Protocolo Público">
 									<i class="fa fa-fw fa-share-alt"></i>
 								</span>
 								{%endif %}
 								{%if review.is_pipoc_completed%}
-								<span class="badge badge-secondary" data-toggle="tooltip" data-placement="top" title="PICOC">
+								<span class="label label-success" data-toggle="tooltip" data-placement="top" title="PICOC">
 									<i class="fa fa-fw fa-list"></i>
 								</span>
 								{%endif %}
 								{%if review.is_statistical_methods%}
-								<span class="badge badge-secondary" data-toggle="tooltip" data-placement="top" title="Métodos Estatísticos e Convenções">
+								<span class="label label-success" data-toggle="tooltip" data-placement="top" title="Métodos Estatísticos e Convenções">
 									<i class="fa fa-fw fa-calculator"></i>
 								</span>
 								{%endif %}
 								{%if review.has_quality_assessment_checklist%}
-								<span class="badge badge-secondary" data-toggle="tooltip" data-placement="top" title="Checklist">
+								<span class="label label-success" data-toggle="tooltip" data-placement="top" title="Checklist">
 									<i class="fa fa-fw  fa-check-square-o"></i>
 								</span>
 								{%endif %}
 							</div>
-							
+
 							<div class="col-md-2 text-right hidden">
-								<span class="badge badge-secondary">
+								<span class="label label-success">
 								{% for status in review.REVIEW_STATUS %}
 	            					{% if review.status == status.0 %} {{ status.1 }} {% endif %}
 	          					{% endfor %}
 								</span>
 							</div>
-									
+
 						</div>
 						<div class="row text-muted small">
 	   						<div class="col-sm-3 pull-left text-left">
 	   							{{ review.create_date }}
 	   						</div>
-	   						
+
 	   						<div class="col-md-4">
 								<span class="text-muted small">
 									{% if review.co_authors.count != 0 %}
-									<span class="btn btn-xs btn-default outline">Co:</span> 
+									<span class="btn btn-xs btn-default outline">Co:</span>
 									{% endif %}
-									{% for author in review.co_authors.all %} 
+									{% for author in review.co_authors.all %}
 										<a class="btn btn-xs btn-default outline" href="/{{ author.username }}/"> {{ author.profile.get_screen_name }}</a>
 									{% endfor %}
 								</span>
 							</div>
-	   						
+
 						</div>
 					</div>
 					{% endfor %}
-					
+
 				</div><!-- end list-group -->
-			
+
 		</div><!-- end panel -->
 	</div>
 
 	<div class="col-md-3">
-      
+
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title">{% trans 'Reviews you are invited' %}</h3>
@@ -117,7 +117,7 @@
           {% endfor %}
         </div>
       </div>
-      
+
       {% comment %}
       <div class="panel panel-default">
       	<div class="panel-heading">
