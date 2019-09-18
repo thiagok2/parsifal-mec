@@ -221,6 +221,7 @@ nav li:hover {
 .nav-pills>li.active>a:hover{
 	background: #10ab64;
 	border-top-color: #10ab64;
+	border-left-color: #10ab64;
 	color: white;
 }
 
