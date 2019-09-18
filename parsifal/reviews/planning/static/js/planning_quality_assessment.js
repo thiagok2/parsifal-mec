@@ -168,7 +168,7 @@ $(function () {
     return false;
   });
 
-  $("#btn-import-quality-questions").click(function () {
+  $("#btn-import-quality-checklist").click(function () {
     $.ajax({
       url: '/reviews/planning/suggested_quality_assessment_questions/',
       data: { 'review-id': $('#review-id').val() },
@@ -185,7 +185,7 @@ $(function () {
     });
   });
 
-  $("table#tbl-import-quality-questions").on("click", "tbody tr", function () {
+  $("table#tbl-import-quality-questions").on("click", "tbody tr#exported-review", function () {
     var hiddenClass = $(this)[0].nextElementSibling
     hiddenClass.className == "hidden"
     ? hiddenClass.className = ""
@@ -194,37 +194,55 @@ $(function () {
 
   $("table#tbl-import-quality-questions").on("click", "td#import-quality-questions", function () {
     var exported_review_id = $(this)[0].parentElement.children[0].innerHTML;
-    var questions = $("#form-suggested-quality-questions-"+exported_review_id).serializeArray();
     var review_id = $("#review-id").val();
+    var csrf_token = $("[name='csrfmiddlewaretoken']").val();
 
-    questions_ids = []
-    $.each(questions, function(i, question) {
-        question.name == 'id' ? questions_ids.push(question.value) : null
+    $.ajax({
+        url: '/reviews/planning/save_imported_quality_assessment/',
+        data: {
+            'review-id': review_id,
+            'exported-review-id': exported_review_id,
+            'csrfmiddlewaretoken': csrf_token
+        },
+        type: 'post',
+        cache: false,
+        success: function (data) {
+            //$("#tbl-quality-questions tbody").append(data);
+            //$("#modal-suggested-quality-questions").modal("hide");
+            //update_max_score();
+        }
     });
 
-    for (f of questions_ids) {
-        var step_questions = { id: f }
-        $.each(questions, function(i, question) {
-            if (question.name == 'description-'+f) step_questions.description = question.value
-            if (question.name == 'csrfmiddlewaretoken') step_questions.csrf_token = question.value
-        });
 
-        $.ajax({
-            url: '/reviews/planning/save_quality_assessment_question/',
-            data: {'review-id': review_id,
-                'description': step_questions.description,
-                'quality-question-id': 'None',
-                'csrfmiddlewaretoken': step_questions.csrf_token
-            },
-            type: 'post',
-            cache: false,
-            success: function (data) {
-                $("#tbl-quality-questions tbody").append(data);
-                $("#modal-suggested-quality-questions").modal("hide");
-                update_max_score();
-            }
-        });
-    }
+
+    // questions_ids = []
+    // $.each(questions, function(i, question) {
+    //     question.name == 'id' ? questions_ids.push(question.value) : null
+    // });
+
+    // for (f of questions_ids) {
+    //     var step_questions = { id: f }
+    //     $.each(questions, function(i, question) {
+    //         if (question.name == 'description-'+f) step_questions.description = question.value
+    //         if (question.name == 'csrfmiddlewaretoken') step_questions.csrf_token = question.value
+    //     });
+
+    //     $.ajax({
+    //         url: '/reviews/planning/save_quality_assessment_question/',
+    //         data: {'review-id': review_id,
+    //             'description': step_questions.description,
+    //             'quality-question-id': 'None',
+    //             'csrfmiddlewaretoken': step_questions.csrf_token
+    //         },
+    //         type: 'post',
+    //         cache: false,
+    //         success: function (data) {
+    //             $("#tbl-quality-questions tbody").append(data);
+    //             $("#modal-suggested-quality-questions").modal("hide");
+    //             update_max_score();
+    //         }
+    //     });
+    // }
    });
 
    $("#btn-confirm-quality-questions-share").click(function () {

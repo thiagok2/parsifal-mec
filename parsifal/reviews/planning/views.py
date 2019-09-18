@@ -692,6 +692,37 @@ def share_risks(request):
 
 @author_required
 @login_required
+def save_imported_quality_assessment(request):
+    try:
+        review_id = request.POST['review-id']
+        exported_review_id = request.POST['exported-review-id']
+        review = Review.objects.get(pk=review_id)
+
+        exported_questions = QualityQuestion.objects.filter(review__id=exported_review_id)
+        for question in exported_questions:
+            imported_question = QualityQuestion(
+                                            review=review,
+                                            description=question.description
+                                        )
+            imported_question.save()
+
+            exported_question_answers = question.get_answers()
+            for answer in exported_question_answers:
+                imported_answer = QualityAnswer(
+                                            review=review,
+                                            description=answer.description,
+                                            weight=answer.weight,
+                                            question=imported_question
+                                        )
+                imported_answer.save()
+
+        return HttpResponse()
+    except Exception as e:
+        print 'erro ', e
+        return HttpResponseBadRequest()
+
+@author_required
+@login_required
 def add_quality_assessment_question(request):
     try:
         quality_question = QualityQuestion()
@@ -771,7 +802,6 @@ def suggested_quality_assessment_questions(request):
     try:
         review_id = request.GET['review-id']
         suggested_reviews = Review.objects.filter(export_qualityassessment=True).exclude(id=review_id)
-
         context = RequestContext(request, {'suggested_reviews': suggested_reviews})
         return render_to_response('planning/partial_quality_assessment_question_suggested.html', context)
     except Exception as e:

@@ -53,6 +53,10 @@
             <span class="glyphicon glyphicon-export"></span>
             {% trans 'Share Quality Assessment' %}
           </button>
+          <button type="button" class="btn btn-success btn-block" id="btn-import-quality-checklist" data-toggle="modal" data-target="#modal-suggested-quality-questions" style="margin-top: 15px;">
+            <span class="glyphicon glyphicon-import"></span>
+            {% trans 'Import Quality Assessment' %}
+          </button>
         </div>
       </div>
     </div>
@@ -100,10 +104,6 @@
             <button type="button" class="btn btn-success" id="btn-add-quality-question">
               <span class="glyphicon glyphicon-plus"></span>
               {% trans 'Add Question' %}
-            </button>
-            <button type="button" class="btn btn-success" id="btn-import-quality-questions" data-toggle="modal" data-target="#modal-suggested-quality-questions">
-              <span class="glyphicon glyphicon-import"></span>
-              {% trans 'Import Questions' %}
             </button>
           </div>
         </div>
