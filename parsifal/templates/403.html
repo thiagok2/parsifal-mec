@@ -1,8 +1,10 @@
+{% load i18n humanize is_visitor %}
+
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Plataforma  EbE · 403</title>
+  <title>Plataforma  QeeD · 403</title>
   <link rel="icon" type="image/png" href="/static/img/favicon-16x16.png" sizes="16x16">
   <link rel="icon" type="image/png" href="/static/img/favicon-32x32.png" sizes="32x32">
   <link rel="icon" type="image/png" href="/static/img/favicon-96x96.png" sizes="96x96">
@@ -20,14 +22,14 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h1>Plataforma  EbE</h1>
-          <h2>403<br><small>Permission denied</small></h2>
-          <p class="lead">We think you should not be here.</p>
-          <a href="/" class="btn btn-link">Home</a>
+          <h1>Plataforma  QeeD</h1>
+          <h2>403<br><small>{% trans 'Permission denied' %}</small></h2>
+          <p class="lead">{% trans 'We think you should not be here.' %}</p>
+          <a href="/" class="btn btn-link">{% trans 'Home' %}</a>
           <span class="divider">·</span>
-          <a href="/blog/" class="btn btn-link">Blog</a>
+          <a href="/blog/" class="btn btn-link">{% trans 'Blog' %}</a>
           <span class="divider">·</span>
-          <a href="/help/" class="btn btn-link">Help</a>
+          <a href="/help/" class="btn btn-link">{% trans 'Help' %}</a>
         </div>
       </div>
     </div>
@@ -37,7 +39,7 @@
     <div class="container">
       <div class="row">
         <div class="col-xs-6 legal">
-          <span>© 2020 Plataforma  EbE Ltd.</span>
+          <span>© Plataforma  QeeD Ltd.</span>
         </div>
         <div class="col-xs-6 social">
           
