@@ -19,23 +19,20 @@
 				<ul class="nav navbar-nav navbar-right">
 					{% if user.is_authenticated %}
 						<li>
-							<img src="{{ user.profile.get_picture }}" alt="Avatar" class="img-avatar2" style="padding-top: 10px;">
+							<img src="{{ user.profile.get_picture }}" width="29px" alt="Avatar" class="img-circle" style="margin-top: 12px;">
 						</li>
-					
+
 						<li>
-							
+
 			            	<a href="{% url 'reviews' user.username %}">
 			                	<span data-toggle="tooltip" data-placement="bottom" data-container="body" title="{% trans 'My profile' %}">
 			                  		{{ user.profile.get_screen_name }}
 			                	</span>
 			              	</a>
-			              	
+
 			            </li>
-				        <li>
-				        	<span class="navbar-text username-divider"></span>
-				        </li>
-				        
-				        
+
+
 						<li>
 							<a href="{% url 'followers' user.username %}">
 								<span class="follows">
@@ -49,7 +46,10 @@
 									{{ user.profile.get_following_count }} {% trans 'followings' %}
 								</span>
 							</a>
-						</li>
+            </li>
+            <li>
+              <span class="navbar-text username-divider"></span>
+            </li>
 					{% endif %}
 			    	<li style="padding-top: 13px">
 			            <form id="form_language" action="{% url 'set_language' %}" method="post">
@@ -65,7 +65,7 @@
 			                {% else %}
 			                  <img src="{% static 'img/'|add:language.code|add:'.gif' %}" style="margin-right: 5px; cursor: pointer;" />
 			                {% endif %}
-			
+
 			              {% endfor %}
 			            </form>
 			        </li>
@@ -110,14 +110,12 @@
 		</div>
 	</nav>
 	{% if show_head  %}
-	<nav class="navbar navbar-inverse header-home">
+	<nav class="navbar navbar-default header-home">
 		<div class="container-fluid">
+      <a href="/reviews/new/" class="btn btn-success pull-left" style="margin-top:8px;">{% trans 'New review' %}</a>
 			<ul class="nav navbar-nav">
 				<li>
-					<a href="/reviews/new/" class="btn btn-success">{% trans 'New review' %}</a>
-				</li>
-				<li>
-					<form class="navbar-form navbar-left" action="{% url 'reviews:search' %}"  method="get">
+					<form class="navbar-form" action="{% url 'reviews:search' %}"  method="get">
 						<div class="input-group">
 					    	<input type="text"  name="q" class="form-control" placeholder="{% trans 'Search Reviews' %}" value="{{ q }}">
 					    	<div class="input-group-btn">
@@ -138,9 +136,9 @@
 					<li><a href="{% url 'help:articles' %}">{% trans 'Help' %}</a></li>
 				{%endcomment%}
 				<li><a href="{% url 'about' %}">{% trans 'About' %}</a></li>
-				
+
 				{% endif %}
-	
+
 			</ul>
 		</div>
 	</nav>
