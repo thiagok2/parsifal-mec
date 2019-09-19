@@ -4,18 +4,18 @@
 
 <ul class="nav nav-tabs" id="planning-tab">
   <li role="presentation"{% if active_tab == 'protocol' %} class="active"{% endif %}>
-    <a href="{% url 'protocol' review.author.username review.name %}">{% trans 'Protocol' %}</a>
+    <a href="{% url 'protocol' review.author.username review.name %}">1. {% trans 'Protocol' %}</a>
   </li>
   <li role="presentation"{% if active_tab == 'quality' %} class="active"{% endif %}>
-    <a href="{% url 'quality_assessment_checklist' review.author.username review.name %}">{% trans 'Quality Assessment Checklist' %}</a>
+    <a href="{% url 'quality_assessment_checklist' review.author.username review.name %}">2. {% trans 'Quality Assessment Checklist' %}</a>
   </li>
   <li role="presentation"{% if active_tab == 'risks' %} class="active"{% endif %}>
-    <a href="{% url 'risks_to_review_validity' review.author.username review.name %}">{% trans 'Risks To Review Validity' %}</a>
+    <a href="{% url 'risks_to_review_validity' review.author.username review.name %}">3. {% trans 'Risks To Review Validity' %}</a>
   </li>
   <li role="presentation"{% if active_tab == 'extraction' %} class="active"{% endif %}>
-    <a href="{% url 'data_extraction_form' review.author.username review.name %}">{% trans 'Data Extraction Form' %}</a>
+    <a href="{% url 'data_extraction_form' review.author.username review.name %}">4. {% trans 'Data Extraction Form' %}</a>
   </li>
   <li role="presentation"{% if active_tab == 'statistical-methods' %} class="active"{% endif %}>
-    <a href="{% url 'statistical_methods_conventions' review.author.username review.name %}">{% trans 'Statistical Methods and Conventions' %}</a>
+    <a href="{% url 'statistical_methods_conventions' review.author.username review.name %}">5. {% trans 'Statistical Methods and Conventions' %}</a>
   </li>
 </ul>
