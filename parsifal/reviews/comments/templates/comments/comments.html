@@ -48,7 +48,7 @@
                   <td>{{comment.user.profile.get_screen_name}}</td>
                   <td style="max-width: 450px;">
                     {% if comment in unseen_comments %}
-                    <span class="badge label-primary">{% trans 'New' %}</span>
+                    <span class="badge label-success">{% trans 'New' %}</span>
                     {% endif %}
                     &nbsp;{{comment.comment}}</td>
                   <td>{{comment.get_user_sended_to}}</td>
