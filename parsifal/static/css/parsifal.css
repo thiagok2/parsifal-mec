@@ -70,7 +70,7 @@ header .navbar .username-divider {
 main {
   margin-top: 20px;
   margin-bottom: 60px;
-  min-height: 800px;
+  min-height: 500px;
 }
 
 footer {
@@ -622,7 +622,7 @@ header#header-nav  nav.navbar-default ul a {
 header#header-nav  nav.navbar a:hover {
 
 	
-	opacity: 1;
+	/* opacity: 1; */
 }
 
 

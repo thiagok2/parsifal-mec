@@ -7,6 +7,14 @@ a{
 	color: #333;
 }
 
+h3{
+	font-size: 18px !important;
+}
+
+h3.panel-title{
+	font-size: 18px !important;
+}
+
 a:hover{
 	color: #333;
 	text-decoration: none;

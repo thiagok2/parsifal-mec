@@ -80,7 +80,10 @@
 
     {% if user.id == page_user.id %}
       <div style="margin-bottom: 20px;">
-        <a href="{% url 'reviews:new' %}" class="btn btn-success">{% trans 'New review' %}</a>
+        <a href="{% url 'reviews:new' %}" class="btn btn-success">
+        	<span class="glyphicon glyphicon-plus"></span>
+        	{% trans 'Create review' %}
+        </a>
       </div>
       {% if user_reviews %}
         <div class="panel panel-default">
