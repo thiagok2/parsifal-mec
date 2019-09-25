@@ -22,7 +22,6 @@
 
 <div class="articles clearfix">
   <div class="source-buttons">
-  	
     {% if not source.id %}
       <div style="margin-bottom: 20px">
       	
@@ -51,21 +50,14 @@
 				<span class="articles-total ">{{ articles.count }}</span>
 			</span>
         </div>
-     {% endif %}
+    {% endif %}
     <a href="javascript:void(0);" class="pull-right" data-toggle="tooltip" title="{% trans 'What is this? Click to get help.' %}" data-placement="top" data-container="body">
        	<span class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#selection-studies-help"></span>
-     </a>
-     {% include 'comments/comment_icon_button.html' with user=user about="STUDY_SELECTION" %}
-    <div class="studies-action" style="margin: 10px 0;">
-      <strong>{% trans 'Action:' %}</strong>
-      <select class="select-action form-control" style="width: 200px; display: inline-block;">
-        <option value="">{% trans 'Select...' %}</option>
-        <option value="remove">{% trans 'Remove selected' %}</option>
-      </select>
-      <button type="button" class="btn btn-default go-button">{% trans 'Run' %}</button>
-      <span class="text-muted"><span class="articles-selected">0</span> {% trans 'of' %} <span class="articles-total">{{ articles.count }}</span> {% trans 'selected' %}</span>
-    </div>
-    <p>
+    </a>
+    
+    {% include 'comments/comment_icon_button.html' with user=user about="STUDY_SELECTION" %}
+  	
+  	<p>
       <strong>{% trans 'Show' %}:</strong>
       <label class="radio-inline">
         <input type="radio" name="filter" value="ALL" checked> {% trans 'All' %}
@@ -89,6 +81,17 @@
         <input type="radio" name="filter" value="C"> {% trans 'Conflict' %}
       </label>
     </p>
+  	
+    <div class="studies-action" style="margin: 10px 0;">
+      <strong>{% trans 'Action:' %}</strong>
+      <select class="select-action form-control" style="width: 200px; display: inline-block;">
+        <option value="">{% trans 'Select...' %}</option>
+        <option value="remove">{% trans 'Remove selected' %}</option>
+      </select>
+      <button type="button" class="btn btn-default go-button">{% trans 'Run' %}</button>
+      <span class="text-muted"><span class="articles-selected">0</span> {% trans 'of' %} <span class="articles-total">{{ articles.count }}</span> {% trans 'selected' %}</span>
+    </div>
+    
   </div>
   <div class="source-articles">
     <table class="table table-hover table-bordered" csrf-token="{{ csrf_token }}" source-id="{{ source.id }}" style="font-size: 13px">

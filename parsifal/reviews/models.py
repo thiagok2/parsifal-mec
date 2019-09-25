@@ -718,13 +718,13 @@ class DataExtractionField(models.Model):
     SELECT_ONE_FIELD = 'O'
     SELECT_MANY_FIELD = 'M'
     FIELD_TYPES = (
-        (BOOLEAN_FIELD, 'Boolean Field'),
-        (STRING_FIELD, 'String Field'),
-        (FLOAT_FIELD, 'Float Field'),
-        (INTEGER_FIELD, 'Integer Field'),
-        (DATE_FIELD, 'Date Field'),
-        (SELECT_ONE_FIELD, 'Select One Field'),
-        (SELECT_MANY_FIELD, 'Select Many Field'),
+        (BOOLEAN_FIELD, _('Boolean Field')),
+        (STRING_FIELD, _('String Field')),
+        (FLOAT_FIELD, _('Float Field')),
+        (INTEGER_FIELD, _('Integer Field')),
+        (DATE_FIELD, _('Date Field')),
+        (SELECT_ONE_FIELD, _('Select One Field')),
+        (SELECT_MANY_FIELD, _('Select Many Field')),
         )
 
     review = models.ForeignKey(Review)
