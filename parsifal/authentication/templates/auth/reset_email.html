@@ -1,9 +1,7 @@
-{% load i18n %}
+{% load i18n humanize %}
 
-{% load humanize
+{% trans 'Here is your password reset link:' %}
 
-Here is your password reset link:
-
-https://parsif.al{% url 'password_reset_confirm' uidb64=uid token=token %}
+https://parsifal-dev.nees.com.br{% url 'password_reset_confirm' uidb64=uid token=token %}
 
 {% trans 'Your username:' %} {{ user.username }}

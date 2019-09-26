@@ -114,8 +114,8 @@ EMAIL_PORT = config('EMAIL_PORT', cast=int)
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
-DEFAULT_FROM_EMAIL = 'Parsifal Team <noreply@parsif.al>'
-EMAIL_SUBJECT_PREFIX = '[Parsifal] '
+DEFAULT_FROM_EMAIL = 'Qeed <noreply@qeed.com.br>'
+EMAIL_SUBJECT_PREFIX = '[Qeed] '
 SERVER_EMAIL = 'application@parsif.al'
 
 MENDELEY_ID = config('MENDELEY_ID', cast=int)
