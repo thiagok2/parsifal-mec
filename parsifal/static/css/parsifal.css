@@ -621,7 +621,7 @@ header#header-nav  nav.navbar-default ul a {
 
 header#header-nav  nav.navbar a:hover {
 
-	
+
 	/* opacity: 1; */
 }
 
@@ -637,4 +637,15 @@ header#header-nav  nav.navbar input {
 
 #painel-myreview .list-group-item {
     border-color: #98d6ba;
+    border-width: 0 0 3px 0;
+}
+
+.create-review span {
+    font-size: 0.7em;
+    top: 0;
+}
+
+ul.nav-pills .list-group-item:last-child,
+ul.nav-pills .list-group-item:first-child {
+    border-radius: 0px;
 }
