@@ -22,7 +22,7 @@ a:hover{
 
 
 header .navbar-inverse {
-	background-color: #38b87d;
+	background-color: #10ab64;
 	border: none;
 	color: #fff;
 }
@@ -203,7 +203,7 @@ nav-tabs > li:hover{
 
 span.label{
 	padding: 5px;
-    font-size: 0.9em;
+    font-size: 1.0em;
 }
 
 input[type=checkbox], input[type=radio]
