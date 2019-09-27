@@ -1,0 +1,42 @@
+{
+	"info": {
+		"_postman_id": "354aba7d-259f-4439-9954-183a64c14396",
+		"name": "parsifal",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://hostname/forestplot/",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"studies\": \n  [\n     { \n     \t\"name\": \"Auckland\",\n     \t\"mean\":\"0.578\",\n     \t\"lower\": \"0.372\",\n     \t\"upper\": \"0.898\"\n     },\n     { \n     \t\"name\": \"Block\",\n     \t\"mean\":\"0.165\",\n     \t\"lower\": \"0.018\",\n     \t\"upper\": \"1.517\"\n     },\n     { \n     \t\"name\": \"Doran\",\n     \t\"mean\":\"0.246\",\n     \t\"lower\": \"0.072\",\n     \t\"upper\": \"0.833\"\n     },\n     { \n     \t\"name\": \"Gamsu\",\n     \t\"mean\":\"0.700\",\n     \t\"lower\": \"0.333\",\n     \t\"upper\": \"1.474\"\n     },\n     { \n     \t\"name\": \"Morrison\",\n     \t\"mean\":\"0.348\",\n     \t\"lower\": \"0.083\",\n     \t\"upper\": \"1.455\"\n     },\n     { \n     \t\"name\": \"Papageorgiou\",\n     \t\"mean\":\"0.139\",\n     \t\"lower\": \"0.016\",\n     \t\"upper\": \"1.209\"\n     },\n     { \n     \t\"name\": \"Tauesch\",\n     \t\"mean\":\"1.017\",\n     \t\"lower\": \"0.365\",\n     \t\"upper\": \"2.831\"\n     }     \n  ],\n  \"efs\": \n  {\n     \"mean\": \"0.531\",\n     \"lower\": \"0.386\",\n     \"upper\": \"0.731\"\n  }\n}"
+				},
+				"url": {
+					"raw": "https://{{HOSTNAME}}/forestplot/",
+					"protocol": "https",
+					"host": [
+						"{{HOSTNAME}}"
+					],
+					"path": [
+						"forestplot",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
