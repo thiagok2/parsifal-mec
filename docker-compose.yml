@@ -31,8 +31,6 @@ services:
     build: ./docker-config/r
     networks:
       - webnet    
-    ports:
-      - "${R_PORT}:8000"
     restart: always 
   staticweb:
     image: nginx:latest
