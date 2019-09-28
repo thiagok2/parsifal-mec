@@ -24,7 +24,7 @@
   <div class="source-buttons">
     {% if not source.id %}
       <div style="margin-bottom: 20px">
-      	
+
         <button type="button" class="btn btn-sm btn-default btn-find-duplicates">
           <span class="glyphicon glyphicon-duplicate"></span>
           {% trans 'Find Duplicates' %}
@@ -41,7 +41,7 @@
         <span class="pull-right text-muted">
         	Total de <span class="articles-total ">{{ articles.count }}</span> artigos
         </span>
-       
+
       </div>
    	{% else %}
     	<div style="margin-bottom: 20px">
@@ -54,9 +54,9 @@
     <a href="javascript:void(0);" class="pull-right" data-toggle="tooltip" title="{% trans 'What is this? Click to get help.' %}" data-placement="top" data-container="body">
        	<span class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#selection-studies-help"></span>
     </a>
-    
+
     {% include 'comments/comment_icon_button.html' with user=user about="STUDY_SELECTION" %}
-  	
+
   	<p>
       <strong>{% trans 'Show' %}:</strong>
       <label class="radio-inline">
@@ -81,7 +81,7 @@
         <input type="radio" name="filter" value="C"> {% trans 'Conflict' %}
       </label>
     </p>
-  	
+
     <div class="studies-action" style="margin: 10px 0;">
       <strong>{% trans 'Action:' %}</strong>
       <select class="select-action form-control" style="width: 200px; display: inline-block;">
@@ -91,7 +91,7 @@
       <button type="button" class="btn btn-default go-button">{% trans 'Run' %}</button>
       <span class="text-muted"><span class="articles-selected">0</span> {% trans 'of' %} <span class="articles-total">{{ articles.count }}</span> {% trans 'selected' %}</span>
     </div>
-    
+
   </div>
   <div class="source-articles">
     <table class="table table-hover table-bordered" csrf-token="{{ csrf_token }}" source-id="{{ source.id }}" style="font-size: 13px">
@@ -107,34 +107,18 @@
           <!-- <th style="min-width: 100px;">{% trans 'Added by' %}</th>-->
           <!-- <th style="min-width: 100px;">{% trans 'Added at' %}</th>-->
           <th>Status</th>
+          <th>
+            {% blocktrans %}
+              Empirical <br/>
+              Data
+            {% endblocktrans %}
+          </th>
           <th>{% trans 'Your evaluation' %}</th>
         </tr>
       </thead>
       <tbody>
         {% for article in articles %}
-          <tr oid="{{ article.id }}" article-status="{{ article.status }}">
-            <td style="text-align: center;"><input type="checkbox" value="{{ article.id }}"></td>
-            <td class="table-link">
-            	{{ article.bibtex_key }}
-            	<br/>
-            	<!--  
-            	<span class="badge badge-secondary">
-            		{{ article.document_type }}
-            	</span>
-            	-->
-            </td>
-            <td class="table-link">{{ article.title }}</td>
-            <!--<td>{{ article.author }}</td>>-->
-            <td class="table-link">{{ article.journal|default:"" }}</td>
-            <td class="table-link">{{ article.year|default:"" }}</td>
-            <td class="table-link" style="text-align: justify;" class="text-muted">{{ article.abstract|default:"" }}</td>
-            <!--<td>{{ article.created_by.profile.get_screen_name }}</td>-->
-            <!--<td>{{ article.created_at|date:"d M Y H:i:s" }}</td>-->
-            <td class="table-link">{{ article.get_status_html|safe }}</td>
-            <td width="170px">
-              {% include 'conducting/partial_article_evaluation_table_form.html' %}
-            </td>
-          </tr>
+          {% include 'conducting/partial_conducting_article_row.html' with article=article %}
         {% empty %}
           <tr class="no-data">
             <td colspan="9">{% trans 'No articles.' %}</td>

@@ -33,7 +33,7 @@ class Source(models.Model):
             self.url = u'http://{0}'.format(value)
         else:
             self.url = value
-            
+
     def get_articles_count(self, review_id):
         articles_count = Article.objects.filter(review__id=review_id).count()
         return 20
@@ -246,7 +246,7 @@ class Review(models.Model):
     def articles_accepts_count(self):
         accepts_count = Article.objects.filter(review__id=self.id,status=Article.ACCEPTED).count()
         return accepts_count
-    
+
     def pico_type_label(self):
         if (self.pico_type == Review.FREE_TEXT):
             return 'Texto Livre'
@@ -524,6 +524,7 @@ class Article(models.Model):
     created_by = models.ForeignKey(User, null=True, blank=True, related_name='articles_created', on_delete=models.SET_NULL)
     updated_by = models.ForeignKey(User, null=True, blank=True, related_name='articles_updated', on_delete=models.SET_NULL)
     evaluation_finished = models.BooleanField(default=False)
+    has_empirical_data = models.BooleanField(default=False)
 
     class Meta:
         verbose_name = 'Article'
@@ -563,7 +564,7 @@ class Article(models.Model):
         # evaluation_status = dict(ArticleEvaluation.ARTICLE_STATUS).get(evaluation)
 
         return evaluation
-    
+
     def get_document_type(self):
         result = filter(lambda x: x[0].startswith(self.document_type), Document.ENTRY_TYPES)
         return result[0]

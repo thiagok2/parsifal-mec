@@ -201,14 +201,25 @@ def study_selection(request, username, review_name):
             'unseen_comments': unseen_comments
         })
 
+def update_article_empirical_data(request):
+    try:
+        article_id = request.GET['article-id']
+        has_empirical_data = request.GET['has-empirical-data']
+        status_evaluation = ArticleEvaluation.ARTICLE_STATUS
+
+        if article_id:
+            article = Article.objects.get(pk=article_id)
+            article.has_empirical_data = True if has_empirical_data == 'true' else False
+            article.save()
+
+        context = RequestContext(request, {'article': article, 'user': request.user, 'status_evaluation': status_evaluation})
+        return render_to_response('conducting/partial_conducting_article_row.html', context)
+    except:
+        return HttpResponseBadRequest()
+
 def build_quality_assessment_table(request, review, order):
     selected_studies = review.get_accepted_articles().annotate(sum=Sum('qualityassessment__answer__weight')).order_by(order)
-    # selected_studies = selected_studies.distinct('title')
-    #quality_questions = review.get_quality_assessment_questions()
-    #quality_answers = review.get_quality_assessment_answers()
-
     quality_questions = QualityQuestion.objects.filter(review__id=review.id)
-    print 'questions ', quality_questions
 
     if quality_questions:
         str_table = u''
@@ -726,19 +737,14 @@ def save_article_details(request):
 def save_article_evaluation(request):
     if request.method == 'POST':
         try:
-            print 'tryyy'
             article_id = request.POST['article-id']
             article_evaluation_id = request.POST['article-evaluation-id']
             review_id = ''
 
-            print 'aeid ', article_evaluation_id
-
             if article_evaluation_id != 'None':
-                print 'ifff'
                 article_evaluation = ArticleEvaluation.objects.get(pk=article_evaluation_id)
                 review_id = article_evaluation.review.id
             else:
-                print 'elseee'
                 review_id = request.POST['review-id']
                 review = Review.objects.get(pk=review_id)
                 article = Article.objects.get(pk=article_id)
@@ -756,14 +762,12 @@ def save_article_evaluation(request):
             except:
                 article_evaluation.selection_criteria = None
 
-            print 'aaaaaa ', article_evaluation
             article_evaluation.save()
 
             edit_article_status(review_id, article_id)
 
             return HttpResponse()
         except Exception as e:
-            print 'eee ', e
             return HttpResponseBadRequest()
     else:
         return HttpResponseBadRequest()
@@ -808,9 +812,7 @@ def article_solve_conflict(request):
         article = Article.objects.get(pk=article_id)
 
         status = request.POST['status'][:1]
-        print 'status ', status
         if status in (Article.UNCLASSIFIED, Article.WAITING, Article.REJECTED, Article.CONFLICT, Article.ACCEPTED, Article.DUPLICATED):
-            print 'status2 ', status
             article.status = status
             article.evaluation_finished = True
 
