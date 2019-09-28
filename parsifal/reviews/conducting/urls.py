@@ -36,7 +36,7 @@ urlpatterns = patterns('parsifal.reviews.conducting.views',
     url(r'^articles_per_year/$', 'articles_per_year', name='articles_per_year'),
     url(r'^export_data_extraction/$', 'export_data_extraction', name='export_data_extraction'),
     url(r'^remove_article_file/$', 'remove_article_file', name='remove_article_file'),
-    
+    url(r'^update_article_empirical_data/$', 'update_article_empirical_data', name='update_article_empirical_data'),
     url(r'^new_document/$', 'new_document', name='new_document'),
 
 )
