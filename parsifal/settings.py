@@ -92,6 +92,7 @@ INSTALLED_APPS = (
     'parsifal.reviews.comments',
     'parsifal.reviews.planning',
     'parsifal.reviews.conducting',
+    'parsifal.reviews.metaanalysis',
     'parsifal.reviews.reporting',
     'parsifal.reviews.settings',
     'parsifal.account_settings',
