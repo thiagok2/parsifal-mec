@@ -75,6 +75,12 @@ $(function () {
       var risk_id = $(tr).attr("data-risk-id");
       var description = $("input[name='risk-description']", tr).val();
       var csrf_token = $("#risk-form input[name='csrfmiddlewaretoken']").val();
+      
+      if(!description){
+    	  $.parsifal.alert("Campo obrigatório.", "Preencha a descrição para adicionar.");
+    	  return null;
+      }
+    	  
       $.ajax({
         url: '/reviews/planning/save_risk/',
         data: {
