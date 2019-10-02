@@ -92,5 +92,71 @@ $(function () {
       }
     });
   });
+  
+  $.fn.loadActiveArticle = function () {
+    var article_id = $(".article-link").attr("oid");
+    var review_id = $("#review-id").val();
+    var container = $(this);
+
+
+    $.ajax({
+      url: '/reviews/conducting/article_details_confirm/',
+      data: {'review-id': review_id, 'article-id': article_id},
+      type: 'get',
+      cache: false,
+      beforeSend: function () {
+        $(container).spinner();
+      },
+      success: function (data) {
+    	console.log(data);
+        $(container).html(data);
+
+      },
+      complete: function () {
+        $(container).spinner();
+      }
+    });
+  };
+	  
+  $(".article-container").on("click", ".article-link", function () {
+	  
+	  
+      $("#modal-article .modal-body").css("height", $(window).height() * 0.7);
+      $("#modal-article .modal-body").loadActiveArticle();
+      $("#modal-article").modal('show');
+	    
+  });
+  
+  $(".btn-save-article").click(function () {
+	  var article_id = $("#modal-article #article-id").val();
+	  $.ajax({
+		  url: '/reviews/conducting/save_article_details_confirm/',
+	      cache: false,
+	      data: $("#article-details").serialize(),
+	      type: 'post',
+	      beforeSend: function () {
+	        $(".btn-save-article").prop("disabled", true);
+	      },
+	      success: function (data) {
+	    	
+	          $("#modal-article .alert .modal-alert").text("Artigo salvo com sucesso!");
+	          $("#modal-article .alert").removeClass("alert-error").addClass("alert-success");
+	          $("#modal-article .alert").removeClass("hide");
+	          
+	          $("#title-study-"+article_id).html($("#modal-article #title").val());
+	          $("#subtitle-study-"+article_id).html($("#modal-article #author").val() + '(' +$("#modal-article #year").val()+ ')');
+	         
+	      },
+	      error: function () {
+	          $("#modal-article .alert .modal-alert").text("Algo deu errado! Isso é tudo que sabemos :(");
+	          $("#modal-article .alert").removeClass("alert-success").addClass("alert-error");
+	          $("#modal-article .alert").removeClass("hide");
+	      },
+	      complete: function () {
+	        $(".btn-save-article").prop("disabled", false);
+	      }
+	    });
+  });
+  
 
 });

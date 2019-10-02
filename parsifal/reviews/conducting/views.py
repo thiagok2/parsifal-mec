@@ -227,11 +227,11 @@ def build_quality_assessment_table(request, review, order):
             str_table += u'''
             <div class="panel panel-default panel-quality-assessment">
               <div class="panel-heading">
-                <h3 class="panel-title">{0} <small>({4})</small><span class="badge score pull-right">{1}</span></h3>
+                <h3 class="panel-title">{0} <br/><small> {5}, ({4})</small><span class="badge score pull-right">{1}</span></h3>
               </div>
 
             <table class="table" id="tbl-quality" article-id="{2}" csrf-token="{3}">
-                <tbody>'''.format(escape(study.title), study.get_score(), study.id, unicode(csrf(request)['csrf_token']), escape(study.year))
+                <tbody>'''.format(escape(study.title), study.get_score(), study.id, unicode(csrf(request)['csrf_token']), escape(study.year), escape(study.author))
 
             quality_assessment = study.get_quality_assesment()
 
@@ -375,8 +375,9 @@ def build_data_extraction_table(review, is_finished):
                 str_table += u'''<div class="panel panel-default data-extraction-panel">
                   <div class="panel-heading">
                     <h3 class="panel-title row">
-                       <div class="col-sm-9" style="padding: 0px 5px">{0}
-                      <span class="badge">{1}</span>'''.format(escape(study.title), study.get_score())
+                       <div class="col-sm-9 article-container" style="padding: 0px 5px">
+                       <span id="title-study-{2}">{0}</span>
+                      <span class="badge">{1}</span>'''.format(escape(study.title), study.get_score(), study.id)
 
                 files = study.get_files();
                 if files:
@@ -384,10 +385,13 @@ def build_data_extraction_table(review, is_finished):
                     str_table +='''<a href="{0}" target="_blank"><span class="badge" ><i class="glyphicon glyphicon-cloud-download"></i></span></a>'''.format(pdf_file.article_file.url)
                 if study.doi:
                     str_table +='''<a href="{0}"><span class="badge">DOI:{0}</a>'''.format(study.doi,study.doi)
-
+                
+                
+                str_table +='''<a href="#" oid="{0}" class="article-link"><span class="badge" ><i class="glyphicon glyphicon-edit"></i></span></a>'''.format(study.id)
+                 
                 str_table +=u'''<div class="detail-article-data-extraction">
-                                <small><span class="text-muted">{0} ({1})</span></small>
-                            </div>'''.format(escape(study.author), study.year)
+                                <small><span id="subtitle-study-{2}" class="text-muted">{0} ({1})</span></small>
+                            </div>'''.format(escape(study.author), study.year, study.id)
 
                 str_table +='</div>'
 
@@ -608,6 +612,23 @@ def article_details(request):
     except Exception as e:
         print e
         return HttpResponseBadRequest()
+    
+@author_or_visitor_required
+@login_required
+def article_details_confirm(request):
+    try:
+        review_id = request.GET['review-id']
+        article_id = request.GET['article-id']
+        user = request.user
+
+        review = Review.objects.get(pk=review_id)
+        article = Article.objects.get(pk=article_id)
+
+        context = RequestContext(request, { 'review': review, 'article': article })
+        return render_to_response('conducting/partial_conducting_article_details_confirm.html', context)
+    except Exception as e:
+        print e
+        return HttpResponseBadRequest()
 
 @author_required
 @login_required
@@ -722,6 +743,39 @@ def save_article_details(request):
             article.issn = request.POST['issn'][:50]
             article.language = request.POST['language'][:50]
             article.note = request.POST['note'][:500]
+            article.updated_by = request.user
+            article.save()
+
+            return HttpResponse(build_article_table_row(request, article, request.user))
+        except Exception as e:
+            print e
+            return HttpResponseBadRequest()
+    else:
+        return HttpResponseBadRequest()
+    
+@author_required
+@login_required
+def save_article_details_confirm(request):
+    if request.method == 'POST':
+        try:
+            article_id = request.POST['article-id']
+
+            if article_id != 'None':
+                article = Article.objects.get(pk=article_id)
+            else:
+                review_id = request.POST['review-id']
+                source_id = request.POST['source-id']
+                review = Review.objects.get(pk=review_id)
+                source = Source.objects.get(pk=source_id)
+                article = Article(review=review, source=source)
+
+            article.bibtex_key = request.POST['bibtex-key'][:100]
+            article.title = request.POST['title'][:1000]
+            article.author = request.POST['author'][:1000]
+            article.journal = request.POST['journal'][:1000]
+            article.year = request.POST['year'][:10]
+            article.abstract = request.POST['abstract'][:4000]
+            
             article.updated_by = request.user
             article.save()
 
