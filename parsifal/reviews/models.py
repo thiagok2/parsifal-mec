@@ -133,7 +133,7 @@ class Review(models.Model):
         return Risk.objects.filter(review__id=self.id)
 
     def get_visitors_comments(self, user):
-        return VisitorComment.objects.filter(review__id=self.id, parent=None, to__in=[user.id, 0])
+        return VisitorComment.objects.filter(Q(to__in=[user.id, 0]) | Q(user=user), review__id=self.id, parent=None)
 
     def get_visitors_unseen_comments(self, user):
         comments = self.get_visitors_comments(user)
