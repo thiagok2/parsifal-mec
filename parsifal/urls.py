@@ -61,6 +61,7 @@ urlpatterns = patterns('parsifal',
     
      # Meta Analysis Phase
     url(r'^(?P<username>[^/]+)/(?P<review_name>[^/]+)/metaanalysis/$', 'reviews.metaanalysis.views.metaanalysis', name='metaanalysis'),
+    url(r'^(?P<username>[^/]+)/(?P<review_name>[^/]+)/metaanalysis/list$', 'reviews.metaanalysis.views.metaanalysis_list', name='metaanalysis_list'),
     url(r'^(?P<username>[^/]+)/(?P<review_name>[^/]+)/metaanalysis/detailed/(?P<article_id>[^/]+)/$', 'reviews.metaanalysis.views.metaanalysis_detailed', name='metaanalysis_detailed'),
 
     # Reporting Phase
