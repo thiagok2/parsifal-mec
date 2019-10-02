@@ -143,8 +143,8 @@
 			
 			  	<div class="tab-content">
 			    	<div id="what-help" class="tab-pane fade in active">
-			      		<h3>{% trans 'Search Methodolgy'%}</h3>
-			      		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+			      		<h3>{% trans 'Search Methodology'%}</h3>
+			      		<p>{% trans 'The search methodology defines how the search string is constructed. Qeed natively supports two famous methods PICOC and PICOS. It is also possible to freely define another method.' %}</p>
 			    	</div>
 			    	<div id="picoc-help" class="tab-pane fade">
 			      		<h3>{% trans 'PICOC' %}</h3>
@@ -159,16 +159,23 @@
 			    	</div>
 			    	<div id="picos-help" class="tab-pane fade">
 			      		<h3>{% trans 'PICOS' %}</h3>
-			      		<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+			      		<p>{% trans 'PICOS stands for <em>population</em>, <em>intervention</em>, <em>comparison</em>, <em>outcomes</em> and <em>context</em>.' %}</p>
+		                <ul>
+		                  <li>{% trans 'The <em>population</em> in which the evidence is collected, i.e. which group of people, programs or businesses are of interest for the review?' %}</li>
+		                  <li>{% trans 'The <em>intervention</em> applied in the empirical study, i.e. which technology, tool or procedure is under study?' %}</li>
+		                  <li>{% trans 'The <em>comparison</em> to which the intervention is compared, i.e. how is the control treatment defined? In particular the ‘placebo’ intervention is critical, as “not using the intervention” is mostly not a valid action in software engineering.' %}</li>
+		                  <li>{% trans 'The <em>outcomes</em> of the experiment should not only be statistically significant, but also be significant from a practical point of view. For example, it is probably not interesting that an outcome is 10% better in some respect if it is twice as time consuming.' %}</li>
+		                  <li>{% trans 'The <em>study type</em> that will be applied.' %}</li>
+		                </ul>
 			    	</div>
 			    	<div id="free-text-help" class="tab-pane fade">
 			      		<h3>{% trans 'Free Text' %}</h3>
-			     		<p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+			     		<p>{% trans 'If your methodology of not suitable for PICOC or PICOS describe with free text.' %}</p>
 			    	</div>
 			 	</div>
               </div>
               <div class="modal-footer" style="text-align: left;">
-                <p><small class="text-muted">C. Wohlin, P. Runeson, M. Höst, M. C. Ohlsson, B. Regnell and A. Wesslén, <a href="http://www.springer.com/us/book/9783642290435" target="_blank">"Experimentation in Software Engineering"</a>, Springer, ISBN 978-3-642-29043-5, 2012.</small></p>
+                
               </div>
             </div>
           </div>

@@ -18,6 +18,7 @@ urlpatterns = patterns('parsifal.reviews.views',
     url(r'^conducting/', include('parsifal.reviews.conducting.urls', namespace='conducting')),
     url(r'^reporting/', include('parsifal.reviews.reporting.urls', namespace='reporting')),
     url(r'^comments/', include('parsifal.reviews.comments.urls', namespace='comments')),
+    url(r'^metaanalysis/', include('parsifal.reviews.metaanalysis.urls', namespace='metaanalysis')),
 
     url(r'^published_protocols/$', 'published_protocols', name='published_protocols'),
     url(r'^import_protocol/$', 'import_protocol', name='import_protocol'),
