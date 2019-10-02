@@ -15,20 +15,18 @@ from parsifal.reviews.decorators import author_required, author_or_visitor_requi
 @author_or_visitor_required
 @login_required
 def metaanalysis(request, username, review_name):
-    review = get_object_or_404(Review, name=review_name, author__username__iexact=username)
-    selected_articles = review.get_accepted_articles().filter(has_empirical_data=True)
-    return render(request, 'metaanalysis/metaanalysis_list.html', { 
-        'review': review , 
-        'selected_articles': selected_articles})
-
-
+    return redirect(r('metaanalysis_list', args=(username, review_name)))
+    
 @author_or_visitor_required
 @login_required
-def articles_metaanalysis(request, username, review_name):
+def metaanalysis_list(request, username, review_name):
     review = get_object_or_404(Review, name=review_name, author__username__iexact=username)
     selected_articles = review.get_accepted_articles().filter(has_empirical_data=True)
+    
+    
+    
     return render(request, 'metaanalysis/metaanalysis_list.html', { 
-        'review': review , 
+        'review': review, 
         'selected_articles': selected_articles})
 
 @login_required
