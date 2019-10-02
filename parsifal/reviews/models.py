@@ -58,7 +58,7 @@ class Review(models.Model):
 
     name = models.SlugField(max_length=255)
     title = models.CharField(max_length=255)
-    description = models.CharField(max_length=500, null=True, blank=True)
+    description = models.CharField(max_length=2000, null=True, blank=True)
     author = models.ForeignKey(User)
     create_date = models.DateTimeField(auto_now_add=True)
     last_update = models.DateTimeField(auto_now=True)

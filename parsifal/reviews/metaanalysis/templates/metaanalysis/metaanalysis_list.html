@@ -1,0 +1,193 @@
+{% extends 'metaanalysis/metaanalysis.html' %}
+
+{% load i18n %}
+
+{% load humanize %}
+
+{% block javascript %}
+
+{% endblock %}
+
+{% block tab_content %}
+
+<div class="panel panel-default">
+	<div class="panel-heading">	
+		<h3 class="panel-title">
+       		{% trans 'Meta Analysis' %}
+       		
+       		<span class="text-muted small">
+       			(¹ &#8658; {% trans 'Treatment group' %} | ² &#8658; {% trans 'Control group' %}) |
+       			{% trans 'N &#8658; Sample Size' %} |  {% trans 'A &#8658; Average' %}
+       		</span>
+       				
+       		<a href="javascript:void(0);" class="pull-right" data-toggle="tooltip" title="{% trans 'What is this? Click to get help.' %}" data-placement="top" data-container="body">
+           		<span class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#metaanalysis-help"></span>
+			</a>
+         	{% include 'comments/comment_icon_button.html' with user=user about="METAANALYSIS" %}
+       	</h3>
+	</div>
+	<div class="panel-body">
+		<div id="articles-metaanalysis" class="container-fluid">
+			
+			{% for article in selected_articles %}
+				<div class="row" id="row-article-{{ article.id }}">
+					<div class="col-lg-5">
+						<table class="table table-condensed">
+							
+							<tr>
+								<td>
+									{{ article.title }}
+									<small><em>({{ article.author }})</em></small>
+									, {{ article.year }}
+									, {{ article.journal}}
+								</td>
+								
+							</tr>
+							
+						</table> 
+					</div>
+					<div class="col-lg-5">
+						<table class="table table-condensed">
+							<tr>
+								<td>
+									<div class="row">
+										<div class="col-lg-1">
+											N¹
+										</div>
+										<div class="col-lg-10">
+											<input type="text" placeholder="Ex.: 100" size="10" class="form-control"/>
+										</div>
+										<div class="col-lg-12 hidden">
+											<span class="text-muted small">({% trans 'Treatment group sample size' %})</span>
+										</div>
+									</div>
+								</td>
+								<td>
+									<div class="row">
+										<div class="col-lg-1">
+											{% trans 'DP' %}¹
+										</div>
+										<div class="col-lg-10">
+											<input type="text" placeholder="Ex.: 2.5" size="10" class="form-control"/>
+										</div>
+										<div class="col-lg-12 hidden">
+											<span class="text-muted small">({% trans 'Treatment group standard deviation' %})</span>
+										</div>
+									</div>
+								</td>
+								<td>
+									<div class="row">
+										<div class="col-lg-1">
+											{% trans 'A' %}¹
+										</div>
+										<div class="col-lg-10">
+											<input type="text" placeholder="Ex.: 2.5" size="10" class="form-control"/>
+										</div>
+										<div class="col-lg-12 hidden">
+											<span class="text-muted small">({% trans 'Treatment group average' %})</span>
+										</div>
+									</div>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<div class="row">
+										<div class="col-lg-1">
+											N²
+										</div>
+										<div class="col-lg-10">
+											<input type="text" placeholder="Ex.: 100" size="10" class="form-control"/>
+										</div>
+										<div class="col-lg-12 hidden">
+											<span class="text-muted small">({% trans 'Control group sample size' %})</span>
+										</div>
+									</div>
+								</td>
+								<td>
+									<div class="row">
+										<div class="col-lg-1">
+											{% trans 'DP' %}²
+										</div>
+										<div class="col-lg-10">
+											<input type="text" placeholder="Ex.: 2.5" size="10" class="form-control"/>
+										</div>
+										<div class="col-lg-12 hidden">
+											<span class="text-muted small">({% trans 'Control group standard deviation' %})</span>
+										</div>
+									</div>
+								</td>
+								<td>
+									<div class="row">
+										<div class="col-lg-1">
+											{% trans 'A' %}²
+										</div>
+										<div class="col-lg-10">
+											<input type="text" placeholder="Ex.: 2.5" size="10" class="form-control"/>
+										</div>
+										<div class="col-lg-12 hidden">
+											<span class="text-muted small">({% trans 'Control group average' %})</span>
+										</div>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div class="col-lg-2"> 
+						<button type="button" class="btn btn-sm btn-warning btn-edit-article">
+					    	<span class="btn-ajax-normal">
+					    		<span class="glyphicon glyphicon-pencil"></span> {% trans 'edit' %}
+					     	</span>
+					      	<span class="btn-ajax-loading">
+					        	<span class="glyphicon glyphicon-refresh spin"></span> {% trans 'loading…' %}
+					      	</span>
+					    </button>
+					    <button type="button" class="btn btn-sm btn-danger btn-remove-article"> 
+					    	<span class="btn-ajax-normal">
+					        	<span class="glyphicon glyphicon-trash"></span> {% trans 'remove' %}
+					      	</span>
+					      	<span class="btn-ajax-loading">
+					        	<span class="glyphicon glyphicon-refresh spin"></span> {% trans 'removing…' %}
+					      	</span>
+					    </button>
+					</div>
+				</div>
+            	
+            {% empty %}
+            	<div class="row">
+            		<div class="col-lg-12">
+	                  	<div class="no-results">
+	                  		{% trans 'No results.'%}
+	                  	</div>
+                  	</div>
+                </div>
+            {% endfor %}
+           
+		</div>
+	</div>
+	<div class="panel-footer">
+		<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+		<span class="text-muted small">
+      		(¹ &#8658; {% trans 'Treatment group' %} | ² &#8658; {% trans 'Control group' %}) |
+      		{% trans 'N &#8658; Sample Size' %} |  {% trans 'A &#8658; Average' %}
+      	</span>
+	</div>
+</div>
+
+<div class="modal fade" id="metaanalysis-help">
+	<div class="modal-dialog">
+    	<div class="modal-content">
+      		<div class="modal-header">
+        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        		<h4 class="modal-title">
+        			{% trans 'About Meta Analysis' %}
+        		</h4>
+      		</div>
+      		<div class="modal-body">
+      			<p>{% trans 'A meta-analysis is a statistical analysis that combines the results of multiple scientific studies. Meta-analysis can be performed when there are multiple scientific studies addressing the same question, with each individual study reporting measurements that are expected to have some degree of error. ' %}</p>
+      		</div>
+    	</div>
+  	</div>
+</div>
+
+{% endblock %}

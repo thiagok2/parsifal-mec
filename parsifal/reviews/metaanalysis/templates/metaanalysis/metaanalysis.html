@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% load humanize %}
+{% block title %}{% trans 'Meta Analysis' %} · {{ review.title }}{% endblock %}
+
+{% block content %}
+
+  {% include 'reviews/review_header.html' with active_menu='metaanalysis' %}
+
+  {% block tab_content %}
+  {% endblock tab_content %}
+
+{% endblock content %}

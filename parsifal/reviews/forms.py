@@ -9,14 +9,14 @@ from parsifal.reviews.models import Review, ArticleFile
 
 class CreateReviewForm(forms.ModelForm):
     title = forms.CharField(
-            widget=forms.TextInput(attrs={ 'class': 'form-control', 'placeholder': l_('Systematic literature review\'s title') }, ),
-            max_length=255, label=l_('Title'))
+            widget=forms.TextInput(attrs={ 'class': 'form-control', 'placeholder': _('Systematic literature review\'s title') }, ),
+            max_length=255, label=_('Title'))
     description = forms.CharField(
-            widget=forms.Textarea(attrs={ 'class': 'form-control', 'placeholder': l_('Give a brief description of your systematic literature review') }),
-            max_length=500,
-            help_text=l_('Try to keep it short, max 500 characters'),
+            widget=forms.Textarea(attrs={ 'class': 'form-control limited', 'placeholder': _('Give a brief description of your systematic literature review') }),
+            max_length=2000,
+            help_text=_('Try to keep it short, max 2000 characters'),
             required=False,
-            label=l_('Description'))
+            label=_('Description'))
 
     class Meta:
         model = Review

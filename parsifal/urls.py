@@ -58,6 +58,11 @@ urlpatterns = patterns('parsifal',
     url(r'^(?P<username>[^/]+)/(?P<review_name>[^/]+)/conducting/quality/$', 'reviews.conducting.views.quality_assessment', name='quality_assessment'),
     url(r'^(?P<username>[^/]+)/(?P<review_name>[^/]+)/conducting/extraction/$', 'reviews.conducting.views.data_extraction', name='data_extraction'),
     url(r'^(?P<username>[^/]+)/(?P<review_name>[^/]+)/conducting/analysis/$', 'reviews.conducting.views.data_analysis', name='data_analysis'),
+    
+     # Meta Analysis Phase
+    url(r'^(?P<username>[^/]+)/(?P<review_name>[^/]+)/metaanalysis/$', 'reviews.metaanalysis.views.metaanalysis', name='metaanalysis'),
+    url(r'^(?P<username>[^/]+)/(?P<review_name>[^/]+)/metaanalysis/list$', 'reviews.metaanalysis.views.metaanalysis_list', name='metaanalysis_list'),
+    url(r'^(?P<username>[^/]+)/(?P<review_name>[^/]+)/metaanalysis/detailed/(?P<article_id>[^/]+)/$', 'reviews.metaanalysis.views.metaanalysis_detailed', name='metaanalysis_detailed'),
 
     # Reporting Phase
     url(r'^(?P<username>[^/]+)/(?P<review_name>[^/]+)/reporting/$', 'reviews.reporting.views.reporting', name='reporting'),

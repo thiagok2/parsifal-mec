@@ -15,11 +15,7 @@
 /* Parsifal base */
 html{
 	min-height: 100%;
-}
-
-html, body {
-  height: 100%;
-
+	height: 100%;
 }
 
 .wrapper {
@@ -78,6 +74,7 @@ footer {
   /*height: 50px;*/
   background-color: #fff;
   color: white;
+  margin-top: auto;
 }
 
 footer a{
