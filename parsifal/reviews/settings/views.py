@@ -14,6 +14,8 @@ from parsifal.reviews.models import Review
 from parsifal.reviews.decorators import main_author_required
 from parsifal.reviews.settings.forms import ReviewSettingsForm
 
+from django.utils.translation import ugettext as _
+
 
 @main_author_required
 @login_required
