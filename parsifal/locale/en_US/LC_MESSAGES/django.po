@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-04 02:38+0000\n"
+"POT-Creation-Date: 2019-10-04 04:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -82,7 +82,6 @@ msgstr ""
 #: parsifal/blog/templates/blog/entries.html:7
 #: parsifal/core/templates/core/about.html:3
 #: parsifal/core/templates/core/about.html:9
-#: parsifal/core/templates/core/cover.html:28
 #: parsifal/core/templates/core/support.html:6
 #: parsifal/help/templates/help/articles.html:6
 #: parsifal/help/templates/help/search.html:6
@@ -4493,23 +4492,23 @@ msgstr ""
 msgid "Publish protocol this review"
 msgstr ""
 
-#: parsifal/reviews/settings/views.py:34
+#: parsifal/reviews/settings/views.py:36
 msgid "Review was saved successfully."
 msgstr ""
 
-#: parsifal/reviews/settings/views.py:54
+#: parsifal/reviews/settings/views.py:56
 msgid "User not found."
 msgstr ""
 
-#: parsifal/reviews/settings/views.py:66
+#: parsifal/reviews/settings/views.py:68
 msgid "Hey! You can't transfer the review to yourself."
 msgstr ""
 
-#: parsifal/reviews/settings/views.py:70
+#: parsifal/reviews/settings/views.py:72
 msgid "Something went wrong."
 msgstr ""
 
-#: parsifal/reviews/settings/views.py:93
+#: parsifal/reviews/settings/views.py:95
 msgid "The review was deleted successfully."
 msgstr ""
 

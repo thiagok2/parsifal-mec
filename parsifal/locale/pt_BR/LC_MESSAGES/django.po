@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-04 02:38+0000\n"
+"POT-Creation-Date: 2019-10-04 04:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -86,7 +86,6 @@ msgstr "Configurações da Conta"
 #: parsifal/blog/templates/blog/entries.html:7
 #: parsifal/core/templates/core/about.html:3
 #: parsifal/core/templates/core/about.html:9
-#: parsifal/core/templates/core/cover.html:28
 #: parsifal/core/templates/core/support.html:6
 #: parsifal/help/templates/help/articles.html:6
 #: parsifal/help/templates/help/search.html:6
@@ -372,7 +371,7 @@ msgstr "Inscrever-se"
 #: parsifal/authentication/templates/auth/signup.html:23
 #: parsifal/core/templates/core/cover.html:28
 msgid "Sign up for"
-msgstr "Inscrever-se"
+msgstr "Criar nova conta"
 
 #: parsifal/authentication/templates/auth/signup.html:31
 msgid ""
@@ -570,7 +569,7 @@ msgstr ""
 
 #: parsifal/core/templates/core/cover.html:20
 msgid "Perform Systematic Literature Reviews"
-msgstr "Realize aqui suas revisões sistemática da literatura"
+msgstr "Realize aqui suas Revisões Sistemáticas da Literatura"
 
 #: parsifal/core/templates/core/cover.html:23
 msgid ""
@@ -998,6 +997,8 @@ msgid "File"
 msgstr "Arquivo"
 
 #: parsifal/lib/python2.7/site-packages/django/db/models/fields/related.py:1807
+#, fuzzy, python-format
+#| msgid "%(model)s instance with %(field)s %(value)r does not exist."
 msgid "%(model)s instance with %(field)s %(value)r does not exist."
 msgstr "Instâncias %(model)s com %(field) e valores %(value)s não exitem."
 
@@ -1113,7 +1114,8 @@ msgstr ""
 #: parsifal/lib/python2.7/site-packages/django/forms/models.py:1238
 #, python-format
 msgid "Select a valid choice. %(value)s is not one of the available choices."
-msgstr "Selecione uma escolha válida. %(value) não é um dos valores disponíveis. "
+msgstr ""
+"Selecione uma escolha válida. %(value)s não é um dos valores disponíveis."
 
 #: parsifal/lib/python2.7/site-packages/django/forms/fields.py:922
 #: parsifal/lib/python2.7/site-packages/django/forms/fields.py:1037
@@ -4817,23 +4819,23 @@ msgstr "Isso <b>abrirá</b> o protocolo de "
 msgid "Publish protocol this review"
 msgstr "Publicar Protocolo da Revisão"
 
-#: parsifal/reviews/settings/views.py:34
+#: parsifal/reviews/settings/views.py:36
 msgid "Review was saved successfully."
 msgstr "Sua revisão foi salva com sucesso!"
 
-#: parsifal/reviews/settings/views.py:54
+#: parsifal/reviews/settings/views.py:56
 msgid "User not found."
 msgstr "Usuário não encontrado."
 
-#: parsifal/reviews/settings/views.py:66
+#: parsifal/reviews/settings/views.py:68
 msgid "Hey! You can't transfer the review to yourself."
 msgstr "Ei! Você não pode transferir a revisão para si mesmo."
 
-#: parsifal/reviews/settings/views.py:70
+#: parsifal/reviews/settings/views.py:72
 msgid "Something went wrong."
 msgstr "Algo deu errado."
 
-#: parsifal/reviews/settings/views.py:93
+#: parsifal/reviews/settings/views.py:95
 msgid "The review was deleted successfully."
 msgstr "Sua revisão foi excluída com sucesso!"
 

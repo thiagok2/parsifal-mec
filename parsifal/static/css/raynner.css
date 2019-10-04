@@ -253,3 +253,7 @@ div.data-extraction-panel  span.badge{
     border-color: #57c191 !important;
     color: white !important;
 }
+
+.modal-title{
+	font-weight: bold; 
+}
