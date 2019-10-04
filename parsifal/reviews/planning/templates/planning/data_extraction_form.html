@@ -6,7 +6,7 @@
 {% block title %} {% trans 'Planning'  %} · {{ review.title }}{% endblock %}
 
 {% block javascript %}
-  <script src="{% static 'js/planning_data_extraction.js' %}?_=2"></script>
+  <script src="{% static 'js/planning_data_extraction.js' %}"></script>
   {% if user|is_visitor:review %}
     <script src="{% static 'js/user_is_visitor.js' %}?v=1"></script>
   {% endif %}
@@ -46,7 +46,7 @@
         </h3>
        
      	<div style="margin-top: 15px;">
-	      	<button type="button" class="btn btn-success" id="btn-add-field">
+	      	<button type="button" class="btn btn-success btn-add-field" id="btn-add-field">
 	          <span class="glyphicon glyphicon-plus"></span>
 	          {% trans 'Add Field' %}
 	        </button>
@@ -80,7 +80,7 @@
         </tbody>
       </table>
       <div class="panel-footer">
-        <button type="button" class="btn btn-success" id="btn-add-field">
+        <button type="button" class="btn btn-success btn-add-field" id="btn-add-field">
           <span class="glyphicon glyphicon-plus"></span>
           {% trans 'Add Field' %}
         </button>
