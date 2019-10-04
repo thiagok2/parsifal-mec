@@ -1,7 +1,8 @@
 $(function () {
   IS_ADDING_OR_EDITING_FIELD = false;
 
-  $("#btn-add-field").click(function () {
+  $(".btn-add-field").click(function () {
+	  
     if (!IS_ADDING_OR_EDITING_FIELD) {
       IS_ADDING_OR_EDITING_FIELD = true;
       $.ajax({
