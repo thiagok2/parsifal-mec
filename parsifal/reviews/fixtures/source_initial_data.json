@@ -13,7 +13,7 @@
     "pk": 2,
     "fields": {
       "name": "El Compendex",
-      "url": "http://www.engineeringvillage.com",
+      "url": "https://www.elsevier.com/solutions/engineering-village/content/compendex",
       "is_default": true
     }
   },
