@@ -36,7 +36,13 @@ $(function () {
   });
 
   $(".data-extraction-panel input[type='checkbox']").click(function () {
-    save_data_extraction_field($(this));
+    checkbox_id = $(this)[0].id;
+
+    if (checkbox_id === 'ck-empirical-data') {
+        save_empirical_data($(this));
+    } else {
+        save_data_extraction_field($(this));
+    }
   });
 
   $(".data-extraction-panel").on("click", ".js-mark-as-finished", function () {
@@ -58,7 +64,7 @@ $(function () {
           $(".glyphicon", action_button).removeClass().addClass("glyphicon glyphicon-check");
           $(".action-text", action_button).text("Marcar como não resolvido");
           $(action_button).removeClass().addClass("js-finished-button js-mark-as-not-finished");
-        } 
+        }
         else {
           $(panel).fadeOut(200);
         }
@@ -85,14 +91,14 @@ $(function () {
           $(".glyphicon", action_button).removeClass().addClass("glyphicon glyphicon-unchecked");
           $(".action-text", action_button).text("Marcar como resolvido");
           $(action_button).removeClass().addClass("js-finished-button js-mark-as-finished");
-        } 
+        }
         else {
           $(panel).fadeOut(200);
         }
       }
     });
   });
-  
+
   $.fn.loadActiveArticle = function () {
     var article_id = $(".article-link").attr("oid");
     var review_id = $("#review-id").val();
@@ -117,16 +123,16 @@ $(function () {
       }
     });
   };
-	  
+
   $(".article-container").on("click", ".article-link", function () {
-	  
-	  
+
+
       $("#modal-article .modal-body").css("height", $(window).height() * 0.7);
       $("#modal-article .modal-body").loadActiveArticle();
       $("#modal-article").modal('show');
-	    
+
   });
-  
+
   $(".btn-save-article").click(function () {
 	  var article_id = $("#modal-article #article-id").val();
 	  $.ajax({
@@ -138,14 +144,14 @@ $(function () {
 	        $(".btn-save-article").prop("disabled", true);
 	      },
 	      success: function (data) {
-	    	
+
 	          $("#modal-article .alert .modal-alert").text("Artigo salvo com sucesso!");
 	          $("#modal-article .alert").removeClass("alert-error").addClass("alert-success");
 	          $("#modal-article .alert").removeClass("hide");
-	          
+
 	          $("#title-study-"+article_id).html($("#modal-article #title").val());
 	          $("#subtitle-study-"+article_id).html($("#modal-article #author").val() + '(' +$("#modal-article #year").val()+ ')');
-	         
+
 	      },
 	      error: function () {
 	          $("#modal-article .alert .modal-alert").text("Algo deu errado! Isso é tudo que sabemos :(");
@@ -157,6 +163,28 @@ $(function () {
 	      }
 	    });
   });
-  
+
+  function save_empirical_data(ref) {
+    var article_id = $(ref).closest(".panel-body").attr("data-article-id");
+    var has_empirical_data = $(ref)[0].checked
+
+    $.ajax({
+        url: '/reviews/conducting/update_article_empirical_data/',
+        data: {
+            'article-id': article_id,
+            'has-empirical-data': has_empirical_data,
+        },
+        type: 'get',
+        cache: false,
+        success: function (data) {
+            console.log(data)
+            // $(row).replaceWith(data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(errorThrown)
+        }
+    });
+  }
+
 
 });

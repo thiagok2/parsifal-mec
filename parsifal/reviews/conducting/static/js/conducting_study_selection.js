@@ -458,28 +458,6 @@ $(function () {
     }
   });
 
-  $(".source-tab-content").on("click", "table tbody tr td#empirical-data input[type=checkbox]", function() {
-    var row = $(this).closest("tr")
-    var td = $(this).closest("td#empirical-data")
-    var article_id = row.attr("oid")
-    var has_empirical_data = $(this).context.checked
-
-    $.ajax({
-        url: '/reviews/conducting/update_article_empirical_data/',
-        data: {
-            'article-id': article_id,
-            'has-empirical-data': has_empirical_data,
-        },
-        type: 'get',
-        cache: false,
-        success: function (data) {
-            $(row).replaceWith(data);
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log(errorThrown)
-        }
-    });
-  });
 
   $(".source-tab-content").on("click", "table tbody tr td#actions input[type=checkbox]", function () {
     var total = $(".source-articles table tbody tr td#actions input[type='checkbox']:visible").length;

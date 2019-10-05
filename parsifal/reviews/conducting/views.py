@@ -385,10 +385,10 @@ def build_data_extraction_table(review, is_finished):
                     str_table +='''<a href="{0}" target="_blank"><span class="badge" ><i class="glyphicon glyphicon-cloud-download"></i></span></a>'''.format(pdf_file.article_file.url)
                 if study.doi:
                     str_table +='''<a href="{0}"><span class="badge">DOI:{0}</a>'''.format(study.doi,study.doi)
-                
-                
+
+
                 str_table +='''<a href="#" oid="{0}" class="article-link"><span class="badge" ><i class="glyphicon glyphicon-edit"></i></span></a>'''.format(study.id)
-                 
+
                 str_table +=u'''<div class="detail-article-data-extraction">
                                 <small><span id="subtitle-study-{2}" class="text-muted">{0} ({1})</span></small>
                             </div>'''.format(escape(study.author), study.year, study.id)
@@ -408,6 +408,18 @@ def build_data_extraction_table(review, is_finished):
                     <h3 class="panel-title">{1}</h3>
                   </div>
                   <div class="panel-body form-horizontal" data-article-id="{0}">'''.format(study.id, escape(study.title))
+            if study.has_empirical_data:
+                checked = 'checked'
+            else:
+                checked = ''
+
+            str_table += u'''<div class="form-group">
+                    <label class="control-label col-md-2">Dados empíricos</label>
+                    <div class="col-md-10" style="padding-top:7px;">
+                        <input type="checkbox" id="ck-empirical-data" {0} />
+                    </div>
+                </div>
+                '''.format(checked)
             for field in data_extraction_fields:
                 str_table += u'''<div class="form-group" data-field-id="{0}">
                     <label class="control-label col-md-2">{1}</label>
@@ -612,7 +624,7 @@ def article_details(request):
     except Exception as e:
         print e
         return HttpResponseBadRequest()
-    
+
 @author_or_visitor_required
 @login_required
 def article_details_confirm(request):
@@ -752,7 +764,7 @@ def save_article_details(request):
             return HttpResponseBadRequest()
     else:
         return HttpResponseBadRequest()
-    
+
 @author_required
 @login_required
 def save_article_details_confirm(request):
@@ -775,7 +787,7 @@ def save_article_details_confirm(request):
             article.journal = request.POST['journal'][:1000]
             article.year = request.POST['year'][:10]
             article.abstract = request.POST['abstract'][:4000]
-            
+
             article.updated_by = request.user
             article.save()
 
