@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-04 04:05+0000\n"
+"POT-Creation-Date: 2019-10-07 12:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -385,7 +385,7 @@ msgstr ""
 #: parsifal/authentication/templates/auth/success.html:13
 msgid ""
 "If you have any problem with the password reset, please contact us at <a "
-"href=\"mailto:support@parsif.al\">support@parsif.al</a>."
+"href=\"mailto:qeed-suporte@nees.com.br\">qeed-suporte@nees.com.br</a>."
 msgstr ""
 
 #: parsifal/authentication/views.py:22
@@ -554,8 +554,8 @@ msgstr ""
 
 #: parsifal/core/templates/core/support.html:18
 msgid ""
-"If you have any questions, please send us an email to <a href=\"mailto:"
-"support@parsif.al\">support@parsif.al</a>"
+"If you have any questions, please send us an email to <a href=\"mailto:qeed-"
+"suporte@nees.com.br\">qeed-suporte@nees.com.br</a>"
 msgstr ""
 
 #: parsifal/core/views.py:30
@@ -2111,8 +2111,6 @@ msgid "6. Data Analysis"
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:19
-#: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:114
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:13
 msgid "About Import Studies"
 msgstr ""
 
@@ -2489,6 +2487,10 @@ msgstr ""
 msgid "Justify why article was rejected"
 msgstr ""
 
+#: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:114
+msgid "About Selection Studies"
+msgstr ""
+
 #: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:126
 msgid "All Sources"
 msgstr ""
@@ -2592,7 +2594,7 @@ msgid "Select files..."
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/partial_article_files.html:34
-#: parsifal/reviews/conducting/views.py:662
+#: parsifal/reviews/conducting/views.py:674
 msgid ""
 "File has already updated. Only one file per article is permitted. Delete "
 "existing file to upload new."
@@ -2684,6 +2686,10 @@ msgstr ""
 msgid "Note"
 msgstr ""
 
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:13
+msgid "About Selecion Studies"
+msgstr ""
+
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:16
 msgid "Defines the studies that will be selected for analysis."
 msgstr ""
@@ -2762,19 +2768,11 @@ msgstr ""
 msgid "Added at"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:111
-msgid ""
-"\n"
-"              Empirical <br/>\n"
-"              Data\n"
-"            "
-msgstr ""
-
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:116
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:110
 msgid "Your evaluation"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:124
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:118
 msgid "No articles."
 msgstr ""
 
@@ -2878,17 +2876,17 @@ msgid "import studies tab"
 msgstr ""
 
 #: parsifal/reviews/conducting/views.py:275
-#: parsifal/reviews/conducting/views.py:437
+#: parsifal/reviews/conducting/views.py:449
 msgid "Use the <a href=\"/"
 msgstr ""
 
 #: parsifal/reviews/conducting/views.py:276
-#: parsifal/reviews/conducting/views.py:438
+#: parsifal/reviews/conducting/views.py:450
 msgid "Import the studies using the <a href=\"/"
 msgstr ""
 
 #: parsifal/reviews/conducting/views.py:277
-#: parsifal/reviews/conducting/views.py:439
+#: parsifal/reviews/conducting/views.py:451
 msgid "Classify the imported studies using the <a href=\"/"
 msgstr ""
 
@@ -2900,35 +2898,35 @@ msgstr ""
 msgid "Create quality assessment answers using the <a href=\"/"
 msgstr ""
 
-#: parsifal/reviews/conducting/views.py:440
+#: parsifal/reviews/conducting/views.py:452
 msgid "Create data extraction fields using the <a href=\"/"
 msgstr ""
 
-#: parsifal/reviews/conducting/views.py:461
+#: parsifal/reviews/conducting/views.py:473
 msgid "<h3>Something went wrong while rendering the data extraction form.</h3>"
 msgstr ""
 
-#: parsifal/reviews/conducting/views.py:518
+#: parsifal/reviews/conducting/views.py:530
 #, python-brace-format
 msgid "{0} articles successfully imported to {1}!"
 msgstr ""
 
-#: parsifal/reviews/conducting/views.py:520
+#: parsifal/reviews/conducting/views.py:532
 #, python-brace-format
 msgid ""
 "{0} articles could not be imported because of invalid format or invalid "
 "utf-8 string."
 msgstr ""
 
-#: parsifal/reviews/conducting/views.py:522
+#: parsifal/reviews/conducting/views.py:534
 msgid "The bibtex file had no valid entry!"
 msgstr ""
 
-#: parsifal/reviews/conducting/views.py:546
+#: parsifal/reviews/conducting/views.py:558
 msgid "Invalid file type. Only .bib or .bibtex files are accepted."
 msgstr ""
 
-#: parsifal/reviews/conducting/views.py:1306
+#: parsifal/reviews/conducting/views.py:1318
 msgid "Document added successfully!"
 msgstr ""
 
@@ -4690,21 +4688,21 @@ msgstr ""
 
 #: parsifal/reviews/views.py:111 parsifal/reviews/views.py:161
 #, python-brace-format
-msgid "{0} via Parsifal <noreply@parsif.al>"
+msgid "{0} via Parsifal <qeed-suporte@nees.com.br>"
 msgstr ""
 
 #: parsifal/reviews/views.py:113
 #, python-brace-format
 msgid ""
 "Hi {0}, {1} invited you to a Parsifal Systematic Literature Review called "
-"\"{2}\". View the review at https://parsif.al/{3}/{4}/"
+"\"{2}\". View the review at https://qeed.nees.com.br/{3}/{4}/"
 msgstr ""
 
 #: parsifal/reviews/views.py:115 parsifal/reviews/views.py:165
 #, python-brace-format
 msgid ""
 "<p>Hi {0},</p><p>{1} invited you to a Parsifal Systematic Literature Review "
-"called \"{2}\".</p><p>View the review at https://parsif.al/{3}/{4}/</"
+"called \"{2}\".</p><p>View the review at https://qeed.nees.com.br/{3}/{4}/</"
 "p><p>Sincerely,</p><p>The Parsifal Team</p>"
 msgstr ""
 
@@ -4731,7 +4729,7 @@ msgstr ""
 #, python-brace-format
 msgid ""
 "Hi {0}, {1} invited you to a Parsifal Systematic Literature Review called "
-"\"{2}\".View the review at https://parsif.al/{3}/{4}/"
+"\"{2}\".View the review at https://qeed.nees.com.br/{3}/{4}/"
 msgstr ""
 
 #: parsifal/reviews/views.py:174
