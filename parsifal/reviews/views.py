@@ -108,11 +108,11 @@ def add_author_to_review(request):
                 save_user_invited_to_review(review_id, author, 'co_author')
 
             subject = _('{0} wants to add you as co-author on the systematic literature review {1}').format(inviter_name, review.title)
-            from_email = _('{0} via Parsifal <noreply@parsif.al>').format(inviter_name)
+            from_email = _('{0} via Parsifal <qeed-suporte@nees.com.br>').format(inviter_name)
 
-            text_content = _('Hi {0}, {1} invited you to a Parsifal Systematic Literature Review called "{2}". View the review at https://parsif.al/{3}/{4}/').format(email, inviter_name, review.title, request.user.username, review.name)
+            text_content = _('Hi {0}, {1} invited you to a Parsifal Systematic Literature Review called "{2}". View the review at https://qeed.nees.com.br/{3}/{4}/').format(email, inviter_name, review.title, request.user.username, review.name)
 
-            html_content = _('<p>Hi {0},</p><p>{1} invited you to a Parsifal Systematic Literature Review called "{2}".</p><p>View the review at https://parsif.al/{3}/{4}/</p><p>Sincerely,</p><p>The Parsifal Team</p>').format(email, inviter_name, review.title, request.user.username, review.name)
+            html_content = _('<p>Hi {0},</p><p>{1} invited you to a Parsifal Systematic Literature Review called "{2}".</p><p>View the review at https://qeed.nees.com.br/{3}/{4}/</p><p>Sincerely,</p><p>The Parsifal Team</p>').format(email, inviter_name, review.title, request.user.username, review.name)
 
             msg = EmailMultiAlternatives(subject, text_content, from_email, [email])
             msg.attach_alternative(html_content, 'text/html')
@@ -158,11 +158,11 @@ def add_visitor_to_review(request):
                 save_user_invited_to_review(review_id, visitor, 'visitor')
 
             subject = _('{0} wants to add you as visitor on the systematic literature review {1}').format(inviter_name, review.title)
-            from_email = _('{0} via Parsifal <noreply@parsif.al>').format(inviter_name)
+            from_email = _('{0} via Parsifal <qeed-suporte@nees.com.br>').format(inviter_name)
 
-            text_content = _('Hi {0}, {1} invited you to a Parsifal Systematic Literature Review called "{2}".View the review at https://parsif.al/{3}/{4}/').format(email, inviter_name, review.title, request.user.username, review.name)
+            text_content = _('Hi {0}, {1} invited you to a Parsifal Systematic Literature Review called "{2}".View the review at https://qeed.nees.com.br/{3}/{4}/').format(email, inviter_name, review.title, request.user.username, review.name)
 
-            html_content = _('<p>Hi {0},</p><p>{1} invited you to a Parsifal Systematic Literature Review called "{2}".</p><p>View the review at https://parsif.al/{3}/{4}/</p><p>Sincerely,</p><p>The Parsifal Team</p>').format(email, inviter_name, review.title, request.user.username, review.name)
+            html_content = _('<p>Hi {0},</p><p>{1} invited you to a Parsifal Systematic Literature Review called "{2}".</p><p>View the review at https://qeed.nees.com.br/{3}/{4}/</p><p>Sincerely,</p><p>The Parsifal Team</p>').format(email, inviter_name, review.title, request.user.username, review.name)
 
             msg = EmailMultiAlternatives(subject, text_content, from_email, [email])
             msg.attach_alternative(html_content, 'text/html')
