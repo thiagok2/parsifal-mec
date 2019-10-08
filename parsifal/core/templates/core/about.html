@@ -4,6 +4,19 @@
 {% block fullwidthheader %}
 {% endblock %} {% block content %}
 
+{% block stylesheet %}
+  <style>
+    #visitor-comment{
+    	display:none;
+    	
+    }
+    #form-visitor-comment{
+    	display:none;
+    }
+  </style>
+{% endblock stylesheet %}
+
+
 <div class="row">
 	<div class="col-md-8 col-md-offset-2 text-center">
 		<h2>{% trans 'About '%} {% trans 'Parsifal' %}</h2>
@@ -36,12 +49,24 @@
 	<div class="intro-content">
 		<div class="intro-logos">
 			<div class="item">
-				<img src="/static/img/nees.png" alt="">
+				<img src="/static/img/nees.png" alt="1">
 			</div>
 			<div class="item">
-				<img src="/static/img/ufal.png" alt="">
+				<img src="/static/img/ufal.png" alt="2">
 			</div>
 		</div>
 	</div>
 </div>
+
+{% block javascript %}
+  <script>
+    $(function () {
+      $("#visitor-comment").hide();
+      $("#form-visitor-comment").hide();
+      
+      console.log('remove comments');
+    });
+  </script>
+{% endblock javascript %}
 {% endblock content %}
+

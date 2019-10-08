@@ -371,43 +371,43 @@ def build_data_extraction_table(review, is_finished):
     if selected_studies and data_extraction_fields:
         str_table = u'<div class="panel-group">'
         for study in selected_studies:
-            if has_quality_assessment:
-                str_table += u'''<div class="panel panel-default data-extraction-panel">
-                  <div class="panel-heading">
-                    <h3 class="panel-title row">
-                       <div class="col-sm-9 article-container" style="padding: 0px 5px">
-                       <span id="title-study-{2}">{0}</span>
-                      <span class="badge">{1}</span>'''.format(escape(study.title), study.get_score(), study.id)
+            #if has_quality_assessment:
+            str_table += u'''<div class="panel panel-default data-extraction-panel">
+              <div class="panel-heading">
+                <h3 class="panel-title row">
+                   <div class="col-sm-9 article-container" style="padding: 0px 5px">
+                   <span id="title-study-{2}">{0}</span>
+                  <span class="badge">{1}</span>'''.format(escape(study.title), study.get_score(), study.id)
 
-                files = study.get_files();
-                if files:
-                    pdf_file = files[0]
-                    str_table +='''<a href="{0}" target="_blank"><span class="badge" ><i class="glyphicon glyphicon-cloud-download"></i></span></a>'''.format(pdf_file.article_file.url)
-                if study.doi:
-                    str_table +='''<a href="{0}"><span class="badge">DOI:{0}</a>'''.format(study.doi,study.doi)
+            files = study.get_files();
+            if files:
+                pdf_file = files[0]
+                str_table +='''<a href="{0}" target="_blank"><span class="badge" ><i class="glyphicon glyphicon-cloud-download"></i></span></a>'''.format(pdf_file.article_file.url)
+            if study.doi:
+                str_table +='''<a href="{0}"><span class="badge">DOI:{0}</a>'''.format(study.doi,study.doi)
 
 
-                str_table +='''<a href="#" oid="{0}" class="article-link"><span class="badge" ><i class="glyphicon glyphicon-edit"></i></span></a>'''.format(study.id)
+            str_table +='''<a href="#" oid="{0}" class="article-link"><span class="badge" ><i class="glyphicon glyphicon-edit"></i></span></a>'''.format(study.id)
 
-                str_table +=u'''<div class="detail-article-data-extraction">
-                                <small><span id="subtitle-study-{2}" class="text-muted">{0} ({1})</span></small>
-                            </div>'''.format(escape(study.author), study.year, study.id)
+            str_table +=u'''<div class="detail-article-data-extraction">
+                            <small><span id="subtitle-study-{2}" class="text-muted">{0} ({1})</span></small>
+                        </div>'''.format(escape(study.author), study.year, study.id)
 
-                str_table +='</div>'
+            str_table +='</div>'
 
-                if study.finished_data_extraction:
-                    str_table += u'<div class="col-sm-3"><span class="pull-right"><a href="javascript:void(0);" class="js-finished-button js-mark-as-not-finished"><span class="glyphicon glyphicon-check"></span> <span class="action-text">Marcar como não resolvido</span></a></span></div>'
-                else:
-                    str_table += u'<div class="col-sm-3"><span class="pull-right"><a href="javascript:void(0);" class="js-finished-button js-mark-as-finished"><span class="glyphicon glyphicon-unchecked"></span> <span class="action-text">Marcar como resolvido</span></a></span></div>'
-
-                str_table += u'</h3></div>'
-                str_table += u'<div class="panel-body form-horizontal" data-article-id="{0}">'.format(study.id)
+            if study.finished_data_extraction:
+                str_table += u'<div class="col-sm-3"><span class="pull-right"><a href="javascript:void(0);" class="js-finished-button js-mark-as-not-finished"><span class="glyphicon glyphicon-check"></span> <span class="action-text">Marcar como não resolvido</span></a></span></div>'
             else:
-                str_table += u'''<div class="panel panel-default data-extraction-panel">
-                  <div class="panel-heading">
-                    <h3 class="panel-title">{1}</h3>
-                  </div>
-                  <div class="panel-body form-horizontal" data-article-id="{0}">'''.format(study.id, escape(study.title))
+                str_table += u'<div class="col-sm-3"><span class="pull-right"><a href="javascript:void(0);" class="js-finished-button js-mark-as-finished"><span class="glyphicon glyphicon-unchecked"></span> <span class="action-text">Marcar como resolvido</span></a></span></div>'
+
+            str_table += u'</h3></div>'
+            str_table += u'<div class="panel-body form-horizontal" data-article-id="{0}">'.format(study.id)
+            #else:
+            #    str_table += u'''<div class="panel panel-default data-extraction-panel">
+            #      <div class="panel-heading">
+            #        <h3 class="panel-title">{1}</h3>
+            #      </div>
+            #      <div class="panel-body form-horizontal" data-article-id="{0}">'''.format(study.id, escape(study.title))
             if study.has_empirical_data:
                 checked = 'checked'
             else:
