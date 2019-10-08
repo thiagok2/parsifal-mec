@@ -384,7 +384,7 @@ def build_data_extraction_table(review, is_finished):
                 pdf_file = files[0]
                 str_table +='''<a href="{0}" target="_blank"><span class="badge" ><i class="glyphicon glyphicon-cloud-download"></i></span></a>'''.format(pdf_file.article_file.url)
             if study.doi:
-                str_table +='''<a href="{0}"><span class="badge">DOI:{0}</a>'''.format(study.doi,study.doi)
+                str_table +='''<a href="https://dx.doi.org/{0}" target="blank"><span class="badge">DOI:{0}</a>'''.format(study.doi,study.doi)
 
 
             str_table +='''<a href="#" oid="{0}" class="article-link"><span class="badge" ><i class="glyphicon glyphicon-edit"></i></span></a>'''.format(study.id)
