@@ -407,9 +407,9 @@ def html_source(source):
     else:
         html += '<td>' + escape(source.url) + '</td>'
     if source.is_default:
-        html += '<td class="text-right"><span data-toggle="tooltip" data-placement="top" data-container="body" title="It\'s not possible to edit Digital Library\'s details"><button type="button" class="btn btn-sm btn-warning" disabled>edit</button></span> <button type="button" class="btn btn-danger btn-sm js-start-remove">remove</a></td></tr>'
+        html += '<td class="text-right"><span data-toggle="tooltip" data-placement="top" data-container="body" title='+ _('It is not possible to edit Digital Librarys details') + '><button type="button" class="btn btn-sm btn-warning" disabled>' +_('edit') + '</button></span> <button type="button" class="btn btn-danger btn-sm js-start-remove">'+_('remove')+'</a></td></tr>'
     else:
-        html += '<td class="text-right"><button type="button" class="btn btn-sm btn-warning btn-edit-source"><span class="glyphicon glyphicon-pencil"></span> edit</button> <button type="button" class="btn btn-danger btn-sm js-start-remove"><span class="glyphicon glyphicon-trash"></span> remove</a></td></tr>'
+        html += '<td class="text-right"><button type="button" class="btn btn-sm btn-warning btn-edit-source"><span class="glyphicon glyphicon-pencil"></span>'+ _('edit') +'</button> <button type="button" class="btn btn-danger btn-sm js-start-remove"><span class="glyphicon glyphicon-trash"></span> '+ _('remove')+'</a></td></tr>'
     return html
 
 
