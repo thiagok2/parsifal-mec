@@ -246,7 +246,7 @@ def import_pico_keywords(request):
         keywords += extract_keywords(review, Keyword.INTERVENTION)
         keywords += extract_keywords(review, Keyword.COMPARISON)
         keywords += extract_keywords(review, Keyword.OUTCOME)
-        keywords += extract_keywords(review, Keyword.STUDY_TYPE)
+        #keywords += extract_keywords(review, Keyword.STUDY_TYPE)
 
         html = u''
 

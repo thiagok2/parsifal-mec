@@ -18,6 +18,7 @@ from parsifal.reviews.decorators import main_author_required, author_required, a
 from parsifal.reviews.forms import CreateReviewForm, ReviewForm
 
 from django.utils.translation import ugettext as _
+from decouple import config
 
 
 def reviews(request, username):
