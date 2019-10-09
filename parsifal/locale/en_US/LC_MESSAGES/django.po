@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-07 12:39+0000\n"
+"POT-Creation-Date: 2019-10-09 12:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -81,7 +81,7 @@ msgstr ""
 #: parsifal/authentication/templates/auth/success.html:7
 #: parsifal/blog/templates/blog/entries.html:7
 #: parsifal/core/templates/core/about.html:3
-#: parsifal/core/templates/core/about.html:9
+#: parsifal/core/templates/core/about.html:22
 #: parsifal/core/templates/core/support.html:6
 #: parsifal/help/templates/help/articles.html:6
 #: parsifal/help/templates/help/search.html:6
@@ -458,16 +458,16 @@ msgstr ""
 msgid "About"
 msgstr ""
 
-#: parsifal/core/templates/core/about.html:9
+#: parsifal/core/templates/core/about.html:22
 msgid "About "
 msgstr ""
 
-#: parsifal/core/templates/core/about.html:15
+#: parsifal/core/templates/core/about.html:28
 #: parsifal/reviews/planning/templates/planning/protocol.html:138
 msgid "What is?"
 msgstr ""
 
-#: parsifal/core/templates/core/about.html:17
+#: parsifal/core/templates/core/about.html:30
 msgid ""
 "<strong>Parsifal?</strong> is an online tool designed to support researchers "
 "to perform systematic literature reviews within the context of "
@@ -476,7 +476,7 @@ msgid ""
 "protocol and conducting the research."
 msgstr ""
 
-#: parsifal/core/templates/core/about.html:20
+#: parsifal/core/templates/core/about.html:33
 msgid ""
 "As well as providing a way to document the whole process, the tool will help "
 "you remind what is important during a systematic literature review. During "
@@ -494,18 +494,18 @@ msgstr ""
 "provide mechanisms to build a quality assessment checklist and data "
 "extraction forms."
 
-#: parsifal/core/templates/core/about.html:23
+#: parsifal/core/templates/core/about.html:36
 msgid ""
 "During the conducting phase, you will be able to import <em>bibtex</em> "
 "files and select the studies, find duplicates among all the different "
 "sources, execute the quality assessment and extract data from the papers."
 msgstr ""
 
-#: parsifal/core/templates/core/about.html:26
+#: parsifal/core/templates/core/about.html:39
 msgid "What is a Systematic Literature Review?"
 msgstr ""
 
-#: parsifal/core/templates/core/about.html:28
+#: parsifal/core/templates/core/about.html:41
 msgid ""
 "A systematic literature review is a secondary study with the objective to "
 "identify, analyze and interpret all available evidences from primary studies "
@@ -514,7 +514,7 @@ msgid ""
 "planning, conducting and reporting the review"
 msgstr ""
 
-#: parsifal/core/templates/core/about.html:30
+#: parsifal/core/templates/core/about.html:43
 msgid ""
 "Performing a systematic literature review is a labor-intensive task that "
 "requires a huge amount of work from the researcher, designing the protocol, "
@@ -1153,12 +1153,12 @@ msgid "Unknown"
 msgstr ""
 
 #: parsifal/lib/python2.7/site-packages/django/forms/widgets.py:556
-#: parsifal/reviews/models.py:686
+#: parsifal/reviews/models.py:688
 msgid "Yes"
 msgstr ""
 
 #: parsifal/lib/python2.7/site-packages/django/forms/widgets.py:557
-#: parsifal/reviews/models.py:688
+#: parsifal/reviews/models.py:690
 msgid "No"
 msgstr ""
 
@@ -2622,6 +2622,8 @@ msgstr ""
 #: parsifal/reviews/planning/templates/planning/partial_quality_assessment_answer.html:15
 #: parsifal/reviews/planning/templates/planning/partial_quality_assessment_question.html:29
 #: parsifal/reviews/planning/templates/planning/protocol.html:800
+#: parsifal/reviews/planning/views.py:410
+#: parsifal/reviews/planning/views.py:412
 msgid "remove"
 msgstr ""
 
@@ -3034,6 +3036,8 @@ msgstr ""
 #: parsifal/reviews/planning/templates/planning/partial_quality_assessment_question.html:21
 #: parsifal/reviews/planning/templates/planning/protocol.html:789
 #: parsifal/reviews/planning/templates/planning/protocol.html:795
+#: parsifal/reviews/planning/views.py:410
+#: parsifal/reviews/planning/views.py:412
 msgid "edit"
 msgstr ""
 
@@ -3189,7 +3193,7 @@ msgstr ""
 msgid "Exclusion"
 msgstr ""
 
-#: parsifal/reviews/models.py:641
+#: parsifal/reviews/models.py:642
 #: parsifal/reviews/planning/templates/planning/partial_pico_suggested.html:36
 #: parsifal/reviews/planning/templates/planning/protocol.html:326
 #: parsifal/reviews/planning/templates/planning/protocol.html:479
@@ -3197,7 +3201,7 @@ msgstr ""
 msgid "Population"
 msgstr ""
 
-#: parsifal/reviews/models.py:642
+#: parsifal/reviews/models.py:643
 #: parsifal/reviews/planning/templates/planning/partial_pico_suggested.html:44
 #: parsifal/reviews/planning/templates/planning/protocol.html:332
 #: parsifal/reviews/planning/templates/planning/protocol.html:498
@@ -3205,7 +3209,7 @@ msgstr ""
 msgid "Intervention"
 msgstr ""
 
-#: parsifal/reviews/models.py:643
+#: parsifal/reviews/models.py:644
 #: parsifal/reviews/planning/templates/planning/partial_pico_suggested.html:52
 #: parsifal/reviews/planning/templates/planning/protocol.html:338
 #: parsifal/reviews/planning/templates/planning/protocol.html:511
@@ -3213,7 +3217,7 @@ msgstr ""
 msgid "Comparison"
 msgstr ""
 
-#: parsifal/reviews/models.py:644
+#: parsifal/reviews/models.py:645
 #: parsifal/reviews/planning/templates/planning/partial_pico_suggested.html:60
 #: parsifal/reviews/planning/templates/planning/protocol.html:344
 #: parsifal/reviews/planning/templates/planning/protocol.html:524
@@ -3221,63 +3225,70 @@ msgstr ""
 msgid "Outcome"
 msgstr ""
 
-#: parsifal/reviews/models.py:645
+#: parsifal/reviews/models.py:646
 #: parsifal/reviews/planning/templates/planning/protocol.html:361
 msgid "Study Type"
 msgstr ""
 
-#: parsifal/reviews/models.py:687
+#: parsifal/reviews/models.py:647
+#: parsifal/reviews/planning/templates/planning/partial_pico_suggested.html:70
+#: parsifal/reviews/planning/templates/planning/protocol.html:353
+#: parsifal/reviews/templates/reviews/partial_published_protocols.html:99
+msgid "Context"
+msgstr ""
+
+#: parsifal/reviews/models.py:689
 msgid "Partially"
 msgstr ""
 
-#: parsifal/reviews/models.py:722
+#: parsifal/reviews/models.py:724
 msgid "Boolean Field"
 msgstr ""
 
-#: parsifal/reviews/models.py:723
+#: parsifal/reviews/models.py:725
 msgid "String Field"
 msgstr ""
 
-#: parsifal/reviews/models.py:724
+#: parsifal/reviews/models.py:726
 msgid "Float Field"
 msgstr ""
 
-#: parsifal/reviews/models.py:725
+#: parsifal/reviews/models.py:727
 msgid "Integer Field"
 msgstr ""
 
-#: parsifal/reviews/models.py:726
+#: parsifal/reviews/models.py:728
 msgid "Date Field"
 msgstr ""
 
-#: parsifal/reviews/models.py:727
+#: parsifal/reviews/models.py:729
 msgid "Select One Field"
 msgstr ""
 
-#: parsifal/reviews/models.py:728
+#: parsifal/reviews/models.py:730
 msgid "Select Many Field"
 msgstr ""
 
-#: parsifal/reviews/models.py:773
+#: parsifal/reviews/models.py:775
 msgid "Expected values: \"True\" or \"False\""
 msgstr ""
 
-#: parsifal/reviews/models.py:791 parsifal/reviews/models.py:801
-#: parsifal/reviews/models.py:811
+#: parsifal/reviews/models.py:793 parsifal/reviews/models.py:803
+#: parsifal/reviews/models.py:813
 msgid "Invalid input for "
 msgstr ""
 
-#: parsifal/reviews/models.py:791
+#: parsifal/reviews/models.py:793
 msgid ""
 " field. Expected value: floating point number. Please use dot instead of "
 "comma."
 msgstr ""
 
-#: parsifal/reviews/models.py:801
+#: parsifal/reviews/models.py:803
 msgid " field. Expected value: integer number."
 msgstr ""
 
-#: parsifal/reviews/models.py:811
+#: parsifal/reviews/models.py:813
 msgid " field. Expected value: date. Please use the format MM/DD/YYYY."
 msgstr ""
 
@@ -3338,7 +3349,7 @@ msgstr ""
 #: parsifal/reviews/reporting/templates/reporting/export.html:44
 #: parsifal/reviews/templates/reviews/partial_modal_list_import_protocol.html:16
 #: parsifal/reviews/templates/reviews/review_header.html:14
-#: parsifal/reviews/views.py:59 parsifal/reviews/views.py:74
+#: parsifal/reviews/views.py:60 parsifal/reviews/views.py:75
 msgid "Review"
 msgstr ""
 
@@ -3432,12 +3443,6 @@ msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/partial_keyword_form.html:58
 msgid "Add synonym"
-msgstr ""
-
-#: parsifal/reviews/planning/templates/planning/partial_pico_suggested.html:70
-#: parsifal/reviews/planning/templates/planning/protocol.html:353
-#: parsifal/reviews/templates/reviews/partial_published_protocols.html:99
-msgid "Context"
 msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/partial_pico_suggested.html:80
@@ -4290,6 +4295,10 @@ msgid ""
 "objectives have %s characters."
 msgstr ""
 
+#: parsifal/reviews/planning/views.py:410
+msgid "It is not possible to edit Digital Librarys details"
+msgstr ""
+
 #: parsifal/reviews/planning/views.py:964
 msgid "Cutoff score saved successfully!"
 msgstr ""
@@ -4691,18 +4700,18 @@ msgstr ""
 msgid "haven't published any systematic literature review yet."
 msgstr ""
 
-#: parsifal/reviews/views.py:110
+#: parsifal/reviews/views.py:111
 #, python-brace-format
 msgid ""
 "{0} wants to add you as co-author on the systematic literature review {1}"
 msgstr ""
 
-#: parsifal/reviews/views.py:111 parsifal/reviews/views.py:161
+#: parsifal/reviews/views.py:112 parsifal/reviews/views.py:162
 #, python-brace-format
 msgid "{0} via Parsifal <qeed-suporte@nees.com.br>"
 msgstr ""
 
-#: parsifal/reviews/views.py:113
+#: parsifal/reviews/views.py:114
 #, fuzzy, python-brace-format
 #| msgid ""
 #| "Hi {0}, {1} invited you to a Parsifal Systematic Literature Review called "
@@ -4714,7 +4723,7 @@ msgstr ""
 "Hi {0}, {1} invited you to a QeeD Systematic Literature Review called "
 "\"{2}\". View the review at https://parsif.al/{3}/{4}/"
 
-#: parsifal/reviews/views.py:115 parsifal/reviews/views.py:165
+#: parsifal/reviews/views.py:116 parsifal/reviews/views.py:166
 #, fuzzy, python-brace-format
 #| msgid ""
 #| "<p>Hi {0},</p><p>{1} invited you to a Parsifal Systematic Literature "
@@ -4729,26 +4738,26 @@ msgstr ""
 "called \"{2}\".</p><p>View the review at https://parsif.al/{3}/{4}/</"
 "p><p>Sincerely,</p><p>The QeeD Team</p>"
 
-#: parsifal/reviews/views.py:124
+#: parsifal/reviews/views.py:125
 msgid "No author invited or added to the review. Nothing really changed."
 msgstr ""
 
-#: parsifal/reviews/views.py:127
+#: parsifal/reviews/views.py:128
 #, python-brace-format
 msgid "The authors {0} were added successfully."
 msgstr ""
 
-#: parsifal/reviews/views.py:130 parsifal/reviews/views.py:180
+#: parsifal/reviews/views.py:131 parsifal/reviews/views.py:181
 #, python-brace-format
 msgid "{0} were invited successfully."
 msgstr ""
 
-#: parsifal/reviews/views.py:160
+#: parsifal/reviews/views.py:161
 #, python-brace-format
 msgid "{0} wants to add you as visitor on the systematic literature review {1}"
 msgstr ""
 
-#: parsifal/reviews/views.py:163
+#: parsifal/reviews/views.py:164
 #, fuzzy, python-brace-format
 #| msgid ""
 #| "Hi {0}, {1} invited you to a Parsifal Systematic Literature Review called "
@@ -4760,28 +4769,28 @@ msgstr ""
 "Hi {0}, {1} invited you to a QeeD Systematic Literature Review called "
 "\"{2}\".View the review at https://parsif.al/{3}/{4}/"
 
-#: parsifal/reviews/views.py:174
+#: parsifal/reviews/views.py:175
 msgid "No visitor invited or added to the review. Nothing really changed."
 msgstr ""
 
-#: parsifal/reviews/views.py:177
+#: parsifal/reviews/views.py:178
 #, python-brace-format
 msgid "The visitor {0} were added successfully."
 msgstr ""
 
-#: parsifal/reviews/views.py:235
+#: parsifal/reviews/views.py:236
 #, python-brace-format
 msgid "You successfully left the review {0}."
 msgstr ""
 
-#: parsifal/reviews/views.py:246
+#: parsifal/reviews/views.py:247
 #, python-format
 msgid ""
 "The review description should not exceed 500 characters. The given "
 "description have %s characters."
 msgstr ""
 
-#: parsifal/reviews/views.py:250
+#: parsifal/reviews/views.py:251
 msgid "Your review has been saved successfully!"
 msgstr ""
 
