@@ -655,12 +655,14 @@ class Keyword(models.Model):
     COMPARISON = u'C'
     OUTCOME = u'O'
     STUDY_TYPE = u'S'
+    CONTEXT = u'CT'
     RELATED_TO = (
         (POPULATION, _('Population')),
         (INTERVENTION, _('Intervention')),
         (COMPARISON, _('Comparison')),
         (OUTCOME, _('Outcome')),
         (STUDY_TYPE, _('Study Type')),
+        (CONTEXT, _('Context')),
         )
 
     review = models.ForeignKey(Review, related_name='keywords')
