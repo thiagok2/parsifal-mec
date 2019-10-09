@@ -82,6 +82,7 @@ class Review(models.Model):
     export_risks = models.BooleanField(default=False)
     export_qualityassessment = models.BooleanField(default=False)
     export_pico = models.BooleanField(default=False)
+    is_metaanalysis = models.BooleanField(default=False)
 
     statistical_methods=models.TextField(max_length=1000,blank=True)
 
@@ -588,6 +589,23 @@ class Article(models.Model):
         self.language = document.language
         self.note = document.note
 
+class ArticleEmpiricalData(models.Model):
+    review = models.ForeignKey(Review, related_name='empirical_review')
+    article = models.ForeignKey(Article, related_name='empirical_article')
+    n1 = models.DecimalField(max_digits=3, decimal_places=1)
+    dp1 = models.DecimalField(max_digits=3, decimal_places=1)
+    a1 = models.DecimalField(max_digits=3, decimal_places=1)
+    n2 = models.DecimalField(max_digits=3, decimal_places=1)
+    dp2 = models.DecimalField(max_digits=3, decimal_places=1)
+    a2 = models.DecimalField(max_digits=3, decimal_places=1)
+
+    class Meta:
+        verbose_name = u'Article Empirical Data'
+        verbose_name_plural = u'Articles Empirical Data'
+        ordering = ('article',)
+
+    def __unicode__(self):
+        return self.article
 
 def article_directory_path(instance, filename):
     return 'article/{0}/{1}'.format(instance.article.id, filename)
