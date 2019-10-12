@@ -32,7 +32,13 @@ $(function () {
   }
 
   $(".data-extraction-panel input[type='text'], .data-extraction-panel select, .data-extraction-panel textarea").change(function () {
-    save_data_extraction_field($(this));
+    var is_empirical_value = $(this).data("empirical");
+
+    if (is_empirical_value !== undefined) {
+        save_empirical_value_fields($(this))
+    } else {
+        save_data_extraction_field($(this));
+    }
   });
 
   $(".data-extraction-panel input[type='checkbox']").click(function () {
@@ -177,13 +183,48 @@ $(function () {
         type: 'get',
         cache: false,
         success: function (data) {
-            console.log(data)
+            console.log('article ', article_id)
+            if (has_empirical_data) {
+                $('#empirical-values-' + article_id).removeClass("hide")
+            } else {
+                $('#empirical-values-' + article_id).addClass("hide")
+                $('#empirical-values-' + article_id + ' input[type="text"]').val('')
+            }
             // $(row).replaceWith(data);
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log(errorThrown)
         }
     });
+  }
+
+  function save_empirical_value_fields(ref) {
+    var article_id = $(ref).closest(".panel-body").attr("data-article-id");
+    var review_id = $("#review-id").val();
+    var field_type = ref[0].dataset['type'];
+    var value = $(ref).val();
+    var row = $(ref).closest(".form-group");
+
+    $.ajax({
+        url: '/reviews/conducting/save_empirical_value_field/',
+        data: $("#empirical-values-"+article_id).serialize(),
+        type: 'get',
+        cache: false,
+        success: function (data) {
+            $("span.error", row).text('');
+            $("span.error", row).hide();
+           // $(row).addClass("has-error");
+            //console.log('article ', article_id)
+            // $(row).replaceWith(data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            $("span.error", row).text(jqXHR.responseText);
+            $("span.error", row).show();
+            //$(row).addClass("has-error");
+            console.log(errorThrown)
+        }
+    });
+
   }
 
 

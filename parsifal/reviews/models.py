@@ -570,6 +570,10 @@ class Article(models.Model):
         result = filter(lambda x: x[0].startswith(self.document_type), Document.ENTRY_TYPES)
         return result[0]
 
+    def get_empirical_values(self):
+        empirical_values = ArticleEmpiricalData.objects.filter(article__id=self.id)
+        return empirical_values
+
     def build(self, document):
         self.title = document.title
         self.author = document.author
@@ -590,14 +594,13 @@ class Article(models.Model):
         self.note = document.note
 
 class ArticleEmpiricalData(models.Model):
-    review = models.ForeignKey(Review, related_name='empirical_review')
-    article = models.ForeignKey(Article, related_name='empirical_article')
-    n1 = models.DecimalField(max_digits=3, decimal_places=1)
-    dp1 = models.DecimalField(max_digits=3, decimal_places=1)
-    a1 = models.DecimalField(max_digits=3, decimal_places=1)
-    n2 = models.DecimalField(max_digits=3, decimal_places=1)
-    dp2 = models.DecimalField(max_digits=3, decimal_places=1)
-    a2 = models.DecimalField(max_digits=3, decimal_places=1)
+    article = models.OneToOneField(Article, on_delete=models.CASCADE, primary_key=True)
+    n1 = models.IntegerField(null=True, blank=True)
+    dp1 = models.DecimalField(max_digits=3, decimal_places=1, null=True, blank=True)
+    a1 = models.DecimalField(max_digits=3, decimal_places=1, null=True, blank=True)
+    n2 = models.IntegerField(null=True, blank=True)
+    dp2 = models.DecimalField(max_digits=3, decimal_places=1, null=True, blank=True)
+    a2 = models.DecimalField(max_digits=3, decimal_places=1, null=True, blank=True)
 
     class Meta:
         verbose_name = u'Article Empirical Data'

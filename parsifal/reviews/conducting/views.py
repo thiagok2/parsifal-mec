@@ -205,14 +205,16 @@ def update_article_empirical_data(request):
     try:
         article_id = request.GET['article-id']
         has_empirical_data = request.GET['has-empirical-data']
-        status_evaluation = ArticleEvaluation.ARTICLE_STATUS
 
         if article_id:
             article = Article.objects.get(pk=article_id)
             article.has_empirical_data = True if has_empirical_data == 'true' else False
             article.save()
 
-        context = RequestContext(request, {'article': article, 'user': request.user, 'status_evaluation': status_evaluation})
+            if has_empirical_data == 'false':
+                empirical_data = ArticleEmpiricalData.objects.get(pk=article_id).delete()
+
+        context = RequestContext(request, {'article': article, 'user': request.user})
         return render_to_response('conducting/partial_conducting_article_row.html', context)
     except:
         return HttpResponseBadRequest()
@@ -394,12 +396,6 @@ def build_data_extraction_table(review, is_finished):
                         </div>'''.format(escape(study.author), study.year, study.id)
 
             str_table +='</div>'
-
-            if study.finished_data_extraction:
-                str_table += u'<div class="col-sm-3"><span class="pull-right"><a href="javascript:void(0);" class="js-finished-button js-mark-as-not-finished"><span class="glyphicon glyphicon-check"></span> <span class="action-text">Marcar como não resolvido</span></a></span></div>'
-            else:
-                str_table += u'<div class="col-sm-3"><span class="pull-right"><a href="javascript:void(0);" class="js-finished-button js-mark-as-finished"><span class="glyphicon glyphicon-unchecked"></span> <span class="action-text">Marcar como resolvido</span></a></span></div>'
-
             str_table += u'</h3></div>'
             str_table += u'<div class="panel-body form-horizontal" data-article-id="{0}">'.format(study.id)
             #else:
@@ -408,18 +404,7 @@ def build_data_extraction_table(review, is_finished):
             #        <h3 class="panel-title">{1}</h3>
             #      </div>
             #      <div class="panel-body form-horizontal" data-article-id="{0}">'''.format(study.id, escape(study.title))
-            if study.has_empirical_data:
-                checked = 'checked'
-            else:
-                checked = ''
 
-            str_table += u'''<div class="form-group">
-                    <label class="control-label col-md-2">Dados empíricos</label>
-                    <div class="col-md-10" style="padding-top:7px;">
-                        <input type="checkbox" id="ck-empirical-data" {0} />
-                    </div>
-                </div>
-                '''.format(checked)
             for field in data_extraction_fields:
                 str_table += u'''<div class="form-group" data-field-id="{0}">
                     <label class="control-label col-md-2">{1}</label>
@@ -427,6 +412,83 @@ def build_data_extraction_table(review, is_finished):
                     </div>
                 </div>
                 '''.format(field.id, escape(field.description), build_data_extraction_field_row(study, field))
+
+            if study.has_empirical_data:
+                checked = 'checked'
+                hide = ''
+            else:
+                checked = ''
+                hide = 'hide'
+
+            str_table += u'''<div class="form-group">
+                    <label class="control-label col-md-2">Possui dados empíricos?</label>
+                    <div class="col-md-10" style="padding-top:7px;">
+                        <input type="checkbox" id="ck-empirical-data" {0} />
+                    </div>
+                </div>
+                '''.format(checked)
+
+
+            empirical_values, created = ArticleEmpiricalData.objects.get_or_create(article=study)
+            empirical_values.save()
+
+            if empirical_values:
+                empirical_values.n1 = empirical_values.n1 if empirical_values.n1 != None else ''
+                empirical_values.dp1 = empirical_values.dp1 if empirical_values.dp1 != None else ''
+                empirical_values.a1 = empirical_values.a1 if empirical_values.a1 != None else ''
+                empirical_values.n2 = empirical_values.n2 if empirical_values.n2 != None else ''
+                empirical_values.dp2 = empirical_values.dp2 if empirical_values.dp2 != None else ''
+                empirical_values.a2 = empirical_values.a2 if empirical_values.a2 != None else ''
+
+            str_table += u'''<form class="{1}" name="empirical-values-{0}" id="empirical-values-{0}" method="get" action=".">
+                    <div class="form-group">
+                        <span class="col-sm-offset-2 help-block error" style="display: none;"></span>
+                        <input type="hidden" name="article-id" id="article-id" value="{0}">
+                        <input type="hidden" name="review-id" id="review-id" value="{2}">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label class="control-label col-md-2">N¹</label>
+                                <div class="col-md-2" style="padding-top:7px;">
+                                    <input type="text" class="form-control" value="{3.n1}" name="n1" id="{0}-n1-value" data-empirical data-type="n1"/>
+                                </div>
+                                <label class="control-label col-md-1">DP¹</label>
+                                <div class="col-md-2" style="padding-top:7px;">
+                                    <input type="text" class="form-control" value="{3.dp1}" name="dp1" id="{0}-dp1-value" data-empirical data-type="dp1" />
+                                </div>
+                                <label class="control-label col-md-1">A¹</label>
+                                <div class="col-md-2" style="padding-top:7px;">
+                                    <input type="text" class="form-control" value="{3.a1}" name="a1" id="{0}-a1-value" data-empirical data-type="a1"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label class="control-label col-md-2">N²</label>
+                                <div class="col-md-2" style="padding-top:7px;">
+                                    <input type="text" class="form-control" value="{3.n2}" name="n2" id="{0}-n2-value" data-empirical data-type="n2" />
+                                </div>
+                                <label class="control-label col-md-1">DP²</label>
+                                <div class="col-md-2" style="padding-top:7px;">
+                                    <input type="text" class="form-control" value="{3.dp2}" name="dp2" id="{0}-dp2-value" data-empirical data-type="dp2" />
+                                </div>
+                                <label class="control-label col-md-1">A²</label>
+                                <div class="col-md-2" style="padding-top:7px;">
+                                    <input type="text" class="form-control" value="{3.a2}" name="a2" id="{0}-a2-value" data-empirical data-type="a2" />
+                                </div>
+                            </div>
+                            <div class="col-md-12 text-center" style="padding: 15px; color: #444">
+                                <small>(¹ ⇒ Treatment group | ² ⇒ Control group) | N ⇒ Sample Size | A ⇒ Average</small>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                '''.format(study.id, hide, review.id, empirical_values)
+
+            if study.finished_data_extraction:
+                str_table += u'<div class="col-sm-offset-2 col-sm-3"><span class=""><a href="javascript:void(0);" class="js-finished-button btn btn-success js-mark-as-not-finished"><span class="action-text">Marcar como não resolvido</span></a></span></div>'
+            else:
+                str_table += u'<div class="col-sm-offset-2 col-sm-3"><span class=""><a href="javascript:void(0);" class="js-finished-button btn btn-success js-mark-as-finished"><span class="action-text">Marcar como resolvido</span></a></span></div>'
+
             str_table += u'</div></div>'
         str_table += "</div>"
         return str_table
@@ -986,6 +1048,46 @@ def multiple_articles_action_duplicated(request):
     except:
         return HttpResponseBadRequest()
 
+
+@author_required
+@login_required
+def save_empirical_value_field(request):
+    try:
+        review_id = request.GET['review-id']
+        article_id = request.GET['article-id']
+        n1 = request.GET['n1']
+        dp1 = request.GET['dp1']
+        a1 = request.GET['a1']
+        n2 = request.GET['n2']
+        dp2 = request.GET['dp2']
+        a2 = request.GET['a2']
+
+        if len(n1) > 3 or len(dp1) > 3 or len(a1) > 3 or len(n2) > 3 or len(dp2) > 3 or len(a2) > 3:
+            return HttpResponseBadRequest(_('Empirical value fields do not accept values greater than 3 digits for n (123) and 2 digits for dp and a (1.2)'))
+
+        article = Article.objects.get(pk=article_id)
+        print 'VAI TE FUDER'
+        empirical_values, created = ArticleEmpiricalData.objects.get_or_create(article=article)
+        if n1:
+            empirical_values.n1 = n1
+        if dp1:
+            empirical_values.dp1 = dp1
+        if a1:
+            empirical_values.a1 = a1
+        if n2:
+            empirical_values.n2 = n2
+        if dp2:
+            empirical_values.dp2 = dp2
+        if a2:
+            empirical_values.a2 = a2
+        print 'passou'
+        empirical_values.save()
+        print 'salvou'
+
+        return HttpResponse()
+
+    except Exception, e:
+        return HttpResponseBadRequest(e)
 
 @author_required
 @login_required
