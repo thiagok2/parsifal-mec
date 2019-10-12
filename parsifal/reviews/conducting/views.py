@@ -1066,7 +1066,6 @@ def save_empirical_value_field(request):
             return HttpResponseBadRequest(_('Empirical value fields do not accept values greater than 3 digits for n (123) and 2 digits for dp and a (1.2)'))
 
         article = Article.objects.get(pk=article_id)
-        print 'VAI TE FUDER'
         empirical_values, created = ArticleEmpiricalData.objects.get_or_create(article=article)
         if n1:
             empirical_values.n1 = n1
@@ -1080,9 +1079,7 @@ def save_empirical_value_field(request):
             empirical_values.dp2 = dp2
         if a2:
             empirical_values.a2 = a2
-        print 'passou'
         empirical_values.save()
-        print 'salvou'
 
         return HttpResponse()
 
