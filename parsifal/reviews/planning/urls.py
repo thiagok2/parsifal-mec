@@ -26,7 +26,7 @@ urlpatterns = patterns('parsifal.reviews.planning.views',
     url(r'^share_risks/$', 'share_risks', name='share_risks'),
     url(r'^save_statistical_methods/$', 'save_statistical_methods', name='save_statistical_methods'),
 
-
+    url(r'^save_search_setup/$', 'save_search_setup', name='save_search_setup'),
 
 
     url(r'^import_pico_keywords/$', 'import_pico_keywords', name='import_pico_keywords'),

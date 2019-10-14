@@ -79,6 +79,45 @@ def save_statistical_methods(request):
             return HttpResponse(_('Your review have been saved successfully!'))
     except:
         return HttpResponseBadRequest()
+
+
+@author_or_visitor_required
+@login_required
+def search_setup(request, username, review_name):
+    review = get_object_or_404(Review, name=review_name, author__username__iexact=username)
+    unseen_comments = review.get_visitors_unseen_comments(request.user)
+    return render(request, 'planning/search_setup.html', { 'review': review, 'unseen_comments': unseen_comments })
+
+@author_required
+@login_required
+def save_search_setup(request):
+    try:
+        review_id = request.POST['review-id']
+        is_metaanalysis = request.POST['is_metaanalysis']
+
+        print 'meta analysis', is_metaanalysis
+
+        if is_metaanalysis:
+            conclusion_model = request.POST['conclusion_model']
+            adverse_effect = request.POST['adverse_effect']
+            no_effect = request.POST['no_effect']
+            small_effect = request.POST['small_effect']
+            intermediate_effect = request.POST['intermediate_effect']
+            large_effect = request.POST['large_effect']
+            developmental_effects = request.POST['developmental_effects']
+            teacher_effects = request.POST['teacher_effects']
+            zone_desired_effects = request.POST['zone_desired_effects']
+
+
+        review = Review.objects.get(pk=review_id)
+        review.is_metaanalysis = is_metaanalysis
+
+        review.save()
+        return HttpResponse(_('Your review search setup have been saved successfully!'))
+    except:
+        return HttpResponseBadRequest()
+
+
 '''
     OBJECTIVE FUNCTIONS
 '''
