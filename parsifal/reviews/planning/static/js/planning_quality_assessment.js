@@ -31,6 +31,8 @@ $(function () {
       success: function (data) {
         $("#tbl-quality-questions tbody").append(data);
         $("#tbl-quality-questions tbody tr:first-child .quality-question-description").focus();
+        
+        $("#answers").load(location.href + " #answers");
       }
     });
   });
@@ -108,6 +110,8 @@ $(function () {
       type: 'get',
       cache: false,
       success: function (data) {
+    	$(row).next().next().remove();
+    	$(row).next().remove();
         $(row).remove();
         update_max_score();
       },
@@ -143,7 +147,8 @@ $(function () {
     });
 
   };
-
+  
+  /*
   $("table#tbl-quality-questions").on("click", ".js-order-quality-question-up", function () {
     var i = $(this).closest("tr").index();
     if (i > 0) {
@@ -167,6 +172,7 @@ $(function () {
     }
     return false;
   });
+  */
 
   $("#btn-import-quality-checklist").click(function () {
     $.ajax({
@@ -192,8 +198,8 @@ $(function () {
     : hiddenClass.className = "hidden"
   });
 
-  $("table#tbl-import-quality-questions").on("click", "td#import-quality-questions", function () {
-    var exported_review_id = $(this)[0].parentElement.children[0].innerHTML;
+  $("table#tbl-import-quality-questions").on("click", "button.btn-import-quality-questions", function () {
+    var exported_review_id = $(this).attr("data-exported-review-id");;
     var review_id = $("#review-id").val();
     var csrf_token = $("[name='csrfmiddlewaretoken']").val();
 
@@ -207,9 +213,10 @@ $(function () {
         type: 'post',
         cache: false,
         success: function (data) {
-            //$("#tbl-quality-questions tbody").append(data);
-            //$("#modal-suggested-quality-questions").modal("hide");
-            //update_max_score();
+        	location.reload();
+            $("#tbl-quality-questions tbody").append(data);
+            $("#modal-suggested-quality-questions").modal("hide");
+            update_max_score();
         }
     });
 
@@ -267,11 +274,13 @@ $(function () {
   //===========================================================================
 
   var cancel_answer_edition_row = new Array();
-
-  $("button[id^='btn-add-quality-answer']").click(function () {
+  				
+  $("button.btn-add-quality-answer").click(function () {
+	  
     var review_id = $("#review-id").val();
     var quality_question_id = $(this).attr("data-question-id");
-    console.log('add ', quality_question_id)
+    
+    
     $.ajax({
       url: '/reviews/planning/add_quality_assessment_answer/',
       data: {
@@ -281,21 +290,29 @@ $(function () {
       type: 'get',
       cache: false,
       success: function (data) {
-        $("#tbl-quality-answers-"+quality_question_id+" tbody").append(data);
-        $("#tbl-quality-answers-"+quality_question_id+" tbody tr:first-child .quality-answer-description").focus();
+        $("#question-"+quality_question_id+"-list-quality-answers").append(data);
+        $("#question-"+quality_question_id+"-list-quality-answers .quality-answer-description").focus();
       }
     });
   });
 
-  $("table[id^='tbl-quality-answers']").on("click", ".btn-save-quality-answer", function () {
-    var row = $(this).closest("tr");
-    var review_id = $("#review-id").val();
-    var description = $(".quality-answer-description", row).val();
-    var weight = $(".quality-answer-weight", row).val();
-    var quality_answer_id = $(row).attr("oid");
-    var quality_question_id = $(row).attr("data-question-id");
-    var csrf_token = $(row).attr("csrf-token");
-
+  $("#question-answer-form").on("click", ".btn-save-quality-answer", function () {
+  
+	var btn = $(this);
+	var li = $(this).closest("li");
+	var review_id = $("#review-id").val();
+	var description = $(".quality-answer-description", li).val();
+	var weight = $(".quality-answer-weight", li).val();
+	var quality_answer_id = $(li).attr("oid");
+	var quality_question_id = $(li).attr("data-question-id");
+	
+	var csrf_token = $("#question-answer-form input[name='csrfmiddlewaretoken']").val();
+	
+	if( (!description || 0 === description.length) || (!weight || 0 === weight.length)){
+		$.parsifal.alert("Dados Inválidos", "Dados inválidos ou ausentes. Preencha os dados corretamente.");
+		return null;
+	}
+    
     $.ajax({
       url: '/reviews/planning/save_quality_assessment_answer/',
       data: {'review-id': review_id,
@@ -307,67 +324,94 @@ $(function () {
       },
       type: 'post',
       cache: false,
+      beforeSend: function () {
+          $(btn).ajaxDisable();
+      },
       success: function (data) {
-        $(row).replaceWith(data);
+        $(li).replaceWith(data);
         update_max_score();
-      }
+      },
+      complete: function () {
+          $(btn).ajaxEnable();
+        }
     });
   });
 
-  $("table[id^='tbl-quality-answers']").on("click", ".btn-cancel-quality-answer", function () {
-    var row = $(this).closest("tr");
-    var quality_answer_id = $(row).attr("oid");
+  $("#question-answer-form").on("click", ".btn-cancel-quality-answer", function () {
+    var li = $(this).closest("li");
+    var quality_answer_id = $(li).attr("oid");
     if (quality_answer_id == 'None') {
-      $(row).fadeOut(400, function () {
+      $(li).fadeOut(400, function () {
         $(this).remove();
       });
     }
     else {
-      $(row).replaceWith(cancel_answer_edition_row[quality_answer_id]);
+      $(li).replaceWith(cancel_answer_edition_row[quality_answer_id]);
     }
   });
+  
+  $("#question-answer-form").on("click", ".btn-edit-quality-answer", function () {
+	    
+	  	var btn = $(this);
+	    var quality_question_id = $(this).attr("data-question-id");
+	   
+	    var quality_answer_id = $(this).attr("data-answer-id");
+	    
+	    var review_id = $("#review-id").val();
+	    //cancel_answer_edition_row[quality_answer_id] = $(this);
+	    var csrf_token = $("#question-answer-form input[name='csrfmiddlewaretoken']").val();
 
-  $("table[id^='tbl-quality-answers']").on("click", ".btn-edit-quality-answer", function () {
-    var row = $(this).closest("tr");
-    var quality_question_id = $(row).attr("data-question-id")
-    var quality_answer_id = $(row).attr("oid");
+	    $.ajax({
+	      url: '/reviews/planning/edit_quality_assessment_answer2/',
+	      data: {
+	        'review-id': review_id,
+	        'quality-answer-id': quality_answer_id,
+	        'quality-question-id': quality_question_id,
+	        'csrfmiddlewaretoken': csrf_token
+	      },
+	      type: 'get',
+	      cache: false,
+	      beforeSend: function () {
+	          $(btn).ajaxDisable();
+	      },
+	      success: function (data) {
+	    	  $("#li-quality-question-"+quality_question_id+"-answer-"+quality_answer_id).replaceWith(data);
+	      },
+	      complete: function () {
+	          $(btn).ajaxEnable();
+	      }
+	    });
+	  });
+
+  $("#question-answer-form").on("click", ".btn-remove-quality-answer", function () {
+	var btn = $(this);
+	var li = $(this).closest("li");
+    var quality_answer_id = $(li).attr("oid");
     var review_id = $("#review-id").val();
-    cancel_answer_edition_row[quality_answer_id] = row;
-
-    $.ajax({
-      url: '/reviews/planning/edit_quality_assessment_answer/',
-      data: {
-        'review-id': review_id,
-        'quality-answer-id': quality_answer_id,
-        'quality-question-id': quality_question_id
-      },
-      type: 'get',
-      cache: false,
-      success: function (data) {
-        $(row).replaceWith(data);
-      }
-    });
-  });
-
-  $("table[id^='tbl-quality-answers']").on("click", ".btn-remove-quality-answer", function () {
-    var row = $(this).closest("tr");
-    var quality_answer_id = $(row).attr("oid");
-    var review_id = $("#review-id").val();
+    
+    var csrf_token = $("#question-answer-form input[name='csrfmiddlewaretoken']").val();
 
     $.ajax({
       url: '/reviews/planning/remove_quality_assessment_answer/',
       data: {
         'review-id': review_id,
-        'quality-answer-id': quality_answer_id
+        'quality-answer-id': quality_answer_id,
+        'csrfmiddlewaretoken': csrf_token
       },
       type: 'get',
       cache: false,
+      beforeSend: function () {
+          $(btn).ajaxDisable();
+      },
       success: function (data) {
-        $(row).remove();
+        $(li).remove();
         update_max_score();
       },
       error: function (jqXHR, textStatus, errorThrown) {
 
+      },
+      complete: function () {
+          $(btn).ajaxEnable();
       }
     });
   });
@@ -438,7 +482,7 @@ $(function () {
     : hiddenClass.className = "hidden"
   });
 
-  $("button[id^='add-suggested-answers']").click(function () {
+  $("button.add-suggested-answers").click(function () {
     var quality_question_id = $(this).attr("data-question-id");
     $.ajax({
       url: '/reviews/planning/add_suggested_answer/',
@@ -449,7 +493,9 @@ $(function () {
       type: 'get',
       cache: false,
       success: function (data) {
-        $("#tbl-quality-answers-"+quality_question_id+" tbody").replaceWith("<tbody>" + data + "</tbody>");
+        $("#question-" + quality_question_id + "-list-quality-answers").html(data);
+        $("#question-" + quality_question_id +"-add-suggested-answers").hide();
+       
         $(".no-answers").fadeOut();
         update_max_score();
       },

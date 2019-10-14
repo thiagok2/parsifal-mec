@@ -1,0 +1,30 @@
+{% load i18n %}
+
+{% load humanize %}
+
+<li id="li-quality-question-{{quality_question.id}}-answer-{{quality_answer.id}}" 
+	oid="{{ quality_answer.id }}" data-question-id={{quality_question.id}} class="list-group-item" style="padding: 3px 3px;">
+	
+	<div class="row" id="row-quality-question-{{quality_question.id}}-answer-{{quality_answer.id}}">
+		<div class="col-lg-6">
+			<small><em>
+				{{ quality_answer.description }}
+			</em></small>
+		</div>
+		<div class="col-lg-3">
+			<small><em>
+			{{ quality_answer.weight }}
+			</em></small>
+		</div>
+		<div class="col-lg-3">
+			<button type="button" class="btn btn-default btn-sm btn-edit-quality-answer" data-question-id="{{quality_question.id}}" data-answer-id="{{quality_answer.id}}">
+		     	<span class="glyphicon glyphicon-pencil"></span>
+		     	{% trans 'edit' %}
+		   	</button>
+		   	<button type="button" class="btn btn-default btn-sm btn-remove-quality-answer">
+		     	<span class="glyphicon glyphicon-trash"></span>
+		     	{% trans 'remove' %}
+		   	</button>
+		</div>
+	</div>
+</li>
