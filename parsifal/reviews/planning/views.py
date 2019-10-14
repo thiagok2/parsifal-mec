@@ -829,7 +829,7 @@ def add_quality_assessment_answer(request):
         quality_answer = QualityAnswer()
         quality_question = QualityQuestion.objects.get(pk=quality_question_id)
         context = RequestContext(request, {'quality_answer': quality_answer, 'quality_question': quality_question})
-        return render_to_response('planning/partial_quality_assessment_answer_form.html', context)
+        return render_to_response('planning/partial_quality_assessment_answer_form2.html', context)
     except:
         return HttpResponseBadRequest()
 
@@ -848,6 +848,19 @@ def edit_quality_assessment_answer(request):
     except:
         return HttpResponseBadRequest()
 
+@author_required
+@login_required
+def edit_quality_assessment_answer2(request):
+    try:
+        quality_answer_id = request.GET['quality-answer-id']
+        quality_question_id = request.GET['quality-question-id']
+
+        quality_answer = QualityAnswer.objects.get(pk=quality_answer_id)
+        quality_question = QualityQuestion.objects.get(pk=quality_question_id)
+        context = RequestContext(request, {'quality_answer': quality_answer, 'quality_question': quality_question})
+        return render_to_response('planning/partial_quality_assessment_answer_form2.html', context)
+    except:
+        return HttpResponseBadRequest()
 
 @author_required
 @login_required
@@ -878,8 +891,8 @@ def save_quality_assessment_answer(request):
         quality_answer.question = question
         quality_answer.save()
 
-        context = RequestContext(request, {'quality_answer': quality_answer})
-        return render_to_response('planning/partial_quality_assessment_answer.html', context)
+        context = RequestContext(request, {'quality_answer': quality_answer, 'quality_question': question})
+        return render_to_response('planning/partial_quality_assessment_answer2.html', context)
     except Exception as e:
         print e
         return HttpResponseBadRequest()
@@ -924,20 +937,37 @@ def add_suggested_answer(request):
             for answer, value in QualityAnswer.SUGGESTED_ANSWERS:
                 quality_answer = QualityAnswer(review=review, description=answer, weight=value, question=quality_question)
                 quality_answer.save()
-                html_answers += '''<tr oid="{0}" data-question-id="{3}">
-                  <td>{1}</td>
-                  <td>{2}</td>
-                  <td>
-                    <button type="button" class="btn btn-warning btn-sm btn-edit-quality-answer">edit</button>
-                    <button type="button" class="btn btn-danger btn-sm btn-remove-quality-answer">remove</button>
-                  </td>
-                </tr>'''.format(quality_answer.id, quality_answer.description.encode('ascii', 'replace'), quality_answer.weight, quality_question.id)
+                html_answers += '''<li id="li-quality-question-{3}-answer-{0}"
+                                    oid="{0}" data-question-id="{3}" class="list-group-item" style="padding: 3px 3px;" >
+                                        <div class="row" id="row-quality-question-{3}-answer-{0}">
+                 <div class="col-lg-6">
+                    <small><em>
+                        {1}
+                    </em></small>
+                </div>
+                <div class="col-lg-3">
+                    <small><em>
+                        {2}
+                    </em></small>
+                </div>
+                <div class="col-lg-3">
+                    <button type="button" class="btn btn-default btn-sm btn-edit-quality-answer" data-question-id="{3}" data-answer-id="{0}">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                        editar
+                    </button>
+                    <button type="button" class="btn btn-default btn-sm btn-remove-quality-answer">
+                        <span class="glyphicon glyphicon-trash"></span>
+                        remover
+                    </button>
+                </div>
+                </div></li>'''.format(quality_answer.id, quality_answer.description.encode('ascii', 'replace'), quality_answer.weight, quality_question.id)
             return HttpResponse(html_answers)
         else:
             return HttpResponseBadRequest()
     except Exception as e:
         print 'except ', e
         return HttpResponseBadRequest()
+
 
 
 @author_required
