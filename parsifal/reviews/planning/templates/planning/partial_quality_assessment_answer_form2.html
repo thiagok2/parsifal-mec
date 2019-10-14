@@ -1,0 +1,23 @@
+{% load i18n %}
+
+{% load humanize %}
+
+<li id="li-quality-question-{{quality_question.id}}-answer-{{quality_answer.id}}"
+	oid="{{ quality_answer.id|default:'None' }}" data-question-id="{{quality_question.id}}" class="list-group-item" style="padding: 3px 3px;"  csrf-token="{{ csrf_token }}">
+	<div class="row">
+		<div class="col-lg-6">
+			<input type="text" maxlength="255" class="form-control quality-answer-description" value="{{ quality_answer.description }}" placeholder="{% trans 'Answer' %}">
+		</div>
+		<div class="col-lg-3">
+			<input type="text" maxlength="10" class="form-control quality-answer-weight" value="{{ quality_answer.weight|default_if_none:'' }}" placeholder="{% trans 'Weight' %}">
+		</div>
+		<div class="col-lg-3">
+			<button type="button" class="btn btn-sm btn-success btn-save-quality-answer" data-question-id="{{quality_question.id}}" data-answer-id="{{ quality_answer.id|default:'None' }}">
+      			<span class="glyphicon glyphicon-ok"></span>
+      			{% trans 'save' %}
+    		</button>
+			
+   			<button type="button" class="btn btn-sm btn-default btn-cancel-quality-answer">{% trans 'cancel' %}</button>
+		</div>
+	</div>
+</li>
