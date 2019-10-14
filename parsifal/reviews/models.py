@@ -82,6 +82,7 @@ class Review(models.Model):
     export_risks = models.BooleanField(default=False)
     export_qualityassessment = models.BooleanField(default=False)
     export_pico = models.BooleanField(default=False)
+    is_metaanalysis = models.BooleanField(default=False)
 
     statistical_methods=models.TextField(max_length=1000,blank=True)
 
@@ -569,6 +570,10 @@ class Article(models.Model):
         result = filter(lambda x: x[0].startswith(self.document_type), Document.ENTRY_TYPES)
         return result[0]
 
+    def get_empirical_values(self):
+        empirical_values = ArticleEmpiricalData.objects.filter(article__id=self.id)
+        return empirical_values
+
     def build(self, document):
         self.title = document.title
         self.author = document.author
@@ -588,6 +593,22 @@ class Article(models.Model):
         self.language = document.language
         self.note = document.note
 
+class ArticleEmpiricalData(models.Model):
+    article = models.OneToOneField(Article, on_delete=models.CASCADE, primary_key=True)
+    n1 = models.IntegerField(null=True, blank=True)
+    dp1 = models.DecimalField(max_digits=3, decimal_places=1, null=True, blank=True)
+    a1 = models.DecimalField(max_digits=3, decimal_places=1, null=True, blank=True)
+    n2 = models.IntegerField(null=True, blank=True)
+    dp2 = models.DecimalField(max_digits=3, decimal_places=1, null=True, blank=True)
+    a2 = models.DecimalField(max_digits=3, decimal_places=1, null=True, blank=True)
+
+    class Meta:
+        verbose_name = u'Article Empirical Data'
+        verbose_name_plural = u'Articles Empirical Data'
+        ordering = ('article',)
+
+    def __unicode__(self):
+        return self.article
 
 def article_directory_path(instance, filename):
     return 'article/{0}/{1}'.format(instance.article.id, filename)
