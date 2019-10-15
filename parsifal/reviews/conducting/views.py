@@ -708,7 +708,6 @@ def article_details_confirm(request):
 @login_required
 def articles_upload(request):
     try:
-        print 'upload'
         if request.method == 'POST':
             form = ArticleUploadForm(request.POST, request.FILES)
             if form.is_valid():
@@ -907,7 +906,6 @@ def edit_article_status(review_id, article_id):
         article = Article.objects.get(pk=article_id)
         previous_status = ''
 
-        print 'PORRAAA ', review.co_authors.count()
 
         if not article.evaluation_finished:
             if article_evaluations.count() == 0:
