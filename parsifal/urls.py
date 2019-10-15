@@ -23,7 +23,7 @@ urlpatterns = patterns('parsifal',
     url(r'^activity/', include('parsifal.activities.urls', namespace='activities')),
     url(r'^blog/', include('parsifal.blog.urls', namespace='blog')),
     url(r'^help/', include('parsifal.help.urls', namespace='help')),
-    
+
     #url(r'^library/', include('parsifal.library.urls', namespace='library')),
     url(r'^settings/', include('parsifal.account_settings.urls', namespace='settings')),
     url(r'^review_settings/transfer/$', 'reviews.settings.views.transfer', name='transfer_review'),
@@ -49,6 +49,7 @@ urlpatterns = patterns('parsifal',
     url(r'^(?P<username>[^/]+)/(?P<review_name>[^/]+)/planning/extraction/$', 'reviews.planning.views.data_extraction_form', name='data_extraction_form'),
     url(r'^(?P<username>[^/]+)/(?P<review_name>[^/]+)/planning/risks/$', 'reviews.planning.views.risks_to_review_validity', name='risks_to_review_validity'),
     url(r'^(?P<username>[^/]+)/(?P<review_name>[^/]+)/planning/statistical/$', 'reviews.planning.views.statistical_methods_conventions', name='statistical_methods_conventions'),
+    url(r'^(?P<username>[^/]+)/(?P<review_name>[^/]+)/planning/setup/$', 'reviews.planning.views.search_setup', name='search_setup'),
 
     # Conducting Phase
     url(r'^(?P<username>[^/]+)/(?P<review_name>[^/]+)/conducting/$', 'reviews.conducting.views.conducting', name='conducting'),
@@ -58,7 +59,7 @@ urlpatterns = patterns('parsifal',
     url(r'^(?P<username>[^/]+)/(?P<review_name>[^/]+)/conducting/quality/$', 'reviews.conducting.views.quality_assessment', name='quality_assessment'),
     url(r'^(?P<username>[^/]+)/(?P<review_name>[^/]+)/conducting/extraction/$', 'reviews.conducting.views.data_extraction', name='data_extraction'),
     url(r'^(?P<username>[^/]+)/(?P<review_name>[^/]+)/conducting/analysis/$', 'reviews.conducting.views.data_analysis', name='data_analysis'),
-    
+
      # Meta Analysis Phase
     url(r'^(?P<username>[^/]+)/(?P<review_name>[^/]+)/metaanalysis/$', 'reviews.metaanalysis.views.metaanalysis', name='metaanalysis'),
     url(r'^(?P<username>[^/]+)/(?P<review_name>[^/]+)/metaanalysis/list$', 'reviews.metaanalysis.views.metaanalysis_list', name='metaanalysis_list'),

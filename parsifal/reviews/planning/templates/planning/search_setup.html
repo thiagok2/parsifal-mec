@@ -1,0 +1,203 @@
+{% extends 'base.html' %}
+{% load i18n humanize is_visitor %}
+
+{% load staticfiles %}
+
+{% block title %} {% trans 'Planning' %} · {{ review.title }}{% endblock %}
+
+{% block stylesheet %}
+  <style>
+    body,html,.wrapper{height:auto;}
+    section {padding-top:20px;}
+    #planning-tab,section>.panel,section form>.panel{margin-bottom:0;}
+  </style>
+{% endblock stylesheet %}
+
+{% block javascript %}
+  <script src="{% static 'js/planning_search_setup.js' %}?_=2"></script>
+  {% if user|is_visitor:review %}
+    <script src="{% static 'js/user_is_visitor.js' %}?v=1"></script>
+  {% endif %}
+  <script>
+    $(function () {
+      $("#protocol").affix({
+        offset: {
+          top: $("#protocol").offset().top - 20,
+          bottom: 70
+        }
+      });
+    });
+  </script>
+{% endblock javascript %}
+
+{% block content %}
+
+  {% include 'reviews/review_header.html' with active_menu='planning' %}
+  {% include 'planning/planning_header.html' with active_tab='setup' %}
+
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+
+      <section id="setup" style="margin-bottom: 20px;">
+      	<div class="modal fade" id="setup-help">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">
+                	{% trans 'About Search Setup' %}
+                </h4>
+              </div>
+              <div class="modal-body">
+              	<p>{% trans 'Set up search type, completion template and customizations.' %}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <form method="post" id="form-setup">
+          {% csrf_token %}
+          <input type="hidden" name="review-id" value="{{ review.id }}">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">
+              	{% trans 'Search Setup' %}
+              	<a href="javascript:void(0);" class="pull-right" data-toggle="tooltip" title="{% trans 'What is this? Click to get help.' %}" data-placement="top" data-container="body">
+                  	<span class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#setup-help"></span>
+                </a>
+                {% include 'comments/comment_icon_button.html' with user=user about="SETUP" %}
+              </h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <label for="is_metaanalysis">{% trans 'This review is a meta analysis?' %}</label>
+                    <select name="is_metaanalysis" class="form-control" id="is-metaanalysis">
+                      <option value="False" {% if not review.is_metaanalysis %} selected {% endif %}>No</option>
+                      <option value="True" {% if review.is_metaanalysis %} selected {% endif %}>Yes</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div id="metaanalysis-setup" {% if not review.is_metaanalysis %} style="display: none" {% endif %}>
+
+                <div class="row">
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label for="conclusion_model">{% trans 'What model of conclusion to adopt?' %}</label>
+                      <select name="conclusion_model" class="form-control" id="conclusion-model">
+                        {% for model in setup.CONCLUSION_MODELS %}
+                          <option value="{{ model.0 }}"{% if setup.conclusion_model == model.0 %} selected{% endif %}>{{ model.1 }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-sm-6">
+                    <h5>{% trans 'Below you see how each model treat the conclusions, and can customize their labels:' %}</h5>
+                    <table class="table table-bordered text-center" id="tbl-conclusion-models">
+                      <thead>
+                        <tr>
+                          <th>{% trans 'd' %}</th>
+                          <th>{% trans 'Interpretation sensu Cohen (1988)' %}</th>
+                          <th>{% trans 'Interpretation sensu Hattie (2007)' %}</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><0</td>
+                          <td colspan="2" class='text-center'>
+                            {% trans 'Adverse Effect' as adverse_effect %}
+                            <input type="text" class="form-control text-center" name="adverse_effect" value="{{setup.adverse_effect|default:adverse_effect}}" />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>0.0</td>
+                          <td rowspan="2" class='text-center'>
+                            {% trans 'No Effect' as no_effect %}
+                            <input type="text" class="form-control text-center" name="no_effect" value="{{setup.no_effect|default:no_effect}}" />
+                          </td>
+                          <td rowspan="2" class='text-center'>
+                            {% trans 'Developmental effects' as developmental_effects %}
+                            <input type="text" class="form-control text-center" name="developmental_effects" value="{{setup.developmental_effects|default:developmental_effects}}" />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>0.1</td>
+                        </tr>
+                        <tr>
+                          <td>0.2</td>
+                          <td rowspan="3" class='text-center'>
+                            {% trans 'Small Effect' as small_effect %}
+                            <input type="text" class="form-control text-center" name="small_effect" value="{{setup.small_effect|default:small_effect}}" />
+                          </td>
+                          <td rowspan="2" class='text-center'>
+                            {% trans 'Teacher effects' as teacher_effects %}
+                            <input type="text" class="form-control text-center" name="teacher_effects" value="{{setup.teacher_effects|default:teacher_effects}}" />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>0.3</td>
+                        </tr>
+                        <tr>
+                          <td>0.4</td>
+                          <td rowspan="7" class='text-center'>
+                            {% trans 'Zone of desired effects' as zone_desired_effects %}
+                            <input type="text" class="form-control text-center" name="zone_desired_effects" value="{{setup.zone_desired_effects|default:zone_desired_effects}}" />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>0.5</td>
+                          <td rowspan="3" class='text-center'>
+                            {% trans 'Intermediate Effect' as intermediate_effect %}
+                            <input type="text" class="form-control text-center" name="intermediate_effect" value="{{setup.intermediate_effect|default:intermediate_effect}}" />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>0.6</td>
+                        </tr>
+                        <tr>
+                          <td>0.7</td>
+                        </tr>
+                        <tr>
+                          <td>0.8</td>
+                          <td rowspan="3" class='text-center'>
+                            {% trans 'Large Effect' as large_effect %}
+                            <input type="text" class="form-control text-center" name="large_effect" value="{{setup.large_effect|default:large_effect}}" />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>0.9</td>
+                        </tr>
+                        <tr>
+                          <td>>=1.0</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <p><small>Cohen, J. (1988). Statistical power analysis for the behavioral sciences (2. Auflage). Hillsdale, NJ: Erlbaum.</small></p>
+                    <p><small>Hattie, J. (2009). Visible Learning. London: Routledge.</small></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="panel-footer">
+              <button type="button" style="margin:5px" class="btn btn-success" id="btn-save-setup">
+                <span class="glyphicon glyphicon-plus"></span>
+                {% trans 'Save Setup' %}
+              </button>
+            </div>
+          </div>
+        </form>
+      </section>
+
+    </div>
+  </div>
+
+{% endblock content %}

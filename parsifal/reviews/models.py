@@ -254,6 +254,37 @@ class Review(models.Model):
         else:
             return self.pico_type
 
+    def get_search_setup(self):
+        return SearchSetup.objects.filter(review_id=self.id)
+
+
+class SearchSetup(models.Model):
+    COHEN = u'COHEN'
+    HATTIE = u'HATTIE'
+    CONCLUSION_MODELS = (
+        (COHEN, _('Cohen')),
+        (HATTIE, _('Hattie')),
+        )
+
+    review = models.ForeignKey(Review)
+    conclusion_model = models.CharField(max_length=10, choices=CONCLUSION_MODELS, default=HATTIE)
+    adverse_effect = models.CharField(max_length=150)
+    no_effect = models.CharField(max_length=150)
+    small_effect = models.CharField(max_length=150)
+    intermediate_effect = models.CharField(max_length=150)
+    large_effect = models.CharField(max_length=150)
+    developmental_effects = models.CharField(max_length=150)
+    teacher_effects = models.CharField(max_length=150)
+    zone_desired_effects = models.CharField(max_length=150)
+
+    class Meta:
+        verbose_name = u'Search Setup'
+        verbose_name_plural = u'Search Setups'
+
+    def __unicode__(self):
+        return self.conclusion_model
+
+
 class VisitorComment(models.Model):
     OBJECTIVES = u'OBJECTIVES'
     PICOC = u'PICOC'
