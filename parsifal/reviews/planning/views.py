@@ -86,7 +86,14 @@ def save_statistical_methods(request):
 def search_setup(request, username, review_name):
     review = get_object_or_404(Review, name=review_name, author__username__iexact=username)
     unseen_comments = review.get_visitors_unseen_comments(request.user)
-    return render(request, 'planning/search_setup.html', { 'review': review, 'unseen_comments': unseen_comments })
+
+    try:
+        setup = SearchSetup.objects.get(review=review)
+    except:
+        setup = SearchSetup(review=review)
+        setup.save()
+
+    return render(request, 'planning/search_setup.html', { 'review': review, 'unseen_comments': unseen_comments, 'setup': setup })
 
 @author_required
 @login_required
@@ -94,10 +101,12 @@ def save_search_setup(request):
     try:
         review_id = request.POST['review-id']
         is_metaanalysis = request.POST['is_metaanalysis']
+        is_metaanalysis = True if is_metaanalysis == 'True' else False
 
-        print 'meta analysis', is_metaanalysis
-
+        review = Review.objects.get(pk=review_id)
+        setup = SearchSetup.objects.get(review=review)
         if is_metaanalysis:
+
             conclusion_model = request.POST['conclusion_model']
             adverse_effect = request.POST['adverse_effect']
             no_effect = request.POST['no_effect']
@@ -108,13 +117,28 @@ def save_search_setup(request):
             teacher_effects = request.POST['teacher_effects']
             zone_desired_effects = request.POST['zone_desired_effects']
 
+            setup.conclusion_model = conclusion_model
+            setup.adverse_effect = adverse_effect
+            setup.no_effect = no_effect
+            setup.small_effect = small_effect
+            setup.intermediate_effect = intermediate_effect
+            setup.large_effect = large_effect
+            setup.developmental_effects = developmental_effects
+            setup.teacher_effects = teacher_effects
+            setup.zone_desired_effects = zone_desired_effects
 
-        review = Review.objects.get(pk=review_id)
+            setup.save()
+        else:
+            if setup:
+                setup.delete()
+
         review.is_metaanalysis = is_metaanalysis
 
         review.save()
+
         return HttpResponse(_('Your review search setup have been saved successfully!'))
-    except:
+    except Exception as e:
+        print 'erro ', e
         return HttpResponseBadRequest()
 
 
