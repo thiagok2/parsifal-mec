@@ -41,11 +41,13 @@
   </td>
 </tr>
 <tr oid="answers-question-{{ quality_question.id }}" data-question-id={{quality_question.id}}>
+	<!--  
 	<td>
 		<span class="small">
 		</span>
 	</td>
-	<td style="text-align: center; vertical-align: middle;padding: 4px;" colspan="2">
+	-->
+	<td style="text-align: center; vertical-align: middle;padding: 4px;" colspan="3">
 		<ul id="question-{{quality_question.id}}-list-quality-answers" class="list-group text-left list-quality-answers" style="margin-bottom: 0px;list-style-type:none;">
 			  {% for quality_answer in quality_question.get_answers %}
                 {% include "planning/partial_quality_assessment_answer2.html" with quality_answer=quality_answer quality_question=quality_question %} 
@@ -58,15 +60,15 @@
 	<td>
 	</td>
 	<td colspan="2">
-		{% if quality_question.get_answers %}
-		<button type="button" class="btn btn-default btn-sm btn-add-quality-answer" data-question-id="{{quality_question.id}}">
-          <span class="glyphicon glyphicon-plus"></span>
-          {% trans 'Add Answer' %}
+       	<button type="button" class="btn btn-default btn-sm btn-add-quality-answer add-a" data-question-id="{{quality_question.id}}">
+          	<span class="glyphicon glyphicon-plus"></span>
+          	{% trans 'Add Answer' %}
+       	</button>
+       
+        <button type="button" class="btn btn-default btn-sm add-suggested-answers add-s" id="question-{{quality_question.id}}-add-suggested-answers" data-question-id="{{quality_question.id}}">
+        	 <span class="glyphicon glyphicon-plus"></span>
+        	{% trans 'Add Suggested Answers' %}
         </button>
-        {% else %}
-	        <button type="button" class="btn btn-default btn-sm add-suggested-answers" id="question-{{quality_question.id}}-add-suggested-answers" data-question-id="{{quality_question.id}}">
-	        {% trans '(Add Suggested Answers)' %}
-	        </button>
-	    {% endif %}
+	   
     </td>
 </tr>

@@ -275,7 +275,7 @@ $(function () {
 
   var cancel_answer_edition_row = new Array();
   				
-  $("button.btn-add-quality-answer").click(function () {
+  $("#question-answer-form").on("click", ".btn-add-quality-answer", function () {
 	  
     var review_id = $("#review-id").val();
     var quality_question_id = $(this).attr("data-question-id");
@@ -459,20 +459,23 @@ $(function () {
    });
 
    $("#btn-import-quality-answers").click(function () {
-    $.ajax({
-      url: '/reviews/planning/suggested_quality_assessment_answers/',
-      data: { 'review-id': $('#review-id').val() },
-      cache: false,
-      type: 'get',
-      success: function (data) {
-
-        $("#modal-suggested-quality-answers table tbody").html(data);
-        $("#modal-suggested-quality-answers").before("<div class='shade'></div>");
-        $("#modal-suggested-quality-answers").slideDown(400, function () {
-          $("body").addClass("modal-open");
-        });
-      }
-    });
+	   
+	  
+	
+	   $.ajax({
+		   url: '/reviews/planning/suggested_quality_assessment_answers/',
+		   data: { 'review-id': $('#review-id').val() },
+		   cache: false,
+	      type: 'get',
+	      success: function (data) {
+	
+	        $("#modal-suggested-quality-answers table tbody").html(data);
+	        $("#modal-suggested-quality-answers").before("<div class='shade'></div>");
+	        $("#modal-suggested-quality-answers").slideDown(400, function () {
+	          $("body").addClass("modal-open");
+	        });
+	      }
+	   });
   });
 
   $("table#tbl-import-quality-answers").on("click", "tbody tr", function () {
@@ -481,28 +484,31 @@ $(function () {
     ? hiddenClass.className = ""
     : hiddenClass.className = "hidden"
   });
-
-  $("button.add-suggested-answers").click(function () {
-    var quality_question_id = $(this).attr("data-question-id");
-    $.ajax({
-      url: '/reviews/planning/add_suggested_answer/',
-      data: {
-        'review-id': $("#review-id").val(),
-        'quality-question-id': quality_question_id
-      },
-      type: 'get',
-      cache: false,
-      success: function (data) {
-        $("#question-" + quality_question_id + "-list-quality-answers").html(data);
-        $("#question-" + quality_question_id +"-add-suggested-answers").hide();
-       
-        $(".no-answers").fadeOut();
-        update_max_score();
-      },
-      error: function (jqXHR, textStatus, errorThrown) {
-        console.log('erro ', jqXHR)
-      }
-    });
+  
+  $("#question-answer-form").on("click", ".add-suggested-answers", function () {
+	  	var csrf_token = $("#question-answer-form input[name='csrfmiddlewaretoken']").val();
+	    var quality_question_id = $(this).attr("data-question-id");
+	    $.ajax({
+	      url: '/reviews/planning/add_suggested_answer/',
+	      data: {
+	        'review-id': $("#review-id").val(),
+	        'quality-question-id': quality_question_id,
+	        'csrfmiddlewaretoken': csrf_token
+	      },
+	      type: 'get',
+	      cache: false,
+	      success: function (data) {
+	        $("#question-" + quality_question_id + "-list-quality-answers").html(data);
+	        $("#question-" + quality_question_id +"-add-suggested-answers").hide();
+	       
+	        $(".no-answers").fadeOut();
+	        update_max_score();
+	      },
+	      error: function (jqXHR, textStatus, errorThrown) {
+	    	$.parsifal.alert("Erro", jqXHR);
+	        console.log('erro ', jqXHR)
+	      }
+	    });
   });
 
   $("#save-cutoff-score").click(function () {

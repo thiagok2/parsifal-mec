@@ -927,43 +927,45 @@ def suggested_quality_assessment_answers(request):
 @login_required
 def add_suggested_answer(request):
     try:
+          
         review_id = request.GET['review-id']
         quality_question_id = request.GET['quality-question-id']
         review = Review.objects.get(pk=review_id)
         quality_question = QualityQuestion.objects.get(pk=quality_question_id)
-
-        if not quality_question.get_answers():
-            html_answers = u''
-            for answer, value in QualityAnswer.SUGGESTED_ANSWERS:
-                quality_answer = QualityAnswer(review=review, description=answer, weight=value, question=quality_question)
-                quality_answer.save()
-                html_answers += '''<li id="li-quality-question-{3}-answer-{0}"
-                                    oid="{0}" data-question-id="{3}" class="list-group-item" style="padding: 3px 3px;" >
-                                        <div class="row" id="row-quality-question-{3}-answer-{0}">
-                 <div class="col-lg-6">
-                    <small><em>
-                        {1}
-                    </em></small>
-                </div>
-                <div class="col-lg-3">
-                    <small><em>
-                        {2}
-                    </em></small>
-                </div>
-                <div class="col-lg-3">
-                    <button type="button" class="btn btn-default btn-sm btn-edit-quality-answer" data-question-id="{3}" data-answer-id="{0}">
-                        <span class="glyphicon glyphicon-pencil"></span>
-                        editar
-                    </button>
-                    <button type="button" class="btn btn-default btn-sm btn-remove-quality-answer">
-                        <span class="glyphicon glyphicon-trash"></span>
-                        remover
-                    </button>
-                </div>
-                </div></li>'''.format(quality_answer.id, quality_answer.description.encode('ascii', 'replace'), quality_answer.weight, quality_question.id)
-            return HttpResponse(html_answers)
-        else:
-            return HttpResponseBadRequest()
+        
+       
+        #if not quality_question.get_answers():
+        html_answers = u''
+        for answer, value in QualityAnswer.SUGGESTED_ANSWERS:
+            quality_answer = QualityAnswer(review=review, description=answer, weight=value, question=quality_question)
+            quality_answer.save()
+            html_answers += '''<li id="li-quality-question-{3}-answer-{0}"
+                                oid="{0}" data-question-id="{3}" class="list-group-item" style="padding: 3px 3px;" >
+                                    <div class="row" id="row-quality-question-{3}-answer-{0}">
+             <div class="col-lg-6">
+                <small><em>
+                    {1}
+                </em></small>
+            </div>
+            <div class="col-lg-3">
+                <small><em>
+                    {2}
+                </em></small>
+            </div>
+            <div class="col-lg-3">
+                <button type="button" class="btn btn-default btn-sm btn-edit-quality-answer" data-question-id="{3}" data-answer-id="{0}">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                    editar
+                </button>
+                <button type="button" class="btn btn-default btn-sm btn-remove-quality-answer">
+                    <span class="glyphicon glyphicon-trash"></span>
+                    remover
+                </button>
+            </div>
+            </div></li>'''.format(quality_answer.id, quality_answer.description.encode('ascii', 'replace'), quality_answer.weight, quality_question.id)
+        return HttpResponse(html_answers)
+        #else:
+        #    return HttpResponseBadRequest()
     except Exception as e:
         print 'except ', e
         return HttpResponseBadRequest()
