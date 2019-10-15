@@ -419,70 +419,70 @@ def build_data_extraction_table(review, is_finished):
             else:
                 checked = ''
                 hide = 'hide'
-
-            str_table += u'''<div class="form-group">
-                    <label class="control-label col-md-2">Possui dados empíricos?</label>
-                    <div class="col-md-10" style="padding-top:7px;">
-                        <input type="checkbox" id="ck-empirical-data" {0} />
+            if review.is_metaanalysis:
+                str_table += u'''<div class="form-group">
+                        <label class="control-label col-md-2">Possui dados empíricos?</label>
+                        <div class="col-md-10" style="padding-top:7px;">
+                            <input type="checkbox" id="ck-empirical-data" {0} />
+                        </div>
                     </div>
-                </div>
-                '''.format(checked)
+                    '''.format(checked)
 
 
-            empirical_values, created = ArticleEmpiricalData.objects.get_or_create(article=study)
-            empirical_values.save()
+                empirical_values, created = ArticleEmpiricalData.objects.get_or_create(article=study)
+                empirical_values.save()
 
-            if empirical_values:
-                empirical_values.n1 = empirical_values.n1 if empirical_values.n1 != None else ''
-                empirical_values.dp1 = empirical_values.dp1 if empirical_values.dp1 != None else ''
-                empirical_values.a1 = empirical_values.a1 if empirical_values.a1 != None else ''
-                empirical_values.n2 = empirical_values.n2 if empirical_values.n2 != None else ''
-                empirical_values.dp2 = empirical_values.dp2 if empirical_values.dp2 != None else ''
-                empirical_values.a2 = empirical_values.a2 if empirical_values.a2 != None else ''
+                if empirical_values:
+                    empirical_values.n1 = empirical_values.n1 if empirical_values.n1 != None else ''
+                    empirical_values.dp1 = empirical_values.dp1 if empirical_values.dp1 != None else ''
+                    empirical_values.a1 = empirical_values.a1 if empirical_values.a1 != None else ''
+                    empirical_values.n2 = empirical_values.n2 if empirical_values.n2 != None else ''
+                    empirical_values.dp2 = empirical_values.dp2 if empirical_values.dp2 != None else ''
+                    empirical_values.a2 = empirical_values.a2 if empirical_values.a2 != None else ''
 
-            str_table += u'''<form class="{1}" name="empirical-values-{0}" id="empirical-values-{0}" method="get" action=".">
-                    <div class="form-group">
-                        <span class="col-sm-offset-2 help-block error" style="display: none;"></span>
-                        <input type="hidden" name="article-id" id="article-id" value="{0}">
-                        <input type="hidden" name="review-id" id="review-id" value="{2}">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label class="control-label col-md-2">N¹</label>
-                                <div class="col-md-2" style="padding-top:7px;">
-                                    <input type="text" class="form-control" value="{3.n1}" name="n1" id="{0}-n1-value" data-empirical data-type="n1"/>
+                str_table += u'''<form class="{1}" name="empirical-values-{0}" id="empirical-values-{0}" method="get" action=".">
+                        <div class="form-group">
+                            <span class="col-sm-offset-2 help-block error" style="display: none;"></span>
+                            <input type="hidden" name="article-id" id="article-id" value="{0}">
+                            <input type="hidden" name="review-id" id="review-id" value="{2}">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label class="control-label col-md-2">N¹</label>
+                                    <div class="col-md-2" style="padding-top:7px;">
+                                        <input type="text" class="form-control" value="{3.n1}" name="n1" id="{0}-n1-value" data-empirical data-type="n1"/>
+                                    </div>
+                                    <label class="control-label col-md-1">DP¹</label>
+                                    <div class="col-md-2" style="padding-top:7px;">
+                                        <input type="text" class="form-control" value="{3.dp1}" name="dp1" id="{0}-dp1-value" data-empirical data-type="dp1" />
+                                    </div>
+                                    <label class="control-label col-md-1">A¹</label>
+                                    <div class="col-md-2" style="padding-top:7px;">
+                                        <input type="text" class="form-control" value="{3.a1}" name="a1" id="{0}-a1-value" data-empirical data-type="a1"/>
+                                    </div>
                                 </div>
-                                <label class="control-label col-md-1">DP¹</label>
-                                <div class="col-md-2" style="padding-top:7px;">
-                                    <input type="text" class="form-control" value="{3.dp1}" name="dp1" id="{0}-dp1-value" data-empirical data-type="dp1" />
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label class="control-label col-md-2">N²</label>
+                                    <div class="col-md-2" style="padding-top:7px;">
+                                        <input type="text" class="form-control" value="{3.n2}" name="n2" id="{0}-n2-value" data-empirical data-type="n2" />
+                                    </div>
+                                    <label class="control-label col-md-1">DP²</label>
+                                    <div class="col-md-2" style="padding-top:7px;">
+                                        <input type="text" class="form-control" value="{3.dp2}" name="dp2" id="{0}-dp2-value" data-empirical data-type="dp2" />
+                                    </div>
+                                    <label class="control-label col-md-1">A²</label>
+                                    <div class="col-md-2" style="padding-top:7px;">
+                                        <input type="text" class="form-control" value="{3.a2}" name="a2" id="{0}-a2-value" data-empirical data-type="a2" />
+                                    </div>
                                 </div>
-                                <label class="control-label col-md-1">A¹</label>
-                                <div class="col-md-2" style="padding-top:7px;">
-                                    <input type="text" class="form-control" value="{3.a1}" name="a1" id="{0}-a1-value" data-empirical data-type="a1"/>
+                                <div class="col-md-12 text-center" style="padding: 15px; color: #444">
+                                    <small>(¹ ⇒ Treatment group | ² ⇒ Control group) | N ⇒ Sample Size | A ⇒ Average</small>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label class="control-label col-md-2">N²</label>
-                                <div class="col-md-2" style="padding-top:7px;">
-                                    <input type="text" class="form-control" value="{3.n2}" name="n2" id="{0}-n2-value" data-empirical data-type="n2" />
-                                </div>
-                                <label class="control-label col-md-1">DP²</label>
-                                <div class="col-md-2" style="padding-top:7px;">
-                                    <input type="text" class="form-control" value="{3.dp2}" name="dp2" id="{0}-dp2-value" data-empirical data-type="dp2" />
-                                </div>
-                                <label class="control-label col-md-1">A²</label>
-                                <div class="col-md-2" style="padding-top:7px;">
-                                    <input type="text" class="form-control" value="{3.a2}" name="a2" id="{0}-a2-value" data-empirical data-type="a2" />
-                                </div>
-                            </div>
-                            <div class="col-md-12 text-center" style="padding: 15px; color: #444">
-                                <small>(¹ ⇒ Treatment group | ² ⇒ Control group) | N ⇒ Sample Size | A ⇒ Average</small>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-                '''.format(study.id, hide, review.id, empirical_values)
+                    </form>
+                    '''.format(study.id, hide, review.id, empirical_values)
 
             if study.finished_data_extraction:
                 str_table += u'<div class="col-sm-offset-2 col-sm-3"><span class=""><a href="javascript:void(0);" class="js-finished-button btn btn-success js-mark-as-not-finished"><span class="action-text">Marcar como não resolvido</span></a></span></div>'
@@ -902,13 +902,18 @@ def save_article_evaluation(request):
 
 def edit_article_status(review_id, article_id):
     try:
+        review = Review.objects.get(pk=review_id)
         article_evaluations = ArticleEvaluation.objects.filter(review__id=review_id, article__id=article_id)
         article = Article.objects.get(pk=article_id)
         previous_status = ''
 
+        print 'PORRAAA ', review.co_authors.count()
+
         if not article.evaluation_finished:
             if article_evaluations.count() == 0:
                 article.status = 'U'
+            elif article_evaluations.count() == 1 and review.co_authors.count() == 0:
+                article.status = article_evaluations[0].status
             elif article_evaluations.count() == 1:
                 article.status = 'W'
             else:

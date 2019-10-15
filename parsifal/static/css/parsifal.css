@@ -646,3 +646,17 @@ ul.nav-pills .list-group-item:last-child,
 ul.nav-pills .list-group-item:first-child {
     border-radius: 0px;
 }
+
+#tbl-conclusion-models td {
+    vertical-align: middle;
+}
+
+table#tbl-conclusion-models,
+table#tbl-conclusion-models>thead>tr>th,
+table#tbl-conclusion-models>tbody>tr>th,
+table#tbl-conclusion-models>tfoot>tr>th,
+table#tbl-conclusion-models>thead>tr>td,
+table#tbl-conclusion-models>tbody>tr>td,
+table#tbl-conclusion-models>tfoot>tr>td {
+    border-width: 2px;
+}

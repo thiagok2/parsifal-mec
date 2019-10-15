@@ -19,9 +19,6 @@
   <li{% if active_menu == "conducting"%} class="active"{% endif %}>
     <a href="{% url 'conducting' review.author.username review.name %}">{% trans 'Conducting' %}</a>
   </li>
-  <li{% if active_menu == "metaanalysis"%} class="active"{% endif %}>
-    <a href="{% url 'metaanalysis' review.author.username review.name %}">{% trans 'Meta Analysis' %}</a>
-  </li>
   <li{% if active_menu == "reporting"%} class="active"{% endif %}>
     <a href="{% url 'reporting' review.author.username review.name %}">{% trans 'Reporting' %}</a>
   </li>
