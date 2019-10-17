@@ -45,7 +45,7 @@
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">
-                	{% trans 'About Search Setup' %}
+                	{% trans 'About Meta Analysis' %}
                 </h4>
               </div>
               <div class="modal-body">
@@ -61,11 +61,11 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <h3 class="panel-title">
-              	{% trans 'Search Setup' %}
+              	{% trans 'Meta Analysis' %}
               	<a href="javascript:void(0);" class="pull-right" data-toggle="tooltip" title="{% trans 'What is this? Click to get help.' %}" data-placement="top" data-container="body">
                   	<span class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#setup-help"></span>
                 </a>
-                {% include 'comments/comment_icon_button.html' with user=user about="SETUP" %}
+                {% include 'comments/comment_icon_button.html' with user=user about="METAANALYSIS" %}
               </h3>
             </div>
             <div class="panel-body">
@@ -74,8 +74,8 @@
                   <div class="form-group">
                     <label for="is_metaanalysis">{% trans 'This review is a meta analysis?' %}</label>
                     <select name="is_metaanalysis" class="form-control" id="is-metaanalysis">
-                      <option value="False" {% if not review.is_metaanalysis %} selected {% endif %}>No</option>
-                      <option value="True" {% if review.is_metaanalysis %} selected {% endif %}>Yes</option>
+                      <option value="False" {% if not review.is_metaanalysis %} selected {% endif %}>{% trans 'No' %}</option>
+                      <option value="True" {% if review.is_metaanalysis %} selected {% endif %}>{% trans 'Yes' %}</option>
                     </select>
                   </div>
                 </div>
@@ -111,18 +111,18 @@
                           <td><0</td>
                           <td colspan="2" class='text-center'>
                             {% trans 'Adverse Effect' as adverse_effect %}
-                            <input type="text" class="form-control text-center" name="adverse_effect" value="{{setup.adverse_effect|default:adverse_effect}}" />
+                            <input type="text" class="form-control text-center" id="adverse_effect" name="adverse_effect" value="{{setup.adverse_effect|default:adverse_effect}}" />
                           </td>
                         </tr>
                         <tr>
                           <td>0.0</td>
                           <td rowspan="2" class='text-center'>
                             {% trans 'No Effect' as no_effect %}
-                            <input type="text" class="form-control text-center" name="no_effect" value="{{setup.no_effect|default:no_effect}}" />
+                            <input type="text" class="form-control text-center" id="no_effect" name="no_effect" value="{{setup.no_effect|default:no_effect}}" {% if setup.conclusion_model == 'HATTIE' %} readonly {% endif %}/>
                           </td>
                           <td rowspan="2" class='text-center'>
                             {% trans 'Developmental effects' as developmental_effects %}
-                            <input type="text" class="form-control text-center" name="developmental_effects" value="{{setup.developmental_effects|default:developmental_effects}}" />
+                            <input type="text" class="form-control text-center" id="developmental_effects" name="developmental_effects" value="{{setup.developmental_effects|default:developmental_effects}}" {% if setup.conclusion_model == 'COHEN' %} readonly {% endif %} />
                           </td>
                         </tr>
                         <tr>
@@ -132,11 +132,11 @@
                           <td>0.2</td>
                           <td rowspan="3" class='text-center'>
                             {% trans 'Small Effect' as small_effect %}
-                            <input type="text" class="form-control text-center" name="small_effect" value="{{setup.small_effect|default:small_effect}}" />
+                            <input type="text" class="form-control text-center" id="small_effect" name="small_effect" value="{{setup.small_effect|default:small_effect}}" {% if setup.conclusion_model == 'HATTIE' %} readonly {% endif %} />
                           </td>
                           <td rowspan="2" class='text-center'>
                             {% trans 'Teacher effects' as teacher_effects %}
-                            <input type="text" class="form-control text-center" name="teacher_effects" value="{{setup.teacher_effects|default:teacher_effects}}" />
+                            <input type="text" class="form-control text-center" id="teacher_effects" name="teacher_effects" value="{{setup.teacher_effects|default:teacher_effects}}" {% if setup.conclusion_model == 'COHEN' %} readonly {% endif %} />
                           </td>
                         </tr>
                         <tr>
@@ -146,14 +146,14 @@
                           <td>0.4</td>
                           <td rowspan="7" class='text-center'>
                             {% trans 'Zone of desired effects' as zone_desired_effects %}
-                            <input type="text" class="form-control text-center" name="zone_desired_effects" value="{{setup.zone_desired_effects|default:zone_desired_effects}}" />
+                            <input type="text" class="form-control text-center" id="zone_desired_effects" name="zone_desired_effects" value="{{setup.zone_desired_effects|default:zone_desired_effects}}" {% if setup.conclusion_model == 'COHEN' %} readonly {% endif %} />
                           </td>
                         </tr>
                         <tr>
                           <td>0.5</td>
                           <td rowspan="3" class='text-center'>
                             {% trans 'Intermediate Effect' as intermediate_effect %}
-                            <input type="text" class="form-control text-center" name="intermediate_effect" value="{{setup.intermediate_effect|default:intermediate_effect}}" />
+                            <input type="text" class="form-control text-center" id="intermediate_effect" name="intermediate_effect" value="{{setup.intermediate_effect|default:intermediate_effect}}" {% if setup.conclusion_model == 'HATTIE' %} readonly {% endif %} />
                           </td>
                         </tr>
                         <tr>
@@ -166,7 +166,7 @@
                           <td>0.8</td>
                           <td rowspan="3" class='text-center'>
                             {% trans 'Large Effect' as large_effect %}
-                            <input type="text" class="form-control text-center" name="large_effect" value="{{setup.large_effect|default:large_effect}}" />
+                            <input type="text" class="form-control text-center" id="large_effect" name="large_effect" value="{{setup.large_effect|default:large_effect}}" {% if setup.conclusion_model == 'HATTIE' %} readonly {% endif %} />
                           </td>
                         </tr>
                         <tr>
@@ -188,10 +188,24 @@
               </div>
             </div>
             <div class="panel-footer">
-              <button type="button" style="margin:5px" class="btn btn-success" id="btn-save-setup">
+              <button type="button" class="btn btn-success" id="btn-save-setup">
+                <span class="btn-ajax-normal">
+                  <span class="glyphicon glyphicon-ok"></span> {% trans 'Save' %}
+                </span>
+                <span class="btn-ajax-loading">
+                  <span class="glyphicon glyphicon-refresh spin"></span> {% trans 'Saving…' %}
+                </span>
+                <span class="btn-ajax-error">
+                  <span class="glyphicon glyphicon-remove"></span> {% trans 'Error!' %}
+                </span>
+                <span class="btn-ajax-complete">
+                  <span class="glyphicon glyphicon-ok"></span> {% trans 'Saved!' %}
+                </span>
+              </button>
+              <!-- <button type="button" style="margin:5px" class="btn btn-success" id="btn-save-setup">
                 <span class="glyphicon glyphicon-plus"></span>
                 {% trans 'Save Setup' %}
-              </button>
+              </button> -->
             </div>
           </div>
         </form>
