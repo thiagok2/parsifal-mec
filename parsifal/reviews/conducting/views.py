@@ -37,6 +37,7 @@ import math
 from parsifal.utils.meta_analysis import cohen_d, effect_size_comb,\
     cin_efs_lower_limit, cin_efs_max_limit
 import requests
+from decouple import config
 
 @author_or_visitor_required
 @login_required
@@ -1284,7 +1285,7 @@ def article_meta_analysis(review, request):
         }
 
         headers = {'Content-Type': 'application/json'}
-        forest = requests.post('https://ebe.nees.com.br/forestplot/', data=json.dumps(postman), headers=headers)
+        forest = requests.post(config('FOREST_PLOT_URL'), data=json.dumps(postman), headers=headers)
         print 'req ', forest
 
         analysis['dataset'] = dataset
