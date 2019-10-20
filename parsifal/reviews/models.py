@@ -627,11 +627,11 @@ class Article(models.Model):
 class ArticleEmpiricalData(models.Model):
     article = models.OneToOneField(Article, on_delete=models.CASCADE, primary_key=True)
     n1 = models.IntegerField(null=True, blank=True)
-    dp1 = models.DecimalField(max_digits=3, decimal_places=1, null=True, blank=True)
-    a1 = models.DecimalField(max_digits=3, decimal_places=1, null=True, blank=True)
+    dp1 = models.DecimalField(max_digits=4, decimal_places=2, null=True, blank=True)
+    a1 = models.DecimalField(max_digits=4, decimal_places=2, null=True, blank=True)
     n2 = models.IntegerField(null=True, blank=True)
-    dp2 = models.DecimalField(max_digits=3, decimal_places=1, null=True, blank=True)
-    a2 = models.DecimalField(max_digits=3, decimal_places=1, null=True, blank=True)
+    dp2 = models.DecimalField(max_digits=4, decimal_places=2, null=True, blank=True)
+    a2 = models.DecimalField(max_digits=4, decimal_places=2, null=True, blank=True)
 
     class Meta:
         verbose_name = u'Article Empirical Data'
