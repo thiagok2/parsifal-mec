@@ -5241,21 +5241,16 @@ msgid ""
 "\"{2}\". View the review at https://qeed.nees.com.br/{3}/{4}/"
 msgstr ""
 "Olá {0}, {1} convidou você para uma Revisão Sistemática da Literatura "
-"chamada \"{2}\". Veja a análise em https://parsif.al/{3}/{4}/"
+"chamada \"{2}\". Veja a análise em https://sumarize.evidencias.nees.com.br/{3}/{4}/"
 
 #: parsifal/reviews/views.py:116 parsifal/reviews/views.py:166
-#, fuzzy, python-brace-format
-#| msgid ""
-#| "<p>Hi {0},</p><p>{1} invited you to a Parsifal Systematic Literature "
-#| "Review called \"{2}\".</p><p>View the review at https://parsif.al/{3}/{4}/"
-#| "</p><p>Sincerely,</p><p>The Parsifal Team</p>"
 msgid ""
 "<p>Hi {0},</p><p>{1} invited you to a Parsifal Systematic Literature Review "
 "called \"{2}\".</p><p>View the review at https://qeed.nees.com.br/{3}/{4}/</"
 "p><p>Sincerely,</p><p>The Parsifal Team</p>"
 msgstr ""
 "<p> Olá {0}, </p> <p> {1} convidou você para uma revisão sistemática de "
-"literatura chamada \"{2}\". </p> <p> Veja a resenha em https://parsif.al/{3}/"
+"literatura chamada \"{2}\". </p> <p> Veja a resenha em https://sumarize.evidencias.nees.com.br/{3}/"
 "{4}/</p> <p> Atenciosamente, </p> <p> A Equipe Evidências/Sumarize </p>"
 
 #: parsifal/reviews/views.py:125
@@ -5289,7 +5284,7 @@ msgid ""
 "\"{2}\".View the review at https://qeed.nees.com.br/{3}/{4}/"
 msgstr ""
 "Olá {0}, {1} convidou você para uma Revisão de literatura sistemática "
-"Parsifal chamada\"{2} \". Veja a crítica em https://parsif.al/{3}/{4}/"
+"Parsifal chamada\"{2} \". Veja a crítica em https://sumarize.evidencias.nees.com.br/{3}/{4}/"
 
 #: parsifal/reviews/views.py:175
 msgid "No visitor invited or added to the review. Nothing really changed."
