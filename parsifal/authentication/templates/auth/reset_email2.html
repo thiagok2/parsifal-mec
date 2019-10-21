@@ -1,0 +1,13 @@
+{% load i18n humanize %}
+
+{% trans 'Here is your password reset link:' %}
+
+{{ protocol }}://{{ domain }}{% url 'password_reset_confirm' uidb64=uid token=token %}
+
+
+
+
+{% trans 'Your username:' %} {{ user.username }}
+
+
+{{ site_name }}
