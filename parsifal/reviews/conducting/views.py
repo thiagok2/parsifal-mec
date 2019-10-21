@@ -20,6 +20,7 @@ from django.conf import settings as django_settings
 from django.core.context_processors import csrf
 from django.db.models import Count, Sum
 from django.utils.html import escape
+from numpy import *
 
 from parsifal.reviews.models import *
 from parsifal.reviews.forms import ArticleUploadForm
@@ -32,6 +33,11 @@ from django.utils.translation import ugettext as _
 
 from parsifal.reviews.conducting.forms import FolderForm, DocumentForm, SharedFolderForm
 from parsifal.reviews.models import Article, Source, Review
+import math
+from parsifal.utils.meta_analysis import cohen_d, effect_size_comb,\
+    cin_efs_lower_limit, cin_efs_max_limit
+import requests
+from decouple import config
 
 @author_or_visitor_required
 @login_required
@@ -1065,8 +1071,8 @@ def save_empirical_value_field(request):
         dp2 = request.GET['dp2']
         a2 = request.GET['a2']
 
-        if len(n1) > 3 or len(dp1) > 3 or len(a1) > 3 or len(n2) > 3 or len(dp2) > 3 or len(a2) > 3:
-            return HttpResponseBadRequest(_('Empirical value fields do not accept values greater than 3 digits for n (123) and 2 digits for dp and a (1.2)'))
+        if len(n1) > 3 or len(dp1) > 4 or len(a1) > 4 or len(n2) > 3 or len(dp2) > 4 or len(a2) > 4:
+            return HttpResponseBadRequest(_('Empirical value fields do not accept values greater than 3 digits for n (123) and for dp and a (1.23)'))
 
         article = Article.objects.get(pk=article_id)
         empirical_values, created = ArticleEmpiricalData.objects.get_or_create(article=article)
@@ -1187,7 +1193,127 @@ def new_article(request):
 def data_analysis(request, username, review_name):
     review = get_object_or_404(Review, name=review_name, author__username__iexact=username)
     unseen_comments = review.get_visitors_unseen_comments(request.user)
-    return render(request, 'conducting/conducting_data_analysis.html', { 'review': review, 'unseen_comments': unseen_comments })
+    analysis = article_meta_analysis(review, request)
+    return render(request, 'conducting/conducting_data_analysis.html', { 'review': review, 'unseen_comments': unseen_comments, 'analysis': analysis })
+
+
+def article_meta_analysis(review, request):
+    try:
+        articles = review.get_final_selection_articles()
+        analysis = {}
+        dataset = []
+        conclusions = []
+        payload = {
+            "studies": [],
+            "efs": {},
+            "labels": {
+                "study_label": _("Study"),
+                "efs_label": _("Effect Size"),
+                "summary_label": _("Summarization")
+            }
+        }
+
+        for article in articles:
+            if article.has_empirical_data:
+                values = article.get_empirical_values()
+                if values.count() > 0:
+                    data = values[0]
+                    if data.n1 and data.n2 and data.dp1 and data.dp2 and data.a1 and data.a2:
+                        result = cohen_d(data.n1, data.dp1, data.n2, data.dp2, data.a1, data.a2)
+                        print 'result ', article.title, result
+                        dataset.append([str(article.title), result['cohen_d'], result['ci_min'], result['ci_max'], result['std_error']])
+                        conclusions.append({ "article_id": article.id, "effect_size": result['cohen_d']})
+                        payload['studies'].append({
+                            "name": str(article.title),
+                            "mean": str(result['cohen_d']),
+                            "lower": str(result['ci_min']),
+                            "upper": str(result["ci_max"])
+                        })
+
+                    else:
+                        messages.error(request, 'Your article {0} do not have all empirical values. Because of this, QeeD can not generate meta analysis forest plot graphic.'.format(article.title))
+
+        payload['efs']['mean'] = str(effect_size_comb(dataset))
+        payload['efs']['lower'] = str(cin_efs_lower_limit(dataset))
+        payload['efs']['upper'] = str(cin_efs_max_limit(dataset))
+
+        print 'dataset ', dataset
+        print 'payload ', json.dumps(payload)
+
+        postman = {
+            "studies":
+            [
+                {
+                    "name": "Auckland sobrenome et al",
+                    "mean":"0.578",
+                    "lower": "0.372",
+                    "upper": "0.898"
+                },
+                {
+                    "name": "Block sobrenome et al",
+                    "mean":"0.165",
+                    "lower": "0.018",
+                    "upper": "1.517"
+                },
+                {
+                    "name": "Doran sobrenome et al",
+                    "mean":"0.246",
+                    "lower": "0.072",
+                    "upper": "0.833"
+                },
+                {
+                    "name": "Gamsu",
+                    "mean":"0.700",
+                    "lower": "0.333",
+                    "upper": "1.474"
+                },
+                {
+                    "name": "Morrison",
+                    "mean":"0.348",
+                    "lower": "0.083",
+                    "upper": "1.455"
+                },
+                {
+                    "name": "Papageorgiou",
+                    "mean":"0.139",
+                    "lower": "0.016",
+                    "upper": "1.209"
+                },
+                {
+                    "name": "Tauesch",
+                    "mean":"1.017",
+                    "lower": "0.365",
+                    "upper": "2.831"
+                }
+            ],
+            "efs":
+            {
+                "mean": "0.531",
+                "lower": "0.386",
+                "upper": "0.6761"
+            },
+            "labels":
+            {
+                "study_label": "Estudo",
+                "efs_label": "Tamanho de efeito",
+                "summary_label": "Sumarização"
+
+            }
+        }
+
+
+        headers = {'Content-Type': 'application/json'}
+        forest = requests.post(config('FOREST_PLOT_URL'), data=json.dumps(payload), headers=headers)
+        print 'req ', forest._content
+
+        analysis['dataset'] = dataset
+        analysis['forest_plot'] = forest._content
+        analysis['conclusions'] = conclusions
+        return analysis
+
+    except ZeroDivisionError:
+        messages.error(request, 'The empirical values from any of your articles are not valid! Because of this, QeeD can not generate meta analysis forest plot graphic.')
+
 
 def articles_selection_chart(request):
     review_id = request.GET['review-id']
