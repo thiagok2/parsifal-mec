@@ -345,7 +345,7 @@ msgstr "Este é seu link para resetar sua senha:"
 
 #: parsifal/authentication/templates/auth/reset_email.html:7
 msgid "Your username:"
-msgstr "Seu Username"
+msgstr "Seu usuário"
 
 #: parsifal/authentication/templates/auth/signin.html:7
 #: parsifal/authentication/templates/auth/signin.html:22
