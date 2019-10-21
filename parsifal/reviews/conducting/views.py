@@ -1193,15 +1193,25 @@ def new_article(request):
 def data_analysis(request, username, review_name):
     review = get_object_or_404(Review, name=review_name, author__username__iexact=username)
     unseen_comments = review.get_visitors_unseen_comments(request.user)
-    article_meta_analysis(review, request)
-    return render(request, 'conducting/conducting_data_analysis.html', { 'review': review, 'unseen_comments': unseen_comments })
+    analysis = article_meta_analysis(review, request)
+    return render(request, 'conducting/conducting_data_analysis.html', { 'review': review, 'unseen_comments': unseen_comments, 'analysis': analysis })
+
 
 def article_meta_analysis(review, request):
     try:
         articles = review.get_final_selection_articles()
         analysis = {}
         dataset = []
-        payload = { "studies": [], "efs": {} }
+        conclusions = []
+        payload = {
+            "studies": [],
+            "efs": {},
+            "labels": {
+                "study_label": _("Study"),
+                "efs_label": _("Effect Size"),
+                "summary_label": _("Summarization")
+            }
+        }
 
         for article in articles:
             if article.has_empirical_data:
@@ -1212,7 +1222,7 @@ def article_meta_analysis(review, request):
                         result = cohen_d(data.n1, data.dp1, data.n2, data.dp2, data.a1, data.a2)
                         print 'result ', article.title, result
                         dataset.append([str(article.title), result['cohen_d'], result['ci_min'], result['ci_max'], result['std_error']])
-
+                        conclusions.append({ "article_id": article.id, "effect_size": result['cohen_d']})
                         payload['studies'].append({
                             "name": str(article.title),
                             "mean": str(result['cohen_d']),
@@ -1234,44 +1244,44 @@ def article_meta_analysis(review, request):
             "studies":
             [
                 {
-                    "name": "Auckland",
-                    "mean": "0.578",
+                    "name": "Auckland sobrenome et al",
+                    "mean":"0.578",
                     "lower": "0.372",
                     "upper": "0.898"
                 },
                 {
-                    "name": "Block",
-                    "mean": "0.165",
+                    "name": "Block sobrenome et al",
+                    "mean":"0.165",
                     "lower": "0.018",
                     "upper": "1.517"
                 },
                 {
-                    "name": "Doran",
-                    "mean": "0.246",
+                    "name": "Doran sobrenome et al",
+                    "mean":"0.246",
                     "lower": "0.072",
                     "upper": "0.833"
                 },
                 {
                     "name": "Gamsu",
-                    "mean": "0.700",
+                    "mean":"0.700",
                     "lower": "0.333",
                     "upper": "1.474"
                 },
                 {
                     "name": "Morrison",
-                    "mean": "0.348",
+                    "mean":"0.348",
                     "lower": "0.083",
                     "upper": "1.455"
                 },
                 {
                     "name": "Papageorgiou",
-                    "mean": "0.139",
+                    "mean":"0.139",
                     "lower": "0.016",
                     "upper": "1.209"
                 },
                 {
                     "name": "Tauesch",
-                    "mean": "1.017",
+                    "mean":"1.017",
                     "lower": "0.365",
                     "upper": "2.831"
                 }
@@ -1280,16 +1290,25 @@ def article_meta_analysis(review, request):
             {
                 "mean": "0.531",
                 "lower": "0.386",
-                "upper": "0.731"
+                "upper": "0.6761"
+            },
+            "labels":
+            {
+                "study_label": "Estudo",
+                "efs_label": "Tamanho de efeito",
+                "summary_label": "Sumarização"
+
             }
         }
 
+
         headers = {'Content-Type': 'application/json'}
-        forest = requests.post(config('FOREST_PLOT_URL'), data=json.dumps(postman), headers=headers)
-        print 'req ', forest
+        #forest = requests.post(config('FOREST_PLOT_URL'), data=json.dumps(payload), headers=headers)
+        #print 'req ', forest._content
 
         analysis['dataset'] = dataset
-        analysis['forest_plot'] = forest
+        #analysis['forest_plot'] = forest._content
+        analysis['conclusions'] = conclusions
         return analysis
 
     except ZeroDivisionError:
