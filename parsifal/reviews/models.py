@@ -14,6 +14,8 @@ from parsifal.library.models import Folder, Document
 from django.utils.translation import ugettext as _
 from django.utils.translation import ugettext_lazy as l_
 
+from django.contrib.auth.models import User
+
 
 class Source(models.Model):
     name = models.CharField(max_length=100)
@@ -153,7 +155,13 @@ class Review(models.Model):
             if user.id == visitor.id:
                 return True
         return False
-
+    
+    def get_users_exclude_authors(self):
+        all = User.objects.all()
+        users = [user for user in all if not self.is_author_or_coauthor(user)]
+       
+        return users
+     
     def get_generic_search_string(self):
         try:
             search_string = SearchSession.objects.filter(review__id=self.id, source=None)[:1].get()
