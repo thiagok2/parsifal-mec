@@ -149,7 +149,7 @@ def add_visitor_to_review(request):
     for email in emails:
         try:
             user = User.objects.get(email__iexact=email)
-            if user.id != review.author.id:
+            if user.id != review.author.id and not review.is_author_or_coauthor(user) and not review.is_visitors(user):
                 visitors_added.append(user.profile.get_screen_name())
                 review.visitors.add(user)
         except User.DoesNotExist:

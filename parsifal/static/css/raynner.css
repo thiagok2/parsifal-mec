@@ -257,3 +257,8 @@ div.data-extraction-panel  span.badge{
 .modal-title{
 	font-weight: bold; 
 }
+
+.invite-minibox{
+	color: #fff;
+    background-color: #10ab64;
+}

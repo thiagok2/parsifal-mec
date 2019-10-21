@@ -57,10 +57,10 @@ $(function () {
       valueField: 'email',
       labelField: 'name',
       searchField: ['name', 'email'],
-      options: contacts,
+      options: contacts_ok,
       render: {
           item: function(item, escape) {
-              return '<div>' +
+              return '<div class="invite-minibox">' +
                   (item.name ? '<span class="name">' + escape(item.name) + '</span>' : '') +
                   (item.email ? '<span class="email">' + escape(item.email) + '</span>' : '') +
               '</div>';
@@ -104,6 +104,9 @@ $(function () {
           return false;
       }
   });
+  
+  
+
 
 
 
