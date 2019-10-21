@@ -4,18 +4,18 @@
 #* @serializer contentType list(type="image/svg+xml")
 #* @get /forestplot
 #* @post /forestplot
-function(studies, efs) {
+function(studies, efs, labels) {
  library(forestplot)
   mn <- c(NA, NA)
   lw <- c(NA, NA)
   up <- c(NA, NA)
-  mn_names <- c("", "Effect size")
-  st_names <- c("", "Estudo")
+  mn_names <- c("", labels$efs_label)
+  st_names <- c("", labels$study_label)
 
-  names <- as.vector(unlist(studies[1]))
-  means <- as.vector(unlist(studies[2]))
-  lowers <- as.vector(unlist(studies[3]))
-  uppers <- as.vector(unlist(studies[4]))
+  names <- as.vector(unlist(studies$name))
+  means <- as.vector(unlist(studies$mean))
+  lowers <- as.vector(unlist(studies$lower))
+  uppers <- as.vector(unlist(studies$upper))
 
   for(name in names)
     st_names <- c(st_names, name)
@@ -35,33 +35,32 @@ function(studies, efs) {
   lw <- c(lw, NA, as.numeric(efs$lower))
   up <- c(up, NA, as.numeric(efs$upper))
 
-  st_names <- c(st_names, NA, "Sumarização")
+  st_names <- c(st_names, NA, labels$summary_label)
   mn_names <- c(mn_names, NA, efs$mean)
 
-  cochrane_from_rmeta <-
-  structure(list(
-    mean  = mn, 
-    lower = lw,
-    upper = up),
-    .Names = c("mean", "lower", "upper"), 
-    row.names = c(NA, -11L), 
-    class = "data.frame")
+  final_intervalo <- length(up) - 3
+
+  cochrane_meta <- data.frame(
+  coef = mn,
+  low = lw,
+  high = up)
+
 
   tabletext<-cbind(
   st_names,
   mn_names)    
   
   tmp <- tempfile()
+
   svg(tmp)
 
-  forestplot(tabletext, 
-           hrzl_lines = list("3" = gpar(lty=2), 
-                             "11" = gpar(lwd=1, columns=1:2, col = "#000044")),
-           cochrane_from_rmeta,new_page = TRUE,
-           is.summary=c(TRUE,TRUE,rep(FALSE,8),TRUE),
-           clip=c(0.1,2.5), 
-           xlog=TRUE, 
-           col=fpColors(box="royalblue",line="darkblue", summary="royalblue"))
+  forestplot(tabletext,
+           hrzl_lines = TRUE, 
+           cochrane_meta, new_page = TRUE,
+           is.summary=c(FALSE, TRUE, rep(FALSE, final_intervalo), TRUE),
+           clip=c(-0.5,1.2), 
+           xlog=FALSE,
+	   col=fpColors(box="royalblue",line="darkblue", summary="royalblue"))
 
   dev.off()
 

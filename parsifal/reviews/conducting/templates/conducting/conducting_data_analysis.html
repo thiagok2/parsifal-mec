@@ -15,9 +15,41 @@
 
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3 class="panel-title">{% trans 'Articles Per Source' %}
+      <h3 class="panel-title">{% trans 'Meta analysis results' %}
 
         {% include 'comments/comment_icon_button.html' with user=user about="DATA_ANALYSIS" %}
+      </h3>
+    </div>
+    <div class="panel-body">
+      <div class="col-sm-7">
+        {{analysis.forest_plot|safe}}
+      </div>
+      <div class="col-sm-5">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>{% trans 'Article' %}</th>
+              <th>{% trans 'Effect Size' %}</th>
+              <th>{% trans 'I' %}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for data in analysis.dataset %}
+            <tr>
+              <td>{{data.0}}</td>
+              <td>{{data.1}}</td>
+              <td>Efeito</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">{% trans 'Articles Per Source' %}
       </h3>
     </div>
     <div class="panel-body">
