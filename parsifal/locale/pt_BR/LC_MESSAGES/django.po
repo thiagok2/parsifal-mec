@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-21 17:13+0000\n"
+"POT-Creation-Date: 2019-10-21 19:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -342,10 +342,12 @@ msgid "Invalid password reset link."
 msgstr "Link inválido para reiniciar senha."
 
 #: parsifal/authentication/templates/auth/reset_email.html:3
+#: parsifal/authentication/templates/auth/reset_email2.html:3
 msgid "Here is your password reset link:"
 msgstr "Este é seu link para resetar sua senha:"
 
-#: parsifal/authentication/templates/auth/reset_email.html:10
+#: parsifal/authentication/templates/auth/reset_email.html:8
+#: parsifal/authentication/templates/auth/reset_email2.html:10
 msgid "Your username:"
 msgstr "Seu usuário"
 
@@ -491,10 +493,10 @@ msgstr "O que é?"
 
 #: parsifal/core/templates/core/about.html:30
 msgid ""
-"The QeeD Platform is a tool designed for researchers to perform systematic "
-"literature reviews and meta-analyzes. Geographically distributed researchers "
-"can work together in a shared environment, designing the protocol and "
-"leading research into the development of research meta-analysis."
+"The Sumarize Platform is a tool designed for researchers to perform "
+"systematic literature reviews and meta-analyzes. Geographically distributed "
+"researchers can work together in a shared environment, designing the "
+"protocol and leading research into the development of research meta-analysis."
 msgstr ""
 "A Plataforma Evidências - Módulo Sumarize é uma ferramenta projetada para "
 "pesquisadores para realizarem revisões sistemáticas da literatura e meta-"
@@ -506,7 +508,7 @@ msgstr ""
 msgid ""
 "In addition to providing a way to document the entire process, the tool will "
 "help you remember what is important during a systematic literature review. "
-"During the planning phase, the QeeD Platform will assist you with "
+"During the planning phase, the Sumarize Platform will assist you with "
 "objectives, search method definition, search questions, search strings, "
 "keywords and synonyms by selecting sources, inclusion and exclusion "
 "criteria. It will also provide mechanisms for building a quality assessment "
@@ -574,7 +576,7 @@ msgstr "Sobre o desenvolvimento."
 
 #: parsifal/core/templates/core/about.html:47
 msgid ""
-"The QeeD tool was developed by the Center for Excellence in Social "
+"The Sumarize tool was developed by the Center for Excellence in Social "
 "Technologies (NEES), a research group linked to the Federal University of "
 "Alagoas (UFAL). This tool was developed as a modified version of the "
 "Parsifal platform (https://parsif.al/), where new features related to the "
@@ -805,10 +807,8 @@ msgstr[1] ""
 
 #: parsifal/lib/python2.7/site-packages/django/db/models/base.py:1106
 #: parsifal/lib/python2.7/site-packages/django/forms/models.py:722
-#, fuzzy
-#| msgid "Run"
 msgid "and"
-msgstr "Executar"
+msgstr "e"
 
 #: parsifal/lib/python2.7/site-packages/django/db/models/base.py:1108
 #, python-format
@@ -1207,18 +1207,23 @@ msgid "Please correct the duplicate data for %(field)s."
 msgstr "Por favor corrija os dados duplicados para %(field)s."
 
 #: parsifal/lib/python2.7/site-packages/django/forms/models.py:720
-#, fuzzy, python-format
-#| msgid "Please correct the duplicate data for %(field)s."
+#, python-format
 msgid "Please correct the duplicate data for %(field)s, which must be unique."
-msgstr "Por favor corrija os dados duplicados para %(field)s."
+msgstr ""
+"Por favor corrija os dados duplicados para %(field)s, o qual precisa ser "
+"único."
 
 #: parsifal/lib/python2.7/site-packages/django/forms/models.py:726
 #, fuzzy, python-format
-#| msgid "Please correct the duplicate data for %(field)s."
+#| msgid ""
+#| "Please correct the duplicate data for %(field_name)s which must be unique "
+#| "for the %(lookup)s in %(date_field)s."
 msgid ""
 "Please correct the duplicate data for %(field_name)s which must be unique "
 "for the %(lookup)s in %(date_field)s."
-msgstr "Por favor corrija os dados duplicados para %(field)s."
+msgstr ""
+"Por favor corrija os dados duplicados para %(field)s, o qual preciser ser "
+"único entre %(lookup)s no %(date_field)s."
 
 #: parsifal/lib/python2.7/site-packages/django/forms/models.py:734
 msgid "Please correct the duplicate values below."
@@ -1229,12 +1234,9 @@ msgid "The inline foreign key did not match the parent instance primary key."
 msgstr ""
 
 #: parsifal/lib/python2.7/site-packages/django/forms/models.py:1123
-#, fuzzy
-#| msgid ""
-#| "Select a valid choice. %(value)s is not one of the available choices."
 msgid "Select a valid choice. That choice is not one of the available choices."
 msgstr ""
-"Selecione uma escolha válida. %(value)s não é um dos valores disponíveis."
+"Selecione uma escolha válida. A escolha não é um dos valores disponíveis."
 
 #: parsifal/lib/python2.7/site-packages/django/forms/models.py:1240
 #, python-format
@@ -1864,7 +1866,7 @@ msgid "Undefined"
 msgstr ""
 
 #: parsifal/library/models.py:87
-#: parsifal/reviews/conducting/templates/conducting/conducting_data_analysis.html:31
+#: parsifal/reviews/conducting/templates/conducting/conducting_data_analysis.html:37
 msgid "Article"
 msgstr "Article (Artigo de um periódico ou revista)"
 
@@ -2176,32 +2178,32 @@ msgstr "Notas"
 msgid "Conducting"
 msgstr "Condução"
 
-#: parsifal/reviews/conducting/templates/conducting/conducting_data_analysis.html:18
-#, fuzzy
-#| msgid "Meta Analysis"
+#: parsifal/reviews/conducting/templates/conducting/conducting_data_analysis.html:19
 msgid "Meta analysis results"
-msgstr "Meta Análise"
-
-#: parsifal/reviews/conducting/templates/conducting/conducting_data_analysis.html:32
-#: parsifal/reviews/conducting/views.py:1211
-#, fuzzy
-#| msgid "No Effect"
-msgid "Effect Size"
-msgstr "Sem Efeito"
+msgstr "Resultados da Meta Análise"
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_data_analysis.html:33
-msgid "I"
-msgstr ""
+msgid "Articles effects conclusions using interpretation sensu"
+msgstr "Os artigos efetuam conclusões usando a interpretação sensu"
 
-#: parsifal/reviews/conducting/templates/conducting/conducting_data_analysis.html:52
+#: parsifal/reviews/conducting/templates/conducting/conducting_data_analysis.html:38
+#: parsifal/reviews/conducting/views.py:1240
+msgid "Effect Size"
+msgstr "Tamanho do Efeito"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_data_analysis.html:39
+msgid "Effect"
+msgstr "Efeito"
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_data_analysis.html:59
 msgid "Articles Per Source"
 msgstr "Artigo por Fonte"
 
-#: parsifal/reviews/conducting/templates/conducting/conducting_data_analysis.html:62
+#: parsifal/reviews/conducting/templates/conducting/conducting_data_analysis.html:69
 msgid "Accepted Articles Per Source"
 msgstr "Artigos Aceitos por Fonte"
 
-#: parsifal/reviews/conducting/templates/conducting/conducting_data_analysis.html:71
+#: parsifal/reviews/conducting/templates/conducting/conducting_data_analysis.html:78
 msgid ""
 "Final Articles Per Year <small>(After study selection and quality "
 "assessment)</small>"
@@ -2285,8 +2287,6 @@ msgstr ""
 "estudos:"
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_data_extraction.html:75
-#, fuzzy
-#| msgid "About Summary"
 msgid "Article Summary"
 msgstr "Resumo do Artigo"
 
@@ -2919,8 +2919,6 @@ msgid "Note"
 msgstr "Notas"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:13
-#, fuzzy
-#| msgid "About Selection Studies"
 msgid "About Selecion Studies"
 msgstr "Sobre a Seleção dos Estudos"
 
@@ -3171,10 +3169,6 @@ msgid "Invalid file type. Only .bib or .bibtex files are accepted."
 msgstr "Tipo de arquivo inválido. Apenas arquivos .bib ou .bibtex são aceitos."
 
 #: parsifal/reviews/conducting/views.py:1075
-#, fuzzy
-#| msgid ""
-#| "Empirical value fields do not accept values greater than 3 digits for n "
-#| "(123) and 2 digits for dp and a (1.2)"
 msgid ""
 "Empirical value fields do not accept values greater than 3 digits for n "
 "(123) and for dp and a (1.23)"
@@ -3182,19 +3176,38 @@ msgstr ""
 "Os campos de valores empíricos não aceitam valores maiores que 3 dígitos "
 "para n (123) e 2 dígitos para dp e a (1,2)"
 
-#: parsifal/reviews/conducting/views.py:1210
-#, fuzzy
-#| msgid "Study: "
+#: parsifal/reviews/conducting/views.py:1239
 msgid "Study"
 msgstr "Estudo:"
 
-#: parsifal/reviews/conducting/views.py:1212
+#: parsifal/reviews/conducting/views.py:1241
 #, fuzzy
 #| msgid "Duration"
 msgid "Summarization"
 msgstr "Duração"
 
-#: parsifal/reviews/conducting/views.py:1546
+#: parsifal/reviews/conducting/views.py:1262
+#, python-brace-format
+msgid ""
+"Your article {0} do not have all empirical values. Because of this, the "
+"Sumarize Tool can not generate meta analysis forest plot graphic."
+msgstr ""
+"Seu artigo {0} não possui todos os valores empíricos. Por isso, a "
+"Plataforma Sumarize não pode gerar gráfico de plotagem florestal de metanálise."
+
+#: parsifal/reviews/conducting/views.py:1277
+msgid ""
+"The empirical values from any of your articles are not valid! Because of "
+"this, the Sumarize Tool can not generate meta analysis forest plot graphic."
+msgstr ""
+"Os valores empíricos de algum dos seus artigos não são válidos! Por causa disto, "
+"a ferramenta Sumarize não pode gerar gráficos de plotagem florestal de metanálise."
+
+#: parsifal/reviews/conducting/views.py:1317
+msgid "Sources search string successfully added to the review!"
+msgstr "As fontes de pesquisa foram adicionadas com sucesso à revisão!"
+
+#: parsifal/reviews/conducting/views.py:1508
 msgid "Document added successfully!"
 msgstr "Documento adicionado com sucesso!"
 
@@ -3255,7 +3268,7 @@ msgstr "Tamanho do grupo de controle"
 #: parsifal/reviews/metaanalysis/templates/metaanalysis/metaanalysis_list.html:68
 #: parsifal/reviews/metaanalysis/templates/metaanalysis/metaanalysis_list.html:110
 msgid "DP"
-msgstr ""
+msgstr "SD"
 
 #: parsifal/reviews/metaanalysis/templates/metaanalysis/metaanalysis_list.html:74
 msgid "Treatment group standard deviation"
@@ -3764,8 +3777,6 @@ msgid "Add Answer"
 msgstr "Adicionar Resposta"
 
 #: parsifal/reviews/planning/templates/planning/partial_quality_assessment_question.html:70
-#, fuzzy
-#| msgid "(Add Suggested Answers)"
 msgid "Add Suggested Answers"
 msgstr "Adicionar Respostas Sugeridas"
 
@@ -3857,9 +3868,9 @@ msgstr "Sobre a Metodologia de Busca"
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:147
 msgid ""
-"The search methodology defines how the search string is constructed. Qeed "
-"natively supports two famous methods PICOC and PICOS. It is also possible to "
-"freely define another method."
+"The search methodology defines how the search string is constructed. "
+"Sumarize natively supports two famous methods PICOC and PICOS. It is also "
+"possible to freely define another method."
 msgstr ""
 "A metodologia de pesquisa define como a cadeia de pesquisa é construída. A "
 "Plataforma Evidências - Módulo Sumarize suporta nativamente dois métodos "
@@ -4754,10 +4765,8 @@ msgid "Large Effect"
 msgstr "Efeito grande"
 
 #: parsifal/reviews/planning/templates/planning/search_setup.html:207
-#, fuzzy
-#| msgid "Save picture"
 msgid "Save Setup"
-msgstr "Salvar Configuração"
+msgstr "Configuração salva"
 
 #: parsifal/reviews/planning/templates/planning/statistical_methods_conventions.html:81
 msgid "About Statistical Methods and Conventions"
@@ -4786,10 +4795,8 @@ msgid "Your review have been saved successfully!"
 msgstr "Sua revisão foi salva com sucesso!"
 
 #: parsifal/reviews/planning/views.py:139
-#, fuzzy
-#| msgid "Your review have been saved successfully!"
 msgid "Your review search setup have been saved successfully!"
-msgstr "Sua revisão foi salva com sucesso!"
+msgstr "Sua configuração de revisão foi salva com sucesso!"
 
 #: parsifal/reviews/planning/views.py:157
 #, python-format
@@ -5241,17 +5248,20 @@ msgid ""
 "\"{2}\". View the review at https://qeed.nees.com.br/{3}/{4}/"
 msgstr ""
 "Olá {0}, {1} convidou você para uma Revisão Sistemática da Literatura "
-"chamada \"{2}\". Veja a análise em https://sumarize.evidencias.nees.com.br/{3}/{4}/"
+"chamada \"{2}\". Veja a análise em https://sumarize.evidencias.nees.com.br/"
+"{3}/{4}/"
 
 #: parsifal/reviews/views.py:116 parsifal/reviews/views.py:166
+#, python-brace-format
 msgid ""
 "<p>Hi {0},</p><p>{1} invited you to a Parsifal Systematic Literature Review "
 "called \"{2}\".</p><p>View the review at https://qeed.nees.com.br/{3}/{4}/</"
 "p><p>Sincerely,</p><p>The Parsifal Team</p>"
 msgstr ""
 "<p> Olá {0}, </p> <p> {1} convidou você para uma revisão sistemática de "
-"literatura chamada \"{2}\". </p> <p> Veja a resenha em https://sumarize.evidencias.nees.com.br/{3}/"
-"{4}/</p> <p> Atenciosamente, </p> <p> A Equipe Evidências/Sumarize </p>"
+"literatura chamada \"{2}\". </p> <p> Veja a resenha em https://sumarize."
+"evidencias.nees.com.br/{3}/{4}/</p> <p> Atenciosamente, </p> <p> A Equipe "
+"Evidências/Sumarize </p>"
 
 #: parsifal/reviews/views.py:125
 msgid "No author invited or added to the review. Nothing really changed."
@@ -5284,7 +5294,8 @@ msgid ""
 "\"{2}\".View the review at https://qeed.nees.com.br/{3}/{4}/"
 msgstr ""
 "Olá {0}, {1} convidou você para uma Revisão de literatura sistemática "
-"Parsifal chamada\"{2} \". Veja a crítica em https://sumarize.evidencias.nees.com.br/{3}/{4}/"
+"Parsifal chamada\"{2} \". Veja a crítica em https://sumarize.evidencias.nees."
+"com.br/{3}/{4}/"
 
 #: parsifal/reviews/views.py:175
 msgid "No visitor invited or added to the review. Nothing really changed."

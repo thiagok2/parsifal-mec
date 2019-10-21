@@ -1259,7 +1259,7 @@ def article_meta_analysis(review, request):
                         })
 
                     else:
-                        messages.error(request, 'Your article {0} do not have all empirical values. Because of this, QeeD can not generate meta analysis forest plot graphic.'.format(article.title))
+                        messages.error(request, _('Your article {0} do not have all empirical values. Because of this, the Sumarize Tool can not generate meta analysis forest plot graphic.').format(article.title))
 
         payload['efs']['mean'] = str(effect_size_comb(dataset))
         payload['efs']['lower'] = str(cin_efs_lower_limit(dataset))
@@ -1274,7 +1274,7 @@ def article_meta_analysis(review, request):
         return analysis
 
     except ZeroDivisionError:
-        messages.error(request, 'The empirical values from any of your articles are not valid! Because of this, QeeD can not generate meta analysis forest plot graphic.')
+        messages.error(request, _('The empirical values from any of your articles are not valid! Because of this, the Sumarize Tool can not generate meta analysis forest plot graphic.'))
 
 
 def articles_selection_chart(request):
@@ -1314,7 +1314,7 @@ def add_source_string(request):
         except Source.DoesNotExist:
             pass
     review.save()
-    messages.success(request, 'Sources search string successfully added to the review!')
+    messages.success(request, _('Sources search string successfully added to the review!'))
     return redirect(r('search_studies', args=(review.author.username, review.name)))
 
 
