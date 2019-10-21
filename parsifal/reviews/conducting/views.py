@@ -1193,9 +1193,38 @@ def new_article(request):
 def data_analysis(request, username, review_name):
     review = get_object_or_404(Review, name=review_name, author__username__iexact=username)
     unseen_comments = review.get_visitors_unseen_comments(request.user)
-    analysis = article_meta_analysis(review, request)
+    analysis = ''
+    if review.is_metaanalysis:
+        analysis = article_meta_analysis(review, request)
     return render(request, 'conducting/conducting_data_analysis.html', { 'review': review, 'unseen_comments': unseen_comments, 'analysis': analysis })
 
+def article_conclusion_effect(review, article, effect_size):
+    setup = review.get_search_setup()[0]
+    conclusion = {}
+
+    conclusion['article_id'] = article.id
+    conclusion['article'] = article.title
+    conclusion['effect_size'] = effect_size
+
+    if effect_size < 0:
+        conclusion['effect'] = setup.adverse_effect
+    if effect_size >= 0.0 and effect_size <= 0.1:
+        if setup.conclusion_model == 'COHEN':
+            conclusion['effect'] = setup.no_effect
+        elif setup.conclusion_model == 'HATTIE':
+            conclusion['effect'] = setup.developmental_effects
+    if effect_size >= 0.2 and effect_size <= 0.4 and setup.conclusion_model == 'COHEN':
+        conclusion['effect'] = setup.small_effect
+    if effect_size >= 0.2 and effect_size <= 0.3 and setup.conclusion_model == 'HATTIE':
+        conclusion['effect'] = setup.teacher_effects
+    if effect_size >= 0.5 and effect_size <= 0.7 and setup.conclusion_model == 'COHEN':
+        conclusion['effect'] = setup.intermediate_effect
+    if effect_size >= 0.4 and setup.conclusion_model == 'HATTIE':
+        conclusion['effect'] = setup.zone_desired_effects
+    if effect_size >= 0.8 and setup.conclusion_model == 'COHEN':
+        conclusion['effect'] = setup.large_effect
+
+    return conclusion
 
 def article_meta_analysis(review, request):
     try:
@@ -1220,9 +1249,8 @@ def article_meta_analysis(review, request):
                     data = values[0]
                     if data.n1 and data.n2 and data.dp1 and data.dp2 and data.a1 and data.a2:
                         result = cohen_d(data.n1, data.dp1, data.n2, data.dp2, data.a1, data.a2)
-                        print 'result ', article.title, result
                         dataset.append([str(article.title), result['cohen_d'], result['ci_min'], result['ci_max'], result['std_error']])
-                        conclusions.append({ "article_id": article.id, "effect_size": result['cohen_d']})
+                        conclusions.append(article_conclusion_effect(review, article, result['cohen_d']))
                         payload['studies'].append({
                             "name": str(article.title),
                             "mean": str(result['cohen_d']),
@@ -1237,74 +1265,8 @@ def article_meta_analysis(review, request):
         payload['efs']['lower'] = str(cin_efs_lower_limit(dataset))
         payload['efs']['upper'] = str(cin_efs_max_limit(dataset))
 
-        print 'dataset ', dataset
-        print 'payload ', json.dumps(payload)
-
-        postman = {
-            "studies":
-            [
-                {
-                    "name": "Auckland sobrenome et al",
-                    "mean":"0.578",
-                    "lower": "0.372",
-                    "upper": "0.898"
-                },
-                {
-                    "name": "Block sobrenome et al",
-                    "mean":"0.165",
-                    "lower": "0.018",
-                    "upper": "1.517"
-                },
-                {
-                    "name": "Doran sobrenome et al",
-                    "mean":"0.246",
-                    "lower": "0.072",
-                    "upper": "0.833"
-                },
-                {
-                    "name": "Gamsu",
-                    "mean":"0.700",
-                    "lower": "0.333",
-                    "upper": "1.474"
-                },
-                {
-                    "name": "Morrison",
-                    "mean":"0.348",
-                    "lower": "0.083",
-                    "upper": "1.455"
-                },
-                {
-                    "name": "Papageorgiou",
-                    "mean":"0.139",
-                    "lower": "0.016",
-                    "upper": "1.209"
-                },
-                {
-                    "name": "Tauesch",
-                    "mean":"1.017",
-                    "lower": "0.365",
-                    "upper": "2.831"
-                }
-            ],
-            "efs":
-            {
-                "mean": "0.531",
-                "lower": "0.386",
-                "upper": "0.6761"
-            },
-            "labels":
-            {
-                "study_label": "Estudo",
-                "efs_label": "Tamanho de efeito",
-                "summary_label": "Sumarização"
-
-            }
-        }
-
-
         headers = {'Content-Type': 'application/json'}
         forest = requests.post(config('FOREST_PLOT_URL'), data=json.dumps(payload), headers=headers)
-        print 'req ', forest._content
 
         analysis['dataset'] = dataset
         analysis['forest_plot'] = forest._content

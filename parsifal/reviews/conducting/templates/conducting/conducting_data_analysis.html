@@ -13,39 +13,46 @@
 
   {% include "conducting/conducting_header.html" with active_tab="analysis" %}
 
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title">{% trans 'Meta analysis results' %}
+  {% if review.is_metaanalysis %}
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">{% trans 'Meta analysis results' %}
 
-        {% include 'comments/comment_icon_button.html' with user=user about="DATA_ANALYSIS" %}
-      </h3>
-    </div>
-    <div class="panel-body">
-      <div class="col-sm-7">
-        {{analysis.forest_plot|safe}}
+          {% include 'comments/comment_icon_button.html' with user=user about="DATA_ANALYSIS" %}
+        </h3>
       </div>
-      <div class="col-sm-5">
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th>{% trans 'Article' %}</th>
-              <th>{% trans 'Effect Size' %}</th>
-              <th>{% trans 'I' %}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for data in analysis.dataset %}
-            <tr>
-              <td>{{data.0}}</td>
-              <td>{{data.1}}</td>
-              <td>Efeito</td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
+      <div class="panel-body">
+        <div class="col-sm-12 text-center">
+          {{analysis.forest_plot|safe}}
+        </div>
+        <div class="col-sm-12">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th colspan="3" style="vertical-align: middle;">
+                  {% trans 'Articles effects conclusions using interpretation sensu' %} {{review.get_search_setup.0.conclusion_model|title}}
+                </th>
+              </tr>
+              <tr>
+                <th>{% trans 'Article' %}</th>
+                <th>{% trans 'Effect Size' %}</th>
+                <th>{% trans 'Effect' %}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for data in analysis.conclusions %}
+              <tr>
+                <td>{{data.article}}</td>
+                <td>{{data.effect_size}}</td>
+                <td>{{data.effect}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
+  {% endif %}
 
   <div class="panel panel-default">
     <div class="panel-heading">
