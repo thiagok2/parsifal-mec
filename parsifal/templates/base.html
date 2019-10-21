@@ -5,9 +5,9 @@
 
   <title>{% block title %} Plataforma {% endblock %}</title>
   {% block meta %}
-  <meta name="Description" content="Plataform QeeD is a tool to support researchers to perform systematic literature reviews. Performing a systematic literature review is a labor-intensive task that requires a huge amount of work from the researcher. The Plataform will help you planning, conducting and reporting the review.">
+  <meta name="Description" content="Plataform Sumarize is a tool to support researchers to perform systematic literature reviews. Performing a systematic literature review is a labor-intensive task that requires a huge amount of work from the researcher. The Plataform will help you planning, conducting and reporting the review.">
   <meta property="og:title" content="Perform Systematic Literature Reviews" />
-  <meta property="og:description" content="Plataform QeeD is a tool to support researchers to perform systematic literature reviews. Performing a systematic literature review is a labor-intensive task that requires a huge amount of work from the researcher. The Plataform will help you planning, conducting and reporting the review." />
+  <meta property="og:description" content="Plataform Sumarize is a tool to support researchers to perform systematic literature reviews. Performing a systematic literature review is a labor-intensive task that requires a huge amount of work from the researcher. The Plataform will help you planning, conducting and reporting the review." />
   <meta property="og:type" content="website">
   {% endblock %}
 
@@ -18,15 +18,18 @@
   <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
   <meta http-equiv="pragma" content="no-cache" />
   <!-- end clear cache -->
-  <!--
-  <meta property="og:site_name" content="Plataform QeeD" />
-  <meta property="og:url" content="https://qeed.nees.com.br{{ request.path }}" />
+  
+  <!--  
+  <meta property="og:site_name2" content="{{site_name}}" />
+  <meta property="og:site_name" content="Plataform Sumarize" />
+  <meta property="og:url" content="{{ protocol }}://{{ domain }}" />
   <meta property="og:locale" content="en_US" />
-  <meta property="og:image" content="https://qeed.nees.com.br{% static 'img/facebook_parsifal.png' %}" />
+  <meta property="og:image" content="{{ protocol }}://{{ domain }}/{% static 'img/facebook_parsifal.png' %}" />
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   -->
+  
   <link rel="apple-touch-icon" sizes="57x57" href="{% static 'img/apple-touch-icon-57x57.png' %}">
   <link rel="apple-touch-icon" sizes="60x60" href="{% static 'img/apple-touch-icon-60x60.png' %}">
   <link rel="apple-touch-icon" sizes="72x72" href="{% static 'img/apple-touch-icon-72x72.png' %}">
