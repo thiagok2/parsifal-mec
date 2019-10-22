@@ -771,6 +771,8 @@ class QualityAssessment(models.Model):
 
     def __unicode__(self):
         return str(self.article.id) + ' ' + str(self.question.id)
+    
+    
 
 class DataExtractionField(models.Model):
     BOOLEAN_FIELD = 'B'

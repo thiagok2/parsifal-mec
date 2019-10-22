@@ -29,8 +29,6 @@ $(function () {
 
   $(".js-remove-visitor").click(function () {
 
-    console.log('entrou');
-
     var user_container = $(this).closest("li");
 
     var csrf_token = $("[name='csrfmiddlewaretoken']").val();
@@ -46,6 +44,8 @@ $(function () {
       $(user_container).fadeOut(400, function () {
         $(this).remove();
       });
+      
+      location.reload();
     });
 
   });

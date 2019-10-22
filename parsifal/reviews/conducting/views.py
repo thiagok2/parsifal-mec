@@ -38,6 +38,7 @@ from parsifal.utils.meta_analysis import cohen_d, effect_size_comb,\
     cin_efs_lower_limit, cin_efs_max_limit
 import requests
 from decouple import config
+from django.template.defaultfilters import nan
 
 @author_or_visitor_required
 @login_required
@@ -1195,7 +1196,7 @@ def data_analysis(request, username, review_name):
     unseen_comments = review.get_visitors_unseen_comments(request.user)
     analysis = ''
     if review.is_metaanalysis:
-        analysis = article_meta_analysis(review)
+        analysis = article_meta_analysis(review, request)
     return render(request, 'conducting/conducting_data_analysis.html', { 'review': review, 'unseen_comments': unseen_comments, 'analysis': analysis })
 
 def article_conclusion_effect(review, article, effect_size):
@@ -1226,7 +1227,7 @@ def article_conclusion_effect(review, article, effect_size):
 
     return conclusion
 
-def article_meta_analysis(review):
+def article_meta_analysis(review, request):
     try:
         articles = review.get_final_selection_articles()
         analysis = {}
@@ -1259,11 +1260,13 @@ def article_meta_analysis(review):
                         })
 
                     else:
-                        messages.error( _('Your article {0} do not have all empirical values. Because of this, the Sumarize Tool can not generate meta analysis forest plot graphic.').format(article.title))
+                        messages.error(request, _('Your article {0} do not have all empirical values. Because of this, the Sumarize Tool can not generate meta analysis forest plot graphic.').format(article.title))
 
         payload['efs']['mean'] = str(effect_size_comb(dataset))
         payload['efs']['lower'] = str(cin_efs_lower_limit(dataset))
         payload['efs']['upper'] = str(cin_efs_max_limit(dataset))
+
+        print 'payload ', payload
 
         headers = {'Content-Type': 'application/json'}
         forest = requests.post(config('FOREST_PLOT_URL'), data=json.dumps(payload), headers=headers)
@@ -1274,7 +1277,253 @@ def article_meta_analysis(review):
         return analysis
 
     except ZeroDivisionError:
-        messages.error( _('The empirical values from any of your articles are not valid! Because of this, the Sumarize Tool can not generate meta analysis forest plot graphic.'))
+        messages.error(request,_('The empirical values from any of your articles are not valid! Because of this, the Sumarize Tool can not generate meta analysis forest plot graphic.'))
+
+
+def articles_selection_chart(request):
+    review_id = request.GET['review-id']
+    review = Review.objects.get(pk=review_id)
+    selected_articles = review.get_accepted_articles()
+    articles = []
+    for source in review.sources.all():
+        count = review.get_source_articles(source.id).count()
+        accepted_count = selected_articles.filter(source__id=source.id).count()
+        articles.append(source.name + ':' + str(count) + ':' + str(accepted_count))
+    return HttpResponse(','.join(articles))
+
+def articles_per_year(request):
+    review_id = request.GET['review-id']
+    review = Review.objects.get(pk=review_id)
+    final_articles = review.get_final_selection_articles().values('year').annotate(count=Count('year')).order_by('-year')
+    articles = []
+    for article in final_articles:
+        articles.append(article['year'] + ':' + str(article['count']))
+    return HttpResponse(','.join(articles))
+
+@author_required
+@login_required
+@require_POST
+def add_source_string(request):
+    review_id = request.POST.get('review-id')
+    review = get_object_or_404(Review, pk=review_id)
+    source_ids = request.POST.getlist('source')
+    for source_id in source_ids:
+        try:
+            source = Source.objects.get(pk=source_id)
+            exists = SearchSession.objects.filter(review=review, source=source).exists()
+            if not exists:
+                search_session = SearchSession(review=review, source=source)
+                search_session.save()
+        except Source.DoesNotExist:
+            pass
+    review.save()
+    messages.success(request, _('Sources search string successfully added to the review!'))
+    return redirect(r('search_studies', args=(review.author.username, review.name)))
+
+
+@author_required
+@login_required
+@require_POST
+def export_results(request):
+    review_id = request.POST.get('review-id')
+    review = get_object_or_404(Review, pk=review_id)
+    articles = review.get_source_articles()
+
+    response = HttpResponse(content_type='application/ms-excel')
+    response['Content-Disposition'] = 'attachment; filename=articles.xls'
+    wb = xlwt.Workbook(encoding='utf-8')
+    ws = wb.add_sheet("Articles")
+
+    row_num = 0
+
+    columns = [
+        ('bibtex_key', 2000),
+        ('title', 2000),
+        ('author', 2000),
+        ('journal', 2000),
+        ('year', 2000),
+        ('source', 2000),
+        ('pages', 2000),
+        ('volume', 2000),
+        ('abstract', 2000),
+        ('document_type', 2000),
+        ('doi', 2000),
+        ('url', 2000),
+        ('affiliation', 2000),
+        ('author_keywords', 2000),
+        ('keywords', 2000),
+        ('publisher', 2000),
+        ('issn', 2000),
+        ('language', 2000),
+        ('note', 2000),
+        ('selection_criteria', 2000),
+        ('created_at', 2000),
+        ('updated_at', 2000),
+        ('created_by', 2000),
+        ('updated_by', 2000),
+        ('status', 2000),
+        ('comments', 2000),
+    ]
+
+    font_style = xlwt.XFStyle()
+    font_style.font.bold = True
+
+    for col_num in xrange(len(columns)):
+        ws.write(row_num, col_num, columns[col_num][0], font_style)
+        # set column width
+        ws.col(col_num).width = columns[col_num][1]
+
+    font_style = xlwt.XFStyle()
+    row_num += 1
+
+    for article in articles:
+        try:
+            row = [
+                article.bibtex_key,
+                article.title,
+                article.author,
+                article.journal,
+                article.year,
+                (article.source.name if article.source else ''),
+                article.pages,
+                article.volume,
+                article.abstract,
+                article.document_type,
+                article.doi,
+                article.url,
+                article.affiliation,
+                article.author_keywords,
+                article.keywords,
+                article.publisher,
+                article.issn,
+                article.language,
+                article.note,
+                (article.selection_criteria.description if article.selection_criteria else '' ),
+                article.created_at.replace(tzinfo=None),
+                article.updated_at.replace(tzinfo=None),
+                (article.created_by.username if article.created_by else ''),
+                (article.updated_by.username if article.updated_by else ''),
+                article.get_status_display(),
+                article.comments,
+            ]
+            for col_num in xrange(len(row)):
+                ws.write(row_num, col_num, row[col_num], font_style)
+        except Exception, e:
+            ws.write(row_num, 0, u'Error: {0}'.format(e.message), font_style)
+
+        row_num += 1
+
+    wb.save(response)
+    return response
+
+
+@author_required
+@login_required
+@require_POST
+def export_data_extraction(request):
+    review_id = request.POST.get('review-id')
+    review = get_object_or_404(Review, pk=review_id)
+
+    selected_studies = review.get_final_selection_articles()
+    data_extraction_fields = review.get_data_extraction_fields()
+
+    response = HttpResponse(content_type='application/ms-excel')
+    response['Content-Disposition'] = 'attachment; filename=data_extraction.xls'
+    wb = xlwt.Workbook(encoding='utf-8')
+    ws = wb.add_sheet("Articles")
+
+    row_num = 0
+
+    columns = [
+        ('article', 2000),
+    ]
+    for field in data_extraction_fields:
+        columns.append((field.description, 2000))
+
+    font_style = xlwt.XFStyle()
+    font_style.font.bold = True
+
+    for col_num in xrange(len(columns)):
+        ws.write(row_num, col_num, columns[col_num][0], font_style)
+        # set column width
+        ws.col(col_num).width = columns[col_num][1]
+
+    font_style = xlwt.XFStyle()
+    row_num += 1
+
+    for article in selected_studies:
+        try:
+            row = [article.title,]
+            for field in data_extraction_fields:
+                field_value = None
+                try:
+                    de = DataExtraction.objects.get(article=article, field=field)
+                    if de.field.field_type == DataExtractionField.DATE_FIELD:
+                        field_value = de.get_date_value_as_string()
+                    elif de.field.field_type == DataExtractionField.SELECT_ONE_FIELD:
+                        select_one_field = de._get_select_one_value()
+                        if select_one_field:
+                            field_value = select_one_field.value
+                        else:
+                            field_value = ''
+                    elif de.field.field_type == DataExtractionField.SELECT_MANY_FIELD:
+                        field_value = ', '.join(de._get_select_many_value().values_list('value', flat=True))
+                    else:
+                        field_value = de.value
+                except DataExtraction.DoesNotExist:
+                    field_value = ''
+                row.append(field_value)
+
+            for col_num in xrange(len(row)):
+                ws.write(row_num, col_num, row[col_num], font_style)
+        except Exception, e:
+            ws.write(row_num, 0, u'Error: {0}'.format(e.message), font_style)
+
+        row_num += 1
+
+    wb.save(response)
+    return response
+@login_required
+def new_document(request):
+    json_context = {}
+    source_id = 0
+    review_id = 0
+    if request.method == 'POST':
+        source_id = request.POST.get('source_id')
+        review_id = request.POST.get('review_id')
+
+
+        form = DocumentForm(request.POST)
+        if form.is_valid():
+            form.instance.user = request.user
+            document = form.save()
+
+            source = Source.objects.get(pk=source_id)
+            review = Review.objects.get(pk=review_id)
+
+
+            article = Article(review=review, source=source)
+
+            article.build(document)
+            article.created_by = request.user
+            article.save()
+
+            messages.success(request, _('Document added successfully!'))
+            json_context['status'] = 'success'
+            json_context['redirect_to'] =  request.get_full_path()
+        else:
+            json_context['status'] = 'error'
+    else:
+        source_id = request.GET.get('source-id')
+        review_id = request.GET.get('review-id')
+
+        form = DocumentForm()
+        json_context['status'] = 'ok'
+    csrf_token = unicode(csrf(request)['csrf_token'])
+    html = render_to_string('conducting/new_document.html', { 'form': form, 'csrf_token': csrf_token, 'review_id': review_id, 'source_id': source_id})
+    json_context['html'] = html
+    dump = json.dumps(json_context)
+    return HttpResponse(dump, content_type='application/json')
 
 
 def articles_selection_chart(request):
