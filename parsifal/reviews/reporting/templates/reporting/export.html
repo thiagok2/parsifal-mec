@@ -32,7 +32,8 @@
 
 
 
-  <form method="get" action="{% url 'reviews:reporting:download_docx' %}">
+  <form method="POST" action="{% url 'reviews:reporting:download_docx' %}">
+  	 {% csrf_token %}
     <input type="hidden" name="review-id" value="{{ review.pk }}">
     <div class="panel panel-default">
       <div class="panel-heading">
