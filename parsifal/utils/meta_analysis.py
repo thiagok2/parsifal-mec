@@ -113,9 +113,7 @@ def residual(dataset):
 def std_error_efs_comb(dataset):
     weightr_ = weightr(dataset)
     residual_ = residual(dataset)
-    #print 'std residual ', residual_
     k = len(dataset)
-    #print 'zero?? ', ((k - 1)*somar(weightr_))
     return ((somarproduto2(weightr_, residual_, residual_))/((k - 1)*somar(weightr_)))**0.5
 #Usar essa funcao para calcular o limiar minimo do tamanho de efeito combinado
 def cin_efs_lower_limit(dataset):
@@ -150,8 +148,9 @@ Saida:
 
 '''
 def cohen_d(n1, dp1, n2, dp2, a1, a2):
-    dp_comb = ((n1 - 1) * dp1**2 + (n2 - 1) * dp2**2)/(n1 + n2 - 2)
-    c_d = (a1 - a2) / dp_comb
+    #dp_comb = ((n1 - 1) * dp1**2 + (n2 - 1) * dp2**2)/(n1 + n2 - 2)
+    dp_comb = ((float(dp1)**2 + float(dp2)**2)/2)**0.5
+    c_d = float((a1 - a2)) / dp_comb
     ci = float((((n1 + n2) / (n1 * n2))+ ((c_d**2) / (2 * (n1 + n2)))))**0.5
 
     result = {
@@ -161,7 +160,6 @@ def cohen_d(n1, dp1, n2, dp2, a1, a2):
         "std_error": float(dp_comb)
     }
 
-    print 'resulttt ', result
     return result
 #Modelo de dados padrao a ser trabalhado para o calculo de tamanho de efeito combinado
 #modelo padrao de tamanho de efeito considerando o tamanho de efeito e tamanho de erro padrao
