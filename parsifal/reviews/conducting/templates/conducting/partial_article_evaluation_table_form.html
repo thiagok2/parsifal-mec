@@ -7,7 +7,7 @@
   <input type="hidden" name="review-id" id="review-id" value="{{ article.review.id }}">
   <input type="hidden" name="article-evaluation-id" id="article-evaluation-id" value="{{ article_evaluation.0.id|default:"None" }}">
   <div class="form-group" style="margin-bottom: 0">
-    <select name="status" id="evaluation-status-{{article_evaluation.0.id|default:"None"}}" data-evaluation-id="{{article_evaluation.0.id|default:"None"}}" class="form-control">
+    <select name="status" {% if article.evaluation_finished %} disabled {% endif %} id="evaluation-status-{{article_evaluation.0.id|default:"None"}}" data-evaluation-id="{{article_evaluation.0.id|default:"None"}}" class="form-control">
       {% for status in status_evaluation %}
         <option value="{{ status.0 }}"{% if article_evaluation.0.status == status.0 %} selected{% endif %}>{{ status.1 }}</option>
       {% endfor %}
