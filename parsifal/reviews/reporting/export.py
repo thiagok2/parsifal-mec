@@ -4,6 +4,7 @@ from docx import Document
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 
 from django.utils.translation import ugettext as _
+from parsifal.reviews.conducting.views import article_meta_analysis
 
 
 def export_review_to_docx(review, sections):
@@ -37,7 +38,7 @@ def export_review_to_docx(review, sections):
         PICOC
     '''
     if 'picoc' in sections:
-        
+
         if review.isPicoc():
             document.add_heading(_('PICOC'), level=3)
         elif review.isPicos():
@@ -46,7 +47,7 @@ def export_review_to_docx(review, sections):
             document.add_heading(_('Free Text'), level=3)
         else:
             document.add_heading( review.study_type, level=3)
-            
+
         if review.isStudyTypeFree():
             p = document.add_paragraph('', style='List Bullet')
             p.add_run(_('Study: ')).bold = True
@@ -55,19 +56,19 @@ def export_review_to_docx(review, sections):
             p = document.add_paragraph('', style='List Bullet')
             p.add_run(_('Population: ')).bold = True
             p.add_run(review.population)
-    
+
             p = document.add_paragraph('', style='List Bullet')
             p.add_run(_('Intervention: ')).bold = True
             p.add_run(review.intervention)
-    
+
             p = document.add_paragraph('', style='List Bullet')
             p.add_run(_('Comparison: ')).bold = True
             p.add_run(review.comparison)
-    
+
             p = document.add_paragraph('', style='List Bullet')
             p.add_run(_('Outcome: ')).bold = True
             p.add_run(review.outcome)
-            
+
             if review.isPicoc():
                 p = document.add_paragraph('', style='List Bullet')
                 p.add_run(_('Context: ')).bold = True
@@ -76,8 +77,8 @@ def export_review_to_docx(review, sections):
                 p = document.add_paragraph('', style='List Bullet')
                 p.add_run(_('Study Type: ')).bold = True
                 p.add_run(review.study_type)
-            
-        
+
+
     '''
         Research Questions
     '''
@@ -121,7 +122,7 @@ def export_review_to_docx(review, sections):
             if source.url:
                 text = u'{0} ({1})'.format(source.name, source.url)
             document.add_paragraph(text, style='List Bullet')
-            
+
     '''
         Risks
     '''
@@ -130,7 +131,7 @@ def export_review_to_docx(review, sections):
 
         for risk in review.get_risks():
             document.add_paragraph(risk.risk, style='List Bullet')
-            
+
     '''
         Statistical Methods and Conventions
     '''
@@ -212,5 +213,20 @@ def export_review_to_docx(review, sections):
 
     if 'data_analysis' in sections:
         document.add_heading(_('Data Analysis'), level=3)
+        conclusions = article_meta_analysis(review)
+
+        #document.add_paragraph(mark_safe(conclusions['forest_plot']))
+
+        table = document.add_table(rows=1, cols=3)
+        hdr_cells = table.rows[0].cells
+        hdr_cells[0].text = _('Article')
+        hdr_cells[1].text = _('Effect Size')
+        hdr_cells[2].text = _('Effect')
+
+        for data in conclusions['conclusions']:
+            row_cells = table.add_row().cells
+            row_cells[0].text = data['article']
+            row_cells[1].text = str(data['effect_size'])
+            row_cells[2].text = data['effect']
 
     return document
