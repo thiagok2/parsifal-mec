@@ -17,6 +17,7 @@
     {% endfor %}
   ];
   
+  
   var contacts_ok = [
     {% for contact in review.get_users_exclude_authors %}
       {
@@ -32,7 +33,7 @@
   <script src="{% static 'js/review_import.js' %}?_=1"></script>
   <script src="{% static 'js/review_tag.js' %}?v=1"></script>
   {% if user|is_visitor:review %}
-    <script src="{% static 'js/user_is_visitor.js' %}?v=1"></script>
+    <script src="{% static 'js/user_is_visitor.js' %}"></script>
   {% endif %}
 {% endblock %}
 

@@ -21,6 +21,8 @@ $(function () {
       $(user_container).fadeOut(400, function () {
         $(this).remove();
       });
+      
+      location.reload();
     });
 
   });
