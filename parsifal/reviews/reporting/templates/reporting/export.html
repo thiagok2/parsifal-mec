@@ -30,7 +30,7 @@
 
 {% block tab_content %}
 
- 
+
 
   <form method="get" action="{% url 'reviews:reporting:download_docx' %}">
     <input type="hidden" name="review-id" value="{{ review.pk }}">
@@ -66,7 +66,7 @@
           <div class="col-sm-4 col-md-3">
             <div class="checkbox">
             	<label>
-            		<input type="checkbox" checked name="export" value="picoc"> 
+            		<input type="checkbox" checked name="export" value="picoc">
             		{% trans 'Type Study'%} (
             		{% if review.pico_type == 'PICOC' %}	{% trans 'PICOC' %} {%endif%}
             		{% if review.pico_type == 'PICOS' %}	{% trans 'PICOS' %} {%endif%}
@@ -126,10 +126,10 @@
           <div class="col-sm-4 col-md-3">
             <div class="checkbox"><label><input type="checkbox" checked name="export" value="data_extraction"> {% trans 'Data Extraction' %}</label></div>
           </div>
+          {% endcomment %}
           <div class="col-sm-4 col-md-3">
             <div class="checkbox"><label><input type="checkbox" checked name="export" value="data_analysis"> {% trans 'Data Analysis' %}</label></div>
           </div>
-          {% endcomment %}
         </div>
       </div>
       <div class="panel-footer">
