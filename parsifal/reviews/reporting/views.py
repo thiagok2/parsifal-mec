@@ -29,7 +29,7 @@ def download_docx(request):
     review_id = request.GET.get('review-id')
     review = get_object_or_404(Review, pk=review_id)
     sections = request.GET.getlist('export')
-    document = export_review_to_docx(review, sections)
+    document = export_review_to_docx(review, sections, request)
     response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.wordprocessingml.document')
     response['Content-Disposition'] = u'attachment; filename={0}.docx'.format(review.name)
     document.save(response)

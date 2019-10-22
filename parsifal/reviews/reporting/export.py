@@ -1,5 +1,7 @@
 # coding: utf-8
 
+from django.template import RequestContext
+
 from docx import Document
 from django.db.models import Count
 from docx.enum.text import WD_ALIGN_PARAGRAPH
@@ -10,7 +12,7 @@ from parsifal.reviews.conducting.views import article_meta_analysis
 from parsifal.reviews.models import Article
 
 
-def export_review_to_docx(review, sections):
+def export_review_to_docx(review, sections, request):
     document = Document()
 
     if 'name' in sections:
@@ -228,20 +230,22 @@ def export_review_to_docx(review, sections):
 
     if 'data_analysis' in sections:
         document.add_heading(_('Data Analysis'), level=3)
-        conclusions = article_meta_analysis(review)
-
+        conclusions = article_meta_analysis(review, request)
+        
         #document.add_paragraph(mark_safe(conclusions['forest_plot']))
 
-        table = document.add_table(rows=1, cols=3)
-        hdr_cells = table.rows[0].cells
-        hdr_cells[0].text = _('Article')
-        hdr_cells[1].text = _('Effect Size')
-        hdr_cells[2].text = _('Effect')
-
-        for data in conclusions['conclusions']:
-            row_cells = table.add_row().cells
-            row_cells[0].text = data['article']
-            row_cells[1].text = str(data['effect_size'])
-            row_cells[2].text = data['effect']
-
+        if(conclusions):
+            table = document.add_table(rows=1, cols=3)
+            hdr_cells = table.rows[0].cells
+            hdr_cells[0].text = _('Article')
+            hdr_cells[1].text = _('Effect Size')
+            hdr_cells[2].text = _('Effect')
+            document.add_heading(str(conclusions)+'ssss')
+            for data in conclusions['conclusions']:
+                row_cells = table.add_row().cells
+                row_cells[0].text = data['article']
+                row_cells[1].text = str(data['effect_size'])
+                row_cells[2].text = data['effect']
+        else:
+            document.add_paragraph(_('Not specified'))
     return document
