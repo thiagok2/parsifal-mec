@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-21 17:13+0000\n"
+"POT-Creation-Date: 2019-10-21 19:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -329,10 +329,12 @@ msgid "Invalid password reset link."
 msgstr ""
 
 #: parsifal/authentication/templates/auth/reset_email.html:3
+#: parsifal/authentication/templates/auth/reset_email2.html:3
 msgid "Here is your password reset link:"
 msgstr ""
 
-#: parsifal/authentication/templates/auth/reset_email.html:10
+#: parsifal/authentication/templates/auth/reset_email.html:8
+#: parsifal/authentication/templates/auth/reset_email2.html:10
 msgid "Your username:"
 msgstr ""
 
@@ -470,17 +472,17 @@ msgstr ""
 
 #: parsifal/core/templates/core/about.html:30
 msgid ""
-"The QeeD Platform is a tool designed for researchers to perform systematic "
-"literature reviews and meta-analyzes. Geographically distributed researchers "
-"can work together in a shared environment, designing the protocol and "
-"leading research into the development of research meta-analysis."
+"The Sumarize Platform is a tool designed for researchers to perform "
+"systematic literature reviews and meta-analyzes. Geographically distributed "
+"researchers can work together in a shared environment, designing the "
+"protocol and leading research into the development of research meta-analysis."
 msgstr ""
 
 #: parsifal/core/templates/core/about.html:33
 msgid ""
 "In addition to providing a way to document the entire process, the tool will "
 "help you remember what is important during a systematic literature review. "
-"During the planning phase, the QeeD Platform will assist you with "
+"During the planning phase, the Sumarize Platform will assist you with "
 "objectives, search method definition, search questions, search strings, "
 "keywords and synonyms by selecting sources, inclusion and exclusion "
 "criteria. It will also provide mechanisms for building a quality assessment "
@@ -526,7 +528,7 @@ msgstr "Sobre o desenvolvimento"
 
 #: parsifal/core/templates/core/about.html:47
 msgid ""
-"The QeeD tool was developed by the Center for Excellence in Social "
+"The Sumarize tool was developed by the Center for Excellence in Social "
 "Technologies (NEES), a research group linked to the Federal University of "
 "Alagoas (UFAL). This tool was developed as a modified version of the "
 "Parsifal platform (https://parsif.al/), where new features related to the "
@@ -1706,7 +1708,7 @@ msgid "Undefined"
 msgstr ""
 
 #: parsifal/library/models.py:87
-#: parsifal/reviews/conducting/templates/conducting/conducting_data_analysis.html:31
+#: parsifal/reviews/conducting/templates/conducting/conducting_data_analysis.html:37
 msgid "Article"
 msgstr ""
 
@@ -2018,28 +2020,32 @@ msgstr ""
 msgid "Conducting"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/conducting_data_analysis.html:18
+#: parsifal/reviews/conducting/templates/conducting/conducting_data_analysis.html:19
 msgid "Meta analysis results"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/conducting_data_analysis.html:32
-#: parsifal/reviews/conducting/views.py:1211
+#: parsifal/reviews/conducting/templates/conducting/conducting_data_analysis.html:33
+msgid "Articles effects conclusions using interpretation sensu"
+msgstr ""
+
+#: parsifal/reviews/conducting/templates/conducting/conducting_data_analysis.html:38
+#: parsifal/reviews/conducting/views.py:1240
 msgid "Effect Size"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/conducting_data_analysis.html:33
-msgid "I"
+#: parsifal/reviews/conducting/templates/conducting/conducting_data_analysis.html:39
+msgid "Effect"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/conducting_data_analysis.html:52
+#: parsifal/reviews/conducting/templates/conducting/conducting_data_analysis.html:59
 msgid "Articles Per Source"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/conducting_data_analysis.html:62
+#: parsifal/reviews/conducting/templates/conducting/conducting_data_analysis.html:69
 msgid "Accepted Articles Per Source"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/conducting_data_analysis.html:71
+#: parsifal/reviews/conducting/templates/conducting/conducting_data_analysis.html:78
 msgid ""
 "Final Articles Per Year <small>(After study selection and quality "
 "assessment)</small>"
@@ -2972,15 +2978,32 @@ msgid ""
 "(123) and for dp and a (1.23)"
 msgstr ""
 
-#: parsifal/reviews/conducting/views.py:1210
+#: parsifal/reviews/conducting/views.py:1239
 msgid "Study"
 msgstr ""
 
-#: parsifal/reviews/conducting/views.py:1212
+#: parsifal/reviews/conducting/views.py:1241
 msgid "Summarization"
 msgstr ""
 
-#: parsifal/reviews/conducting/views.py:1546
+#: parsifal/reviews/conducting/views.py:1262
+#, python-brace-format
+msgid ""
+"Your article {0} do not have all empirical values. Because of this, the "
+"Sumarize Tool can not generate meta analysis forest plot graphic."
+msgstr ""
+
+#: parsifal/reviews/conducting/views.py:1277
+msgid ""
+"The empirical values from any of your articles are not valid! Because of "
+"this, the Sumarize Tool can not generate meta analysis forest plot graphic."
+msgstr ""
+
+#: parsifal/reviews/conducting/views.py:1317
+msgid "Sources search string successfully added to the review!"
+msgstr ""
+
+#: parsifal/reviews/conducting/views.py:1508
 msgid "Document added successfully!"
 msgstr ""
 
@@ -3620,9 +3643,9 @@ msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:147
 msgid ""
-"The search methodology defines how the search string is constructed. Qeed "
-"natively supports two famous methods PICOC and PICOS. It is also possible to "
-"freely define another method."
+"The search methodology defines how the search string is constructed. "
+"Sumarize natively supports two famous methods PICOC and PICOS. It is also "
+"possible to freely define another method."
 msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/protocol.html:151
