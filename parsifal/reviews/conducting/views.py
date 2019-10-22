@@ -1195,7 +1195,7 @@ def data_analysis(request, username, review_name):
     unseen_comments = review.get_visitors_unseen_comments(request.user)
     analysis = ''
     if review.is_metaanalysis:
-        analysis = article_meta_analysis(review, request)
+        analysis = article_meta_analysis(review)
     return render(request, 'conducting/conducting_data_analysis.html', { 'review': review, 'unseen_comments': unseen_comments, 'analysis': analysis })
 
 def article_conclusion_effect(review, article, effect_size):
@@ -1226,7 +1226,7 @@ def article_conclusion_effect(review, article, effect_size):
 
     return conclusion
 
-def article_meta_analysis(review, request):
+def article_meta_analysis(review):
     try:
         articles = review.get_final_selection_articles()
         analysis = {}
@@ -1259,11 +1259,13 @@ def article_meta_analysis(review, request):
                         })
 
                     else:
-                        messages.error(request, 'Your article {0} do not have all empirical values. Because of this, QeeD can not generate meta analysis forest plot graphic.'.format(article.title))
+                        messages.error('Your article {0} do not have all empirical values. Because of this, QeeD can not generate meta analysis forest plot graphic.'.format(article.title))
 
         payload['efs']['mean'] = str(effect_size_comb(dataset))
         payload['efs']['lower'] = str(cin_efs_lower_limit(dataset))
         payload['efs']['upper'] = str(cin_efs_max_limit(dataset))
+
+        print 'payload ', payload
 
         headers = {'Content-Type': 'application/json'}
         forest = requests.post(config('FOREST_PLOT_URL'), data=json.dumps(payload), headers=headers)
@@ -1274,7 +1276,7 @@ def article_meta_analysis(review, request):
         return analysis
 
     except ZeroDivisionError:
-        messages.error(request, 'The empirical values from any of your articles are not valid! Because of this, QeeD can not generate meta analysis forest plot graphic.')
+        messages.error('The empirical values from any of your articles are not valid! Because of this, QeeD can not generate meta analysis forest plot graphic.')
 
 
 def articles_selection_chart(request):
