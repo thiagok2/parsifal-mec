@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-22 17:41+0000\n"
+"POT-Creation-Date: 2019-10-22 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1712,7 +1712,8 @@ msgstr ""
 
 #: parsifal/library/models.py:87
 #: parsifal/reviews/conducting/templates/conducting/conducting_data_analysis.html:37
-#: parsifal/reviews/reporting/export.py:240
+#: parsifal/reviews/reporting/export.py:249
+#: parsifal/reviews/reporting/export.py:271
 msgid "Article"
 msgstr ""
 
@@ -2034,12 +2035,12 @@ msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_data_analysis.html:38
 #: parsifal/reviews/conducting/views.py:1241
-#: parsifal/reviews/reporting/export.py:241
+#: parsifal/reviews/reporting/export.py:272
 msgid "Effect Size"
 msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_data_analysis.html:39
-#: parsifal/reviews/reporting/export.py:242
+#: parsifal/reviews/reporting/export.py:273
 msgid "Effect"
 msgstr ""
 
@@ -2067,7 +2068,7 @@ msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_data_extraction.html:27
 #: parsifal/reviews/conducting/templates/conducting/conducting_header.html:18
-#: parsifal/reviews/models.py:334 parsifal/reviews/reporting/export.py:229
+#: parsifal/reviews/models.py:334 parsifal/reviews/reporting/export.py:258
 #: parsifal/reviews/reporting/templates/reporting/export.html:129
 #: parsifal/reviews/templates/reviews/partial_modal_confirm_import_protocol.html:42
 #: parsifal/reviews/templates/reviews/partial_published_protocols.html:28
@@ -2150,7 +2151,7 @@ msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_header.html:15
 #: parsifal/reviews/conducting/templates/conducting/conducting_quality_assessment.html:13
-#: parsifal/reviews/models.py:333 parsifal/reviews/reporting/export.py:226
+#: parsifal/reviews/models.py:333 parsifal/reviews/reporting/export.py:229
 #: parsifal/reviews/reporting/templates/reporting/export.html:125
 msgid "Quality Assessment"
 msgstr ""
@@ -2869,6 +2870,7 @@ msgstr ""
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_quality_assessment_detailed.html:29
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_quality_assessment_detailed.html:30
 #: parsifal/reviews/planning/templates/planning/quality_assessment_checklist.html:48
+#: parsifal/reviews/reporting/export.py:250
 msgid "Score"
 msgstr ""
 
@@ -3267,7 +3269,7 @@ msgstr ""
 msgid "Conducting Search"
 msgstr ""
 
-#: parsifal/reviews/models.py:335 parsifal/reviews/reporting/export.py:232
+#: parsifal/reviews/models.py:335 parsifal/reviews/reporting/export.py:262
 #: parsifal/reviews/reporting/templates/reporting/export.html:133
 msgid "Data Analysis"
 msgstr ""
@@ -3554,6 +3556,7 @@ msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/partial_quality_assessment_answer_form2.html:9
 #: parsifal/reviews/planning/templates/planning/partial_quality_assessment_answer_suggested.html:20
+#: parsifal/reviews/reporting/export.py:237
 msgid "Answer"
 msgstr ""
 
@@ -3579,6 +3582,7 @@ msgstr ""
 
 #: parsifal/reviews/planning/templates/planning/partial_quality_assessment_question_suggested.html:20
 #: parsifal/reviews/planning/templates/planning/partial_quality_assessment_question_suggested.html:44
+#: parsifal/reviews/reporting/export.py:236
 msgid "Question"
 msgstr ""
 
@@ -4511,8 +4515,24 @@ msgid "Digital Libraries Search Strings"
 msgstr ""
 
 #: parsifal/reviews/reporting/export.py:206
-#: parsifal/reviews/reporting/export.py:250
+#: parsifal/reviews/reporting/export.py:280
 msgid "Not specified"
+msgstr ""
+
+#: parsifal/reviews/reporting/export.py:231
+msgid "Question/Answer"
+msgstr ""
+
+#: parsifal/reviews/reporting/export.py:238
+msgid "Count"
+msgstr ""
+
+#: parsifal/reviews/reporting/export.py:246
+msgid "Accepted Articles - Summary"
+msgstr ""
+
+#: parsifal/reviews/reporting/export.py:282
+msgid "An exception occurred when generate data_analysis report"
 msgstr ""
 
 #: parsifal/reviews/reporting/templates/reporting/export.html:40

@@ -9,7 +9,7 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH
 from django.utils.translation import ugettext as _
 from parsifal.reviews.conducting.views import article_meta_analysis
 
-from parsifal.reviews.models import Article
+from parsifal.reviews.models import Article, QualityAssessment
 
 
 def export_review_to_docx(review, sections, request):
@@ -214,38 +214,70 @@ def export_review_to_docx(review, sections, request):
             p.add_run(str(count))
             
     if 'number_study_selection_status' in sections:
-        document.add_heading(_('Study Selection'), level=2)
+        document.add_heading(_('Study Selection'), level=3)
         result_status = Article.objects.values('status').order_by('status').annotate(count=Count('status'))
+        
         for result in result_status:
             p = document.add_paragraph(style='List Bullet')
             
-            p.add_run(u'{0}: '.format(result['status'])).bold = True
+            label =  dict(Article.ARTICLE_STATUS).get(result['status'])
+            
+            p.add_run(u'{0}: '.format(label)).bold = True
             p.add_run(str(result['count']))
 
     if 'quality_assessment' in sections:
         document.add_heading(_('Quality Assessment'), level=3)
-
+        
+        document.add_heading(_('Question/Answer'), level=4)
+        result_quality_assessment = QualityAssessment.objects.values('question__description','answer__description').order_by().annotate(Count('question'), Count('answer') )
+        
+        table = document.add_table(rows=1, cols=3)
+        hdr_cells = table.rows[0].cells
+        hdr_cells[0].text = _('Question')
+        hdr_cells[1].text = _('Answer')
+        hdr_cells[2].text = _('Count')
+         
+        for result in result_quality_assessment: 
+            row_cells = table.add_row().cells
+            row_cells[0].text = result['question__description']
+            row_cells[1].text = result['answer__description']
+            row_cells[2].text = str(result['answer__count'])
+        
+        document.add_heading(_('Accepted Articles - Summary'), level=4)
+        table_articles = document.add_table(rows=1, cols=2)
+        hdr_cells_articles = table_articles.rows[0].cells
+        hdr_cells_articles[0].text = _('Article')
+        hdr_cells_articles[1].text = _('Score')
+        for article in review.get_accepted_articles():
+            row_cells = table_articles.add_row().cells
+            row_cells[0].text = article.title+'('+article.year+')'
+            row_cells[1].text = str(article.get_score())
+            
+        
     if 'data_extraction' in sections:
         document.add_heading(_('Data Extraction'), level=3)
 
     if 'data_analysis' in sections:
-        document.add_heading(_('Data Analysis'), level=3)
-        conclusions = article_meta_analysis(review, request)
         
-        #document.add_paragraph(mark_safe(conclusions['forest_plot']))
-
-        if(conclusions):
-            table = document.add_table(rows=1, cols=3)
-            hdr_cells = table.rows[0].cells
-            hdr_cells[0].text = _('Article')
-            hdr_cells[1].text = _('Effect Size')
-            hdr_cells[2].text = _('Effect')
-            document.add_heading(str(conclusions)+'ssss')
-            for data in conclusions['conclusions']:
-                row_cells = table.add_row().cells
-                row_cells[0].text = data['article']
-                row_cells[1].text = str(data['effect_size'])
-                row_cells[2].text = data['effect']
-        else:
-            document.add_paragraph(_('Not specified'))
+        document.add_heading(_('Data Analysis'), level=3)
+        try:
+            conclusions = article_meta_analysis(review, request)
+            
+            #document.add_paragraph(mark_safe(conclusions['forest_plot']))
+    
+            if(conclusions):
+                table = document.add_table(rows=1, cols=3)
+                hdr_cells = table.rows[0].cells
+                hdr_cells[0].text = _('Article')
+                hdr_cells[1].text = _('Effect Size')
+                hdr_cells[2].text = _('Effect')
+                for data in conclusions['conclusions']:
+                    row_cells = table.add_row().cells
+                    row_cells[0].text = data['article']
+                    row_cells[1].text = str(data['effect_size'])
+                    row_cells[2].text = data['effect']
+            else:
+                document.add_paragraph(_('Not specified'))
+        except:
+            document.add_paragraph(_('An exception occurred when generate data_analysis report'))
     return document
