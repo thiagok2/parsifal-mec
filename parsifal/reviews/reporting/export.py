@@ -1,9 +1,12 @@
 # coding: utf-8
 
 from docx import Document
+from django.db.models import Count
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 
 from django.utils.translation import ugettext as _
+
+from parsifal.reviews.models import Article
 
 
 def export_review_to_docx(review, sections):
@@ -72,10 +75,14 @@ def export_review_to_docx(review, sections):
                 p = document.add_paragraph('', style='List Bullet')
                 p.add_run(_('Context: ')).bold = True
                 p.add_run(review.context)
-            if review.isPicos():
+            elif review.isPicos():
                 p = document.add_paragraph('', style='List Bullet')
                 p.add_run(_('Study Type: ')).bold = True
                 p.add_run(review.study_type)
+            else:
+                p = document.add_paragraph('', style='List Bullet')
+                p.add_run(_('Custom: ')).bold = True
+                p.add_run(review.pico_text)
             
         
     '''
@@ -164,11 +171,8 @@ def export_review_to_docx(review, sections):
         p.add_run(_('Questions:')).bold = True
         for quality_question in review.get_quality_assessment_questions():
             document.add_paragraph(quality_question.description, style='List Bullet')
-
-        p = document.add_paragraph()
-        p.add_run(_('Answers:')).bold = True
-        for quality_answer in review.get_quality_assessment_answers():
-            document.add_paragraph(quality_answer.description, style='List Bullet')
+            for quality_answer in quality_question.get_answers():
+                 document.add_paragraph(quality_answer.description+"("+str(quality_answer.weight)+")", style='ListBullet2')
 
     '''
         Data Extraction Form
@@ -176,7 +180,7 @@ def export_review_to_docx(review, sections):
     if 'data_extraction_form' in sections:
         document.add_heading(_('Data Extraction Form'), level=3)
         for field in review.get_data_extraction_fields():
-            document.add_paragraph(field.description, style='List Bullet')
+            document.add_paragraph(field.description + '('+field.get_field_type_display()+')', style='List Bullet')
 
     '''
         Conducting
@@ -195,6 +199,8 @@ def export_review_to_docx(review, sections):
             p.add_run(u'{0}:'.format(search_session.source.name)).bold = True
             document.add_paragraph(search_session.search_string)
             document.add_paragraph()
+        else:
+            document.add_paragraph(_('Not specified'))
 
     if 'number_imported_studies' in sections:
         document.add_heading(_('Imported Studies'), level=3)
@@ -203,6 +209,15 @@ def export_review_to_docx(review, sections):
             p.add_run(u'{0}: '.format(source.name)).bold = True
             count = review.article_set.filter(source=source).count()
             p.add_run(str(count))
+            
+    if 'number_study_selection_status' in sections:
+        document.add_heading(_('Study Selection'), level=2)
+        result_status = Article.objects.values('status').order_by('status').annotate(count=Count('status'))
+        for result in result_status:
+            p = document.add_paragraph(style='List Bullet')
+            
+            p.add_run(u'{0}: '.format(result['status'])).bold = True
+            p.add_run(str(result['count']))
 
     if 'quality_assessment' in sections:
         document.add_heading(_('Quality Assessment'), level=3)
