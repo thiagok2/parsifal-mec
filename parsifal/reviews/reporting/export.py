@@ -9,8 +9,8 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH
 from django.utils.translation import ugettext as _
 from parsifal.reviews.conducting.views import article_meta_analysis
 
-from parsifal.reviews.models import Article, QualityAssessment
-
+from parsifal.reviews.models import Article, QualityAssessment, DataExtraction, DataExtractionField
+from django.utils.html import escape
 
 def export_review_to_docx(review, sections, request):
     document = Document()
@@ -256,7 +256,32 @@ def export_review_to_docx(review, sections, request):
         
     if 'data_extraction' in sections:
         document.add_heading(_('Data Extraction'), level=3)
-
+        
+        selected_studies = review.get_final_selection_articles()
+        data_extraction_fields = review.get_data_extraction_fields()
+        
+        table_data_extraction= document.add_table(rows=1, cols=len(data_extraction_fields)+1)
+        hdr_cells_fields = table_data_extraction.rows[0].cells
+        hdr_cells_fields[0].text = _('bibtex_key')
+        i=1
+        for field in data_extraction_fields:
+            hdr_cells_fields[i].text = escape(field.description)
+            i = i + 1
+        for article in selected_studies:
+            row = table_data_extraction.add_row().cells
+            row[0].text = escape(article.bibtex_key)
+            try:
+                i=1
+                for field in data_extraction_fields:
+                    de = DataExtraction.objects.get(article=article, field=field)
+                    if de.field.field_type == DataExtractionField.SELECT_MANY_FIELD:
+                         row[i].text = ', '.join(de._get_select_many_value().values_list('value', flat=True))
+                    else:
+                        row[i].text = str(de.get_value())
+                    i = i + 1
+            except Exception, e:
+                 document.add_paragraph(u'Error: {0}'.format(e.message))
+                
     if 'data_analysis' in sections:
         
         document.add_heading(_('Data Analysis'), level=3)
