@@ -58,7 +58,7 @@ function(studies, efs, labels) {
            hrzl_lines = TRUE, 
            cochrane_meta, new_page = TRUE,
            is.summary=c(FALSE, TRUE, rep(FALSE, final_intervalo), TRUE),
-           clip=c(-0.5,1.2), 
+           clip=c(-1.5,2.5), 
            xlog=FALSE,
 	   col=fpColors(box="royalblue",line="darkblue", summary="royalblue"))
 
