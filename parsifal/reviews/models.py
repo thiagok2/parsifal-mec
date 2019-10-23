@@ -653,7 +653,6 @@ class ArticleEmpiricalData(models.Model):
     max_limit = models.DecimalField(max_digits=12, decimal_places=6, null=True, blank=True)
     std_error = models.DecimalField(max_digits=12, decimal_places=6, null=True, blank=True)
 
-
     class Meta:
         verbose_name = u'Article Empirical Data'
         verbose_name_plural = u'Articles Empirical Data'
