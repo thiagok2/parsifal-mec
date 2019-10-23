@@ -155,13 +155,13 @@ class Review(models.Model):
             if user.id == visitor.id:
                 return True
         return False
-    
+
     def get_users_exclude_authors(self):
         all = User.objects.all()
         users = [user for user in all if not self.is_author_or_coauthor(user)]
-       
+
         return users
-     
+
     def get_generic_search_string(self):
         try:
             search_string = SearchSession.objects.filter(review__id=self.id, source=None)[:1].get()
@@ -633,13 +633,26 @@ class Article(models.Model):
         self.note = document.note
 
 class ArticleEmpiricalData(models.Model):
+    PRIMARY = u'P'
+    EFFECT_SIZE = u'E'
+    DATA_TYPES = (
+        (PRIMARY, _('Primary data')),
+        (EFFECT_SIZE, _('Precalculated Effect Size')),
+    )
+
     article = models.OneToOneField(Article, on_delete=models.CASCADE, primary_key=True)
+    data_type = models.CharField(max_length=100, choices=DATA_TYPES, default=PRIMARY)
     n1 = models.IntegerField(null=True, blank=True)
     dp1 = models.DecimalField(max_digits=4, decimal_places=2, null=True, blank=True)
     a1 = models.DecimalField(max_digits=4, decimal_places=2, null=True, blank=True)
     n2 = models.IntegerField(null=True, blank=True)
     dp2 = models.DecimalField(max_digits=4, decimal_places=2, null=True, blank=True)
     a2 = models.DecimalField(max_digits=4, decimal_places=2, null=True, blank=True)
+    effect_size = models.DecimalField(max_digits=4, decimal_places=2, null=True, blank=True)
+    min_limit = models.DecimalField(max_digits=4, decimal_places=2, null=True, blank=True)
+    max_limit = models.DecimalField(max_digits=4, decimal_places=2, null=True, blank=True)
+    std_error = models.DecimalField(max_digits=4, decimal_places=2, null=True, blank=True)
+
 
     class Meta:
         verbose_name = u'Article Empirical Data'
@@ -771,8 +784,8 @@ class QualityAssessment(models.Model):
 
     def __unicode__(self):
         return str(self.article.id) + ' ' + str(self.question.id)
-    
-    
+
+
 
 class DataExtractionField(models.Model):
     BOOLEAN_FIELD = 'B'

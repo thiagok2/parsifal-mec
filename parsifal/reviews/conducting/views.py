@@ -446,50 +446,103 @@ def build_data_extraction_table(review, is_finished):
                     empirical_values.n2 = empirical_values.n2 if empirical_values.n2 != None else ''
                     empirical_values.dp2 = empirical_values.dp2 if empirical_values.dp2 != None else ''
                     empirical_values.a2 = empirical_values.a2 if empirical_values.a2 != None else ''
+                    empirical_values.effect_size = empirical_values.effect_size if empirical_values.effect_size != None else ''
+                    empirical_values.min_limit = empirical_values.min_limit if empirical_values.min_limit != None else ''
+                    empirical_values.max_limit = empirical_values.max_limit if empirical_values.max_limit != None else ''
+                    empirical_values.std_error = empirical_values.std_error if empirical_values.std_error != None else ''
 
                 str_table += u'''<form class="{1}" name="empirical-values-{0}" id="empirical-values-{0}" method="get" action=".">
                         <div class="form-group">
                             <span class="col-sm-offset-2 help-block error" style="display: none;"></span>
-                            <input type="hidden" name="article-id" id="article-id" value="{0}">
-                            <input type="hidden" name="review-id" id="review-id" value="{2}">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <label class="control-label col-md-2">N¹</label>
-                                    <div class="col-md-2" style="padding-top:7px;">
-                                        <input type="text" class="form-control" value="{3.n1}" name="n1" id="{0}-n1-value" data-empirical data-type="n1"/>
+                                <label class="control-label col-md-2">Data type</label>
+                                    <div class="col-md-3" style="padding-top:7px;">
+                                        <select name="data-type" id="empirical-data-type-{0}" data-empirical class="form-control">'''.format(study.id, hide)
+
+                for data_type in empirical_values.DATA_TYPES:
+                    selected = 'selected' if empirical_values.data_type == data_type[0] else ''
+                    str_table += u'''<option value="{1}" {3}>{2}</option>'''.format(study.id, data_type[0], data_type[1], selected)
+
+                str_table += u'''</select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        '''
+
+                hide_primary = 'hide' if empirical_values.data_type == 'E' else ''
+                hide_effect = 'hide' if empirical_values.data_type == 'P' else ''
+
+                str_table += u'''<div class="form-group">
+                            <input type="hidden" name="article-id" id="article-id" value="{0}">
+                            <input type="hidden" name="review-id" id="review-id" value="{2}">
+                            <div id="primary-data-{0}" class="{4}">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label class="control-label col-md-2">N¹</label>
+                                        <div class="col-md-2" style="padding-top:7px;">
+                                            <input type="text" class="form-control" value="{3.n1}" name="n1" id="{0}-n1-value" data-empirical data-type="n1"/>
+                                        </div>
+                                        <label class="control-label col-md-1">DP¹</label>
+                                        <div class="col-md-2" style="padding-top:7px;">
+                                            <input type="text" class="form-control" value="{3.dp1}" name="dp1" id="{0}-dp1-value" data-empirical data-type="dp1" />
+                                        </div>
+                                        <label class="control-label col-md-1">A¹</label>
+                                        <div class="col-md-2" style="padding-top:7px;">
+                                            <input type="text" class="form-control" value="{3.a1}" name="a1" id="{0}-a1-value" data-empirical data-type="a1"/>
+                                        </div>
                                     </div>
-                                    <label class="control-label col-md-1">DP¹</label>
-                                    <div class="col-md-2" style="padding-top:7px;">
-                                        <input type="text" class="form-control" value="{3.dp1}" name="dp1" id="{0}-dp1-value" data-empirical data-type="dp1" />
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label class="control-label col-md-2">N²</label>
+                                        <div class="col-md-2" style="padding-top:7px;">
+                                            <input type="text" class="form-control" value="{3.n2}" name="n2" id="{0}-n2-value" data-empirical data-type="n2" />
+                                        </div>
+                                        <label class="control-label col-md-1">DP²</label>
+                                        <div class="col-md-2" style="padding-top:7px;">
+                                            <input type="text" class="form-control" value="{3.dp2}" name="dp2" id="{0}-dp2-value" data-empirical data-type="dp2" />
+                                        </div>
+                                        <label class="control-label col-md-1">A²</label>
+                                        <div class="col-md-2" style="padding-top:7px;">
+                                            <input type="text" class="form-control" value="{3.a2}" name="a2" id="{0}-a2-value" data-empirical data-type="a2" />
+                                        </div>
                                     </div>
-                                    <label class="control-label col-md-1">A¹</label>
-                                    <div class="col-md-2" style="padding-top:7px;">
-                                        <input type="text" class="form-control" value="{3.a1}" name="a1" id="{0}-a1-value" data-empirical data-type="a1"/>
+                                    <div class="col-md-12 text-center" style="padding: 15px; color: #444">
+                                        <small>(¹ ⇒ Treatment group | ² ⇒ Control group) | N ⇒ Sample Size | A ⇒ Average</small>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <label class="control-label col-md-2">N²</label>
-                                    <div class="col-md-2" style="padding-top:7px;">
-                                        <input type="text" class="form-control" value="{3.n2}" name="n2" id="{0}-n2-value" data-empirical data-type="n2" />
-                                    </div>
-                                    <label class="control-label col-md-1">DP²</label>
-                                    <div class="col-md-2" style="padding-top:7px;">
-                                        <input type="text" class="form-control" value="{3.dp2}" name="dp2" id="{0}-dp2-value" data-empirical data-type="dp2" />
-                                    </div>
-                                    <label class="control-label col-md-1">A²</label>
-                                    <div class="col-md-2" style="padding-top:7px;">
-                                        <input type="text" class="form-control" value="{3.a2}" name="a2" id="{0}-a2-value" data-empirical data-type="a2" />
+                            <div id="effect-data-{0}" class="{5}">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label class="control-label col-md-2">Effect Size</label>
+                                        <div class="col-md-2" style="padding-top:7px;">
+                                            <input type="text" class="form-control" value="{3.effect_size}" name="effect-size" id="{0}-effect-size-value" data-empirical data-type="effect-size"/>
+                                        </div>
+                                        <label class="control-label col-md-1">Lower Limit</label>
+                                        <div class="col-md-2" style="padding-top:7px;">
+                                            <input type="text" class="form-control" value="{3.min_limit}" name="min-limit" id="{0}-min-limit-value" data-empirical data-type="min-limit" />
+                                        </div>
+                                        <label class="control-label col-md-1">Upper Limit</label>
+                                        <div class="col-md-2" style="padding-top:7px;">
+                                            <input type="text" class="form-control" value="{3.max_limit}" name="max-limit" id="{0}-max-limit-value" data-empirical data-type="max-limit"/>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-12 text-center" style="padding: 15px; color: #444">
-                                    <small>(¹ ⇒ Treatment group | ² ⇒ Control group) | N ⇒ Sample Size | A ⇒ Average</small>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label class="control-label col-md-2">Standard error</label>
+                                        <div class="col-md-2" style="padding-top:7px;padding-bottom: 15px;">
+                                            <input type="text" class="form-control" value="{3.std_error}" name="std-error" id="{0}-std-error-value" data-empirical data-type="std-error"/>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </form>
-                    '''.format(study.id, hide, review.id, empirical_values)
+                    '''.format(study.id, hide, review.id, empirical_values, hide_primary, hide_effect)
 
             if study.finished_data_extraction:
                 str_table += u'<div class="col-sm-offset-2 col-sm-3"><span class=""><a href="javascript:void(0);" class="js-finished-button btn btn-success js-mark-as-not-finished"><span class="action-text">Marcar como não resolvido</span></a></span></div>'
@@ -1071,6 +1124,11 @@ def save_empirical_value_field(request):
         n2 = request.GET['n2']
         dp2 = request.GET['dp2']
         a2 = request.GET['a2']
+        data_type = request.GET['data-type']
+        effect_size = request.GET['effect-size']
+        min_limit = request.GET['min-limit']
+        max_limit = request.GET['max-limit']
+        std_error = request.GET['std-error']
 
         if len(n1) > 3 or len(dp1) > 4 or len(a1) > 4 or len(n2) > 3 or len(dp2) > 4 or len(a2) > 4:
             return HttpResponseBadRequest(_('Empirical value fields do not accept values greater than 3 digits for n (123) and for dp and a (1.23)'))
@@ -1089,6 +1147,17 @@ def save_empirical_value_field(request):
             empirical_values.dp2 = dp2
         if a2:
             empirical_values.a2 = a2
+        if data_type:
+            empirical_values.data_type = data_type
+        if effect_size:
+            empirical_values.effect_size = effect_size
+        if min_limit:
+            empirical_values.min_limit = min_limit
+        if max_limit:
+            empirical_values.max_limit = max_limit
+        if std_error:
+            empirical_values.std_error = std_error
+
         empirical_values.save()
 
         return HttpResponse()
@@ -1248,19 +1317,34 @@ def article_meta_analysis(review, request):
                 values = article.get_empirical_values()
                 if values.count() > 0:
                     data = values[0]
-                    if data.n1 and data.n2 and data.dp1 and data.dp2 and data.a1 and data.a2:
-                        result = cohen_d(data.n1, data.dp1, data.n2, data.dp2, data.a1, data.a2)
-                        dataset.append([str(article.title), result['cohen_d'], result['ci_min'], result['ci_max'], result['std_error']])
-                        conclusions.append(article_conclusion_effect(review, article, result['cohen_d']))
-                        payload['studies'].append({
-                            "name": str(article.title),
-                            "mean": str(result['cohen_d']),
-                            "lower": str(result['ci_min']),
-                            "upper": str(result["ci_max"])
-                        })
+                    if data.data_type == 'P':
+                        if data.n1 and data.n2 and data.dp1 and data.dp2 and data.a1 and data.a2:
+                            result = cohen_d(data.n1, data.dp1, data.n2, data.dp2, data.a1, data.a2)
+                            dataset.append([str(article.title), result['cohen_d'], result['ci_min'], result['ci_max'], result['std_error']])
+                            conclusions.append(article_conclusion_effect(review, article, result['cohen_d']))
+                            payload['studies'].append({
+                                "name": str(article.title),
+                                "mean": str(result['cohen_d']),
+                                "lower": str(result['ci_min']),
+                                "upper": str(result["ci_max"])
+                            })
 
-                    else:
-                        messages.error(request, _('Your article {0} do not have all empirical values. Because of this, the Sumarize Tool can not generate meta analysis forest plot graphic.').format(article.title))
+                        else:
+                            messages.error(request, _('Your article {0} do not have all empirical values. Because of this, the Sumarize Tool can not generate meta analysis forest plot graphic.').format(article.title))
+
+                    elif data.data_type == 'E':
+                        if data.effect_size and data.min_limit and data.max_limit and data.std_error:
+                            dataset.append([str(article.title), float(data.effect_size), float(data.min_limit), float(data.max_limit), float(data.std_error)])
+                            conclusions.append(article_conclusion_effect(review, article, data.effect_size))
+                            payload['studies'].append({
+                                "name": str(article.title),
+                                "mean": str(data.effect_size),
+                                "lower": str(data.min_limit),
+                                "upper": str(data.max_limit)
+                            })
+
+                        else:
+                            messages.error(request, _('Your article {0} do not have all empirical values. Because of this, the Sumarize Tool can not generate meta analysis forest plot graphic.').format(article.title))
 
         payload['efs']['mean'] = str(effect_size_comb(dataset))
         payload['efs']['lower'] = str(cin_efs_lower_limit(dataset))

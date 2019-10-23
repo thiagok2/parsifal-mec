@@ -170,6 +170,10 @@ $(function () {
 	    });
   });
 
+  function change_empirical_data_type(ref) {
+
+  }
+
   function save_empirical_data(ref) {
     var article_id = $(ref).closest(".panel-body").attr("data-article-id");
     var has_empirical_data = $(ref)[0].checked
@@ -204,6 +208,14 @@ $(function () {
     var field_type = ref[0].dataset['type'];
     var value = $(ref).val();
     var row = $(ref).closest(".form-group");
+
+    if (value == 'P') {
+        $('#effect-data-' + article_id).addClass('hide')
+        $('#primary-data-' + article_id).removeClass('hide')
+    } else if (value == 'E') {
+        $('#effect-data-' + article_id).removeClass('hide')
+        $('#primary-data-' + article_id).addClass('hide')
+    }
 
     $.ajax({
         url: '/reviews/conducting/save_empirical_value_field/',
