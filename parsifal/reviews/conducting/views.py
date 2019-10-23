@@ -453,7 +453,7 @@ def build_data_extraction_table(review, is_finished):
 
                 str_table += u'''<form class="{1}" name="empirical-values-{0}" id="empirical-values-{0}" method="get" action=".">
                         <div class="form-group">
-                            <span class="col-sm-offset-2 help-block error" style="display: none;"></span>
+                            <span class="col-sm-offset-2 col-sm-8 error alert alert-danger" style="display: none;"></span>
                             <div class="row">
                                 <div class="col-md-12">
                                 <label class="control-label col-md-2">Data type</label>
@@ -1133,6 +1133,9 @@ def save_empirical_value_field(request):
         if len(n1) > 3 or len(dp1) > 4 or len(a1) > 4 or len(n2) > 3 or len(dp2) > 4 or len(a2) > 4:
             return HttpResponseBadRequest(_('Empirical value fields do not accept values greater than 3 digits for n (123) and for dp and a (1.23)'))
 
+        if len(effect_size) > 4 or len(min_limit) > 4 or len(max_limit) > 4 or len(std_error) > 4:
+            return HttpResponseBadRequest(_('Empirical value fields do not accept values greater than 3 digits for effect size, max limit, min limit and standard error (1.23)'))
+
         article = Article.objects.get(pk=article_id)
         empirical_values, created = ArticleEmpiricalData.objects.get_or_create(article=article)
         if n1:
@@ -1188,6 +1191,7 @@ def save_data_extraction(request):
 @author_required
 @login_required
 def save_data_extraction_status(request):
+    print 'save_data_extraction_status'
     try:
         article_id = request.POST.get('article-id')
         action = request.POST.get('action')
