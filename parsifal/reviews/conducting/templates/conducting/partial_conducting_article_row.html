@@ -3,10 +3,18 @@
 <tr oid="{{article.id}}" article-status="{{article.status}}">
   <td style="text-align: center;" id="actions"><input type="checkbox" id="ck-actions" value="{{article.id}}"></td>
   <td class="table-link">{{article.bibtex_key}}</td>
-  <td class="table-link">{{article.title}}</td>
+  <td class="table-link" style="word-wrap: break-word;max-width: 450px;">{{article.title}}</td>
   <td class="table-link">{{article.journal}}</td>
   <td class="table-link">{{article.year}}</td>
-  <td class="table-link">{{article.abstract}}</td>
+  <td class="table-link" style="word-wrap: break-word;max-width: 600px;">
+  	{% if article.abstract = 'None' %}
+  		
+  	{% elif article.abstract|length <= 500 %}
+  		{{article.abstract }}
+  	{% else %}
+  		{{article.abstract|slice:"0:500"}}...
+  	{% endif %}
+  </td>
   <td class="table-link">{{article.get_status_html|safe}}</td>
   <td width="170px">
     {% include 'conducting/partial_article_evaluation_table_form.html' %}
