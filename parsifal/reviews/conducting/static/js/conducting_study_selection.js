@@ -263,7 +263,6 @@ $(function () {
   }
 
   $("body").on("change", "select[id^='evaluation-status']", function () {
-    evaluation_id = $(this).attr('data-evaluation-id');
     is_rejeitado = $(this).val()
     if (is_rejeitado == 'R') {
         if (!$(this).closest('tr').hasClass("no-data")) {
@@ -279,16 +278,26 @@ $(function () {
         }
         //$('#modal-rejected').modal('show')
     } else {
-        save_article_evaluation(evaluation_id);
+        save_article_evaluation($(this));
     }
 
   });
 
-  function save_article_evaluation(evaluation_id="") {
+  function save_article_evaluation(ref="") {
     var serialize = ''
+    var article_id = ""
+    var evaluation_id = ""
+    if (ref !== "") {
+        article_id = $(ref).closest('tr').attr('oid')
+        evaluation_id = $(ref).attr('data-evaluation-id');
+    } else {
+        article_id = $("#modal-article #article-id").val();
+    }
+
+    console.log('article id ', article_id)
 
     if (evaluation_id !== '') {
-        serialize = $("#article-evaluation-" + evaluation_id).serialize()
+        serialize = $("#article-evaluation-" + article_id + "-" + evaluation_id).serialize()
     } else {
         serialize = $("#article-evaluation").serialize()
     }
@@ -300,7 +309,11 @@ $(function () {
         beforeSend: function () {
             $(".btn-save-article").prop("disabled", true);
         },
-        success: function (data) {},
+        success: function (data) {
+            console.log(data)
+            $(".source-articles table tbody tr[oid=" + article_id + "]").replaceWith(data);
+            $(".source-articles table tbody tr[oid=" + article_id + "]").addClass("active");
+        },
         error: function () {},
         complete: function () {
             $(".btn-save-article").prop("disabled", false);

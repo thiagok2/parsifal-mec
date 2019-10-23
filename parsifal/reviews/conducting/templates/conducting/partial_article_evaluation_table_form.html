@@ -1,7 +1,7 @@
 {% load i18n humanize get_user_article_evaluation %}
 
 {% get_user_article_evaluation article user.id as article_evaluation %}
-<form name="article-evaluation" id="article-evaluation-{{article_evaluation.0.id|default:"None"}}" method="post" action=".">
+<form name="article-evaluation" id="article-evaluation-{{article.id}}-{{article_evaluation.0.id|default:"None"}}" method="post" action=".">
   {% csrf_token %}
   <input type="hidden" name="article-id" id="article-id" value="{{ article.id }}">
   <input type="hidden" name="review-id" id="review-id" value="{{ article.review.id }}">
