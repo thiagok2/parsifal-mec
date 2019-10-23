@@ -951,15 +951,15 @@ def save_article_evaluation(request):
 
             article_evaluation.save()
 
-            edit_article_status(review_id, article_id)
+            return edit_article_status(request, review_id, article_id)
 
-            return HttpResponse()
+            #return HttpResponse(build_article_table_row(request, article, request.user))
         except Exception as e:
             return HttpResponseBadRequest()
     else:
         return HttpResponseBadRequest()
 
-def edit_article_status(review_id, article_id):
+def edit_article_status(request, review_id, article_id):
     try:
         review = Review.objects.get(pk=review_id)
         article_evaluations = ArticleEvaluation.objects.filter(review__id=review_id, article__id=article_id)
@@ -982,14 +982,14 @@ def edit_article_status(review_id, article_id):
                         if evaluation.status != previous_status:
                             article.status = 'C'
                             article.save()
-                            return HttpResponse()
+                            return HttpResponse(build_article_table_row(request, article, request.user))
                         else:
                             previous_status = evaluation.status
                             article.status = evaluation.status
 
             article.save()
 
-        return HttpResponse()
+        return HttpResponse(build_article_table_row(request, article, request.user))
     except Exception as e:
         print e
         return HttpResponseBadRequest()
