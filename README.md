@@ -12,6 +12,8 @@ The source code is released under the [MIT License](https://github.com/vitorfs/p
 
 # Install
 
+pip install -r requirements.txt
+
 ## Dev local
 #criar ambientes virtuais para instalar python antigo e novo na mesma máquina
 https://help.dreamhost.com/hc/en-us/articles/215489338-Installing-and-using-virtualenv-with-Python-2
