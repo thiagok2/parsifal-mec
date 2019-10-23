@@ -1357,10 +1357,10 @@ def article_meta_analysis(review, request):
         print 'payload ', json.dumps(payload)
 
         headers = {'Content-Type': 'application/json'}
-        #forest = requests.post(config('FOREST_PLOT_URL'), data=json.dumps(payload), headers=headers)
+        forest = requests.post(config('FOREST_PLOT_URL'), data=json.dumps(payload), headers=headers)
 
         analysis['dataset'] = dataset
-        #analysis['forest_plot'] = forest._content
+        analysis['forest_plot'] = forest._content
         analysis['conclusions'] = conclusions
         return analysis
 
