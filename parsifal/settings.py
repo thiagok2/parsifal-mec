@@ -23,7 +23,7 @@ DATABASES = {
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 ADMINS = (
-    ('Vitor Freitas', 'vitorfs@gmail.com'),
+    ('Ivo Calado', 'ivo.calado@ifal.edu.br'),
 )
 
 MANAGERS = ADMINS
