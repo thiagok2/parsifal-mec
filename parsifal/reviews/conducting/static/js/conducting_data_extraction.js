@@ -69,7 +69,7 @@ $(function () {
           var action_button = $(".js-finished-button", panel);
           $(".glyphicon", action_button).removeClass().addClass("glyphicon glyphicon-check");
           $(".action-text", action_button).text("Marcar como não resolvido");
-          $(action_button).removeClass().addClass("js-finished-button js-mark-as-not-finished");
+          $(action_button).removeClass().addClass("btn btn-success js-finished-button js-mark-as-not-finished");
         }
         else {
           $(panel).fadeOut(200);
@@ -96,7 +96,7 @@ $(function () {
           var action_button = $(".js-finished-button", panel);
           $(".glyphicon", action_button).removeClass().addClass("glyphicon glyphicon-unchecked");
           $(".action-text", action_button).text("Marcar como resolvido");
-          $(action_button).removeClass().addClass("js-finished-button js-mark-as-finished");
+          $(action_button).removeClass().addClass("btn btn-success js-finished-button js-mark-as-finished");
         }
         else {
           $(panel).fadeOut(200);
@@ -194,12 +194,15 @@ $(function () {
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log(errorThrown)
+            $.parsifal.alert('Tivemos problemas',jqXHR.responseText);
         }
     });
   }
 
   function save_empirical_value_fields(ref) {
-    var article_id = $(ref).closest(".panel-body").attr("data-article-id");
+	console.log('save_empirical_value_fields');
+    
+	var article_id = $(ref).closest(".panel-body").attr("data-article-id");
     var review_id = $("#review-id").val();
     var field_type = ref[0].dataset['type'];
     var value = $(ref).val();
@@ -221,7 +224,10 @@ $(function () {
             $("span.error", row).text(jqXHR.responseText);
             $("span.error", row).show();
             //$(row).addClass("has-error");
-            console.log(errorThrown)
+            console.log('errorThrown:'+errorThrown);
+            console.log('textStatus:'+textStatus);
+            console.log('jqXHR:'+jqXHR.responseText);
+            $.parsifal.alert('Tivemos problemas',jqXHR.responseText);
         }
     });
 

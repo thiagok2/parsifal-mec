@@ -449,7 +449,7 @@ def build_data_extraction_table(review, is_finished):
 
                 str_table += u'''<form class="{1}" name="empirical-values-{0}" id="empirical-values-{0}" method="get" action=".">
                         <div class="form-group">
-                            <span class="col-sm-offset-2 help-block error" style="display: none;"></span>
+                            <span class="col-sm-offset-2 col-sm-8 error alert alert-danger" style="display: none;"></span>
                             <input type="hidden" name="article-id" id="article-id" value="{0}">
                             <input type="hidden" name="review-id" id="review-id" value="{2}">
                             <div class="row">
@@ -1063,6 +1063,8 @@ def multiple_articles_action_duplicated(request):
 @login_required
 def save_empirical_value_field(request):
     try:
+        print 'save_empirical_value_field'
+        
         review_id = request.GET['review-id']
         article_id = request.GET['article-id']
         n1 = request.GET['n1']
@@ -1119,6 +1121,7 @@ def save_data_extraction(request):
 @author_required
 @login_required
 def save_data_extraction_status(request):
+    print 'save_data_extraction_status'
     try:
         article_id = request.POST.get('article-id')
         action = request.POST.get('action')
