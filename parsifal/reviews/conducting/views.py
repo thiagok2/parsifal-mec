@@ -1130,11 +1130,11 @@ def save_empirical_value_field(request):
         max_limit = request.GET['max-limit']
         std_error = request.GET['std-error']
 
-        if len(n1) > 3 or len(dp1) > 4 or len(a1) > 4 or len(n2) > 3 or len(dp2) > 4 or len(a2) > 4:
-            return HttpResponseBadRequest(_('Empirical value fields do not accept values greater than 3 digits for n (123) and for dp and a (1.23)'))
+        if len(dp1) > 12 or len(a1) > 12 or len(dp2) > 12 or len(a2) > 12:
+            return HttpResponseBadRequest(_('Empirical value fields do not accept values greater than 12 digits for dp and a.'))
 
-        if len(effect_size) > 4 or len(min_limit) > 4 or len(max_limit) > 4 or len(std_error) > 4:
-            return HttpResponseBadRequest(_('Empirical value fields do not accept values greater than 3 digits for effect size, max limit, min limit and standard error (1.23)'))
+        if len(effect_size) > 12 or len(min_limit) > 12 or len(max_limit) > 12 or len(std_error) > 12:
+            return HttpResponseBadRequest(_('Empirical value fields do not accept values greater than 12 digits for effect size, max limit, min limit and standard error.'))
 
         article = Article.objects.get(pk=article_id)
         empirical_values, created = ArticleEmpiricalData.objects.get_or_create(article=article)
@@ -1317,7 +1317,7 @@ def article_meta_analysis(review, request):
         }
 
         for article in articles:
-            if article.has_empirical_data:
+            if article.has_empirical_data and article.finished_data_extraction:
                 values = article.get_empirical_values()
                 if values.count() > 0:
                     data = values[0]
