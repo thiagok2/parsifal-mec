@@ -643,15 +643,15 @@ class ArticleEmpiricalData(models.Model):
     article = models.OneToOneField(Article, on_delete=models.CASCADE, primary_key=True)
     data_type = models.CharField(max_length=100, choices=DATA_TYPES, default=PRIMARY)
     n1 = models.IntegerField(null=True, blank=True)
-    dp1 = models.DecimalField(max_digits=4, decimal_places=2, null=True, blank=True)
-    a1 = models.DecimalField(max_digits=4, decimal_places=2, null=True, blank=True)
+    dp1 = models.DecimalField(max_digits=12, decimal_places=6, null=True, blank=True)
+    a1 = models.DecimalField(max_digits=12, decimal_places=6, null=True, blank=True)
     n2 = models.IntegerField(null=True, blank=True)
-    dp2 = models.DecimalField(max_digits=4, decimal_places=2, null=True, blank=True)
-    a2 = models.DecimalField(max_digits=4, decimal_places=2, null=True, blank=True)
-    effect_size = models.DecimalField(max_digits=4, decimal_places=2, null=True, blank=True)
-    min_limit = models.DecimalField(max_digits=4, decimal_places=2, null=True, blank=True)
-    max_limit = models.DecimalField(max_digits=4, decimal_places=2, null=True, blank=True)
-    std_error = models.DecimalField(max_digits=4, decimal_places=2, null=True, blank=True)
+    dp2 = models.DecimalField(max_digits=12, decimal_places=6, null=True, blank=True)
+    a2 = models.DecimalField(max_digits=12, decimal_places=6, null=True, blank=True)
+    effect_size = models.DecimalField(max_digits=12, decimal_places=6, null=True, blank=True)
+    min_limit = models.DecimalField(max_digits=12, decimal_places=6, null=True, blank=True)
+    max_limit = models.DecimalField(max_digits=12, decimal_places=6, null=True, blank=True)
+    std_error = models.DecimalField(max_digits=12, decimal_places=6, null=True, blank=True)
 
 
     class Meta:
