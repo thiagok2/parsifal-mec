@@ -22,7 +22,7 @@ function(studies, efs, labels) {
   
   for(mean in means) {
     mn <- c(mn, as.numeric(mean))
-    mn_names <- c(mn_names, mean)
+    mn_names <- c(mn_names, toString(round(as.numeric(mean), digits=2)))
   }  
 
   for(lower in lowers)
@@ -36,7 +36,7 @@ function(studies, efs, labels) {
   up <- c(up, NA, as.numeric(efs$upper))
 
   st_names <- c(st_names, NA, labels$summary_label)
-  mn_names <- c(mn_names, NA, efs$mean)
+  mn_names <- c(mn_names, NA, toString(round(as.numeric(efs$mean), digits=2)))
 
   final_intervalo <- length(up) - 3
 
