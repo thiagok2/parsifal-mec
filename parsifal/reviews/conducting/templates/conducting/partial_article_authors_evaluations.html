@@ -1,0 +1,39 @@
+{% load i18n humanize %}
+
+<div class="row">
+  <div class="col-md-12">
+    <p>{% trans 'The review authors have made the following evaluations. Since you are the reviewer, you can see them.' %}</p>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>{% trans 'Author' %}</th>
+          <th>{% trans 'Status' %}</th>
+          <th>{% trans 'Criteria' %}</th>
+          <th>{% trans 'Comments' %}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for evaluation in article.get_evaluations %}
+          <tr>
+            <th>{{evaluation.user.username}}</th>
+            <td>{{evaluation.get_status_html|safe}}</td>
+            <td style="min-width: 150px">{{evaluation.selection_criteria}}</td>
+            <td>{{evaluation.comments}}</td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td class="text-center">{% trans 'There is not evaluations yet' %}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% if article.evaluation_finished %}
+  <div class="row">
+    <div class="col-sm-12">
+      <p>{% trans 'This article evaluation was finished by you, because you solved a conflict and set status as:' %}</p>
+      {{article.get_status_html|safe}}
+    </div>
+  </div>
+{% endif %}

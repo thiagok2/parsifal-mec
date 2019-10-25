@@ -660,3 +660,8 @@ table#tbl-conclusion-models>tbody>tr>td,
 table#tbl-conclusion-models>tfoot>tr>td {
     border-width: 2px;
 }
+
+.analysis svg, .analysis rect {
+ width: 100% !important;
+ height: 700px;
+}
