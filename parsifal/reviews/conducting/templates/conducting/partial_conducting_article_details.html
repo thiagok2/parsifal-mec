@@ -28,6 +28,11 @@
       <li role="presentation" id="tab-list-files">
         <a id="files-tab" href="#tab-files" aria-controls="tab-files" role="tab" data-toggle="tab" aria-selected="false">{% trans 'Files' %}</a>
       </li>
+      {% if review.selection_reviewer.id == user.id %}
+        <li role="presentation" id="tab-list-evaluations">
+          <a id="evaluations-tab" href="#tab-evaluations" aria-controls="tab-evaluations" role="tab" data-toggle="tab" aria-selected="false">{% trans 'Authors Evaluations' %}</a>
+        </li>
+      {% endif %}
       {% if review.selection_reviewer.id == user.id and article.status == 'C' %}
         <li role="presentation" id="tab-list-conflict">
           <a id="conflict-tab" href="#tab-conflict" aria-controls="tab-conflict" role="tab" data-toggle="tab" aria-selected="false" style="color: red;">{% trans 'Conflict' %}</a>
@@ -145,6 +150,11 @@
               {% include 'conducting/partial_article_conflict.html' with article=article review=review %}
             </div>
           </form>
+        </div>
+      {% endif %}
+      {% if review.selection_reviewer.id == user.id %}
+        <div role="tabpanel" class="tab-pane" id="tab-evaluations" aria-labelledby="evaluations-tab">
+          {% include 'conducting/partial_article_authors_evaluations.html' with article=article review=review %}
         </div>
       {% endif %}
     </div>
