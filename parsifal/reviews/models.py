@@ -695,6 +695,7 @@ class ArticleEvaluation(models.Model):
         verbose_name = u'ArticleEvaluation'
         verbose_name_plural = u'ArticleEvaluations'
         ordering = ('status',)
+        unique_together = (("review", "article", "user"),)
 
     def __unicode__(self):
         return self.status
