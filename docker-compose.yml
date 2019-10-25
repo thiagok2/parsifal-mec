@@ -3,7 +3,7 @@ version: '3'
 
 services:
   db:
-    image: postgres:10.1-alpine
+    build: ./docker-config/postgres
     networks:
       - webnet
     volumes:
