@@ -66,7 +66,7 @@ $(function () {
         $("#tab-files").html(data);
       },
       error: function (jqXHR, textStatus, errorThrown) {
-    	  $.parsifal.alert("Tivemos problemas","Não conseguir concluir a operação");
+    	  $.parsifal.alert("Tivemos problemas","Não conseguimos concluir a operação");
     	  console.log(textStatus, errorThrown);
       },
       complete: function () {
@@ -318,8 +318,8 @@ $(function () {
             $(".source-articles table tbody tr[oid=" + article_id + "]").addClass("active");
         },
         error: function (jqXHR, textStatus, errorThrown) {
-        	 $.parsifal.alert("Tivemos problemas","Não conseguir concluir a operação.");
-        	 console.log(textStatus, errorThrown);
+        	 $.parsifal.alert("Tivemos problemas","Não conseguimos concluir a operação.");
+        	 console.log(textStatus, errorThrown + ': ' + jqXHR.responseText);
         },
         complete: function () {
             $(".btn-save-article").prop("disabled", false);
@@ -338,7 +338,7 @@ $(function () {
         },
         success: function (data) {},
         error: function (jqXHR, textStatus, errorThrown) {
-        	//$.parsifal.alert("Tivemos problemas","Não conseguir concluir a operação.");
+        	//$.parsifal.alert("Tivemos problemas","Não conseguimos concluir a operação.");
        	 	console.log(textStatus, errorThrown);
         },
         complete: function () {
@@ -443,7 +443,7 @@ $(function () {
         }
       },
       error: function (jqXHR, textStatus, errorThrown) {
-     	 $.parsifal.alert("Tivemos problemas","Não conseguir concluir a operação.");
+     	 $.parsifal.alert("Tivemos problemas","Não conseguimos concluir a operação.");
      	 console.log(textStatus, errorThrown);
       },
       complete: function () {
