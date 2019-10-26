@@ -39,6 +39,7 @@ from parsifal.utils.meta_analysis import cohen_d, effect_size_comb,\
 import requests
 from decouple import config
 from django.template.defaultfilters import nan
+from datetime import datetime
 
 @author_or_visitor_required
 @login_required
@@ -936,8 +937,12 @@ def save_article_evaluation(request):
                 review = Review.objects.get(pk=review_id)
                 article = Article.objects.get(pk=article_id)
                 article_evaluation = ArticleEvaluation(review=review, article=article, user=request.user)
-
-            article_evaluation.comments = ''
+            
+            if 'comments' in request.POST:    
+                article_evaluation.comments = request.POST['comments']
+            else:
+                article_evaluation.comments = 'Avaliado em ' +datetime.today().strftime('%Y-%m-%d-%H:%M:%S') 
+                
             status = request.POST['status'][:1]
             if status in (ArticleEvaluation.UNCLASSIFIED, ArticleEvaluation.REJECTED, ArticleEvaluation.ACCEPTED, ArticleEvaluation.DUPLICATED):
                 article_evaluation.status = status
