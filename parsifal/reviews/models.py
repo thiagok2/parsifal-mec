@@ -690,6 +690,8 @@ class ArticleEvaluation(models.Model):
     selection_criteria = models.ForeignKey(SelectionCriteria, null=True, blank=True, on_delete=models.SET_NULL)
     status = models.CharField(max_length=1, choices=ARTICLE_STATUS, default=UNCLASSIFIED)
     comments = models.TextField(max_length=2000, null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    updated_at = models.DateTimeField(auto_now=True, blank=True, null=True)
 
     class Meta:
         verbose_name = u'ArticleEvaluation'
