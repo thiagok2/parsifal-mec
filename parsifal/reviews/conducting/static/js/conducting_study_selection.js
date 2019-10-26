@@ -160,11 +160,18 @@ $(function () {
 
   $(".source-tab-content").on("click", "tbody .table-link", function () {
     if (!$(this).closest('tr').hasClass("no-data")) {
-      $(".source-articles tbody tr").removeClass("active");
-      $(this).closest('tr').addClass("active");
-      $("#modal-article .modal-body").css("height", $(window).height() * 0.7);
-      $("#modal-article .modal-body").loadActiveArticle();
-      $("#modal-article").modal('show');
+        $(".source-articles tbody tr").removeClass("active");
+        $(this).closest('tr').addClass("active");
+        $("#modal-article .modal-body").css("height", $(window).height() * 0.7);
+        $("#modal-article .modal-body").loadActiveArticle();
+        var status = $(".source-articles tbody tr.active select[id^='evaluation-status']").val();
+        $("#modal-article").modal('show');
+        //console.log($(this).closest('td.evaluation'))
+        $("#modal-article").on('shown.bs.modal', function(e) {
+            console.log(status)
+            $('#modal-article #status').val(status)
+            $('#modal-article a[href="#tab-details"]').tab('show')
+        })
     }
   });
 
