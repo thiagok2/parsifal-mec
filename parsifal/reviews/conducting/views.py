@@ -39,7 +39,7 @@ from parsifal.utils.meta_analysis import cohen_d, effect_size_comb,\
 import requests
 from decouple import config
 from django.template.defaultfilters import nan
-from datetime import datetime
+from datetime import datetime, date
 
 @author_or_visitor_required
 @login_required
@@ -1011,6 +1011,7 @@ def article_solve_conflict(request):
         if status in (Article.UNCLASSIFIED, Article.WAITING, Article.REJECTED, Article.CONFLICT, Article.ACCEPTED, Article.DUPLICATED):
             article.status = status
             article.evaluation_finished = True
+            article.evaluation_finished_at = datetime.now()
 
             article.save()
 
