@@ -972,7 +972,7 @@ def edit_article_status(request, review_id, article_id):
                 article.status = 'U'
             elif article_evaluations.count() == 1 and review.co_authors.count() == 0:
                 article.status = article_evaluations[0].status
-            elif article_evaluations.count() == 1:
+            elif article_evaluations.count() == 1 and review.co_authors.count() > 0:
                 article.status = 'W'
             else:
                 for evaluation in article_evaluations:
