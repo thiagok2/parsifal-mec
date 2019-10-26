@@ -166,9 +166,7 @@ $(function () {
         $("#modal-article .modal-body").loadActiveArticle();
         var status = $(".source-articles tbody tr.active select[id^='evaluation-status']").val();
         $("#modal-article").modal('show');
-        //console.log($(this).closest('td.evaluation'))
         $("#modal-article").on('shown.bs.modal', function(e) {
-            console.log(status)
             $('#modal-article #status').val(status)
             $('#modal-article a[href="#tab-details"]').tab('show')
         })
@@ -283,7 +281,6 @@ $(function () {
                 $('#modal-article a[href="#tab-evaluation"]').tab('show')
             })
         }
-        //$('#modal-rejected').modal('show')
     } else {
         save_article_evaluation($(this));
     }
@@ -301,8 +298,6 @@ $(function () {
         article_id = $("#modal-article #article-id").val();
     }
 
-    console.log('article id ', article_id)
-
     if (evaluation_id !== '') {
         serialize = $("#article-evaluation-" + article_id + "-" + evaluation_id).serialize()
     } else {
@@ -317,7 +312,6 @@ $(function () {
             $(".btn-save-article").prop("disabled", true);
         },
         success: function (data) {
-            console.log(data)
             $(".source-articles table tbody tr[oid=" + article_id + "]").replaceWith(data);
             $(".source-articles table tbody tr[oid=" + article_id + "]").addClass("active");
         },
