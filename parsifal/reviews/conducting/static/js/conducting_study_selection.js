@@ -34,7 +34,7 @@ $(function () {
 
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            console.log(errorThrown)
+        	console.log(textStatus, errorThrown);
         },
         complete: function () {
             $(btn).ajaxEnable();
@@ -65,8 +65,9 @@ $(function () {
       success: function (data) {
         $("#tab-files").html(data);
       },
-      error: function () {
-
+      error: function (jqXHR, textStatus, errorThrown) {
+    	  $.parsifal.alert("Tivemos problemas","Não conseguir concluir a operação");
+    	  console.log(textStatus, errorThrown);
       },
       complete: function () {
         $.parsifal.pageLoading();
@@ -254,10 +255,11 @@ $(function () {
           $("#modal-article .alert").removeClass("hide");
         }
       },
-      error: function () {
+      error: function (jqXHR, textStatus, errorThrown) {
           $("#modal-article .alert .modal-alert").text("Algo deu errado! Isso é tudo que sabemos :(");
           $("#modal-article .alert").removeClass("alert-success").addClass("alert-error");
           $("#modal-article .alert").removeClass("hide");
+          console.log(textStatus, errorThrown);
       },
       complete: function () {
         $(".btn-save-article").prop("disabled", false);
@@ -315,7 +317,10 @@ $(function () {
             $(".source-articles table tbody tr[oid=" + article_id + "]").replaceWith(data);
             $(".source-articles table tbody tr[oid=" + article_id + "]").addClass("active");
         },
-        error: function () {},
+        error: function (jqXHR, textStatus, errorThrown) {
+        	 $.parsifal.alert("Tivemos problemas","Não conseguir concluir a operação.");
+        	 console.log(textStatus, errorThrown);
+        },
         complete: function () {
             $(".btn-save-article").prop("disabled", false);
         }
@@ -332,7 +337,10 @@ $(function () {
             $(".btn-save-article").prop("disabled", true);
         },
         success: function (data) {},
-        error: function () {},
+        error: function (jqXHR, textStatus, errorThrown) {
+        	//$.parsifal.alert("Tivemos problemas","Não conseguir concluir a operação.");
+       	 	console.log(textStatus, errorThrown);
+        },
         complete: function () {
             $(".btn-save-article").prop("disabled", false);
         }
@@ -434,8 +442,9 @@ $(function () {
             break;
         }
       },
-      error: function () {
-
+      error: function (jqXHR, textStatus, errorThrown) {
+     	 $.parsifal.alert("Tivemos problemas","Não conseguir concluir a operação.");
+     	 console.log(textStatus, errorThrown);
       },
       complete: function () {
         $(".go-button").prop("disabled", false);
@@ -558,6 +567,7 @@ $(function () {
       error: function () {
         $(btn).prop("disabled", false);
         $(btn).text("Resolve");
+        console.log(textStatus, errorThrown);
       }
     });
   });
