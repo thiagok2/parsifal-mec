@@ -564,6 +564,7 @@ class Article(models.Model):
     created_by = models.ForeignKey(User, null=True, blank=True, related_name='articles_created', on_delete=models.SET_NULL)
     updated_by = models.ForeignKey(User, null=True, blank=True, related_name='articles_updated', on_delete=models.SET_NULL)
     evaluation_finished = models.BooleanField(default=False)
+    evaluation_finished_at = models.DateTimeField(blank=True, null=True)
     has_empirical_data = models.BooleanField(default=False)
 
     class Meta:
