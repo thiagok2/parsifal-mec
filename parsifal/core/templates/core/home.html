@@ -3,6 +3,30 @@
 
 {% load humanize %}
 
+{% block javascript %}
+  
+	<script>
+	    $(function () {
+	      
+	    	$(".open-modal-remove-access").click(function () {
+	    		var user_id = $(this).attr("data-user-id");
+	    		var review_id = $(this).attr("data-review-id");
+	    		
+	    		$("#user-visitor-id").val(user_id);
+	    		$("#review-visitor-id").val(review_id);
+
+	    	});
+	    	
+	    	$(".remove-access").click(function () {
+
+
+	    	});
+	    });
+	</script>
+  
+{% endblock %}
+
+
 {% block content %}
   <div class="row">
 
@@ -116,8 +140,9 @@
 	            
 	            
 	            <span class="pull-right">
-	        		<button class="btn btn-xs btn-warning"  data-toggle="modal" data-target="#remove-visitor-modal" data-review-id="{{ review.id }}" data-visitor-id="{{user.id}}">
-	         	 		<span class="glyphicon glyphicon-trash"></span>
+	        		<button class="btn btn-xs btn-warning open-modal-remove-access" title="{% trans '(leave)' %}"  
+	        			data-toggle="modal" data-target="#remove-visitor-modal" data-review-id="{{ review.id }}" data-user-id="{{user.id}}">
+	         	 		<span class="glyphicon glyphicon-log-out"></span>
 	        		</button>
 	      		</span>
       		</div>
@@ -145,31 +170,37 @@
 
 
 
-	<div class="modal fade" id="add-visitor-modal">
+	<div class="modal fade" id="remove-visitor-modal">
 		<div class="modal-dialog">
-			<form method="post" action="">
+			<form method="post" action="{% url 'leave_review' %}">
 				{% csrf_token %} 
-				<input type="hidden" name="review-id">
+				<input type="hidden" name="review-visitor-id" id="review-visitor-id">
+				<input type="hidden" name="user-visitor-id" id="user-visitor-id">
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
-						<h4 class="modal-title">{% trans 'Remover access' %}</h4>
+						<h4 class="modal-title">{% trans 'Leave review' %}</h4>
 					</div>
 					<div class="modal-body">
 						<div class="alert alert-success">{% trans "You may no longer have access to this review. Attention! After leaving only the author can re-add it to review." %}</div>
 						
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">{%
-							trans 'Cancel' %}</button>
-						<button type="submit" class="btn btn-success">{% trans
-							'Send invitation' %}</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">
+							{% trans 'Cancel' %}
+						</button>
+						<button type="submit" class="btn btn-success">
+							{% trans 'Confirm' %}
+						</button>
 					</div>
 				</div>
 			</form>
 		</div>
 	</div>
 </div>
+
 {% endblock content %}
+
+
