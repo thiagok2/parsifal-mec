@@ -12,6 +12,9 @@ admin.autodiscover()
 urlpatterns = patterns('parsifal',
     url(r'^i18n/', include('django.conf.urls.i18n'), name='set_language'),
     url(r'^$', 'core.views.home', name='home'),
+    
+    url(r'^leave_review/$', 'core.views.leave_review', name='leave_review'),
+    
     url(r'^about/$', TemplateView.as_view(template_name='core/about.html'), name='about'),
     url(r'^signup/$', 'authentication.views.signup', name='signup'),
     url(r'^signin/$', 'authentication.views.signin', name='signin'),
@@ -23,7 +26,7 @@ urlpatterns = patterns('parsifal',
     url(r'^activity/', include('parsifal.activities.urls', namespace='activities')),
     url(r'^blog/', include('parsifal.blog.urls', namespace='blog')),
     url(r'^help/', include('parsifal.help.urls', namespace='help')),
-
+    
     #url(r'^library/', include('parsifal.library.urls', namespace='library')),
     url(r'^settings/', include('parsifal.account_settings.urls', namespace='settings')),
     url(r'^review_settings/transfer/$', 'reviews.settings.views.transfer', name='transfer_review'),
