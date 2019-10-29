@@ -1025,7 +1025,7 @@ def add_suggested_answer(request):
                     remover
                 </button>
             </div>
-            </div></li>'''.format(quality_answer.id, quality_answer.description.encode('ascii', 'replace'), quality_answer.weight, quality_question.id)
+            </div></li>'''.format(quality_answer.id, quality_answer.description.encode('ascii', 'replace').replace('?','&atilde;'), quality_answer.weight, quality_question.id)
         return HttpResponse(html_answers)
         #else:
         #    return HttpResponseBadRequest()
