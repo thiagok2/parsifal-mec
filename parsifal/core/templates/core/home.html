@@ -111,7 +111,16 @@
         </div>
         <div class="list-group">
           {% for review in invited_reviews %}
-            <a href="/{{ review.author.username }}/{{ review.name }}/" class="list-group-item">{{ review.title }}</a>
+          	<div class="list-group-item clearfix">
+	            <a href="/{{ review.author.username }}/{{ review.name }}/" >{{ review.title }}</a>
+	            
+	            
+	            <span class="pull-right">
+	        		<button class="btn btn-xs btn-warning"  data-toggle="modal" data-target="#remove-visitor-modal" data-review-id="{{ review.id }}" data-visitor-id="{{user.id}}">
+	         	 		<span class="glyphicon glyphicon-trash"></span>
+	        		</button>
+	      		</span>
+      		</div>
           {% empty %}
             <p class="list-group-item">{% trans "You don't have any systematic literature review yet." %}</p>
           {% endfor %}
@@ -133,5 +142,34 @@
       </div>
       {% endcomment %}
     </div>
-  </div>
+
+
+
+	<div class="modal fade" id="add-visitor-modal">
+		<div class="modal-dialog">
+			<form method="post" action="">
+				{% csrf_token %} 
+				<input type="hidden" name="review-id">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title">{% trans 'Remover access' %}</h4>
+					</div>
+					<div class="modal-body">
+						<div class="alert alert-success">{% trans "You may no longer have access to this review. Attention! After leaving only the author can re-add it to review." %}</div>
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">{%
+							trans 'Cancel' %}</button>
+						<button type="submit" class="btn btn-success">{% trans
+							'Send invitation' %}</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
 {% endblock content %}
