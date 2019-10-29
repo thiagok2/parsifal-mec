@@ -883,7 +883,8 @@ def save_article_details(request):
             return HttpResponse(build_article_table_row(request, article, request.user))
         except Exception as e:
             print e
-            return HttpResponseBadRequest()
+            messages.error(request, _('An expected error occurred.') + str(e))
+            return HttpResponseBadRequest(str(e))
     else:
         return HttpResponseBadRequest()
 
@@ -916,9 +917,10 @@ def save_article_details_confirm(request):
             return HttpResponse(build_article_table_row(request, article, request.user))
         except Exception as e:
             print e
-            return HttpResponseBadRequest()
+            messages.error(request, _('An expected error occurred.') + str(e))
+            return HttpResponseBadRequest(str(e))
     else:
-        return HttpResponseBadRequest()
+        return HttpResponseBadRequest(_('HTTP POST method was expected'))
 
 @author_required
 @login_required
@@ -960,7 +962,9 @@ def save_article_evaluation(request):
 
             #return HttpResponse(build_article_table_row(request, article, request.user))
         except Exception as e:
-            return HttpResponseBadRequest()
+            print e
+            messages.error(request, _('An expected error occurred.') + str(e))
+            return HttpResponseBadRequest(str(e))
     else:
         return HttpResponseBadRequest()
 
@@ -1016,8 +1020,10 @@ def article_solve_conflict(request):
             article.save()
 
         return HttpResponse()
-    except:
-        return HttpResponseBadRequest()
+    except Exception as e:
+        print e
+        messages.error(request, _('An expected error occurred.') + str(e))
+        return HttpResponseBadRequest(str(e))
 
 @author_required
 @login_required
@@ -1036,9 +1042,10 @@ def save_quality_assessment(request):
         quality_assessment.save()
 
         return HttpResponse(article.get_score())
-    except:
-        return HttpResponseBadRequest()
-
+    except Exception as e:
+        print e
+        messages.error(request, _('An expected error occurred.') + str(e))
+        return HttpResponseBadRequest(str(e))
 
 @author_or_visitor_required
 @login_required
@@ -1050,8 +1057,10 @@ def quality_assessment_detailed(request):
         quality_assessment_table = build_quality_assessment_table(request, review, order)
         context = RequestContext(request, {'review': review, 'quality_assessment_table': quality_assessment_table, 'order': order})
         return render_to_response('conducting/partial_conducting_quality_assessment_detailed.html', context)
-    except:
-        return HttpResponseBadRequest()
+    except Exception as e:
+        print e
+        messages.error(request, _('An expected error occurred.') + str(e))
+        return HttpResponseBadRequest(str(e))
 
 
 @author_or_visitor_required
@@ -1062,8 +1071,10 @@ def quality_assessment_summary(request):
         review = Review.objects.get(pk=review_id)
         context = RequestContext(request, {'review': review, })
         return render_to_response('conducting/partial_conducting_quality_assessment_summary.html', context)
-    except:
-        return HttpResponseBadRequest()
+    except Exception as e:
+        print e
+        messages.error(request, _('An expected error occurred.') + str(e))
+        return HttpResponseBadRequest(str(e))
 
 
 @author_required
@@ -1075,8 +1086,10 @@ def multiple_articles_action_remove(request):
         if article_ids_list:
             Article.objects.filter(pk__in=article_ids_list).delete()
         return HttpResponse()
-    except:
-        return HttpResponseBadRequest()
+    except Exception as e:
+        print e
+        messages.error(request, _('An expected error occurred.') + str(e))
+        return HttpResponseBadRequest(str(e))
 
 
 @author_required
@@ -1088,8 +1101,10 @@ def multiple_articles_action_accept(request):
         if article_ids_list:
             Article.objects.filter(pk__in=article_ids_list).update(status=Article.ACCEPTED)
         return HttpResponse()
-    except:
-        return HttpResponseBadRequest()
+    except Exception as e:
+        print e
+        messages.error(request, _('An expected error occurred.') + str(e))
+        return HttpResponseBadRequest(str(e))
 
 
 @author_required
@@ -1101,8 +1116,10 @@ def multiple_articles_action_reject(request):
         if article_ids_list:
             Article.objects.filter(pk__in=article_ids_list).update(status=Article.REJECTED)
         return HttpResponse()
-    except:
-        return HttpResponseBadRequest()
+    except Exception as e:
+        print e
+        messages.error(request, _('An expected error occurred.') + str(e))
+        return HttpResponseBadRequest(str(e))
 
 
 @author_required
@@ -1114,8 +1131,10 @@ def multiple_articles_action_duplicated(request):
         if article_ids_list:
             Article.objects.filter(pk__in=article_ids_list).update(status=Article.DUPLICATED)
         return HttpResponse()
-    except:
-        return HttpResponseBadRequest()
+    except Exception as e:
+        print e
+        messages.error(request, _('An expected error occurred.') + str(e))
+        return HttpResponseBadRequest(str(e))
 
 
 @author_required
@@ -1172,6 +1191,7 @@ def save_empirical_value_field(request):
         return HttpResponse()
 
     except Exception, e:
+        print e
         return HttpResponseBadRequest(e)
 
 @author_required
@@ -1232,8 +1252,9 @@ def resolve_duplicated(request):
             return HttpResponse()
         else:
             return HttpResponseBadRequest()
-    except Exception, e:
-        return HttpResponseBadRequest()
+    except Exception as e:
+        messages.error(request, _('An expected error occurred.') + str(e))
+        return HttpResponseBadRequest(str(e))
 
 
 @author_required
@@ -1250,8 +1271,9 @@ def resolve_all(request):
                 duplicate[i].save()
                 article_id_list.append(str(duplicate[i].id))
         return HttpResponse(','.join(article_id_list))
-    except Exception, e:
-        return HttpResponseBadRequest()
+    except Exception as e:
+        messages.error(request, _('An expected error occurred.') + str(e))
+        return HttpResponseBadRequest(str(e))
 
 
 @author_required
@@ -1372,7 +1394,9 @@ def article_meta_analysis(review, request):
 
     except ZeroDivisionError:
         messages.error(request,_('The empirical values from any of your articles are not valid! Because of this, the Sumarize Tool can not generate meta analysis forest plot graphic.'))
-
+    except Exception as e:
+        messages.error(request, _('An expected error occurred.') + str(e))
+        return HttpResponseBadRequest(str(e))
 
 def articles_selection_chart(request):
     review_id = request.GET['review-id']

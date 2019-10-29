@@ -34,7 +34,8 @@ $(function () {
 
         },
         error: function (jqXHR, textStatus, errorThrown) {
-        	console.log(textStatus, errorThrown);
+        	$.parsifal.alert("Tivemos problemas","Não conseguimos concluir a operação. "+jqXHR.responseText);
+        	console.log(textStatus, errorThrown+': '+jqXHR);
         },
         complete: function () {
             $(btn).ajaxEnable();
@@ -66,7 +67,7 @@ $(function () {
         $("#tab-files").html(data);
       },
       error: function (jqXHR, textStatus, errorThrown) {
-    	  $.parsifal.alert("Tivemos problemas","Não conseguimos concluir a operação");
+    	  $.parsifal.alert("Tivemos problemas","Não conseguimos concluir a operação. "+jqXHR.responseText);
     	  console.log(textStatus, errorThrown);
       },
       complete: function () {
@@ -92,6 +93,10 @@ $(function () {
       success: function (data) {
         $(container).html(data);
       },
+      error: function (jqXHR, textStatus, errorThrown) {
+    	  $.parsifal.alert("Tivemos problemas","Não conseguimos concluir a operação. "+jqXHR.responseText);
+    	  console.log(textStatus, errorThrown+":"+jqXHR.responseText);
+      },
       complete: function () {
         $(container).stopLoading();
       }
@@ -115,6 +120,10 @@ $(function () {
       success: function (data) {
         $(".source-tab-content").html(data);
         $(".source-tab-content table").tablesorter({ headers: { 0: { sorter: false }}});
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+    	  $.parsifal.alert("Tivemos problemas","Não conseguimos concluir a operação. "+jqXHR.responseText);
+    	  console.log(textStatus, errorThrown+":"+jqXHR.responseText);
       },
       complete: function () {
         $(".source-tab-content").spinner();
@@ -152,6 +161,10 @@ $(function () {
       success: function (data) {
         $(container).html(data);
 
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+    	  $.parsifal.alert("Tivemos problemas","Não conseguimos concluir a operação. "+jqXHR.responseText);
+    	  console.log(textStatus, errorThrown+":"+jqXHR.responseText);
       },
       complete: function () {
         $(container).spinner();
@@ -259,7 +272,9 @@ $(function () {
           $("#modal-article .alert .modal-alert").text("Algo deu errado! Isso é tudo que sabemos :(");
           $("#modal-article .alert").removeClass("alert-success").addClass("alert-error");
           $("#modal-article .alert").removeClass("hide");
-          console.log(textStatus, errorThrown);
+          console.log(textStatus, errorThrown+": "+jqXHR.responseText);
+          
+          $.parsifal.alert("Tivemos problemas","Não conseguimos concluir a operação. "+jqXHR.responseText);
       },
       complete: function () {
         $(".btn-save-article").prop("disabled", false);
@@ -318,7 +333,7 @@ $(function () {
             $(".source-articles table tbody tr[oid=" + article_id + "]").addClass("active");
         },
         error: function (jqXHR, textStatus, errorThrown) {
-        	 $.parsifal.alert("Tivemos problemas","Não conseguimos concluir a operação.");
+        	 $.parsifal.alert("Tivemos problemas","Não conseguimos concluir a operação. "+jqXHR.responseText);
         	 console.log(textStatus, errorThrown + ': ' + jqXHR.responseText);
         },
         complete: function () {
@@ -328,23 +343,28 @@ $(function () {
   }
 
   function article_solve_conflict() {
-    $.ajax({
-        url: '/reviews/conducting/article_solve_conflict/',
-        cache: false,
-        data: $("#article-solve-conflict").serialize(),
-        type: 'post',
-        beforeSend: function () {
-            $(".btn-save-article").prop("disabled", true);
-        },
-        success: function (data) {},
-        error: function (jqXHR, textStatus, errorThrown) {
-        	//$.parsifal.alert("Tivemos problemas","Não conseguimos concluir a operação.");
-       	 	console.log(textStatus, errorThrown);
-        },
-        complete: function () {
-            $(".btn-save-article").prop("disabled", false);
-        }
-    });
+	if($('#article-solve-conflict').length){
+		console.log('call article_solve_conflict-js - article_solve_conflict-py');
+		$.ajax({
+	        url: '/reviews/conducting/article_solve_conflict/',
+	        cache: false,
+	        data: $("#article-solve-conflict").serialize(),
+	        type: 'post',
+	        beforeSend: function () {
+	            $(".btn-save-article").prop("disabled", true);
+	        },
+	        success: function (data) {},
+	        error: function (jqXHR, textStatus, errorThrown) {
+	        	//$.parsifal.alert("Tivemos problemas","Não conseguimos concluir a operação.");
+	       	 	console.log(textStatus, errorThrown+': ' + jqXHR.responseText);
+	        },
+	        complete: function () {
+	            $(".btn-save-article").prop("disabled", false);
+	        }
+	    });
+	}else{
+		console.log('call article_solve_conflict - not necessary');
+	}  
   }
 
   $(".btn-save-article").click(function () {
@@ -443,8 +463,8 @@ $(function () {
         }
       },
       error: function (jqXHR, textStatus, errorThrown) {
-     	 $.parsifal.alert("Tivemos problemas","Não conseguimos concluir a operação.");
-     	 console.log(textStatus, errorThrown);
+     	 $.parsifal.alert("Tivemos problemas","Não conseguimos concluir a operação. "+jqXHR.responseText);
+     	 console.log(textStatus, errorThrown+": "+ jqXHR.responseText);
       },
       complete: function () {
         $(".go-button").prop("disabled", false);
@@ -521,6 +541,10 @@ $(function () {
       success: function (data) {
         $("#modal-duplicates .modal-body").html(data);
       },
+      error: function (jqXHR, textStatus, errorThrown) {
+          console.log(textStatus, errorThrown+": "+jqXHR.responseText);
+          $.parsifal.alert("Tivemos problemas","Não conseguimos concluir a operação."+jqXHR.responseText);
+      },
       complete: function () {
         $("#modal-duplicates .modal-body").stopLoading();
       }
@@ -564,10 +588,11 @@ $(function () {
         $(article_row).attr("article-status", "D");
         $("span", article_row).replaceWith("<span class=\"label label-warning\">Duplicado</span>");
       },
-      error: function () {
+      error: function (jqXHR, textStatus, errorThrown) {
         $(btn).prop("disabled", false);
         $(btn).text("Resolve");
-        console.log(textStatus, errorThrown);
+        console.log(textStatus, errorThrown+": "+jqXHR.responseText);
+        $.parsifal.alert("Tivemos problemas","Não conseguimos concluir a operação."+jqXHR.responseText);
       }
     });
   });
@@ -600,6 +625,10 @@ $(function () {
             $("span", article_row).replaceWith("<span class=\"label label-warning\">Duplicado</span>");
           };
         }
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+        console.log(textStatus, errorThrown+': '+jqXHR.responseText);
+        $.parsifal.alert("Tivemos problemas","Não conseguimos concluir a operação."+jqXHR.responseText);
       },
       complete: function () {
         $(btn).prop("disabled", false);
