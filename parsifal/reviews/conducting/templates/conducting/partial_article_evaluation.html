@@ -39,6 +39,16 @@
       </div>
     </div>
   </div>
+  {% if article_evaluation.id %}
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label class="control-label">{% trans 'Evaluation Date' %}</label>
+        {{ article_evaluation.updated_at|default_if_none:'' }}
+      </div>
+    </div>
+  </div>
+  {% endif %}
 {% else %}
   <div class="row">
     <div class="col-md-12">

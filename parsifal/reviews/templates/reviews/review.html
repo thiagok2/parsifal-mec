@@ -99,7 +99,10 @@
                 <form method="post" action="{% url 'reviews:leave' %}" style="display: inline">
                   {% csrf_token %}
                   <input type="hidden" name="review-id" value="{{ review.id }}">
-                  <a href="javascript:void(0);" class="js-leave text-danger pull-right">{% trans '(leave)' %}</a>
+                  <a href="javascript:void(0);" class="js-leave text-danger pull-right" title="{% trans '(leave)' %}" >
+                  	
+                  	<span class="glyphicon glyphicon-log-out"></span>
+                  </a>
                 </form>
               {% endif %}
             </li>

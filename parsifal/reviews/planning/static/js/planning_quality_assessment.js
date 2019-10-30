@@ -505,8 +505,8 @@ $(function () {
 	        update_max_score();
 	      },
 	      error: function (jqXHR, textStatus, errorThrown) {
-	    	$.parsifal.alert("Erro", jqXHR);
-	        console.log('erro ', jqXHR)
+	    	$.parsifal.alert("Tivemos problemas", "Encontramos problemas. Se a situação persistir, entre em contato com os administradores do sistema. "+ jqXHR.responseText);
+	        console.log('erro ', jqXHR+":"+textStatus+":"+errorThrown)
 	      }
 	    });
   });

@@ -1,14 +1,15 @@
 # coding: utf-8
 
 from django.core.urlresolvers import reverse as r
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.utils.html import escape
 from django.utils.translation import ugettext as _
 
 from parsifal.activities.models import Activity
 from parsifal.blog.models import Entry
 from parsifal.reviews.models import Review
-
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 def get_following_feeds(user):
     feeds = []
@@ -68,5 +69,13 @@ def home(request):
     else:
         
         return render(request, 'core/cover.html')
-
+    
+@login_required
+def leave_review(request):
+    review_id = request.POST.get('review-visitor-id')
+    review = get_object_or_404(Review, pk=review_id)
+    review.visitors.remove(request.user)
+    review.save()
+    messages.add_message(request, messages.SUCCESS, _('You successfully left the review {0}.').format(review.title))
+    return redirect('home')
     
