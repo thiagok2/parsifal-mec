@@ -4,8 +4,9 @@ from django.db import models
 from django.contrib.auth.models import User
 
 from parsifal.core.models import Media
+import reversion
 
-
+@reversion.register()
 class Category(models.Model):
     name = models.CharField(max_length=255, unique=True)
     slug = models.SlugField(max_length=255, null=True)
@@ -17,6 +18,7 @@ class Category(models.Model):
     def __unicode__(self):
         return self.name
 
+@reversion.register()
 class Article(models.Model):
     title = models.CharField(max_length=255, unique=True)
     slug = models.SlugField(max_length=255, unique=True)

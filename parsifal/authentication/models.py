@@ -17,8 +17,9 @@ from django.conf import settings as django_settings
 
 from parsifal.activities.models import Activity
 from parsifal.reviews.models import Review
+import reversion
 
-
+@reversion.register()
 class Profile(models.Model):
     user = models.OneToOneField(User)
     public_email = models.EmailField(null=True, blank=True)

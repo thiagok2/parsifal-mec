@@ -1,7 +1,8 @@
 from django.db import models
 from django.utils.translation import ugettext as _
+import reversion
 
-
+@reversion.register()
 class Media(models.Model):
     IMAGE = _(u'image')
     VIDEO = _(u'video')

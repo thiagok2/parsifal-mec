@@ -6,8 +6,9 @@ from django.utils.text import slugify
 
 from django.utils.translation import ugettext as _
 from django.utils.translation import ugettext_lazy as l_
+import reversion
 
-
+@reversion.register()
 class SharedFolder(models.Model):
     name = models.CharField(max_length=50)
     slug = models.SlugField(max_length=255, null=True, blank=True)
@@ -37,7 +38,7 @@ class SharedFolder(models.Model):
         self.slug = unique_slug
         super(SharedFolder, self).save(*args, **kwargs)
 
-
+@reversion.register()
 class Collaborator(models.Model):
     READ = 'R'
     WRITE = 'W'
@@ -64,7 +65,7 @@ class Collaborator(models.Model):
             self.access = Collaborator.ADMIN
         super(Collaborator, self).save(*args, **kwargs)
 
-
+@reversion.register()
 class Document(models.Model):
     UNDEFINED= 'undefined'
     ARTICLE = 'article'
@@ -103,7 +104,7 @@ class Document(models.Model):
     # Bibtex required fields
     bibtexkey = models.CharField('Bibtex key', max_length=255, null=True, blank=True)
     entry_type = models.CharField('Document type', max_length=13, choices=ENTRY_TYPES, null=True, blank=True)
-    
+
     # Bibtex base fields
     address = models.CharField(max_length=2000, null=True, blank=True)
     author = models.TextField(max_length=1000, null=True, blank=True)
@@ -152,19 +153,20 @@ class Document(models.Model):
 
     def __unicode__(self):
         return self.title
-            
+
 
 
 def document_file_upload_to(instance, filename):
     return u'library/{0}/'.format(instance.document.user.pk)
 
+@reversion.register()
 class DocumentFile(models.Model):
     document = models.ForeignKey(Document, related_name='files')
     document_file = models.FileField(upload_to='library/')
     filename = models.CharField(max_length=255)
     size = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)    
+    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = 'Document File'
@@ -173,7 +175,7 @@ class DocumentFile(models.Model):
     def __unicode__(self):
         return self.filename
 
-
+@reversion.register()
 class Folder(models.Model):
     name = models.CharField(max_length=50)
     slug = models.SlugField(max_length=255, null=True, blank=True)
