@@ -2,8 +2,9 @@ from django.db import models
 from django.contrib.auth.models import User
 
 from parsifal.reviews.models import Review
+import reversion
 
-
+@reversion.register()
 class Activity(models.Model):
     FOLLOW = 'F'
     COMMENT = 'C'

@@ -14,9 +14,11 @@ from parsifal.library.models import Folder, Document
 from django.utils.translation import ugettext as _
 from django.utils.translation import ugettext_lazy as l_
 
+import reversion
+
 from django.contrib.auth.models import User
 
-
+@reversion.register()
 class Source(models.Model):
     name = models.CharField(max_length=100)
     url = models.CharField(max_length=200)
@@ -41,6 +43,7 @@ class Source(models.Model):
         return 20
 
 
+@reversion.register()
 class Review(models.Model):
     UNPUBLISHED = u'U'
     PUBLISHED = u'P'
@@ -265,7 +268,7 @@ class Review(models.Model):
     def get_search_setup(self):
         return SearchSetup.objects.filter(review_id=self.id)
 
-
+@reversion.register()
 class SearchSetup(models.Model):
     COHEN = u'COHEN'
     HATTIE = u'HATTIE'
@@ -292,7 +295,7 @@ class SearchSetup(models.Model):
     def __unicode__(self):
         return self.conclusion_model
 
-
+@reversion.register()
 class VisitorComment(models.Model):
     OBJECTIVES = u'OBJECTIVES'
     PICOC = u'PICOC'
@@ -360,7 +363,7 @@ class VisitorComment(models.Model):
 
     def get_children_comments(self):
         return VisitorComment.objects.filter(parent=self.id).order_by('date')
-
+@reversion.register()
 class CommentSeen(models.Model):
     review = models.ForeignKey(Review, related_name='review_seencomments')
     comment = models.ForeignKey(VisitorComment, related_name='comment_seencomments')
@@ -374,7 +377,7 @@ class CommentSeen(models.Model):
     def __unicode__(self):
         return self.user
 
-
+@reversion.register()
 class Tag(models.Model):
     review = models.ForeignKey(Review, related_name='review_tags')
     tag = models.CharField(max_length=300)
@@ -386,7 +389,7 @@ class Tag(models.Model):
 
     def __unicode__(self):
         return self.tag
-
+@reversion.register()
 class Invite(models.Model):
     review = models.ForeignKey(Review, related_name='review_invites')
     email = models.CharField(max_length=500)
@@ -399,7 +402,7 @@ class Invite(models.Model):
 
     def __unicode__(self):
         return self.email
-
+@reversion.register()
 class Question(models.Model):
     review = models.ForeignKey(Review, related_name='research_questions')
     question = models.CharField(max_length=500)
@@ -417,7 +420,7 @@ class Question(models.Model):
     def get_child_questions(self):
         return Question.objects.filter(parent_question=self)
 
-
+@reversion.register()
 class SelectionCriteria(models.Model):
     INCLUSION = u'I'
     EXCLUSION = u'E'
@@ -441,7 +444,7 @@ class SelectionCriteria(models.Model):
     def save(self, *args, **kwargs):
         self.description = self.description[:200]
         super(SelectionCriteria, self).save(*args, **kwargs)
-
+@reversion.register()
 class Risk(models.Model):
     review = models.ForeignKey(Review, related_name='risks_to_review_validity')
     risk = models.CharField(max_length=500)
@@ -459,7 +462,7 @@ class Risk(models.Model):
 
     def get_child_risks(self):
         return Risk.objects.filter(parent_risk=self)
-
+@reversion.register()
 class SearchSession(models.Model):
     review = models.ForeignKey(Review)
     source = models.ForeignKey(Source, null=True)
@@ -477,7 +480,7 @@ class SearchSession(models.Model):
 
 def search_result_file_upload_to(instance, filename):
     return u'reviews/{0}/search_result/'.format(instance.review.pk)
-
+@reversion.register()
 class SearchResult(models.Model):
     review = models.ForeignKey(Review)
     source = models.ForeignKey(Source)
@@ -485,7 +488,7 @@ class SearchResult(models.Model):
     imported_file = models.FileField(upload_to=search_result_file_upload_to, null=True)
     documents = models.ManyToManyField(Document)
 
-
+@reversion.register()
 class StudySelection(models.Model):
     review = models.ForeignKey(Review)
     user = models.ForeignKey(User, null=True)
@@ -498,7 +501,7 @@ class StudySelection(models.Model):
             selection = u'Final Selection'
         return u'{0} ({1})'.format(selection, self.review.title)
 
-
+@reversion.register()
 class Study(models.Model):
     UNCLASSIFIED = u'U'
     REJECTED = u'R'
@@ -517,7 +520,7 @@ class Study(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     comments = models.TextField(max_length=2000, blank=True, null=True)
 
-
+@reversion.register()
 class Article(models.Model):
     UNCLASSIFIED = u'U'
     WAITING = u'W'
@@ -631,7 +634,7 @@ class Article(models.Model):
         self.publisher = document.publisher
         self.language = document.language
         self.note = document.note
-
+@reversion.register()
 class ArticleEmpiricalData(models.Model):
     PRIMARY = u'P'
     EFFECT_SIZE = u'E'
@@ -663,7 +666,7 @@ class ArticleEmpiricalData(models.Model):
 
 def article_directory_path(instance, filename):
     return 'article/{0}/{1}'.format(instance.article.id, filename)
-
+@reversion.register()
 class ArticleFile(models.Model):
     review = models.ForeignKey(Review, related_name='file_review')
     article = models.ForeignKey(Article, related_name='file_article')
@@ -671,7 +674,7 @@ class ArticleFile(models.Model):
     article_file = models.FileField(upload_to=article_directory_path)
     name = models.CharField(max_length=300)
     size = models.CharField(max_length=150)
-
+@reversion.register()
 class ArticleEvaluation(models.Model):
     UNCLASSIFIED = u'U'
     REJECTED = u'R'
@@ -705,7 +708,7 @@ class ArticleEvaluation(models.Model):
     def get_status_html(self):
         label = { ArticleEvaluation.UNCLASSIFIED: 'default', ArticleEvaluation.REJECTED: 'danger', ArticleEvaluation.ACCEPTED: 'success', ArticleEvaluation.DUPLICATED: 'warning' }
         return u'<span class="label label-{0}">{1}</span>'.format(label[self.status], self.get_status_display())
-
+@reversion.register()
 class Keyword(models.Model):
     POPULATION = u'P'
     INTERVENTION = u'I'
@@ -741,7 +744,7 @@ class Keyword(models.Model):
 
     def get_synonyms(self):
         return Keyword.objects.filter(review__id=self.review.id, synonym_of__id=self.id)
-
+@reversion.register()
 class QualityQuestion(models.Model):
     review = models.ForeignKey(Review)
     description = models.CharField(max_length=255)
@@ -757,7 +760,7 @@ class QualityQuestion(models.Model):
 
     def get_answers(self):
         return QualityAnswer.objects.filter(question__id=self.id, review__id=self.review.id)
-
+@reversion.register()
 class QualityAnswer(models.Model):
     SUGGESTED_ANSWERS = (
         (_('Yes'), 1.0),
@@ -777,7 +780,7 @@ class QualityAnswer(models.Model):
 
     def __unicode__(self):
         return self.description
-
+@reversion.register()
 class QualityAssessment(models.Model):
     user = models.ForeignKey(User, null=True)
     article = models.ForeignKey(Article)
@@ -788,7 +791,7 @@ class QualityAssessment(models.Model):
         return str(self.article.id) + ' ' + str(self.question.id)
 
 
-
+@reversion.register()
 class DataExtractionField(models.Model):
     BOOLEAN_FIELD = 'B'
     STRING_FIELD = 'S'
@@ -823,7 +826,7 @@ class DataExtractionField(models.Model):
     def is_select_field(self):
         return self.field_type in (self.SELECT_ONE_FIELD, self.SELECT_MANY_FIELD)
 
-
+@reversion.register()
 class DataExtractionLookup(models.Model):
     field = models.ForeignKey(DataExtractionField)
     value = models.CharField(max_length=1000)
@@ -836,7 +839,7 @@ class DataExtractionLookup(models.Model):
     def __unicode__(self):
         return self.value
 
-
+@reversion.register()
 class DataExtraction(models.Model):
     user = models.ForeignKey(User, null=True)
     article = models.ForeignKey(Article)

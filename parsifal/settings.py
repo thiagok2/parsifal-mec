@@ -65,6 +65,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'reversion.middleware.RevisionMiddleware',
 )
 
 ROOT_URLCONF = 'parsifal.urls'
@@ -87,6 +88,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.humanize',
+
+    'reversion',
 
     'parsifal.reviews',
     'parsifal.reviews.comments',
