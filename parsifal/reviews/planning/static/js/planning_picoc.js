@@ -14,7 +14,7 @@ $(function () {
       },
       error: function () {
         $(btn).ajaxEnableError();
-        $.parsifal.alert("Problemas aconteceram", "Algo deu errado! Por favor entre em contato com o administrador1.");
+        $.parsifal.alert("Problemas aconteceram", "Algo deu errado! Por favor entre em contato com o administrador.");
       }
     });
   });

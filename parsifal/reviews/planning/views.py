@@ -520,23 +520,31 @@ def save_source(request):
 @login_required
 def remove_source_from_review(request):
     try:
+        print 'pre-remove'
         source_id = request.GET['source-id']
         review_id = request.GET['review-id']
         source = Source.objects.get(pk=source_id)
         review = Review.objects.get(pk=review_id)
         review.sources.remove(source)
+        
+        print 'remove'
         if source.is_default:
+            print 'remove source_articles'
             review.get_source_articles(source.id).delete()
             try:
+                print 'remove searchsession_set'
                 review.searchsession_set.filter(source=source).delete()
-            except:
+            except Exception, e:
+                print str(e)
                 pass
         else:
+            print 'remove only source'
             source.delete()
         review.save()
         return HttpResponse()
-    except:
-        return HttpResponseBadRequest()
+    except Exception, e:
+        print e
+        return HttpResponseBadRequest(str(e))
 
 
 @author_required
@@ -1025,7 +1033,7 @@ def add_suggested_answer(request):
                     remover
                 </button>
             </div>
-            </div></li>'''.format(quality_answer.id, quality_answer.description.encode('ascii', 'replace'), quality_answer.weight, quality_question.id)
+            </div></li>'''.format(quality_answer.id, quality_answer.description.encode('ascii', 'replace').replace('?','&atilde;'), quality_answer.weight, quality_question.id)
         return HttpResponse(html_answers)
         #else:
         #    return HttpResponseBadRequest()
