@@ -39,7 +39,11 @@
           </button>
         </form>
         <span class="pull-right text-muted">
-        	Total de <span class="articles-total ">{{ articles.count }}</span> artigos
+        	{% if articles_count > articles.count %}
+        		{% trans 'Total of '%} <span class="articles-total ">{{ articles_count }}</span> {% trans 'artigos' %}
+        	{% else %}
+        		{% trans 'Total of '%} <span class="articles-total ">{{ articles.count }}</span> {% trans 'artigos' %}
+        	{% endif %}
         </span>
 
       </div>
@@ -47,7 +51,9 @@
     	<div style="margin-bottom: 20px">
     		<span class="badge badge-secondary pull-right" data-toggle="tooltip" data-placement="top" title="Artigos">
 				<i class="fa fa-fw fa-files-o"></i>
-				<span class="articles-total ">{{ articles.count }}</span>
+				<span class="articles-total ">
+					{{ articles_count }}
+				</span>
 			</span>
         </div>
     {% endif %}
