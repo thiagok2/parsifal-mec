@@ -39,8 +39,10 @@ class Source(models.Model):
             self.url = value
 
     def get_articles_count(self, review_id):
-        articles_count = Article.objects.filter(review__id=review_id).count()
-        return 20
+        articles_count = Article.objects.filter(review__id=review_id, source__id=self.id).count()
+        return articles_count
+    def get_article_evaluation_count(self, review_id):
+        return Article.objects.filter(review__id=review_id, source__id=self.id).exclude(status=Article.UNCLASSIFIED).count()
 
 
 @reversion.register()
@@ -176,13 +178,12 @@ class Review(models.Model):
         return self.searchsession_set.exclude(source=None).order_by('source__name')
 
     def get_source_articles(self, source_id=None):
-        queryset = Article.objects \
-            .filter(review__id=self.id) \
-            .select_related('created_by__profile')
+        queryset = Article.objects.filter(review__id=self.id).order_by('updated_by')
+            
 
         if source_id is not None:
             queryset = queryset.filter(source__id=source_id)
-        return queryset
+        return queryset[:25]
 
     def get_duplicate_articles(self):
         articles = Article.objects.filter(review__id=self.id).exclude(status=Article.DUPLICATED).order_by('title')
