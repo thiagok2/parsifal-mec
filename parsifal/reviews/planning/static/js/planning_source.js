@@ -7,6 +7,13 @@ $(function () {
     var name = $("input#name").val();
     var url = $("input#url").val();
     var review_id = $("input#review-id").val();
+    
+    if(name.length == 0){
+    	
+    	$.parsifal.alert("Preencha o nome da fonte"," O nome da fonte é obrigatório. Preferencialmente coloque também a URL.");
+    	$("input#name").focus();
+    	return false;
+    }
 
     $.ajax({
       url: '/reviews/planning/save_source/',
@@ -33,7 +40,7 @@ $(function () {
         }
       },
       error: function (jqXHR, textStatus, errorThrown) {
-
+    	  $.parsifal.alert("Tivemos problemas","Não conseguimos concluir a operação. ");
       },
       complete: function () {
         is_adding_or_editing_source = false;
