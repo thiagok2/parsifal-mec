@@ -131,6 +131,16 @@
         </li>
       {% endfor %}
     </ul>
+    
+   	<div id="alert_count_limited">
+   		<div class="alert alert-warning" role="alert">
+   			<span class="glyphicon glyphicon-alert"></span>
+   			{% trans 'Temporarimente, a exibição dos resultados está limitado a 250 artigos. Utilize os filtros de <b>status</b> para navegar sobre todos os artigos.' %}
+   			<br/>
+   			{% trans '[ Aceito | Rejeitado | Não classificado | Duplicado | Aguardando | Conflito ]'%}
+   		</div>
+   	</div>
+    
     <div class="source-tab-content" style="min-height: 250px;"></div>
   {% else %}
     <p>{% trans 'There are a few steps you have to finish before you select the studies:' %}</p>

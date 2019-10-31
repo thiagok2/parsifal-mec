@@ -183,7 +183,16 @@ class Review(models.Model):
 
         if source_id is not None:
             queryset = queryset.filter(source__id=source_id)
-        return queryset[:25]
+        
+        return queryset[:250]
+    
+    def get_source_articles_count(self, source_id=None):
+        queryset = Article.objects.filter(review__id=self.id).order_by('updated_by')
+            
+        if source_id is not None:
+            queryset = queryset.filter(source__id=source_id)
+            
+        return queryset.count()
 
     def get_duplicate_articles(self):
         articles = Article.objects.filter(review__id=self.id).exclude(status=Article.DUPLICATED).order_by('title')
