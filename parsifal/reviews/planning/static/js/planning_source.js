@@ -144,9 +144,31 @@ $(function () {
   $("table#tbl-sources tbody").on("click", ".js-start-remove", function () {
     var row = $(this).closest("tr");
     var source_id = $(row).attr("source-id");
+    var csrf_token = $("#sources-form input[name='csrfmiddlewaretoken']").val();
+    
+    $.ajax({
+        url: '/reviews/planning/get_articles_source/',
+        data:  { 
+        	'review-id': $('#review-id').val(),
+        	'source-id': source_id,
+        	'csrfmiddlewaretoken': csrf_token
+        },
+        type: 'post',
+        cache: false,
+        success: function (data) {
+          $("#table-article-source-preview").html(data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+        	$.parsifal.alert("Tivemos problemas","Não conseguimos concluir a operação. "+jqXHR.responseText);
+        	console.log(textStatus, errorThrown+': '+jqXHR);
+        },
+        
+      });
+    
     var name = $("td:eq(0)", row).text();
     $("#delete-source-name").text(name);
     $("#confirm-deletion").attr("data-source-id", source_id);
+    $("#msg-alert-delete").removeClass('hidden');
     $("#modal-confirm-source-deletion").modal('show');
   });
 
