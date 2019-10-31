@@ -539,6 +539,12 @@ class Article(models.Model):
         (CONFLICT, _('Conflict')),
 
         )
+    
+    ARTICLE_FINAL_STATUS = (
+        (REJECTED, _('Rejected')),
+        (ACCEPTED, _('Accepted')),
+        (DUPLICATED, _('Duplicated'))
+    )
     review = models.ForeignKey(Review)
     bibtex_key = models.CharField(max_length=100)
     title = models.CharField(max_length=1000, null=True, blank=True)
