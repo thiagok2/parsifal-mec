@@ -18,7 +18,7 @@
   <script src="{% static 'js/planning_question.js' %}?v=1"></script>
   <script src="{% static 'js/planning_picoc.js' %}"></script>
   <script src="{% static 'js/planning_keyword.js' %}?v=2"></script>
-  <script src="{% static 'js/planning_source.js' %}?v=2"></script>
+  <script src="{% static 'js/planning_source.js' %}"></script>
   <script src="{% static 'js/planning_search_string.js' %}?v=1"></script>
   <script src="{% static 'js/planning_criteria.js' %}?v=1"></script>
   {% if user|is_visitor:review %}
@@ -742,6 +742,14 @@
               </div>
               <div class="modal-body">
                 <p>{% trans 'This action <strong>cannot</strong> be undone. This will remove the <strong id="delete-source-name"></strong> source, and permanently delete all imported articles associated with it.' %}</p>
+              
+              	<div id="msg-alert-delete" class="hidden">
+       
+              		
+              		<div id="table-article-source-preview">
+	              		
+	              	</div>
+              	</div>
               </div>
               <div class="modal-footer">
                 <button type="button" id="confirm-deletion" class="btn btn-danger btn-block" data-source-id="">{% trans 'Remove this source' %}</button>
@@ -762,48 +770,53 @@
             	{% trans "You can identify electronic databases such as IEEE, ACM or indicate that the search will be performed from offline sources." %}
             </small>
           </div>
-          <table class="table" id="tbl-sources">
-            <thead>
-              <tr>
-                <th>{% trans 'Name' %}</th>
-                <th>URL</th>
-                <th style="width: 200px"></th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for source in review.sources.all %}
-                <tr source-id="{{ source.id }}">
-                  <td>{{ source.name }}</td>
-                  <td>
-                    {% if source.url %}
-                      <a href="{{ source.url }}" target="_blank">{{ source.url }}</a>
-                    {% else %}
-                      {{ source.url }}
-                    {% endif %}
-                  </td>
-                  <td class="text-right">
-                    {% if source.is_default %}
-                      <span data-toggle="tooltip" data-placement="top" data-container="body" title="{% trans 'It is not possible to edit Digital Librarys details' %}">
-                        <button type="button" class="btn btn-warning btn-sm" disabled>
-                          <span class="glyphicon glyphicon-pencil"></span>
-                          {% trans 'edit' %}
-                        </button>
-                      </span>
-                    {% else %}
-                      <button type="button" class="btn btn-warning btn-sm btn-edit-source">
-                        <span class="glyphicon glyphicon-pencil"></span>
-                        {% trans 'edit' %}
-                      </button>
-                    {% endif %}
-                    <button type="button" class="btn btn-danger btn-sm js-start-remove">
-                      <span class="glyphicon glyphicon-trash"></span>
-                      {% trans 'remove' %}
-                    </button>
-                  </td>
-                </tr>
-              {% endfor %}
-            </tbody>
-          </table>
+          <div class="panel-body">
+               <form method="post" id="sources-form">
+          		{% csrf_token %}
+		          	<table class="table" id="tbl-sources">
+			            <thead>
+			              <tr>
+			                <th>{% trans 'Name' %}</th>
+			                <th>URL</th>
+			                <th style="width: 200px"></th>
+			              </tr>
+			            </thead>
+			            <tbody>
+			              {% for source in review.sources.all %}
+			                <tr source-id="{{ source.id }}" data-source-id="{{ source.id }}">
+			                  <td>{{ source.name }}</td>
+			                  <td>
+			                    {% if source.url %}
+			                      <a href="{{ source.url }}" target="_blank">{{ source.url }}</a>
+			                    {% else %}
+			                      {{ source.url }}
+			                    {% endif %}
+			                  </td>
+			                  <td class="text-right">
+			                    {% if source.is_default %}
+			                      <span data-toggle="tooltip" data-placement="top" data-container="body" title="{% trans 'It is not possible to edit Digital Librarys details' %}">
+			                        <button type="button" class="btn btn-warning btn-sm" disabled>
+			                          <span class="glyphicon glyphicon-pencil"></span>
+			                          {% trans 'edit' %}
+			                        </button>
+			                      </span>
+			                    {% else %}
+			                      <button type="button" class="btn btn-warning btn-sm btn-edit-source">
+			                        <span class="glyphicon glyphicon-pencil"></span>
+			                        {% trans 'edit' %}
+			                      </button>
+			                    {% endif %}
+			                    <button type="button" class="btn btn-danger btn-sm js-start-remove" data->
+			                      <span class="glyphicon glyphicon-trash"></span>
+			                      {% trans 'remove' %}
+			                    </button>
+			                  </td>
+			                </tr>
+			              {% endfor %}
+			            </tbody>
+		          	</table>
+		          </form>
+	      </div>
           <div class="panel-footer">
             <button type="button" class="btn btn-success" id="btn-add-source">
               <span class="glyphicon glyphicon-plus"></span>
