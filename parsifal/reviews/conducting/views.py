@@ -187,6 +187,8 @@ def import_studies(request, username, review_name):
 def study_selection(request, username, review_name):
     review = Review.objects.get(name=review_name, author__username__iexact=username)
     unseen_comments = review.get_visitors_unseen_comments(request.user)
+    active_filter = request.GET.get('active_filter', '')
+
     try:
         active_tab = int(request.GET['source-id'])
     except Exception, e:
@@ -206,7 +208,8 @@ def study_selection(request, username, review_name):
             'active_tab': active_tab,
             'steps_messages': steps_messages,
             'finished_all_steps': finished_all_steps,
-            'unseen_comments': unseen_comments
+            'unseen_comments': unseen_comments,
+            'active_filter': active_filter
         })
 
 def update_article_empirical_data(request):
@@ -707,7 +710,7 @@ def source_articles(request):
     try:
         review_id = request.GET['review-id']
         source_id = request.GET['source-id']
-        active_filter = request.GET['filter']
+        active_filter = request.GET['active_filter']
 
         status_evaluation = ArticleEvaluation.ARTICLE_STATUS
 
@@ -722,8 +725,9 @@ def source_articles(request):
             articles_count = review.get_source_articles_count()
 
         if active_filter:
+            print 'entrou'
             articles = articles.filter(status=active_filter)
-            articles_count = articles_count.filter(status=active_filter)
+            #articles_count = articles_count.filter(status=active_filter)
 
         return render(request, 'conducting/partial_conducting_articles.html', {'review': review, 'source': source, 'articles': articles, 'status_evaluation': status_evaluation, 'articles_count':articles_count, 'active_filter': active_filter })
     except Exception as e:
