@@ -114,9 +114,12 @@ $(function () {
         var param = searchParams.get('page')
     }
 
+    var active_filter = $("input[name='filter']:checked")
+    //console.log('checked ', active_filter)
+
     $.ajax({
       url: '/reviews/conducting/source_articles/',
-      data: { 'review-id': $("#review-id").val(), 'source-id': source_id, 'page': param },
+      data: { 'review-id': $("#review-id").val(), 'source-id': source_id, 'page': param, 'filter': '' },
       type: 'get',
       cache: false,
       beforeSend: function () {
