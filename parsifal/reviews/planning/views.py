@@ -589,7 +589,31 @@ def add_suggested_sources(request):
         return HttpResponse(return_html)
     except:
         return HttpResponseBadRequest()
+    
 
+@author_required
+@login_required
+def get_articles_source(request):
+    
+    try:
+        source_id = request.POST['source-id']
+        review_id = request.POST['review-id']
+        source = Source.objects.get(pk=source_id)
+        review = Review.objects.get(pk=review_id)
+        
+        articles_count = source.get_articles_count(review_id)
+        article_evaluation_count = source.get_article_evaluation_count(review_id)
+        articles = review.get_source_articles(source_id)
+        
+        context = RequestContext(request, {
+            'articles_count': articles_count, 
+            'articles': articles,
+            'article_evaluation_count': article_evaluation_count})
+        
+        return render_to_response('planning/partial_articles_source.html', context)
+    
+    except Exception, e:
+        return HttpResponseBadRequest(str(e))
 
 '''
     INCLUSION/EXCLUSION CRITERIA FUNCTIONS

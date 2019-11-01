@@ -714,12 +714,13 @@ def source_articles(request):
         if source_id != 'None':
             articles = review.get_source_articles(source_id)
             source = Source.objects.get(pk=source_id)
+            articles_count = review.get_source_articles_count(source_id)
         else:
             articles = review.get_source_articles()
             source = Source()
-            print 'artigos ', articles.count()
+            articles_count = review.get_source_articles_count()
 
-        return render(request, 'conducting/partial_conducting_articles.html', {'review': review, 'source': source, 'articles': articles, 'status_evaluation': status_evaluation})
+        return render(request, 'conducting/partial_conducting_articles.html', {'review': review, 'source': source, 'articles': articles, 'status_evaluation': status_evaluation, 'articles_count':articles_count})
     except Exception as e:
         print e
         return HttpResponseBadRequest()
