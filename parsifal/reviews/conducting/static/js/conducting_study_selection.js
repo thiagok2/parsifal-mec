@@ -109,7 +109,7 @@ $(function () {
     var source_id = $(this).attr("source-id");
     var active_source_id = $("ul#source-tab li.active a").attr("source-id");
     var searchParams = new URLSearchParams(window.location.search);
-    var param = '';
+    var param = '1';
     var active_filter = '';
 
     $("ul#source-tab li").removeClass("active");
@@ -119,23 +119,24 @@ $(function () {
         param = searchParams.get('page')
     }
 
-    // console.log(searchParams.get('active_filter'))
-    // console.log(radio_value)
-    // console.log('sources ', active_source_id === source_id)
+    console.log(searchParams.get('active_filter'))
+    console.log(radio_value)
+    console.log('sources ', active_source_id === source_id)
 
     if (searchParams.has('active_filter') && searchParams.get('active_filter') !== null && radio_value === undefined) {
-        // console.log('1')
+        console.log('1')
         active_filter = searchParams.get('active_filter')
         //param = '1'
     } else if (radio_value !== undefined && searchParams.get('active_filter') === null) {
-        // console.log('2')
+        console.log('2')
         active_filter = radio_value
         param = '1'
+        if (radio_value === 'ALL') active_filter = ''
     } else if (radio_value === searchParams.get('active_filter')) {
-        // console.log('3')
+        console.log('3')
         active_filter = radio_value
     } else if (radio_value !== undefined && radio_value !== searchParams.get('active_filter')) {
-        // console.log('4')
+        console.log('4')
         active_filter = radio_value
         param = '1'
         if (radio_value === 'ALL') active_filter = ''
