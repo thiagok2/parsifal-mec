@@ -66,6 +66,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'reversion.middleware.RevisionMiddleware',
+    'pagination_bootstrap.middleware.PaginationMiddleware',
 )
 
 ROOT_URLCONF = 'parsifal.urls'
@@ -77,6 +78,10 @@ TEMPLATE_DIRS = (
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = TCP + (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
     'django.core.context_processors.request',
 )
 
@@ -90,6 +95,7 @@ INSTALLED_APPS = (
     'django.contrib.humanize',
 
     'reversion',
+    'pagination_bootstrap',
 
     'parsifal.reviews',
     'parsifal.reviews.comments',

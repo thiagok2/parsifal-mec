@@ -108,10 +108,14 @@ $(function () {
     var source_id = $(this).attr("source-id");
     $("ul#source-tab li").removeClass("active");
     $(this).closest("li").addClass("active");
+    var searchParams = new URLSearchParams(window.location.search)
+    if (searchParams.has('page')) {
+        var param = searchParams.get('page')
+    }
 
     $.ajax({
       url: '/reviews/conducting/source_articles/',
-      data: { 'review-id': $("#review-id").val(), 'source-id': source_id },
+      data: { 'review-id': $("#review-id").val(), 'source-id': source_id, 'page': param },
       type: 'get',
       cache: false,
       beforeSend: function () {
@@ -273,7 +277,7 @@ $(function () {
           $("#modal-article .alert").removeClass("alert-success").addClass("alert-error");
           $("#modal-article .alert").removeClass("hide");
           console.log(textStatus, errorThrown+": "+jqXHR.responseText);
-          
+
           $.parsifal.alert("Tivemos problemas","Não conseguimos concluir a operação. "+jqXHR.responseText);
       },
       complete: function () {
@@ -364,7 +368,7 @@ $(function () {
 	    });
 	}else{
 		console.log('call article_solve_conflict - not necessary');
-	}  
+	}
   }
 
   $(".btn-save-article").click(function () {
