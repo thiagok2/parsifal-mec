@@ -184,7 +184,7 @@ class Review(models.Model):
         if source_id is not None:
             queryset = queryset.filter(source__id=source_id)
 
-        return queryset[:250]
+        return queryset
 
     def get_source_articles_count(self, source_id=None):
         queryset = Article.objects.filter(review__id=self.id).order_by('updated_by')
