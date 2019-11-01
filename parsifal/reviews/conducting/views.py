@@ -188,7 +188,7 @@ def study_selection(request, username, review_name):
     review = Review.objects.get(name=review_name, author__username__iexact=username)
     unseen_comments = review.get_visitors_unseen_comments(request.user)
     try:
-        active_tab = int(request.GET['source'])
+        active_tab = int(request.GET['source-id'])
     except Exception, e:
         active_tab = -1
 

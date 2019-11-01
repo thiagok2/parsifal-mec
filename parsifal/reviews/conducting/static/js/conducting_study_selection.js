@@ -106,10 +106,11 @@ $(function () {
 
   $("#source-tab a").click(function () {
     var source_id = $(this).attr("source-id");
+    var active_source_id = $("ul#source-tab li.active a").attr("source-id");
     $("ul#source-tab li").removeClass("active");
     $(this).closest("li").addClass("active");
     var searchParams = new URLSearchParams(window.location.search)
-    if (searchParams.has('page')) {
+    if (searchParams.has('page') && active_source_id === source_id) {
         var param = searchParams.get('page')
     }
 
