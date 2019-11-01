@@ -707,6 +707,7 @@ def source_articles(request):
     try:
         review_id = request.GET['review-id']
         source_id = request.GET['source-id']
+        active_filter = request.GET['filter']
 
         status_evaluation = ArticleEvaluation.ARTICLE_STATUS
 
@@ -720,7 +721,11 @@ def source_articles(request):
             source = Source()
             articles_count = review.get_source_articles_count()
 
-        return render(request, 'conducting/partial_conducting_articles.html', {'review': review, 'source': source, 'articles': articles, 'status_evaluation': status_evaluation, 'articles_count':articles_count})
+        if active_filter:
+            articles = articles.filter(status=active_filter)
+            articles_count = articles_count.filter(status=active_filter)
+
+        return render(request, 'conducting/partial_conducting_articles.html', {'review': review, 'source': source, 'articles': articles, 'status_evaluation': status_evaluation, 'articles_count':articles_count, 'active_filter': active_filter })
     except Exception as e:
         print e
         return HttpResponseBadRequest()
