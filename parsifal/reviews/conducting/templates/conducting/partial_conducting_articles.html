@@ -63,7 +63,7 @@
 
     {% include 'comments/comment_icon_button.html' with user=user about="STUDY_SELECTION" %}
 
-  	<!-- <p>
+  	<p>
       <strong>{% trans 'Show' %}:</strong>
       <label class="radio-inline">
         <input type="radio" name="filter" value="ALL" {% if active_filter == '' %} checked {%endif%}> {% trans 'All' %}
@@ -86,7 +86,7 @@
       <label class="radio-inline">
         <input type="radio" name="filter" value="C" {% if active_filter == 'C' %} checked {%endif%}> {% trans 'Conflict' %}
       </label>
-    </p> -->
+    </p>
 
     <div class="studies-action" style="margin: 10px 0;">
       <strong>{% trans 'Action:' %}</strong>

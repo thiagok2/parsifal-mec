@@ -105,21 +105,45 @@ $(function () {
   });
 
   $("#source-tab a").click(function () {
+    var radio_value = $("input[name='filter']:checked").val();
     var source_id = $(this).attr("source-id");
     var active_source_id = $("ul#source-tab li.active a").attr("source-id");
+    var searchParams = new URLSearchParams(window.location.search);
+    var param = '';
+    var active_filter = '';
+
     $("ul#source-tab li").removeClass("active");
     $(this).closest("li").addClass("active");
-    var searchParams = new URLSearchParams(window.location.search)
+
     if (searchParams.has('page') && active_source_id === source_id) {
-        var param = searchParams.get('page')
+        param = searchParams.get('page')
     }
 
-    var active_filter = $("input[name='filter']:checked")
-    //console.log('checked ', active_filter)
+    // console.log(searchParams.get('active_filter'))
+    // console.log(radio_value)
+    // console.log('sources ', active_source_id === source_id)
+
+    if (searchParams.has('active_filter') && searchParams.get('active_filter') !== null && radio_value === undefined) {
+        // console.log('1')
+        active_filter = searchParams.get('active_filter')
+        //param = '1'
+    } else if (radio_value !== undefined && searchParams.get('active_filter') === null) {
+        // console.log('2')
+        active_filter = radio_value
+        param = '1'
+    } else if (radio_value === searchParams.get('active_filter')) {
+        // console.log('3')
+        active_filter = radio_value
+    } else if (radio_value !== undefined && radio_value !== searchParams.get('active_filter')) {
+        // console.log('4')
+        active_filter = radio_value
+        param = '1'
+        if (radio_value === 'ALL') active_filter = ''
+    }
 
     $.ajax({
       url: '/reviews/conducting/source_articles/',
-      data: { 'review-id': $("#review-id").val(), 'source-id': source_id, 'page': param, 'filter': '' },
+      data: { 'review-id': $("#review-id").val(), 'source-id': source_id, 'page': param, 'active_filter': active_filter },
       type: 'get',
       cache: false,
       beforeSend: function () {
@@ -407,7 +431,8 @@ $(function () {
   }
 
   $(".source-tab-content").on("click", "input[name=filter]", function () {
-    filter_articles($(this).val());
+    $("#source-tab li.active a").click();
+    //filter_articles($(this).val());
     updateSelectedArticlesCount();
   });
 
