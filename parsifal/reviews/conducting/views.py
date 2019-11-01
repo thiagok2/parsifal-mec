@@ -717,6 +717,7 @@ def source_articles(request):
         else:
             articles = review.get_source_articles()
             source = Source()
+            print 'artigos ', articles.count()
 
         return render(request, 'conducting/partial_conducting_articles.html', {'review': review, 'source': source, 'articles': articles, 'status_evaluation': status_evaluation})
     except Exception as e:
@@ -939,12 +940,12 @@ def save_article_evaluation(request):
                 review = Review.objects.get(pk=review_id)
                 article = Article.objects.get(pk=article_id)
                 article_evaluation = ArticleEvaluation(review=review, article=article, user=request.user)
-            
-            if 'comments' in request.POST:    
+
+            if 'comments' in request.POST:
                 article_evaluation.comments = request.POST['comments']
             else:
-                article_evaluation.comments = 'Avaliado em ' +datetime.today().strftime('%Y-%m-%d-%H:%M:%S') 
-                
+                article_evaluation.comments = 'Avaliado em ' +datetime.today().strftime('%Y-%m-%d-%H:%M:%S')
+
             status = request.POST['status'][:1]
             if status in (ArticleEvaluation.UNCLASSIFIED, ArticleEvaluation.REJECTED, ArticleEvaluation.ACCEPTED, ArticleEvaluation.DUPLICATED):
                 article_evaluation.status = status

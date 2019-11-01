@@ -1,4 +1,4 @@
-{% load i18n staticfiles is_visitor get_user_article_evaluation %}
+{% load i18n staticfiles is_visitor get_user_article_evaluation pagination_tags %}
 
 {% load humanize %}
 {% if user|is_visitor:review %}
@@ -103,7 +103,7 @@
           <!-- <th>{% trans 'Author' %}</th> -->
           <th>{% trans 'Journal' %}</th>
           <th style="min-width: 80px;">{% trans 'Year' %}</th>
-          <th style="word-wrap: break-word;max-width: 600px%;">{% trans 'Abstract' %}</th>
+          <th style="word-wrap: break-word;max-width: 600px;">{% trans 'Abstract' %}</th>
           <!-- <th style="min-width: 100px;">{% trans 'Added by' %}</th>-->
           <!-- <th style="min-width: 100px;">{% trans 'Added at' %}</th>-->
           <th>Status</th>
@@ -111,6 +111,7 @@
         </tr>
       </thead>
       <tbody>
+        {% autopaginate articles 50 %}
         {% for article in articles %}
           {% include 'conducting/partial_conducting_article_row.html' with article=article %}
         {% empty %}
@@ -118,6 +119,7 @@
             <td colspan="9">{% trans 'No articles.' %}</td>
           </tr>
         {% endfor %}
+        {% paginate %}
       </tbody>
     </table>
   </div>
