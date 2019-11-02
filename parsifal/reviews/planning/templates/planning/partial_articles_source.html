@@ -5,13 +5,13 @@
 {% if articles_count >= 1 %}
 <div class="alert alert-error" role="alert">
 	<span class="glyphicon glyphicon-alert "></span>
-	{% trans 'This digital library already has articles inserted in this review. '%} <span id="count_article"></span> {% trans 'articles have already been inserted.' %}
+	{% trans 'This digital library already has articles inserted in this review. '%}
 	{% trans 'Below is a list of articles already inserted.' %}	
 </div>
 <div class="alert alert-error" role="alert">
 <span class="glyphicon glyphicon-alert "></span>
-{% trans 'This review has already contributed with '%} <b>{{articles_count}}</b> {% trans 'articles.' %}
-<b>{{article_evaluation_count}}</b> {% trans 'have already been evaluated.' %}
+{% trans 'This source has already contributed with '%} <b>{{articles_count}}</b> {% trans 'articles.' %}
+{% trans 'Of these '%}{{articles_count}} {% trans 'articles' %}, <b>{{article_evaluation_count}}</b> {% trans 'have already been evaluated.' %}
 </div>
 <table class="table table-hover table-bordered table-condensed small">
 	<thead>
@@ -43,7 +43,9 @@
 	<tfoot>
 		<tr>
 			<td colspan="3">
-			<span class="text-muted">{% trans 'Only 10 articles was showed. To see all and more details go to the Conduction tab'%}</span>
+			<span class="text-muted">{% trans 'Only 10 articles was showed. To see all and more details go to the Conduction tab. Click here to go to'%}
+				<a href="{% url 'conducting' review.author.username review.name %}">{% trans 'Conducting' %}</a>
+			</span>
 			</td>
 		</tr>
 	</tfoot>
