@@ -603,9 +603,10 @@ def get_articles_source(request):
         
         articles_count = source.get_articles_count(review_id)
         article_evaluation_count = source.get_article_evaluation_count(review_id)
-        articles = review.get_source_articles(source_id)
+        articles = review.get_source_articles(source_id)[:10]
         
         context = RequestContext(request, {
+            'review': review,
             'articles_count': articles_count, 
             'articles': articles,
             'article_evaluation_count': article_evaluation_count})
