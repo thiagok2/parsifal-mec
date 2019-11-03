@@ -338,25 +338,32 @@ $(function () {
   });
 
   function save_article_evaluation(ref="") {
-    var serialize = ''
-    var article_id = ""
-    var evaluation_id = ""
-    if (ref !== "") {
+    var serialize = '';
+    var article_id = "";
+    var evaluation_id = "";
+    var form;
+    
+    if (ref !== "") { // via lista
         article_id = $(ref).closest('tr').attr('oid')
         evaluation_id = $(ref).attr('data-evaluation-id');
-    } else {
+        form = $("#article-evaluation-" + article_id + "-" + evaluation_id);
+        
+    } else { // via modal
         article_id = $("#modal-article #article-id").val();
+        form = $("#article-evaluation");
+        
+        if( $("#article-evaluation-finished-"+article_id).val() == "True"){
+        	console.log('article-evaluation-finished');
+        	return false;
+        }
     }
-
-    if (evaluation_id !== '') {
-        serialize = $("#article-evaluation-" + article_id + "-" + evaluation_id).serialize()
-    } else {
-        serialize = $("#article-evaluation").serialize()
-    }
+    
+    form = $(form).serialize();
+    
     $.ajax({
         url: '/reviews/conducting/save_article_evaluation/',
         cache: false,
-        data: serialize,
+        data: form,
         type: 'post',
         beforeSend: function () {
             $(".btn-save-article").prop("disabled", true);
@@ -364,9 +371,10 @@ $(function () {
         success: function (data) {
             $(".source-articles table tbody tr[oid=" + article_id + "]").replaceWith(data);
             $(".source-articles table tbody tr[oid=" + article_id + "]").addClass("active");
+            //$("#article-evaluation-id").val();
         },
         error: function (jqXHR, textStatus, errorThrown) {
-        	 $.parsifal.alert("Tivemos problemas","Não conseguimos concluir a operação. "+jqXHR.responseText);
+        	 $.parsifal.alert("Tivemos problemas","Não conseguimos concluir a operação."+jqXHR.responseText);
         	 console.log(textStatus, errorThrown + ': ' + jqXHR.responseText);
         },
         complete: function () {
@@ -386,7 +394,9 @@ $(function () {
 	        beforeSend: function () {
 	            $(".btn-save-article").prop("disabled", true);
 	        },
-	        success: function (data) {},
+	        success: function (data) {
+	        	console.log(data)
+	        },
 	        error: function (jqXHR, textStatus, errorThrown) {
 	        	//$.parsifal.alert("Tivemos problemas","Não conseguimos concluir a operação.");
 	       	 	console.log(textStatus, errorThrown+': ' + jqXHR.responseText);
@@ -679,5 +689,12 @@ $(function () {
     }
     $("#source-tab li.active a").click();
   }
+  
+  $("#modal-article").on("click", ".btn-return-conflict", function () {
+	  
+	  $(this).fadeOut("slow");
+	  $('#new_evaluation_conflict').fadeIn("slow");
+	  
+  });
 
 });
