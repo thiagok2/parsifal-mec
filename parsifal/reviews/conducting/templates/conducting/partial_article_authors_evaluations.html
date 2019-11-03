@@ -29,11 +29,35 @@
     </table>
   </div>
 </div>
-{% if article.evaluation_finished %}
-  <div class="row">
-    <div class="col-sm-12">
-      <p>{% trans 'This article evaluation was finished by you, because you solved a conflict and set status as:' %}</p>
-      {{article.get_status_html|safe}}
-    </div>
-  </div>
+{% if article.evaluation_finished and review.selection_reviewer.id == user.id %}
+  	<div class="row">
+	    <div class="col-sm-12">
+	      <p>{% trans 'This article evaluation was finished by you, because you solved a conflict and set status as:' %}</p>
+	      {{article.get_status_html|safe}}
+	      {% trans 'at ' %} <span class="small text-muted">({{article.evaluation_finished_at}})</span>
+	    </div>
+  
+	    <div class="col-sm-12" id="div_return_conflict">
+	    	<p><p>
+	   		<button type="button" class="btn btn-danger btn-return-conflict">{% trans 'Return to conflict' %}</button>
+	    </div>
+    
+   </div>
+   <div class="row" id="new_evaluation_conflict" style="display:none;">
+		<div class="col-md-12">
+			<hr/>
+			<p>{% trans 'Choose what status the article should have.' %}<p>
+		</div>
+		<div class="col-md-6">
+			<div class="form-group">
+		    	<label class="control-label">{% trans 'Status' %}</label>
+		      	<select name="status" id="status" class="form-control">
+		        	{% for status in article.ARTICLE_FINAL_STATUS %}
+		          		<option value="{{ status.0 }}"{% if article.status == status.0 %} selected{% endif %} >{{ status.1 }}</option>
+		        	{% endfor %}
+		      	</select>
+		    </div>
+		</div>
+  	</div>
 {% endif %}
+

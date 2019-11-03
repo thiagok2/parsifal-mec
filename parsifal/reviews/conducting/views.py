@@ -941,22 +941,31 @@ def save_article_evaluation(request):
             article_id = request.POST['article-id']
             article_evaluation_id = request.POST['article-evaluation-id']
             review_id = ''
-
+            status = request.POST['status'][:1]
+           
             if article_evaluation_id != 'None':
+                print 'UPDATE article_evaluation'
                 article_evaluation = ArticleEvaluation.objects.get(pk=article_evaluation_id)
                 review_id = article_evaluation.review.id
+                
+                if status == ArticleEvaluation.UNCLASSIFIED:
+                    print 'TODO'
             else:
+                print 'NEW article_evaluation'
                 review_id = request.POST['review-id']
                 review = Review.objects.get(pk=review_id)
                 article = Article.objects.get(pk=article_id)
                 article_evaluation = ArticleEvaluation(review=review, article=article, user=request.user)
-
+                
+                if status == ArticleEvaluation.UNCLASSIFIED:
+                    return edit_article_status(request, review_id, article_id)
+                
             if 'comments' in request.POST:
                 article_evaluation.comments = request.POST['comments']
             else:
                 article_evaluation.comments = 'Avaliado em ' +datetime.today().strftime('%Y-%m-%d-%H:%M:%S')
 
-            status = request.POST['status'][:1]
+            
             if status in (ArticleEvaluation.UNCLASSIFIED, ArticleEvaluation.REJECTED, ArticleEvaluation.ACCEPTED, ArticleEvaluation.DUPLICATED):
                 article_evaluation.status = status
 
@@ -1023,14 +1032,18 @@ def article_solve_conflict(request):
         article = Article.objects.get(pk=article_id)
 
         status = request.POST['status'][:1]
-        if status in (Article.UNCLASSIFIED, Article.WAITING, Article.REJECTED, Article.CONFLICT, Article.ACCEPTED, Article.DUPLICATED):
+        if status in (Article.REJECTED, Article.ACCEPTED, Article.DUPLICATED):
             article.status = status
             article.evaluation_finished = True
             article.evaluation_finished_at = datetime.now()
-
+            article.evaluation_finished_by = request.user
             article.save()
-
-        return HttpResponse()
+            print('new status:' + article.status)
+            return HttpResponse(article.status)
+        else:
+            print 'Error: status:'+status
+            return HttpResponseBadRequest('Error: status:'+status)
+        
     except Exception as e:
         print e
         messages.error(request, _('An expected error occurred.') + str(e))
@@ -1426,7 +1439,8 @@ def articles_per_year(request):
     final_articles = review.get_final_selection_articles().values('year').annotate(count=Count('year')).order_by('-year')
     articles = []
     for article in final_articles:
-        articles.append(article['year'] + ':' + str(article['count']))
+        year = article['year'] if article['year'] else '?'+_('year')+'?'
+        articles.append(year + ':' + str(article['count']))
     return HttpResponse(','.join(articles))
 
 @author_required

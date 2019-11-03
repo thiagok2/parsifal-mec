@@ -582,6 +582,7 @@ class Article(models.Model):
     updated_at = models.DateTimeField(auto_now=True, blank=True, null=True)
     created_by = models.ForeignKey(User, null=True, blank=True, related_name='articles_created', on_delete=models.SET_NULL)
     updated_by = models.ForeignKey(User, null=True, blank=True, related_name='articles_updated', on_delete=models.SET_NULL)
+    evaluation_finished_by = models.ForeignKey(User, null=True, blank=True, related_name='articles_resolved', on_delete=models.SET_NULL)
     evaluation_finished = models.BooleanField(default=False)
     evaluation_finished_at = models.DateTimeField(blank=True, null=True)
     has_empirical_data = models.BooleanField(default=False)
@@ -616,8 +617,7 @@ class Article(models.Model):
         return evaluations
 
     def get_user_evaluation(self, user_id=None):
-        evaluation = ArticleEvaluation.objects \
-                        .filter(article__id=self.id, user__id=user_id)
+        evaluation = ArticleEvaluation.objects.filter(article__id=self.id, user__id=user_id)
 
        # if evaluation.count() > 0:
         #    evaluation = evaluation[0]['status']
@@ -720,7 +720,7 @@ class ArticleEvaluation(models.Model):
         unique_together = (("review", "article", "user"),)
 
     def __unicode__(self):
-        return self.status
+        return self.user.username+' - '+self.status
 
     def get_status_html(self):
         label = { ArticleEvaluation.UNCLASSIFIED: 'default', ArticleEvaluation.REJECTED: 'danger', ArticleEvaluation.ACCEPTED: 'success', ArticleEvaluation.DUPLICATED: 'warning' }
