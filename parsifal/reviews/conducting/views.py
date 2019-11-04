@@ -990,6 +990,7 @@ def save_article_evaluation(request):
 
 def edit_article_status(request, review_id, article_id):
     try:
+        print '::edit_article_status::'
         review = Review.objects.get(pk=review_id)
         article_evaluations = ArticleEvaluation.objects.filter(review__id=review_id, article__id=article_id)
         article = Article.objects.get(pk=article_id)
@@ -1039,7 +1040,8 @@ def article_solve_conflict(request):
             article.evaluation_finished_by = request.user
             article.save()
             print('new status:' + article.status)
-            return HttpResponse(article.status)
+            
+            return HttpResponse(build_article_table_row(request, article, request.user))
         else:
             print 'Error: status:'+status
             return HttpResponseBadRequest('Error: status:'+status)

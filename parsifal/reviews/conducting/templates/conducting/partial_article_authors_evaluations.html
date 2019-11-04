@@ -34,12 +34,12 @@
 	    <div class="col-sm-12">
 	      <p>{% trans 'This article evaluation was finished by you, because you solved a conflict and set status as:' %}</p>
 	      {{article.get_status_html|safe}}
-	      {% trans 'at ' %} <span class="small text-muted">({{article.evaluation_finished_at}})</span>
+	     <span class="small text-muted">({{article.evaluation_finished_at}})</span>
 	    </div>
   
 	    <div class="col-sm-12" id="div_return_conflict">
 	    	<p><p>
-	   		<button type="button" class="btn btn-danger btn-return-conflict">{% trans 'Return to conflict' %}</button>
+	   		<button type="button" class="btn btn-danger btn-return-conflict">{% trans 'Reopen for evaluation' %}</button>
 	    </div>
     
    </div>
@@ -49,7 +49,12 @@
 			<p>{% trans 'Choose what status the article should have.' %}<p>
 		</div>
 		<div class="col-md-6">
+			<form id="article_reopen_evaluation" name="article_reopen_evaluation">
+			{% csrf_token %}
+			<input type="hidden" name="article-id" id="article-id" value="{{article.id}}">
+			<input type="hidden" name="review-id" id="review-id" value="{{review.id}}">
 			<div class="form-group">
+				<input type="hidden" name="reopen_evaluation-{{article.id}}" id="reopen_evaluation-{{article.id}}" value="false"/>
 		    	<label class="control-label">{% trans 'Status' %}</label>
 		      	<select name="status" id="status" class="form-control">
 		        	{% for status in article.ARTICLE_FINAL_STATUS %}
@@ -57,6 +62,7 @@
 		        	{% endfor %}
 		      	</select>
 		    </div>
+		    </form>
 		</div>
   	</div>
 {% endif %}
