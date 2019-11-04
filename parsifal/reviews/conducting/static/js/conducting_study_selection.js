@@ -314,7 +314,8 @@ $(function () {
       }
     });
     var is_solving_conflict = $('#article-solve-conflict #status').val()
-    if (is_solving_conflict) {
+    var is_reopening =  $('#article_reopen_evaluation #status').val()
+    if (is_solving_conflict || is_reopening) {
         article_solve_conflict();
     } else {
         save_article_evaluation();
