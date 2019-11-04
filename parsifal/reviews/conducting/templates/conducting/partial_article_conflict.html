@@ -31,6 +31,7 @@
     <div class="form-group">
       <label class="control-label">{% trans 'Status' %}</label>
       <select name="status" id="status" class="form-control">
+          <option value="">{% trans 'Choose one' %}</option>
         {% for status in article.ARTICLE_FINAL_STATUS %}
           <option value="{{ status.0 }}"{% if article.status == status.0 %} selected{% endif %} >{{ status.1 }}</option>
         {% endfor %}

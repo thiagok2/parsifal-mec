@@ -214,7 +214,7 @@ $(function () {
         var status = $(".source-articles tbody tr.active select[id^='evaluation-status']").val();
         $("#modal-article").modal('show');
         $("#modal-article").on('shown.bs.modal', function(e) {
-            $('#modal-article #status').val(status)
+            $('#modal-article #article-evaluation #status').val(status)
             $('#modal-article a[href="#tab-details"]').tab('show')
         })
     }
@@ -313,8 +313,12 @@ $(function () {
         $(".btn-save-article").prop("disabled", false);
       }
     });
-    save_article_evaluation();
-    article_solve_conflict();
+    var is_solving_conflict = $('#article-solve-conflict #status').val()
+    if (is_solving_conflict) {
+        article_solve_conflict();
+    } else {
+        save_article_evaluation();
+    }
   }
 
   $("body").on("change", "select[id^='evaluation-status']", function () {
@@ -327,7 +331,7 @@ $(function () {
             $("#modal-article .modal-body").loadActiveArticle();
             $("#modal-article").modal('show');
             $("#modal-article").on('shown.bs.modal', function(e) {
-                $('#modal-article #status').val('R')
+                $('#modal-article #article-evaluation #status').val('R')
                 $('#modal-article a[href="#tab-evaluation"]').tab('show')
             })
         }
@@ -342,24 +346,24 @@ $(function () {
     var article_id = "";
     var evaluation_id = "";
     var form;
-    
+
     if (ref !== "") { // via lista
         article_id = $(ref).closest('tr').attr('oid')
         evaluation_id = $(ref).attr('data-evaluation-id');
         form = $("#article-evaluation-" + article_id + "-" + evaluation_id);
-        
+
     } else { // via modal
         article_id = $("#modal-article #article-id").val();
         form = $("#article-evaluation");
-        
+
         if( $("#article-evaluation-finished-"+article_id).val() == "True"){
         	console.log('article-evaluation-finished');
         	return false;
         }
     }
-    
+
     form = $(form).serialize();
-    
+
     $.ajax({
         url: '/reviews/conducting/save_article_evaluation/',
         cache: false,
@@ -397,7 +401,7 @@ $(function () {
 			new_status = true;
 		}
 	}
-	
+
 	if( new_status ){
 		$.ajax({
 	        url: '/reviews/conducting/article_solve_conflict/',
@@ -420,7 +424,7 @@ $(function () {
 	        }
 	    });
 	}
-	
+
   }
 
   $(".btn-save-article").click(function () {
@@ -702,14 +706,14 @@ $(function () {
     }
     $("#source-tab li.active a").click();
   }
-  
+
   $("#modal-article").on("click", ".btn-return-conflict", function () {
 	  var article_id = $("#modal-article #article-id").val();
-	  
+
 	  $('#reopen_evaluation-'+article_id).val(true);
 	  $(this).fadeOut();
 	  $('#new_evaluation_conflict').fadeIn("slow");
-	  
+
   });
 
 });
