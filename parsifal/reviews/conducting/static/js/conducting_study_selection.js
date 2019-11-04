@@ -384,30 +384,43 @@ $(function () {
   }
 
   function article_solve_conflict() {
+	var data_form;
+	var new_status = false;
+	var article_id = $("#modal-article #article-id").val();
 	if($('#article-solve-conflict').length){
-		console.log('call article_solve_conflict-js - article_solve_conflict-py');
+		data_form =  $("#article-solve-conflict").serialize();
+		new_status = true;
+	}else {
+		var reopen_evaluation = $('#reopen_evaluation-'+article_id).length ? $('#reopen_evaluation-'+article_id).val() : false;
+		if(reopen_evaluation){
+			data_form =  $("#article_reopen_evaluation").serialize();
+			new_status = true;
+		}
+	}
+	
+	if( new_status ){
 		$.ajax({
 	        url: '/reviews/conducting/article_solve_conflict/',
 	        cache: false,
-	        data: $("#article-solve-conflict").serialize(),
+	        data: data_form,
 	        type: 'post',
 	        beforeSend: function () {
 	            $(".btn-save-article").prop("disabled", true);
 	        },
 	        success: function (data) {
-	        	console.log(data)
+	        	$(".source-articles table tbody tr[oid=" + article_id + "]").replaceWith(data);
+	            $(".source-articles table tbody tr[oid=" + article_id + "]").addClass("active");
 	        },
 	        error: function (jqXHR, textStatus, errorThrown) {
-	        	//$.parsifal.alert("Tivemos problemas","Não conseguimos concluir a operação.");
+	        	$.parsifal.alert("Tivemos problemas","Não conseguimos concluir a operação."+jqXHR.responseText);
 	       	 	console.log(textStatus, errorThrown+': ' + jqXHR.responseText);
 	        },
 	        complete: function () {
 	            $(".btn-save-article").prop("disabled", false);
 	        }
 	    });
-	}else{
-		console.log('call article_solve_conflict - not necessary');
 	}
+	
   }
 
   $(".btn-save-article").click(function () {
@@ -691,8 +704,10 @@ $(function () {
   }
   
   $("#modal-article").on("click", ".btn-return-conflict", function () {
+	  var article_id = $("#modal-article #article-id").val();
 	  
-	  $(this).fadeOut("slow");
+	  $('#reopen_evaluation-'+article_id).val(true);
+	  $(this).fadeOut();
 	  $('#new_evaluation_conflict').fadeIn("slow");
 	  
   });
