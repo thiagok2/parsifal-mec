@@ -39,7 +39,7 @@ from parsifal.utils.meta_analysis import cohen_d, effect_size_comb,\
 import requests
 from decouple import config
 from django.template.defaultfilters import nan
-from datetime import datetime, date
+import datetime
 
 @author_or_visitor_required
 @login_required
@@ -942,30 +942,28 @@ def save_article_evaluation(request):
             article_evaluation_id = request.POST['article-evaluation-id']
             review_id = ''
             status = request.POST['status'][:1]
-           
+
             if article_evaluation_id != 'None':
-                print 'UPDATE article_evaluation'
                 article_evaluation = ArticleEvaluation.objects.get(pk=article_evaluation_id)
                 review_id = article_evaluation.review.id
-                
+
                 if status == ArticleEvaluation.UNCLASSIFIED:
                     print 'TODO'
             else:
-                print 'NEW article_evaluation'
                 review_id = request.POST['review-id']
                 review = Review.objects.get(pk=review_id)
                 article = Article.objects.get(pk=article_id)
                 article_evaluation = ArticleEvaluation(review=review, article=article, user=request.user)
-                
+
                 if status == ArticleEvaluation.UNCLASSIFIED:
                     return edit_article_status(request, review_id, article_id)
-                
+
             if 'comments' in request.POST:
                 article_evaluation.comments = request.POST['comments']
             else:
-                article_evaluation.comments = 'Avaliado em ' +datetime.today().strftime('%Y-%m-%d-%H:%M:%S')
+                article_evaluation.comments = 'Avaliado em ' +datetime.datetime.today().strftime('%Y-%m-%d-%H:%M:%S')
 
-            
+
             if status in (ArticleEvaluation.UNCLASSIFIED, ArticleEvaluation.REJECTED, ArticleEvaluation.ACCEPTED, ArticleEvaluation.DUPLICATED):
                 article_evaluation.status = status
 
@@ -990,7 +988,6 @@ def save_article_evaluation(request):
 
 def edit_article_status(request, review_id, article_id):
     try:
-        print '::edit_article_status::'
         review = Review.objects.get(pk=review_id)
         article_evaluations = ArticleEvaluation.objects.filter(review__id=review_id, article__id=article_id)
         article = Article.objects.get(pk=article_id)
@@ -1036,16 +1033,14 @@ def article_solve_conflict(request):
         if status in (Article.REJECTED, Article.ACCEPTED, Article.DUPLICATED):
             article.status = status
             article.evaluation_finished = True
-            article.evaluation_finished_at = datetime.now()
+            article.evaluation_finished_at = datetime.datetime.now()
             article.evaluation_finished_by = request.user
             article.save()
-            print('new status:' + article.status)
-            
+
             return HttpResponse(build_article_table_row(request, article, request.user))
         else:
-            print 'Error: status:'+status
             return HttpResponseBadRequest('Error: status:'+status)
-        
+
     except Exception as e:
         print e
         messages.error(request, _('An expected error occurred.') + str(e))
