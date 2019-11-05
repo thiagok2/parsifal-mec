@@ -940,10 +940,15 @@ def save_article_evaluation(request):
         try:
             article_id = request.POST['article-id']
             article_evaluation_id = request.POST['article-evaluation-id']
-            review_id = ''
+            review_id = request.POST['review-id']
             status = request.POST['status'][:1]
 
-            if article_evaluation_id != 'None':
+            evaluation_exists = ArticleEvaluation.objects.filter(review_id=review_id, article_id=article_id, user_id=request.user.id)
+
+            if evaluation_exists.count():
+                article_evaluation_id = evaluation_exists[0].id
+
+            if article_evaluation_id != 'None' and evaluation_exists.count():
                 article_evaluation = ArticleEvaluation.objects.get(pk=article_evaluation_id)
                 review_id = article_evaluation.review.id
                 review = article_evaluation.review
@@ -953,7 +958,6 @@ def save_article_evaluation(request):
 
                     return edit_article_status(request, review_id, article_id)
             else:
-                review_id = request.POST['review-id']
 
                 if status == ArticleEvaluation.UNCLASSIFIED:
                     return edit_article_status(request, review_id, article_id)
