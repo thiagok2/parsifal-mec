@@ -889,6 +889,7 @@ def save_article_details(request):
             article.language = request.POST['language'][:50]
             article.note = request.POST['note'][:500]
             article.updated_by = request.user
+            print 'salvando.. ', article.abstract
             article.save()
 
             return HttpResponse(build_article_table_row(request, article, request.user))
