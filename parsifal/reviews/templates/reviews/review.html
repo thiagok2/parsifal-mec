@@ -81,7 +81,7 @@
         <div class="panel-heading">
           <h3 class="panel-title">{% trans 'Authors' %}</h3>
         </div>
-        <ul class="list-group authors" data-remove-url="{% url 'reviews:remove_author_from_review' %}">
+        <ul class="list-group authors">
           <li class="list-group-item" author-id="{{ review.author.id }}">
             <a href="/{{ review.author.username }}/">
               {{ review.author.profile.get_screen_name }}
@@ -92,7 +92,7 @@
             <li  class="list-group-item" data-user-id="{{ author.id }}">
               <a href="{% url 'reviews' author.username %}">{{ author.profile.get_screen_name }}</a>
               {% if user.id == review.author.id %}
-                <a href="javascript:void(0);" class="js-remove-author text-danger pull-right">
+                <a href="javascript:void(0);" class="js-open-remove-author text-danger pull-right">
                   <span class="glyphicon glyphicon-remove"></span>
                 </a>
               {% elif user.id == author.id %}
@@ -141,10 +141,66 @@
                 </div>
               </div>
             </form>
-          </div>
+            
+            
+          </div><!-- end panel-footer add author-->
 
         {% endif %}
-      </div>
+        <form method="post" action="{% url 'reviews:remove_author_from_review' %}">
+        	{% csrf_token %}
+        	<input type="hidden" name="review-id" id="review-id" value="{{ review.pk }}">
+        	<input type="hidden" name="co-author-id" id="co-author-id" value="0">
+				<div class="modal fade" id="remove-author-modal">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+								<h4 class="modal-title">{% trans 'Remove author' %}</h4>
+								{% trans "What would you like to do with articles that are spreading evaluation?" %}
+							</div>
+							<div class="modal-body">
+								<div class="alert alert-success">
+									{% trans 'This co-author contributed at ' %}<span id="count_evaluations"></span>{% trans ' evaluations.  It will be kept.'%}
+								</div>
+								
+								<div class="alert alert-danger">
+									{% trans 'Your SRL has only this co-author, if it is removed, do you want to automatically update the status of pending articles?' %}
+								</div>
+								
+								<div class="form-check">
+									<p>
+										<input class="form-check-input" type="radio" name="update-status" id="update-status" value="true" checked/> 
+										<label for="update-status"> 
+											{% trans 'Update status of articles waiting for a new evaluations for the available evaluation.' %} 
+										</label> 
+										<br /> 
+									</p>
+								</div>
+								<div class="form-check">
+									<p>
+										<input class="form-check-input" type="radio" name="update-status" id="update-status" value="false"/> 
+										<label  for="update-status"> 
+											{% trans 'Not updating, this will only be a replacement for coauthors.' %} 
+										</label> 
+										<br /> 
+									</p>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default"
+									data-dismiss="modal">{% trans 'Cancel' %}</button>
+								<button type="submit" class="btn btn-success">{% trans 'Confirm' %}</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- end modal  add-visitor-modal-->
+			</form>
+        
+        
+      </div><!-- end panel author -->
 
       <div class="panel panel-default">
       	<div class="panel-heading">
@@ -194,12 +250,12 @@
                    </div>
                  </div>
                </div>
-             </div>
+             </div><!-- end modal  add-visitor-modal-->
         	</form>
-        </div>
-      </div>
-    </div>
-  </div>
+        </div><!-- end panel-footer visitor-->
+      </div><!-- end panel visitor -->
+    </div><!-- end secondary col -->
+  </div><!-- end row container -->
 
 	<section id="sources-section">
 		{% include 'reviews/partial_modal_list_import_protocol.html' %}

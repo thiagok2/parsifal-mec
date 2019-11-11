@@ -19,6 +19,8 @@ from parsifal.reviews.forms import CreateReviewForm, ReviewForm
 
 from django.utils.translation import ugettext as _
 from decouple import config
+from django.db import connection
+from django.db import transaction
 
 
 def reviews(request, username):
@@ -182,20 +184,51 @@ def add_visitor_to_review(request):
 
     return redirect(r('review', args=(review.author.username, review.name)))
 
-
 @main_author_required
 @login_required
 @require_POST
 def remove_author_from_review(request):
     try:
-        author_id = request.POST.get('user-id')
+        print 'remove_author_from_review'
+        author_id = request.POST.get('co-author-id')
         review_id = request.POST.get('review-id')
+        update_status = request.POST.get('update-status')
         author = User.objects.get(pk=author_id)
         review = Review.objects.get(pk=review_id)
+        
         review.co_authors.remove(author)
+        
         review.save()
-        return HttpResponse()
-    except:
+        
+        print 'remove(author) - review.save()'
+        if review.co_authors.count == 0:
+            if update_status == "true":
+                #(x for x in xyz if x not in a)
+                articles_filter = (article for article in review.get_source_articles().filter(status=Article.WAITING) if article.get_evaluations().count()>0)
+                for article in articles_filter:
+                    evaluations = article.get_evaluations()
+                    if evaluations.count() == 1:
+                        if evaluations[0].user_id == author_id:
+                            evaluations[0].delete()
+                            article.status = Article.UNCLASSIFIED
+                            article.save()
+                        else:
+                            article.status = evaluations[0].status
+                            article.save()
+                    
+                
+            else:
+                 print 'update_status_false:'+update_status
+            
+        
+        
+        
+        
+        
+        return redirect(r('review', args=(review.author.username, review.name)))
+    except Exception, e:
+        print 'ERROR:'+e
+        messages.error(request, _('An expected error occurred.') +'ERROR:'+ str(e))
         return HttpResponseBadRequest()
 
 def save_user_invited_to_review(review_id, email, invite_type):
@@ -206,7 +239,9 @@ def save_user_invited_to_review(review_id, email, invite_type):
         invite.invite_type = invite_type
         invite.save()
         return HttpResponse()
-    except:
+    except Exception, e:
+        print e
+        messages.error(request, _('An expected error occurred.') + str(e))
         return HttpResponseBadRequest()
 
 @main_author_required
@@ -223,7 +258,9 @@ def remove_visitor_from_review(request):
         review.visitors.remove(visitor)
         review.save()
         return HttpResponse()
-    except:
+    except Exception, e:
+        print e
+        messages.error(request, _('An expected error occurred.') + str(e))
         return HttpResponseBadRequest()
 
 @author_required
@@ -249,7 +286,9 @@ def save_description(request):
             review.description = description
             review.save()
             return HttpResponse(_('Your review has been saved successfully!'))
-    except:
+    except Exception, e:
+        print e
+        messages.error(request, _('An expected error occurred.') + str(e))
         return HttpResponseBadRequest()
 
 '''
@@ -276,7 +315,9 @@ def save_tag(request):
         tag.save()
         tag_json = { 'id': tag.id, 'tag': tag.tag }
         return JsonResponse(tag_json, safe=False)
-    except:
+    except Exception, e:
+        print e
+        messages.error(request, _('An expected error occurred.') + str(e))
         return HttpResponseBadRequest()
 
 @author_or_visitor_required
@@ -296,7 +337,9 @@ def load_tags(request):
                 'tag': tag.tag
             })
         return JsonResponse(tags_list, safe=False)
-    except:
+    except Exception, e:
+        print e
+        messages.error(request, _('An expected error occurred.') + str(e))
         return HttpResponseBadRequest()
 
 @author_required
@@ -316,7 +359,9 @@ def remove_tag(request):
             except Tag.DoesNotExist:
                 return HttpResponseBadRequest()
         return HttpResponse()
-    except:
+    except Exception, e:
+        print e
+        messages.error(request, _('An expected error occurred.') + str(e))
         return HttpResponseBadRequest()
 
 @login_required
@@ -335,6 +380,7 @@ def published_protocols(request):
         return render_to_response('reviews/partial_published_protocols.html', context)
     except Exception as e:
         print e
+        messages.error(request, _('An expected error occurred.') + str(e))
         return HttpResponseBadRequest()
 
 @login_required
