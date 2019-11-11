@@ -155,7 +155,7 @@ $(function () {
         $(".source-tab-content table").tablesorter({ headers: { 0: { sorter: false }}});
       },
       error: function (jqXHR, textStatus, errorThrown) {
-    	  $.parsifal.alert("Tivemos problemas","Não conseguimos concluir a operação. "+jqXHR.responseText);
+    	  $.parsifal.alert("Tivemos problemas","Não conseguimos concluir a operação. Error: "+jqXHR.responseText);
     	  console.log(textStatus, errorThrown+":"+jqXHR.responseText);
       },
       complete: function () {

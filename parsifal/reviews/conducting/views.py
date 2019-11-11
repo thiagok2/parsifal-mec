@@ -732,8 +732,8 @@ def source_articles(request):
         return render(request, 'conducting/partial_conducting_articles.html', {'review': review, 'source': source, 'articles': articles, 'status_evaluation': status_evaluation, 'articles_count':articles_count, 'active_filter': active_filter })
     except Exception as e:
         print e
-        return HttpResponseBadRequest()
-
+        return HttpResponseBadRequest(str(e))
+    
 @author_or_visitor_required
 @login_required
 def article_details(request):
@@ -757,7 +757,7 @@ def article_details(request):
         return render_to_response('conducting/partial_conducting_article_details.html', context)
     except Exception as e:
         print e
-        return HttpResponseBadRequest()
+        return HttpResponseBadRequest(str(e))
 
 @author_or_visitor_required
 @login_required
@@ -774,7 +774,7 @@ def article_details_confirm(request):
         return render_to_response('conducting/partial_conducting_article_details_confirm.html', context)
     except Exception as e:
         print e
-        return HttpResponseBadRequest()
+        return HttpResponseBadRequest(str(e))
 
 @author_required
 @login_required
@@ -811,7 +811,7 @@ def articles_upload(request):
                 return HttpResponseBadRequest(error)
     except Exception as e:
         print e
-        return HttpResponseBadRequest()
+        return HttpResponseBadRequest(str(e))
 
 @author_required
 @login_required
