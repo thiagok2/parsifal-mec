@@ -277,6 +277,11 @@ class Review(models.Model):
 
     def get_search_setup(self):
         return SearchSetup.objects.filter(review_id=self.id)
+    
+    def get_user_evaluation(self, user_id=None):
+        evaluations = ArticleEvaluation.objects.filter(review__id=self.id, user__id=user_id)
+
+        return evaluations
 
 @reversion.register()
 class SearchSetup(models.Model):
