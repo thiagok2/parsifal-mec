@@ -1279,7 +1279,7 @@ def import_pico(request):
         ref_review_id = request.GET['ref-review-id']
         ref_review = Review.objects.get(pk=ref_review_id)
 
-        response = {};
+        response = {}
 
         review.pico_type = ref_review.pico_type
         response['pico_type'] = review.pico_type
@@ -1312,4 +1312,3 @@ def import_pico(request):
     except Exception as e:
         print str(e)
         return HttpResponseBadRequest()
-

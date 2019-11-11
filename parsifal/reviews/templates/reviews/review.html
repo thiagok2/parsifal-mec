@@ -158,35 +158,47 @@
 									<span aria-hidden="true">&times;</span>
 								</button>
 								<h4 class="modal-title">{% trans 'Remove author' %}</h4>
-								{% trans "What would you like to do with articles that are spreading evaluation?" %}
+								{% trans "What would you like to do with the articles that involved with this removal??" %}
 							</div>
 							<div class="modal-body">
-								<div class="alert alert-success">
-									{% trans 'This co-author contributed at ' %}<span id="count_evaluations"></span>{% trans ' evaluations.  It will be kept.'%}
+								<div class="alert alert-success hidden" id="msg-count-evaluations">
+									{% trans 'This co-author contributed at ' %}<span id="count_evaluations"></span>{% trans ' articles evaluations.  It will be kept.'%}
 								</div>
 								
-								<div class="alert alert-danger">
-									{% trans 'Your SRL has only this co-author, if it is removed, do you want to automatically update the status of pending articles?' %}
+								<div class="alert alert-success hidden" id="msg-no-evaluations">
+									{% trans 'This author has no contributions during article selection. Removal will not impact this review.'%}
 								</div>
 								
-								<div class="form-check">
-									<p>
-										<input class="form-check-input" type="radio" name="update-status" id="update-status" value="true" checked/> 
-										<label for="update-status"> 
-											{% trans 'Update status of articles waiting for a new evaluations for the available evaluation.' %} 
-										</label> 
-										<br /> 
-									</p>
+								
+								<div id="msg-unique-coauthor" class="hidden">
+									<div class="alert alert-danger">
+										{% trans 'Your SRL has only this co-author, if it is removed, do you want to automatically update the status of pending articles?' %}
+									</div>
+									
+									
+									<div class="form-check">
+										<p>
+											<input class="form-check-input" type="radio" name="update-status" id="update-status" value="true" checked/> 
+											<label for="update-status"> 
+												{% trans 'Update status of articles waiting for a new evaluations for the available evaluation.' %} 
+											</label> 
+											<br /> 
+										</p>
+									</div>
+									<div class="form-check">
+										<p>
+											<input class="form-check-input" type="radio" name="update-status" id="update-status" value="false"/> 
+											<label  for="update-status"> 
+												{% trans 'Not updating, this will only be a replacement for coauthors.' %} 
+											</label> 
+											<br /> 
+										</p>
+									</div>
+									
 								</div>
-								<div class="form-check">
-									<p>
-										<input class="form-check-input" type="radio" name="update-status" id="update-status" value="false"/> 
-										<label  for="update-status"> 
-											{% trans 'Not updating, this will only be a replacement for coauthors.' %} 
-										</label> 
-										<br /> 
-									</p>
-								</div>
+								
+								
+								
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-default"

@@ -4,12 +4,49 @@ $(function () {
     $(this).closest("form").submit();
   });
 
-  $(".js-open-remove-author").click(function () {
-
-    var user_container = $(this).closest("li");
+  $(".js-open-remove-author").click(function () {  
+	console.log('aahhhhhhhhh');
+	
+	var user_container = $(this).closest("li");
 
     var co_author_id = $(this).closest("li").attr("data-user-id");
     var review_id = $("#review-id").val();
+    
+    var csrf_token = $("[name='csrfmiddlewaretoken']").val();
+    $.ajax({
+        url: '/reviews/get_review_info',
+        data: {
+        	'csrfmiddlewaretoken': csrf_token,
+        	'review-id':review_id,
+        	'co-author-id':co_author_id
+        },
+        type: 'get',
+        cache: false,
+        beforeSend: function () {
+        	console.log('beforeSend')
+        },
+        success: function (data) {
+        	evaluations_count = data.evaluations_count;
+        	if( evaluations_count > 0){
+        		$('#count_evaluations').html(data.evaluations_count);
+        		$('#msg-no-evaluations').addClass('hidden');
+        		$('#msg-count-evaluations').removeClass('hidden');
+        	}else{
+        		$('#msg-count-evaluations').addClass('hidden');
+        		$('#msg-no-evaluations').removeClass('hidden');
+        	}
+        	
+        	(parseInt(data.co_authors_count) < 2) ? $('#msg-unique-coauthor').removeClass('hidden') : $('#msg-unique-coauthor').addClass('hidden');
+        	
+        		
+        	
+        	console.log(data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+          $.parsifal.alert("Um erro ocorreu: ", jqXHR.responseText);
+        }
+      });
+    
     $('#co-author-id').val(co_author_id);
     $("#remove-author-modal").modal('show');
 

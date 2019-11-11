@@ -1,4 +1,5 @@
 # coding: utf-8
+import json
 
 from django.core.urlresolvers import reverse as r
 from django.template.defaultfilters import slugify, nan
@@ -13,7 +14,7 @@ from django.utils.html import escape
 from django.views.decorators.http import require_POST
 from django.core.mail import EmailMultiAlternatives
 
-from parsifal.reviews.models import Review, Tag, Invite, Question, Keyword, SearchSession, SelectionCriteria, QualityAnswer, QualityQuestion, Risk,DataExtractionField, DataExtractionLookup
+from parsifal.reviews.models import Review, Article, Tag, Invite, Question, Keyword, SearchSession, SelectionCriteria, QualityAnswer, QualityQuestion, Risk,DataExtractionField, DataExtractionLookup
 from parsifal.reviews.decorators import main_author_required, author_required, author_or_visitor_required
 from parsifal.reviews.forms import CreateReviewForm, ReviewForm
 
@@ -189,47 +190,70 @@ def add_visitor_to_review(request):
 @require_POST
 def remove_author_from_review(request):
     try:
-        print 'remove_author_from_review'
+       
         author_id = request.POST.get('co-author-id')
         review_id = request.POST.get('review-id')
         update_status = request.POST.get('update-status')
         author = User.objects.get(pk=author_id)
         review = Review.objects.get(pk=review_id)
         
-        review.co_authors.remove(author)
+        evaluations = review.get_user_evaluation(user_id=author_id)
         
+        review.co_authors.remove(author)
         review.save()
         
-        print 'remove(author) - review.save()'
-        if review.co_authors.count == 0:
-            if update_status == "true":
-                #(x for x in xyz if x not in a)
-                articles_filter = (article for article in review.get_source_articles().filter(status=Article.WAITING) if article.get_evaluations().count()>0)
-                for article in articles_filter:
-                    evaluations = article.get_evaluations()
-                    if evaluations.count() == 1:
-                        if evaluations[0].user_id == author_id:
-                            evaluations[0].delete()
-                            article.status = Article.UNCLASSIFIED
-                            article.save()
-                        else:
-                            article.status = evaluations[0].status
-                            article.save()
-                    
-                
-            else:
-                 print 'update_status_false:'+update_status
+        messages.success(request, _('The author were removed successfully.'))
+        
+        if update_status == "true":
+            update_article_in_wating_conflict(review)
+            messages.success(request, _('The evaluations in articles selection have been updated.'))
+        
             
+        return redirect(r('review', args=(review.author.username, review.name)))
+    except Exception, e:
+        print 'ERROR:'+str(e)
+        messages.error(request, _('An expected error occurred.') +'ERROR:'+ str(e))
+        return HttpResponseBadRequest()
+    
+@main_author_required
+@login_required
+@require_POST
+def update_status_article_unique_author(request):
+    try:
+        review_id = request.POST.get('review-id')
+        review = Review.objects.get(pk=review_id)
         
-        
-        
-        
+        update_article_in_wating_conflict(review)
         
         return redirect(r('review', args=(review.author.username, review.name)))
     except Exception, e:
-        print 'ERROR:'+e
+        print 'ERROR:'+str(e)
         messages.error(request, _('An expected error occurred.') +'ERROR:'+ str(e))
         return HttpResponseBadRequest()
+    
+
+def update_article_in_wating_conflict(review):
+    if review.co_authors.count() == 0:
+        articles_filter = (article for article in review.get_source_articles().filter( Q(status=Article.WAITING) | Q(status=Article.CONFLICT) ) if article.get_evaluations().count()>0)
+        for article in articles_filter:
+            evaluations = article.get_evaluations()
+            if evaluations.count() == 1 and article.status == Article.WAITING:
+                evaluator = User.objects.get(pk=evaluations[0].user_id)
+                if not review.is_author_or_coauthor( evaluator ): #avaliacao de autor/avaliador excluido -> remove avaliação e coloca como UNCLASSIFIED
+                    evaluations[0].delete()
+                    article.status = Article.UNCLASSIFIED
+                    article.save()
+                else: # tem avaliacao do unico autor disponivel, entao nao precisa esperar
+                    article.status = evaluations[0].status
+                    article.save()
+            elif evaluations.count() > 1 and article.status == Article.CONFLICT: #ha conflito, remove a avaliacao do excluido e considera a avaliacao do outro autor
+                for evaluation in evaluations:
+                    if review.is_author_or_coauthor( evaluation.user ):
+                        article.status = evaluation.status
+                        article.save()
+                    else: #evaluation.user_id == author_id
+                        evaluation.delete()
+    
 
 def save_user_invited_to_review(review_id, email, invite_type):
     try:
@@ -505,3 +529,31 @@ def search(request):
 
     })
     return render_to_response('reviews/explorer.html', context)
+
+@author_required
+@login_required
+def get_review_info(request):
+    
+    try:
+        review_id = request.GET['review-id']
+        co_author_id = request.GET['co-author-id']
+        co_author = User.objects.get(pk=co_author_id)
+        review = Review.objects.get(pk=review_id)
+        
+        evaluations = review.get_user_evaluation(user_id=co_author.id)
+        co_authors_count = review.co_authors.count()
+        response = {}
+        
+        response['review'] = review.name
+        #response['evaluations'] = evaluations
+        response['evaluations_count'] = evaluations.count()
+        response['co_authors_count'] = co_authors_count
+        
+        
+        dump = json.dumps(response)
+        return HttpResponse(dump, content_type='application/json')
+        
+    except Exception as e:
+        print str(e)
+        return HttpResponseBadRequest()
+        
