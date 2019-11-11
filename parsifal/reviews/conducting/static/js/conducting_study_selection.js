@@ -291,6 +291,13 @@ $(function () {
       success: function (data) {
         $(".source-articles table tbody tr[oid=" + article_id + "]").replaceWith(data);
         $(".source-articles table tbody tr[oid=" + article_id + "]").addClass("active");
+        var is_solving_conflict = $('#article-solve-conflict #status').val()
+        var is_reopening =  $('#article_reopen_evaluation #status').val()
+        if (is_solving_conflict || is_reopening) {
+            article_solve_conflict();
+        } else {
+            save_article_evaluation();
+        }
         if (move_next) {
           move(FORWARD);
           $("#modal-article .modal-body").loadActiveArticle();
@@ -313,13 +320,7 @@ $(function () {
         $(".btn-save-article").prop("disabled", false);
       }
     });
-    var is_solving_conflict = $('#article-solve-conflict #status').val()
-    var is_reopening =  $('#article_reopen_evaluation #status').val()
-    if (is_solving_conflict || is_reopening) {
-        article_solve_conflict();
-    } else {
-        save_article_evaluation();
-    }
+
   }
 
   $("body").on("change", "select[id^='evaluation-status']", function () {
@@ -376,6 +377,7 @@ $(function () {
         success: function (data) {
             $(".source-articles table tbody tr[oid=" + article_id + "]").replaceWith(data);
             $(".source-articles table tbody tr[oid=" + article_id + "]").addClass("active");
+            $("#modal-article .modal-body").loadActiveArticle();
             //$("#article-evaluation-id").val();
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -414,7 +416,8 @@ $(function () {
 	        },
 	        success: function (data) {
 	        	$(".source-articles table tbody tr[oid=" + article_id + "]").replaceWith(data);
-	            $(".source-articles table tbody tr[oid=" + article_id + "]").addClass("active");
+                $(".source-articles table tbody tr[oid=" + article_id + "]").addClass("active");
+                $("#modal-article .modal-body").loadActiveArticle();
 	        },
 	        error: function (jqXHR, textStatus, errorThrown) {
 	        	$.parsifal.alert("Tivemos problemas","Não conseguimos concluir a operação."+jqXHR.responseText);
