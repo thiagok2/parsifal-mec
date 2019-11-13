@@ -18,6 +18,9 @@ import reversion
 
 from django.contrib.auth.models import User
 
+from django.contrib import admin
+from reversion.admin import VersionAdmin
+
 @reversion.register()
 class Source(models.Model):
     name = models.CharField(max_length=100)
@@ -277,7 +280,7 @@ class Review(models.Model):
 
     def get_search_setup(self):
         return SearchSetup.objects.filter(review_id=self.id)
-    
+
     def get_user_evaluation(self, user_id=None):
         evaluations = ArticleEvaluation.objects.filter(review__id=self.id, user__id=user_id)
 
@@ -1014,3 +1017,9 @@ class DataExtraction(models.Model):
             return value.strftime('%m/%d/%Y')
         except Exception, e:
             return ''
+
+@admin.register(Article)
+class ArticleAdmin(VersionAdmin):
+
+    pass
+
