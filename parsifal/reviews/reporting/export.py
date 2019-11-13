@@ -43,7 +43,7 @@ def export_review_to_docx(review, sections, request):
         PICOC
     '''
     if 'picoc' in sections:
-        
+
         if review.isPicoc():
             document.add_heading(_('PICOC'), level=3)
         elif review.isPicos():
@@ -52,7 +52,7 @@ def export_review_to_docx(review, sections, request):
             document.add_heading(_('Free Text'), level=3)
         else:
             document.add_heading( review.study_type, level=3)
-            
+
         if review.isStudyTypeFree():
             p = document.add_paragraph('', style='List Bullet')
             p.add_run(_('Study: ')).bold = True
@@ -61,19 +61,19 @@ def export_review_to_docx(review, sections, request):
             p = document.add_paragraph('', style='List Bullet')
             p.add_run(_('Population: ')).bold = True
             p.add_run(review.population)
-    
+
             p = document.add_paragraph('', style='List Bullet')
             p.add_run(_('Intervention: ')).bold = True
             p.add_run(review.intervention)
-    
+
             p = document.add_paragraph('', style='List Bullet')
             p.add_run(_('Comparison: ')).bold = True
             p.add_run(review.comparison)
-    
+
             p = document.add_paragraph('', style='List Bullet')
             p.add_run(_('Outcome: ')).bold = True
             p.add_run(review.outcome)
-            
+
             if review.isPicoc():
                 p = document.add_paragraph('', style='List Bullet')
                 p.add_run(_('Context: ')).bold = True
@@ -86,8 +86,8 @@ def export_review_to_docx(review, sections, request):
                 p = document.add_paragraph('', style='List Bullet')
                 p.add_run(_('Custom: ')).bold = True
                 p.add_run(review.pico_text)
-            
-        
+
+
     '''
         Research Questions
     '''
@@ -131,7 +131,7 @@ def export_review_to_docx(review, sections, request):
             if source.url:
                 text = u'{0} ({1})'.format(source.name, source.url)
             document.add_paragraph(text, style='List Bullet')
-            
+
     '''
         Risks
     '''
@@ -140,7 +140,7 @@ def export_review_to_docx(review, sections, request):
 
         for risk in review.get_risks():
             document.add_paragraph(risk.risk, style='List Bullet')
-            
+
     '''
         Statistical Methods and Conventions
     '''
@@ -212,37 +212,37 @@ def export_review_to_docx(review, sections, request):
             p.add_run(u'{0}: '.format(source.name)).bold = True
             count = review.article_set.filter(source=source).count()
             p.add_run(str(count))
-            
+
     if 'number_study_selection_status' in sections:
         document.add_heading(_('Study Selection'), level=3)
         result_status = Article.objects.values('status').order_by('status').annotate(count=Count('status'))
-        
+
         for result in result_status:
             p = document.add_paragraph(style='List Bullet')
-            
+
             label =  dict(Article.ARTICLE_STATUS).get(result['status'])
-            
+
             p.add_run(u'{0}: '.format(label)).bold = True
             p.add_run(str(result['count']))
 
     if 'quality_assessment' in sections:
         document.add_heading(_('Quality Assessment'), level=3)
-        
+
         document.add_heading(_('Question/Answer'), level=4)
         result_quality_assessment = QualityAssessment.objects.values('question__description','answer__description').order_by().annotate(Count('question'), Count('answer') )
-        
+
         table = document.add_table(rows=1, cols=3)
         hdr_cells = table.rows[0].cells
         hdr_cells[0].text = _('Question')
         hdr_cells[1].text = _('Answer')
         hdr_cells[2].text = _('Count')
-         
-        for result in result_quality_assessment: 
+
+        for result in result_quality_assessment:
             row_cells = table.add_row().cells
             row_cells[0].text = result['question__description']
             row_cells[1].text = result['answer__description']
             row_cells[2].text = str(result['answer__count'])
-        
+
         document.add_heading(_('Accepted Articles - Summary'), level=4)
         table_articles = document.add_table(rows=1, cols=2)
         hdr_cells_articles = table_articles.rows[0].cells
@@ -250,16 +250,20 @@ def export_review_to_docx(review, sections, request):
         hdr_cells_articles[1].text = _('Score')
         for article in review.get_accepted_articles():
             row_cells = table_articles.add_row().cells
-            row_cells[0].text = article.title+'('+article.year+')'
+            row_cells[0].text = ''
+            if article.title:
+                row_cells[0].text += article.title
+            if article.year:
+                row_cells[0].text += '('+article.year+')'
             row_cells[1].text = str(article.get_score())
-            
-        
+
+
     if 'data_extraction' in sections:
         document.add_heading(_('Data Extraction'), level=3)
-        
+
         selected_studies = review.get_final_selection_articles()
         data_extraction_fields = review.get_data_extraction_fields()
-        
+
         table_data_extraction= document.add_table(rows=1, cols=len(data_extraction_fields)+1)
         hdr_cells_fields = table_data_extraction.rows[0].cells
         hdr_cells_fields[0].text = _('bibtex_key')
@@ -281,15 +285,15 @@ def export_review_to_docx(review, sections, request):
                     i = i + 1
             except Exception, e:
                  document.add_paragraph(u'Error: {0}'.format(e.message))
-                
+
     if 'data_analysis' in sections:
-        
+
         document.add_heading(_('Data Analysis'), level=3)
         try:
             conclusions = article_meta_analysis(review, request)
-            
+
             #document.add_paragraph(mark_safe(conclusions['forest_plot']))
-    
+
             if(conclusions):
                 table = document.add_table(rows=1, cols=3)
                 hdr_cells = table.rows[0].cells
