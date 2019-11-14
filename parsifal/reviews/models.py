@@ -713,7 +713,7 @@ class ArticleEvaluation(models.Model):
         )
 
     review = models.ForeignKey(Review, related_name='evaluation_review')
-    article = models.ForeignKey(Article, related_name='evaluation_article')
+    article = models.ForeignKey(Article)
     user = models.ForeignKey(User, related_name='evaluation_user')
     selection_criteria = models.ForeignKey(SelectionCriteria, null=True, blank=True, on_delete=models.SET_NULL)
     status = models.CharField(max_length=1, choices=ARTICLE_STATUS, default=UNCLASSIFIED)

@@ -733,7 +733,7 @@ def source_articles(request):
     except Exception as e:
         print e
         return HttpResponseBadRequest(str(e))
-    
+
 @author_or_visitor_required
 @login_required
 def article_details(request):
@@ -1548,13 +1548,13 @@ def export_results(request):
                 article.issn,
                 article.language,
                 article.note,
-                (article.selection_criteria.description if article.selection_criteria else '' ),
+                (article.articleevaluation_set.all()[0].selection_criteria if article.articleevaluation_set.count() > 0 else ''),
                 article.created_at.replace(tzinfo=None),
                 article.updated_at.replace(tzinfo=None),
                 (article.created_by.username if article.created_by else ''),
                 (article.updated_by.username if article.updated_by else ''),
                 article.get_status_display(),
-                article.comments,
+                (article.articleevaluation_set.all()[0].comments if article.articleevaluation_set.count() > 0 else ''),
             ]
             for col_num in xrange(len(row)):
                 ws.write(row_num, col_num, row[col_num], font_style)
