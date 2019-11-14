@@ -215,7 +215,7 @@ def export_review_to_docx(review, sections, request):
 
     if 'number_study_selection_status' in sections:
         document.add_heading(_('Study Selection'), level=3)
-        result_status = Article.objects.values('status').order_by('status').annotate(count=Count('status'))
+        result_status = Article.objects.filter(review_id=review.id).values('status').order_by('status').annotate(count=Count('status'))
 
         for result in result_status:
             p = document.add_paragraph(style='List Bullet')
