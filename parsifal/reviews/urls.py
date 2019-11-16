@@ -8,6 +8,8 @@ urlpatterns = patterns('parsifal.reviews.views',
     url(r'^get_review_info/$', 'get_review_info', name='get_review_info'),
     url(r'^add_author/$', 'add_author_to_review', name='add_author_to_review'),
     url(r'^add_visitor/$', 'add_visitor_to_review', name='add_visitor_to_review'),
+    
+    url(r'^update_status_article_unique_author/$', 'update_status_article_unique_author', name='update_status_article_unique_author'),
     url(r'^remove_author/$', 'remove_author_from_review', name='remove_author_from_review'),
     url(r'^remove_visitor/$', 'remove_visitor_from_review', name='remove_visitor_from_review'),
     url(r'^save_description/$', 'save_description', name='save_description'),

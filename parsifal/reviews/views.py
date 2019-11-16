@@ -225,6 +225,8 @@ def update_status_article_unique_author(request):
         
         update_article_in_wating_conflict(review)
         
+        messages.success(request, _('The status of articles have been updated.'))
+        
         return redirect(r('review', args=(review.author.username, review.name)))
     except Exception, e:
         print 'ERROR:'+str(e)
@@ -238,14 +240,9 @@ def update_article_in_wating_conflict(review):
         for article in articles_filter:
             evaluations = article.get_evaluations()
             if evaluations.count() == 1 and article.status == Article.WAITING:
-                evaluator = User.objects.get(pk=evaluations[0].user_id)
-                if not review.is_author_or_coauthor( evaluator ): #avaliacao de autor/avaliador excluido -> remove avaliação e coloca como UNCLASSIFIED
-                    evaluations[0].delete()
-                    article.status = Article.UNCLASSIFIED
-                    article.save()
-                else: # tem avaliacao do unico autor disponivel, entao nao precisa esperar
-                    article.status = evaluations[0].status
-                    article.save()
+               # tem avaliacao do unico autor disponivel, entao nao precisa esperar
+               article.status = evaluations[0].status
+               article.save()
             elif evaluations.count() > 1 and article.status == Article.CONFLICT: #ha conflito, remove a avaliacao do excluido e considera a avaliacao do outro autor
                 for evaluation in evaluations:
                     if review.is_author_or_coauthor( evaluation.user ):
@@ -295,6 +292,7 @@ def leave(request):
     review.co_authors.remove(request.user)
     review.save()
     messages.add_message(request, messages.SUCCESS, _('You successfully left the review {0}.').format(review.title))
+    messages.add_message(request, messages.SUCCESS, _('The evaluations of articles already made for you will be kept.'))
     return redirect('/' + request.user.username + '/')
 
 @author_required

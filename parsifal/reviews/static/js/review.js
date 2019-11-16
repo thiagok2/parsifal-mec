@@ -3,9 +3,13 @@ $(function () {
   $(".js-leave").click(function () {
     $(this).closest("form").submit();
   });
+  
+  $(".js-open-update-articles").click(function () {
+	  
+	  $("#update-articles-modal").modal('show');
+  });
 
   $(".js-open-remove-author").click(function () {  
-	console.log('aahhhhhhhhh');
 	
 	var user_container = $(this).closest("li");
 
