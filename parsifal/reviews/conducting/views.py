@@ -1,4 +1,5 @@
 # coding: utf-8
+ # -*- coding: utf-8 -*-
 
 import json
 import os
@@ -40,6 +41,9 @@ import requests
 from decouple import config
 from django.template.defaultfilters import nan
 import datetime
+
+import sys
+import locale
 
 @author_or_visitor_required
 @login_required
@@ -784,7 +788,6 @@ def articles_upload(request):
             form = ArticleUploadForm(request.POST, request.FILES)
             if form.is_valid():
                 uploaded_file = request.FILES['article_file']
-
                 review_id = request.POST.get('review-id')
                 review = Review.objects.get(pk=review_id)
 
@@ -796,10 +799,11 @@ def articles_upload(request):
                             article=article,
                             user=request.user,
                             article_file=uploaded_file,
-                            name=uploaded_file.name,
+                            name=uploaded_file.name.encode('ascii', 'ignore').decode('ascii'),
                             size=uploaded_file.size)
+                    reload(sys)  
+                    sys.setdefaultencoding('utf-8')
                     article_file.save()
-
                     #context = RequestContext(request, {'file': article_file })
                     #return render_to_response('conducting/partial_article_files_row.html', context)
                     return reload_article_files_tab(request, article_id)
