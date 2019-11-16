@@ -341,7 +341,7 @@ def build_data_extraction_field_row(article, field):
             value = extraction.get_date_value_as_string()
         else:
             value = u''
-        str_field = u'<input type="text" class="form-control" name="{0}-{1}-value" maxlength="10" value="{2}">'.format(article.id, field.id, escape(value))
+        str_field = u'<input type="text" placeHolder="DD/MM/AAAA" class="form-control date" name="{0}-{1}-value" maxlength="10" value="{2}">'.format(article.id, field.id, escape(value))
 
     elif field.field_type == DataExtractionField.SELECT_ONE_FIELD:
         str_field = u'''<select name="{0}-{1}-value" class="form-control">

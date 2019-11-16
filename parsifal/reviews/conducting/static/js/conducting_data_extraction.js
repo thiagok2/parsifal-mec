@@ -1,5 +1,19 @@
 $(function () {
 
+  $('.date').mask('99/99/9999');
+  /*
+  .focusout(function (event) {  
+      var target, phone, element;  
+      target = (event.currentTarget) ? event.currentTarget : event.srcElement;  
+      phone = target.value.replace(/\D/g, '');
+      element = $(target);  
+      element.unmask();  
+    
+      element.mask("99/99/9999");  
+      
+  });
+  */
+	
   function save_data_extraction_field(ref) {
     var row = $(ref).closest(".form-group");
     var review_id = $("#review-id").val();

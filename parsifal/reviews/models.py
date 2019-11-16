@@ -910,12 +910,12 @@ class DataExtraction(models.Model):
     def _set_date_value(self, value):
         try:
             if value:
-                _value = datetime.datetime.strptime(value, '%m/%d/%Y').date()
+                _value = datetime.datetime.strptime(value, '%d/%m/%Y').date()
                 self.value = str(_value)
             else:
                 self.value = ''
         except:
-            raise Exception(_('Invalid input for ') + self.field.description + _(' field. Expected value: date. Please use the format MM/DD/YYYY.'))
+            raise Exception(_('Invalid input for ') + self.field.description + _(' field. Expected value: date. Please use the format DD/MM/AAAA.'))
 
     def _set_select_one_value(self, value):
         try:
@@ -1014,7 +1014,7 @@ class DataExtraction(models.Model):
     def get_date_value_as_string(self):
         try:
             value = self.get_value()
-            return value.strftime('%m/%d/%Y')
+            return value.strftime('%d/%m/%Y')
         except Exception, e:
             return ''
 
