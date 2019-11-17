@@ -291,6 +291,7 @@ def leave(request):
     review = get_object_or_404(Review, pk=review_id)
     review.co_authors.remove(request.user)
     review.save()
+    update_article_in_wating_conflict(review)
     messages.add_message(request, messages.SUCCESS, _('You successfully left the review {0}.').format(review.title))
     messages.add_message(request, messages.SUCCESS, _('The evaluations of articles already made for you will be kept.'))
     return redirect('/' + request.user.username + '/')
