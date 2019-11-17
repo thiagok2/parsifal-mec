@@ -119,8 +119,8 @@ $(function () {
     });
   });
 
-  $.fn.loadActiveArticle = function () {
-    var article_id = $(".article-link").attr("oid");
+  $.fn.loadActiveArticle = function (article_id) {
+    var article_id = article_id; //$(".article-link").attr("oid");
     var review_id = $("#review-id").val();
     var container = $(this);
 
@@ -134,7 +134,7 @@ $(function () {
         $(container).spinner();
       },
       success: function (data) {
-    	console.log(data);
+    	//console.log(data);
         $(container).html(data);
 
       },
@@ -145,10 +145,11 @@ $(function () {
   };
 
   $(".article-container").on("click", ".article-link", function () {
-
-
+	  
+	  var article_id = $(this).attr("oid");
+	  
       $("#modal-article .modal-body").css("height", $(window).height() * 0.7);
-      $("#modal-article .modal-body").loadActiveArticle();
+      $("#modal-article .modal-body").loadActiveArticle(article_id);
       $("#modal-article").modal('show');
 
   });
@@ -258,6 +259,39 @@ $(function () {
     });
 
   }
+  
+  $("body").on("click", ".btn-remove-file", function () {
+      var tr = $(this).closest("tr");
+      var btn = $(this);
+      var file_id = $(tr).attr("data-file-id");
+      var review_id = $("#review-id").val();
+      var csrf_token = $("#file-form input[name='csrfmiddlewaretoken']").val();
+      $.ajax({
+      url: '/reviews/conducting/remove_article_file/',
+      data: {
+          'review-id': review_id,
+          'file-id': file_id,
+          'csrfmiddlewaretoken': csrf_token
+      },
+      type: 'post',
+      cache: false,
+      beforeSend: function () {
+          $(btn).ajaxDisable();
+      },
+      success: function (data) {
+          //$(tr).remove();
+          $("#tab-files").html(data);
+
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+      	$.parsifal.alert("Tivemos problemas","Não conseguimos concluir a operação. "+jqXHR.responseText);
+      	console.log(textStatus, errorThrown+': '+jqXHR);
+      },
+      complete: function () {
+          $(btn).ajaxEnable();
+      }
+      });
+  });
 
 
 });
