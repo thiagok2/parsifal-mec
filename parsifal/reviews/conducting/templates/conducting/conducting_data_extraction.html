@@ -1,8 +1,18 @@
 {% extends 'conducting/conducting.html' %}
 {% load i18n staticfiles humanize is_visitor %}
 
+
+{% block stylesheet %}
+  <link href="{% static 'css/fileupload/jquery.fileupload.css' %}" rel="stylesheet">
+{% endblock stylesheet %}
+
+
 {% block javascript %}
+  <script src="{% static 'js/fileupload/jquery.ui.widget.js' %}"></script>
+  <script src="{% static 'js/fileupload/jquery.iframe-transport.js' %}"></script>
+  <script src="{% static 'js/fileupload/jquery.fileupload.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/conducting_data_extraction.js' %}"></script>
+  
   {% if user|is_visitor:review %}
     <script src="{% static 'js/user_is_visitor.js' %}?v=1"></script>
   {% endif %}

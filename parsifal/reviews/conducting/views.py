@@ -389,7 +389,7 @@ def build_data_extraction_table(review, is_finished):
         str_table = u'<div class="panel-group">'
         for study in selected_studies:
             #if has_quality_assessment:
-            str_table += u'''<div class="panel panel-default data-extraction-panel">
+            str_table += u'''<div class="panel panel-default data-extraction-panel" id="article-{2}">
               <div class="panel-heading">
                 <h3 class="panel-title row">
                    <div class="col-sm-9 article-container" style="padding: 0px 5px">
@@ -404,7 +404,7 @@ def build_data_extraction_table(review, is_finished):
                 str_table +='''<a href="https://dx.doi.org/{0}" target="blank"><span class="badge">DOI:{0}</a>'''.format(study.doi,study.doi)
 
 
-            str_table +='''<a href="#" oid="{0}" class="article-link"><span class="badge" ><i class="glyphicon glyphicon-edit"></i></span></a>'''.format(study.id)
+            str_table +='''<a href="#article-{0}" oid="{0}" class="article-link"><span class="badge" ><i class="glyphicon glyphicon-edit"></i></span></a>'''.format(study.id)
 
             str_table +=u'''<div class="detail-article-data-extraction">
                             <small><span id="subtitle-study-{2}" class="text-muted">{0} ({1})</span></small>
