@@ -25,6 +25,7 @@ from parsifal.reviews.decorators import main_author_required, author_required, a
 
 
 from django.utils.translation import ugettext as _
+import reversion
 
 
 @author_or_visitor_required
@@ -505,12 +506,13 @@ def save_source(request):
             except Source.DoesNotExist:
                 pass
         else:
-            source = Source()
-            source.name=name
-            source.set_url(url)
-            source.save()
-            review.sources.add(source)
-            review.save()
+            with reversion.create_revision():
+                source = Source()
+                source.name=name
+                source.set_url(url)
+                source.save()
+                review.sources.add(source)
+                review.save()
         return HttpResponse(html_source(source))
     except Exception, e:
         return HttpResponseBadRequest()
