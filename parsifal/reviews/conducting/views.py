@@ -801,7 +801,7 @@ def articles_upload(request):
                             article_file=uploaded_file,
                             name=uploaded_file.name.encode('ascii', 'ignore').decode('ascii'),
                             size=uploaded_file.size)
-                    reload(sys)  
+                    reload(sys)
                     sys.setdefaultencoding('utf-8')
                     article_file.save()
                     #context = RequestContext(request, {'file': article_file })
@@ -1552,7 +1552,7 @@ def export_results(request):
                 article.issn,
                 article.language,
                 article.note,
-                (article.articleevaluation_set.all()[0].selection_criteria if article.articleevaluation_set.count() > 0 else ''),
+                (article.articleevaluation_set.all()[0].selection_criteria.description if article.articleevaluation_set.count() > 0 and article.articleevaluation_set.all()[0].selection_criteria != None else ''),
                 article.created_at.replace(tzinfo=None),
                 article.updated_at.replace(tzinfo=None),
                 (article.created_by.username if article.created_by else ''),
