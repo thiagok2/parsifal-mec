@@ -229,6 +229,9 @@ class Review(models.Model):
         else:
             return accepted_articles
 
+    def get_finished_data_extraction_articles(self):
+        return self.get_final_selection_articles().filter(finished_data_extraction=True)
+
     def has_quality_assessment_checklist(self):
         has_questions = self.qualityquestion_set.exists()
         has_answers = self.qualityanswer_set.exists()
