@@ -13,6 +13,12 @@ services:
       - .env
     ports:
       - "5432"
+    labels:
+      co.elastic.metrics/module: postgresql
+      co.elastic.metrics/metricsets: database,bgwriter,activity,statement
+      co.elastic.metrics/period: 10s
+     # there's 2 & to escape it inside a docker compose file
+      co.elastic.metrics/hosts: 'postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@$${data.host}:5432'
   web:
     build: .
     command:
@@ -28,7 +34,13 @@ services:
     volumes:
       - ${STATIC_FOLDER}:/static 
       - ${MEDIA_FOLDER}:/media 
-    restart: always 
+    restart: always
+    labels:
+      co.elastic.metrics/module: nginx
+      co.elastic.metrics/metricsets: stubstatus
+      co.elastic.metrics/period: 10s
+      # there's 2 & to escape it inside a docker compose file
+      co.elastic.metrics/hosts: '$${data.host}:10080' 
   r:
     build: ./docker-config/r
     networks:
