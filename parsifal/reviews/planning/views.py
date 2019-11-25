@@ -28,6 +28,11 @@ from django.utils.translation import ugettext as _
 import reversion
 
 
+import logging
+
+logger = logging.getLogger('PARSIFAL_LOG')
+
+
 @author_or_visitor_required
 @login_required
 def planning(request, username, review_name):
@@ -513,36 +518,34 @@ def save_source(request):
                 source.save()
                 review.sources.add(source)
                 review.save()
+                
+        logger.info(request.user.username + ' added source [' + source.to_string() + '] in review ' + review.to_string())
         return HttpResponse(html_source(source))
     except Exception, e:
         return HttpResponseBadRequest()
             
-    
 @author_required
 @login_required
 def remove_source_from_review(request):
+    
     try:
-        print 'pre-remove'
         source_id = request.GET['source-id']
         review_id = request.GET['review-id']
         source = Source.objects.get(pk=source_id)
         review = Review.objects.get(pk=review_id)
         review.sources.remove(source)
-        
-        print 'remove'
+        logger.info( request.user.username + ' removed the source ' + source.to_string() + ' from review ' + review.to_string())
         if source.is_default:
-            print 'remove source_articles'
             review.get_source_articles(source.id).delete()
             try:
-                print 'remove searchsession_set'
                 review.searchsession_set.filter(source=source).delete()
             except Exception, e:
                 print str(e)
                 pass
         else:
-            print 'remove only source'
             source.delete()
         review.save()
+        
         return HttpResponse()
     except Exception, e:
         print e
@@ -586,6 +589,7 @@ def add_suggested_sources(request):
         for source_id in source_ids:
             source = Source.objects.get(pk=source_id)
             review.sources.add(source)
+            logger.info(request.user.username + ' added source [' + source.to_string() + '] in review ' + review.to_string())
             return_html += html_source(source)
         review.save()
         return HttpResponse(return_html)

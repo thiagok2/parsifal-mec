@@ -45,6 +45,10 @@ import datetime
 import sys
 import locale
 
+import logging
+
+logger = logging.getLogger('PARSIFAL_LOG')
+
 @author_or_visitor_required
 @login_required
 def conducting(request, username, review_name):
@@ -783,6 +787,7 @@ def article_details_confirm(request):
 @author_required
 @login_required
 def articles_upload(request):
+    print 'articles_upload'
     try:
         if request.method == 'POST':
             form = ArticleUploadForm(request.POST, request.FILES)
@@ -1050,7 +1055,8 @@ def article_solve_conflict(request):
             article.evaluation_finished_at = datetime.datetime.now()
             article.evaluation_finished_by = request.user
             article.save()
-
+            
+            logger.info( request.user.username + ' resolved artcile ' + article.to_string() + ' - status = ' + article.status)
             return HttpResponse(build_article_table_row(request, article, request.user))
         else:
             return HttpResponseBadRequest('Error: status:'+status)

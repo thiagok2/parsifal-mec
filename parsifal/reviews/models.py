@@ -38,6 +38,11 @@ class Source(models.Model):
     def __unicode__(self):
         if self.id:
             return self.name + '(id= ' +str(self.id)+ ')'
+        else:
+            return self.name
+    
+    def to_string(self):
+        return self.name + '(' + str(self.id) + ')'
 
     def set_url(self, value):
         if 'http://' not in value and 'https://' not in value and len(value) > 0:
@@ -612,6 +617,9 @@ class Article(models.Model):
 
     def __unicode__(self):
         return self.title
+    
+    def to_string(self):
+        return self.title + '(' + str(self.id) + ')'
 
     def get_score(self):
         score = QualityAssessment.objects.filter(article__id=self.id).aggregate(Sum('answer__weight'))
