@@ -180,7 +180,7 @@ LOGGING = {
             'level': 'DEBUG',
             'class': 'logging.handlers.TimedRotatingFileHandler',
             'formatter': 'verbose',
-            'filename': '/home/thiago/desenv/log-parsifal.log',
+            'filename': config('FILENAME_PATH'),
             'when': 'midnight',
         }
     },
