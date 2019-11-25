@@ -1,5 +1,7 @@
 # coding: utf-8
 import json
+import reversion
+import datetime
 
 from django.core.urlresolvers import reverse as r
 from django.template.defaultfilters import slugify, nan
@@ -14,7 +16,7 @@ from django.utils.html import escape
 from django.views.decorators.http import require_POST
 from django.core.mail import EmailMultiAlternatives
 
-from parsifal.reviews.models import Review, Article, Tag, Invite, Question, Keyword, SearchSession, SelectionCriteria, QualityAnswer, QualityQuestion, Risk,DataExtractionField, DataExtractionLookup
+from parsifal.reviews.models import Review, Article, Tag, Invite, Question, Keyword, SearchSession, SelectionCriteria, QualityAnswer, QualityQuestion, Risk,DataExtractionField, DataExtractionLookup, Source
 from parsifal.reviews.decorators import main_author_required, author_required, author_or_visitor_required
 from parsifal.reviews.forms import CreateReviewForm, ReviewForm
 
@@ -22,6 +24,10 @@ from django.utils.translation import ugettext as _
 from decouple import config
 from django.db import connection
 from django.db import transaction
+
+import logging
+
+logger = logging.getLogger('PARSIFAL_LOG')
 
 
 def reviews(request, username):
@@ -35,6 +41,8 @@ def reviews(request, username):
     following_count = user.profile.get_following_count()
 
     user_reviews = user.profile.get_reviews()
+    
+    
 
     context = RequestContext(request, {
         'user_reviews': user_reviews,
@@ -60,6 +68,7 @@ def new(request):
                 unique_name = u'{0}-{1}'.format(name, i)
             form.instance.name = unique_name
             review = form.save()
+            logger.info(review.to_string() + ' criada por ' + review.author.username)
             messages.success(request, _('Review') + ' criada com sucesso.')
             return redirect(r('review', args=(review.author.username, review.name)))
     else:
@@ -105,6 +114,8 @@ def add_author_to_review(request):
                 authors_added.append(user.profile.get_screen_name())
                 review.visitors.remove(user)
                 review.co_authors.add(user)
+                
+                logger.info(request.user.username + ' add co-author ' + user.profile.get_screen_name() +' in review '+ review.to_string() )
         except User.DoesNotExist:
             authors_invited.append(email)
 
@@ -190,7 +201,6 @@ def add_visitor_to_review(request):
 @require_POST
 def remove_author_from_review(request):
     try:
-       
         author_id = request.POST.get('co-author-id')
         review_id = request.POST.get('review-id')
         update_status = request.POST.get('update-status')
@@ -203,7 +213,7 @@ def remove_author_from_review(request):
         review.save()
         
         messages.success(request, _('The author were removed successfully.'))
-        
+        logger.info(request.user.username + ' in ' + review.to_string() + ' removed the co-author ' + author.username)
         if update_status == "true":
             update_article_in_wating_conflict(review)
             messages.success(request, _('The evaluations in articles selection have been updated.'))
@@ -236,6 +246,7 @@ def update_status_article_unique_author(request):
 
 def update_article_in_wating_conflict(review):
     if review.co_authors.count() == 0:
+        logger.info(review.author.username + ' call update_article_in_wating_conflict in review ' + review.to_string() )
         articles_filter = (article for article in review.get_source_articles().filter( Q(status=Article.WAITING) | Q(status=Article.CONFLICT) ) if article.get_evaluations().count()>0)
         for article in articles_filter:
             evaluations = article.get_evaluations()
@@ -291,6 +302,7 @@ def leave(request):
     review = get_object_or_404(Review, pk=review_id)
     review.co_authors.remove(request.user)
     review.save()
+    logger.info(request.user.username + ' leaved from review ' + review.to_string())
     update_article_in_wating_conflict(review)
     messages.add_message(request, messages.SUCCESS, _('You successfully left the review {0}.').format(review.title))
     messages.add_message(request, messages.SUCCESS, _('The evaluations of articles already made for you will be kept.'))
@@ -555,4 +567,14 @@ def get_review_info(request):
     except Exception as e:
         print str(e)
         return HttpResponseBadRequest()
+
+@login_required
+def create_reversion_revision_source(request):
+    sources = Source.objects.all()
+    for source in sources:
+        with reversion.create_revision():
+            source.last_update = datetime.datetime.now()
+            source.save()
+            reversion.set_user(request.user)
+            reversion.set_comment("Created revision "+ str(datetime.datetime.now()))
         

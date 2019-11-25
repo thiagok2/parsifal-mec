@@ -15,7 +15,9 @@ from parsifal.reviews.decorators import main_author_required
 from parsifal.reviews.settings.forms import ReviewSettingsForm
 
 from django.utils.translation import ugettext as _
+import logging
 
+logger = logging.getLogger('PARSIFAL_LOG')
 
 @main_author_required
 @login_required
@@ -63,6 +65,7 @@ def transfer(request):
             review.author = transfer_user
             review.co_authors.add(current_user)
             review.save()
+            logger.info('The review ' + review.to_string() + ' was transfered from  ' + current_user.username + ' to ' + review.author.username)
             return redirect('review', review.author.username, review.name)
         else:
             messages.warning(request, _('Hey! You can\'t transfer the review to yourself.'))
@@ -76,7 +79,7 @@ def publish_protocol(request):
     review = Review.objects.get(pk=review_id)
     review.export_protocol = True if not review.export_protocol else False
     review.save()
-    
+    logger.info(review.author.username + ' published the protocol from review ' + review.to_string() )
     return redirect('settings', review.author.username, review.name)
 
 @main_author_required
@@ -91,6 +94,7 @@ def delete(request):
         if not source.is_default:
             review.sources.remove(source)
             source.delete()
+    logger.info(username + ' deleted the review ' + review.to_string() )
     review.delete()
     messages.success(request, _('The review was deleted successfully.'))
     return redirect(r('reviews', args=(review.author.username,)))

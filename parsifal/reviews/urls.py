@@ -28,5 +28,7 @@ urlpatterns = patterns('parsifal.reviews.views',
 
     url(r'^explorer/$', 'explorer', name='explorer'),
     url(r'^search/$', 'search', name='search'),
+    
+    url(r'^create_reversion_revision_source/$', 'create_reversion_revision_source', name='create_reversion_revision_source')
 
 )

@@ -66,4 +66,6 @@ urlpatterns = patterns('parsifal.reviews.planning.views',
     url(r'^setting_pico/$', 'setting_pico', name='setting_pico'),
     url(r'^suggested_pico/$', 'suggested_pico', name='suggested_pico'),
     url(r'^import_pico/$', 'import_pico', name='import_pico'),
+    
+    
 )
