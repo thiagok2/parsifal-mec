@@ -905,6 +905,7 @@ def save_article_details(request):
         except Exception as e:
             print e
             messages.error(request, _('An expected error occurred.') + str(e))
+            logger.error(request.user.username + _('An expected error occurred.') + str(e))
             return HttpResponseBadRequest(str(e))
     else:
         return HttpResponseBadRequest()
@@ -939,6 +940,7 @@ def save_article_details_confirm(request):
         except Exception as e:
             print e
             messages.error(request, _('An expected error occurred.') + str(e))
+            logger.error(request.user.username + _('An expected error occurred.') + str(e))
             return HttpResponseBadRequest(str(e))
     else:
         return HttpResponseBadRequest(_('HTTP POST method was expected'))
@@ -1001,6 +1003,7 @@ def save_article_evaluation(request):
         except Exception as e:
             print e
             messages.error(request, _('An expected error occurred.') + str(e))
+            logger.error(request.user.username + _('An expected error occurred.') + str(e))
             return HttpResponseBadRequest(str(e))
     else:
         return HttpResponseBadRequest()
@@ -1038,6 +1041,7 @@ def edit_article_status(request, review_id, article_id):
         return HttpResponse(build_article_table_row(request, article, request.user))
     except Exception as e:
         print e
+        logger.error(request.user.username + _('An expected error occurred.') + str(e))
         return HttpResponseBadRequest()
 
 @author_required
@@ -1064,6 +1068,7 @@ def article_solve_conflict(request):
     except Exception as e:
         print e
         messages.error(request, _('An expected error occurred.') + str(e))
+        logger.error(request.user.username + _('An expected error occurred.') + str(e))
         return HttpResponseBadRequest(str(e))
 
 @author_required

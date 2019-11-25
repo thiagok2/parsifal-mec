@@ -549,6 +549,7 @@ def remove_source_from_review(request):
         return HttpResponse()
     except Exception, e:
         print e
+        logger.error(request.user.username + _('An expected error occurred.') + str(e))
         return HttpResponseBadRequest(str(e))
 
 
