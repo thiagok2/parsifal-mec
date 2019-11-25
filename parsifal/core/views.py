@@ -11,6 +11,10 @@ from parsifal.reviews.models import Review
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
+import logging
+
+logger = logging.getLogger('PARSIFAL_LOG')
+
 def get_following_feeds(user):
     feeds = []
     try:
@@ -49,7 +53,6 @@ def get_following_feeds(user):
     return feeds
 
 def home(request):
-    
     if request.user.is_authenticated():
         show_head = True
         user_reviews = request.user.profile.get_reviews()

@@ -26,14 +26,18 @@ class Source(models.Model):
     name = models.CharField(max_length=100)
     url = models.CharField(max_length=200)
     is_default = models.BooleanField(default=False)
-
+    create_date = models.DateTimeField(default=timezone.now)
+    last_update = models.DateTimeField(default=timezone.now)
+    reviews = models.ManyToManyField('Review', db_table='reviews_review_sources')
+    
     class Meta:
         verbose_name = u'Source'
         verbose_name_plural = u'Sources'
         ordering = ('name',)
 
     def __unicode__(self):
-        return self.name
+        if self.id:
+            return self.name + '(id= ' +str(self.id)+ ')'
 
     def set_url(self, value):
         if 'http://' not in value and 'https://' not in value and len(value) > 0:
@@ -105,6 +109,10 @@ class Review(models.Model):
 
     def __unicode__(self):
         return self.name
+    
+    def to_string(self):
+        return self.name + '(' + str(self.id) + ')'
+
 
     def isExtended(self):
         return self.protocol_base is None
@@ -285,7 +293,7 @@ class Review(models.Model):
         evaluations = ArticleEvaluation.objects.filter(review__id=self.id, user__id=user_id)
 
         return evaluations
-
+    
 @reversion.register()
 class SearchSetup(models.Model):
     COHEN = u'COHEN'
@@ -1020,6 +1028,10 @@ class DataExtraction(models.Model):
 
 @admin.register(Article)
 class ArticleAdmin(VersionAdmin):
+
+    pass
+@admin.register(Source)
+class SourceAdmin(VersionAdmin):
 
     pass
 
