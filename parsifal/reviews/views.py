@@ -222,6 +222,7 @@ def remove_author_from_review(request):
         return redirect(r('review', args=(review.author.username, review.name)))
     except Exception, e:
         print 'ERROR:'+str(e)
+        logger.error(request.user.username + _('An expected error occurred.') + str(e))
         messages.error(request, _('An expected error occurred.') +'ERROR:'+ str(e))
         return HttpResponseBadRequest()
     
@@ -240,6 +241,7 @@ def update_status_article_unique_author(request):
         return redirect(r('review', args=(review.author.username, review.name)))
     except Exception, e:
         print 'ERROR:'+str(e)
+        logger.error(request.user.username + _('An expected error occurred.') + str(e))
         messages.error(request, _('An expected error occurred.') +'ERROR:'+ str(e))
         return HttpResponseBadRequest()
     
@@ -273,6 +275,7 @@ def save_user_invited_to_review(review_id, email, invite_type):
         return HttpResponse()
     except Exception, e:
         print e
+        logger.error('review-'+ str(review_id) + ' - ' + _('An expected error occurred.') + str(e))
         messages.error(request, _('An expected error occurred.') + str(e))
         return HttpResponseBadRequest()
 
@@ -280,11 +283,9 @@ def save_user_invited_to_review(review_id, email, invite_type):
 @login_required
 @require_POST
 def remove_visitor_from_review(request):
+    visitor_id = request.POST.get('user-id')
+    review_id = request.POST.get('review-id')
     try:
-        visitor_id = request.POST.get('user-id')
-        review_id = request.POST.get('review-id')
-        print 'visitor ', visitor_id
-        print 'reid ', review_id
         visitor = User.objects.get(pk=visitor_id)
         review = Review.objects.get(pk=review_id)
         review.visitors.remove(visitor)
@@ -292,6 +293,7 @@ def remove_visitor_from_review(request):
         return HttpResponse()
     except Exception, e:
         print e
+        logger.error(request.user.username + ' remove visitor-' + str(visitor_id)+ ' from review-' + str(review_id) + ' ' + _('An expected error occurred.') + str(e))
         messages.error(request, _('An expected error occurred.') + str(e))
         return HttpResponseBadRequest()
 
@@ -415,6 +417,7 @@ def published_protocols(request):
         return render_to_response('reviews/partial_published_protocols.html', context)
     except Exception as e:
         print e
+        logger.error(_('An expected error occurred.') + str(e))
         messages.error(request, _('An expected error occurred.') + str(e))
         return HttpResponseBadRequest()
 
@@ -522,6 +525,7 @@ def import_protocol(request):
 
     except Exception as e:
         print e
+        logger.error(_('An expected error occurred.') + str(e))
         return HttpResponseBadRequest()
 
 def explorer(request):

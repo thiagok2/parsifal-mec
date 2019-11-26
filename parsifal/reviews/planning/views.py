@@ -83,7 +83,8 @@ def save_statistical_methods(request):
             review.statistical_methods = statistical_methods
             review.save()
             return HttpResponse(_('Your review have been saved successfully!'))
-    except:
+    except Exception, e:
+        logger.error(request.user.username + ': ' + _('An expected error occurred.') + str(e))
         return HttpResponseBadRequest()
 
 
@@ -144,7 +145,7 @@ def save_search_setup(request):
 
         return HttpResponse(_('Your review search setup have been saved successfully!'))
     except Exception as e:
-        print 'erro ', e
+        logger.error(request.user.username + ': ' + _('An expected error occurred.') + str(e))
         return HttpResponseBadRequest()
 
 
@@ -165,7 +166,8 @@ def save_objective(request):
             review.objective = objective
             review.save()
             return HttpResponse(_('Your review have been saved successfully!'))
-    except:
+    except Exception, e:
+        logger.error(request.user.username + ': ' +_('An expected error occurred.') + str(e))
         return HttpResponseBadRequest()
 
 
@@ -193,7 +195,8 @@ def save_question(request):
         question.save()
         context = RequestContext(request, {'question':question})
         return render_to_response('planning/partial_planning_question.html', context)
-    except:
+    except Exception, e:
+        logger.error(request.user.username + ': ' +_('An expected error occurred.') + str(e))
         return HttpResponseBadRequest()
 
 @author_required
@@ -209,7 +212,8 @@ def save_question_order(request):
                 question.order = order
                 question.save()
         return HttpResponse()
-    except:
+    except Exception, e:
+        logger.error(request.user.username + ': ' +_('An expected error occurred.') + str(e))
         return HttpResponseBadRequest()
 
 @author_required
@@ -229,7 +233,8 @@ def add_or_edit_question(request):
             question = Question(review=review)
         context = RequestContext(request, {'question':question})
         return render_to_response('planning/partial_planning_question_form.html', context)
-    except:
+    except Exception, e:
+        logger.error(request.user.username + ': ' +_('An expected error occurred.') + str(e))
         return HttpResponseBadRequest()
 
 
@@ -250,7 +255,8 @@ def remove_question(request):
             except Question.DoesNotExist:
                 return HttpResponseBadRequest()
         return HttpResponse()
-    except:
+    except Exception, e:
+        logger.error(request.user.username + ': ' +_('An expected error occurred.') + str(e))
         return HttpResponseBadRequest()
 
 
@@ -280,6 +286,7 @@ def save_picoc(request):
         review.save()
         return HttpResponse()
     except Exception, e:
+        logger.error(request.user.username + ': ' +_('An expected error occurred.') + str(e))
         return HttpResponseBadRequest()
 
 
@@ -323,7 +330,8 @@ def import_pico_keywords(request):
             context = RequestContext(request, { 'keyword': keyword })
             html += render_to_string('planning/partial_keyword.html', context)
         return HttpResponse(html)
-    except:
+    except Exception, e:
+        logger.error(request.user.username + ': ' +_('An expected error occurred.') + str(e))
         return HttpResponseBadRequest()
 
 
@@ -340,7 +348,8 @@ def remove_keyword(request):
             synonym.delete()
         keyword.delete()
         return HttpResponse()
-    except:
+    except Exception, e:
+        logger.error(request.user.username + ': ' +_('An expected error occurred.') + str(e))
         return HttpResponseBadRequest()
 
 @transaction.atomic
@@ -461,7 +470,8 @@ def save_generic_search_string(request):
         generic_search_string.search_string = search_string
         generic_search_string.save()
         return HttpResponse()
-    except:
+    except Exception, e:
+        logger.error(request.user.username + ': ' +_('An expected error occurred.') + str(e))
         return HttpResponseBadRequest()
 
 
@@ -522,6 +532,7 @@ def save_source(request):
         logger.info(request.user.username + ' added source [' + source.to_string() + '] in review ' + review.to_string())
         return HttpResponse(html_source(source))
     except Exception, e:
+        logger.error(request.user.username + ': ' +_('An expected error occurred.') + str(e))
         return HttpResponseBadRequest()
             
 @author_required
@@ -548,6 +559,7 @@ def remove_source_from_review(request):
         
         return HttpResponse()
     except Exception, e:
+        logger.error(request.user.username + ': ' +_('An expected error occurred.') + str(e))
         print e
         logger.error(request.user.username + _('An expected error occurred.') + str(e))
         return HttpResponseBadRequest(str(e))
@@ -575,7 +587,8 @@ def suggested_sources(request):
               </td>
             </tr>'''
         return HttpResponse(return_html)
-    except:
+    except Exception, e:
+        logger.error(request.user.username + ': ' +_('An expected error occurred.') + str(e))
         return HttpResponseBadRequest()
 
 
@@ -594,7 +607,8 @@ def add_suggested_sources(request):
             return_html += html_source(source)
         review.save()
         return HttpResponse(return_html)
-    except:
+    except Exception, e:
+        logger.error(request.user.username + ': ' +_('An expected error occurred.') + str(e))
         return HttpResponseBadRequest()
     
 
@@ -621,6 +635,7 @@ def get_articles_source(request):
         return render_to_response('planning/partial_articles_source.html', context)
     
     except Exception, e:
+        logger.error(request.user.username + ': ' +_('An expected error occurred.') + str(e))
         return HttpResponseBadRequest(str(e))
 
 '''
@@ -638,7 +653,8 @@ def add_criteria(request):
         criteria = SelectionCriteria(review=review, description=description, criteria_type=criteria_type)
         criteria.save()
         return HttpResponse('<option value="' + str(criteria.id) + '">' + escape(criteria.description) + '</option>')
-    except:
+    except Exception, e:
+        logger.error(request.user.username + ': ' +_('An expected error occurred.') + str(e))
         return HttpResponseBadRequest()
 
 
@@ -654,7 +670,8 @@ def remove_criteria(request):
             criteria = SelectionCriteria.objects.get(pk=id)
             criteria.delete()
         return HttpResponse()
-    except:
+    except Exception, e:
+        logger.error(request.user.username + ': ' +_('An expected error occurred.') + str(e))
         return HttpResponseBadRequest()
 
 '''
@@ -672,7 +689,8 @@ def save_selection_reviewer(request):
         review.selection_reviewer = reviewer
         review.save()
         return HttpResponse(_('Your review have been saved successfully!'))
-    except Exception as e:
+    except Exception, e:
+        logger.error(request.user.username + ': ' +_('An expected error occurred.') + str(e))
         print e
         return HttpResponseBadRequest()
 
@@ -701,7 +719,8 @@ def save_risk(request):
 
         context = RequestContext(request, {'risk':risk})
         return render_to_response('planning/partial_planning_risk.html', context)
-    except:
+    except Exception, e:
+        logger.error(request.user.username + ': ' +_('An expected error occurred.') + str(e))
         return HttpResponseBadRequest()
 
 @author_required
@@ -717,7 +736,8 @@ def save_risk_order(request):
                 risk.order = order
                 risk.save()
         return HttpResponse()
-    except:
+    except Exception, e:
+        logger.error(request.user.username + ': ' +_('An expected error occurred.') + str(e))
         return HttpResponseBadRequest()
 
 @author_required
@@ -737,7 +757,8 @@ def add_or_edit_risk(request):
             risk = Risk(review=review)
         context = RequestContext(request, {'risk':risk})
         return render_to_response('planning/partial_planning_risk_form.html', context)
-    except:
+    except Exception, e:
+        logger.error(request.user.username + ': ' +_('An expected error occurred.') + str(e))
         return HttpResponseBadRequest()
 
 
@@ -758,7 +779,8 @@ def remove_risk(request):
             except Risk.DoesNotExist:
                 return HttpResponseBadRequest()
         return HttpResponse()
-    except:
+    except Exception, e:
+        logger.error(request.user.username + ': ' +_('An expected error occurred.') + str(e))
         return HttpResponseBadRequest()
 
 @author_required
@@ -770,7 +792,8 @@ def suggested_risks(request):
 
         context = RequestContext(request, {'suggested_reviews': suggested_reviews})
         return render_to_response('planning/partial_risks_suggested.html', context)
-    except Exception as e:
+    except Exception, e:
+        logger.error(request.user.username + ': ' +_('An expected error occurred.') + str(e))
         print e
         return HttpResponseBadRequest()
 
@@ -784,7 +807,8 @@ def share_risks(request):
         review.export_risks = True if not review.export_risks else False
         review.save()
         return HttpResponse()
-    except Exception as e:
+    except Exception, e:
+        logger.error(request.user.username + ': ' +_('An expected error occurred.') + str(e))
         print str(e)
         return HttpResponseBadRequest()
 
@@ -867,7 +891,8 @@ def save_quality_assessment_question(request):
 
         context = RequestContext(request, {'quality_question': quality_question})
         return render_to_response('planning/partial_quality_assessment_question.html', context)
-    except:
+    except Exception, e:
+        logger.error(request.user.username + ': ' +_('An expected error occurred.') + str(e))
         return HttpResponseBadRequest()
 
 
@@ -884,7 +909,8 @@ def save_quality_assessment_question_order(request):
                 question.order = order
                 question.save()
         return HttpResponse()
-    except:
+    except Exception, e:
+        logger.error(request.user.username + ': ' +_('An expected error occurred.') + str(e))
         return HttpResponseBadRequest()
 
 
@@ -896,7 +922,8 @@ def remove_quality_assessment_question(request):
         quality_question = QualityQuestion.objects.get(pk=quality_question_id)
         quality_question.delete()
         return HttpResponse()
-    except:
+    except Exception, e:
+        logger.error(request.user.username + ': ' +_('An expected error occurred.') + str(e))
         return HttpResponseBadRequest()
 
 @author_required
@@ -907,7 +934,8 @@ def suggested_quality_assessment_questions(request):
         suggested_reviews = Review.objects.filter(export_qualityassessment=True).exclude(id=review_id)
         context = RequestContext(request, {'suggested_reviews': suggested_reviews})
         return render_to_response('planning/partial_quality_assessment_question_suggested.html', context)
-    except Exception as e:
+    except Exception, e:
+        logger.error(request.user.username + ': ' +_('An expected error occurred.') + str(e))
         print e
         return HttpResponseBadRequest()
 
@@ -921,7 +949,8 @@ def share_quality_assessment_questions(request):
         review.save()
 
         return HttpResponse()
-    except:
+    except Exception, e:
+        logger.error(request.user.username + ': ' +_('An expected error occurred.') + str(e))
         return HttpResponseBadRequest()
 
 @author_required
@@ -933,7 +962,8 @@ def add_quality_assessment_answer(request):
         quality_question = QualityQuestion.objects.get(pk=quality_question_id)
         context = RequestContext(request, {'quality_answer': quality_answer, 'quality_question': quality_question})
         return render_to_response('planning/partial_quality_assessment_answer_form2.html', context)
-    except:
+    except Exception, e:
+        logger.error(request.user.username + ': ' +_('An expected error occurred.') + str(e))
         return HttpResponseBadRequest()
 
 
@@ -948,7 +978,8 @@ def edit_quality_assessment_answer(request):
         quality_question = QualityQuestion.objects.get(pk=quality_question_id)
         context = RequestContext(request, {'quality_answer': quality_answer, 'quality_question': quality_question})
         return render_to_response('planning/partial_quality_assessment_answer_form.html', context)
-    except:
+    except Exception, e:
+        logger.error(request.user.username + ': ' +_('An expected error occurred.') + str(e))
         return HttpResponseBadRequest()
 
 @author_required
@@ -962,7 +993,8 @@ def edit_quality_assessment_answer2(request):
         quality_question = QualityQuestion.objects.get(pk=quality_question_id)
         context = RequestContext(request, {'quality_answer': quality_answer, 'quality_question': quality_question})
         return render_to_response('planning/partial_quality_assessment_answer_form2.html', context)
-    except:
+    except Exception, e:
+        logger.error(request.user.username + ': ' +_('An expected error occurred.') + str(e))
         return HttpResponseBadRequest()
 
 @author_required
@@ -996,7 +1028,8 @@ def save_quality_assessment_answer(request):
 
         context = RequestContext(request, {'quality_answer': quality_answer, 'quality_question': question})
         return render_to_response('planning/partial_quality_assessment_answer2.html', context)
-    except Exception as e:
+    except Exception, e:
+        logger.error(request.user.username + ': ' +_('An expected error occurred.') + str(e))
         print e
         return HttpResponseBadRequest()
 
@@ -1009,7 +1042,8 @@ def remove_quality_assessment_answer(request):
         quality_answer = QualityAnswer.objects.get(pk=quality_answer_id)
         quality_answer.delete()
         return HttpResponse()
-    except:
+    except Exception, e:
+        logger.error(request.user.username + ': ' +_('An expected error occurred.') + str(e))
         return HttpResponseBadRequest()
 
 @author_required
@@ -1021,7 +1055,8 @@ def suggested_quality_assessment_answers(request):
 
         context = RequestContext(request, {'suggested_reviews': suggested_reviews})
         return render_to_response('planning/partial_quality_assessment_answer_suggested.html', context)
-    except Exception as e:
+    except Exception, e:
+        logger.error(request.user.username + ': ' +_('An expected error occurred.') + str(e))
         print e
         return HttpResponseBadRequest()
 
@@ -1069,8 +1104,8 @@ def add_suggested_answer(request):
         return HttpResponse(html_answers)
         #else:
         #    return HttpResponseBadRequest()
-    except Exception as e:
-        print 'except ', e
+    except Exception, e:
+        logger.error(request.user.username + ': ' +_('An expected error occurred.') + str(e))
         return HttpResponseBadRequest()
 
 
@@ -1083,7 +1118,8 @@ def calculate_max_score(request):
         review = Review.objects.get(pk=review_id)
         max_score = review.calculate_quality_assessment_max_score()
         return HttpResponse(max_score)
-    except:
+    except Exception, e:
+        logger.error(request.user.username + ': ' +_('An expected error occurred.') + str(e))
         return HttpResponseBadRequest()
 
 
@@ -1097,7 +1133,8 @@ def save_cutoff_score(request):
         review.quality_assessment_cutoff_score = float(cutoff_score)
         review.save()
         return HttpResponse(_('Cutoff score saved successfully!'))
-    except:
+    except Exception, e:
+        logger.error(request.user.username + ': ' +_('An expected error occurred.') + str(e))
         return HttpResponseBadRequest('Invalid value.')
 
 
@@ -1175,7 +1212,8 @@ def save_data_extraction_field(request):
 
         context = RequestContext(request, {'field': field})
         return render_to_response('planning/partial_data_extraction_field.html', context)
-    except Exception as e:
+    except Exception, e:
+        logger.error(request.user.username + ': ' +_('An expected error occurred.') + str(e))
         print e
         return HttpResponseBadRequest()
 
@@ -1193,7 +1231,8 @@ def save_data_extraction_field_order(request):
                 field.order = order
                 field.save()
         return HttpResponse()
-    except:
+    except Exception, e:
+        logger.error(request.user.username + ': ' +_('An expected error occurred.') + str(e))
         return HttpResponseBadRequest()
 
 
@@ -1208,7 +1247,8 @@ def remove_data_extraction_field(request):
             select_value.delete()
         field.delete()
         return HttpResponse()
-    except:
+    except Exception, e:
+        logger.error(request.user.username + ': ' +_('An expected error occurred.') + str(e))
         return HttpResponseBadRequest()
 
 @author_required
@@ -1220,7 +1260,8 @@ def suggested_data_extraction_fields(request):
 
         context = RequestContext(request, {'suggested_reviews': suggested_reviews})
         return render_to_response('planning/partial_data_extraction_suggested.html', context)
-    except Exception as e:
+    except Exception, e:
+        logger.error(request.user.username + ': ' +_('An expected error occurred.') + str(e))
         print e
         return HttpResponseBadRequest()
 
@@ -1237,7 +1278,8 @@ def share_data_extraction_fields(request):
             return HttpResponse(_('Data Extraction Fields has been shared!'))
 
         return HttpResponse(_('Data Extraction Fields has been made private again!'))
-    except:
+    except Exception, e:
+        logger.error(request.user.username + ': ' +_('An expected error occurred.') + str(e))
         return HttpResponseBadRequest()
 
 @author_required
@@ -1259,7 +1301,8 @@ def share_pico(request):
         review.export_pico = True if not review.export_pico else False
         review.save()
         return HttpResponse(review.export_pico)
-    except Exception as e:
+    except Exception, e:
+        logger.error(request.user.username + ': ' +_('An expected error occurred.') + str(e))
         print str(e)
         return HttpResponseBadRequest()
 
@@ -1272,7 +1315,8 @@ def suggested_pico(request):
 
         context = RequestContext(request, {'suggested_reviews': suggested_reviews})
         return render_to_response('planning/partial_pico_suggested.html', context)
-    except Exception as e:
+    except Exception, e:
+        logger.error(request.user.username + ': ' +_('An expected error occurred.') + str(e))
         print e
         return HttpResponseBadRequest()
 
@@ -1316,6 +1360,7 @@ def import_pico(request):
 
         dump = json.dumps(response)
         return HttpResponse(dump, content_type='application/json')
-    except Exception as e:
+    except Exception, e:
+        logger.error(request.user.username + ': ' +_('An expected error occurred.') + str(e))
         print str(e)
         return HttpResponseBadRequest()

@@ -153,7 +153,7 @@ LOGGING = {
     'disable_existing_loggers': False,
     'formatters': {
         'verbose': {
-            'format': '%(levelname)s %(asctime)s %(message)s'
+            'format': '%(levelname)s %(asctime)s - %(pathname)s :: %(funcName)s - %(message)s'
         },
         'simple': {
             'format': '%(levelname)s %(message)s'
