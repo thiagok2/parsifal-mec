@@ -53,3 +53,5 @@ share
 
 .vscode/*
 
+*.log
+
