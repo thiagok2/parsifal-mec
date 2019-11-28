@@ -16,6 +16,7 @@ SECRET_KEY='Hshdf(99ff%dhd'
 POSTGRES_PASSWORD_ENCODED=postgres_senha
 
 DATABASE_URL='postgres://parsifal:postgres_senha@db:5432/parsifal'
+
 ALLOWED_HOSTS=*
 MENDELEY_ID=
 MENDELEY_SECRET=
