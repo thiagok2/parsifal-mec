@@ -21,14 +21,19 @@ from django.contrib.auth.models import User
 from django.contrib import admin
 from reversion.admin import VersionAdmin
 
+from safedelete.models import SafeDeleteModel
+from safedelete.models import SOFT_DELETE_CASCADE
+
 @reversion.register()
-class Source(models.Model):
+class Source(SafeDeleteModel):
+    _safedelete_policy = SOFT_DELETE_CASCADE
+    
     name = models.CharField(max_length=100)
     url = models.CharField(max_length=200)
     is_default = models.BooleanField(default=False)
     create_date = models.DateTimeField(default=timezone.now)
     last_update = models.DateTimeField(default=timezone.now)
-    reviews = models.ManyToManyField('Review', db_table='reviews_review_sources')
+    #reviews = models.ManyToManyField('Review', db_table='reviews_review_sources')
     
     class Meta:
         verbose_name = u'Source'
@@ -37,7 +42,7 @@ class Source(models.Model):
 
     def __unicode__(self):
         if self.id:
-            return self.name + '(id= ' +str(self.id)+ ')'
+            return self.name + '(id=' +str(self.id)+ ')'
         else:
             return self.name
     
@@ -555,7 +560,10 @@ class Study(models.Model):
     comments = models.TextField(max_length=2000, blank=True, null=True)
 
 @reversion.register()
-class Article(models.Model):
+class Article(SafeDeleteModel):
+    
+    _safedelete_policy = SOFT_DELETE_CASCADE
+    
     UNCLASSIFIED = u'U'
     WAITING = u'W'
     REJECTED = u'R'
@@ -616,7 +624,12 @@ class Article(models.Model):
         verbose_name_plural = 'Articles'
 
     def __unicode__(self):
-        return self.title
+        if self.id and self.source:
+            return self.title + '(id= ' +str(self.id)+ ') [source=' +str(self.source.id)+ ']'
+        else:
+            return self.title
+    
+    
     
     def to_string(self):
         return self.title + '(' + str(self.id) + ')'
@@ -719,7 +732,9 @@ class ArticleFile(models.Model):
     name = models.CharField(max_length=300)
     size = models.CharField(max_length=150)
 @reversion.register()
-class ArticleEvaluation(models.Model):
+class ArticleEvaluation(SafeDeleteModel):
+    _safedelete_policy = SOFT_DELETE_CASCADE
+    
     UNCLASSIFIED = u'U'
     REJECTED = u'R'
     ACCEPTED = u'A'
