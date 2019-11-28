@@ -20,6 +20,8 @@ services:
       co.elastic.metrics/period: 10s
      # there's 2 & to escape it inside a docker compose file
       co.elastic.metrics/hosts: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD_ENCODED}@$${data.host}:5432?sslmode=disable
+      co.elastic.logs/module: postgresql
+      co.elastic.logs/fileset: log
   web:
     build: .
     command:
@@ -61,6 +63,9 @@ services:
       co.elastic.metrics/period: 10s
       # there's 2 & to escape it inside a docker compose file
       co.elastic.metrics/hosts: '$${data.host}:10080'
+      co.elastic.logs/module: nginx
+      co.elastic.logs/fileset.stdout: access
+      co.elastic.logs/fileset.stderr: error
 
 networks:
   webnet:
