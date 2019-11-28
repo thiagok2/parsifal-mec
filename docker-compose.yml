@@ -19,7 +19,7 @@ services:
       co.elastic.metrics/metricsets: database,bgwriter,activity,statement
       co.elastic.metrics/period: 10s
      # there's 2 & to escape it inside a docker compose file
-      co.elastic.metrics/hosts: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD_ENCODED}@$${data.host}:5432?sslmode=disable 
+      co.elastic.metrics/hosts: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD_ENCODED}@$${data.host}:5432?sslmode=disable
   web:
     build: .
     command:
@@ -31,22 +31,16 @@ services:
     depends_on:
       - db
     networks:
-      - webnet    
+      - webnet
     volumes:
-      - ${STATIC_FOLDER}:/static 
-      - ${MEDIA_FOLDER}:/media 
+      - ${STATIC_FOLDER}:/static
+      - ${MEDIA_FOLDER}:/media
     restart: always
-    labels:
-      co.elastic.metrics/module: nginx
-      co.elastic.metrics/metricsets: stubstatus
-      co.elastic.metrics/period: 10s
-      # there's 2 & to escape it inside a docker compose file
-      co.elastic.metrics/hosts: '$${data.host}:10080' 
   r:
     build: ./docker-config/r
     networks:
-      - webnet    
-    restart: always 
+      - webnet
+    restart: always
   staticweb:
     image: nginx:latest
     ports:
@@ -61,6 +55,12 @@ services:
     restart: always
     env_file:
       - .env
+    labels:
+      co.elastic.metrics/module: nginx
+      co.elastic.metrics/metricsets: stubstatus
+      co.elastic.metrics/period: 10s
+      # there's 2 & to escape it inside a docker compose file
+      co.elastic.metrics/hosts: '$${data.host}:10080'
 
 networks:
   webnet:
