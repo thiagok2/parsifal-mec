@@ -34,6 +34,7 @@ def recovery(request):
     
     for source in sources:
         source.undelete() 
+        Article.objects.all_with_deleted().filter(source__id=source.id).undelete()
     
     return JsonResponse({}, safe=False)
 
