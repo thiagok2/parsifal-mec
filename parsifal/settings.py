@@ -96,6 +96,7 @@ INSTALLED_APPS = (
 
     'reversion',
     'pagination_bootstrap',
+    'safedelete',
 
     'parsifal.reviews',
     'parsifal.reviews.comments',

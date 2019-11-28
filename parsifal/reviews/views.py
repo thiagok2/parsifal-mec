@@ -29,6 +29,13 @@ import logging
 
 logger = logging.getLogger('PARSIFAL_LOG')
 
+def recovery(request):
+    sources = Source.objects.all_with_deleted().exclude(deleted=None)
+    
+    for source in sources:
+        source.undelete() 
+    
+    return JsonResponse({}, safe=False)
 
 def reviews(request, username):
     user = get_object_or_404(User, username__iexact=username)
