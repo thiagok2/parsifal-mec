@@ -13,12 +13,13 @@ services:
       - .env
     ports:
       - "5432"
+    command: ["postgres", "-c", "shared_preload_libraries=pg_stat_statements"]
     labels:
       co.elastic.metrics/module: postgresql
       co.elastic.metrics/metricsets: database,bgwriter,activity,statement
       co.elastic.metrics/period: 10s
      # there's 2 & to escape it inside a docker compose file
-      co.elastic.metrics/hosts: 'postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@$${data.host}:5432'
+      co.elastic.metrics/hosts: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD_ENCODED}@$${data.host}:5432?sslmode=disable 
   web:
     build: .
     command:

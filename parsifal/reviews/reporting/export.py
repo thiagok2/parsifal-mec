@@ -1,6 +1,7 @@
 # coding: utf-8
 
 from django.template import RequestContext
+from django.conf import settings as djangoSettings
 
 from docx import Document
 from django.db.models import Count
@@ -11,6 +12,8 @@ from parsifal.reviews.conducting.views import article_meta_analysis
 
 from parsifal.reviews.models import Article, QualityAssessment, DataExtraction, DataExtractionField
 from django.utils.html import escape
+from parsifal.utils.svg_to_png import svg_to_png
+from docx.shared import Inches
 
 def export_review_to_docx(review, sections, request):
     document = Document()
@@ -261,23 +264,28 @@ def export_review_to_docx(review, sections, request):
 
         document.add_heading(_('Data Analysis'), level=3)
         try:
-            conclusions = article_meta_analysis(review, request)
+            if review.is_metaanalysis:
+                conclusions = article_meta_analysis(review, request)
+                svg_to_png(conclusions['forest_plot'], review)
 
-            #document.add_paragraph(mark_safe(conclusions['forest_plot']))
+                document.add_picture(djangoSettings.MEDIA_ROOT + '/forest_plot-'+ review.name +'.png', width=Inches(5.90))
 
-            if(conclusions):
-                table = document.add_table(rows=1, cols=3)
-                hdr_cells = table.rows[0].cells
-                hdr_cells[0].text = _('Article')
-                hdr_cells[1].text = _('Effect Size')
-                hdr_cells[2].text = _('Effect')
-                for data in conclusions['conclusions']:
-                    row_cells = table.add_row().cells
-                    row_cells[0].text = data['article']
-                    row_cells[1].text = str(data['effect_size'])
-                    row_cells[2].text = data['effect']
+                if(conclusions):
+                    table = document.add_table(rows=1, cols=3)
+                    hdr_cells = table.rows[0].cells
+                    hdr_cells[0].text = _('Article')
+                    hdr_cells[1].text = _('Effect Size')
+                    hdr_cells[2].text = _('Effect')
+                    for data in conclusions['conclusions']:
+                        row_cells = table.add_row().cells
+                        row_cells[0].text = data['article']
+                        row_cells[1].text = str(data['effect_size'])
+                        row_cells[2].text = data['effect']
+                else:
+                    document.add_paragraph(_('Not specified'))
             else:
-                document.add_paragraph(_('Not specified'))
-        except:
+                document.add_paragraph(_('This review is not a meta analysis'))
+        except Exception as e:
+            print 'erro ', e
             document.add_paragraph(_('An exception occurred when generate data_analysis report'))
     return document
