@@ -13,7 +13,7 @@ services:
       - .env
     ports:
       - "5432"
-    command: ["postgres", "-c", "shared_preload_libraries=pg_stat_statements"]
+    command: ["postgres", "-c", "shared_preload_libraries=pg_stat_statements", "-c", "log_min_duration_statement=${LOG_MIN_DURATION_STATEMENT}"]
     labels:
       co.elastic.metrics/module: postgresql
       co.elastic.metrics/metricsets: database,bgwriter,activity,statement

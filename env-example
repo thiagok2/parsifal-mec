@@ -10,6 +10,10 @@ DB_DATA_FOLDER=/docker-volumes/sumarize/db-data
 POSTGRES_DB=parsifal
 POSTGRES_USER=parsifal
 POSTGRES_PASSWORD=parsifal_senha
+#Causes the duration of each completed statement to be logged if the statement
+#ran for at least the specified number of milliseconds.
+#https://www.postgresql.org/docs/10/runtime-config-logging.html
+LOG_MIN_DURATION_STATEMENT=1000
 
 DEBUG=False
 SECRET_KEY='secret'
