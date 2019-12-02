@@ -12,13 +12,13 @@ POSTGRES_USER=parsifal
 POSTGRES_PASSWORD=parsifal_senha
 
 DEBUG=False
-SECRET_KEY=''
+SECRET_KEY='secret'
 POSTGRES_PASSWORD_ENCODED=parsifal_senha
 
 DATABASE_URL='postgres://parsifal:parsifal_senha@db:5432/parsifal'
 
 ALLOWED_HOSTS=*
-MENDELEY_ID=
+MENDELEY_ID=123456
 MENDELEY_SECRET=
 MENDELEY_REDIRECT_URI=https://sumarize.nees.com.br
 DROPBOX_REDIRECT_URI=https://sumarize.nees.com.br
