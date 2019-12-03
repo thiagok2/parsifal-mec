@@ -5,7 +5,6 @@ from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('parsifal.reviews.views',
     url(r'^new/$', 'new', name='new'),
-    url(r'^recovery/$', 'recovery', name='recovery'),
     url(r'^get_review_info/$', 'get_review_info', name='get_review_info'),
     url(r'^add_author/$', 'add_author_to_review', name='add_author_to_review'),
     url(r'^add_visitor/$', 'add_visitor_to_review', name='add_visitor_to_review'),

@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% load humanize %}
+{% load staticfiles %}
+
+{% block title %} {% trans 'Review Settings' %} · {{ review.title }}{% endblock %}
+
+{% block javascript %}
+  <script>
+    $(function () {
+    	$(".btn-restore-source").click(function () {
+    		$('#seleted-source').text($(this).attr("data-source-name"));
+    		$('#source-id').val($(this).attr("data-source-id"));
+    	});
+    	
+    	$("#input-confirm").change(function(){
+    		$('#btn-confirm').prop("disabled", !$("#input-confirm").is(":checked"));
+    	
+    	});
+    });
+    
+    
+    
+  </script>
+{% endblock javascript %}
+
+{% block content %}
+
+  {% include 'reviews/review_header.html' %}
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">{% trans 'Deleteds Sources / Digital Libraries' %}</h3>
+    </div>
+    <ul class="list-group">
+    	 {% for source in sources_review %}	
+		      <li class="list-group-item">
+		        	<h3>
+		        	{{ source.name }} <small>(<a href="{{source.url}}">{{source.url}}</a>)</small>
+		        		
+		        		<a type="button" class="btn btn-danger pull-right btn-restore-source" data-toggle="modal" data-target="#recovery-source-modal" 
+		        			data-source-name="{{ source.name }}" data-source-id="{{ source.id }}">
+		        			{% trans 'Restore' %}
+		        		</a>
+		        	</h3>
+		        	<span class="small text-muted">{% trans 'Deleted at ' %}{{ source.deleted }}</span>
+		        	
+		        
+			        <div class="panel panel-default" style="margin-top:20px;">
+			        	<div class="modal-body">
+			        		<div class="source-articles">
+							    <table class="table table-hover table-bordered" csrf-token="{{ csrf_token }}" source-id="{{ source.id }}" style="font-size: 13px">
+							      <thead>
+							        <tr>
+							      
+							          <th style="width: 200px;max-width: 200px;word-wrap: break-word;">{% trans 'Bibtex Key' %}</th>
+							          <th style="word-wrap: break-word;max-width: 600px;">{% trans 'Title' %}</th>
+							          <!-- <th>{% trans 'Author' %}</th> -->
+							          <th>{% trans 'Journal' %}</th>
+							          <th style="min-width: 80px;">{% trans 'Year' %}</th>
+							          <th style="min-width: 100px;">{% trans 'Added by' %}</th>
+							    
+							          <th>Status</th>
+							          
+							        </tr>
+							      </thead>
+							      <tbody>
+							        
+							        {% for article in source.get_deleted_articles %}
+							          {% include 'settings/article_row.html' with article=article %}
+							        {% empty %}
+							          <tr class="no-data">
+							            <td colspan="9">{% trans 'No articles.' %}</td>
+							          </tr>
+							        {% endfor %}
+							       
+							      </tbody>
+							    </table>
+							  </div>
+			        	</div>
+			        </div>
+		      </li>
+      	{% endfor %}
+    </ul>
+  </div>
+
+  <form method="post" action="{% url 'recovery_source' %}">
+    {% csrf_token %}
+    <input type="hidden" name="review-id" id="review-id" value="{{ review.pk }}">
+    <input type="hidden" name="source-id" id="source-id">
+    <div class="modal fade" id="recovery-source-modal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="transfer-review-title">{% trans 'Restore Source/Digital Library' %}</h4>
+          </div>
+          <div class="modal-body">
+          	<h3>{% trans "Do you confirm restore of " %} <strong id="seleted-source">{{ source.name }} </strong> {% trans " and its articles for your review?" %}</h3>
+           	<p>
+           		<input type="checkbox" name="input-confirm" id="input-confirm" value="true">{% trans "I confirm and I am aware of the consequences" %}
+           	</p>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-danger btn-block confirm-restore" disabled="disabled" id="btn-confirm">{% trans "Confirm" %}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+{% endblock content %}

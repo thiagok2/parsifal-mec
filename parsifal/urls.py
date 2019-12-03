@@ -14,6 +14,7 @@ urlpatterns = patterns('parsifal',
     url(r'^$', 'core.views.home', name='home'),
     
     url(r'^leave_review/$', 'core.views.leave_review', name='leave_review'),
+    url(r'^recovery_source/$', 'reviews.settings.views.recovery_source', name='recovery_source'),
     
     url(r'^about/$', TemplateView.as_view(template_name='core/about.html'), name='about'),
     url(r'^signup/$', 'authentication.views.signup', name='signup'),
@@ -40,6 +41,7 @@ urlpatterns = patterns('parsifal',
     # Review URLs
     url(r'^(?P<username>[^/]+)/(?P<review_name>[^/]+)/$', 'reviews.views.review', name='review'),
     url(r'^(?P<username>[^/]+)/(?P<review_name>[^/]+)/settings/$', 'reviews.settings.views.settings', name='settings'),
+    url(r'^(?P<username>[^/]+)/(?P<review_name>[^/]+)/recovery/$', 'reviews.settings.views.recovery', name='recovery'),
 
     # Review comments
     url(r'^(?P<username>[^/]+)/(?P<review_name>[^/]+)/comments/$', 'reviews.comments.views.comments', name='comments'),

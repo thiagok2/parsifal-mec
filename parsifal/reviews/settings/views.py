@@ -10,7 +10,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.views.decorators.http import require_POST
 
-from parsifal.reviews.models import Review
+from parsifal.reviews.models import Review, Article, Source
 from parsifal.reviews.decorators import main_author_required
 from parsifal.reviews.settings.forms import ReviewSettingsForm
 
@@ -98,3 +98,42 @@ def delete(request):
     review.delete()
     messages.success(request, _('The review was deleted successfully.'))
     return redirect(r('reviews', args=(review.author.username,)))
+
+@main_author_required
+@login_required
+def recovery(request, username, review_name):
+    review = Review.objects.get(name=review_name, author__username__iexact=username)
+    source_deleteds = Source.objects.all_with_deleted()
+    
+    sources_review = []
+    for source in source_deleteds:
+        print source.to_string()
+        count = source.get_articles_count_with_deleted(review.id)
+        if count > 0 and source.deleted:
+            sources_review.append(source)
+            print 'add ' + source.to_string()
+    
+    
+   
+    context = RequestContext(request, {
+            'review': review,
+            'sources_review': sources_review})
+        
+    return render_to_response('settings/recovery.html', context)
+
+@main_author_required
+@login_required
+def recovery_source(request):
+    review_id = request.POST.get('review-id')
+    review = Review.objects.get(pk=review_id)
+    
+    source_id = request.POST.get('source-id')
+    source = Source.objects.all_with_deleted().get(pk=source_id)
+    
+    review.sources.add(source)
+    source.undelete()
+    
+    unseen_comments = review.get_visitors_unseen_comments(request.user)
+    messages.success(request, _('Source was restored successfully.'))
+    
+    return render(request, 'planning/protocol.html', { 'review': review, 'unseen_comments': unseen_comments })

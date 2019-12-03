@@ -58,8 +58,17 @@ class Source(SafeDeleteModel):
     def get_articles_count(self, review_id):
         articles_count = Article.objects.filter(review__id=review_id, source__id=self.id).count()
         return articles_count
+    
+    def get_articles_count_with_deleted(self, review_id):
+        articles_count = Article.objects.all_with_deleted().filter(review__id=review_id, source__id=self.id).count()
+        return articles_count
+    
     def get_article_evaluation_count(self, review_id):
         return Article.objects.filter(review__id=review_id, source__id=self.id).exclude(status=Article.UNCLASSIFIED).count()
+    
+    def get_deleted_articles(self):
+        return Article.objects.all_with_deleted().filter(source__id=self.id)
+
 
 
 @reversion.register()

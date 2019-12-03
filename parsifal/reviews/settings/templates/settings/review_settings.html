@@ -62,6 +62,11 @@
     </div>
     <ul class="list-group">
       <li class="list-group-item">
+        <a type="button" class="btn btn-danger pull-right" href="{% url 'recovery' review.author.username review.name %}">{% trans 'Recovery' %}</a>
+        <p><strong>{% trans 'Recovery Sources / Digital Libraries' %}</strong></p>
+        <p style="margin-bottom: 0;">{% trans 'Once you have deleted a Source or Digital Library, you can retrieve it and its articles back to your review.' %}</p>
+      </li>
+      <li class="list-group-item">
         <button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target="#transfer-review">{% trans 'Transfer' %}</button>
         <p><strong>{% trans 'Transfer ownership' %}</strong></p>
         <p style="margin-bottom: 0;">{% trans 'Transfer this review to another user.' %}</p>
