@@ -68,7 +68,9 @@
 							      <tbody>
 							        
 							        {% for article in source.get_deleted_articles %}
-							          {% include 'settings/article_row.html' with article=article %}
+							          {% if article.review.id == review.pk %}
+							          	{% include 'settings/article_row.html' with article=article %}
+							          {% endif %}
 							        {% empty %}
 							          <tr class="no-data">
 							            <td colspan="9">{% trans 'No articles.' %}</td>

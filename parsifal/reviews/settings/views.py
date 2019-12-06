@@ -103,18 +103,24 @@ def delete(request):
 @login_required
 def recovery(request, username, review_name):
     review = Review.objects.get(name=review_name, author__username__iexact=username)
-    source_deleteds = Source.objects.all_with_deleted()
+    source_deleteds = Source.objects.all_with_deleted().filter(deleted__isnull = False)
     
     sources_review = []
     for source in source_deleteds:
-        print source.to_string()
+        #print source.to_string()
         count = source.get_articles_count_with_deleted(review.id)
         if count > 0 and source.deleted:
             sources_review.append(source)
-            print 'add ' + source.to_string()
+            #print 'add ' + source.to_string()
     
     
+    articles_deleteds = Article.objects.all_with_deleted().filter(review__id=review.id).filter(deleted__isnull = False)
    
+    for article in articles_deleteds:
+        if not article.source in sources_review:
+            sources_review.append(article.source)
+        
+    
     context = RequestContext(request, {
             'review': review,
             'sources_review': sources_review})
@@ -131,7 +137,11 @@ def recovery_source(request):
     source = Source.objects.all_with_deleted().get(pk=source_id)
     
     review.sources.add(source)
-    source.undelete()
+    if(source.deleted):
+        source.undelete()
+    elif(source.is_default):
+        Article.objects.all_with_deleted().filter(review__id=review.id, source__id = source.id).filter(deleted__isnull = False).undelete()
+    
     
     unseen_comments = review.get_visitors_unseen_comments(request.user)
     messages.success(request, _('Source was restored successfully.'))
