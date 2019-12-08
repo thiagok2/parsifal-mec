@@ -98,7 +98,7 @@ def upload_picture(request):
         else:
             messages.error(request, _('Invalid file format.'))
     except Exception, e:
-        messages.error(request, _('An expected error occurred.') + str(e))
+        messages.error(request, _('An expected error occurred.'))
     return redirect('/settings/picture/')
 
 
@@ -118,7 +118,7 @@ def save_uploaded_picture(request):
         os.remove(tmp_filename)
         return HttpResponse(django_settings.MEDIA_URL + 'profile_pictures/' + request.user.username + '.jpg')
     except Exception, e:
-        return HttpResponseBadRequest()
+        return HttpResponseBadRequest(e)
 
 def get_dropbox_auth_flow(session):
     return DropboxOAuth2Flow(
