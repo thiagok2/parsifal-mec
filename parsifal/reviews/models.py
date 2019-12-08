@@ -68,8 +68,12 @@ class Source(SafeDeleteModel):
     
     def get_deleted_articles(self):
         return Article.objects.all_with_deleted().filter(source__id=self.id)
+    
+    def get_deleted_search_session(self):
+        return SearchSession.objects.all_with_deleted().filter(source__id=self.id)
 
-
+    def get_search_session(self):
+        return SearchSession.objects.all_with_deleted().filter(source__id=self.id)
 
 @reversion.register()
 class Review(models.Model):
@@ -511,7 +515,8 @@ class Risk(models.Model):
     def get_child_risks(self):
         return Risk.objects.filter(parent_risk=self)
 @reversion.register()
-class SearchSession(models.Model):
+class SearchSession(SafeDeleteModel):
+    _safedelete_policy = SOFT_DELETE_CASCADE
     review = models.ForeignKey(Review)
     source = models.ForeignKey(Source, null=True)
     search_string = models.TextField(max_length=10000)
