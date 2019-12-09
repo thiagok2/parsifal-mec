@@ -6,6 +6,10 @@
   {% if user|is_visitor:review %}
     <script src="{% static 'js/user_is_visitor.js' %}?v=1"></script>
   {% endif %}
+  
+  $(function () {
+  	$('[data-toggle="tooltip"]').tooltip()
+  })
 {% endblock javascript %}
 
 {% block tab_content %}
@@ -51,7 +55,7 @@
                   <td>
                   	{{ source.source.name }}
                   	{% if source.source.is_default %}
-                  	<span class="glyphicon glyphicon-ok-circle"></span>
+                  	<span class="glyphicon glyphicon-ok-circle" data-toggle="tooltip" data-placement="top" title="Fonte Padrão"></span>
                   	{% endif %}
                   </td>
                   <td>{{ source.count }}</td>
