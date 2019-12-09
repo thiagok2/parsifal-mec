@@ -48,7 +48,12 @@
             <tbody>
               {% for source in sources %}
                 <tr>
-                  <td>{{ source.source.name }}</td>
+                  <td>
+                  	{{ source.source.name }}
+                  	{% if source.source.is_default %}
+                  	<span class="glyphicon glyphicon-ok-circle"></span>
+                  	{% endif %}
+                  </td>
                   <td>{{ source.count }}</td>
                   <td class="text-center">
                     <form enctype="multipart/form-data" method="post" action="{% url 'reviews:conducting:import_bibtex' %}">
