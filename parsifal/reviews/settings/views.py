@@ -143,6 +143,8 @@ def recovery_source(request):
         Article.objects.all_with_deleted().filter(review__id=review.id, source__id = source.id).filter(deleted__isnull = False).undelete()
     
     
+    source.get_deleted_search_session().filter(deleted__isnull = False).undelete()
+    
     unseen_comments = review.get_visitors_unseen_comments(request.user)
     messages.success(request, _('Source was restored successfully.'))
     
