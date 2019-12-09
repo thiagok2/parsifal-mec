@@ -27,14 +27,14 @@ from safedelete.models import SOFT_DELETE_CASCADE
 @reversion.register()
 class Source(SafeDeleteModel):
     _safedelete_policy = SOFT_DELETE_CASCADE
-    
+
     name = models.CharField(max_length=100)
     url = models.CharField(max_length=200)
     is_default = models.BooleanField(default=False)
     create_date = models.DateTimeField(default=timezone.now)
     last_update = models.DateTimeField(default=timezone.now)
     #reviews = models.ManyToManyField('Review', db_table='reviews_review_sources')
-    
+
     class Meta:
         verbose_name = u'Source'
         verbose_name_plural = u'Sources'
@@ -45,7 +45,7 @@ class Source(SafeDeleteModel):
             return self.name + '(id=' +str(self.id)+ ')'
         else:
             return self.name
-    
+
     def to_string(self):
         return self.name + '(' + str(self.id) + ')'
 
@@ -58,14 +58,14 @@ class Source(SafeDeleteModel):
     def get_articles_count(self, review_id):
         articles_count = Article.objects.filter(review__id=review_id, source__id=self.id).count()
         return articles_count
-    
+
     def get_articles_count_with_deleted(self, review_id):
         articles_count = Article.objects.all_with_deleted().filter(review__id=review_id, source__id=self.id).count()
         return articles_count
-    
+
     def get_article_evaluation_count(self, review_id):
         return Article.objects.filter(review__id=review_id, source__id=self.id).exclude(status=Article.UNCLASSIFIED).count()
-    
+
     def get_deleted_articles(self):
         return Article.objects.all_with_deleted().filter(source__id=self.id)
 
@@ -128,7 +128,7 @@ class Review(models.Model):
 
     def __unicode__(self):
         return self.name
-    
+
     def to_string(self):
         return self.name + '(' + str(self.id) + ')'
 
@@ -315,7 +315,7 @@ class Review(models.Model):
         evaluations = ArticleEvaluation.objects.filter(review__id=self.id, user__id=user_id)
 
         return evaluations
-    
+
 @reversion.register()
 class SearchSetup(models.Model):
     COHEN = u'COHEN'
@@ -570,9 +570,9 @@ class Study(models.Model):
 
 @reversion.register()
 class Article(SafeDeleteModel):
-    
+
     _safedelete_policy = SOFT_DELETE_CASCADE
-    
+
     UNCLASSIFIED = u'U'
     WAITING = u'W'
     REJECTED = u'R'
@@ -637,9 +637,9 @@ class Article(SafeDeleteModel):
             return self.title + '(id= ' +str(self.id)+ ') [source=' +str(self.source.id)+ ']'
         else:
             return self.title
-    
-    
-    
+
+
+
     def to_string(self):
         return self.title + '(' + str(self.id) + ')'
 
@@ -743,7 +743,7 @@ class ArticleFile(models.Model):
 @reversion.register()
 class ArticleEvaluation(SafeDeleteModel):
     _safedelete_policy = SOFT_DELETE_CASCADE
-    
+
     UNCLASSIFIED = u'U'
     REJECTED = u'R'
     ACCEPTED = u'A'

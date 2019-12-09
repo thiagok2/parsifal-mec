@@ -46,6 +46,7 @@ import sys
 import locale
 
 import logging
+from django.core.paginator import Paginator
 
 logger = logging.getLogger('PARSIFAL_LOG')
 
@@ -242,13 +243,12 @@ def update_article_empirical_data(request):
         logger.error(request.user.username + ': ' + _('An expected error occurred.') + str(e))
         return HttpResponseBadRequest()
 
-def build_quality_assessment_table(request, review, order):
-    selected_studies = review.get_accepted_articles().annotate(sum=Sum('qualityassessment__answer__weight')).order_by(order)
+def build_quality_assessment_table(request, review, order, studies):
     quality_questions = QualityQuestion.objects.filter(review__id=review.id)
 
     if quality_questions:
         str_table = u''
-        for study in selected_studies:
+        for study in studies:
             str_table += u'''
             <div class="panel panel-default panel-quality-assessment">
               <div class="panel-heading">
@@ -283,11 +283,30 @@ def build_quality_assessment_table(request, review, order):
     else:
         return ''
 
+def get_paginated_selected_studies(request, review, order, active_filter):
+    selected_studies = review.get_accepted_articles().annotate(sum=Sum('qualityassessment__answer__weight')).order_by(order)
+    cutoff_score = review.quality_assessment_cutoff_score
+    questions = review.get_quality_assessment_questions().count()
+    if active_filter == 'done':
+        selected_studies = selected_studies.annotate(count=Count('qualityassessment__answer')).filter(count=questions)
+    elif active_filter == 'pending':
+        selected_studies = selected_studies.annotate(count=Count('qualityassessment__answer')).filter(count__lt=questions)
+    elif active_filter == 'score-higher':
+        selected_studies = selected_studies.annotate(weight=Sum('qualityassessment__answer__weight')).filter(weight__gt=cutoff_score)
+    elif active_filter == 'score-lower':
+        selected_studies = selected_studies.annotate(weight=Sum('qualityassessment__answer__weight')).filter(weight__lt=cutoff_score)
+
+    paginator = Paginator(selected_studies, 10)
+    page = request.GET.get('page', 1)
+
+    return paginator.page(page)
+
 @author_or_visitor_required
 @login_required
 def quality_assessment(request, username, review_name):
     review = Review.objects.get(name=review_name, author__username__iexact=username)
     unseen_comments = review.get_visitors_unseen_comments(request.user)
+    active_filter = request.GET.get('active_filter', 'all')
 
     add_sources = review.sources.count()
     import_articles = review.get_source_articles().count()
@@ -314,7 +333,9 @@ def quality_assessment(request, username, review_name):
         order = 'title'
     request.session['quality_assessment_order'] = order
 
-    quality_assessment_table = build_quality_assessment_table(request, review, order)
+    studies = get_paginated_selected_studies(request, review, order, active_filter)
+
+    quality_assessment_table = build_quality_assessment_table(request, review, order, studies)
 
     return render(request, 'conducting/conducting_quality_assessment.html', {
             'review': review,
@@ -322,7 +343,9 @@ def quality_assessment(request, username, review_name):
             'quality_assessment_table': quality_assessment_table,
             'finished_all_steps': finished_all_steps,
             'order': order,
-            'unseen_comments': unseen_comments
+            'unseen_comments': unseen_comments,
+            'pages': studies,
+            'active_filter': active_filter
         })
 
 def build_data_extraction_field_row(article, field):
@@ -387,15 +410,13 @@ def build_data_extraction_field_row(article, field):
 
     return str_field
 
-def build_data_extraction_table(review, is_finished):
-    selected_studies = review.get_final_selection_articles()
-    if is_finished != None:
-        selected_studies = selected_studies.filter(finished_data_extraction=is_finished)
+def build_data_extraction_table(review, is_finished, final_articles):
+
     data_extraction_fields = review.get_data_extraction_fields()
     has_quality_assessment = review.has_quality_assessment_checklist()
-    if selected_studies and data_extraction_fields:
+    if final_articles and data_extraction_fields:
         str_table = u'<div class="panel-group">'
-        for study in selected_studies:
+        for study in final_articles:
             #if has_quality_assessment:
             str_table += u'''<div class="panel panel-default data-extraction-panel" id="article-{2}">
               <div class="panel-heading">
@@ -409,7 +430,7 @@ def build_data_extraction_table(review, is_finished):
                 pdf_file = files[0]
                 str_table +='''<a href="{0}" target="_blank"><span class="badge" ><i class="glyphicon glyphicon-cloud-download"></i></span></a>'''.format(pdf_file.article_file.url)
             if study.doi:
-                str_table +='''<a href="https://dx.doi.org/{0}" target="blank"><span class="badge">DOI:{0}</a>'''.format(study.doi,study.doi)
+                str_table +='''<a href="https://dx.doi.org/{0}" target="blank"><span class="badge">DOI:{0}</a>'''.format(study.doi.encode('utf-8'))
 
 
             str_table +='''<a href="#article-{0}" oid="{0}" class="article-link"><span class="badge" ><i class="glyphicon glyphicon-edit"></i></span></a>'''.format(study.id)
@@ -571,6 +592,15 @@ def build_data_extraction_table(review, is_finished):
     else:
         return u''
 
+def get_paginated_final_selection_articles(request, review, is_finished):
+    selection_articles = review.get_final_selection_articles()
+    if is_finished != None:
+        selection_articles = selection_articles.filter(finished_data_extraction=is_finished)
+    paginator = Paginator(selection_articles, 5)
+    page = request.GET.get('page', 1)
+
+    return paginator.page(page)
+
 @author_or_visitor_required
 @login_required
 def data_extraction(request, username, review_name):
@@ -605,7 +635,8 @@ def data_extraction(request, username, review_name):
         is_finished = None
 
     try:
-        data_extraction_table = build_data_extraction_table(review, is_finished)
+        final_articles = get_paginated_final_selection_articles(request, review, is_finished)
+        data_extraction_table = build_data_extraction_table(review, is_finished, final_articles)
     except Exception, e:
         raise e
         data_extraction_table = _('<h3>Something went wrong while rendering the data extraction form.</h3>')
@@ -616,7 +647,8 @@ def data_extraction(request, username, review_name):
             'data_extraction_table': data_extraction_table,
             'finished_all_steps': finished_all_steps,
             'tab': tab,
-            'unseen_comments': unseen_comments
+            'unseen_comments': unseen_comments,
+            'pages': final_articles
         })
 
 def bibtex_to_article_object(bib_database, review, source):
@@ -1067,7 +1099,7 @@ def article_solve_conflict(request):
             article.evaluation_finished_at = datetime.datetime.now()
             article.evaluation_finished_by = request.user
             article.save()
-            
+
             logger.info( request.user.username + ' resolved artcile ' + article.to_string() + ' - status = ' + article.status)
             return HttpResponse(build_article_table_row(request, article, request.user))
         else:
@@ -1109,8 +1141,9 @@ def quality_assessment_detailed(request):
         review_id = request.GET['review-id']
         review = Review.objects.get(pk=review_id)
         order = request.session.get('quality_assessment_order', 'title')
-        quality_assessment_table = build_quality_assessment_table(request, review, order)
-        context = RequestContext(request, {'review': review, 'quality_assessment_table': quality_assessment_table, 'order': order})
+        studies = get_paginated_selected_studies(request, review, order)
+        quality_assessment_table = build_quality_assessment_table(request, review, order, studies)
+        context = RequestContext(request, {'review': review, 'quality_assessment_table': quality_assessment_table, 'order': order, 'pages': studies})
         return render_to_response('conducting/partial_conducting_quality_assessment_detailed.html', context)
     except Exception as e:
         print e
