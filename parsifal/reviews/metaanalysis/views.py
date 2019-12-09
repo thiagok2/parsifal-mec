@@ -36,7 +36,7 @@ def save_metaanalysis(request):
         return HttpResponse(_('Your comment have been sended successfully!'))
     except Exception as e:
         print e
-        return HttpResponseBadRequest()
+        return HttpResponseBadRequest(e)
     
 @author_or_visitor_required
 @login_required

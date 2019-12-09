@@ -36,15 +36,26 @@
     <ul class="list-group">
     	 {% for source in sources_review %}	
 		      <li class="list-group-item">
-		        	<h3>
+		        	<h2>
 		        	{{ source.name }} <small>(<a href="{{source.url}}">{{source.url}}</a>)</small>
 		        		
 		        		<a type="button" class="btn btn-danger pull-right btn-restore-source" data-toggle="modal" data-target="#recovery-source-modal" 
 		        			data-source-name="{{ source.name }}" data-source-id="{{ source.id }}">
 		        			{% trans 'Restore' %}
 		        		</a>
-		        	</h3>
+		        	</h2>
+		        	{% if not source.is_default %}
 		        	<span class="small text-muted">{% trans 'Deleted at ' %}{{ source.deleted }}</span>
+		        	{% endif %}
+		        	
+		        	{% for search_session in source.get_deleted_search_session %}
+		        	{% if search_session.review.id == review.pk %}
+		        	<div class="well">
+		        		<h4>{% trans 'Search String' %}</h4>
+		        		<p>{{search_session.search_string}}</p>
+		        	</div>
+		        	{% endif %}
+		        	{% endfor %}
 		        	
 		        
 			        <div class="panel panel-default" style="margin-top:20px;">
@@ -101,7 +112,7 @@
           <div class="modal-body">
           	<h3>{% trans "Do you confirm restore of " %} <strong id="seleted-source">{{ source.name }} </strong> {% trans " and its articles for your review?" %}</h3>
            	<p>
-           		<input type="checkbox" name="input-confirm" id="input-confirm" value="true">{% trans "I confirm and I am aware of the consequences" %}
+           		<input type="checkbox" name="input-confirm" id="input-confirm" value="true"> {% trans "I confirm and I am aware of the consequences" %}
            	</p>
           </div>
           <div class="modal-footer">

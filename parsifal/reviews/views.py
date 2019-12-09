@@ -219,11 +219,11 @@ def remove_author_from_review(request):
         
             
         return redirect(r('review', args=(review.author.username, review.name)))
-    except Exception, e:
-        print 'ERROR:'+str(e)
-        logger.error(request.user.username + _('An expected error occurred.') + str(e))
-        messages.error(request, _('An expected error occurred.') +'ERROR:'+ str(e))
-        return HttpResponseBadRequest()
+    except Exception as e:
+        print e
+        logger.exception(request.user.username + _('An expected error occurred.'))
+        messages.error(request, _('An expected error occurred.') +'ERROR:' )
+        return HttpResponseBadRequest(e)
     
 @main_author_required
 @login_required
@@ -238,11 +238,11 @@ def update_status_article_unique_author(request):
         messages.success(request, _('The status of articles have been updated.'))
         
         return redirect(r('review', args=(review.author.username, review.name)))
-    except Exception, e:
-        print 'ERROR:'+str(e)
-        logger.error(request.user.username + _('An expected error occurred.') + str(e))
-        messages.error(request, _('An expected error occurred.') +'ERROR:'+ str(e))
-        return HttpResponseBadRequest()
+    except Exception as e:
+        print e
+        logger.exception(request.user.username + _('An expected error occurred.') )
+        messages.error(request, _('An expected error occurred.') +'ERROR:')
+        return HttpResponseBadRequest(e)
     
 
 def update_article_in_wating_conflict(review):
@@ -272,11 +272,11 @@ def save_user_invited_to_review(review_id, email, invite_type):
         invite.invite_type = invite_type
         invite.save()
         return HttpResponse()
-    except Exception, e:
+    except Exception as e:
         print e
-        logger.error('review-'+ str(review_id) + ' - ' + _('An expected error occurred.') + str(e))
-        messages.error(request, _('An expected error occurred.') + str(e))
-        return HttpResponseBadRequest()
+        logger.exception('review-'+ str(review_id) + ' - ' + _('An expected error occurred.'))
+        #messages.error(request, _('An expected error occurred.') + str(e))
+        return HttpResponseBadRequest(e)
 
 @main_author_required
 @login_required
@@ -290,11 +290,11 @@ def remove_visitor_from_review(request):
         review.visitors.remove(visitor)
         review.save()
         return HttpResponse()
-    except Exception, e:
+    except Exception as e:
         print e
-        logger.error(request.user.username + ' remove visitor-' + str(visitor_id)+ ' from review-' + str(review_id) + ' ' + _('An expected error occurred.') + str(e))
-        messages.error(request, _('An expected error occurred.') + str(e))
-        return HttpResponseBadRequest()
+        logger.exception(request.user.username + ' remove visitor-' + str(visitor_id)+ ' from review-' + str(review_id) + ' ' + _('An expected error occurred.') )
+        messages.error(request, _('An expected error occurred.') )
+        return HttpResponseBadRequest(e)
 
 @author_required
 @login_required
@@ -322,10 +322,11 @@ def save_description(request):
             review.description = description
             review.save()
             return HttpResponse(_('Your review has been saved successfully!'))
-    except Exception, e:
+    except Exception as e:
         print e
-        messages.error(request, _('An expected error occurred.') + str(e))
-        return HttpResponseBadRequest()
+        logger.exception(request.user.username + ' - ' + _('An expected error occurred.'))
+        messages.error(request, _('An expected error occurred.') )
+        return HttpResponseBadRequest(e)
 
 '''
     REVIEW TAG FUNCTIONS
@@ -351,10 +352,11 @@ def save_tag(request):
         tag.save()
         tag_json = { 'id': tag.id, 'tag': tag.tag }
         return JsonResponse(tag_json, safe=False)
-    except Exception, e:
+    except Exception as e:
         print e
-        messages.error(request, _('An expected error occurred.') + str(e))
-        return HttpResponseBadRequest()
+        logger.exception(request.user.username + ' - ' + _('An expected error occurred.'))
+        messages.error(request, _('An expected error occurred.'))
+        return HttpResponseBadRequest(e)
 
 @author_or_visitor_required
 @login_required
@@ -373,10 +375,11 @@ def load_tags(request):
                 'tag': tag.tag
             })
         return JsonResponse(tags_list, safe=False)
-    except Exception, e:
+    except Exception as e:
         print e
-        messages.error(request, _('An expected error occurred.') + str(e))
-        return HttpResponseBadRequest()
+        logger.exception(request.user.username + ' - ' + _('An expected error occurred.'))
+        messages.error(request, _('An expected error occurred.'))
+        return HttpResponseBadRequest(e)
 
 @author_required
 @login_required
@@ -395,10 +398,11 @@ def remove_tag(request):
             except Tag.DoesNotExist:
                 return HttpResponseBadRequest()
         return HttpResponse()
-    except Exception, e:
+    except Exception as e:
         print e
-        messages.error(request, _('An expected error occurred.') + str(e))
-        return HttpResponseBadRequest()
+        logger.exception(request.user.username + ' - ' + _('An expected error occurred.'))
+        messages.error(request, _('An expected error occurred.') )
+        return HttpResponseBadRequest(e)
 
 @login_required
 def published_protocols(request):
@@ -416,9 +420,9 @@ def published_protocols(request):
         return render_to_response('reviews/partial_published_protocols.html', context)
     except Exception as e:
         print e
-        logger.error(_('An expected error occurred.') + str(e))
-        messages.error(request, _('An expected error occurred.') + str(e))
-        return HttpResponseBadRequest()
+        logger.exception(request.user.username + ' - ' +_('An expected error occurred.') )
+        messages.error(request, _('An expected error occurred.') )
+        return HttpResponseBadRequest(e)
 
 @login_required
 def import_protocol(request):
@@ -524,8 +528,9 @@ def import_protocol(request):
 
     except Exception as e:
         print e
-        logger.error(_('An expected error occurred.') + str(e))
-        return HttpResponseBadRequest()
+        logger.exception(request.user.username + ' - ' + _('An expected error occurred.') )
+        messages.error(request, _('An expected error occurred.') )
+        return HttpResponseBadRequest(e)
 
 def explorer(request):
     public_reviews = Review.objects.filter(export_protocol=True).order_by('create_date', 'title')[:25]
@@ -568,8 +573,10 @@ def get_review_info(request):
         return HttpResponse(dump, content_type='application/json')
         
     except Exception as e:
-        print str(e)
-        return HttpResponseBadRequest()
+        print e
+        messages.error(request, _('An expected error occurred.') )
+        logger.exception(request.user.username + ' - ' +_('An expected error occurred.') )
+        return HttpResponseBadRequest(e)
 
 @login_required
 def create_reversion_revision_source(request):

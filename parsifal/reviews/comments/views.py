@@ -65,7 +65,7 @@ def save_visitor_comment(request):
         return HttpResponse(_('Your comment have been sended successfully!'))
     except Exception as e:
         print e
-        return HttpResponseBadRequest()
+        return HttpResponseBadRequest(e)
 
 def close_comment_thread(request):
     try:
@@ -78,4 +78,4 @@ def close_comment_thread(request):
         return render_to_response('comments/partial_is_closed.html', context)
     except Exception as e:
         print e
-        return HttpResponseBadRequest()
+        return HttpResponseBadRequest(e)

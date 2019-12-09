@@ -232,7 +232,7 @@ def export_review_to_docx(review, sections, request):
         document.add_heading(_('Quality Assessment'), level=3)
 
         document.add_heading(_('Question/Answer'), level=4)
-        result_quality_assessment = QualityAssessment.objects.values('question__description','answer__description').order_by().annotate(Count('question'), Count('answer') )
+        result_quality_assessment = QualityAssessment.objects.filter(article__review_id=review.id).values('question__description','answer__description').order_by().annotate(Count('question'), Count('answer') )
 
         table = document.add_table(rows=1, cols=3)
         hdr_cells = table.rows[0].cells

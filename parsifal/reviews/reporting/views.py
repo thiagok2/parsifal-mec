@@ -28,8 +28,8 @@ def export(request, username, review_name):
 
         return render(request, 'reporting/export.html', { 'review': review, 'unseen_comments': unseen_comments })
     except Exception as e:
-        logger.error(request.user.username + ': ' + _('An expected error occurred.') + str(e))
-        return HttpResponseBadRequest()
+        logger.exception(request.user.username + ': ' + _('An expected error occurred.') )
+        return HttpResponseBadRequest(e)
 
 @author_or_visitor_required
 @login_required
@@ -44,5 +44,5 @@ def download_docx(request):
         document.save(response)
         return response
     except Exception as e:
-        logger.error(request.user.username + ': ' + _('An expected error occurred.') + str(e))
-        return HttpResponseBadRequest()
+        logger.exception(request.user.username + ': ' + _('An expected error occurred.'))
+        return HttpResponseBadRequest(e)

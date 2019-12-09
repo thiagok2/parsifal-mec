@@ -68,8 +68,12 @@ class Source(SafeDeleteModel):
 
     def get_deleted_articles(self):
         return Article.objects.all_with_deleted().filter(source__id=self.id)
+    
+    def get_deleted_search_session(self):
+        return SearchSession.objects.all_with_deleted().filter(source__id=self.id)
 
-
+    def get_search_session(self):
+        return SearchSession.objects.all_with_deleted().filter(source__id=self.id)
 
 @reversion.register()
 class Review(models.Model):
@@ -511,7 +515,8 @@ class Risk(models.Model):
     def get_child_risks(self):
         return Risk.objects.filter(parent_risk=self)
 @reversion.register()
-class SearchSession(models.Model):
+class SearchSession(SafeDeleteModel):
+    _safedelete_policy = SOFT_DELETE_CASCADE
     review = models.ForeignKey(Review)
     source = models.ForeignKey(Source, null=True)
     search_string = models.TextField(max_length=10000)
@@ -796,7 +801,7 @@ class Keyword(models.Model):
     review = models.ForeignKey(Review, related_name='keywords')
     description = models.CharField(max_length=200)
     synonym_of = models.ForeignKey('self', null=True, related_name='synonyms')
-    related_to = models.CharField(max_length=1, choices=RELATED_TO, blank=True)
+    related_to = models.CharField(max_length=2, choices=RELATED_TO, blank=True)
 
     class Meta:
         verbose_name = u'Keyword'

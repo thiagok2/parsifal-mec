@@ -88,6 +88,9 @@ $(function () {
         else {
           $(panel).fadeOut(200);
         }
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+    	  $.parsifal.alert('Tivemos problemas na operação', jqXHR.responseText);
       }
     });
   });
