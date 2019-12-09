@@ -37,9 +37,9 @@ $(function () {
 
       $.ajax({
         url: '/reviews/conducting/save_quality_assessment/',
-        data: {'review-id': review_id, 
-          'article-id': article_id, 
-          'question-id': question_id, 
+        data: {'review-id': review_id,
+          'article-id': article_id,
+          'question-id': question_id,
           'answer-id': answer_id,
           'csrfmiddlewaretoken': csrf_token
         },
@@ -60,62 +60,17 @@ $(function () {
     }
   });
 
-  $(".quality-container").on("click", "#all-filter", function () {
-    $(".quality-assessment .panel-quality-assessment").show();
+  $(".quality-container").on("click", "input[name=filter]", function () {
+    var radio_value = $("input[name='filter']:checked").val();
+    var order = $("select[name='order'] option:checked").val();
+
+    window.location.href = "?order=" + order + "&active_filter=" + radio_value;
+
   });
 
-  $(".quality-container").on("click", "#done-filter", function () {
-    var questions_count = parseInt($("#questions-count").val());
-    $(".quality-assessment .panel-quality-assessment").each(function () {
-      if ($("table td.selected-answer", this).length != questions_count) {
-        $(this).hide();
-      }
-      else {
-        $(this).show();
-      }
-    });
-  });
-
-  $(".quality-container").on("click", "#pending-filter", function () {
-    var questions_count = parseInt($("#questions-count").val());
-    $(".quality-assessment .panel-quality-assessment").each(function () {
-      if ($("table td.selected-answer", this).length != questions_count) {
-        $(this).show();
-      }
-      else {
-        $(this).hide();
-      }
-    });
-  });
-
-  $(".quality-container").on("click", "#score-higher-filter", function () {
-    var cutoff_score = parseFloat($("#cutoff-score").val());
-    $(".quality-assessment .panel-quality-assessment").each(function () {
-      var score = parseFloat($("span.score", this).text());
-      if (score > cutoff_score) {
-        $(this).show();
-      }
-      else {
-        $(this).hide();
-      }
-    });
-  });
-
-  $(".quality-container").on("click", "#score-lower-filter", function () {
-    var cutoff_score = parseFloat($("#cutoff-score").val());
-    $(".quality-assessment .panel-quality-assessment").each(function () {
-      var score = parseFloat($("span.score", this).text());
-      if (score <= cutoff_score) {
-        $(this).show();
-      }
-      else {
-        $(this).hide();
-      }
-    });
-  });
 
   $(".quality-container").on("change", "#quality-assessment-order", function () {
     $(this).closest("form").submit();
   });
-      
+
 });

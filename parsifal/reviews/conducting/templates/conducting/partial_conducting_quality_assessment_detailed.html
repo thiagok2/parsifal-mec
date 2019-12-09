@@ -17,6 +17,7 @@
 </div>
 <p>
   <form method="get" class="pull-right" style="display: inline;">
+    <input type="hidden" name="active_filter" value="{{ active_filter }}">
     <a href="javascript:void(0);" class="pull-right" data-toggle="tooltip" title="{% trans 'What is this? Click to get help.' %}" data-placement="top" data-container="body">
   		<span class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#detailed-help"></span>
   	</a>
@@ -31,12 +32,12 @@
     </select>
   </form>
   <strong>{% trans 'Show' %}:</strong>
-  <input type="radio" name="filter" id="all-filter" checked> {% trans 'All' %}
-  <input type="radio" name="filter" id="done-filter"> {% trans 'Done' %}
-  <input type="radio" name="filter" id="pending-filter"> {% trans 'Pending' %}
+  <input type="radio" name="filter" value="all" id="all-filter" {% if active_filter == 'all' %} checked {% endif %}> {% trans 'All' %}
+  <input type="radio" name="filter" value="done" id="done-filter"  {% if active_filter == 'done' %} checked {% endif %}> {% trans 'Done' %}
+  <input type="radio" name="filter" value="pending" id="pending-filter"  {% if active_filter == 'pending' %} checked {% endif %}> {% trans 'Pending' %}
   {% if review.quality_assessment_cutoff_score > 0.0 %}
-    <input type="radio" name="filter" id="score-higher-filter"> {% trans 'Score higher than' %} {{ review.quality_assessment_cutoff_score }}
-    <input type="radio" name="filter" id="score-lower-filter"> {% trans 'Score lower or equal to' %} {{ review.quality_assessment_cutoff_score }}
+    <input type="radio" name="filter" value="score-higher" id="score-higher-filter"  {% if active_filter == 'score-higher' %} checked {% endif %}> {% trans 'Score higher than' %} {{ review.quality_assessment_cutoff_score }}
+    <input type="radio" name="filter" value="score-lower" id="score-lower-filter"  {% if active_filter == 'score-lower' %} checked {% endif %}> {% trans 'Score lower or equal to' %} {{ review.quality_assessment_cutoff_score }}
   {% endif %}
 
 </p>
@@ -47,5 +48,30 @@
 <input type="hidden" id="questions-count" value="{{ review.get_quality_assessment_questions|length }}">
 
 <div class="quality-assessment">
+    <nav aria-label="Page navigation">
+      <ul class="pagination">
+        {% if pages.has_previous %}
+          <li>
+            <a href="?page={{ pages.previous_page_number }}&order={{order}}&active_filter={{active_filter}}" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+        {% endif %}
+        {% for page in pages.paginator.page_range %}
+          {% ifequal page pages.number %}
+            <li class="page-item active"><a class="page-link" href="#" onclick="javascript: return false;">{{ page }}</a></li>
+          {% else %}
+            <li class="page-item"><a class="page-link" href="?page={{ page }}&order={{order}}&active_filter={{active_filter}}">{{ page }}</a></li>
+          {% endifequal %}
+        {% endfor %}
+        {% if pages.has_next %}
+          <li>
+            <a href="?page={{ pages.next_page_number }}&order={{order}}&active_filter={{active_filter}}" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        {% endif %}
+      </ul>
+    </nav>
   {{ quality_assessment_table|safe }}
 </div>
