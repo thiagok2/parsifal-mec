@@ -432,7 +432,7 @@ def build_data_extraction_table(review, is_finished, final_articles):
             if study.doi:
                 str_table +='''<a href="https://dx.doi.org/{0}" target="blank"><span class="badge">DOI:{0}</a>'''.format(study.doi.encode('utf-8'))
 
-
+            str_table +='''<span class="badge">bibtex:{0}</span>'''.format(study.bibtex_key)
             str_table +='''<a href="#article-{0}" oid="{0}" class="article-link"><span class="badge" ><i class="glyphicon glyphicon-edit"></i></span></a>'''.format(study.id)
 
             str_table +=u'''<div class="detail-article-data-extraction">
