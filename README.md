@@ -11,53 +11,48 @@ Performing a systematic literature review is a labor-intensive task that require
 The source code is released under the [MIT License](https://github.com/vitorfs/parsifal/blob/master/LICENSE).
 
 # Install
+## criar env
+
+Instalar python 2.7
+Instalar virtualenv
+
+sudo apt-get install python-psycopg2
+sudo apt-get install libpq-dev
+
+git clone
+git config core.fileMode false
+
+#criar database parsifal
+criar database parsifal e usuario parsifal
+
+Copiar/Criar .env
+
+#criar virtualenv
+virtualenv --python='/usr/bin/python2.7' parsifal
+
+# acessar virtualenv
+source parsifal/bin/activate
 
 pip install -r requirements.txt
 
-## Dev local
-#criar ambientes virtuais para instalar python antigo e novo na mesma máquina
-https://help.dreamhost.com/hc/en-us/articles/215489338-Installing-and-using-virtualenv-with-Python-2
+python manage.py runserver
 
-## criar env
-virtualenv --python='/usr/bin/python2.7' parsifal
-
+# Virtualenv
 ## Entrar no ambiente
 source parsifal/bin/activate
 
 ## Sair do ambiente 
 deactivate
 
-## passo a passo instalação
-https://github.com/vitorfs/parsifal/issues/29
-
-sudo apt-get install python-psycopg2
-
-sudo apt-get install libpq-dev
 
 
-
-## configurar arquivo .env
-
-## experiments.txt - alterar
-alter psycopg2==2.6 -> 2.7 - requiement.txt
-
-pip install psycopg2-binary
-
-pip install psycopg2 --upgrade
-
-## colocar para rodar
-python manage.py runserver
-
-## ignorar owned dos arquivos
-git config core.fileMode false
-
-# tradução - make/compilação
+# Tradução - make/compilação
 python manage.py makemessages -l 'sv' -i venv
 
 python manage.py compilemessages
 
 
-#run migrate
+# Alteração no modelo/banco de dados
 
 python manage.py makemigrations
 

@@ -9,14 +9,12 @@ from django.db.models import Sum, Q
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 
-from parsifal.library.models import Folder, Document
+from parsifal.library.models import Document
 
 from django.utils.translation import ugettext as _
-from django.utils.translation import ugettext_lazy as l_
+#from django.utils.translation import ugettext_lazy as l_
 
 import reversion
-
-from django.contrib.auth.models import User
 
 from django.contrib import admin
 from reversion.admin import VersionAdmin
@@ -269,7 +267,7 @@ class Review(models.Model):
         return has_questions and has_answers
 
     def get_data_extraction_fields(self):
-        return DataExtractionField.objects.filter(review__id=self.id)
+        return DataExtractionField.objects.filter(review__id=self.id).order_by('order')
 
     def get_quality_assessment_questions(self):
         return QualityQuestion.objects.filter(review__id=self.id)

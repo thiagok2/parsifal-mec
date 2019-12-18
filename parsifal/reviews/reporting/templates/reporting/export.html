@@ -24,6 +24,13 @@
       $(".js-export-docx").click(function () {
         $(this).closest("form").submit();
       });
+
+      $(".js-export-xlsx").click(function () {
+        console.log('start');
+        $("#form_download_xlsx").submit();
+        console.log('end');
+      });
+
     });
   </script>
 {% endblock %}
@@ -140,8 +147,24 @@
             <li><a href="javascript:void(0);" class="js-export-docx-complete hidden"><em>.docx({% trans 'Detailed'%})</em></a></li>
           </ul>
         </div>
+
+        
+        <div class="btn-group">
+          <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="glyphicon glyphicon-cloud-download"></span> {% trans 'Download Data Extraction' %} <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a href="javascript:void(0);" class="js-export-xlsx" data-review-id="{{ review.pk }}"><em>.xlsx</em></a></li>
+          </ul>
+        </div>
+        
+
       </div>
     </div>
+  </form>
+  <form name="form_download_xlsx" id="form_download_xlsx" method="POST" action="{% url 'reviews:reporting:download_xlsx' %}">
+    {% csrf_token %}
+    <input type="hidden" name="review-id" value="{{ review.pk }}">
   </form>
 
 {% endblock %}

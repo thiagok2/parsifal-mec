@@ -1,6 +1,6 @@
 # coding: utf-8
 
-from django.template import RequestContext
+#from django.template import RequestContext
 from django.conf import settings as djangoSettings
 
 from docx import Document
@@ -14,6 +14,8 @@ from parsifal.reviews.models import Article, QualityAssessment, DataExtraction, 
 from django.utils.html import escape
 from parsifal.utils.svg_to_png import svg_to_png
 from docx.shared import Inches
+
+import xlsxwriter 
 
 def export_review_to_docx(review, sections, request):
     document = Document()
@@ -289,3 +291,57 @@ def export_review_to_docx(review, sections, request):
             print 'erro ', e
             document.add_paragraph(_('An exception occurred when generate data_analysis report'))
     return document
+
+def export_review_to_xlsx(review, workbook):
+    sheet = workbook.add_worksheet(_('Data Extraction'))
+    sheet.set_row(0, 30)
+    sheet.set_column(0, 0, 20)
+    sheet.set_column(1, 1, 90)
+    sheet.set_column(2, 2, 40)
+   
+
+    bold = workbook.add_format({'bold': True})
+    bold.set_align('vjustify')
+    
+    cell_format = workbook.add_format()
+    #cell_format.set_text_wrap()
+    cell_format.set_align('vjustify')
+
+
+    articles = review.get_finished_data_extraction_articles()
+    fields = review.get_data_extraction_fields()
+    sheet.set_column(3, 2 + fields.count(), 20)
+    
+    sheet.write(0, 0,_('Bibtex'), bold)
+    sheet.write(0, 1,_('Article'), bold)
+    c = 2
+    for field in fields:
+        sheet.write(0, c, field.description, cell_format)
+        c = c + 1
+
+    i = 1
+    for article in articles:
+        sheet.write(i, 0, article.bibtex_key, bold)
+        sheet.write(i, 1, article.title, cell_format)
+        
+        c = 2
+        for field in fields:
+            try:
+                extraction = DataExtraction.objects.get(article=article, field=field)
+                if field.field_type == DataExtractionField.DATE_FIELD:
+                    sheet.write_datetime(i, c, extraction.get_value(), cell_format)
+                if field.field_type == DataExtractionField.BOOLEAN_FIELD:
+                    sheet.write_boolean(i, c, extraction.get_value(), cell_format)
+                else:
+                    sheet.write(i, c, extraction.get_value(), cell_format)
+            except Exception, e:
+                extraction = None
+                #sheet.write(i, c, 'NA')
+            c = c + 1
+        
+        i = i + 1  
+    
+    
+    workbook.close()
+
+    return workbook
