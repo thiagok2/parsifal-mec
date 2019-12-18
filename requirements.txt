@@ -3,9 +3,10 @@ astroid==1.6.6
 backports.functools-lru-cache==1.5
 beautifulsoup4==4.3.2
 bibtexparser==0.6.0
-configparser==3.7.4
 cairocffi==0.9.0
 CairoSVG==1.0.22
+cffi==1.13.2
+configparser==3.7.4
 cssselect2==0.2.2
 dj-database-url==0.3.0
 Django==1.8.3
@@ -28,8 +29,10 @@ mendeley==0.3.2
 numpy==1.16.5
 oauthlib==0.7.2
 Pillow==2.6.2
+pkg-resources==0.0.0
 psycopg2==2.7.4
 psycopg2-binary==2.8.3
+pycparser==2.19
 pylint==1.9.4
 python-dateutil==2.8.0
 python-decouple==2.3
@@ -43,7 +46,10 @@ rjsmin==1.1.0
 scipy==1.2.2
 singledispatch==3.4.0.3
 six==1.12.0
+tinycss2==0.6.1
 Unipath==1.1
 urllib3==1.25.3
+webencodings==0.5.1
 wrapt==1.11.2
+XlsxWriter==1.2.6
 xlwt==1.1.2
