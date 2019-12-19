@@ -293,13 +293,6 @@ def export_review_to_docx(review, sections, request):
     return document
 
 def export_review_to_xlsx(review, workbook):
-    sheet = workbook.add_worksheet(_('Data Extraction'))
-    sheet.set_row(0, 30)
-    sheet.set_column(0, 0, 20)
-    sheet.set_column(1, 1, 90)
-    sheet.set_column(2, 2, 40)
-   
-
     bold = workbook.add_format({'bold': True})
     bold.set_align('vjustify')
     
@@ -307,9 +300,90 @@ def export_review_to_xlsx(review, workbook):
     #cell_format.set_text_wrap()
     cell_format.set_align('vjustify')
 
-
     articles = review.get_finished_data_extraction_articles()
+
+
+    # Quality Assessment Checklist
+    sheet_checklist = workbook.add_worksheet(_('Quality Assessment Checklist'))
+    sheet_checklist.write(0, 0,_('Q'), bold)
+    sheet_checklist.write(0, 1,_('Question'), bold)
+    sheet_checklist.write(0, 2,_('Answers'), bold)
+    sheet_checklist.set_column(1, 1, 100)
+    sheet_checklist.set_column(2, 2, 50)
+
+    quality_questions = review.get_quality_assessment_questions()
+    
+    l = 1
+    for question in quality_questions:
+        sheet_checklist.write(l, 0, 'Q'+str(l))
+        sheet_checklist.write(l, 1, question.description, cell_format)
+        quality_answers = question.get_answers()
+        values = []
+        for answer in quality_answers:
+            values.append(answer.description + '(' + str(answer.weight) + ')')
+        sheet_checklist.write(l, 2, '; '.join(values), cell_format)
+        l = l + 1
+
+    # Quality Assessment Articles
+    sheet_quality_assessment = workbook.add_worksheet(_('Quality Assessment'))
+    sheet_quality_assessment.write(0, 0,_('Bibtex'), bold)
+    sheet_quality_assessment.write(0, 1,_('Question'), bold)
+    sheet_quality_assessment.set_column(0, 0, 20)
+    sheet_quality_assessment.set_column(1, 1, 100)
+    sheet_quality_assessment.set_column(2, 20, 20)
+
+    for c in range(quality_questions.count()):
+        sheet_quality_assessment.write(0, c+1, 'Q'+str(c), bold)
+
+    l = 1
+    for article in articles:
+        sheet_quality_assessment.write(l, 0, article.bibtex_key)
+        sheet_quality_assessment.write(l, 1, article.title, cell_format)
+
+        quality_assessment = article.get_quality_assesment()
+        q = 2
+        for question in quality_questions:
+            try:
+                question_answer = quality_assessment.filter(question__id=question.id).get()
+            except:
+                question_answer = None
+            if question_answer is not None:
+                sheet_quality_assessment.write(l, q, question_answer.answer.description  + '(' + str(question_answer.answer.weight) + ')')
+            q = q + 1
+
+        l = l + 1
+    
+    # Data Extraction Form
+
+    sheet_form = workbook.add_worksheet(_('Data Extraction Form'))
+    sheet_form.write(0, 0,_('Description'), bold)
+    sheet_form.write(0, 1,_('Type'), bold)
+    sheet_form.write(0, 2,_('Values'), bold)
+    sheet_form.set_column(0, 0, 50)
+    sheet_form.set_column(1, 1, 30)
+    sheet_form.set_column(2, 2, 100)
+
     fields = review.get_data_extraction_fields()
+    l = 1
+    for field in fields:
+        sheet_form.write(l, 0, field.description)
+        sheet_form.write(l, 1, field.get_field_type_display())
+        if field.is_select_field():
+            values = []
+            for value in field.get_select_values():
+                values.append(value.value)
+
+            sheet_form.write(l, 2, '; '.join(values), cell_format)
+        l = l + 1
+
+    # Data Extraction: Articles
+
+    sheet = workbook.add_worksheet(_('Data Extraction'))
+    sheet.set_row(0, 30)
+    sheet.set_column(0, 0, 20)
+    sheet.set_column(1, 1, 90)
+    sheet.set_column(2, 2, 40)
+   
     sheet.set_column(3, 2 + fields.count(), 20)
     
     sheet.write(0, 0,_('Bibtex'), bold)
@@ -321,7 +395,7 @@ def export_review_to_xlsx(review, workbook):
 
     i = 1
     for article in articles:
-        sheet.write(i, 0, article.bibtex_key, bold)
+        sheet.write(i, 0, article.bibtex_key)
         sheet.write(i, 1, article.title, cell_format)
         
         c = 2
