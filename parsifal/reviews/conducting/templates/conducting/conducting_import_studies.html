@@ -6,10 +6,11 @@
   {% if user|is_visitor:review %}
     <script src="{% static 'js/user_is_visitor.js' %}?v=1"></script>
   {% endif %}
-  
-  $(function () {
-  	$('[data-toggle="tooltip"]').tooltip()
-  })
+  <script type="text/javascript">
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    });
+  </script>
 {% endblock javascript %}
 
 {% block tab_content %}

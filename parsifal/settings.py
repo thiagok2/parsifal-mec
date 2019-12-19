@@ -22,8 +22,9 @@ DATABASES = {
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
+#'ivo.calado@ifal.edu.br'
 ADMINS = (
-    ('Ivo Calado', 'ivo.calado@ifal.edu.br'),
+    ('Admin', config('EMAIL_ADMIN','qeed-suporte@nees.com.br')),
 )
 
 MANAGERS = ADMINS
