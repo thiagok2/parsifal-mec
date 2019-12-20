@@ -41,5 +41,6 @@ urlpatterns = patterns('parsifal.reviews.conducting.views',
     url(r'^update_article_empirical_data/$', 'update_article_empirical_data', name='update_article_empirical_data'),
     url(r'^save_empirical_value_field/$', 'save_empirical_value_field', name='save_empirical_value_field'),
     url(r'^new_document/$', 'new_document', name='new_document'),
+    url(r'^distribute_articles/$', 'distribute_articles', name='distribute_articles'),
 
 )

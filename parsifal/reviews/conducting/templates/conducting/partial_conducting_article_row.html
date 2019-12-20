@@ -2,13 +2,13 @@
 
 <tr oid="{{article.id}}" article-status="{{article.status}}">
   <td style="text-align: center;" id="actions"><input type="checkbox" id="ck-actions" value="{{article.id}}"></td>
-  <td class="table-link" style="width: 200px;max-width: 200px;word-wrap: break-word;">{{article.bibtex_key}}</td>
-  <td class="table-link" style="word-wrap: break-word;max-width: 450px;">{{article.title}}</td>
+  <td class="table-link" style="word-wrap: break-word;max-width:100px;">{{article.bibtex_key}}</td>
+  <td class="table-link" style="word-wrap: break-word;max-width: 350px;">{{article.title}}</td>
   <td class="table-link">{{article.journal}}</td>
   <td class="table-link">{{article.year}}</td>
-  <td class="table-link" style="word-wrap: break-word;max-width: 600px;">
+  <td class="table-link" style="word-wrap: break-word;max-width: 350px;">
   	{% if article.abstract = 'None' %}
-  		
+
   	{% elif article.abstract|length <= 500 %}
   		{{article.abstract }}
   	{% else %}

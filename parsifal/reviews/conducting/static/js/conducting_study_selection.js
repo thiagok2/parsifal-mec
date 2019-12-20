@@ -104,6 +104,11 @@ $(function () {
     $("#modal-add-article").modal('show');
   });
 
+  $("body").on("change", "select[name='filter-author']", function () {
+    console.log($(this).val());
+    $("#source-tab li.active a").click();
+  });
+
   $("#source-tab a").click(function () {
     var radio_value = $("input[name='filter']:checked").val();
     var source_id = $(this).attr("source-id");
@@ -111,12 +116,19 @@ $(function () {
     var searchParams = new URLSearchParams(window.location.search);
     var param = '1';
     var active_filter = '';
+    var distributed_to = '';
 
     $("ul#source-tab li").removeClass("active");
     $(this).closest("li").addClass("active");
 
     if (searchParams.has('page') && active_source_id === source_id) {
         param = searchParams.get('page')
+    }
+
+    if (searchParams.has('distributed_to') && searchParams.get('distributed_to') !== null) {
+        distributed_to = searchParams.get('distributed_to')
+    } else {
+        distributed_to = $("select[name='filter-author']").val();
     }
 
     //console.log(searchParams.get('active_filter'))
@@ -144,7 +156,13 @@ $(function () {
 
     $.ajax({
       url: '/reviews/conducting/source_articles/',
-      data: { 'review-id': $("#review-id").val(), 'source-id': source_id, 'page': param, 'active_filter': active_filter },
+      data: {
+          'review-id': $("#review-id").val(),
+          'source-id': source_id,
+          'page': param,
+          'active_filter': active_filter,
+          'distributed_to': distributed_to
+        },
       type: 'get',
       cache: false,
       beforeSend: function () {
@@ -591,6 +609,30 @@ $(function () {
     $(".articles-selected").text(checked);
     $(".articles-total").text(total);
   };
+
+  $(".source-tab-content").on("click", ".btn-distribute-articles", function() {
+    $.ajax({
+        url: '/reviews/conducting/distribute_articles/',
+        data: {'review-id': $("#review-id").val()},
+        type: 'get',
+        cache: false,
+        beforeSend: function () {
+          $("#modal-distribute .modal-body").css("max-height", $(window).height() * 0.7);
+          $("#modal-distribute").modal('show');
+          $("#modal-distribute .modal-body").loading();
+        },
+        success: function (data) {
+          $("#modal-distribute .modal-body").html(data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(textStatus, errorThrown+": "+jqXHR.responseText);
+            $.parsifal.alert("Tivemos problemas","Não conseguimos concluir a operação."+jqXHR.responseText);
+        },
+        complete: function () {
+          $("#modal-distribute .modal-body").stopLoading();
+        }
+      });
+  });
 
   $(".source-tab-content").on("click", ".btn-find-duplicates", function () {
     $.ajax({

@@ -66,7 +66,7 @@ class Source(SafeDeleteModel):
 
     def get_deleted_articles(self):
         return Article.objects.all_with_deleted().filter(source__id=self.id)
-    
+
     def get_deleted_search_session(self):
         return SearchSession.objects.all_with_deleted().filter(source__id=self.id)
 
@@ -208,6 +208,9 @@ class Review(models.Model):
 
     def get_latest_source_search_strings(self):
         return self.searchsession_set.exclude(source=None).order_by('source__name')
+
+    def get_not_distributed_articles(self):
+        return Article.objects.filter(review__id=self.id, distributed_to__isnull=True)
 
     def get_source_articles(self, source_id=None):
         queryset = Article.objects.filter(review__id=self.id).order_by('updated_by')
@@ -630,6 +633,7 @@ class Article(SafeDeleteModel):
     evaluation_finished = models.BooleanField(default=False)
     evaluation_finished_at = models.DateTimeField(blank=True, null=True)
     has_empirical_data = models.BooleanField(default=False)
+    distributed_to = models.ForeignKey(User, null=True, related_name='distributed_to')
 
     class Meta:
         verbose_name = 'Article'

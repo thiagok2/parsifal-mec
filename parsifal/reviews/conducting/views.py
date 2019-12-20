@@ -47,6 +47,7 @@ import locale
 
 import logging
 from django.core.paginator import Paginator
+import random
 
 logger = logging.getLogger('PARSIFAL_LOG')
 
@@ -194,12 +195,14 @@ def import_studies(request, username, review_name):
             'unseen_comments': unseen_comments
         })
 
+
 @author_or_visitor_required
 @login_required
 def study_selection(request, username, review_name):
     review = Review.objects.get(name=review_name, author__username__iexact=username)
     unseen_comments = review.get_visitors_unseen_comments(request.user)
     active_filter = request.GET.get('active_filter', '')
+    distributed_to = request.GET.get('distributed_to', '')
 
     try:
         active_tab = int(request.GET['source-id'])
@@ -221,7 +224,8 @@ def study_selection(request, username, review_name):
             'steps_messages': steps_messages,
             'finished_all_steps': finished_all_steps,
             'unseen_comments': unseen_comments,
-            'active_filter': active_filter
+            'active_filter': active_filter,
+            'distributed_to': distributed_to
         })
 
 def update_article_empirical_data(request):
@@ -754,7 +758,10 @@ def source_articles(request):
     try:
         review_id = request.GET['review-id']
         source_id = request.GET['source-id']
-        active_filter = request.GET['active_filter']
+        active_filter = request.GET.get('active_filter', '')
+        distributed_to = request.GET.get('distributed_to', '')
+
+        print "DISTRIBUTED ", distributed_to
 
         status_evaluation = ArticleEvaluation.ARTICLE_STATUS
 
@@ -772,8 +779,19 @@ def source_articles(request):
             print 'entrou'
             articles = articles.filter(status=active_filter)
             #articles_count = articles_count.filter(status=active_filter)
+        if distributed_to:
+            articles = articles.filter(distributed_to=distributed_to)
+            distributed_to = int(distributed_to)
 
-        return render(request, 'conducting/partial_conducting_articles.html', {'review': review, 'source': source, 'articles': articles, 'status_evaluation': status_evaluation, 'articles_count':articles_count, 'active_filter': active_filter })
+        return render(request, 'conducting/partial_conducting_articles.html', {
+            'review': review,
+            'source': source,
+            'articles': articles,
+            'status_evaluation': status_evaluation,
+            'articles_count':articles_count,
+            'active_filter': active_filter,
+            'distributed_to': distributed_to
+        })
     except Exception as e:
         print e
         logger.exception(request.user.username + ': ' + _('An expected error occurred.') )
@@ -1296,7 +1314,7 @@ def save_data_extraction(request):
         value = request.POST['value']
 
         article = Article.objects.get(pk=article_id)
-        
+
         field = DataExtractionField.objects.get(pk=field_id)
         if article.review.is_author_or_coauthor(request.user):
             data_extraction, created = DataExtraction.objects.get_or_create(article=article, field=field)
@@ -1326,6 +1344,35 @@ def save_data_extraction_status(request):
         logger.exception(request.user.username + ' - ' +_('An expected error occurred.'))
         return HttpResponseBadRequest(e)
 
+def get_random_co_author(review):
+    co_authors = review.co_authors.all()
+    random_author = random.choice(co_authors)
+
+    if random_author.id == review.selection_reviewer.id:
+        get_random_co_author(review)
+
+    return random_author
+
+@author_required
+@login_required
+def distribute_articles(request):
+    try:
+        review_id = request.GET['review-id']
+        review = Review.objects.get(pk=review_id)
+        articles = review.get_not_distributed_articles()
+
+        for article in articles:
+            article.distributed_to = get_random_co_author(review)
+            article.save()
+
+        distributed_counts = Article.objects.values('distributed_to__username', 'distributed_to__first_name', 'distributed_to__last_name').annotate(count=Count('distributed_to')).filter(distributed_to__isnull=False)
+
+        context = RequestContext(request, {'distributeds': distributed_counts})
+        return render_to_response('conducting/partial_conducting_distribute_articles.html', context)
+    except Exception as e:
+        messages.error( request, _('An expected error occurred.') )
+        return HttpResponseBadRequest(e)
+
 @author_required
 @login_required
 def find_duplicates(request):
@@ -1334,7 +1381,6 @@ def find_duplicates(request):
     duplicates = review.get_duplicate_articles()
     context = RequestContext(request, {'duplicates': duplicates})
     return render_to_response('conducting/partial_conducting_find_duplicates.html', context)
-
 
 @author_required
 @login_required
