@@ -29,7 +29,7 @@ mendeley==0.3.2
 numpy==1.16.5
 oauthlib==0.7.2
 Pillow==2.6.2
-pkg-resources==0.0.0
+#pkg-resources==0.0.0
 psycopg2==2.7.4
 psycopg2-binary==2.8.3
 pycparser==2.19

@@ -38,6 +38,13 @@
             {% trans 'Export Articles' %}
           </button>
         </form>
+
+        {% if user.id == review.author.id and articles %}
+          <button type="button" class="btn btn-sm btn-default btn-distribute-articles">
+            <span class="glyphicon glyphicon-duplicate"></span>
+            {% trans 'Distribute Articles' %}
+          </button>
+        {% endif %}
         <span class="pull-right text-muted">
         	{% if articles_count > articles.count %}
         		{% trans 'Total of '%} <span class="articles-total ">{{ articles_count }}</span> {% trans 'artigos' %}
@@ -88,14 +95,33 @@
       </label>
     </p>
 
-    <div class="studies-action" style="margin: 10px 0;">
-      <strong>{% trans 'Action:' %}</strong>
-      <select class="select-action form-control" style="width: 200px; display: inline-block;">
-        <option value="">{% trans 'Select...' %}</option>
-        <option value="remove">{% trans 'Remove selected' %}</option>
-      </select>
-      <button type="button" class="btn btn-default go-button">{% trans 'Run' %}</button>
-      <span class="text-muted"><span class="articles-selected">0</span> {% trans 'of' %} <span class="articles-total">{{ articles.count }}</span> {% trans 'selected' %}</span>
+    <div class="row">
+      {{distributed_to}}
+      <div class="col-sm-3 author-filter">
+        <strong>{% trans 'Author' %}</strong>
+        <select class="select-author form-control" name="filter-author" style="width: 200px; display: inline-block;">
+          <option value="">{% trans 'Select...' %}</option>
+          {% if review.author.id != review.selection_reviewer.id %}
+            <option value="{{review.author.id}}">{{ review.author.username }}</option>
+          {% endif %}
+          {% for co_author in review.co_authors.all %}
+            {% if co_author.id != review.selection_reviewer.id %}
+              <option value="{{ co_author.id }}" {% if co_author.id == distributed_to %} selected {% endif %}>{{ co_author.username }}</option>
+            {% endif %}
+          {% endfor %}
+
+        </select>
+      </div>
+
+      <div class="col-sm-7 studies-action" style="">
+        <strong>{% trans 'Action:' %}</strong>
+        <select class="select-action form-control" style="width: 200px; display: inline-block;">
+          <option value="">{% trans 'Select...' %}</option>
+          <option value="remove">{% trans 'Remove selected' %}</option>
+        </select>
+        <button type="button" class="btn btn-default go-button">{% trans 'Run' %}</button>
+        <span class="text-muted"><span class="articles-selected">0</span> {% trans 'of' %} <span class="articles-total">{{ articles.count }}</span> {% trans 'selected' %}</span>
+      </div>
     </div>
 
   </div>
@@ -104,12 +130,12 @@
       <thead>
         <tr>
           <th style="width: 35px; text-align: center;"><input type="checkbox" id="ck-all-articles"></th>
-          <th style="width: 200px;max-width: 200px;word-wrap: break-word;">{% trans 'Bibtex Key' %}</th>
-          <th style="word-wrap: break-word;max-width: 450px;">{% trans 'Title' %}</th>
+          <th style="word-wrap: break-word;">{% trans 'Bibtex Key' %}</th>
+          <th style="word-wrap: break-word;width: 10%;max-width: 10%;">{% trans 'Title' %}</th>
           <!-- <th>{% trans 'Author' %}</th> -->
           <th>{% trans 'Journal' %}</th>
           <th style="min-width: 80px;">{% trans 'Year' %}</th>
-          <th style="word-wrap: break-word;max-width: 600px;">{% trans 'Abstract' %}</th>
+          <th style="word-wrap: break-word;width: 10%;max-width: 10%;">{% trans 'Abstract' %}</th>
           <!-- <th style="min-width: 100px;">{% trans 'Added by' %}</th>-->
           <!-- <th style="min-width: 100px;">{% trans 'Added at' %}</th>-->
           <th>Status</th>
@@ -117,7 +143,7 @@
         </tr>
       </thead>
       <tbody>
-        {% autopaginate articles 50 %}
+        {% autopaginate articles 5 %}
         {% for article in articles %}
           {% include 'conducting/partial_conducting_article_row.html' with article=article %}
         {% empty %}

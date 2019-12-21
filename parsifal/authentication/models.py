@@ -32,6 +32,9 @@ class Profile(models.Model):
     class Meta:
         db_table = 'auth_profile'
 
+    def __unicode__(self):
+        return self.user.first_name+' '+self.user.last_name
+
     def set_mendeley_token(self, value):
         self.mendeley_token = pickle.dumps(value)
 

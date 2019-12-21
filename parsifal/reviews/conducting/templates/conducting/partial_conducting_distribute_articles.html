@@ -1,0 +1,29 @@
+{% load i18n %}
+
+{% load humanize %}
+<h3>{% trans 'Articles Distributed to Authors' %}</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th>{% trans 'Author' %}</th>
+      <th>{% trans 'Quantity' %}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for author in distributeds %}
+      <tr>
+        <td>
+          {% if author.distributed_to__first_name and author.distributed_to__last_name %}
+            {{ author.distributed_to__first_name }} {{ author.distributed_to__last_name }}
+          {% else %}
+            {{ author.distributed_to__username }}</td>
+          {% endif %}
+        <td>{{ author.count }}</td>
+      </tr>
+    {% empty %}
+      <tr>
+        <td colspan="6" style="text-align: center">{% trans 'No articles was distributed.' %}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
