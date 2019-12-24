@@ -304,7 +304,7 @@ def export_review_to_xlsx(review, workbook):
 
 
     # Quality Assessment Checklist
-    sheet_checklist = workbook.add_worksheet(_('Quality Assessment Checklist'))
+    sheet_checklist = workbook.add_worksheet(_('Q. Assessment Checklist'))
     sheet_checklist.write(0, 0,_('Q'), bold)
     sheet_checklist.write(0, 1,_('Question'), bold)
     sheet_checklist.write(0, 2,_('Answers'), bold)
