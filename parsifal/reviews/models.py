@@ -221,6 +221,9 @@ class Review(models.Model):
 
         return queryset
 
+    def get_articles_count_by_author(self, author_id):
+        return Article.objects.filter(review__id=self.id, distributed_to=author_id).count()
+
     def get_source_articles_count(self, source_id=None):
         queryset = Article.objects.filter(review__id=self.id).order_by('updated_by')
 

@@ -1353,17 +1353,34 @@ def get_random_co_author(review):
 
     return random_author
 
+def distribute_articles_to_co_authors(co_author, review, avg):
+    articles = review.get_not_distributed_articles()
+    for article in articles:
+        articles_by_author_count = review.get_articles_count_by_author(co_author.id)
+        if articles_by_author_count == avg:
+            break
+
+        article.distributed_to = co_author
+        article.save()
+
 @author_required
 @login_required
 def distribute_articles(request):
     try:
         review_id = request.GET['review-id']
         review = Review.objects.get(pk=review_id)
-        articles = review.get_not_distributed_articles()
+        co_authors = review.co_authors.all()
+        total_articles = review.get_source_articles_count()
+        avg_articles_by_author = total_articles / co_authors.count()
 
-        for article in articles:
-            article.distributed_to = get_random_co_author(review)
-            article.save()
+        for co_author in co_authors:
+            distribute_articles_to_co_authors(co_author, review, avg_articles_by_author)
+
+        articles = review.get_not_distributed_articles()
+        if articles.count() < avg_articles_by_author:
+            for article in articles:
+                article.distributed_to = get_random_co_author(review)
+                article.save()
 
         distributed_counts = Article.objects.values('distributed_to__username', 'distributed_to__first_name', 'distributed_to__last_name').annotate(count=Count('distributed_to')).filter(distributed_to__isnull=False)
 
