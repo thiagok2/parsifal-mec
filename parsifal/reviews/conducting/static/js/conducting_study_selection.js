@@ -105,16 +105,16 @@ $(function () {
   });
 
   $("body").on("change", "select[name='filter-author']", function () {
-    console.log($(this).val());
     $("#source-tab li.active a").click();
   });
 
   $("#source-tab a").click(function () {
     var radio_value = $("input[name='filter']:checked").val();
+    var author_selected = $("select[name='filter-author']").val();
     var source_id = $(this).attr("source-id");
     var active_source_id = $("ul#source-tab li.active a").attr("source-id");
     var searchParams = new URLSearchParams(window.location.search);
-    var param = '1';
+    var page = '1';
     var active_filter = '';
     var distributed_to = '';
 
@@ -122,35 +122,33 @@ $(function () {
     $(this).closest("li").addClass("active");
 
     if (searchParams.has('page') && active_source_id === source_id) {
-        param = searchParams.get('page')
+        page = searchParams.get('page')
     }
 
     if (searchParams.has('distributed_to') && searchParams.get('distributed_to') !== null) {
-        distributed_to = searchParams.get('distributed_to')
+        if (author_selected === undefined || searchParams.get('distributed_to') === author_selected) {
+            distributed_to = searchParams.get('distributed_to')
+        } else {
+            distributed_to = author_selected
+            if (searchParams.has('active_filter') && searchParams.get('active_filter') !== null) {
+                page = 1
+            }
+        }
     } else {
-        distributed_to = $("select[name='filter-author']").val();
+        distributed_to = author_selected
     }
 
-    //console.log(searchParams.get('active_filter'))
-    //console.log(radio_value)
-    //console.log('sources ', active_source_id === source_id)
-
     if (searchParams.has('active_filter') && searchParams.get('active_filter') !== null && radio_value === undefined) {
-        // console.log('1')
         active_filter = searchParams.get('active_filter')
-        //param = '1'
     } else if (radio_value !== undefined && searchParams.get('active_filter') === null) {
-        // console.log('2')
         active_filter = radio_value
-        param = '1'
+        page = '1'
         if (radio_value === 'ALL') active_filter = ''
     } else if (radio_value === searchParams.get('active_filter')) {
-        // console.log('3')
         active_filter = radio_value
     } else if (radio_value !== undefined && radio_value !== searchParams.get('active_filter')) {
-        // console.log('4')
         active_filter = radio_value
-        param = '1'
+        page = '1'
         if (radio_value === 'ALL') active_filter = ''
     }
 
@@ -159,7 +157,7 @@ $(function () {
       data: {
           'review-id': $("#review-id").val(),
           'source-id': source_id,
-          'page': param,
+          'page': page,
           'active_filter': active_filter,
           'distributed_to': distributed_to
         },
@@ -609,6 +607,22 @@ $(function () {
     $(".articles-selected").text(checked);
     $(".articles-total").text(total);
   };
+
+  $("#modal-distribute").on("click", ".btn-redistribute-articles", function() {
+    $.ajax({
+        url: '/reviews/conducting/redistribute_articles/',
+        data: {'review-id': $("#review-id").val()},
+        type: 'get',
+        cache: false,
+        success: function (data) {
+            $(".source-tab-content .btn-distribute-articles").click();
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(textStatus, errorThrown+": "+jqXHR.responseText);
+            $.parsifal.alert("Tivemos problemas","Não conseguimos concluir a operação."+jqXHR.responseText);
+        },
+      });
+  });
 
   $(".source-tab-content").on("click", ".btn-distribute-articles", function() {
     $.ajax({

@@ -52,6 +52,16 @@
     <div class="tab-content">
       <div role="tabpanel" class="tab-pane active" id="tab-details" aria-labelledby="details-tab">
         <div class="form-group">
+          <label class="control-label">{% trans 'Distributed to' %}</label>
+          <select class="select-author form-control" name="distributed_to">
+            <option value="" {% if article.distributed_to.id == "" %} selected {% endif %}>{% trans 'All' %}</option>
+            <option value="{{review.author.id}}" {% if review.author.id == article.distributed_to.id %} selected {% endif %}>{{ review.author.profile.get_screen_name }}</option>
+            {% for co_author in review.co_authors.all %}
+                <option value="{{ co_author.id }}" {% if co_author.id == article.distributed_to.id %} selected {% endif %}>{{ co_author.profile.get_screen_name }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="form-group">
           <label class="control-label">{% trans 'Title' %}</label>
           <input type="text" class="form-control" name="title" id="title" value="{{ article.title }}">
         </div>

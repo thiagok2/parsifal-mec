@@ -776,7 +776,6 @@ def source_articles(request):
             articles_count = review.get_source_articles_count()
 
         if active_filter:
-            print 'entrou'
             articles = articles.filter(status=active_filter)
             #articles_count = articles_count.filter(status=active_filter)
         if distributed_to:
@@ -928,6 +927,7 @@ def save_article_details(request):
 
             if article_id != 'None':
                 article = Article.objects.get(pk=article_id)
+                distributed_to = User.objects.get(pk=request.POST['distributed_to'])
             else:
                 review_id = request.POST['review-id']
                 source_id = request.POST['source-id']
@@ -955,6 +955,7 @@ def save_article_details(request):
             article.language = request.POST['language'][:50]
             article.note = request.POST['note'][:500]
             article.updated_by = request.user
+            article.distributed_to = distributed_to
             print 'salvando.. ', article.abstract
             article.save()
 
@@ -1344,48 +1345,63 @@ def save_data_extraction_status(request):
         logger.exception(request.user.username + ' - ' +_('An expected error occurred.'))
         return HttpResponseBadRequest(e)
 
-def get_random_co_author(review):
-    co_authors = review.co_authors.all()
-    random_author = random.choice(co_authors)
-
-    if random_author.id == review.selection_reviewer.id:
-        get_random_co_author(review)
+def get_random_author(review, authors):
+    random_author = random.choice(authors)
 
     return random_author
 
-def distribute_articles_to_co_authors(co_author, review, avg):
+def distribute_articles_to_authors(author, review, avg):
     articles = review.get_not_distributed_articles()
     for article in articles:
-        articles_by_author_count = review.get_articles_count_by_author(co_author.id)
+        articles_by_author_count = review.get_articles_count_by_author(author.id)
         if articles_by_author_count == avg:
             break
 
-        article.distributed_to = co_author
+        article.distributed_to = author
         article.save()
 
 @author_required
 @login_required
 def distribute_articles(request):
     try:
+        print "CHAMOUUUUUUUUU"
         review_id = request.GET['review-id']
         review = Review.objects.get(pk=review_id)
-        co_authors = review.co_authors.all()
+        co_authors_ids = review.co_authors.all().values_list('id', flat=True)
+        authors = User.objects.filter(Q(id__in=co_authors_ids)|Q(id=review.author.id))
         total_articles = review.get_source_articles_count()
-        avg_articles_by_author = total_articles / co_authors.count()
+        avg_articles_by_author = total_articles / authors.count()
 
-        for co_author in co_authors:
-            distribute_articles_to_co_authors(co_author, review, avg_articles_by_author)
+        for author in authors:
+            distribute_articles_to_authors(author, review, avg_articles_by_author)
 
         articles = review.get_not_distributed_articles()
         if articles.count() < avg_articles_by_author:
             for article in articles:
-                article.distributed_to = get_random_co_author(review)
+                article.distributed_to = random.choice(authors)
                 article.save()
 
         distributed_counts = Article.objects.values('distributed_to__username', 'distributed_to__first_name', 'distributed_to__last_name').annotate(count=Count('distributed_to')).filter(distributed_to__isnull=False)
 
         context = RequestContext(request, {'distributeds': distributed_counts})
         return render_to_response('conducting/partial_conducting_distribute_articles.html', context)
+    except Exception as e:
+        messages.error( request, _('An expected error occurred.') )
+        return HttpResponseBadRequest(e)
+
+@author_required
+@login_required
+def redistribute_articles(request):
+    try:
+        review_id = request.GET['review-id']
+        review = Review.objects.get(pk=review_id)
+        articles = review.get_source_articles()
+
+        for article in articles:
+            article.distributed_to = None
+            article.save()
+
+        return HttpResponse()
     except Exception as e:
         messages.error( request, _('An expected error occurred.') )
         return HttpResponseBadRequest(e)

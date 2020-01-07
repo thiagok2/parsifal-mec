@@ -96,18 +96,13 @@
     </p>
 
     <div class="row">
-      {{distributed_to}}
       <div class="col-sm-3 author-filter">
         <strong>{% trans 'Author' %}</strong>
         <select class="select-author form-control" name="filter-author" style="width: 200px; display: inline-block;">
-          <option value="">{% trans 'Select...' %}</option>
-          {% if review.author.id != review.selection_reviewer.id %}
-            <option value="{{review.author.id}}">{{ review.author.username }}</option>
-          {% endif %}
+          <option value="" {% if distributed_to == "" %} selected {% endif %}>{% trans 'All' %}</option>
+          <option value="{{review.author.id}}" {% if review.author.id == distributed_to %} selected {% endif %}>{{ review.author.profile.get_screen_name }}</option>
           {% for co_author in review.co_authors.all %}
-            {% if co_author.id != review.selection_reviewer.id %}
-              <option value="{{ co_author.id }}" {% if co_author.id == distributed_to %} selected {% endif %}>{{ co_author.username }}</option>
-            {% endif %}
+              <option value="{{ co_author.id }}" {% if co_author.id == distributed_to %} selected {% endif %}>{{ co_author.profile.get_screen_name }}</option>
           {% endfor %}
 
         </select>
