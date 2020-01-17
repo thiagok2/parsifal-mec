@@ -1345,43 +1345,46 @@ def save_data_extraction_status(request):
         logger.exception(request.user.username + ' - ' +_('An expected error occurred.'))
         return HttpResponseBadRequest(e)
 
-def get_random_author(review, authors):
-    random_author = random.choice(authors)
-
-    return random_author
-
-def distribute_articles_to_authors(author, review, avg):
+def distribute_articles_to_author(author, review, avg):
     articles = review.get_not_distributed_articles()
     for article in articles:
         articles_by_author_count = review.get_articles_count_by_author(author.id)
-        if articles_by_author_count == avg:
+        if articles_by_author_count >= avg:
             break
 
-        article.distributed_to = author
-        article.save()
+        article_reviewers_count = ArticleReviewer.objects.filter(article=article, review=review).count()
+
+        if article_reviewers_count < 2:
+            reviewer, created = ArticleReviewer.objects.get_or_create(article=article, reviewer=author, review=review)
+
+def distribute_article_to_random_author(authors, article, review):
+    article_reviewers_count = ArticleReviewer.objects.filter(article=article, review=review).count()
+    if article_reviewers_count < 2:
+        reviewer, created = ArticleReviewer.objects.get_or_create(article=article, reviewer=random.choice(authors), review=article.review)
+
+        distribute_article_to_random_author(authors, article, review)
 
 @author_required
 @login_required
 def distribute_articles(request):
     try:
-        print "CHAMOUUUUUUUUU"
         review_id = request.GET['review-id']
         review = Review.objects.get(pk=review_id)
         co_authors_ids = review.co_authors.all().values_list('id', flat=True)
         authors = User.objects.filter(Q(id__in=co_authors_ids)|Q(id=review.author.id))
         total_articles = review.get_source_articles_count()
-        avg_articles_by_author = total_articles / authors.count()
+        avg_articles_by_author = total_articles / authors.count() * 2
 
         for author in authors:
-            distribute_articles_to_authors(author, review, avg_articles_by_author)
+            distribute_articles_to_author(author, review, avg_articles_by_author)
 
         articles = review.get_not_distributed_articles()
         if articles.count() < avg_articles_by_author:
             for article in articles:
-                article.distributed_to = random.choice(authors)
-                article.save()
+                distribute_article_to_random_author(authors, article, review)
 
-        distributed_counts = Article.objects.values('distributed_to__username', 'distributed_to__first_name', 'distributed_to__last_name').annotate(count=Count('distributed_to')).filter(distributed_to__isnull=False)
+        distributed_counts = Article.objects.values('articlereviewer__reviewer__username', 'articlereviewer__reviewer__first_name',
+            'articlereviewer__reviewer__last_name').annotate(count=Count('articlereviewer__reviewer')).filter(review=review)
 
         context = RequestContext(request, {'distributeds': distributed_counts})
         return render_to_response('conducting/partial_conducting_distribute_articles.html', context)
