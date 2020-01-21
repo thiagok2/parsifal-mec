@@ -43,5 +43,6 @@ urlpatterns = patterns('parsifal.reviews.conducting.views',
     url(r'^new_document/$', 'new_document', name='new_document'),
     url(r'^distribute_articles/$', 'distribute_articles', name='distribute_articles'),
     url(r'^redistribute_articles/$', 'redistribute_articles', name='redistribute_articles'),
-
+    url(r'^add_article_reviewer/$', 'add_article_reviewer', name='add_article_reviewer'),
+    url(r'^remove_article_reviewer/$', 'remove_article_reviewer', name='remove_article_reviewer'),
 )

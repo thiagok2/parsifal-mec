@@ -182,7 +182,7 @@ $(function () {
     return false;
   });
 
-  $.fn.loadActiveArticle = function () {
+  $.fn.loadActiveArticle = function (tab = "tab-details") {
     var article_id = $(".source-articles tbody tr.active").attr("oid");
     var review_id = $("#review-id").val();
     var container = $(this);
@@ -217,6 +217,7 @@ $(function () {
       },
       complete: function () {
         $(container).spinner();
+        $('#modal-article a[href="#'+ tab +'"]').tab('show')
       }
     });
   };
@@ -774,6 +775,54 @@ $(function () {
 	  $(this).fadeOut();
 	  $('#new_evaluation_conflict').fadeIn("slow");
 
+  });
+
+  $("#modal-article").on("click", ".btn-add-article-reviewer", function () {
+    var author_id = $(this).attr("author-id");
+    var csrf_token = $(this + " input[name='csrfmiddlewaretoken']").val();
+
+    $.ajax({
+        url: '/reviews/conducting/add_article_reviewer/',
+        data: {
+            'review-id': $("#review-id").val(),
+            'article-id': $("#article-id").val(),
+            'author-id': author_id,
+            'csrfmiddlewaretoken': csrf_token
+        },
+        type: 'post',
+        cache: false,
+        success: function (data) {
+            $("#modal-article .modal-body").loadActiveArticle('tab-reviewers');
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(textStatus, errorThrown+": "+jqXHR.responseText);
+            $.parsifal.alert("Tivemos problemas","Não conseguimos concluir a operação."+jqXHR.responseText);
+        }
+    });
+  });
+
+  $("#modal-article").on("click", ".btn-remove-article-reviewer", function () {
+    var author_id = $(this).attr("author-id");
+    var csrf_token = $(this + " input[name='csrfmiddlewaretoken']").val();
+
+    $.ajax({
+        url: '/reviews/conducting/remove_article_reviewer/',
+        data: {
+            'review-id': $("#review-id").val(),
+            'article-id': $("#article-id").val(),
+            'author-id': author_id,
+            'csrfmiddlewaretoken': csrf_token
+        },
+        type: 'post',
+        cache: false,
+        success: function (data) {
+            $("#modal-article .modal-body").loadActiveArticle('tab-reviewers');
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(textStatus, errorThrown+": "+jqXHR.responseText);
+            $.parsifal.alert("Tivemos problemas","Não conseguimos concluir a operação."+jqXHR.responseText);
+        }
+    });
   });
 
 });

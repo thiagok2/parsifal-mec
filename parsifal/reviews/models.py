@@ -5,7 +5,7 @@ import datetime
 from django.utils import timezone
 from django.utils.html import escape
 from django.db import models
-from django.db.models import Sum, Q
+from django.db.models import Sum, Q, Count
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 
@@ -210,7 +210,7 @@ class Review(models.Model):
         return self.searchsession_set.exclude(source=None).order_by('source__name')
 
     def get_not_distributed_articles(self):
-        return Article.objects.filter(review__id=self.id, distributed_to__isnull=True)
+        return Article.objects.annotate(reviewer_count=Count('articlereviewer__reviewer')).filter(review__id=self.id, reviewer_count__lt=2)
 
     def get_source_articles(self, source_id=None):
         queryset = Article.objects.filter(review__id=self.id).order_by('updated_by')
@@ -222,7 +222,7 @@ class Review(models.Model):
         return queryset
 
     def get_articles_count_by_author(self, author_id):
-        return Article.objects.filter(review__id=self.id, distributed_to=author_id).count()
+        return Article.objects.filter(review__id=self.id, articlereviewer__reviewer__id=author_id).count()
 
     def get_source_articles_count(self, source_id=None):
         queryset = Article.objects.filter(review__id=self.id).order_by('updated_by')
@@ -710,6 +710,7 @@ class Article(SafeDeleteModel):
         self.publisher = document.publisher
         self.language = document.language
         self.note = document.note
+
 @reversion.register()
 class ArticleEmpiricalData(models.Model):
     PRIMARY = u'P'
@@ -742,6 +743,13 @@ class ArticleEmpiricalData(models.Model):
 
 def article_directory_path(instance, filename):
     return 'article/{0}/{1}'.format(instance.article.id, filename)
+
+@reversion.register()
+class ArticleReviewer(models.Model):
+    review = models.ForeignKey(Review)
+    article = models.ForeignKey(Article)
+    reviewer = models.ForeignKey(User)
+
 @reversion.register()
 class ArticleFile(models.Model):
     review = models.ForeignKey(Review, related_name='file_review')

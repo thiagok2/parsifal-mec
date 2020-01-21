@@ -13,10 +13,10 @@
     {% for author in distributeds %}
       <tr>
         <td>
-          {% if author.distributed_to__first_name and author.distributed_to__last_name %}
-            {{ author.distributed_to__first_name }} {{ author.distributed_to__last_name }}
+          {% if author.articlereviewer__reviewer__first_name and author.articlereviewer__reviewer__last_name %}
+            {{ author.articlereviewer__reviewer__first_name }} {{ author.articlereviewer__reviewer__last_name }}
           {% else %}
-            {{ author.distributed_to__username }}</td>
+            {{ author.articlereviewer__reviewer__username }}</td>
           {% endif %}
         <td>{{ author.count }}</td>
       </tr>
