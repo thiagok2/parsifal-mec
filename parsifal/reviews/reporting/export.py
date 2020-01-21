@@ -300,6 +300,8 @@ def export_review_to_xlsx(review, workbook):
     #cell_format.set_text_wrap()
     cell_format.set_align('vjustify')
 
+    date_format = workbook.add_format({'num_format': 'dd/mm/yyyy'})
+
     articles = review.get_finished_data_extraction_articles()
 
 
@@ -403,7 +405,7 @@ def export_review_to_xlsx(review, workbook):
             try:
                 extraction = DataExtraction.objects.get(article=article, field=field)
                 if field.field_type == DataExtractionField.DATE_FIELD:
-                    sheet.write_datetime(i, c, extraction.get_value(), cell_format)
+                    sheet.write_datetime(i, c, extraction.get_value(), date_format)
                 if field.field_type == DataExtractionField.BOOLEAN_FIELD:
                     sheet.write_boolean(i, c, extraction.get_value(), cell_format)
                 else:
