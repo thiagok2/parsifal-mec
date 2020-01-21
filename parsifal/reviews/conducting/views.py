@@ -761,8 +761,6 @@ def source_articles(request):
         active_filter = request.GET.get('active_filter', '')
         distributed_to = request.GET.get('distributed_to', '')
 
-        print "DISTRIBUTED ", distributed_to
-
         status_evaluation = ArticleEvaluation.ARTICLE_STATUS
 
         review = Review.objects.get(pk=review_id)
@@ -779,7 +777,7 @@ def source_articles(request):
             articles = articles.filter(status=active_filter)
             #articles_count = articles_count.filter(status=active_filter)
         if distributed_to:
-            articles = articles.filter(distributed_to=distributed_to)
+            articles = articles.filter(articlereviewer__reviewer__id=distributed_to)
             distributed_to = int(distributed_to)
 
         return render(request, 'conducting/partial_conducting_articles.html', {
@@ -807,6 +805,10 @@ def article_details(request):
         review = Review.objects.get(pk=review_id)
         article = Article.objects.get(pk=article_id)
 
+        co_authors_ids = review.co_authors.all().values_list('id', flat=True)
+        authors = User.objects.filter(Q(id__in=co_authors_ids)|Q(id=review.author.id))
+        reviewers_ids = ArticleReviewer.objects.filter(review=review, article=article).values_list('reviewer_id', flat=True)
+
         try:
             article_evaluation = ArticleEvaluation.objects.get(article__id=article_id, user__id=user.id)
         except ArticleEvaluation.DoesNotExist:
@@ -815,7 +817,14 @@ def article_details(request):
         mendeley_files = []
         if user.profile.mendeley_token:
             mendeley_files = user.profile.get_mendeley_session().files.list().items
-        context = RequestContext(request, { 'review': review, 'article': article, 'mendeley_files': mendeley_files, 'article_evaluation': article_evaluation })
+        context = RequestContext(request, {
+            'review': review,
+            'article': article,
+            'mendeley_files': mendeley_files,
+            'article_evaluation': article_evaluation,
+            'authors': authors,
+            'reviewers_ids': reviewers_ids
+            })
         return render_to_response('conducting/partial_conducting_article_details.html', context)
     except Exception as e:
         logger.exception(request.user.username + ': ' + _('An expected error occurred.') )
@@ -1824,3 +1833,47 @@ def new_document(request):
     json_context['html'] = html
     dump = json.dumps(json_context)
     return HttpResponse(dump, content_type='application/json')
+
+@author_required
+@login_required
+def add_article_reviewer(request):
+    try:
+        article_id = request.POST['article-id']
+        review_id = request.POST['review-id']
+        author_id = request.POST['author-id']
+
+        review = Review.objects.get(pk=review_id)
+        article = Article.objects.get(pk=article_id)
+        author = User.objects.get(pk=author_id)
+
+        reviewer = ArticleReviewer(review=review, article=article, reviewer=author)
+        reviewer.save()
+
+        return HttpResponse()
+    except Exception as e:
+        print e
+        logger.exception(request.user.username + ' - ' +_('An expected error occurred.'))
+        messages.error(request, _('An expected error occurred.'))
+        return HttpResponseBadRequest(e)
+
+@author_required
+@login_required
+def remove_article_reviewer(request):
+    try:
+        article_id = request.POST['article-id']
+        review_id = request.POST['review-id']
+        author_id = request.POST['author-id']
+
+        review = Review.objects.get(pk=review_id)
+        article = Article.objects.get(pk=article_id)
+        author = User.objects.get(pk=author_id)
+
+        reviewer = ArticleReviewer.objects.get(review=review, article=article, reviewer=author)
+        reviewer.delete()
+
+        return HttpResponse()
+    except Exception as e:
+        print e
+        logger.exception(request.user.username + ' - ' +_('An expected error occurred.'))
+        messages.error(request, _('An expected error occurred.'))
+        return HttpResponseBadRequest(e)

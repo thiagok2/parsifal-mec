@@ -22,6 +22,9 @@
       <li role="presentation" class="active" id="tab-list-details">
         <a id="details-tab" href="#tab-details" aria-controls="tab-details" role="tab" data-toggle="tab" aria-selected="true">{% trans 'Details' %}</a>
       </li>
+      <li role="presentation" id="tab-list-reviewers">
+        <a id="reviewers-tab" href="#tab-reviewers" aria-controls="tab-reviewers" role="tab" data-toggle="tab" aria-selected="true">{% trans 'Reviewers' %}</a>
+      </li>
       <li role="presentation" id="tab-list-evaluation">
         <a id="evluation-tab" href="#tab-evaluation" aria-controls="tab-evaluation" role="tab" data-toggle="tab" aria-selected="false">{% trans 'Evaluation' %}</a>
       </li>
@@ -51,16 +54,6 @@
     </ul>
     <div class="tab-content">
       <div role="tabpanel" class="tab-pane active" id="tab-details" aria-labelledby="details-tab">
-        <div class="form-group">
-          <label class="control-label">{% trans 'Distributed to' %}</label>
-          <select class="select-author form-control" name="distributed_to">
-            <option value="" {% if article.distributed_to.id == "" %} selected {% endif %}>{% trans 'All' %}</option>
-            <option value="{{review.author.id}}" {% if review.author.id == article.distributed_to.id %} selected {% endif %}>{{ review.author.profile.get_screen_name }}</option>
-            {% for co_author in review.co_authors.all %}
-                <option value="{{ co_author.id }}" {% if co_author.id == article.distributed_to.id %} selected {% endif %}>{{ co_author.profile.get_screen_name }}</option>
-            {% endfor %}
-          </select>
-        </div>
         <div class="form-group">
           <label class="control-label">{% trans 'Title' %}</label>
           <input type="text" class="form-control" name="title" id="title" value="{{ article.title }}">
@@ -136,7 +129,49 @@
 
       </div>
     </form>
-      <div role="tabpanel" class="tab-pane" id="tab-evaluation" aria-labelledby="evluation-tab">
+      <div role="tabpanel" class="tab-pane" id="tab-reviewers" aria-labelledby="reviewers-tab">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>{% trans 'Author' %}</th>
+              <th>{% trans 'Is reviewer?' %}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for author in authors %}
+              <tr>
+                <td>{{author.profile.get_screen_name}}</td>
+                {% if author.id in reviewers_ids %}
+                  <td>
+                    <span class="label label-success">
+                      <i class="fa fa-check fa-fw"></i>
+                    </span>
+                  </td>
+                  <td>
+                    <a class="btn btn-danger btn-sm btn-remove-article-reviewer" author-id="{{author.id}}">
+                      {% csrf_token %}
+                      <span class="glyphicon glyphicon-trash"></span> {% trans 'Remove from reviewers' %}
+                    </a>
+                  </td>
+                {% else %}
+                  <td>
+                    <span class="label label-warning">
+                      <i class="fa fa-times fa-fw"></i>
+                    </span>
+                  </td>
+                  <td>
+                      <a class="btn btn-primary btn-sm btn-add-article-reviewer" author-id="{{author.id}}">
+                        {% csrf_token %}
+                        <i class="fa fa-check"></i> {% trans 'Add as reviewer' %}
+                      </a>
+                    </td>
+                {% endif %}
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="tab-evaluation" aria-labelledby="evaluation-tab">
         <form name="article-evaluation" id="article-evaluation" method="post" action=".">
           {% csrf_token %}
           <input type="hidden" name="article-id" id="article-id" value="{{ article.id }}">
