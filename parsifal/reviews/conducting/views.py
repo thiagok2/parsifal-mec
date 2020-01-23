@@ -936,7 +936,6 @@ def save_article_details(request):
 
             if article_id != 'None':
                 article = Article.objects.get(pk=article_id)
-                distributed_to = User.objects.get(pk=request.POST['distributed_to'])
             else:
                 review_id = request.POST['review-id']
                 source_id = request.POST['source-id']
@@ -964,7 +963,6 @@ def save_article_details(request):
             article.language = request.POST['language'][:50]
             article.note = request.POST['note'][:500]
             article.updated_by = request.user
-            article.distributed_to = distributed_to
             print 'salvando.. ', article.abstract
             article.save()
 

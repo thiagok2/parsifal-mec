@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-07 19:06+0000\n"
+"POT-Creation-Date: 2020-01-23 13:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -236,44 +236,48 @@ msgstr "Formato de arquivo inválido."
 #: parsifal/reviews/conducting/views.py:127
 #: parsifal/reviews/conducting/views.py:148
 #: parsifal/reviews/conducting/views.py:247
-#: parsifal/reviews/conducting/views.py:796
-#: parsifal/reviews/conducting/views.py:821
-#: parsifal/reviews/conducting/views.py:839
-#: parsifal/reviews/conducting/views.py:877
-#: parsifal/reviews/conducting/views.py:897
-#: parsifal/reviews/conducting/views.py:965
-#: parsifal/reviews/conducting/views.py:966
-#: parsifal/reviews/conducting/views.py:1000
-#: parsifal/reviews/conducting/views.py:1001
-#: parsifal/reviews/conducting/views.py:1063
-#: parsifal/reviews/conducting/views.py:1064
-#: parsifal/reviews/conducting/views.py:1102
-#: parsifal/reviews/conducting/views.py:1128
-#: parsifal/reviews/conducting/views.py:1129
-#: parsifal/reviews/conducting/views.py:1151
-#: parsifal/reviews/conducting/views.py:1152
-#: parsifal/reviews/conducting/views.py:1168
-#: parsifal/reviews/conducting/views.py:1169
-#: parsifal/reviews/conducting/views.py:1183
-#: parsifal/reviews/conducting/views.py:1184
-#: parsifal/reviews/conducting/views.py:1199
-#: parsifal/reviews/conducting/views.py:1200
-#: parsifal/reviews/conducting/views.py:1215
-#: parsifal/reviews/conducting/views.py:1216
-#: parsifal/reviews/conducting/views.py:1231
-#: parsifal/reviews/conducting/views.py:1232
-#: parsifal/reviews/conducting/views.py:1247
-#: parsifal/reviews/conducting/views.py:1248
-#: parsifal/reviews/conducting/views.py:1306
-#: parsifal/reviews/conducting/views.py:1345
-#: parsifal/reviews/conducting/views.py:1389
-#: parsifal/reviews/conducting/views.py:1406
-#: parsifal/reviews/conducting/views.py:1431
-#: parsifal/reviews/conducting/views.py:1432
-#: parsifal/reviews/conducting/views.py:1451
-#: parsifal/reviews/conducting/views.py:1452
-#: parsifal/reviews/conducting/views.py:1575
-#: parsifal/reviews/conducting/views.py:1576
+#: parsifal/reviews/conducting/views.py:794
+#: parsifal/reviews/conducting/views.py:830
+#: parsifal/reviews/conducting/views.py:848
+#: parsifal/reviews/conducting/views.py:886
+#: parsifal/reviews/conducting/views.py:906
+#: parsifal/reviews/conducting/views.py:974
+#: parsifal/reviews/conducting/views.py:975
+#: parsifal/reviews/conducting/views.py:1009
+#: parsifal/reviews/conducting/views.py:1010
+#: parsifal/reviews/conducting/views.py:1072
+#: parsifal/reviews/conducting/views.py:1073
+#: parsifal/reviews/conducting/views.py:1111
+#: parsifal/reviews/conducting/views.py:1137
+#: parsifal/reviews/conducting/views.py:1138
+#: parsifal/reviews/conducting/views.py:1160
+#: parsifal/reviews/conducting/views.py:1161
+#: parsifal/reviews/conducting/views.py:1177
+#: parsifal/reviews/conducting/views.py:1178
+#: parsifal/reviews/conducting/views.py:1192
+#: parsifal/reviews/conducting/views.py:1193
+#: parsifal/reviews/conducting/views.py:1208
+#: parsifal/reviews/conducting/views.py:1209
+#: parsifal/reviews/conducting/views.py:1224
+#: parsifal/reviews/conducting/views.py:1225
+#: parsifal/reviews/conducting/views.py:1240
+#: parsifal/reviews/conducting/views.py:1241
+#: parsifal/reviews/conducting/views.py:1256
+#: parsifal/reviews/conducting/views.py:1257
+#: parsifal/reviews/conducting/views.py:1315
+#: parsifal/reviews/conducting/views.py:1354
+#: parsifal/reviews/conducting/views.py:1401
+#: parsifal/reviews/conducting/views.py:1418
+#: parsifal/reviews/conducting/views.py:1443
+#: parsifal/reviews/conducting/views.py:1444
+#: parsifal/reviews/conducting/views.py:1463
+#: parsifal/reviews/conducting/views.py:1464
+#: parsifal/reviews/conducting/views.py:1587
+#: parsifal/reviews/conducting/views.py:1588
+#: parsifal/reviews/conducting/views.py:1855
+#: parsifal/reviews/conducting/views.py:1856
+#: parsifal/reviews/conducting/views.py:1877
+#: parsifal/reviews/conducting/views.py:1878
 #: parsifal/reviews/planning/views.py:87 parsifal/reviews/planning/views.py:148
 #: parsifal/reviews/planning/views.py:170
 #: parsifal/reviews/planning/views.py:199
@@ -746,7 +750,7 @@ msgstr ""
 "apenas o autor pode adicioná-lo novamente a revisão."
 
 #: parsifal/core/templates/core/home.html:194
-#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:117
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:119
 #: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:35
 #: parsifal/reviews/conducting/templates/conducting/conducting_study_selection.html:68
 #: parsifal/reviews/conducting/templates/conducting/new_document.html:46
@@ -1038,7 +1042,7 @@ msgid "author"
 msgstr "Autor"
 
 #: parsifal/reviews/conducting/forms.py:44
-#: parsifal/reviews/conducting/views.py:1596
+#: parsifal/reviews/conducting/views.py:1608
 msgid "year"
 msgstr "Ano"
 
@@ -1151,7 +1155,7 @@ msgid "Articles effects conclusions using interpretation sensu"
 msgstr "Os artigos efetuam conclusões usando a interpretação sensu"
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_data_analysis.html:38
-#: parsifal/reviews/conducting/views.py:1519
+#: parsifal/reviews/conducting/views.py:1531
 #: parsifal/reviews/reporting/export.py:279
 msgid "Effect Size"
 msgstr "Tamanho do Efeito"
@@ -1198,7 +1202,7 @@ msgid "Export Data"
 msgstr "Exportar Dados"
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_data_extraction.html:49
-#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:38
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:40
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:100
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:186
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:67
@@ -1232,7 +1236,6 @@ msgid "Done"
 msgstr "Concluído"
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_data_extraction.html:60
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:57
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:76
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:102
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_quality_assessment_detailed.html:35
@@ -1259,7 +1262,7 @@ msgid "Article Summary"
 msgstr "Resumo do Artigo"
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_header.html:9
-#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:37
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:39
 #: parsifal/reviews/models.py:390
 msgid "Import Studies"
 msgstr "Importar Estudos"
@@ -1283,28 +1286,28 @@ msgstr "Avaliação de Qualidade"
 msgid "6. Data Analysis"
 msgstr "6. Análise de Dados"
 
-#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:24
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:26
 msgid "About Import Studies"
 msgstr "Sobre Importar os Estudos"
 
-#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:27
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:29
 msgid "Enables the metadata import of selected studies for each source."
 msgstr ""
 "Possibilita a importação dos metadados dos estudos selecionados para cada "
 "fonte."
 
-#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:48
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:50
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_find_duplicates.html:15
 msgid "Source"
 msgstr "Fonte"
 
-#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:49
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:51
 #: parsifal/reviews/reporting/export.py:214
 msgid "Imported Studies"
 msgstr "Estudos Importados"
 
-#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:73
-#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:118
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:75
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:120
 #: parsifal/reviews/planning/templates/planning/partial_data_extraction_suggested.html:10
 #: parsifal/reviews/planning/templates/planning/partial_pico_suggested.html:10
 #: parsifal/reviews/planning/templates/planning/partial_quality_assessment_answer_suggested.html:10
@@ -1315,44 +1318,44 @@ msgstr "Estudos Importados"
 msgid "Import"
 msgstr "Importar"
 
-#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:77
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:79
 msgid "BibTeX file"
 msgstr "Arquivo BibTeX"
 
-#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:78
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:80
 msgid "Paste BibTeX content"
 msgstr "Colar Conteúdo BibTeX"
 
-#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:79
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:81
 #: parsifal/reviews/conducting/templates/conducting/new_document.html:15
 msgid "Add document"
 msgstr "Adicionar Documento"
 
-#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:89
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:91
 msgid "There are a few steps you have to finish before you import the studies:"
 msgstr ""
 "Existem alguns passos que você precisa concluir antes de importar os estudos:"
 
-#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:91
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:93
 msgid "Use the"
 msgstr "Use o(a)"
 
-#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:91
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:93
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:57
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:124
 #: parsifal/reviews/planning/templates/planning/data_extraction_form.html:133
 msgid "planning tab"
 msgstr "Planejamento"
 
-#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:91
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:93
 msgid "to add sources to your review."
 msgstr "para adicionar fontes para usa revisão."
 
-#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:108
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:110
 msgid "Parse BibTeX Content"
 msgstr "Análisar o conteúdo BibTeX"
 
-#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:112
+#: parsifal/reviews/conducting/templates/conducting/conducting_import_studies.html:114
 msgid "Paste the raw BibTeX file contents"
 msgstr "Cole o conteúdo do arquivo BibTeX"
 
@@ -1551,7 +1554,7 @@ msgstr "Itens por Página:"
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:271
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:371
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:65
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:58
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details_confirm.html:34
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:129
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_find_duplicates.html:12
@@ -1577,7 +1580,7 @@ msgstr "Autores"
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:273
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:373
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:73
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:66
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details_confirm.html:42
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:132
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_find_duplicates.html:14
@@ -1590,7 +1593,7 @@ msgstr "Ano"
 
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:274
 #: parsifal/reviews/conducting/templates/conducting/conducting_search_studies.html:374
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:93
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:86
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details_confirm.html:54
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:131
 #: parsifal/reviews/settings/templates/settings/recovery.html:71
@@ -1711,7 +1714,7 @@ msgid "Details"
 msgstr "Detalhes"
 
 #: parsifal/reviews/conducting/templates/conducting/new_document.html:20
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:29
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:32
 msgid "Files"
 msgstr "Arquivos"
 
@@ -1731,7 +1734,8 @@ msgstr ""
 
 #: parsifal/reviews/conducting/templates/conducting/partial_article_authors_evaluations.html:9
 #: parsifal/reviews/conducting/templates/conducting/partial_article_conflict.html:9
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:77
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:70
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:136
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details_confirm.html:46
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:100
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:130
@@ -1842,7 +1846,7 @@ msgid "Select files..."
 msgstr "Selecione Arquivos…"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_article_files.html:34
-#: parsifal/reviews/conducting/views.py:871
+#: parsifal/reviews/conducting/views.py:880
 msgid ""
 "File has already updated. Only one file per article is permitted. Delete "
 "existing file to upload new."
@@ -1875,77 +1879,89 @@ msgid "removing..."
 msgstr "removendo…"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:26
+msgid "Reviewers"
+msgstr "Revisores"
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:29
 msgid "Evaluation"
 msgstr "Avaliação"
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:33
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:36
 msgid "Authors Evaluations"
 msgstr "Avaliações dos Autores"
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:38
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:41
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:94
 #: parsifal/reviews/models.py:598
 msgid "Conflict"
 msgstr "Conflito"
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:43
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:46
 msgid "Change the URL via Article URL"
 msgstr "Alterar a URL via Artigo (URL)"
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:46
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:49
 msgid "External Link"
 msgstr "Link Externo"
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:55
-msgid "Distributed to"
-msgstr "Distribuído para"
-
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:69
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:62
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details_confirm.html:38
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:133
 msgid "Abstract"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:81
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:74
 msgid "Keywords"
 msgstr "Palavras-chave"
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:85
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:78
 msgid "Author Keywords"
 msgstr "Autor das Palavras-chave"
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:89
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:82
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details_confirm.html:50
 msgid "BibTex Key"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:97
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:90
 msgid "Document Type"
 msgstr "Tipo de Documento"
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:101
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:94
 msgid "Pages"
 msgstr "Páginas"
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:105
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:98
 msgid "Volume"
 msgstr ""
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:117
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:110
 msgid "Affiliation"
 msgstr "Associação"
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:121
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:114
 msgid "Publisher"
 msgstr "Editor"
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:129
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:122
 msgid "Language"
 msgstr "Linguagem"
 
-#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:133
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:126
 msgid "Note"
 msgstr "Notas"
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:137
+msgid "Is reviewer?"
+msgstr "É revisor?"
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:153
+msgid "Remove from reviewers"
+msgstr "Remover dos revisores"
+
+#: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details.html:165
+msgid "Add as reviewer"
+msgstr "Adicionar como revisor"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_article_details_confirm.html:26
 msgid "Attached files"
@@ -1984,25 +2000,25 @@ msgstr "Mostrar"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:79
 #: parsifal/reviews/models.py:570 parsifal/reviews/models.py:596
-#: parsifal/reviews/models.py:604 parsifal/reviews/models.py:764
+#: parsifal/reviews/models.py:604 parsifal/reviews/models.py:772
 msgid "Accepted"
 msgstr "Aceito"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:82
 #: parsifal/reviews/models.py:569 parsifal/reviews/models.py:595
-#: parsifal/reviews/models.py:603 parsifal/reviews/models.py:763
+#: parsifal/reviews/models.py:603 parsifal/reviews/models.py:771
 msgid "Rejected"
 msgstr "Rejeitado"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:85
 #: parsifal/reviews/models.py:568 parsifal/reviews/models.py:593
-#: parsifal/reviews/models.py:762
+#: parsifal/reviews/models.py:770
 msgid "Unclassified"
 msgstr "Não classificado"
 
 #: parsifal/reviews/conducting/templates/conducting/partial_conducting_articles.html:88
 #: parsifal/reviews/models.py:571 parsifal/reviews/models.py:597
-#: parsifal/reviews/models.py:605 parsifal/reviews/models.py:765
+#: parsifal/reviews/models.py:605 parsifal/reviews/models.py:773
 msgid "Duplicated"
 msgstr "Duplicado"
 
@@ -2236,11 +2252,11 @@ msgstr "O arquivo bibtex não tinha entrada válida!"
 msgid "Invalid file type. Only .bib or .bibtex files are accepted."
 msgstr "Tipo de arquivo inválido. Apenas arquivos .bib ou .bibtex são aceitos."
 
-#: parsifal/reviews/conducting/views.py:1004
+#: parsifal/reviews/conducting/views.py:1013
 msgid "HTTP POST method was expected"
 msgstr "O envio com método POST era esperado"
 
-#: parsifal/reviews/conducting/views.py:1271
+#: parsifal/reviews/conducting/views.py:1280
 msgid ""
 "Empirical value fields do not accept values greater than 12 digits for dp "
 "and a."
@@ -2248,7 +2264,7 @@ msgstr ""
 "Os campos empíricos de valor não aceitam valores maiores que 12 dígitos para "
 "dp e a. "
 
-#: parsifal/reviews/conducting/views.py:1274
+#: parsifal/reviews/conducting/views.py:1283
 msgid ""
 "Empirical value fields do not accept values greater than 12 digits for "
 "effect size, max limit, min limit and standard error."
@@ -2256,20 +2272,20 @@ msgstr ""
 "Os campos empíricos não aceitam valores maiores que 12 dígitos para tamanho "
 "do efeito, limite máximo, limite mínimo e erro padrão."
 
-#: parsifal/reviews/conducting/views.py:1326
+#: parsifal/reviews/conducting/views.py:1335
 msgid "User is not autor or co-author of review"
 msgstr ""
 
-#: parsifal/reviews/conducting/views.py:1518
+#: parsifal/reviews/conducting/views.py:1530
 msgid "Study"
 msgstr "Estudo:"
 
-#: parsifal/reviews/conducting/views.py:1520
+#: parsifal/reviews/conducting/views.py:1532
 msgid "Summarization"
 msgstr "Sumarização"
 
-#: parsifal/reviews/conducting/views.py:1542
-#: parsifal/reviews/conducting/views.py:1556
+#: parsifal/reviews/conducting/views.py:1554
+#: parsifal/reviews/conducting/views.py:1568
 #, python-brace-format
 msgid ""
 "Your article {0} do not have all empirical values. Because of this, the "
@@ -2278,7 +2294,7 @@ msgstr ""
 "Seu artigo {0} não possui todos os valores empíricos. Por isso, a Plataforma "
 "Sumarize não pode gerar gráfico de plotagem florestal de metanálise."
 
-#: parsifal/reviews/conducting/views.py:1573
+#: parsifal/reviews/conducting/views.py:1585
 msgid ""
 "The empirical values from any of your articles are not valid! Because of "
 "this, the Sumarize Tool can not generate meta analysis forest plot graphic."
@@ -2287,11 +2303,11 @@ msgstr ""
 "disto, a ferramenta Sumarize não pode gerar gráficos de plotagem florestal "
 "de metanálise."
 
-#: parsifal/reviews/conducting/views.py:1617
+#: parsifal/reviews/conducting/views.py:1629
 msgid "Sources search string successfully added to the review!"
 msgstr "As fontes de pesquisa foram adicionadas com sucesso à revisão!"
 
-#: parsifal/reviews/conducting/views.py:1808
+#: parsifal/reviews/conducting/views.py:1820
 msgid "Document added successfully!"
 msgstr "Documento adicionado com sucesso!"
 
@@ -2567,15 +2583,15 @@ msgstr "Inclusão"
 msgid "Exclusion"
 msgstr "Exclusão"
 
-#: parsifal/reviews/models.py:718
+#: parsifal/reviews/models.py:719
 msgid "Primary data"
 msgstr "Dados primários"
 
-#: parsifal/reviews/models.py:719
+#: parsifal/reviews/models.py:720
 msgid "Precalculated Effect Size"
 msgstr "Tamanho do Efeito pré-calculados"
 
-#: parsifal/reviews/models.py:798
+#: parsifal/reviews/models.py:806
 #: parsifal/reviews/planning/templates/planning/partial_pico_suggested.html:36
 #: parsifal/reviews/planning/templates/planning/protocol.html:326
 #: parsifal/reviews/planning/templates/planning/protocol.html:479
@@ -2583,7 +2599,7 @@ msgstr "Tamanho do Efeito pré-calculados"
 msgid "Population"
 msgstr "População"
 
-#: parsifal/reviews/models.py:799
+#: parsifal/reviews/models.py:807
 #: parsifal/reviews/planning/templates/planning/partial_pico_suggested.html:44
 #: parsifal/reviews/planning/templates/planning/protocol.html:332
 #: parsifal/reviews/planning/templates/planning/protocol.html:498
@@ -2591,7 +2607,7 @@ msgstr "População"
 msgid "Intervention"
 msgstr "Intervenção"
 
-#: parsifal/reviews/models.py:800
+#: parsifal/reviews/models.py:808
 #: parsifal/reviews/planning/templates/planning/partial_pico_suggested.html:52
 #: parsifal/reviews/planning/templates/planning/protocol.html:338
 #: parsifal/reviews/planning/templates/planning/protocol.html:511
@@ -2599,7 +2615,7 @@ msgstr "Intervenção"
 msgid "Comparison"
 msgstr "Comparação"
 
-#: parsifal/reviews/models.py:801
+#: parsifal/reviews/models.py:809
 #: parsifal/reviews/planning/templates/planning/partial_pico_suggested.html:60
 #: parsifal/reviews/planning/templates/planning/protocol.html:344
 #: parsifal/reviews/planning/templates/planning/protocol.html:524
@@ -2607,70 +2623,70 @@ msgstr "Comparação"
 msgid "Outcome"
 msgstr "Resultados"
 
-#: parsifal/reviews/models.py:802
+#: parsifal/reviews/models.py:810
 #: parsifal/reviews/planning/templates/planning/protocol.html:361
 msgid "Study Type"
 msgstr "Tipo de Estudo"
 
-#: parsifal/reviews/models.py:803
+#: parsifal/reviews/models.py:811
 #: parsifal/reviews/planning/templates/planning/partial_pico_suggested.html:70
 #: parsifal/reviews/planning/templates/planning/protocol.html:353
 #: parsifal/reviews/templates/reviews/partial_published_protocols.html:99
 msgid "Context"
 msgstr "Contexto"
 
-#: parsifal/reviews/models.py:844
+#: parsifal/reviews/models.py:852
 #: parsifal/reviews/planning/templates/planning/search_setup.html:78
 msgid "Yes"
 msgstr "Sim"
 
-#: parsifal/reviews/models.py:845
+#: parsifal/reviews/models.py:853
 msgid "Partially"
 msgstr "Parcialmente"
 
-#: parsifal/reviews/models.py:846
+#: parsifal/reviews/models.py:854
 #: parsifal/reviews/planning/templates/planning/search_setup.html:77
 msgid "No"
 msgstr "Não"
 
-#: parsifal/reviews/models.py:882
+#: parsifal/reviews/models.py:890
 msgid "Boolean Field"
 msgstr "Campo Boleano"
 
-#: parsifal/reviews/models.py:883
+#: parsifal/reviews/models.py:891
 msgid "String Field"
 msgstr "Campo de Texto"
 
-#: parsifal/reviews/models.py:884
+#: parsifal/reviews/models.py:892
 msgid "Float Field"
 msgstr "Campo Numérico (Ponto Flutuante)"
 
-#: parsifal/reviews/models.py:885
+#: parsifal/reviews/models.py:893
 msgid "Integer Field"
 msgstr "Campo Numérico (Inteiro)"
 
-#: parsifal/reviews/models.py:886
+#: parsifal/reviews/models.py:894
 msgid "Date Field"
 msgstr "Campo de Data"
 
-#: parsifal/reviews/models.py:887
+#: parsifal/reviews/models.py:895
 msgid "Select One Field"
 msgstr "Campo Selecionável"
 
-#: parsifal/reviews/models.py:888
+#: parsifal/reviews/models.py:896
 msgid "Select Many Field"
 msgstr "Campo Multipla Escolha"
 
-#: parsifal/reviews/models.py:933
+#: parsifal/reviews/models.py:941
 msgid "Expected values: \"True\" or \"False\""
 msgstr "Esperador valores:  \"True\" or \"False\""
 
-#: parsifal/reviews/models.py:951 parsifal/reviews/models.py:961
-#: parsifal/reviews/models.py:971
+#: parsifal/reviews/models.py:959 parsifal/reviews/models.py:969
+#: parsifal/reviews/models.py:979
 msgid "Invalid input for "
 msgstr "Entrada Inválida para"
 
-#: parsifal/reviews/models.py:951
+#: parsifal/reviews/models.py:959
 msgid ""
 " field. Expected value: floating point number. Please use dot instead of "
 "comma."
@@ -2678,11 +2694,11 @@ msgstr ""
 " campo. Valor esperado: número decimal. Por favor use ponto(.) ao invés "
 "devírgula(,)."
 
-#: parsifal/reviews/models.py:961
+#: parsifal/reviews/models.py:969
 msgid " field. Expected value: integer number."
 msgstr " campo. Valor esperado: número inteiro."
 
-#: parsifal/reviews/models.py:971
+#: parsifal/reviews/models.py:979
 msgid " field. Expected value: date. Please use the format DD/MM/AAAA."
 msgstr " campo. Valor esperado: data. Por favor user o formato DD/MM/AAAA"
 
@@ -4707,6 +4723,9 @@ msgstr "Criar Revisão"
 msgid "Explorer"
 msgstr "Explorar"
 
+#~ msgid "Distributed to"
+#~ msgstr "Distribuído para"
+
 #~ msgid "Messages"
 #~ msgstr "Mensagens"
 
@@ -5203,9 +5222,6 @@ msgstr "Explorar"
 
 #~ msgid "Search Methodolgy"
 #~ msgstr "Metodologia da Busca"
-
-#~ msgid "New review"
-#~ msgstr "Nova Revisão"
 
 #~ msgid "Import Questions"
 #~ msgstr "Importar Questões"
