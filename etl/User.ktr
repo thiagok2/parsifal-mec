@@ -705,12 +705,12 @@ ALTER TABLE auth_user ADD COLUMN  IF NOT EXISTS import_date DATE;</sql>
       <value>
         <name>password</name>
         <rename>password</rename>
-        <update>Y</update>
+        <update>N</update>
       </value>
       <value>
         <name>last_login</name>
         <rename>last_login</rename>
-        <update>Y</update>
+        <update>N</update>
       </value>
       <value>
         <name>is_superuser</name>
@@ -750,7 +750,7 @@ ALTER TABLE auth_user ADD COLUMN  IF NOT EXISTS import_date DATE;</sql>
       <value>
         <name>date_joined</name>
         <rename>date_joined</rename>
-        <update>Y</update>
+        <update>N</update>
       </value>
       <value>
         <name>import_date</name>
@@ -807,6 +807,65 @@ ALTER TABLE auth_user ADD COLUMN  IF NOT EXISTS import_date DATE;</sql>
     </GUI>
   </step>
   <step>
+    <name>Modified JavaScript value</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>if(first_name.length == 0){
+	first_name = username;
+}
+
+if(last_name.length == 0){
+	last_name = '?';
+}
+</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>first_name</name>
+        <rename>first_name</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+      <field>
+        <name>last_name</name>
+        <rename>last_name</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>816</xloc>
+      <yloc>112</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Select values</name>
     <type>SelectValues</type>
     <description/>
@@ -820,51 +879,39 @@ ALTER TABLE auth_user ADD COLUMN  IF NOT EXISTS import_date DATE;</sql>
     <fields>
       <field>
         <name>id_sumarize</name>
-        <rename/>
       </field>
       <field>
         <name>password</name>
-        <rename/>
       </field>
       <field>
         <name>last_login</name>
-        <rename/>
       </field>
       <field>
         <name>is_superuser</name>
-        <rename/>
       </field>
       <field>
         <name>username</name>
-        <rename/>
       </field>
       <field>
         <name>first_name</name>
-        <rename/>
       </field>
       <field>
         <name>last_name</name>
-        <rename/>
       </field>
       <field>
         <name>email</name>
-        <rename/>
       </field>
       <field>
         <name>is_staff</name>
-        <rename/>
       </field>
       <field>
         <name>is_active</name>
-        <rename/>
       </field>
       <field>
         <name>date_joined</name>
-        <rename/>
       </field>
       <field>
         <name>id</name>
-        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -1032,65 +1079,6 @@ ORDER BY email
     </remotesteps>
     <GUI>
       <xloc>240</xloc>
-      <yloc>112</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Modified JavaScript value</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>if(first_name.length == 0){
-	first_name = username;
-}
-
-if(last_name.length == 0){
-	last_name = '?';
-}
-</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>first_name</name>
-        <rename>first_name</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>
-      <field>
-        <name>last_name</name>
-        <rename>last_name</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>816</xloc>
       <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>

@@ -564,23 +564,18 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Select values</from>
-      <to>If field value is null</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Add_Column_Id_Sumarize</from>
       <to>review_sumarize</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>If field value is null</from>
-      <to>Get system info</to>
+      <from>Get system info</from>
+      <to>ReviewQeed</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Get system info</from>
-      <to>ReviewQeed</to>
+      <from>Select values</from>
+      <to>Get system info</to>
       <enabled>Y</enabled>
     </hop>
   </order>

@@ -23,9 +23,9 @@ import reversion
 class Profile(models.Model):
     user = models.OneToOneField(User)
     public_email = models.EmailField(null=True, blank=True)
-    location = models.CharField(max_length=50)
-    url = models.CharField(max_length=50)
-    institution = models.CharField(max_length=50)
+    location = models.CharField(max_length=50, null=True, blank=True)
+    url = models.CharField(max_length=50, null=True, blank=True)
+    institution = models.CharField(max_length=50, null=True, blank=True)
     mendeley_token = models.CharField(max_length=2000, null=True, blank=True)
     dropbox_token = models.CharField(max_length=2000, null=True, blank=True)
 
