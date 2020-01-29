@@ -650,46 +650,6 @@ ALTER TABLE reviews_review ADD COLUMN  IF NOT EXISTS import_date DATE;</sql>
     </GUI>
   </step>
   <step>
-    <name>If field value is null</name>
-    <type>IfNull</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <replaceAllByValue/>
-    <replaceAllMask/>
-    <selectFields>N</selectFields>
-    <selectValuesType>Y</selectValuesType>
-    <setEmptyStringAll>N</setEmptyStringAll>
-    <valuetypes>
-      <valuetype>
-        <name>String</name>
-        <value>''</value>
-        <mask/>
-        <set_type_empty_string>N</set_type_empty_string>
-      </valuetype>
-    </valuetypes>
-    <fields>
-      </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>848</xloc>
-      <yloc>48</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>ReviewQeed</name>
     <type>InsertUpdate</type>
     <description/>
@@ -1126,7 +1086,7 @@ ALTER TABLE reviews_review ADD COLUMN  IF NOT EXISTS import_date DATE;</sql>
 , objective
 , status
 , quality_assessment_cutoff_score
-, population
+, COALESCE(population,'') as population
 , intervention
 , comparison
 , outcome

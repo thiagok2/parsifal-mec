@@ -77,3 +77,9 @@ docker-compose up --build
 
 Acessar http://localhost:8000
 
+
+# Rodar
+
+source parsifal/bin/activate
+
+python manage.py runserver
