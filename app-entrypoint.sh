@@ -9,6 +9,9 @@ python /app/manage.py migrate auth
 echo "======>>>python /app/manage.py migrate reviews"
 python /app/manage.py migrate reviews --noinput
 
+echo "======>>>python /app/manage.py migrate"
+python /app/manage.py migrate
+
 echo "======>>>python /app/manage.py makemessages -l 'sv' -i venv"
 python /app/manage.py makemessages -l 'sv' -i venv
 
