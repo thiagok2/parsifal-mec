@@ -1,10 +1,8 @@
-# Parsifal
+# Sumarize
 
-Parsifal is a tool to support researchers to perform systematic literature reviews.
+A plataforma Sumarize trata-se de uma plataforma Web voltada para construção de revisões sistemáticas e meta-análises. Trata-se de uma aplicação web construída em python, sustentada com o framework WEB/MVC Django, com um front-end fortemente baseado em javascript com a biblioteca jQuery. A plataforma tem como característica a responsividade apoiada no framework Bootstrap. A comunicação entre os componentes cliente/servidor da aplicação é baseada em templates do Django e REST com ajax do jQuery. 
+A fim de possibilitar o acesso da plataforma com as fontes de dados ScienceDirect e Scopus, a plataforma Sumarize realiza acesso às respectivas bases a partir de uma biblioteca REST disponibilizada pelo próprio Django. Por fim, de modo a possibilitar a renderização dos elementos gráficos, necessários à execução da meta-análise faz-se uso da linguagem de programação R, acessada diretamente pelo Django a partir de chamadas REST.
 
-A systematic literature review is a secondary study with the objective to identify, analyze and interpret all available evidences from primary studies related to a specific research question. As suggested by Kitchenham and Charters, the activity to perform a systematic literature review involves planning, conducting and reporting the review.
-
-Performing a systematic literature review is a labor-intensive task that requires a huge amount of work from the researcher, designing the protocol, adjusting the search string, filtering the results, sometimes more than a thousand of articles, selecting those articles that attends the include criteria and removing those articles that attends the exclude criteria. After that, the researcher might start to analyze the relevant result one by one.
 
 ## License
 
